@@ -1,0 +1,19 @@
+title: 
+  en: References List
+  fr: Liste de références
+label:
+  en: References - List
+  fr: Références - Liste
+description: 
+  en: Show references (APA) in list view with search, source configured in input widget.
+  fr: Affichez les références (APA) en vue de liste avec recherche, la source est configurée dans le widget d'entrée.
+
+category: references
+export: true
+
+input:
+  type: reference
+  limit: false
+
+elements:
+  title:

@@ -1,0 +1,81 @@
+title: 
+  en: Feature Section
+  fr: Section de fonctionnalités
+label:
+  en: Features
+  fr: Fonctionnalités
+description: 
+  en: A section to display an overview of multiple related points, to convey an overall message about the items.
+  fr: Une section permettant d'afficher une vue d'ensemble de plusieurs points liés, afin de transmettre un message global sur les éléments.
+
+elements:
+  pretitle:
+  title:
+  subtitle:
+  link:
+    type: link
+
+items:
+  separator: divider
+  elements:
+    title:
+    subtitle:
+    text:
+    icon:
+      type: icon
+      description: 
+        en: Icons attached to the feature.
+        fr: Icônes attachées à la fonctionnalité.
+    link:
+      type: link
+      description: 
+        en: A link attached to the feature.
+        fr: Un lien attaché à la fonctionnalité.
+
+properties:
+  alignment:
+    label: 
+      en: Content alignment
+      fr: Alignement du contenu
+    type: string
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    default: left
+    description: 
+      en: The alignment of the main content.
+      fr: L'alignement du contenu principal.
+  
+presets:
+  left:
+    label:
+      en: Content on the Left and title at the right
+      fr: Contenu à gauche et titre à droite
+    properties:
+      alignment: left
+    image: left.png
+  center:
+    label:
+      en: Content in the Center and tired at the top
+      fr: Contenu au centre et titre en haut
+    properties:
+      alignment: center
+    image: center.png
+  right:
+    label:
+      en: Content on the Right and title at the left
+      fr: Contenu à droite et titre à gauche
+    properties:
+      alignment: right
+    image: right.png
+ 
