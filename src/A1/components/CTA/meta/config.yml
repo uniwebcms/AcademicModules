@@ -1,0 +1,22 @@
+title: 
+  en: Call-to-Action
+  fr: Appel à l'action
+label:
+  en: CTA
+  fr: CTA
+description: 
+  en: This section is designed to be eye-catching with an big image and button.
+  fr: Cette section est conçue pour attirer l'attention avec une grande image et un bouton.
+
+category: content
+export: true
+
+elements:
+  background:
+  pretitle:
+  title:
+  subtitle:
+  link:
+    type: link
+  media:
+    type: image

@@ -1,0 +1,18 @@
+name: Academic Series 1
+description: A collection of components for building academic websites.
+page_templates:
+  - name: About
+    components:
+      - name: Block
+        preset: centered_tight
+      - name: List
+        preset: medium
+categories:
+  content:
+    label:
+      en: Content
+      fr: Contenu
+    description:
+      en: Components that display content.
+      fr: Composants qui affichent du contenu.
+version: preset

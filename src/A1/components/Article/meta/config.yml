@@ -1,0 +1,73 @@
+title: 
+  en: Article Viewer
+  fr: Visionneuse d'articles
+label: 
+  en: Article
+  fr: Article
+description: 
+  en: Display the content of a selected article.
+  fr: Afficher le contenu d'un article sélectionné.
+
+category: dynamic_content
+export: true
+
+input:
+  type: articles
+  limit: one
+properties:
+  width:  
+    label:
+      en: Content Width
+      fr: Largeur du contenu
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Extra Large
+          fr: Très grand
+        value: xl
+      - label:
+          en: Double Extra Large
+          fr: Double très grand
+        value: 2xl
+    description:
+      en: The width of the section.
+      fr: La largeur de la section.
+
+presets:
+  md:
+    label:
+      en: Content in Medium Width
+      fr: Contenu en largeur moyenne
+    properties:
+      width: md
+    image: md.png
+  lg:
+    label:
+      en: Content in Large Width
+      fr: Contenu en largeur grande
+    properties:
+      width: lg
+    image: lg.png
+  xl:
+    label:
+      en: Content in Extra Large Width
+      fr: Contenu en largeur très grande
+    properties:
+      width: xl
+    image: xl.png
+  2xl:
+    label:
+      en: Content in Double Extra Large Width
+      fr: Contenu en largeur double très grande
+    properties:
+      width: 2xl
+    image: 2xl.png

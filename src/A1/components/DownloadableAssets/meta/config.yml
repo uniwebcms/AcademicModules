@@ -1,0 +1,23 @@
+title: 
+  en: Downloadable Assets
+  fr: Actifs téléchargeables
+label: 
+  en: Assets
+  fr: Actifs
+description: 
+  en: Renders web assets(files) for download, the source is from the current website's folder, or directly from the editor.
+  fr: Rend les actifs web (fichiers) téléchargeables, la source provient du dossier actuel du site web, ou directement de l'éditeur.
+
+category: cards
+export: true
+
+input:
+  type: any
+  limit: one
+
+elements: 
+  title:
+  card:
+    description:
+      en: Add a card elements, choose type 'Document' and upload the file.
+      fr: Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier.

@@ -1,0 +1,39 @@
+title: 
+  en: Aside
+  fr: Aside
+label: 
+  en: Aside
+  fr: Aside
+description: 
+  en: Display content aside from the main content, usually on one side of a two column layout. 
+  fr: Afficher du contenu à côté du contenu principal, généralement sur un côté d'une mise en page à deux colonnes.
+
+category: content
+export: true
+
+input:
+  type: any
+  limit: one
+  manualFormatting: true
+
+elements:
+  background:
+    label:
+      en: Profile Banner/Avatar
+      fr: Bannière/Avatar de profil
+    description: 
+      en: The picture of the profile.
+      fr: L'image du profil.
+  title:
+    description: 
+      en: The title of the profile.
+      fr: Le titre du profil.
+  subtitle:
+    description: 
+      en: The subtitle of the profile.
+      fr: Le sous-titre du profil.
+  link:
+    type: link
+    description: 
+      en: One or more links that attach to the profile.
+      fr: Un ou plusieurs liens qui s'attachent au profil.

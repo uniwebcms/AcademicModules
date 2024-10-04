@@ -1,0 +1,23 @@
+title: 
+  en: Details
+  fr: Détails
+label:
+  en: Details - Accordion
+  fr: Détails - Accordéon
+description: 
+  en: Explain things or answer questions using collapsable blocks of text. Commonly known as an "accordion" section. Content alignment is controlled by the title alignment in the editor.
+  fr: Expliquez des choses ou répondez à des questions en utilisant des blocs de texte réductibles. Communément appelé une section "accordéon". L'alignement du contenu est contrôlé par l'alignement du titre dans l'éditeur.
+
+category: content
+export: true
+
+elements:
+  title:
+    alignment: 'left,right,center'
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    title:
+    text:
