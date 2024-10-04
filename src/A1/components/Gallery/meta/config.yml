@@ -1,0 +1,18 @@
+title: 
+  en: Image Gallery
+  fr: Galerie d'images
+description: 
+  en: This is a section to showcase your images, plesantly arranged in a masonry layout that dynamically responds to your website.
+  fr: Une section destinée à présenter vos images, disposées dans une disposition en maçonnerie qui s'adapte à votre site web.
+label:
+  en: Gallery
+  fr: Galerie
+
+elements:
+  title:
+    alignment: left,right,center
+  media:
+    type: image
+    description: 
+      en: The image to display.
+      fr: L'image à afficher.

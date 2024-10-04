@@ -1,0 +1,172 @@
+title: 
+  en: Introduction
+  fr: Introduction 
+description: 
+  en: The opening section of your website providing a key piece of information and a strong presence. Commonly known as a "hero" section.
+  fr: La section d'ouverture de votre site web fournit un élément d'information clé et une présence forte. Communément appelée section "hero".
+label:
+  en: Introduction - Hero
+  fr: Introduction - Hero
+assets:
+  Screenshot.png:
+    title: 
+      en: Basic usage with pretitle, title, subtitle and links.
+      fr: Utilisation de base avec pré-titre, titre, sous-titre et liens.
+
+elements:
+  background:
+    layout: center, wide
+  pretitle:
+  title:
+    alignment: 'left,right,center'
+  subtitle:
+  text:
+  link:
+    type: link
+    description: 
+      en: One or more links that attach to the hero section.
+      fr: Un ou plusieurs liens qui s'attachent à la section hero.
+
+properties:
+  min_height:
+    label: 
+      en: Section height
+      fr: Hauteur de la section
+    type: string
+    default: 100vh
+    enum:
+      - label: 
+          en: 100% Screen Height
+          fr: 100% de la hauteur de l'écran
+        value: 100vh
+      - label: 
+          en: 80% Screen Height
+          fr: 80% de la hauteur de l'écran
+        value: 80vh
+      - label: 
+          en: 60% Screen Height
+          fr: 60% de la hauteur de l'écran
+        value: 60vh
+      - label: 
+          en: 40% Screen Height
+          fr: 40% de la hauteur de l'écran
+        value: 40vh
+    description: 
+      en: The height of the section.
+      fr: La hauteur de la section.
+  show_back_drop:
+    label: 
+      en: Text Backdrop
+      fr: Toile de fond du texte
+    type: boolean
+    default: false
+    description: 
+      en: Whether or not the text will have a backdrop.
+      fr: Si le texte aura ou non une toile de fond.
+  show_gradient:
+    label: 
+      en: Gradient
+      fr: Dégradé
+    type: boolean
+    default: false
+    description: 
+      en: Weather or not the background will have a gradient.
+      fr: Si l'arrière-plan aura ou non un dégradé.
+  gradient_from_pos:
+    label: 
+      en: Gradient From Position
+      fr: Position du dégradé à partir de
+    type: string
+    default: bottom
+    enum:
+      - label: 
+          en: Top
+          fr: Haut
+        value: top
+      - label: 
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description: 
+      en: The position of the gradient from.
+      fr: La position du dégradé à partir de.
+  horizontal_alignment:
+    label: 
+      en: Horizontal Alignment
+      fr: Alignement horizontal
+    type: string
+    default: ""
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The horizontal alignment of the text.
+      fr: L'alignement horizontal du texte.
+  vertical_alignment:
+    label: 
+      en: Vertical Alignment
+      fr: Alignement vertical
+    type: string
+    default: center
+    enum:
+      - label: 
+          en: Top
+          fr: Haut
+        value: top
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description: 
+      en: The vertical alignment of the text.
+      fr: L'alignement vertical du texte.
+
+preset:
+  content_center_gradient_top:
+    label:
+      en: Content Center and Gradient Top
+      fr: Contenu centré et dégradé en haut
+    properties:
+      min_height: 60vh
+      show_gradient: true
+      gradient_from_pos: top
+      horizontal_alignment: center
+      vertical_alignment: center
+    image: content_center_gradient_top.png
+  content_left_backdrop:
+    label:
+      en: Content on the Left with Text Backdrop
+      fr: Contenu à gauche avec toile de fond de texte
+    properties:
+      min_height: 60vh
+      show_back_drop: true
+      horizontal_alignment: left
+      vertical_alignment: center
+    image: content_left_backdrop.png
+  content_right_gradient_bottom:
+    label:
+      en: Content on the Right with Gradient Bottom
+      fr: Contenu à droite avec dégradé en bas
+    properties:
+      min_height: 60vh
+      show_gradient: true
+      gradient_from_pos: bottom
+      horizontal_alignment: right
+      vertical_alignment: center
+    image: content_right_gradient_bottom.png
+
+
