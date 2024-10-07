@@ -7,11 +7,9 @@ description:
 label:
   en: Introduction - Hero
   fr: Introduction - Hero
-assets:
-  Screenshot.png:
-    title: 
-      en: Basic usage with pretitle, title, subtitle and links.
-      fr: Utilisation de base avec pré-titre, titre, sous-titre et liens.
+
+category: hero
+export: true
 
 elements:
   background:
@@ -135,7 +133,7 @@ properties:
       en: The vertical alignment of the text.
       fr: L'alignement vertical du texte.
 
-preset:
+presets:
   content_center_gradient_top:
     label:
       en: Content Center and Gradient Top

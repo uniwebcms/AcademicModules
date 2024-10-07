@@ -1,0 +1,85 @@
+title: 
+  en: Dynamic Map
+  fr: Carte dynamique
+label:
+  en: Map - Dynamic
+  fr: Carte - Dynamique
+description: 
+  en: Show locations as Pins on a Google Map, data is coming from the Research Places section of one or more selected profiles.
+  fr: Affichez les emplacements sous forme d'épingles sur une carte Google, les données proviennent de la section Lieux de recherche d'un ou de plusieurs profils sélectionnés.
+
+category: map
+export: true
+
+input:
+  type: any
+  limit: false
+
+elements:
+  title:
+
+properties:
+  full_size:
+    label: 
+      en: Full Size
+      fr: Taille réelle
+    type: boolean
+    default: false
+    description: 
+      en: Weather or not the map will take the full width and height of the screen.
+      fr: Si oui ou non la carte prendra toute la largeur et la hauteur de l'écran.
+  show_detail:
+    label: 
+      en: Show Details
+      fr: Afficher les détails
+    type: boolean
+    default: true
+    description: 
+      en: Whether or not to show the details of the source profile of the location.
+      fr: Si oui ou non afficher les détails du profil source de l'emplacement.
+  zoom:
+    label:
+      en: Initial Zoom Level
+      fr: Niveau de zoom initial
+    type: string
+    enum:
+      - label:
+          en: World view
+          fr: Vue du monde
+        value: "1"
+      - label:
+          en: Continent view
+          fr: Vue du continent
+        value: "5"
+      - label:
+          en: City view
+          fr: Vue de la ville
+        value: "10"
+      - label:
+          en: Street view
+          fr: Vue de la rue
+        value: "15"
+      - label:
+          en: Building view
+          fr: Vue du bâtiment
+        value: "20"
+    default: "5"
+    description: 
+      en: The zoom level of the map.
+      fr: Le niveau de zoom de la carte.
+
+presets:
+  full_detail:
+    label:
+      en: Full size map with detail of a single location
+      fr: Carte de taille réelle avec détail d'un seul emplacement
+    properties:
+      full_size: true
+    image: full_detail.png
+  standard:
+    label:
+      en: Standard size map
+      fr: Carte de taille standard
+    properties:
+      show_detail: false
+    image: standard.png

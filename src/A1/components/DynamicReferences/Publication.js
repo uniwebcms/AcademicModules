@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeHtml, website } from '@uniwebcms/module-sdk';
-import Cite from './CiteRender';
+import { SafeHtml } from '@uniwebcms/module-sdk';
+import Cite from '../_utils/cite/Render';
 
 const isInitial = (name) => {
     return name.length <= 4 && name === name.toUpperCase() && name != name.toLowerCase();
@@ -73,7 +73,7 @@ const initSMMode = (authors) => {
     const p = authors.split(';');
     const weights = {
         perfects: 0,
-        nonPerfects: 0
+        nonPerfects: 0,
     };
 
     p.forEach((item) => {
@@ -92,7 +92,7 @@ const initSMMode = (authors) => {
     return {
         parsedAuthors: authors,
         parsedType: 'SM',
-        parsedAccuracy: accuracy
+        parsedAccuracy: accuracy,
     };
 };
 
@@ -153,7 +153,7 @@ const initOtherMode = (authors) => {
             return {
                 parsedType: '',
                 parsedAccuracy: 'unknown',
-                parsedAuthors: ''
+                parsedAuthors: '',
             };
         } else {
             //Number of splits must be even. Each name must contain exact two parts
@@ -163,7 +163,7 @@ const initOtherMode = (authors) => {
                 return {
                     parsedType: '',
                     parsedAccuracy: 'unknown',
-                    parsedAuthors: ''
+                    parsedAuthors: '',
                 };
             }
 
@@ -172,7 +172,7 @@ const initOtherMode = (authors) => {
             return {
                 parsedType: 'DC',
                 parsedAccuracy: 'PARTIAL',
-                parsedAuthors: authors
+                parsedAuthors: authors,
             };
         }
     }
@@ -185,7 +185,7 @@ const initOtherMode = (authors) => {
             return {
                 parsedType: '',
                 parsedAccuracy: 'unknown',
-                parsedAuthors: ''
+                parsedAuthors: '',
             };
         }
 
@@ -193,7 +193,7 @@ const initOtherMode = (authors) => {
         return {
             parsedType: 'DC',
             parsedAccuracy: 'perfect',
-            parsedAuthors: authors
+            parsedAuthors: authors,
         };
     }
 
@@ -204,7 +204,7 @@ const initOtherMode = (authors) => {
             return {
                 parsedType: 'SCFF',
                 parsedAccuracy: accuracy,
-                parsedAuthors: authors
+                parsedAuthors: authors,
             };
         } else {
             let accuracy = flWeights.ff == 0 ? 'perfect' : 'PARTIAL';
@@ -212,7 +212,7 @@ const initOtherMode = (authors) => {
             return {
                 parsedType: 'SCLF',
                 parsedAccuracy: accuracy,
-                parsedAuthors: authors
+                parsedAuthors: authors,
             };
         }
     }
@@ -224,7 +224,7 @@ const parseAuthors = (authors) => {
             parsedAuthors: '',
             parsedType: 'SM',
             parsedAccuracy: '',
-            hasOtherAuthors: false
+            hasOtherAuthors: false,
         };
     } else {
         const splitsBySemicolon = authors.split(';');
@@ -233,19 +233,20 @@ const parseAuthors = (authors) => {
         if (splitsBySemicolon.length > 1) {
             return {
                 ...initSMMode(authorsStrClean),
-                hasOtherAuthors: hasOtherAuthors
+                hasOtherAuthors: hasOtherAuthors,
             };
         } else {
             return {
                 ...initOtherMode(authorsStrClean),
-                hasOtherAuthors: hasOtherAuthors
+                hasOtherAuthors: hasOtherAuthors,
             };
         }
     }
 };
 
 const init = (initialValue) => {
-    const { parsedAuthors, parsedType, parsedAccuracy, hasOtherAuthors } = parseAuthors(initialValue);
+    const { parsedAuthors, parsedType, parsedAccuracy, hasOtherAuthors } =
+        parseAuthors(initialValue);
     let parsedAuthorArray = [];
     let rawMode = false;
     switch (parsedType) {
@@ -268,7 +269,9 @@ const init = (initialValue) => {
                 let p = parsedAuthors.split(',');
                 const parsedArray = p.reduce(
                     (rows, item, index) =>
-                        (index % 2 == 0 ? rows.push([item.trim()]) : rows[rows.length - 1].push(item.trim())) && rows,
+                        (index % 2 == 0
+                            ? rows.push([item.trim()])
+                            : rows[rows.length - 1].push(item.trim())) && rows,
                     []
                 );
                 parsedAuthorArray = parsedArray.map((item) => {
@@ -301,8 +304,12 @@ const init = (initialValue) => {
         parsedType: parsedType,
         parsedAccuracy: parsedAccuracy,
         hasOtherAuthors: hasOtherAuthors,
-        parsedAuthorArray: rawMode ? [] : parsedAuthorArray.length > 0 ? parsedAuthorArray : [['', false]],
-        rawMode: rawMode
+        parsedAuthorArray: rawMode
+            ? []
+            : parsedAuthorArray.length > 0
+            ? parsedAuthorArray
+            : [['', false]],
+        rawMode: rawMode,
     };
 };
 
@@ -328,17 +335,30 @@ export default function Publication(props) {
     parsedData = {
         ...parsedData,
         title,
-        date
+        date,
     };
 
     let finalDoi = doi || parsedData?.doi || '';
 
     finalDoi =
-        finalDoi && finalDoi.startsWith('https://doi.org/') ? finalDoi.replace('https://doi.org/', '') : finalDoi;
+        finalDoi && finalDoi.startsWith('https://doi.org/')
+            ? finalDoi.replace('https://doi.org/', '')
+            : finalDoi;
 
     let completeDoi = finalDoi ? `https://doi.org/${finalDoi}` : '';
 
-    let { authors, date: d, pages, publisher, published, volume, issue, page_range, journal, url } = parsedData;
+    let {
+        authors,
+        date: d,
+        pages,
+        publisher,
+        published,
+        volume,
+        issue,
+        page_range,
+        journal,
+        url,
+    } = parsedData;
 
     let finalData = { title, DOI: finalDoi, type: 'article-journal', volume, issue, journal };
 
@@ -378,7 +398,7 @@ export default function Publication(props) {
     if (d) {
         const [year, month] = d.split('/');
         finalData.issued = {
-            'date-parts': [[parseInt(year), parseInt(month)]]
+            'date-parts': [[parseInt(year), parseInt(month)]],
         };
     }
 
@@ -395,7 +415,7 @@ export default function Publication(props) {
     let output = cite.format('bibliography', {
         format: 'html', // output format. See comments above.
         template: 'apa', // 'vancouver' | 'apa' | 'harvard | 'chicago', 'mla'
-        lang
+        lang,
         // 'author-limit': 1, // Show only the first author before using "et al."
         // 'et-al-min': 3, // Use "et al." if there are 4 or more authors
         // 'et-al-use-first': 1,

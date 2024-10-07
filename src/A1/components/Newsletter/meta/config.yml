@@ -1,0 +1,20 @@
+title: 
+  en: Newsletter Subscription
+  fr: Abonnement à la lettre d'information
+label:
+  en: Newsletter
+  fr: Newsletter
+description: 
+  en: A section to allow you to remain in contact with your visitors by letting them sign up to recieve updates when you post new content.
+  fr: Une section qui vous permet de rester en contact avec vos visiteurs en leur permettant de s'inscrire pour recevoir des mises à jour lorsque vous publiez du nouveau contenu.
+
+category: form
+export: true
+
+elements:
+  title:
+  subtitle:
+  text:
+    description:
+      en: Text shown below the subscription form.
+      fr: Texte affiché sous le formulaire d'abonnement.

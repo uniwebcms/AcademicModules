@@ -8,7 +8,7 @@ description:
   en: This section provides an easy way for visitors to send you a message. All inquiries will be emailed to your Uniweb account email.
   fr: Cette section permet aux visiteurs de vous envoyer facilement un message. Toutes les demandes seront envoyées à le courriel de votre compte Uniweb.
 
-category: actions
+category: form
 export: true
 
 elements:

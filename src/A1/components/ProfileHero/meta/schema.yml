@@ -1,0 +1,163 @@
+title: 
+  en: Introduction - Dynamic
+  fr: Introduction - Dynamique
+label:
+  en: Introduction - Dynamic
+  fr: Introduction - Dynamique
+description:
+  en: A component takes input of content profile and displays it in a hero layout.
+  fr: Un composant prend en entrée un profil de contenu et l'affiche dans une mise en page hero.
+
+category: hero
+export: true
+
+input:
+  type: any
+  limit: one
+
+properties:
+  show_title:
+    label: 
+      en: Show Title
+      fr: Afficher le titre
+    type: boolean
+    default: true
+    description: 
+      en: Weather or not the title of the dynamic profile will be displayed.
+      fr: Si le titre du profil dynamique sera affiché ou non.
+  show_back_drop:
+    label: 
+      en: Text Backdrop
+      fr: Toile de fond du texte
+    type: boolean
+    default: false
+    description: 
+      en: Whether or not the text will have a backdrop.
+      fr: Si le texte aura ou non une toile de fond.
+  text_backdrop_style:
+    label:
+      en: Text Backdrop Style
+      fr: Style de fond de texte
+    type: string
+    enum:
+      - label:
+          en: Default (based on theme color)
+          fr: Défaut (basé sur la couleur du thème)
+        value: default
+      - label:
+          en: Elegant gradient background (deep indigo to vibrant blue)
+          fr: Arrière-plan dégradé élégant (indigo profond à bleu vibrant)
+        value: indigo_blue_gradient
+      - label:
+          en: Frosted Glass effect (slightly blurred gray background and white text)
+          fr: Effet de verre givré (arrière-plan gris légèrement flou et texte blanc)
+        value: frosted_glass
+      - label:
+          en: Understated Gray (light gray background and matching gray text, rounded corners)
+          fr: Gris discret (arrière-plan gris clair et texte gris assorti, coins arrondis)
+        value: understated_gray
+      - label:
+          en: Soft Pastel Palette (pink background paired with deep purple text, rounded corners)
+          fr: Palette de pastels doux (fond rose associé à un texte violet foncé, coins arrondis)
+        value: soft_pastel
+    default: default
+    description: 
+      en: The style of the text backdrop.
+      fr: Le style du fond de texte.
+  show_gradient:
+    label: 
+      en: Gradient
+      fr: Dégradé
+    type: boolean
+    default: false
+    description: 
+      en: Weather or not the background will have a gradient.
+      fr: Si l'arrière-plan aura ou non un dégradé.
+  gradient_from_pos:
+    label: 
+      en: Gradient From Position
+      fr: Position du dégradé à partir de
+    type: string
+    default: bottom
+    enum:
+      - label: 
+          en: Top
+          fr: Haut
+        value: top
+      - label: 
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description: 
+      en: The position of the gradient from.
+      fr: La position du dégradé à partir de.
+  horizontal_alignment:
+    label: 
+      en: Horizontal Alignment
+      fr: Alignement horizontal
+    type: string
+    default: center
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The horizontal alignment of the text.
+      fr: L'alignement horizontal du texte.
+  vertical_alignment:
+    label: 
+      en: Vertical Alignment
+      fr: Alignement vertical
+    type: string
+    default: center
+    enum:
+      - label: 
+          en: Top
+          fr: Haut
+        value: top
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description: 
+      en: The vertical alignment of the text.
+      fr: L'alignement vertical du texte.
+  
+presets:
+  content_center_title_backdrop_gradient_top:
+    label:
+      en: Content aligned to the center, title with backdrop and a gradient starts from top
+      fr: Contenu aligné au centre, titre avec toile de fond et un dégradé qui commence en haut
+    properties:
+      show_title: true
+      show_back_drop: true
+      text_backdrop_style: default
+      show_gradient: true
+      gradient_from_pos: top
+      horizontal_alignment: center
+      vertical_alignment: center
+    image: content_center_title_backdrop_gradient_top.png
+  content_left_title_backdrop_indigo:
+    label:
+      en: Content aligned to the left and a title with a indigo backdrop
+      fr: Contenu aligné à gauche et un titre avec une toile de fond indigo
+    properties:
+      show_title: true
+      show_back_drop: true
+      text_backdrop_style: indigo_blue_gradient
+      horizontal_alignment: left
+      vertical_alignment: center
+    image: content_left_title_backdrop_indigo.png

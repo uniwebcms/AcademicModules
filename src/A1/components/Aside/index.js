@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Link, MediaIcon, useLoadProfileBody, getPageProfile } from '@uniwebcms/module-sdk';
-import { getMediaLinkType } from '../_utils/helper';
+import { getMediaLinkType } from '../_utils/media';
 import Container from '../_utils/Container';
 
 export default function Aside(props) {

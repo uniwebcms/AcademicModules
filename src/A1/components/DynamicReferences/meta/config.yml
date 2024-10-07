@@ -1,14 +1,14 @@
 title: 
-  en: References List
-  fr: Liste de références
+  en: References Table
+  fr: Tableau de références
 label:
-  en: References - List
-  fr: Références - Liste
+  en: References - Table
+  fr: Références - Tableau
 description: 
-  en: Show references (APA) in list view with search, source configured in input widget.
-  fr: Affichez les références (APA) en vue de liste avec recherche, la source est configurée dans le widget d'entrée.
+  en: Show references (APA) in table view with search, source configured in input widget.
+  fr: Afficher les références (APA) en vue de tableau avec recherche, source configurée dans le widget d'entrée.
 
-category: references
+category: reference
 export: true
 
 input:

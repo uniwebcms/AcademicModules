@@ -1,0 +1,248 @@
+import React, { useEffect, useState, forwardRef, useImperativeHandle, useCallback } from 'react';
+import {
+    useJsApiLoader,
+    GoogleMap,
+    Marker,
+    InfoWindow,
+    MarkerClusterer,
+} from '@react-google-maps/api';
+import { Image, twMerge } from '@uniwebcms/module-sdk';
+import { GrMapLocation } from 'react-icons/gr';
+import { getDateRange } from '../_utils/date';
+import './style.css';
+
+function getLatLngWithXOffset(map, point, xOffset, zoom = 15) {
+    const projection = map.getProjection();
+    const scale = Math.pow(2, zoom);
+
+    const pointLatLng = projection.fromPointToLatLng(point);
+    const offsetX = xOffset / scale;
+
+    return new google.maps.LatLng(pointLatLng.lat(), pointLatLng.lng() + offsetX);
+}
+
+const Map = forwardRef((props, ref) => {
+    const { apiKey, language, style, zoom = '8', markers, initialCenter } = props;
+
+    const [map, setMap] = useState(null);
+    const [markerPositions, setMarkerPositions] = useState([]);
+    const [center, setCenter] = useState(
+        initialCenter
+            ? () => {
+                  const { lat, lng } = initialCenter;
+                  return {
+                      lat: typeof lat === 'string' ? Number(lat) : lat,
+                      lng: typeof lng === 'string' ? Number(lng) : lng,
+                  };
+              }
+            : {
+                  lat: 45.424721,
+                  lng: -75.695,
+              }
+    );
+
+    const [openPositions, setOpenPositions] = useState([]);
+
+    const { isLoaded, loadError } = useJsApiLoader({
+        googleMapsApiKey: apiKey,
+        language,
+    });
+
+    // useEffect(() => {
+    //     console.log('initialCenter', initialCenter, map);
+
+    //     if (map) {
+    //         if (initialCenter && map.getProjection()) {
+    //             let { lat, lng } = initialCenter;
+
+    //             lat = typeof lat === 'string' ? Number(lat) : lat;
+    //             lng = typeof lng === 'string' ? Number(lng) : lng;
+
+    //             const centerPoint = map.getProjection().fromLatLngToPoint(new google.maps.LatLng(lat, lng));
+    //             const newCenterLatLng = getLatLngWithXOffset(map, centerPoint, -288, zoom);
+
+    //             setCenter(newCenterLatLng);
+    //         } else {
+    //             setCenter({
+    //                 lat: 45.424721,
+    //                 lng: -75.695
+    //             });
+    //         }
+    //     }
+    // }, [map, initialCenter, zoom]);
+
+    useEffect(() => {
+        // convert lat and lng in each address to be a number
+        if (markers) {
+            const markerPositions = Object.keys(markers).map((key) => {
+                const [lat, lng] = key.split('_');
+
+                return {
+                    lat: Number(lat),
+                    lng: Number(lng),
+                };
+            });
+
+            setMarkerPositions(markerPositions);
+        }
+    }, [markers]);
+
+    useImperativeHandle(
+        ref,
+        () => ({
+            updateCenterWithOffset: (newCenter, offset = 0) => {
+                if (!map) return;
+
+                let { lat, lng } = newCenter;
+
+                lat = typeof lat === 'string' ? Number(lat) : lat;
+                lng = typeof lng === 'string' ? Number(lng) : lng;
+
+                const centerPoint = map
+                    .getProjection()
+                    .fromLatLngToPoint(new google.maps.LatLng(lat, lng));
+                const newCenterLatLng = getLatLngWithXOffset(map, centerPoint, offset);
+
+                setCenter(newCenterLatLng);
+                map.setZoom(15);
+
+                // open corresponding info window
+                const markerIndex = markerPositions.findIndex((position) => {
+                    return position.lat == newCenter.lat && position.lng == newCenter.lng;
+                });
+
+                if (markerIndex > -1) {
+                    if (!openPositions.includes(markerIndex)) {
+                        setOpenPositions([markerIndex]);
+                    }
+                }
+            },
+        }),
+        [map]
+    );
+
+    const onLoad = useCallback((map) => {
+        setMap(map);
+    }, []);
+
+    const onUnmount = useCallback((map) => {
+        setMap(null);
+    }, []);
+
+    if (isLoaded) {
+        return (
+            <GoogleMap
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+                mapContainerStyle={style}
+                center={center}
+                zoom={Number(zoom)}
+                options={{ fullscreenControl: false, mapTypeControl: false }}
+            >
+                <MarkerClusterer averageCenter={true} enableRetinaIcons={true}>
+                    {(clusterer) => {
+                        return markerPositions.map((position, index) => {
+                            const { lat, lng } = position;
+
+                            const items = markers[`${lat}_${lng}`];
+
+                            return (
+                                <Marker
+                                    key={index}
+                                    clusterer={clusterer}
+                                    position={{ lat, lng }}
+                                    onClick={() => {
+                                        if (!openPositions.includes(index)) {
+                                            setOpenPositions([...openPositions, index]);
+                                        }
+                                    }}
+                                >
+                                    {openPositions.includes(index) && items.length ? (
+                                        <InfoWindow
+                                            position={{ lat, lng }}
+                                            options={{
+                                                maxWidth: 360,
+                                                minWidth: 200,
+                                            }}
+                                            onCloseClick={() => {
+                                                const newOpenPositions = openPositions.filter(
+                                                    (n) => n !== index
+                                                );
+                                                setOpenPositions(newOpenPositions);
+                                            }}
+                                        >
+                                            <ul className="divide-y divide-neutral-600 max-h-64 overflow-auto">
+                                                {items.map(({ location, profile }, index) => {
+                                                    const profileTitle = profile
+                                                        ? profile.getBasicInfo().title
+                                                        : '';
+
+                                                    const avatar = profile ? (
+                                                        <Image
+                                                            profile={profile}
+                                                            type={
+                                                                profile.contentType === 'members'
+                                                                    ? 'avatar'
+                                                                    : 'banner'
+                                                            }
+                                                            rounded="rounded-md"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full border rounded-full p-2.5 border-neutral-600">
+                                                            <GrMapLocation className="w-full h-full text-neutral-600" />
+                                                        </div>
+                                                    );
+
+                                                    const dateRange = getDateRange(
+                                                        location.startDate,
+                                                        location.endDate
+                                                    );
+
+                                                    return (
+                                                        <li
+                                                            key={index}
+                                                            className={twMerge(
+                                                                'flex items-start space-x-3 bg-neutral-50',
+                                                                items.length > 1 ? 'py-2' : '',
+                                                                index === 0 ? 'pt-0' : '',
+                                                                index === items.length - 1
+                                                                    ? 'pb-0'
+                                                                    : ''
+                                                            )}
+                                                        >
+                                                            <div className="w-12 h-12 flex-shrink-0 mt-1">
+                                                                {avatar}
+                                                            </div>
+                                                            <div className="space-y-1">
+                                                                <p className="text-sm font-semibold md:text-[15px] lg:text-[17px] !text-neutral-900">
+                                                                    {location.title}
+                                                                </p>
+                                                                <p className="text-[13px] font-medium md:text-[15px] text-neutral-700">
+                                                                    {profileTitle}
+                                                                </p>
+                                                                <p className="text-[13px] md:text-[15px] !text-neutral-800">
+                                                                    {location.address}
+                                                                </p>
+                                                                <p className="text-[12px] md:text-[14px] text-neutral-600">
+                                                                    {dateRange}
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        </InfoWindow>
+                                    ) : null}
+                                </Marker>
+                            );
+                        });
+                    }}
+                </MarkerClusterer>
+            </GoogleMap>
+        );
+    } else if (loadError) return <div>Unable to load Map.</div>;
+
+    return null;
+});
+
+export default Map;

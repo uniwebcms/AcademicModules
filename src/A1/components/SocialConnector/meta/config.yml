@@ -1,0 +1,33 @@
+title: 
+  en: Social Connector
+  fr: Connecteur social
+label:
+  en: Social Connector
+  fr: Connecteur social
+description: 
+  en: A component renders a newseltter subscription form and a list of social media links.
+  fr: Un composant qui affiche un formulaire d'abonnement à la newsletter et une liste de liens vers les médias sociaux.
+input:
+  type: any
+  limit: one
+
+category: form
+export: true
+
+elements:
+  title:
+    label:
+      en: Newsletter form title
+      fr: Titre du formulaire d'abonnement à la newsletter
+    default: Subscribe for updates
+    description:
+      en: The title of the newsletter subscription form.
+      fr: Le titre du formulaire d'abonnement à la newsletter.
+  subtitle:
+    label:
+      en: Social media links title
+      fr: Titre des liens vers les réseaux sociaux
+    default: Follow us
+    description:
+      en: The title of the social media links.
+      fr: Le titre des liens vers les réseaux sociaux.

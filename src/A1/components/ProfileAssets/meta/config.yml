@@ -1,0 +1,19 @@
+title: 
+  en: Assets - Dynamic
+  fr: Actifs - Dynamique
+label: 
+  en: Assets - Dynamic
+  fr: Actifs - Dynamique
+description: 
+  en: A component that renders downloadable assets(files), the files come from one section of the content profile, config the source in the input widget.
+  fr: Un composant qui rend les actifs téléchargeables (fichiers), les fichiers proviennent d'une section du profil de contenu, configurez la source dans le widget d'entrée.
+
+category: downloadable
+export: true
+
+input:
+  type: any
+  limit: one
+
+elements: 
+  title:

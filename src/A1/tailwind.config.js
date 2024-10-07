@@ -5,7 +5,11 @@ function makeEntryPath(libraryName, subpath = '**/*.{js,jsx,ts,tsx}') {
 }
 
 module.exports = {
-    content: ['../src/**/*.{js,jsx}', makeEntryPath('@uniwebcms/module-sdk')],
+    content: [
+        '../src/**/*.{js,jsx}',
+        makeEntryPath('@uniwebcms/module-sdk'),
+        makeEntryPath('flowbite-react'),
+    ],
     plugins: [
         require('@uniwebcms/uniweb-tailwind-plugin'),
         makeEntryPath('@uniwebcms/module-sdk', 'plugin'),

@@ -1,0 +1,30 @@
+title: 
+  en: Features - Line
+  fr: Fonctionnalités - Ligne
+label:
+  en: Features - Line
+  fr: Fonctionnalités - Ligne
+description: 
+  en: A section for showing multiple related points in a horizontal line on large screens, or a vertical line on small ones.
+  fr: Section permettant d'afficher plusieurs points connexes sur une ligne horizontale sur les grands écrans, ou sur une ligne verticale sur les petits écrans.
+
+category: content
+export: true
+
+elements:
+  title:
+    alignment: ""
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+    title:
+      alignment: ""
+    text:
+    link:
+      type: link
+      description: 
+        en: A link attached to the feature.
+        fr: Un lien attaché à la fonctionnalité.

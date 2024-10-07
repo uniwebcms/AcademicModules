@@ -22,3 +22,18 @@ export const getMediaLinkType = (link) => {
         return Object.keys(pattern).find((key) => url.toLowerCase().startsWith(pattern[key]));
     }
 };
+
+export const getMediaLinkLabel = (type) => {
+    const map = {
+        twitter: 'Twitter',
+        facebook: 'Facebook',
+        linkedin: 'LinkedIn',
+        medium: 'Medium',
+        quora: 'Quora',
+        tumblr: 'Tumblr',
+        youtube: 'YouTube',
+        github: 'GitHub',
+    };
+
+    return map[type] || type;
+};

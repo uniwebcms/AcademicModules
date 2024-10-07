@@ -1,0 +1,73 @@
+title: 
+  en: Page Footer
+  fr: Pied de page
+label:
+  en: Footer
+  fr: Pied de page
+description: 
+  en: Special section to only be used in the footer section of the editor. Creates lists of links mirroring those of the navigation bar.
+  fr: Section spéciale à utiliser uniquement dans le pied de page de l'éditeur. Crée des listes de liens reflétant celles de la barre de navigation.
+
+category: footer
+export: true
+
+elements:
+  title:
+    description: 
+      en: The copyright text.
+      fr: Le texte des droits d'auteur.
+  list:
+    type: list
+    title: 
+      en: Navigation Links
+      fr: Liens de navigation
+    description:
+      en: The navigation links to display in the footer, it is created as a list of links with hierarchy.
+      fr: Les liens de navigation à afficher dans le pied de page, il est créé sous forme de liste de liens avec hiérarchie.
+  link:
+    type: link
+    description: 
+        en: One or more external or social links.
+        fr: Un ou plusieurs liens externes ou sociaux.
+
+properties:
+  mode:
+    type: string
+    label: 
+      en: Navigation Links Generation Mode
+      fr: Mode de génération des liens de navigation
+    enum:
+      - label:
+          en: Automatic
+          fr: Automatique
+        value: auto
+      - label:
+          en: Always Page Hierarchy
+          fr: Toujours la hiérarchie des pages
+        value: page
+      - label:
+          en: Always Manual Links
+          fr: Toujours des liens manuels
+        value: manual
+    default: auto
+    description: 
+      en: The mode used to generate the navigation links, auto will use the manual links if available, otherwise it will use the page hierarchy.
+      fr: Le mode utilisé pour générer les liens de navigation, auto utilisera les liens manuels s'ils sont disponibles, sinon il utilisera la hiérarchie des pages.
+  with_lang_toggle:
+    type: boolean
+    label: 
+      en: Language Toggle
+      fr: Basculer la langue
+    description: 
+      en: Whether or not the language toggle will be displayed in the footer.
+      fr: Si oui ou non le basculement de langue sera affiché dans le pied de page.
+    default: false
+
+presets:
+  with_lang_toggle:
+    label:
+      en: With Language Toggle
+      fr: Avec basculement de langue
+    properties:
+      with_lang_toggle: true
+    image: with_lang_toggle.png

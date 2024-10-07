@@ -1,0 +1,24 @@
+title: 
+  en: Feature Cards
+  fr: Fonctionnalités en carte
+label:
+  en: Features - Card
+  fr: Fonctionnalités - Carte
+description: 
+  en: A component to show distinct pieces of information each with their own visual card.
+  fr: Un composant permettant de présenter des éléments d'information distincts, chacun avec sa propre carte visuelle.
+
+category: content
+export: true
+
+elements:
+  pretitle:
+  title: 
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+    title:
+    text:

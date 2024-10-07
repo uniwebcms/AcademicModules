@@ -1,0 +1,8 @@
+
+.media-icon * {
+    color: inherit !important;
+  }
+  
+.media-icon *:hover {
+    color: inherit !important;
+}

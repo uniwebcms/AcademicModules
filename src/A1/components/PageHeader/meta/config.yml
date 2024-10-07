@@ -1,0 +1,97 @@
+title: 
+  en: Page Header
+  fr: En-tête de page
+label:
+  en: Header
+  fr: En-tête
+description: 
+  en: Special section only to be used in the header page. Creates a navigation bar with automatic links to all website pages.
+  fr: Section spéciale à utiliser uniquement dans la page d'en-tête. Crée une barre de navigation avec des liens automatiques vers toutes les pages du site web.
+
+category: header
+export: true
+
+elements:
+  icon:
+    title: 
+      en: Logo
+      fr: Logo
+    description:
+      en: The logo image to display in the header.
+      fr: L'image du logo à afficher dans l'en-tête.
+  list:
+    type: list
+    title: 
+      en: Navigation Links
+      fr: Liens de navigation
+    description:
+      en: The navigation links to display in the header, it is created as a list of links, each link can have children links.
+      fr: Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants.
+
+properties:
+  mode:
+    type: string
+    label: 
+      en: Navigation Links Generation Mode
+      fr: Mode de génération des liens de navigation
+    enum:
+      - label:
+          en: Automatic
+          fr: Automatique
+        value: auto
+      - label:
+          en: Always Page Hierarchy
+          fr: Toujours la hiérarchie des pages
+        value: page
+      - label:
+          en: Always Manual Links
+          fr: Toujours des liens manuels
+        value: manual
+    default: auto
+    description: 
+      en: The mode used to generate the navigation links, auto will use the manual links if available, otherwise it will use the page hierarchy.
+      fr: Le mode utilisé pour générer les liens de navigation, auto utilisera les liens manuels s'ils sont disponibles, sinon il utilisera la hiérarchie des pages.
+  sticky:
+    type: boolean
+    label: 
+      en: Sticky
+      fr: Sticky
+    description: 
+      en: Whether or not the header will be sticky at the top of the page on scroll.
+      fr: Si l'en-tête sera ou non collant en haut de la page lors du défilement.
+    default: false
+  alignment:
+    type: string
+    label: 
+      en: Navigation Alignment
+      fr: Alignement de la navigation
+    description: 
+      en: The alignment of the navigation links in the header.
+      fr: L'alignement des liens de navigation dans l'en-tête.
+    enum:
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+    default: left
+
+presets:
+  left:
+    label:
+      en: Navigation links aligned to the left
+      fr: Liens de navigation alignés à gauche
+    properties:
+      alignment: left
+    image: left.png
+  center_sticky:
+    label:
+      en: Navigation links aligned to the center and sticky at the top when page is scrolled
+      fr: Liens de navigation alignés au centre et collants en haut lors du défilement de la page
+    properties:
+      alignment: center
+      sticky: true
+    image: center_sticky.png

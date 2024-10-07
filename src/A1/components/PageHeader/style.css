@@ -1,0 +1,6 @@
+.logoBorder {
+    filter: drop-shadow(0px -2px 0 var(--neutral-700, white)) 
+          drop-shadow(-2px 0px 0 var(--neutral-700,white))
+          drop-shadow(0px 2px 0 var(--neutral-700,white)) 
+           drop-shadow(2px 0px 0 var(--neutral-700,white));
+  }

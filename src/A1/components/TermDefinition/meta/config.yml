@@ -1,0 +1,35 @@
+title: 
+  en: Term Definitions
+  fr: Définitions des termes
+label:
+  en: Glossary
+  fr: Glossaire
+description:
+  en: A section to briefly explain a set of terms.
+  fr: Une section pour expliquer brièvement un ensemble de termes.
+
+category: content
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+    title:
+    text:
+    pretitle:
+    icon:
+      type: icon
+      description: 
+        en: Icons attached to the feature.
+        fr: Icônes attachées à la fonctionnalité.
+    media:
+      type: video
+      description: 
+        en: A video attached to the feature.
+        fr: Une vidéo attachée à la fonctionnalité.
+

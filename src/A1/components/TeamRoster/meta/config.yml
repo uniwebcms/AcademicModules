@@ -1,0 +1,83 @@
+title: 
+  en: Team Roster
+  fr: Liste d'équipe
+label:
+  en: Team
+  fr: Équipe
+description: 
+  en: Display a grid of team members with large pictures and social media links, source is coming from the editor or input.
+  fr: Affiche une grille de membres de l'équipe avec de grandes images et des liens vers les médias sociaux, la source provient de l'éditeur ou de l'entrée.
+
+category: content
+export: true
+
+input:
+  type: members
+  limit: false
+  manualFormatting: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+      description: 
+        en: The picture of the member.
+        fr: L'image du membre.
+    title:
+      description: 
+        en: The name of the member.
+        fr: Le nom du membre.
+    subtitle:
+      description: 
+        en: The title of the member.
+        fr: Le titre du membre.
+    link:
+      type: link
+      description: 
+        en: One or more social media links that attach to the member.
+        fr: Un ou plusieurs liens de médias sociaux qui s'attachent au membre.
+
+properties:
+  aspect_ratio:
+    label: 
+      en: Picture Aspect Ratio
+      fr: Rapport d'aspect de l'image
+    type: string
+    default: "3/2"
+    enum:
+      - label: 
+          en: 1:1
+          fr: 1:1
+        value: "1/1"
+      - label: 
+          en: 3:2
+          fr: 3:2
+        value: "3/2"
+      - label: 
+          en: 3:4
+          fr: 3:4
+        value: "3/4"
+      - label: 
+          en: 4:5
+          fr: 4:5
+        value: "4/5"
+      - label: 
+          en: 16:9
+          fr: 16:9
+        value: "16/9"
+    description: 
+      en: The aspect ratio of the picture (width:height).
+      fr: Le rapport d'aspect de l'image (largeur:hauteur).
+
+presets:
+    1_1:
+      label: 
+        en: Image aspect ratio 1:1
+        fr: Rapport d'aspect de l'image 1:1
+      properties:
+        aspect_ratio: "1/1"
+      image: 1_1.png

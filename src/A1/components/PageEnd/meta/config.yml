@@ -1,0 +1,16 @@
+title: 
+  en: Page End
+  fr: Fin de page
+label:
+  en: Page End
+  fr: Fin de page
+description: 
+  en: A dedicated section positioned at the bottom of a webpage, serving as the concluding wrapper for various footer elements.
+  fr: Une section dédiée positionnée au bas d'une page Web, servant d'enveloppe de conclusion pour divers éléments de pied de page.
+
+category: footer
+export: true
+
+items:
+  separator: section
+  category: Footer

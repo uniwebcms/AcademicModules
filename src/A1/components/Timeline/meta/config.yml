@@ -1,0 +1,24 @@
+title: 
+  en: Timeline
+  fr: Chronologie
+label:
+  en: Timeline
+  fr: Chronologie
+description: 
+  en: A section to show a visual timeline and progression throughout multiple steps.
+  fr: Une section pour montrer une chronologie visuelle et une progression à travers plusieurs étapes.
+
+category: content
+export: true
+
+elements:
+  background:
+  pretitle:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    title:
+    text:

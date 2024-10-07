@@ -1,0 +1,39 @@
+title: 
+  en: Testimonials & Reviews
+  fr: Témoignages et critiques
+label:
+  en: Testimonials
+  fr: Témoignages
+description: 
+  en: A section to display important words and key messages from key people.
+  fr: Une section pour afficher les mots importants et les messages clés des personnes clés.
+
+category: content
+export: true
+
+elements:
+  background:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+      description: 
+        en: The image put above the testimonial.
+        fr: L'image mise au-dessus du témoignage.
+    title:
+      alignment: ""
+      description: 
+        en: The person who gave the testimonial.
+        fr: La personne qui a donné le témoignage.
+    text:
+      description: 
+        en: The testimonial.
+        fr: Le témoignage.
+    media:
+      type: image
+      description: 
+        en: The image of the person who gave the testimonial.
+        fr: L'image de la personne qui a donné le témoignage.

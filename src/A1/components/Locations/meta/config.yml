@@ -1,0 +1,97 @@
+title: 
+  en: Map - Locations
+  fr: Carte - Emplacements
+label:
+  en: Map - Locations
+  fr: Carte - Emplacements
+description: 
+  en: Display points of interest on an interactive map, addresses are from the selected input or manual input cards.
+  fr: Affichez des points d'intérêt sur une carte interactive, les adresses proviennent de l'entrée sélectionnée ou des cartes d'entrée manuelles.
+
+category: map
+export: true
+
+assets:
+  Screenshot.png:
+    title: 
+      en: Use case of showing multiple location's information within one map.
+      fr: Cas d'utilisation de l'affichage des informations de plusieurs emplacements dans une carte.
+  MapLocations-Light.png:
+    title: 
+      en: One map for each location, zoomed in to the city level.
+      fr: Une carte pour chaque lieu, zoomée au niveau de la ville.
+  MapLocations-Light1.png:
+    title: 
+      en: Two locations displayed on one map, zoomed out to world level.
+      fr: Deux lieux affichés sur une même carte, avec un zoom arrière au niveau mondial.
+  MapLocations-Dark.png:
+    title: 
+      en: One map for both locations, zoomed in to the city level.
+      fr: Une seule carte pour les deux sites, zoomée au niveau de la ville.
+input:
+  type: any
+  limit: false
+
+elements:
+  title:
+  card:
+    description: 
+      en: One or more card with Address type.
+      fr: Une ou plusieurs cartes avec le type Adresse.
+
+properties:
+  show_single_map:
+    label: 
+      en: Single Map
+      fr: Carte unique
+    type: boolean
+    default: false
+    description: 
+      en: Whether or not to show all addresses in a single map.
+      fr: Si oui ou non afficher toutes les adresses dans une seule carte.
+  zoom:
+    label:
+      en: Initial Zoom Level
+      fr: Niveau de zoom initial
+    type: string
+    enum:
+      - label:
+          en: World view
+          fr: Vue du monde
+        value: "1"
+      - label:
+          en: Continent view
+          fr: Vue du continent
+        value: "5"
+      - label:
+          en: City view
+          fr: Vue de la ville
+        value: "10"
+      - label:
+          en: Street view
+          fr: Vue de la rue
+        value: "15"
+      - label:
+          en: Building view
+          fr: Vue du bâtiment
+        value: "20"
+    default: "5"
+    description: 
+      en: The zoom level of the map.
+      fr: Le niveau de zoom de la carte.
+
+presets:
+  single:
+    label:
+      en: Multiple locations in a single map
+      fr: Plusieurs emplacements dans une seule carte
+    properties:
+      show_single_map: true
+    image: single.png
+  multiple:
+    label:
+      en: One map for each location
+      fr: Une carte pour chaque emplacement
+    properties:
+      show_single_map: false
+    image: multiple.png

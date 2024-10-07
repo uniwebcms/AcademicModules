@@ -1,0 +1,52 @@
+title: 
+  en: Interactive Map
+  fr: Carte Interactive
+label:
+  en: Map - Interactive
+  fr: Carte - Interactive
+description: 
+  en: A full size map with pins and side details that ideally for embedding in a page.
+  fr: Une carte en taille réelle avec des épingles et des détails latéraux, idéalement pour l'intégration dans une page.
+
+category: map
+export: true
+
+properties:
+  zoom:
+    label:
+      en: Initial Zoom Level
+      fr: Niveau de zoom initial
+    type: string
+    enum:
+      - label:
+          en: World view
+          fr: Vue du monde
+        value: "1"
+      - label:
+          en: Continent view
+          fr: Vue du continent
+        value: "5"
+      - label:
+          en: City view
+          fr: Vue de la ville
+        value: "10"
+      - label:
+          en: Street view
+          fr: Vue de la rue
+        value: "15"
+      - label:
+          en: Building view
+          fr: Vue du bâtiment
+        value: "20"
+    default: "5"
+    description: 
+      en: The zoom level of the map.
+      fr: Le niveau de zoom de la carte.
+
+presets:
+  city_view:
+    label:
+      em: Map zoomed to city view initially
+      fr: Carte zoomée sur la vue de la ville initialement
+    properties:
+      zoom: "10"

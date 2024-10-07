@@ -1,0 +1,195 @@
+title: 
+  en: Introduction with Slider
+  fr: Introduction avec Slider
+description: 
+  en: The opening section of your website providing multiple rotating key pieces of information and images. Commonly known as a "carousel" section.
+  fr: La section d'ouverture de votre site web présentant plusieurs éléments clés d'information et d'images en rotation. Communément appelée section "carrousel".
+label:
+  en: Introduction - Slider
+  fr: Introduction - Slider
+
+category: hero
+export: true
+
+items:
+  separator: divider
+  elements:
+    background:
+      layout: center, wide
+    pretitle:
+    title:
+      alignment: 'left,right,center'
+    subtitle:
+    text:
+    link:
+      type: link
+      description: 
+        en: One or more links that attach to the hero section.
+        fr: Un ou plusieurs liens qui s'attachent à la section hero.
+
+properties:
+  min_height:
+    label: 
+      en: Section height
+      fr: Hauteur de la section
+    type: string
+    default: 100vh
+    enum:
+      - label: 
+          en: 100% Screen Height
+          fr: 100% de la hauteur de l'écran
+        value: 100vh
+      - label: 
+          en: 80% Screen Height
+          fr: 80% de la hauteur de l'écran
+        value: 80vh
+      - label: 
+          en: 60% Screen Height
+          fr: 60% de la hauteur de l'écran
+        value: 60vh
+      - label: 
+          en: 40% Screen Height
+          fr: 40% de la hauteur de l'écran
+        value: 40vh
+    description: 
+      en: The height of the section.
+      fr: La hauteur de la section.
+  bg_size:
+    label:
+      en: Background Size
+      fr: Taille de l'arrière-plan
+    type: string
+    default: full
+    enum:
+      - label: 
+          en: Full
+          fr: Plein
+        value: full
+      - label: 
+          en: Double Extra Large
+          fr: Double très grand
+        value: partial
+    description:
+      en: The width of the background image.
+      fr: La largeur de l'image d'arrière-plan.
+  show_back_drop:
+    label: 
+      en: Text Backdrop
+      fr: Toile de fond du texte
+    type: boolean
+    default: false
+    description: 
+      en: Whether or not the text will have a backdrop.
+      fr: Si le texte aura ou non une toile de fond.
+  show_gradient:
+    label: 
+      en: Gradient
+      fr: Dégradé
+    type: boolean
+    default: false
+    description: 
+      en: Weather or not the background will have a gradient.
+      fr: Si l'arrière-plan aura ou non un dégradé.
+  gradient_from_pos:
+    label: 
+      en: Gradient From Position
+      fr: Position du dégradé à partir de
+    type: string
+    default: bottom
+    enum:
+      - label: 
+          en: Top
+          fr: Haut
+        value: top
+      - label: 
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description: 
+      en: The position of the gradient from.
+      fr: La position du dégradé à partir de.
+  horizontal_alignment:
+    label: 
+      en: Horizontal Alignment
+      fr: Alignement horizontal
+    type: string
+    default: center
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The horizontal alignment of the text.
+      fr: L'alignement horizontal du texte.
+  vertical_alignment:
+    label: 
+      en: Vertical Alignment
+      fr: Alignement vertical
+    type: string
+    default: center
+    enum:
+      - label: 
+          en: Top
+          fr: Haut
+        value: top
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description: 
+      en: The vertical alignment of the text.
+      fr: L'alignement vertical du texte.
+  slider_indicator:
+    label: 
+      en: Slider Indicator
+      fr: Indicateur de slider
+    type: boolean
+    default: true
+    description: 
+      en: Weather or not show the slider indicator at the bottom.
+      fr: Si oui ou non afficher l'indicateur de slider en bas.
+
+presets:
+  40_h_content_center_gradient_top_indicator:
+    label:
+      en: Content align center with top gradient and bottom indicator, height is 40% of window
+      fr: Contenu aligné au centre avec un dégradé en haut et un indicateur en bas, la hauteur est de 40% de la fenêtre
+    properties:
+      min_height: 40vh
+      show_gradient: true
+      gradient_from_pos: top
+      slider_indicator: true
+    image: 40_h_content_center_gradient_top_indicator.png
+  40_h_content_left_backdrop_indicator:
+    label:
+      en: Content align left with text backdrop and bottom indicator, height is 40% of window
+      fr: Contenu aligné à gauche avec toile de fond de texte et indicateur en bas, la hauteur est de 40% de la fenêtre
+    properties:
+      min_height: 40vh
+      horizontal_alignment: left
+      show_back_drop: true
+      slider_indicator: true
+    image: 40_h_content_left_backdrop_indicator.png
+  40_h_content_right_gradient_bottom:
+    label:
+      en: Content align right with bottom gradient, height is 40% of window
+      fr: Contenu aligné à droite avec un dégradé en bas, la hauteur est de 40% de la fenêtre
+    properties:
+      min_height: 40vh
+      horizontal_alignment: right
+      show_gradient: true
+      gradient_from_pos: bottom
+    image: 40_h_content_right_gradient_bottom.png

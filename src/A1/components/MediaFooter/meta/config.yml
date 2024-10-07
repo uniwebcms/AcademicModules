@@ -1,0 +1,73 @@
+title: 
+  en: Media Footer
+  fr: Pied de page média
+label:
+  en: Footer - Media
+  fr: Pied de page - Média
+description: 
+  en: This special section is designed exclusively for use in the footer section of the editor. It displays a logo, media links, links to internal pages, external links, copyright information, and a newsletter subscription form.
+  fr: Cette section spéciale est conçue exclusivement pour être utilisée dans la section pied de page de l'éditeur. Elle affiche un logo, des liens médias, des liens vers des pages internes, des liens externes, des informations de droits d'auteur et un formulaire d'abonnement à la newsletter.
+
+category: footer
+export: true
+
+elements:
+  title:
+    description: 
+      en: The text put beside the logo.
+      fr: Le texte mis à côté du logo.
+  subtitle:
+    description: 
+      en: The text put under the logo.
+      fr: Le texte mis sous le logo.
+  text:
+    description: 
+      en: The text to display at the bottom of the footer, usually used for copyright information.
+      fr: Le texte à afficher en bas du pied de page, généralement utilisé pour les informations de droits d'auteur.
+  icon:
+    type: icon
+    description: 
+      en: Website logo.
+      fr: Logo du site Web.
+  list:
+    type: bullet
+    title: 
+      en: Navigation Links
+      fr: Liens de navigation
+    description:
+      en: The navigation links are organized into groups in the footer, created as a list with a 2-level hierarchy. The first level consists of the group label, while the second level contains the links within the group
+      fr: Les liens de navigation sont organisés en groupes dans le pied de page, créés sous forme de liste avec une hiérarchie à 2 niveaux. Le premier niveau est composé de l'étiquette du groupe, tandis que le deuxième niveau contient les liens du groupe.
+  link:
+    type: link
+    description: 
+        en: One or more external links, usually to social media.
+        fr: Un ou plusieurs liens externes, généralement vers les médias sociaux.
+
+properties:
+  with_newsletter:
+    type: boolean
+    label: 
+      en: Newsletter Subscription
+      fr: Abonnement à la newsletter
+    default: true
+    description: 
+      en: Whether or not to display the newsletter subscription form on the right side of the footer.
+      fr: Afficher ou non le formulaire d'abonnement à la newsletter sur le côté droit du pied de page.
+  with_back_to_top:
+    type: boolean
+    label: 
+      en: Back to Top Button
+      fr: Bouton Retour en haut
+    default: false
+    description: 
+      en: Whether or not to display the back to top button on the right side of the footer.
+      fr: Afficher ou non le bouton de retour en haut sur le côté droit du pied de page.
+
+presets:
+  newsletter_back_to_top:
+    label:
+      en: Newsletter & Back to Top
+      fr: Newsletter et Retour en haut
+    with_newsletter: true
+    with_back_to_top: true
+    image: newsletter_back_to_top.png

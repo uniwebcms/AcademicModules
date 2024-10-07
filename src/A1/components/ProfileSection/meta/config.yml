@@ -1,0 +1,84 @@
+title: 
+  en: Information - Dynamic
+  fr: Information - Dynamique
+label:
+  en: Information - Dynamic
+  fr: Information - Dynamique
+description: 
+  en: A component renders the content of a given input.
+  fr: Un composant rend le contenu d'une entrée donnée.
+
+category: dynamic_content
+export: true
+
+input:
+  type: any
+  limit: one
+
+properties:
+  width:  
+    label:
+      en: Section Width
+      fr: Largeur de la section
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Extra Large
+          fr: Très grand
+        value: xl
+      - label:
+          en: Double Extra Large
+          fr: Double très grand
+        value: 2xl
+    description:
+      en: The width of the section.
+      fr: La largeur de la section.
+  columns:
+    label:
+      en: Number of Columns
+      fr: Nombre de colonnes
+    type: string
+    default: "1"
+    enum:
+      - label:
+          en: One
+          fr: Un
+        value: "1"
+      - label:
+          en: Two
+          fr: Deux
+        value: "2"
+      - label:
+          en: Three
+          fr: Trois
+        value: "3"
+    description:
+      en: The number of columns in the section.
+      fr: Le nombre de colonnes dans la section.
+
+presets:
+  2xl_2:
+    label:
+      en: Double extra large width with two columns layout
+      fr: Largeur double extra large avec une disposition à deux colonnes
+    properties:
+      width: 2xl
+      columns: "2"
+    image: 2xl_2.png
+  lg_1:
+    label:
+      en: Large width with one column layout
+      fr: Largeur large avec une disposition à une colonne
+    properties:
+      width: lg
+      columns: "1"
+    image: lg_1.png

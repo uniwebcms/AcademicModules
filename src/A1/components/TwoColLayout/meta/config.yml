@@ -1,0 +1,164 @@
+title: 
+  en: Two Column Layout
+  fr: Mise en page à deux colonnes
+label:
+  en: Layout - Two Column
+  fr: Mise en page - Deux colonnes
+description:
+  en: A section displaying content of it's child sections in a two column layout.
+  fr: Une section affichant le contenu de ses sections enfants dans une mise en page à deux colonnes.
+
+category: layout
+export: true
+
+assets:
+  Screenshot.png:
+    title: 
+      en: A basic usage of the Special Layout with two child sections.
+      fr: Une utilisation de base de la mise en page spéciale avec deux sections enfants.
+
+items:
+  separator: section
+  category: Any category
+
+properties:
+  layout_configuration:
+    label:
+      en: Layout
+      fr: Mise en page
+    type: string
+    default: 50/50
+    enum:
+      - label:
+          en: 2 Columns - Even
+          fr: 2 Colonnes - Égal
+        value: 50/50
+      - label:
+          en: 2 Columns - Narrow right
+          fr: 2 Colonnes - Étroit à droite
+        value: 60/40
+      - label:
+          en: 2 Columns - Narrow left
+          fr: 2 Colonnes - Étroit à gauche
+        value: 40/60
+      - label:
+          en: 2 Columns - Narrower right
+          fr: 2 Colonnes - Encore plus étroit à droite
+        value: 75/25
+      - label:
+          en: 2 Columns - Narrower left
+          fr: 2 Colonnes - Encore plus étroit à gauche
+        value: 25/75
+    description: 
+      en: Choose the desired configuration for the layout of the website block.
+      fr: Choisissez la configuration souhaitée pour la mise en page du bloc de site Web.
+  max_width:
+    label:
+      en: Width
+      fr: Largeur
+    type: string
+    default: regular
+    enum:
+      - label:
+          en: Regular
+          fr: Régulier
+        value: regular
+      - label:
+          en: Wide
+          fr: Large
+        value: wide
+      - label:
+          en: Full
+          fr: Plein
+        value: full 
+    description:
+      en: Choose the desired width for your website block.
+      fr: Choisissez la largeur souhaitée pour votre bloc de site Web.
+  vertical_padding:
+    label:
+      en: Vertical Padding
+      fr: Rembourrage vertical
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space on top and bottom of the layout.
+      fr: L'espace en haut et en bas de la mise en page.
+  column_padding:
+    label:
+      en: Column Padding
+      fr: Rembourrage de colonne
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space between the columns.
+      fr: L'espace entre les colonnes.
+  vertical_alignment:
+    label:
+      en: Vertical Alignment
+      fr: Alignement vertical
+    type: string
+    default: center
+    enum:
+      - label:
+          en: Top
+          fr: Haut
+        value: top
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+      - label:
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description:
+      en: The vertical alignment of the content in the columns.
+      fr: L'alignement vertical du contenu dans les colonnes.
+
+presets:
+  narrow_left_regular:
+    label:
+      en: Narrow left layout and regular width
+      fr: Mise en page étroite à gauche et largeur régulière
+    properties:
+      layout_configuration: 40/60
+      max_width: regular
+    image: narrow_left_regular.png
+  evenly_full:
+    label:
+      en: Even layout and full width
+      fr: Mise en page égale et pleine largeur
+    properties:
+      layout_configuration: 50/50
+      max_width: full
+    image: evenly_full.png

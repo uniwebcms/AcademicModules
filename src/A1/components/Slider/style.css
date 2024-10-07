@@ -1,0 +1,5 @@
+.controlParent {
+    & > button:focus {
+        outline: none;
+    }
+}

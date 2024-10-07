@@ -1,0 +1,22 @@
+title: 
+  en: Media Highlight
+  fr: Médias en vedette
+label:
+  en: Media Highlight
+  fr: Média en vedette
+description:
+  en: This section calls attention to a specific image or video with plenty of space for a description, content alignment controlled in editor.
+  fr: Cette section attire l'attention sur une image ou une vidéo spécifique avec beaucoup d'espace pour une description, l'alignement du contenu est contrôlé dans l'éditeur.
+
+category: content
+export: true
+
+elements:
+  pretitle:
+  title:
+    alignment: 'left,right,center'
+  subtitle:
+  text:
+  media:
+    type: 'image,video'
+

@@ -1,0 +1,30 @@
+title: 
+  en: Feature Spotlight
+  fr: Fonctionnalités spéciales
+description: 
+  en: A serction for showcasing important information accompanied by a large image or visual.
+  fr: Une fonction permettant de mettre en valeur des informations importantes accompagnées d'une grande image ou d'un visuel.
+label:
+  en: Features - Spotlight
+  fr: Fonctionnalités - Spotlight
+
+category: content
+export: true
+
+items:
+  separator: divider
+  elements:
+    title:
+    text:
+    icon:
+      type: icon
+      description: 
+        en: Icons attached to the feature.
+        fr: Icônes attachées à la fonctionnalité.
+    media:
+      type: image
+    link:
+      type: link
+      description: 
+        en: A link attached to the feature.
+        fr: Un lien attaché à la fonctionnalité.

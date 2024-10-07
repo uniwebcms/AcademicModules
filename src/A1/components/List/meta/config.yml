@@ -1,0 +1,43 @@
+title: 
+  en: Detailed List
+  fr: Liste détaillée
+label:
+  en: List
+  fr: Liste
+description: 
+  en: A section to list longer blocks of content one after the other and complemented by titles and images.
+  fr: Une section pour lister des blocs de contenu plus longs l'un après l'autre et complétés par des titres et des images.
+
+category: list
+export: true
+
+assets:
+  Screenshot.png:
+    title: 
+      en: Two list items with images, titles, text and links.
+      fr: Deux éléments de liste avec des images, des titres, du texte et des liens.
+  List-Dark.png:
+    title: 
+      en: Two rich list items with information and image thumbnail in light mode.
+      fr: Deux éléments de liste enrichie avec des informations et une vignette d'image en mode léger.
+  List-Light.png:
+    title: 
+      en: Two rich list items with information and image thumbnail in dark mode.
+      fr: Deux éléments de liste enrichie avec des informations et une vignette d'image en mode foncé.
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+    title:
+    subtitle:
+    text:
+    link:
+      type: link
+      description: 
+        en: A link attached to the list item.
+        fr: Un lien attaché à l'élément de liste.

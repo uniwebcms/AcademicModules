@@ -1,0 +1,16 @@
+title: 
+  en: Video Player
+  fr: Lecteur vidéo
+label:
+  en: Video
+  fr: Vidéo
+description:
+  en: A component plays a video.
+  fr: Un composant lit une vidéo.
+
+category: media
+export: true
+
+input:
+  type: video
+  limit: one
