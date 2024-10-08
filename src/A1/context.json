@@ -1,0 +1,14 @@
+{
+    "Hero": {
+        "allowTranslucentTop": true
+    },
+    "HeroMedia": {
+        "allowTranslucentTop": true
+    },
+    "HeroSlider": {
+        "allowTranslucentTop": true
+    },
+    "ProfileHero": {
+        "allowTranslucentTop": true
+    }
+}

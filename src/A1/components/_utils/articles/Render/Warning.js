@@ -1,11 +1,11 @@
 import React from 'react';
 import { HiExclamation, HiInformationCircle, HiCheckCircle, HiXCircle } from 'react-icons/hi';
-import styles from '../Section.module.scss';
+import styles from './Section.module.scss';
 
 export default function (props) {
     const {
         attrs: { type },
-        content
+        content,
     } = props;
 
     let Icon, color, borderColor, bgColor, wrapperStyle;
@@ -46,16 +46,18 @@ export default function (props) {
             //     `relative clear-both outline-none z-10 mt-10 mx-auto` +
             //     ` ${styles.Block}`
             // }
-            className='relative clear-both outline-none z-10 mt-10 mx-auto'>
+            className="relative clear-both outline-none z-10 mt-10 mx-auto"
+        >
             <div className={`outline-none ${bgColor} border-l-4 ${borderColor} p-4`}>
                 <div className={`flex items-center ${wrapperStyle}`}>
                     <div className={`flex-shrink-0`}>
-                        <Icon className={`h-5 w-5`} aria-hidden='true' />
+                        <Icon className={`h-5 w-5`} aria-hidden="true" />
                     </div>
                     <div className={`ml-3 flex-1`}>
                         <div
                             className={`w-full block outline-none border-none text-lg ${styles.Alert} whitespace-pre-line`}
-                            dangerouslySetInnerHTML={{ __html: content }}></div>
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        ></div>
                     </div>
                 </div>
             </div>

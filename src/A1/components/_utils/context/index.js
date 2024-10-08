@@ -1,3 +1,5 @@
+import context from '../../../context.json';
+
 export const getNextBlockContext = (block) => {
     const nextBlockInfo = block.getNextBlockInfo();
 
