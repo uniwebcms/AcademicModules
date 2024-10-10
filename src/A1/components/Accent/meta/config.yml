@@ -65,11 +65,11 @@ presets:
     properties:
       alignment: center
     image: center.png
-  left:
+  left_backdrop:
     label:
       en: Content on the Left with Text Backdrop
       fr: Contenu à gauche avec toile de fond de texte
     properties:
       alignment: left
       show_back_drop: true
-    image: left-backdrop.png
+    image: left_backdrop.png
