@@ -15,4 +15,11 @@ categories:
     description:
       en: Components that display content.
       fr: Composants qui affichent du contenu.
+  form:
+    label:
+      en: Form
+      fr: Formulaire
+    description:
+      en: Components that allow users to input data.
+      fr: Composants qui permettent aux utilisateurs de saisir des données.
 version: preset
