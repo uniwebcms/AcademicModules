@@ -1,12 +1,112 @@
 name: Academic Series 1
 description: A collection of components for building academic websites.
 page_templates:
-  - name: About
+  - name:
+      en: Personal page - About
+      fr: Page personnelle - À propos
+    page:
+      en: About
+      fr: À propos
     components:
-      - name: Block
-        preset: centered_tight
-      - name: List
-        preset: medium
+      - name: TwoColLayout
+        preset: narrow_left_regular
+        children:
+          - name: Aside
+          - name: Section
+      - name: Accent
+        preset: right
+      - name: Features
+        preset: center
+  - name:
+      en: Personal page - Publications
+      fr: Page personnelle - Publications
+    page:
+      en: Publications
+      fr: Publications
+    components:
+      - name: Hero
+        preset: content_center_gradient_top
+      - name: Reference
+    children:
+      - page:
+          en: index
+          fr: index
+        components:
+          - name: References
+  - name:
+      en: Blog or News
+      fr: Blog ou Actualités
+    page:
+      en: Blog
+      fr: Blog
+    components:
+      - name: Hero
+        preset: content_center_gradient_top
+      - name: DynamicList
+        preset: grid
+    children:
+      - page:
+          en: index
+          fr: index
+        components:
+          - name: Article
+            preset: 2xl
+          - name: DynamicList
+            preset: snapping
+  - name:
+      en: Contact page
+      fr: Page de contact
+    page:
+      en: Contact Us
+      fr: Contactez-nous
+    components:
+      - name: Hero
+        preset: content_center_gradient_top
+      - name: Locations
+        preset: multiple
+      - name: ContactForm
+        preset: right
+  - name:
+      en: Member and staff directory
+      fr: Annuaire des membres et du personnel
+    page:
+      en: Members
+      fr: Membres
+    components:
+      - name: Hero
+        preset: content_center_gradient_top
+      - name: TeamRoster
+        preset: 1:1
+  - name:
+      en: Dynamic content with detail page
+      fr: Contenu dynamique avec page de détail
+    page:
+      en: Connections
+      fr: Connexions
+    components:
+      - name: ProfileHero
+        preset: content_center_title_backdrop_gradient_top
+      - name: ProfileSection
+        preset: lg_1
+    children:
+      - page:
+          en: index
+          fr: index
+        components:
+          - name: Hero
+            preset: content_center_gradient_top
+          - name: DynamicList
+            preset: list
+  - name:
+      en: Global Research Network
+      fr: Réseau mondial de recherche
+    page:
+      en: Map
+      fr: Carte
+    components:
+      - name: DynamicMap
+        preset: full_detail
+
 categories:
   content:
     label:
@@ -15,6 +115,62 @@ categories:
     description:
       en: Components that display content.
       fr: Composants qui affichent du contenu.
+  dynamic_content:
+    label:
+      en: Dynamic Content
+      fr: Contenu dynamique
+    description:
+      en: Components that display content from a source.
+      fr: Composants qui affichent du contenu à partir d'une source.
+  cards:
+    label:
+      en: Cards
+      fr: Cartes
+    description:
+      en: Components that display content in a card format.
+      fr: Composants qui affichent du contenu sous forme de cartes.
+  downloadable:
+    label:
+      en: Downloadable
+      fr: Téléchargeable
+    description:
+      en: Components that allow users to download files.
+      fr: Composants qui permettent aux utilisateurs de télécharger des fichiers.
+  map:
+    label:
+      en: Map
+      fr: Carte
+    description:
+      en: Components that display a map.
+      fr: Composants qui affichent une carte.
+  hero:
+    label:
+      en: Hero
+      fr: Héros
+    description:
+      en: Components that display a large banner with text content.
+      fr: Composants qui affichent une grande bannière avec du contenu textuel.
+  list:
+    label:
+      en: List
+      fr: Liste
+    description:
+      en: Components that display a list of items.
+      fr: Composants qui affichent une liste d'éléments.
+  reference:
+    label:
+      en: Reference
+      fr: Référence
+    description:
+      en: Components that display reference, citation or publication information.
+      fr: Composants qui affichent des informations de référence, de citation ou de publication.
+  media:
+    label:
+      en: Media
+      fr: Médias
+    description:
+      en: Components that display media content.
+      fr: Composants qui affichent du contenu multimédia.
   form:
     label:
       en: Form
@@ -22,4 +178,24 @@ categories:
     description:
       en: Components that allow users to input data.
       fr: Composants qui permettent aux utilisateurs de saisir des données.
-version: preset
+  layout:
+    label:
+      en: Layout
+      fr: Mise en page
+    description:
+      en: Components that perform a layout for child components.
+      fr: Composants qui effectuent une mise en page pour les composants enfants.
+  header:
+    label:
+      en: Header
+      fr: En-tête
+    description:
+      en: Components that display a page navigation header.
+      fr: Composants qui affichent un en-tête de navigation de page.
+  footer:
+    label:
+      en: Footer
+      fr: Pied de page
+    description:
+      en: Components that display a page footer.
+      fr: Composants qui affichent un pied de page de page.
