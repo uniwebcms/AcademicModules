@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../Section.module.scss';
 import { Image } from '@uniwebcms/module-sdk';
 
-const imageCaptionStyle = `block outline-none border-none text-gray-500 text-sm ${styles.ImageCaption}}`;
+const imageCaptionStyle = `block outline-none border-none text-gray-500 text-sm text-center ${styles.ImageCaption}}`;
 
 export default function ImageBlock(props) {
     const { url, caption, direction, filter, info, targetId, aspect_ratio, page } = props;
@@ -35,12 +35,9 @@ export default function ImageBlock(props) {
         imgFilter = `[&_img]:`;
     }
 
-    const { version, filename, contentId, identifier } = info;
+    const { identifier } = info;
 
-    let imgProps =
-        version && identifier && filename
-            ? { value: `${version}/${identifier}/${filename}` }
-            : { url: url };
+    let imgProps = identifier ? { value: identifier } : { url: url };
 
     const inner = (
         <>
