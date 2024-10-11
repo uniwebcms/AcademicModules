@@ -1,5 +1,6 @@
 import React from 'react';
 import Divider from './Divider';
+import Video from './Video';
 import Image from './Image';
 import Warning from './Warning';
 import { stripTags } from '@uniwebcms/module-sdk';
@@ -12,11 +13,17 @@ const Render = function (props) {
     if (!content || !content.length) return null;
 
     return content.map((block, index) => {
-        const { type, content } = block;
+        const { type, content, alignment } = block;
 
         switch (type) {
             case 'paragraph':
-                return <p key={index} dangerouslySetInnerHTML={{ __html: content }}></p>;
+                return (
+                    <p
+                        key={index}
+                        dangerouslySetInnerHTML={{ __html: content }}
+                        style={{ textAlign: alignment }}
+                    ></p>
+                );
             case 'heading':
                 const { level } = block;
                 const Heading = `h${level}`;
@@ -25,11 +32,14 @@ const Render = function (props) {
                     <Heading
                         key={index}
                         id={`Section${blockId}-${stripTags(content).replace(/\s/g, '-')}`}
+                        style={{ textAlign: alignment }}
                         dangerouslySetInnerHTML={{ __html: content }}
                     ></Heading>
                 );
             case 'image':
                 return <Image key={index} {...block} page={page} />;
+            case 'video':
+                return <Video key={index} {...block} page={page} />;
             case 'warning':
                 return <Warning key={index} {...block} />;
             case 'divider':

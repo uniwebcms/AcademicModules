@@ -40,7 +40,7 @@ export default function ImageBlock(props) {
     let imgProps =
         version && identifier && filename
             ? { value: `${version}/${identifier}/${filename}` }
-            : { externalSrc: url };
+            : { url: url };
 
     const inner = (
         <>
@@ -60,7 +60,7 @@ export default function ImageBlock(props) {
                 <Image
                     profile={page.getPageProfile()}
                     {...imgProps}
-                    className={`absolute top-0 left-0 w-full h-auto block ${imgFilter}`}
+                    className={`not-prose absolute top-0 left-0 w-full h-auto block ${imgFilter}`}
                 ></Image>
             </div>
 
@@ -79,15 +79,10 @@ export default function ImageBlock(props) {
                         maxWidth: '896px',
                     }}
                 >
-                    {/* <DocumentImage
-                        contentId={contentId}
-                        value={`${version}/${identifier}/${filename}`}
-                        className={`block max-h-[120px] w-auto`}
-                    ></DocumentImage> */}
                     <Image
                         profile={page.getPageProfile()}
                         {...imgProps}
-                        className={`block max-h-[120px] w-auto`}
+                        className={`not-prose block max-h-[120px] w-auto`}
                     ></Image>
                 </div>
 
