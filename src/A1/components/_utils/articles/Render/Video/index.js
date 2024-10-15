@@ -41,9 +41,7 @@ async function getVideoThumbnail(url) {
     return null;
 }
 
-export default function Video(video) {
-    const { page } = video;
-
+export default function Video({ page, videoControl, ...video }) {
     const profile = page.getPageProfile();
     const sections = page.blockGroups.body;
     const videos = getVideos(sections);
@@ -85,15 +83,13 @@ export default function Video(video) {
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnails, setThumbnails] = useState(Array(videos.length).fill(null));
 
-    const playerClasses = `
-    ${miniPlayer && 'fixed bottom-4 right-4 w-64 h-36 z-50'} 
-	${overlay && 'flex w-full max-w-6xl mx-auto bg-white shadow-lg'}
-    `;
+    const playerClasses = `${miniPlayer && 'fixed bottom-4 right-4 w-64 h-36 z-50'} ${
+        overlay && 'flex w-full max-w-6xl mx-auto bg-white shadow-lg'
+    }`;
 
-    const outerClasses = `
-	${!overlay && 'absolute inset-0 z-10'}
-	${overlay && 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75'}
-	`;
+    const outerClasses = `${!overlay && 'absolute inset-0 z-10'} ${
+        overlay && 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75'
+    }`;
 
     useEffect(() => {
         async function fetchThumbnail() {
@@ -125,24 +121,25 @@ export default function Video(video) {
         fetchThumbnails();
     }, []);
 
-    const Buttons = () => (
-        <div className="flex space-x-4 mt-4">
-            <button
-                onClick={toggleMiniPlayer}
-                className="flex items-center px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
-            >
-                <FaCompress className="mr-2" />
-                Mini Player
-            </button>
-            <button
-                onClick={toggleOverlay}
-                className="flex items-center px-4 py-2 bg-indigo-700 text-white rounded-lg hover:bg-indigo-600"
-            >
-                <FaExpand className="mr-2" />
-                Overlay
-            </button>
-        </div>
-    );
+    const Buttons = () =>
+        videoControl ? (
+            <div className="flex space-x-4 mt-4">
+                <button
+                    onClick={toggleMiniPlayer}
+                    className="flex items-center px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+                >
+                    <FaCompress className="mr-2" />
+                    Mini Player
+                </button>
+                <button
+                    onClick={toggleOverlay}
+                    className="flex items-center px-4 py-2 bg-indigo-700 text-white rounded-lg hover:bg-indigo-600"
+                >
+                    <FaExpand className="mr-2" />
+                    Overlay
+                </button>
+            </div>
+        ) : null;
 
     const FakeBlock = () => (
         <Image
@@ -172,7 +169,6 @@ export default function Video(video) {
                                 {...(thumbnail && { thumbnail: { url: thumbnail } })}
                             />
                         </div>
-
                         {/* Thumbnail Grid */}
                         {overlay && (
                             <div className="w-1/4 p-4 overflow-y-auto bg-gray-800 flex items-center justify-center">
@@ -199,7 +195,6 @@ export default function Video(video) {
                                 </div>
                             </div>
                         )}
-
                         {/* Additional Buttons */}
                         {overlay && (
                             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
@@ -208,7 +203,6 @@ export default function Video(video) {
                         )}
                     </div>
                 </div>
-
                 {/* Conditional Rendering of FakeBlock and Buttons */}
                 {<FakeBlock />}
             </div>

@@ -84,3 +84,12 @@ properties:
     description:
       en: The number of columns in the section.
       fr: Le nombre de colonnes dans la section.
+  video_control:
+    label:
+      en: Video Control
+      fr: Contrôle vidéo
+    type: boolean
+    default: false
+    description:
+      en: Whether to display the additional video control, such as mini player and overlay play button.
+      fr: Afficher ou non le contrôle vidéo supplémentaire, tel que le mini lecteur et le bouton de lecture superposé.

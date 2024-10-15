@@ -9,6 +9,7 @@ const Render = function (props) {
     const { block, content, page } = props;
 
     const blockId = block.id;
+    const { video_control: videoControl = false } = block.getBlockProperties();
 
     if (!content || !content.length) return null;
 
@@ -39,7 +40,7 @@ const Render = function (props) {
             case 'image':
                 return <Image key={index} {...block} page={page} />;
             case 'video':
-                return <Video key={index} {...block} page={page} />;
+                return <Video key={index} {...block} page={page} videoControl={videoControl} />;
             case 'warning':
                 return <Warning key={index} {...block} />;
             case 'divider':
