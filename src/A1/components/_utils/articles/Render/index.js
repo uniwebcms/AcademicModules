@@ -1,10 +1,12 @@
+import { stripTags } from '@uniwebcms/module-sdk';
 import React from 'react';
 import Divider from './Divider';
 import Video from './Video';
 import Image from './Image';
 import Warning from './Warning';
 import Card from './Card';
-import { stripTags } from '@uniwebcms/module-sdk';
+import Code from './Code';
+import Math from './Math';
 
 const Render = function (props) {
     const { block, content, page } = props;
@@ -78,11 +80,7 @@ const Render = function (props) {
                 );
 
             case 'codeBlock':
-                return (
-                    <pre key={index}>
-                        <code dangerouslySetInnerHTML={{ __html: content }}></code>
-                    </pre>
-                );
+                return <Code key={index} {...block} />;
             case 'card-group': {
                 return (
                     <div key={index} className="flex flex-wrap gap-6">
@@ -92,6 +90,8 @@ const Render = function (props) {
                     </div>
                 );
             }
+            case 'math_display':
+                return <Math key={index} {...block} />;
         }
     });
 };

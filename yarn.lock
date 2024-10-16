@@ -2398,9 +2398,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-builder@npm:^1.6.9":
-  version: 1.6.9
-  resolution: "@uniwebcms/module-builder@npm:1.6.9"
+"@uniwebcms/module-builder@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@uniwebcms/module-builder@npm:1.7.0"
   dependencies:
     "@tailwindcss/nesting": "npm:^0.0.0-insiders.565cd3e"
     assets-webpack-plugin: "npm:^7.1.1"
@@ -2437,7 +2437,7 @@ __metadata:
   dependenciesMeta:
     cloudflared:
       optional: true
-  checksum: 10/216d1b76e1d3ce822baff9c655961b45f18cad1534bbb92180e64850d66e72862ab4c5199d5e76fee3536ee52c63c3d18c1091658a775364fac545485bc43600
+  checksum: 10/a71f09b259202245d7c76cf71932e6d9eb9071e826ea2776e58b6760f4095cff3e77dfe253cf6e083144b045373b0685c0373177fb849527267b65da48be90fe
   languageName: node
   linkType: hard
 
@@ -2687,10 +2687,14 @@ __metadata:
     citation-js: "npm:^0.7.14"
     flowbite: "npm:^1.8.1"
     flowbite-react: "npm:^0.6.4"
+    katex: "npm:^0.16.11"
+    prismjs: "npm:^1.29.0"
+    prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-click-away-listener: "npm:^2.2.3"
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^5.3.0"
+    react-katex: "npm:^3.0.1"
     react-popper: "npm:^2.3.0"
     react-spinners: "npm:^0.13.8"
     tailwindcss: "npm:^3.4.13"
@@ -3148,7 +3152,7 @@ __metadata:
     "@mdx-js/mdx": "npm:^3.0.1"
     "@mdx-js/react": "npm:^3.0.1"
     "@types/react": "npm:^18.3.4"
-    "@uniwebcms/module-builder": "npm:^1.6.9"
+    "@uniwebcms/module-builder": "npm:^1.7.0"
     babel-loader: "npm:^8.2.2"
     css-loader: "npm:^5.2.0"
     dotenv: "npm:^10.0.0"
@@ -3507,6 +3511,13 @@ __metadata:
   version: 7.2.0
   resolution: "commander@npm:7.2.0"
   checksum: 10/9973af10727ad4b44f26703bf3e9fdc323528660a7590efe3aa9ad5042b4584c0deed84ba443f61c9d6f02dade54a5a5d3c95e306a1e1630f8374ae6db16c06d
+  languageName: node
+  linkType: hard
+
+"commander@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "commander@npm:8.3.0"
+  checksum: 10/6b7b5d334483ce24bd73c5dac2eab901a7dbb25fd983ea24a1eeac6e7166bb1967f641546e8abf1920afbde86a45fbfe5812fbc69d0dc451bb45ca416a12a3a3
   languageName: node
   linkType: hard
 
@@ -4992,6 +5003,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"katex@npm:^0.16.0, katex@npm:^0.16.11":
+  version: 0.16.11
+  resolution: "katex@npm:0.16.11"
+  dependencies:
+    commander: "npm:^8.3.0"
+  bin:
+    katex: cli.js
+  checksum: 10/adfb95a70168f732c26f44a443d27df393ca641a3533aa9321f37b1b69134cf4b15142d533c187ec9a0b02c0bbfebab5ab26f15bd0cc08a57114e1f767f0d7ae
+  languageName: node
+  linkType: hard
+
 "kdbush@npm:^4.0.2":
   version: 4.0.2
   resolution: "kdbush@npm:4.0.2"
@@ -5096,7 +5118,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -6743,6 +6765,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prismjs@npm:^1.29.0":
+  version: 1.29.0
+  resolution: "prismjs@npm:1.29.0"
+  checksum: 10/2080db382c2dde0cfc7693769e89b501ef1bfc8ff4f8d25c07fd4c37ca31bc443f6133d5b7c145a73309dc396e829ddb7cc18560026d862a887ae08864ef6b07
+  languageName: node
+  linkType: hard
+
 "promise-retry@npm:^2.0.1":
   version: 2.0.1
   resolution: "promise-retry@npm:2.0.1"
@@ -6750,6 +6779,17 @@ __metadata:
     err-code: "npm:^2.0.2"
     retry: "npm:^0.12.0"
   checksum: 10/96e1a82453c6c96eef53a37a1d6134c9f2482f94068f98a59145d0986ca4e497bf110a410adf73857e588165eab3899f0ebcf7b3890c1b3ce802abc0d65967d4
+  languageName: node
+  linkType: hard
+
+"prop-types@npm:^15.8.1":
+  version: 15.8.1
+  resolution: "prop-types@npm:15.8.1"
+  dependencies:
+    loose-envify: "npm:^1.4.0"
+    object-assign: "npm:^4.1.1"
+    react-is: "npm:^16.13.1"
+  checksum: 10/7d959caec002bc964c86cdc461ec93108b27337dabe6192fb97d69e16a0c799a03462713868b40749bfc1caf5f57ef80ac3e4ffad3effa636ee667582a75e2c0
   languageName: node
   linkType: hard
 
@@ -6905,6 +6945,25 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 10/740fa33c7a09012bb96509f9003dc26e4e412eed2fc861ca40bfee9a3dddcf7c4d86fd20f824d4c017e44526aa9d747d6c9543ef3f2215bc0ace72754e025316
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^16.13.1":
+  version: 16.13.1
+  resolution: "react-is@npm:16.13.1"
+  checksum: 10/5aa564a1cde7d391ac980bedee21202fc90bdea3b399952117f54fb71a932af1e5902020144fb354b4690b2414a0c7aafe798eb617b76a3d441d956db7726fdf
+  languageName: node
+  linkType: hard
+
+"react-katex@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "react-katex@npm:3.0.1"
+  dependencies:
+    katex: "npm:^0.16.0"
+  peerDependencies:
+    prop-types: ^15.8.1
+    react: ">=15.3.2 <=18"
+  checksum: 10/8a4ad73fc67f2bb21c752cc981dd590c7f7f631cbcb2b3e5692f9b2ff5368bd5650916e6f7d8eb35dddfb6d23ad31b09fd012e345eb3233b8cd5dc3a8f405478
   languageName: node
   linkType: hard
 

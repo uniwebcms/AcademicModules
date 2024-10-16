@@ -1,5 +1,9 @@
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { convertToProfileData } from '../document';
 import { Profile } from '@uniwebcms/module-sdk';
+import { InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
 const buildTextNode = (content) => {
     let data = '';
@@ -9,7 +13,7 @@ const buildTextNode = (content) => {
     if (!content || !Array.isArray(content)) return data;
 
     content.forEach((item, i) => {
-        const { text, marks = [] } = item;
+        const { type, text, marks = [] } = item;
 
         let isBold = marks.find((mark) => mark.type === 'bold');
         let isItalic = marks.find((mark) => mark.type === 'italic');
@@ -46,12 +50,20 @@ const buildTextNode = (content) => {
 
             data += start + text + end;
         }
+
+        if (type === 'math_inline' && item.content?.[0]?.text) {
+            const math = <InlineMath math={item.content[0].text} />;
+
+            const mathHtml = ReactDOMServer.renderToStaticMarkup(math);
+
+            data += mathHtml;
+        }
     });
 
     return data;
 };
 
-function parseCodeBlock(input = '') {
+function parseCodeBlock(input = '', attrs) {
     if (input.startsWith('```')) {
         input = input.slice(3);
 
@@ -70,6 +82,7 @@ function parseCodeBlock(input = '') {
     return {
         type: 'codeBlock',
         content: input,
+        language: attrs?.language,
     };
 }
 
@@ -196,7 +209,7 @@ export const buildArticleBlocks = (articleContent) => {
                         }),
                     };
                 case 'codeBlock':
-                    return parseCodeBlock(content[0].text);
+                    return parseCodeBlock(content[0].text, attrs);
                 case 'WarningBlock':
                     return {
                         type: type === 'WarningBlock' ? 'warning' : 'codeBlock',
@@ -231,6 +244,11 @@ export const buildArticleBlocks = (articleContent) => {
 
                             return item;
                         }),
+                    };
+                case 'math_display':
+                    return {
+                        type: 'math_display',
+                        content: content[0].text,
                     };
             }
         })
