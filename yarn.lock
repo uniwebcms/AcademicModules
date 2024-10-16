@@ -2441,9 +2441,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-sdk@npm:^1.22.3":
-  version: 1.22.3
-  resolution: "@uniwebcms/module-sdk@npm:1.22.3"
+"@uniwebcms/module-sdk@npm:^1.23.1":
+  version: 1.23.1
+  resolution: "@uniwebcms/module-sdk@npm:1.23.1"
   dependencies:
     "@headlessui/react": "npm:^1.7.3"
     "@popperjs/core": "npm:^2.10.1"
@@ -2455,7 +2455,7 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10/ef972eb96093c7f9350ae5ffa0913b77d31c14213502d6e1128011bd810e87d418fca7356fe74a3291574b2f35aaf867f57c42b3815aeca7498d0e0fff8ebe25
+  checksum: 10/55b3930302e246a40afc399d85de0f320669f6b622684f4198f4f24d6c9c28495c0ab96a89403b990cf7c3be21c13507a1f7c415501b4b0dba4a8f8f131d88cd
   languageName: node
   linkType: hard
 
@@ -2682,7 +2682,7 @@ __metadata:
     "@react-google-maps/api": "npm:^2.18.1"
     "@tailwindcss/line-clamp": "npm:^0.4.4"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "npm:^1.22.3"
+    "@uniwebcms/module-sdk": "npm:^1.23.1"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     citation-js: "npm:^0.7.14"
     flowbite: "npm:^1.8.1"

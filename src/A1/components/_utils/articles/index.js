@@ -1,3 +1,6 @@
+import { convertToProfileData } from '../document';
+import { Profile } from '@uniwebcms/module-sdk';
+
 const buildTextNode = (content) => {
     let data = '';
 
@@ -70,6 +73,72 @@ function parseCodeBlock(input = '') {
     };
 }
 
+const parseDate = (value) => {
+    const [datePart, timePart] = value.split(' ');
+    const [year, month, date] = datePart.split('/');
+    let hours = null;
+    let minutes = null;
+
+    if (timePart) {
+        let [hourStr, minuteStr] = timePart.split(':');
+        hours = parseInt(hourStr, 10);
+        minutes = parseInt(minuteStr, 10);
+    }
+
+    const dateValue = new Date(year, month - 1, date, hours || 0, minutes || 0);
+
+    let options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+
+    if (timePart) {
+        options = {
+            ...options,
+            hour: 'numeric',
+            minute: 'numeric',
+        };
+    }
+
+    return dateValue.toLocaleDateString(uniweb.language(), options);
+};
+
+const parseDocument = (document, title, index) => {
+    const { name, identifier: url } = document;
+    const filename = title || name;
+
+    const asset = {
+        info: {
+            max_item_count: 1,
+            fields: {
+                name: { type: 'localstr' },
+                description: { type: 'localstr' },
+                category: { type: 'string' },
+                url: { type: 'localstr' },
+                metadata: { type: 'json' },
+            },
+            items: [
+                {
+                    name: filename,
+                    metadata: { url, filename },
+                },
+            ],
+        },
+    };
+
+    let data = convertToProfileData(asset);
+    const id = `document_${index}`;
+
+    const profile = Profile.newProfile('webasset/profile', id, { data });
+
+    if (profile.at('info').metadata.url) {
+        return profile;
+    } else {
+        return null;
+    }
+};
+
 export const buildArticleBlocks = (articleContent) => {
     const { content: docContent } = articleContent;
 
@@ -133,6 +202,35 @@ export const buildArticleBlocks = (articleContent) => {
                         type: type === 'WarningBlock' ? 'warning' : 'codeBlock',
                         content: buildTextNode(content),
                         attrs,
+                    };
+                case 'card-group':
+                    return {
+                        type,
+                        content: content.map((item, i) => {
+                            if (item.attrs.type === 'document') {
+                                item.attrs.document = parseDocument(
+                                    item.attrs.document,
+                                    item.attrs.title,
+                                    i
+                                );
+                            } else {
+                                if (item.attrs.address) {
+                                    try {
+                                        const addressObj = JSON.parse(item.attrs.address);
+                                        item.attrs.address = addressObj;
+                                    } catch {}
+                                }
+
+                                if (item.attrs.date) {
+                                    item.attrs.date = parseDate(item.attrs.date);
+                                }
+                                if (item.attrs.datetime) {
+                                    item.attrs.datetime = parseDate(item.attrs.datetime);
+                                }
+                            }
+
+                            return item;
+                        }),
                     };
             }
         })

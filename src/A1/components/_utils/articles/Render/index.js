@@ -3,6 +3,7 @@ import Divider from './Divider';
 import Video from './Video';
 import Image from './Image';
 import Warning from './Warning';
+import Card from './Card';
 import { stripTags } from '@uniwebcms/module-sdk';
 
 const Render = function (props) {
@@ -82,6 +83,15 @@ const Render = function (props) {
                         <code dangerouslySetInnerHTML={{ __html: content }}></code>
                     </pre>
                 );
+            case 'card-group': {
+                return (
+                    <div key={index} className="flex flex-wrap gap-6">
+                        {content.map((c, i) => (
+                            <Card key={`c_${i}`} {...c.attrs}></Card>
+                        ))}
+                    </div>
+                );
+            }
         }
     });
 };
