@@ -190,7 +190,7 @@ const Document = (props) => {
             <div
                 className={twJoin(
                     'px-6 py-3 flex items-center justify-between gap-x-2 text-left',
-                    displayMode !== 'link' && border - t
+                    displayMode !== 'link' && 'border-t'
                 )}
             >
                 <div className="max-w-[calc(100%-40px)]">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaCompress, FaExpand } from 'react-icons/fa';
-import { Media, Image } from '@uniwebcms/module-sdk';
+import { Media, Image, website } from '@uniwebcms/module-sdk';
 
 const youtubeRegex =
     /\b(?:https?:\/\/)?(?:(?:www|m)\.)?youtu(?:\.be\/|be\.com\/(?:watch(?:\?(?:(?:feature=player_embedded|app=desktop)&)?v=|\/)|v\/|oembed\?url=http%3A\/\/www\.youtube\.com\/watch\?v%3D|attribution_link\?a=[0-9A-Za-z\-_]{10,20}&u=(?:%2F|\/)watch%3Fv%3D|e(?:mbed)?\/|shorts\/)|be-nocookie\.com\/embed\/)([0-9A-Za-z\-_]{10,20})/;
@@ -126,30 +126,33 @@ export default function Video({ page, videoControl, ...video }) {
             <div className="flex space-x-4 mt-4">
                 <button
                     onClick={toggleMiniPlayer}
-                    className="flex items-center px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+                    className="flex items-center px-4 py-2 bg-primary-100 text-primary-800 rounded-lg hover:bg-primary-800 hover:text-primary-100"
                 >
                     <FaCompress className="mr-2" />
-                    Mini Player
+                    {website.localize({
+                        en: 'Mini Player',
+                        es: 'Reproductor Mini',
+                    })}
                 </button>
                 <button
                     onClick={toggleOverlay}
-                    className="flex items-center px-4 py-2 bg-indigo-700 text-white rounded-lg hover:bg-indigo-600"
+                    className="flex items-center px-4 py-2 bg-secondary-100 text-secondary-800 rounded-lg hover:bg-secondary-800 hover:text-secondary-100"
                 >
                     <FaExpand className="mr-2" />
-                    Overlay
+                    {website.localize({
+                        en: 'Overlay',
+                        es: 'Superposición',
+                    })}
                 </button>
             </div>
         ) : null;
 
     const FakeBlock = () => (
-        <Image
-            className="not-prose relative z-0 flex-1 block m-0"
-            {...{ profile, url: ogThumbnail }}
-        />
+        <Image className="relative z-0 flex-1 block m-0" {...{ profile, url: ogThumbnail }} />
     );
 
     return (
-        <>
+        <div className="not-prose mb-6 lg:mb-8">
             <div className="relative">
                 <div
                     className={outerClasses}
@@ -163,8 +166,7 @@ export default function Video({ page, videoControl, ...video }) {
                         {/* Main Video Area */}
                         <div className={`flex-1 block`}>
                             <Media
-                                // key={thumbnail}
-                                className="mt-0 not-prose"
+                                className="mt-0"
                                 media={currentVideo}
                                 {...(thumbnail && { thumbnail: { url: thumbnail } })}
                             />
@@ -186,7 +188,7 @@ export default function Video({ page, videoControl, ...video }) {
                                                 onClick={changeVideo(video)}
                                             >
                                                 <Image
-                                                    className="not-prose w-full h-auto object-contain rounded-md m-2"
+                                                    className="w-full h-auto object-contain rounded-md m-2"
                                                     {...{ profile, url: currentThumbnail }}
                                                 />
                                             </div>
@@ -207,6 +209,6 @@ export default function Video({ page, videoControl, ...video }) {
                 {<FakeBlock />}
             </div>
             {!overlay && <Buttons />}
-        </>
+        </div>
     );
 }
