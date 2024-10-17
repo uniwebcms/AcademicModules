@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Prism from 'prismjs';
-import { website } from '@uniwebcms/module-sdk';
+// import { website } from '@uniwebcms/module-sdk';
 
 import 'prismjs/themes/prism.min.css';
 import 'prismjs/components/prism-jsx';
@@ -16,26 +16,26 @@ import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-ruby';
 import 'prismjs/components/prism-yaml';
 
-const label = {
-    plain: website.localize({
-        en: 'Plain text',
-        fr: 'Texte brut',
-    }),
-    c: 'C',
-    csharp: 'C#',
-    cpp: 'C++',
-    css: 'CSS',
-    html: 'HTML',
-    java: 'Java',
-    javascript: 'JavaScript',
-    json: 'JSON',
-    php: 'PHP',
-    python: 'Python',
-    ruby: 'Ruby',
-    typescript: 'TypeScript',
-    xml: 'XML',
-    yaml: 'YAML',
-};
+// const label = {
+//     plain: website.localize({
+//         en: 'Plain text',
+//         fr: 'Texte brut',
+//     }),
+//     c: 'C',
+//     csharp: 'C#',
+//     cpp: 'C++',
+//     css: 'CSS',
+//     html: 'HTML',
+//     java: 'Java',
+//     javascript: 'JavaScript',
+//     json: 'JSON',
+//     php: 'PHP',
+//     python: 'Python',
+//     ruby: 'Ruby',
+//     typescript: 'TypeScript',
+//     xml: 'XML',
+//     yaml: 'YAML',
+// };
 
 export default function Code(props) {
     const { language, content } = props;
@@ -45,13 +45,8 @@ export default function Code(props) {
     }, []);
 
     return (
-        <div className="relative">
-            <div className="absolute top-0 right-0 bg-text-color text-bg-color text-xs px-2 py-1 rounded-bl">
-                {label[language] || label.plain}
-            </div>
-            <pre>
-                <code className={`language-${language}`}>{content}</code>
-            </pre>
-        </div>
+        <pre>
+            <code className={`language-${language}`}>{content}</code>
+        </pre>
     );
 }
