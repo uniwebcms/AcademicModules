@@ -14,7 +14,6 @@ module.exports = {
         require('@uniwebcms/uniweb-tailwind-plugin'),
         makeEntryPath('@uniwebcms/module-sdk', 'plugin'),
         require('@tailwindcss/typography'),
-        require('@tailwindcss/line-clamp'),
     ],
     theme: {
         extend: {

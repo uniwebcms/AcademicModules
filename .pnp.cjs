@@ -21,6 +21,10 @@ const RAW_RUNTIME_STATE =
     {\
       "name": "academic-series-1",\
       "reference": "workspace:src/A1"\
+    },\
+    {\
+      "name": "marketing-series-1",\
+      "reference": "workspace:src/M1"\
     }\
   ],\
   "enableTopLevelFallback": true,\
@@ -28,6 +32,7 @@ const RAW_RUNTIME_STATE =
   "fallbackExclusionList": [\
     ["academic-series-1", ["workspace:src/A1"]],\
     ["builder", ["workspace:builder"]],\
+    ["marketing-series-1", ["workspace:src/M1"]],\
     ["website-components-template", ["workspace:."]]\
   ],\
   "fallbackPool": [\
@@ -3716,28 +3721,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["@tailwindcss/line-clamp", [\
-      ["npm:0.4.4", {\
-        "packageLocation": "./.yarn/cache/@tailwindcss-line-clamp-npm-0.4.4-23cb911440-3d2ad992aa.zip/node_modules/@tailwindcss/line-clamp/",\
-        "packageDependencies": [\
-          ["@tailwindcss/line-clamp", "npm:0.4.4"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.4.4", {\
-        "packageLocation": "./.yarn/__virtual__/@tailwindcss-line-clamp-virtual-245ae15dce/0/cache/@tailwindcss-line-clamp-npm-0.4.4-23cb911440-3d2ad992aa.zip/node_modules/@tailwindcss/line-clamp/",\
-        "packageDependencies": [\
-          ["@tailwindcss/line-clamp", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.4.4"],\
-          ["@types/tailwindcss", null],\
-          ["tailwindcss", "npm:3.4.13"]\
-        ],\
-        "packagePeers": [\
-          "@types/tailwindcss",\
-          "tailwindcss"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["@tailwindcss/nesting", [\
       ["npm:0.0.0-insiders.565cd3e", {\
         "packageLocation": "./.yarn/cache/@tailwindcss-nesting-npm-0.0.0-insiders.565cd3e-029ebd2478-f8afe9e039.zip/node_modules/@tailwindcss/nesting/",\
@@ -4405,7 +4388,6 @@ const RAW_RUNTIME_STATE =
           ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.16"],\
           ["@popperjs/core", "npm:2.11.8"],\
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.3"],\
-          ["@tailwindcss/line-clamp", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.4.4"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.15"],\
           ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.1"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.0.1"],\
@@ -7456,6 +7438,35 @@ const RAW_RUNTIME_STATE =
           ["markdown-extensions", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
+      }]\
+    ]],\
+    ["marketing-series-1", [\
+      ["workspace:src/M1", {\
+        "packageLocation": "./src/M1/",\
+        "packageDependencies": [\
+          ["marketing-series-1", "workspace:src/M1"],\
+          ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.16"],\
+          ["@popperjs/core", "npm:2.11.8"],\
+          ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.3"],\
+          ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.15"],\
+          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.1"],\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.0.1"],\
+          ["citation-js", "npm:0.7.16"],\
+          ["flowbite", "npm:1.8.1"],\
+          ["flowbite-react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.6.4"],\
+          ["katex", "npm:0.16.11"],\
+          ["prismjs", "npm:1.29.0"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.2.0"],\
+          ["react-click-away-listener", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.2.3"],\
+          ["react-dom", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:18.2.0"],\
+          ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.3.0"],\
+          ["react-katex", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:3.0.1"],\
+          ["react-popper", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.3.0"],\
+          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.13.8"],\
+          ["tailwindcss", "npm:3.4.13"]\
+        ],\
+        "linkType": "SOFT"\
       }]\
     ]],\
     ["mdast-util-from-markdown", [\
