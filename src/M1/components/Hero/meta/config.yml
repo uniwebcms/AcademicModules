@@ -1,0 +1,81 @@
+title: 
+  en: Hero Section
+  fr: Section d'en-tête
+label:
+  en: Hero
+  fr: En-tête
+description: 
+  en: A large section at the top of the page, often used to introduce the page content.
+  fr: Une grande section en haut de la page, souvent utilisée pour introduire le contenu de la page.
+
+properties:
+  height:
+    label: 
+      en: Height
+      fr: Hauteur
+    type: string
+    default: 100vh
+    enum:
+      - label: 
+          en: 100% Screen Height
+          fr: 100% de la hauteur de l'écran
+        value: 100vh
+      - label: 
+          en: 80% Screen Height
+          fr: 80% de la hauteur de l'écran
+        value: 80vh
+      - label: 
+          en: 60% Screen Height
+          fr: 60% de la hauteur de l'écran
+        value: 60vh
+      - label: 
+          en: 40% Screen Height
+          fr: 40% de la hauteur de l'écran
+        value: 40vh
+    description: 
+      en: The height of the hero section.
+      fr: La hauteur de la section d'en-tête.
+  gradient:
+    label: 
+      en: Gradient
+      fr: Dégradé
+    type: string
+    default: none
+    enum:
+      - label: 
+          en: None
+          fr: Aucun
+        value: none
+      - label: 
+          en: From Top
+          fr: Du haut
+        value: top
+      - label: 
+          en: From Bottom
+          fr: Du bas
+        value: bottom
+    description: 
+      en: The gradient direction of the hero section.
+      fr: La direction du dégradé de la section d'en-tête.
+  alignment:
+    label: 
+      en: Content Alignment
+      fr: Alignement du contenu
+    type: string
+    default: left
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The alignment of the content in the hero section.
+      fr: L'alignement du contenu dans la section d'en-tête.
