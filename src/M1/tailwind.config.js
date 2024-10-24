@@ -13,7 +13,9 @@ module.exports = {
     theme: {
         extend: {
             // You can add theme extensions here
-            colors: {},
+            width: {
+                112: '28rem',
+            },
             spacing: {
                 '8xl': '96rem',
                 '9xl': '108rem',

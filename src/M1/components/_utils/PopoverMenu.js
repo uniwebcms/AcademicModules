@@ -107,6 +107,7 @@ export default function PopoverMenu(props) {
                     onMouseLeave={() => onHover('onMouseLeave')}
                 >
                     <Popover.Button
+                        as="div"
                         className={`${triggerClassName}`}
                         ref={buttonRef}
                         onClick={() => handleClick(open)}

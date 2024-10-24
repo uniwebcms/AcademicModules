@@ -31,7 +31,7 @@ export default function Hero(props) {
                 <div className="relative z-20 max-w-[60rem]">
                     {title && (
                         <h1
-                            className="text-4xl font-bold md:text-5xl lg:text-6xl"
+                            className="text-3xl font-bold md:text-4xl lg:text-5xl"
                             style={{
                                 lineHeight: '1.1',
                             }}

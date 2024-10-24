@@ -139,7 +139,7 @@ export default function Header(props) {
         <div className={twMerge(wrapperClass, !initialPosition && sticky && '!shadow-2xl')}>
             <div
                 className={twMerge(
-                    'transition-transform duration-300 flex items-center w-full 2xl:px-16 xl:px-12 lg:px-8 px-6 xl:py-6 lg:py-5 py-3 justify-between lg:justify-normal max-w-10xl mx-auto'
+                    'transition-transform duration-300 flex items-center w-full px-6 lg:px-10 xl:px-12 2xl:px-16 py-3 lg:py-4 xl:py-5 2xl:py-6 justify-between lg:justify-normal max-w-10xl mx-auto'
                 )}
             >
                 {logo ? (
@@ -148,7 +148,7 @@ export default function Header(props) {
                         title="company logo"
                         className="w-fit max-w-[9rem] lg:max-w-[10rem] 2xl:max-w-[12rem] flex-shrink-0"
                     >
-                        <div className="h-8 lg:h-10 xl:h-12 2xl:h-14 w-auto max-w-full">{logo}</div>
+                        <div className="h-8 lg:h-10 2xl:h-12 w-auto max-w-full">{logo}</div>
                     </Link>
                 ) : null}
                 <nav
@@ -174,7 +174,7 @@ export default function Header(props) {
                                 <Link
                                     key={index}
                                     to={route}
-                                    className="inline-block xl:text-xl lg:text-lg px-3 py-2"
+                                    className="inline-block lg:text-base xl:text-lg px-3 py-2"
                                 >
                                     {label}
                                 </Link>
@@ -184,7 +184,7 @@ export default function Header(props) {
                 </nav>
                 <div className="flex items-center space-x-8 justify-end">
                     <div className="whitespace-nowrap">
-                        <span className="text-text-color-10 xl:text-xl lg:text-lg font-medium">
+                        <span className="text-text-color-10 lg:text-base xl:text-lg font-medium">
                             {website.localize({
                                 en: 'Log in',
                                 fr: 'Connexion',
@@ -192,7 +192,7 @@ export default function Header(props) {
                         </span>
                     </div>
                     <div className="whitespace-nowrap rounded-3xl px-6 py-2.5 bg-text-color/60">
-                        <span className="text-text-color-10 xl:text-xl lg:text-lg font-medium">
+                        <span className="text-text-color-10 lg:text-base xl:text-lg font-medium">
                             {website.localize({
                                 en: 'Sign up',
                                 fr: 'Inscription',

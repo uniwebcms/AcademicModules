@@ -8,3 +8,44 @@ description:
   en: Special section only to be used in the header page. Creates a navigation bar with automatic links to all website pages.
   fr: Section spéciale à utiliser uniquement dans la page d'en-tête. Crée une barre de navigation avec des liens automatiques vers toutes les pages du site web.
 
+properties:
+  layout:
+    label: 
+      en: Layout
+      fr: Mise en page
+    type: string
+    default: scroll
+    enum:
+      - label: 
+          en: Horizontal Scroll List
+          fr: Liste de défilement horizontale
+        value: scroll
+      - label: 
+          en: Grid
+          fr: Grille
+        value: grid
+    description:
+      en: The layout of the feature cards.
+      fr: La mise en page des cartes de fonctionnalités.
+  cardStyle:
+    label: 
+      en: Card Style
+      fr: Style de carte
+    type: string
+    default: compact
+    enum:
+      - label:
+          en: Compact
+          fr: Compact
+        value: compact
+      - label:
+          en: Expanded
+          fr: Étendu
+        value: expanded
+      - label:
+          en: Overlay
+          fr: Superposition
+        value: overlay
+    description:
+      en: The style of the feature cards.
+      fr: Le style des cartes de fonctionnalités.

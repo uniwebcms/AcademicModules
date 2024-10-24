@@ -48,7 +48,7 @@ export default function FeatureCards(props) {
     };
     const scroll = (direction) => {
         if (scrollContainerRef.current) {
-            const cardWidth = cardStyle === 'compact' ? 320 : 384; // w-80 or w-96
+            const cardWidth = cardStyle === 'compact' ? 320 : 448; // w-80 or w-112
             const gap = 24;
 
             let scrollAmount;
@@ -85,44 +85,32 @@ export default function FeatureCards(props) {
                 'flex overflow-x-auto gap-6 scrollbar-hide scroll-smooth snap-x snap-mandatory';
 
             if (cardStyle === 'compact') {
-                classes += ' -mx-0.5 px-0.5 scroll-px-0.5 py-2';
+                classes += ' -mx-1 px-1 scroll-px-1 pt-1 pb-3';
             }
 
             return classes;
         }
 
         // Grid layout with responsive columns based on card style
-        if (cardStyle === 'compact') {
-            return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
-        } else {
-            return 'grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6';
-        }
+        return 'grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 xl:gap-12 2xl:gap-8';
     };
 
     // Card classes based on card style
     const cardClasses = {
-        compact: `${
-            layout === 'grid' ? '' : 'flex-none'
-        } w-80 bg-white rounded-lg shadow-md overflow-hidden snap-start`,
-        expanded: `${
-            layout === 'grid' ? '' : 'flex-none'
-        } w-96 bg-white overflow-hidden snap-start`,
-        overlay: `${
-            layout === 'grid' ? '' : 'flex-none'
-        } w-96 relative overflow-hidden snap-start h-96`,
+        compact: `flex-none w-80 bg-white rounded-lg shadow-md overflow-hidden snap-start`,
+        expanded: `flex-none w-112 snap-start`,
+        overlay: `relative w-full h-72 2xl:h-64 rounded-3xl overflow-hidden`,
     };
 
     // Card banner classes based on card style
     const cardBannerClasses = {
         compact: 'h-56',
-        expanded: 'h-64',
-        overlay: 'h-64',
+        expanded: 'h-60 rounded-3xl overflow-hidden',
     };
 
     const cardContentClasses = {
         compact: 'px-4 pt-6 pb-4 flex flex-col',
-        expanded: 'py-4 flex flex-col',
-        // overlay: 'h-64',
+        expanded: 'py-4 flex flex-col bg-bg-color',
     };
 
     // Render card content based on style
@@ -130,6 +118,9 @@ export default function FeatureCards(props) {
         const { banner, title, subtitle, paragraphs, links } = card;
 
         const [primaryLink, secondaryLink] = links;
+
+        const primaryLinkClasses = 'flex-1 truncate py-2 px-4 rounded-3xl';
+        const secondaryLinkClasses = 'flex-1 truncate';
 
         if (cardStyle === 'overlay') {
             return (
@@ -139,7 +130,7 @@ export default function FeatureCards(props) {
                         {...banner}
                         className="absolute w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/0" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/20" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                         <h3 className="font-bold text-xl mb-2">{title}</h3>
                         <p className="text-sm text-gray-200 mb-3">{subtitle}</p>
@@ -173,26 +164,24 @@ export default function FeatureCards(props) {
                 <div className={cardContentClasses[cardStyle]}>
                     <div>
                         <h3 className="font-bold text-lg">{title}</h3>
-                        <p className="text-sm text-gray-600">{subtitle}</p>
+                        <p className="text-sm">{subtitle}</p>
                     </div>
-                    <SafeHtml
-                        value={paragraphs}
-                        className="mt-2 text-gray-700 text-sm line-clamp-3"
-                    />
-                    <div className="flex gap-3 mt-4">
+                    <SafeHtml value={paragraphs} className="mt-2 text-sm line-clamp-3" />
+                    <div className="flex items-center gap-3 mt-4">
                         {primaryLink && (
                             <Link
                                 to={primaryLink.href}
-                                className="flex-1 truncate bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                                className={
+                                    primaryLink && secondaryLink
+                                        ? primaryLinkClasses
+                                        : secondaryLinkClasses
+                                }
                             >
                                 {primaryLink.label}
                             </Link>
                         )}
                         {secondaryLink && (
-                            <Link
-                                to={secondaryLink.href}
-                                className="flex-1 truncate border border-gray-300 py-2 px-4 rounded-md hover:bg-gray-50 transition-colors"
-                            >
+                            <Link to={secondaryLink.href} className={secondaryLinkClasses}>
                                 {secondaryLink.label}
                             </Link>
                         )}
@@ -206,7 +195,7 @@ export default function FeatureCards(props) {
     const renderNavigation = () => {
         if (layout !== 'scroll' || !needScrollButtons) return null;
 
-        const baseButtonClasses = 'rounded-full p-2 transition-all duration-200';
+        const baseButtonClasses = 'rounded-full p-2 transition-all duration-200 shadow-md';
         const activeButtonClasses = 'bg-white shadow-lg hover:bg-gray-100';
         const disabledButtonClasses = 'bg-gray-100 cursor-default opacity-50';
 
@@ -255,11 +244,11 @@ export default function FeatureCards(props) {
 
     return (
         <Container px="none">
-            <div className="px-16 lg:px-24">
+            <div className="px-16 lg:px-24 max-w-8xl mx-auto">
                 <h2 className="text-2xl font-bold mb-2">{title}</h2>
                 <p className="text-gray-600 mb-6 lg:mb-8">{subtitle}</p>
             </div>
-            <div className="relative px-16 lg:px-24">
+            <div className="relative px-16 lg:px-24 max-w-8xl mx-auto">
                 {layout === 'scroll' && cardStyle === 'expanded' && renderNavigation()}
                 <div
                     ref={scrollContainerRef}
