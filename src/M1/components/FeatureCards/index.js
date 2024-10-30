@@ -119,8 +119,9 @@ export default function FeatureCards(props) {
 
         const [primaryLink, secondaryLink] = links;
 
-        const primaryLinkClasses = 'flex-1 truncate py-2 px-4 rounded-3xl';
-        const secondaryLinkClasses = 'flex-1 truncate';
+        const primaryLinkClasses =
+            'flex-1 bg-btn-color text-btn-text-color truncate py-2 px-4 rounded-3xl';
+        const secondaryLinkClasses = 'flex-1 text-btn-alt-text-color truncate';
 
         if (cardStyle === 'overlay') {
             return (

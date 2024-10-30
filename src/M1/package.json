@@ -15,7 +15,7 @@
         "@react-google-maps/api": "^2.19.3",
         "@tailwindcss/typography": "^0.5.15",
         "@uniwebcms/module-sdk": "^1.23.1",
-        "@uniwebcms/uniweb-tailwind-plugin": "^1.0.1",
+        "@uniwebcms/uniweb-tailwind-plugin": "^1.1.0",
         "flowbite": "^1.8.1",
         "flowbite-react": "^0.6.4",
         "react": "^18.2.0",
