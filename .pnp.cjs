@@ -4093,10 +4093,30 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:1.1.0", {\
+        "packageLocation": "./.yarn/cache/@uniwebcms-uniweb-tailwind-plugin-npm-1.1.0-4cdb0ab796-2806a08f09.zip/node_modules/@uniwebcms/uniweb-tailwind-plugin/",\
+        "packageDependencies": [\
+          ["@uniwebcms/uniweb-tailwind-plugin", "npm:1.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.0.1", {\
         "packageLocation": "./.yarn/__virtual__/@uniwebcms-uniweb-tailwind-plugin-virtual-20695c6975/0/cache/@uniwebcms-uniweb-tailwind-plugin-npm-1.0.1-af205c958d-2d38f64b12.zip/node_modules/@uniwebcms/uniweb-tailwind-plugin/",\
         "packageDependencies": [\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.0.1"],\
+          ["@types/tailwindcss", null],\
+          ["tailwindcss", "npm:3.4.13"]\
+        ],\
+        "packagePeers": [\
+          "@types/tailwindcss",\
+          "tailwindcss"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:1.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-uniweb-tailwind-plugin-virtual-070cfeebc7/0/cache/@uniwebcms-uniweb-tailwind-plugin-npm-1.1.0-4cdb0ab796-2806a08f09.zip/node_modules/@uniwebcms/uniweb-tailwind-plugin/",\
+        "packageDependencies": [\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:1.1.0"],\
           ["@types/tailwindcss", null],\
           ["tailwindcss", "npm:3.4.13"]\
         ],\
@@ -7450,7 +7470,7 @@ const RAW_RUNTIME_STATE =
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.3"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.15"],\
           ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.1"],\
-          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.0.1"],\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:1.1.0"],\
           ["flowbite", "npm:1.8.1"],\
           ["flowbite-react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.6.4"],\
           ["react", "npm:18.2.0"],\

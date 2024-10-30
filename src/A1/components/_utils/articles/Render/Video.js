@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaCompress, FaExpand } from 'react-icons/fa';
-import { Media, Image, website } from '@uniwebcms/module-sdk';
+import { twJoin, Media, Image, website } from '@uniwebcms/module-sdk';
 
 const youtubeRegex =
     /\b(?:https?:\/\/)?(?:(?:www|m)\.)?youtu(?:\.be\/|be\.com\/(?:watch(?:\?(?:(?:feature=player_embedded|app=desktop)&)?v=|\/)|v\/|oembed\?url=http%3A\/\/www\.youtube\.com\/watch\?v%3D|attribution_link\?a=[0-9A-Za-z\-_]{10,20}&u=(?:%2F|\/)watch%3Fv%3D|e(?:mbed)?\/|shorts\/)|be-nocookie\.com\/embed\/)([0-9A-Za-z\-_]{10,20})/;
@@ -83,13 +83,15 @@ export default function Video({ page, videoControl, ...video }) {
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnails, setThumbnails] = useState(Array(videos.length).fill(null));
 
-    const playerClasses = `${miniPlayer && 'fixed bottom-4 right-4 w-64 h-36 z-50'} ${
+    const playerClasses = twJoin(
+        miniPlayer && 'fixed bottom-4 right-4 w-64 h-36 z-50',
         overlay && 'flex w-full max-w-6xl mx-auto bg-white shadow-lg'
-    }`;
+    );
 
-    const outerClasses = `${!overlay && 'absolute inset-0 z-10'} ${
+    const outerClasses = twJoin(
+        !overlay && 'absolute inset-0 z-10',
         overlay && 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75'
-    }`;
+    );
 
     useEffect(() => {
         async function fetchThumbnail() {
@@ -126,23 +128,24 @@ export default function Video({ page, videoControl, ...video }) {
             <div className="flex space-x-4 mt-4">
                 <button
                     onClick={toggleMiniPlayer}
-                    className="flex items-center px-4 py-2 bg-primary-100 text-primary-800 rounded-lg hover:bg-primary-800 hover:text-primary-100"
+                    className="flex items-center px-4 py-2 rounded-lg"
                 >
                     <FaCompress className="mr-2" />
-                    {website.localize({
-                        en: 'Mini Player',
-                        es: 'Reproductor Mini',
-                    })}
+                    <span className="text-sm md:text-base">
+                        {website.localize({
+                            en: 'Mini Player',
+                            es: 'Reproductor Mini',
+                        })}
+                    </span>
                 </button>
-                <button
-                    onClick={toggleOverlay}
-                    className="flex items-center px-4 py-2 bg-secondary-100 text-secondary-800 rounded-lg hover:bg-secondary-800 hover:text-secondary-100"
-                >
+                <button onClick={toggleOverlay} className="flex items-center px-4 py-2 rounded-lg">
                     <FaExpand className="mr-2" />
-                    {website.localize({
-                        en: 'Overlay',
-                        es: 'Superposición',
-                    })}
+                    <span className="text-sm md:text-base">
+                        {website.localize({
+                            en: 'Overlay',
+                            es: 'Superposición',
+                        })}
+                    </span>
                 </button>
             </div>
         ) : null;
@@ -152,7 +155,7 @@ export default function Video({ page, videoControl, ...video }) {
     );
 
     return (
-        <div className="not-prose mb-6 lg:mb-8">
+        <div className="not-prose mb-6 lg:my-8">
             <div className="relative">
                 <div
                     className={outerClasses}
