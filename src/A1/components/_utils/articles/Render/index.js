@@ -9,10 +9,7 @@ import Code from './Code';
 import Math from './Math';
 
 const Render = function (props) {
-    const { block, content, page } = props;
-
-    const blockId = block.id;
-    const { video_control: videoControl = false } = block.getBlockProperties();
+    const { block: pageBlock, content, page } = props;
 
     if (!content || !content.length) return null;
 
@@ -30,6 +27,7 @@ const Render = function (props) {
                 );
             case 'heading':
                 const { level } = block;
+                const blockId = pageBlock?.id || '';
                 const Heading = `h${level}`;
 
                 return (
@@ -43,6 +41,7 @@ const Render = function (props) {
             case 'image':
                 return <Image key={index} {...block} page={page} />;
             case 'video':
+                const { video_control: videoControl = false } = block.getBlockProperties();
                 return <Video key={index} {...block} page={page} videoControl={videoControl} />;
             case 'warning':
                 return <Warning key={index} {...block} />;
@@ -83,7 +82,7 @@ const Render = function (props) {
                 return <Code key={index} {...block} />;
             case 'card-group': {
                 return (
-                    <div key={index} className="flex flex-wrap gap-6">
+                    <div key={index} className={'flex flex-wrap gap-6'}>
                         {content.map((c, i) => (
                             <Card key={`c_${i}`} {...c.attrs}></Card>
                         ))}
@@ -92,6 +91,23 @@ const Render = function (props) {
             }
             case 'math_display':
                 return <Math key={index} {...block} />;
+            case 'button':
+                const { style } = block.attrs;
+
+                return (
+                    <div key={index} className="mb-3 lg:mb-4">
+                        <button
+                            type="button"
+                            className={twJoin(
+                                style === 'secondary' ? 'btn-secondary' : '',
+                                'px-2.5 py-1 lg:px-4 lg:py-2 border text-base lg:text-lg'
+                            )}
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        ></button>
+                    </div>
+                );
+            default:
+                return null;
         }
     });
 };
