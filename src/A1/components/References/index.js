@@ -41,15 +41,19 @@ export default function ProfileReferences({ block, input }) {
             url,
             profile,
             _type: categoryLabel,
-            _topics: topics.map(({ topic }) => {
-                const [topicId, info] = topic;
-                let parsedInfo = JSON.parse(info);
+            _topics: topics
+                .map(({ topic }) => {
+                    if (!topic) return null;
 
-                return {
-                    value: topicId,
-                    label: parsedInfo.name,
-                };
-            }),
+                    const [topicId, info] = topic;
+                    let parsedInfo = JSON.parse(info);
+
+                    return {
+                        value: topicId,
+                        label: parsedInfo.name,
+                    };
+                })
+                .filter(Boolean),
         };
     });
 
