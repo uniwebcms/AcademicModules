@@ -93,3 +93,10 @@ properties:
     description:
       en: Whether to display the additional video control, such as mini player and overlay play button.
       fr: Afficher ou non le contrôle vidéo supplémentaire, tel que le mini lecteur et le bouton de lecture superposé.
+
+images:
+  example:
+    label:
+      en: Example of showing a plain text section.
+      fr: Exemple d'affichage d'une section de texte simple.
+    image: example.png

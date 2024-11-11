@@ -24,3 +24,10 @@ items:
   separator: divider
   elements:
     background:
+
+images:
+  example:
+    label:
+      en: Example of showing logos in a grid layout.
+      fr: Exemple d'affichage de logos dans une mise en page en grille.
+    image: example.png

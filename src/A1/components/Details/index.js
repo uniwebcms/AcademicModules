@@ -10,7 +10,7 @@ export default function Details({ block }) {
 
     const { title = '', subtitle = '' } = main.header || {};
 
-    const alignment = main.header?.alignment || 'left';
+    const { alignment = 'left' } = block.getBlockProperties();
 
     const items = block.getBlockItems();
 
@@ -20,7 +20,7 @@ export default function Details({ block }) {
         <Container>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-                    {alignment === 'left' && (
+                    {alignment === 'right' && (
                         <div className="lg:col-span-5">
                             <h2 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
                                 {stripTags(title)}
@@ -46,7 +46,7 @@ export default function Details({ block }) {
                             ))}
                         </dl>
                     </div>
-                    {alignment === 'right' && (
+                    {alignment === 'left' && (
                         <div className="lg:col-span-5">
                             <h2 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
                                 {stripTags(title)}

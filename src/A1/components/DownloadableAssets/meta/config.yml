@@ -21,3 +21,10 @@ elements:
     description:
       en: Add a card elements, choose type 'Document' and upload the file.
       fr: Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier.
+
+images:
+  example:
+    label:
+      en: Example of display downloadable assets.
+      fr: Exemple d'affichage d'actifs téléchargeables.
+    image: example.png

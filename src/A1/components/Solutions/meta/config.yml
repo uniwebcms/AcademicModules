@@ -22,3 +22,10 @@ items:
     background:
     title:
     text:
+
+images:
+  example:
+    label:
+      en: Example of showing four feature cards in a grid layout.
+      fr: Exemple d'affichage de quatre cartes de fonctionnalités dans une mise en page en grille.
+    image: example.png

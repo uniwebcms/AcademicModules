@@ -18,3 +18,10 @@ elements:
     description:
       en: Text shown below the subscription form.
       fr: Texte affiché sous le formulaire d'abonnement.
+
+images:
+  example:
+    label:
+      en: Example of showing a newsletter subscription form.
+      fr: Exemple d'affichage d'un formulaire d'abonnement à la lettre d'information.
+    image: example.png

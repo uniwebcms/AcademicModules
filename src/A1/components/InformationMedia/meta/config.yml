@@ -14,9 +14,31 @@ export: true
 elements:
   pretitle:
   title:
-    alignment: 'left,right,center'
   subtitle:
   text:
   media:
     type: 'image,video'
+
+presets:
+  content_center_img:
+    label:
+      en: Content in the Center with Image
+      fr: Contenu au centre avec image
+    properties:
+      alignment: center
+    image: content_center_img.png
+  content_left_img:
+    label:
+      en: Content on the Left with Image
+      fr: Contenu à gauche avec image
+    properties:
+      alignment: left
+    image: content_left_img.png
+  content_right_video:
+    label:
+      en: Content on the Right with Video
+      fr: Contenu à droite avec vidéo
+    properties:
+      alignment: right
+    image: content_right_video.png
 

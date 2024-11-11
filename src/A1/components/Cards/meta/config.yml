@@ -23,3 +23,10 @@ items:
     subtitle:
     text:
     link:
+
+images:
+  example:
+    label:
+      en: Example of showing multiple cards in a row.
+      fr: Exemple d'affichage de plusieurs cartes en ligne.
+    image: example.png

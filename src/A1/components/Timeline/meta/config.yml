@@ -22,3 +22,10 @@ items:
   elements:
     title:
     text:
+
+images:
+  example:
+    label:
+      en: Example of showing a timeline with 3 steps.
+      fr: Exemple d'affichage d'une chronologie avec 3 étapes.
+    image: example.png

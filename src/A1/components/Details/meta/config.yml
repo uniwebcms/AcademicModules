@@ -13,7 +13,6 @@ export: true
 
 elements:
   title:
-    alignment: 'left,right,center'
   subtitle:
 
 items:
@@ -21,3 +20,26 @@ items:
   elements:
     title:
     text:
+
+presets:
+  right:
+    label:
+      en: Content on the Right
+      fr: Contenu à droite
+    properties:
+      alignment: right
+    image: right.png
+  center:
+    label:
+      en: Content in the Center
+      fr: Contenu au centre
+    properties:
+      alignment: center
+    image: center.png
+  left:
+    label:
+      en: Content on the Left
+      fr: Contenu à gauche
+    properties:
+      alignment: left
+    image: left.png

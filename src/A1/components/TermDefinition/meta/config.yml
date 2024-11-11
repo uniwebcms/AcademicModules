@@ -33,3 +33,9 @@ items:
         en: A video attached to the feature.
         fr: Une vidéo attachée à la fonctionnalité.
 
+images:
+  example:
+    label:
+      en: Example of showing multiple term definitions.
+      fr: Exemple d'affichage de plusieurs définitions de termes.
+    image: example.png

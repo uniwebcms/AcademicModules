@@ -37,3 +37,10 @@ elements:
     description: 
       en: One or more links that attach to the profile.
       fr: Un ou plusieurs liens qui s'attachent au profil.
+
+images:
+  example:
+    label:
+      en: Example of showing personal information on the side of main content.
+      fr: Exemple d'affichage d'informations personnelles à côté du contenu principal.
+    image: example.png

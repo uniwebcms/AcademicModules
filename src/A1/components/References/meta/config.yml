@@ -16,3 +16,10 @@ export: true
 
 elements:
     title:
+
+images:
+  example:
+    label:
+      en: Example of showing a list of references items with filtering and sorting on the left.
+      fr: Exemple d'affichage d'une liste d'éléments de référence avec filtrage et tri sur la gauche.
+    image: example.png
