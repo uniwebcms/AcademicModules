@@ -22,8 +22,4 @@ elements:
     type: image
 
 images:
-  example:
-    label:
-      en: Example of showing a call-to-action section.
-      fr: Exemple d'affichage d'une section d'appel à l'action.
-    image: example.png
+  - example.png

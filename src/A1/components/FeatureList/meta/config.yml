@@ -33,8 +33,4 @@ items:
         fr: Un lien attaché à l'élément de solution.
 
 images:
-  example:
-    label:
-      en: Example of showing three features in a grid layout.
-      fr: Exemple d'affichage de trois fonctionnalités dans une mise en page en grille.
-    image: example.png
+  - example.png

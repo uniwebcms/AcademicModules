@@ -33,8 +33,4 @@ elements:
       fr: Le titre des liens vers les réseaux sociaux.
 
 images:
-  example:
-    label:
-      en: Example of showing a subscription form and social media links.
-      fr: Exemple d'affichage d'un formulaire d'abonnement et de liens vers les réseaux sociaux.
-    image: example.png
+  - example.png

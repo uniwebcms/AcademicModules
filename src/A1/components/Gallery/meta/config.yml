@@ -18,8 +18,4 @@ elements:
       fr: L'image à afficher.
 
 images:
-  example:
-    label:
-      en: Example of showing a gallery of images.
-      fr: Exemple d'affichage d'une galerie d'images.
-    image: example.png
+  - example.png

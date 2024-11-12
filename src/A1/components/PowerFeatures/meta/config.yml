@@ -30,8 +30,4 @@ items:
         fr: Un lien attaché à la fonctionnalité.
 
 images:
-  example:
-    label:
-      en: Example of showing four features item in a row, each with a image, title, text and link.
-      fr: Exemple d'affichage de quatre éléments de fonctionnalités en ligne, chacun avec une image, un titre, un texte et un lien.
-    image: example.png
+  - example.png

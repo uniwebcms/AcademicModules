@@ -43,8 +43,4 @@ items:
         fr: Un lien attaché à l'élément de liste.
 
 images:
-  example:
-    label:
-      en: Example of showing two list items with images, titles, text and links.
-      fr: Exemple d'affichage de deux éléments de liste avec des images, des titres, du texte et des liens.
-    image: example.png
+  - example.png

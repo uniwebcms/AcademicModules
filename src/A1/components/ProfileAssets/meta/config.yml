@@ -19,8 +19,4 @@ elements:
   title:
 
 images:
-  example:
-    label:
-      en: Example of showing dynamic downloadable assets.
-      fr: Exemple d'affichage d'actifs téléchargeables dynamiques.
-    image: example.png
+  - example.png

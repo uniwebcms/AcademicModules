@@ -18,8 +18,4 @@ elements:
     title:
 
 images:
-  example:
-    label:
-      en: Example of showing the detailed view of a reference.
-      fr: Exemple d'affichage de la vue détaillée d'une référence.
-    image: example.png
+  - example.png

@@ -19,8 +19,4 @@ elements:
   title:
 
 images:
-  example:
-    label:
-      en: Example of showing references in table view.
-      fr: Exemple d'affichage des références en vue de tableau.
-    image: example.png
+  - example.png

@@ -23,8 +23,4 @@ elements:
       fr: Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier.
 
 images:
-  example:
-    label:
-      en: Example of display downloadable assets.
-      fr: Exemple d'affichage d'actifs téléchargeables.
-    image: example.png
+  - example.png

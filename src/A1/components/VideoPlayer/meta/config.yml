@@ -16,8 +16,4 @@ input:
   limit: one
 
 images:
-  example:
-    label:
-      en: Example of showing a video player with information at the bottom.
-      fr: Exemple d'affichage d'un lecteur vidéo avec des informations en bas.
-    image: example.png
+  - example.png

@@ -30,8 +30,4 @@ items:
         fr: Un lien attaché à la fonctionnalité.
 
 images:
-  example:
-    label:
-      en: Example of showing two feature spotlights, each with title, icon, text and a link.
-      fr: Exemple d'affichage de deux fonctionnalités spéciales, chacune avec un titre, une icône, un texte et un lien.
-    image: example.png
+  - example.png

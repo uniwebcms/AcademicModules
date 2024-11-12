@@ -39,8 +39,4 @@ items:
         fr: L'image de la personne qui a donné le témoignage.
 
 images:
-  example:
-    label:
-      en: Example of showing a testimonial section with a background image.
-      fr: Exemple d'affichage d'une section de témoignages avec une image d'arrière-plan.
-    image: example.png
+  - example.png
