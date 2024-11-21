@@ -191,7 +191,7 @@ export default function ProfileReferences({ block, input }) {
                         const { profile, url, ...rest } = reference;
 
                         const { title, issued, author } = rest;
-
+                        console.log(author);
                         let year = issued?.['date-parts']?.[0]?.[0] || '';
                         const journal = rest['container-title'] || '';
 
@@ -205,6 +205,18 @@ export default function ProfileReferences({ block, input }) {
                                     >
                                         {title}
                                     </Link>
+                                    <p className="text-sm text-text-color-90">
+                                        {author && author.length
+                                            ? author
+                                                  .map((author) => {
+                                                      const { given, family } = author;
+                                                      return `${family} ${given}${
+                                                          given.length === 1 ? '.' : ''
+                                                      }`;
+                                                  })
+                                                  .join(', ')
+                                            : null}
+                                    </p>
                                     <span className={`text-text-color-80 text-sm`}>
                                         {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}`}
                                     </span>

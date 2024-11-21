@@ -110,7 +110,7 @@ export default function Reference({ website, input }) {
                         ? author
                               .map((author) => {
                                   const { given, family } = author;
-                                  return `${family} ${given}.`;
+                                  return `${family} ${given}${given.length === 1 ? '.' : ''}`;
                               })
                               .join(', ')
                         : null}
