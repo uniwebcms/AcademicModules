@@ -100,12 +100,16 @@ const Event = (props) => {
             ) : null}
             {contact && (
                 <span className="block mt-2 text-sm lg:text-base text-text-color-80">
-                    <a
-                        href={`tel:${cleanedPhoneNum}`}
-                        className="text-inherit hover:text-link-color"
-                    >
-                        {phoneNumber}
-                    </a>
+                    {href ? (
+                        <span>{phoneNumber}</span>
+                    ) : (
+                        <a
+                            href={`tel:${cleanedPhoneNum}`}
+                            className="text-inherit hover:text-link-color"
+                        >
+                            {phoneNumber}
+                        </a>
+                    )}
                     {extension && <span> ext. {extension}</span>}
                 </span>
             )}
@@ -151,12 +155,16 @@ const Address = (props) => {
                 ) : null}
                 {contact && (
                     <span className="block mt-2 text-sm lg:text-base text-text-color-80">
-                        <a
-                            href={`tel:${cleanedPhoneNum}`}
-                            className="text-inherit hover:text-link-color"
-                        >
-                            {phoneNumber}
-                        </a>
+                        {href ? (
+                            <span>{phoneNumber}</span>
+                        ) : (
+                            <a
+                                href={`tel:${cleanedPhoneNum}`}
+                                className="text-inherit hover:text-link-color"
+                            >
+                                {phoneNumber}
+                            </a>
+                        )}
                         {extension && <span> ext. {extension}</span>}
                     </span>
                 )}
