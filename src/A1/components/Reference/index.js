@@ -67,7 +67,7 @@ export default function Reference({ website, input }) {
             py="py-12 lg:py-16"
             className="px-6 mx-auto max-w-8xl lg:px-8 flex flex-col space-y-8 lg:flex-row lg:space-x-10 lg:space-y-0"
         >
-            <div className="flex flex-col">
+            <div className="flex flex-col flex-1">
                 <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
                     {originalCategory ? (
                         <Link
@@ -110,7 +110,7 @@ export default function Reference({ website, input }) {
                         ? author
                               .map((author) => {
                                   const { given, family } = author;
-                                  return `${family} ${given}.`;
+                                  return `${family} ${given}${given.length === 1 ? '.' : ''}`;
                               })
                               .join(', ')
                         : null}
