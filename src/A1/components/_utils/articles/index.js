@@ -228,11 +228,12 @@ export const buildArticleBlocks = (articleContent) => {
 
             switch (type) {
                 case 'paragraph':
-                    if (!content) return null;
+                    // make empty paragraph available, users may expect to use that to control spacing
+                    // if (!content) return null;
 
                     return {
                         type: 'paragraph',
-                        content: buildTextNode(content),
+                        content: content ? buildTextNode(content) : '<span>&nbsp;</span>',
                         alignment: attrs?.textAlign,
                     };
                 case 'DividerBlock':

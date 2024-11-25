@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaCompress, FaExpand } from 'react-icons/fa';
-import { twJoin, Media, Image, website } from '@uniwebcms/module-sdk';
+import { twJoin, Media, Image, website, stripTags } from '@uniwebcms/module-sdk';
 
 const youtubeRegex =
     /\b(?:https?:\/\/)?(?:(?:www|m)\.)?youtu(?:\.be\/|be\.com\/(?:watch(?:\?(?:(?:feature=player_embedded|app=desktop)&)?v=|\/)|v\/|oembed\?url=http%3A\/\/www\.youtube\.com\/watch\?v%3D|attribution_link\?a=[0-9A-Za-z\-_]{10,20}&u=(?:%2F|\/)watch%3Fv%3D|e(?:mbed)?\/|shorts\/)|be-nocookie\.com\/embed\/)([0-9A-Za-z\-_]{10,20})/;
@@ -45,6 +45,9 @@ export default function Video({ page, videoControl, ...video }) {
     const profile = page.getPageProfile();
     const sections = page.blockGroups.body;
     const videos = getVideos(sections);
+
+    let caption = video?.caption || '';
+    caption = stripTags(caption);
 
     const [src, setSrc] = useState(video.src);
     const [currentVideo, setCurrentVideo] = useState(video);
@@ -207,6 +210,13 @@ export default function Video({ page, videoControl, ...video }) {
                             </div>
                         )}
                     </div>
+                    {caption ? (
+                        <div
+                            className={`block outline-none text-primary-80 border-none text-sm text-center mt-1`}
+                        >
+                            {caption}
+                        </div>
+                    ) : null}
                 </div>
                 {/* Conditional Rendering of FakeBlock and Buttons */}
                 {<FakeBlock />}

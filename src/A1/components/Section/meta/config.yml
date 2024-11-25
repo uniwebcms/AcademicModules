@@ -33,6 +33,10 @@ properties:
                   en: Small
                   fr: Petit
               value: sm
+            - label:
+                  en: Center in Full Screen
+                  fr: Centrer en plein écran
+              value: center
         description:
             en: The vertical padding of the section.
             fr: Le rembourrage vertical de la section.

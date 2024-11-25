@@ -28,6 +28,7 @@ export default function Section(props) {
                 verticalPadding === 'lg' ? 'py-12 lg:py-24' : '',
                 verticalPadding === 'md' ? 'py-6 lg:py-12' : '',
                 verticalPadding === 'sm' ? 'py-3 lg:py-6' : '',
+                verticalPadding === 'center' ? 'min-h-screen flex flex-col justify-center' : '',
                 noPadding ? 'py-0 lg:py-0' : ''
             )}
         >

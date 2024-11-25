@@ -12,6 +12,10 @@ export default dynamicExports;
 
 // export const site = {
 //     Layout: MyLayoutComponent       // take control of the site's layout
-//     props: { disableTheming: true } // eg, disable auto theming
+//     props: { disableTheming: true, rootClassName: '' } // eg, disable auto theming
 //     report: { ... }                 // for document rendering (eg, Word/Excel/JSON)
+// };
+
+// export const site = {
+//     props: { rootClassName: 'min-h-screen flex flex-col justify-center context__light' },
 // };
