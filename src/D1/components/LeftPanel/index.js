@@ -110,8 +110,6 @@ const MenuItem = (props) => {
 export default function (props) {
     const { website } = props;
 
-    console.log('left panel props', props);
-
     const pages = website.getPageHierarchy({
         nested: true,
     });

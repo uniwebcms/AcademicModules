@@ -5,7 +5,6 @@ import styles from './Renderer/Section.module.scss';
 import { buildArticleBlocks } from './Renderer/helper';
 
 export default function Section(props) {
-    console.log('Section props');
     const { block, website } = props;
 
     const { content } = block;

@@ -21,7 +21,6 @@ const findScrollContainer = (element) => {
 };
 
 export default (props) => {
-    console.log('right panel props', props);
     const sidebarStyle = 'max-h-[calc(100vh-88px)] max-w-[220px] flex-1';
 
     const liStyle = 'hover:underline line-clamp-1 [&_a.is-active]:text-[#0d8287]';
