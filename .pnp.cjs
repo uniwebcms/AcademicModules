@@ -27,6 +27,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:src/D1"\
     },\
     {\
+      "name": "expert-series-1",\
+      "reference": "workspace:src/E1"\
+    },\
+    {\
       "name": "marketing-series-1",\
       "reference": "workspace:src/M1"\
     }\
@@ -37,6 +41,7 @@ const RAW_RUNTIME_STATE =
     ["academic-series-1", ["workspace:src/A1"]],\
     ["builder", ["workspace:builder"]],\
     ["documentation-series-1", ["workspace:src/D1"]],\
+    ["expert-series-1", ["workspace:src/E1"]],\
     ["marketing-series-1", ["workspace:src/M1"]],\
     ["website-components-template", ["workspace:."]]\
   ],\
@@ -6471,6 +6476,21 @@ const RAW_RUNTIME_STATE =
           ["exenv", "npm:1.2.2"]\
         ],\
         "linkType": "HARD"\
+      }]\
+    ]],\
+    ["expert-series-1", [\
+      ["workspace:src/E1", {\
+        "packageLocation": "./src/E1/",\
+        "packageDependencies": [\
+          ["expert-series-1", "workspace:src/E1"],\
+          ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.16"],\
+          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.1"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:18.2.0"],\
+          ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.3.0"],\
+          ["tailwindcss", "npm:3.4.13"]\
+        ],\
+        "linkType": "SOFT"\
       }]\
     ]],\
     ["exponential-backoff", [\

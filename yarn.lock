@@ -4382,6 +4382,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expert-series-1@workspace:src/E1":
+  version: 0.0.0-use.local
+  resolution: "expert-series-1@workspace:src/E1"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.13"
+    "@uniwebcms/module-sdk": "npm:^1.23.1"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-icons: "npm:^5.3.0"
+    tailwindcss: "npm:^3.4.13"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
 "exponential-backoff@npm:^3.1.1":
   version: 3.1.1
   resolution: "exponential-backoff@npm:3.1.1"
