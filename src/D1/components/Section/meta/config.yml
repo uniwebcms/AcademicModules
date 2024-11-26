@@ -1,0 +1,11 @@
+title:
+    en: Section
+    fr: Section
+label:
+    en: Section
+    fr: Section
+description:
+    en: A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.
+    fr: Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur.
+
+export: true

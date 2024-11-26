@@ -191,7 +191,7 @@ export default function ProfileReferences({ block, input }) {
                         const { profile, url, ...rest } = reference;
 
                         const { title, issued, author } = rest;
-                        console.log(author);
+
                         let year = issued?.['date-parts']?.[0]?.[0] || '';
                         const journal = rest['container-title'] || '';
 

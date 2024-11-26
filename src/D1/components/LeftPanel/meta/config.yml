@@ -1,0 +1,11 @@
+title: 
+  en: Left Panel
+  fr: Panneau de gauche
+label:
+  en: Left Panel
+  fr: Panneau de gauche
+description:
+  en: A component that renders a left panel with page navigation.
+  fr: Un composant qui rend un panneau de gauche avec une navigation de page.
+
+export: true

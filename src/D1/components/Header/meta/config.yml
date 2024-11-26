@@ -1,0 +1,11 @@
+title: 
+  en: Header
+  fr: En-tête
+label:
+  en: Header
+  fr: En-tête
+description:
+  en: Render the header of a page.
+  fr: Rendre l'en-tête d'une page.
+
+export: true
