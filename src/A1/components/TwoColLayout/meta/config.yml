@@ -76,8 +76,8 @@ properties:
       fr: Choisissez la largeur souhaitée pour votre bloc de site Web.
   vertical_padding:
     label:
-      en: Vertical Padding
-      fr: Rembourrage vertical
+      en: Vertical Spacing
+      fr: Espacement vertical
     type: string
     default: lg
     enum:
@@ -96,10 +96,32 @@ properties:
     description:
       en: The space on top and bottom of the layout.
       fr: L'espace en haut et en bas de la mise en page.
+  horizontal_padding:
+    label:
+      en: Horizontal Spacing
+      fr: Espacement horizontal
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space on the left and right of the layout.
+      fr: L'espace à gauche et à droite de la mise en page.
   column_padding:
     label:
-      en: Column Padding
-      fr: Rembourrage de colonne
+      en: Column Spacing
+      fr: Espacement des colonnes
     type: string
     default: lg
     enum:
@@ -120,8 +142,8 @@ properties:
           fr: Aucun
         value: none
     description:
-      en: The space between the columns.
-      fr: L'espace entre les colonnes.
+      en: The space in between the two columns.
+      fr: L'espace entre les deux colonnes.
   vertical_alignment:
     label:
       en: Vertical Alignment

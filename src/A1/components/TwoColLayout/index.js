@@ -5,23 +5,23 @@ import './style.css';
 
 const layouts = {
     left: {
-        '50/50': 'flex flex-col w-full lg:w-1/2 px-4 lg:pr-0 lg:pl-6 xl:pl-8',
-        '40/60': 'flex flex-col w-full lg:w-[40%] px-4 lg:pr-0 lg:pl-6 xl:pl-8',
-        '60/40': 'flex flex-col w-full lg:w-[60%] px-4 lg:pr-0 lg:pl-6 xl:pl-8',
-        '70/30': 'flex flex-col w-full lg:w-[70%] px-4 lg:pr-0 lg:pl-6 xl:pl-8',
-        '30/70': 'flex flex-col w-full lg:w-[30%] px-4 lg:pr-0 lg:pl-6 xl:pl-8',
-        '75/25': 'flex flex-col w-full lg:w-[75%] px-4 lg:pr-0 lg:pl-6 xl:pl-8',
-        '25/75': 'flex flex-col w-full lg:w-[25%] px-4 lg:pr-0 lg:pl-6 xl:pl-8'
+        '50/50': 'flex flex-col w-full lg:w-1/2',
+        '40/60': 'flex flex-col w-full lg:w-[40%]',
+        '60/40': 'flex flex-col w-full lg:w-[60%]',
+        '70/30': 'flex flex-col w-full lg:w-[70%]',
+        '30/70': 'flex flex-col w-full lg:w-[30%]',
+        '75/25': 'flex flex-col w-full lg:w-[75%]',
+        '25/75': 'flex flex-col w-full lg:w-[25%]',
     },
     right: {
-        '50/50': 'flex flex-col w-full lg:w-1/2 px-4 lg:pl-0 lg:pr-6 xl:pr-8',
-        '40/60': 'flex flex-col w-full lg:w-[60%] px-4 lg:pl-0 lg:pr-6 xl:pr-8',
-        '60/40': 'flex flex-col w-full lg:w-[40%] px-4 lg:pl-0 lg:pr-6 xl:pr-8',
-        '70/30': 'flex flex-col w-full lg:w-[30%] px-4 lg:pl-0 lg:pr-6 xl:pr-8',
-        '30/70': 'flex flex-col w-full lg:w-[70%] px-4 lg:pl-0 lg:pr-6 xl:pr-8',
-        '75/25': 'flex flex-col w-full lg:w-[25%] px-4 lg:pl-0 lg:pr-6 xl:pr-8',
-        '25/75': 'flex flex-col w-full lg:w-[75%] px-4 lg:pl-0 lg:pr-6 xl:pr-8'
-    }
+        '50/50': 'flex flex-col w-full lg:w-1/2',
+        '40/60': 'flex flex-col w-full lg:w-[60%]',
+        '60/40': 'flex flex-col w-full lg:w-[40%]',
+        '70/30': 'flex flex-col w-full lg:w-[30%]',
+        '30/70': 'flex flex-col w-full lg:w-[70%]',
+        '75/25': 'flex flex-col w-full lg:w-[25%]',
+        '25/75': 'flex flex-col w-full lg:w-[75%]',
+    },
 };
 
 export default function TwoColLayout(props) {
@@ -31,8 +31,9 @@ export default function TwoColLayout(props) {
         layout_configuration = '50/50',
         max_width = 'regular',
         vertical_padding = 'lg',
+        horizontal_padding = 'lg',
         column_padding = 'lg',
-        vertical_alignment = 'center'
+        vertical_alignment = 'center',
     } = properties || {};
 
     if (!childBlocks.length) return null;
@@ -59,28 +60,47 @@ export default function TwoColLayout(props) {
                     : vertical_padding === 'lg'
                     ? 'py-12 lg:py-24 gap-y-8'
                     : ''
-            }>
+            }
+        >
             {childBlocks.length === 1 ? (
-                <div className='w-full'>
+                <div className="w-full">
                     <ChildBlocks
                         block={block}
                         childBlocks={childBlocks}
-                        extra={{ as: 'div', noPadding: true }}></ChildBlocks>
+                        extra={{ as: 'div', noPadding: true }}
+                    ></ChildBlocks>
                 </div>
             ) : (
                 childBlocks.map((child, index) => (
                     <div
                         key={index}
                         className={twJoin(
-                            index % 2 === 0 ? layouts.left[layout_configuration] : layouts.right[layout_configuration],
+                            index % 2 === 0
+                                ? layouts.left[layout_configuration]
+                                : layouts.right[layout_configuration],
+                            horizontal_padding === 'none' ? 'px-0' : '',
+                            horizontal_padding === 'sm' && index % 2 === 0
+                                ? 'px-4 lg:pr-0 lg:pl-6'
+                                : '',
+                            horizontal_padding === 'sm' && index % 2 === 1
+                                ? 'px-4 lg:pl-0 lg:pr-6'
+                                : '',
+                            horizontal_padding === 'lg' && index % 2 === 0
+                                ? 'px-6 lg:pr-0 lg:pl-8'
+                                : '',
+                            horizontal_padding === 'lg' && index % 2 === 1
+                                ? 'px-6 lg:pl-0 lg:pr-8'
+                                : '',
                             vertical_alignment === 'top' ? 'justify-start' : '',
                             vertical_alignment === 'bottom' ? 'justify-end' : '',
                             vertical_alignment === 'center' ? 'justify-center' : ''
-                        )}>
+                        )}
+                    >
                         <ChildBlocks
                             block={block}
                             childBlocks={[child]}
-                            extra={{ as: 'div', noPadding: true }}></ChildBlocks>
+                            extra={{ as: 'div', noPadding: true }}
+                        ></ChildBlocks>
                     </div>
                 ))
             )}

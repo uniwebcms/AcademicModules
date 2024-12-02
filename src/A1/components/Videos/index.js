@@ -20,7 +20,7 @@ const VideoItem = ({ profile, input, layout, isPanel }) => {
                         </div>
                     </div>
                     <div className="flex-grow h-24 flex flex-col">
-                        <h3 className="text-sm font-medium mb-1 line-clamp-2 group-hover:underline">
+                        <h3 className="text-sm font-medium mb-1 line-clamp-2 group-hover:underline break-all">
                             {title}
                         </h3>
                         <p className="text-sm line-clamp-1 mb-0.5 break-all text-text-color-80">
