@@ -1,0 +1,22 @@
+title: 
+  en: Embed Content
+  fr: Intégrer du contenu
+label:
+  en: Content - iFrame
+  fr: Contenu - iFrame
+description: 
+  en: Allows you to display content from another website directly on your own page.
+  fr: Vous permet d'afficher le contenu d'un autre site Web directement sur votre propre page.
+
+category: content
+export: true
+
+elements:
+  title:
+  link:
+    description:
+      en: The URL of the website you want to embed.
+      fr: L'URL du site Web que vous souhaitez intégrer.
+
+images:
+  - example.png
