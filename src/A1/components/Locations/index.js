@@ -1,20 +1,22 @@
 import React, { useRef } from 'react';
 import Container from '../_utils/Container';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, website } from '@uniwebcms/module-sdk';
 import { MdDateRange } from 'react-icons/md';
 import { HiOutlineDevicePhoneMobile } from 'react-icons/hi2';
 import { BsPinMap } from 'react-icons/bs';
 import { getLocationsFromInput, getAddressesFromCards } from '../_utils/map';
 import Map from './map';
 
-const formatPhoneNumber = (phoneNumber) => {
+const formatPhoneNumber = (phoneNumber, ext) => {
     const cleaned = ('' + phoneNumber).replace(/\D/g, ''); // Remove non-numeric characters
     const match = cleaned.match(/^(\d{1})(\d{3})(\d{3})(\d{4})$/);
 
+    const extension = ext ? ` ${website.localize({ en: `ext.`, fr: `poste` })} ${ext}` : '';
+
     if (match) {
-        return `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}`;
+        return `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}${extension}`;
     } else {
-        return cleaned;
+        return `${phoneNumber}${extension}`;
     }
 };
 
@@ -64,6 +66,13 @@ const Multi = ({ locations, zoom, website }) => {
             {locations.map((location, index) => {
                 const { title, address, geo, startDate, endDate, contact } = location;
 
+                let phoneNumber, extension, cleanedPhoneNum;
+
+                if (contact) {
+                    [phoneNumber, extension] = contact.split('|').map((part) => part.trim());
+                    cleanedPhoneNum = phoneNumber.replace(/[^+\d]/g, '');
+                }
+
                 const dateRange = [startDate, endDate]
                     .map((item) => {
                         if (!item) return null;
@@ -101,10 +110,10 @@ const Multi = ({ locations, zoom, website }) => {
                                 <div className="mt-4 flex items-center space-x-2.5">
                                     <HiOutlineDevicePhoneMobile className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
                                     <a
-                                        href={`tel:${contact}`}
+                                        href={`tel:${cleanedPhoneNum}`}
                                         className="text-base md:text-lg lg:text-xl hover:underline text-text-color-80"
                                     >
-                                        {formatPhoneNumber(contact)}
+                                        {formatPhoneNumber(phoneNumber, extension)}
                                     </a>
                                 </div>
                             ) : null}
@@ -135,6 +144,13 @@ const Single = ({ locations, zoom, website }) => {
             <div className="w-full lg:w-2/5 space-y-4 divide-y divide-text-color-40">
                 {locations.map((location, index) => {
                     const { title, address, startDate, endDate, contact } = location;
+
+                    let phoneNumber, extension, cleanedPhoneNum;
+
+                    if (contact) {
+                        [phoneNumber, extension] = contact.split('|').map((part) => part.trim());
+                        cleanedPhoneNum = phoneNumber.replace(/[^+\d]/g, '');
+                    }
 
                     const dateRange = [startDate, endDate]
                         .map((item) => {
@@ -178,10 +194,10 @@ const Single = ({ locations, zoom, website }) => {
                                 <div className="mt-4 flex items-center space-x-2.5">
                                     <HiOutlineDevicePhoneMobile className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
                                     <a
-                                        href={`tel:${contact}`}
+                                        href={`tel:${cleanedPhoneNum}`}
                                         className="text-base md:text-lg lg:text-xl hover:underline text-text-color-80"
                                     >
-                                        {formatPhoneNumber(contact)}
+                                        {formatPhoneNumber(phoneNumber, extension)}
                                     </a>
                                 </div>
                             ) : null}
