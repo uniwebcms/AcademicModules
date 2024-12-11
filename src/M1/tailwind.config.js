@@ -9,6 +9,7 @@ module.exports = {
     plugins: [
         require('@uniwebcms/uniweb-tailwind-plugin'),
         makeEntryPath('@uniwebcms/module-sdk', 'plugin'),
+        require('@tailwindcss/typography'),
     ],
     theme: {
         extend: {

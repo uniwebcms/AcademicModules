@@ -8,6 +8,9 @@ description:
   en: A large section at the top of the page, often used to introduce the page content.
   fr: Une grande section en haut de la page, souvent utilisée pour introduire le contenu de la page.
 
+category: hero
+export: true
+
 properties:
   height:
     label: 

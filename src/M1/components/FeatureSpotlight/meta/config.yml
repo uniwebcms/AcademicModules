@@ -1,0 +1,58 @@
+title: 
+  en: Feature Spotlight
+  fr: Fonctionnalité en vedette
+label:
+  en: Features - Spotlight
+  fr: Fonctionnalités - Vedette
+description: 
+  en: A visually striking component designed to showcase features or services in a large format. Ideal for highlighting key features, services, or important information, it ensures an engaging and dynamic presentation that captures attention.
+  fr: Un composant visuellement frappant conçu pour mettre en valeur des fonctionnalités ou des services dans un grand format. Idéal pour mettre en avant des fonctionnalités clés, des services ou des informations importantes, il garantit une présent
+
+category: feature
+export: true
+
+properties:
+  layout:
+    label: 
+      en: Layout
+      fr: Mise en page
+    type: string
+    default: ""
+    enum:
+      - label: 
+          en: Content on left and media on right
+          fr: Contenu à gauche et média à droite
+        value: ""
+      - label: 
+          en: Media on left and content on right
+          fr: Média à gauche et contenu à droite
+        value: reverse
+    description:
+      en: The order of the content and media in the feature spotlight.
+      fr: L'ordre du contenu et du média dans la fonctionnalité en vedette.
+  colorTone:
+    label: 
+      en: Color Tone
+      fr: Tonalité de couleur
+    type: string
+    default: ""
+    enum:
+      - label:
+          en: Default
+          fr: Par défaut
+        value: ""
+      - label:
+          en: Primary
+          fr: Primaire
+        value: primary
+      - label:
+          en: Secondary
+          fr: Secondaire
+        value: secondary
+      - label:
+          en: Accent
+          fr: Accent
+        value: accent
+    description:
+      en: The color tone of the feature spotlight, choose from the base colors of current website theme.
+      fr: La tonalité de couleur de la fonctionnalité en vedette, choisissez parmi les couleurs de base du thème actuel du site Web.

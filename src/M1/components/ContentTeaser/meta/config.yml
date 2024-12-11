@@ -1,0 +1,12 @@
+title: 
+  en: Content Teaser
+  fr: Mise en avant de contenu
+label:
+  en: Content Teaser
+  fr: Mise en avant de contenu
+description: 
+  en: A section that draws attention to a specific piece of content, such as a blog post, article, or product. Used to show a brief preview of the content
+  fr: Une section qui attire l'attention sur un contenu spécifique, tel qu'un article de blog, un article ou un produit. Utilisé pour afficher un bref aperçu du contenu
+
+category: content
+export: true

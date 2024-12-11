@@ -1,0 +1,32 @@
+title: 
+  en: Call to Action
+  fr: Appel à l'action
+label:
+  en: Call to Action
+  fr: Appel à l'action
+description: 
+  en: A section designed to encourage users to take a specific action such as signing up for a newsletter, downloading a resource, or contacting a sales representative. Perfect for driving conversions and generating leads.
+  fr: Une section conçue pour encourager les utilisateurs à effectuer une action spécifique telle que s'inscrire à une newsletter, télécharger une ressource ou contacter un représentant commercial. Parfait pour augmenter les conversions et générer des prospects.
+
+category: action
+export: true
+
+properties:
+  content_position:
+    label: 
+      en: Content Position
+      fr: Position du contenu
+    type: string
+    default: left
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The alignment of the content within the call to action section.
+      fr: L'alignement du contenu dans la section d'appel à l'action.

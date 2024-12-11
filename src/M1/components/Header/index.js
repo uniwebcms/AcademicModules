@@ -4,7 +4,7 @@ import { HiBars3, HiXMark } from 'react-icons/hi2';
 import { Link, twMerge, Image, twJoin, getPageProfile, Icon } from '@uniwebcms/module-sdk';
 import { CgChevronDown } from 'react-icons/cg';
 import PopoverMenu from '../_utils/PopoverMenu';
-import LanguageToggle from './LanguageToggle';
+// import LanguageToggle from './LanguageToggle';
 // import SiteSearch from './SiteSearch';
 import { getNextBlockContext } from '../_utils/context';
 import './style.css';
@@ -183,25 +183,49 @@ export default function Header(props) {
                     })}
                 </nav>
                 <div className="flex items-center space-x-8 justify-end">
-                    <div className="whitespace-nowrap">
-                        <span className="text-text-color-10 lg:text-base xl:text-lg font-medium">
+                    <div className="hidden lg:block whitespace-nowrap">
+                        <span
+                            className={twJoin(
+                                'lg:text-base xl:text-lg font-medium',
+                                allowTranslucentTop &&
+                                    sticky &&
+                                    initialPosition &&
+                                    'text-text-color-10'
+                            )}
+                        >
                             {website.localize({
                                 en: 'Log in',
                                 fr: 'Connexion',
                             })}
                         </span>
                     </div>
-                    <div className="whitespace-nowrap rounded-3xl px-6 py-2.5 bg-text-color/60">
-                        <span className="text-text-color-10 lg:text-base xl:text-lg font-medium">
+                    <div
+                        className={twJoin(
+                            'hidden lg:block whitespace-nowrap px-5 py-2 border border-text-color-70 rounded-3xl',
+                            allowTranslucentTop &&
+                                sticky &&
+                                initialPosition &&
+                                'border-0 bg-text-color/60'
+                        )}
+                    >
+                        <span
+                            className={twJoin(
+                                'lg:text-base xl:text-lg font-medium',
+                                allowTranslucentTop &&
+                                    sticky &&
+                                    initialPosition &&
+                                    'text-text-color-10'
+                            )}
+                        >
                             {website.localize({
-                                en: 'Sign up',
-                                fr: 'Inscription',
+                                en: 'Start for free',
+                                fr: 'Commencer gratuitement',
                             })}
                         </span>
                     </div>
                     <button
                         type="button"
-                        className="rounded-md p-2.5 lg:hidden"
+                        className="rounded-md p-2.5 lg:hidden !bg-[unset]"
                         onClick={() => setMobileMenuOpen(true)}
                     >
                         <span className="sr-only">Open main menu</span>

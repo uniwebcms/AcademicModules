@@ -5,8 +5,11 @@ label:
   en: Features - Card
   fr: Fonctionnalités - Carte
 description: 
-  en: Special section only to be used in the header page. Creates a navigation bar with automatic links to all website pages.
-  fr: Section spéciale à utiliser uniquement dans la page d'en-tête. Crée une barre de navigation avec des liens automatiques vers toutes les pages du site web.
+  en: Section showcasing a collection of features or services in a card format, layout can be horizontal scroll list or grid.
+  fr: Section mettant en avant une collection de fonctionnalités ou de services sous forme de cartes, la mise en page peut être une liste de défilement horizontale ou une grille.
+
+category: feature
+export: true
 
 properties:
   layout:
