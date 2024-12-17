@@ -22,7 +22,7 @@ const PriceTier = (props) => {
         props;
 
     const link = links[0];
-    const badge = buttons[0];
+    const badge = buttons?.[0];
     const features = lists[0]?.map((item) => item.paragraphs[0]) || [];
     const icon = icons[0];
     // const features =

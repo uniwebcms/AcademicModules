@@ -466,7 +466,6 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                     typeof activeDropdown === 'number' &&
                     navigation[activeDropdown]?.child_items?.length
                 ) {
-                    console.log('navigation[activeDropdown]');
                     return (
                         <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-10 pb-12">
                             <div className="flex flex-col lg:pl-44 xl:pl-48 2xl:pl-52">
