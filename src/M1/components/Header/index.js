@@ -1,452 +1,884 @@
-import React, { useEffect, useState } from 'react';
-import { Dialog } from '@headlessui/react';
-import { HiBars3, HiXMark } from 'react-icons/hi2';
-import { Link, twMerge, Image, twJoin, getPageProfile, Icon } from '@uniwebcms/module-sdk';
-import { CgChevronDown } from 'react-icons/cg';
-import PopoverMenu from '../_utils/PopoverMenu';
-// import LanguageToggle from './LanguageToggle';
-// import SiteSearch from './SiteSearch';
+import React, { useState, useEffect, useRef } from 'react';
+import { Dialog, Button } from '@headlessui/react';
 import { getNextBlockContext } from '../_utils/context';
-import './style.css';
+import { Image, Icon, getPageProfile, twJoin, Link, website } from '@uniwebcms/module-sdk';
+import { languages } from '../_utils/translate';
+import { HiOutlineGlobeAlt, HiSearch, HiX, HiOutlineMenu, HiChevronDown } from 'react-icons/hi';
+import { GrRadialSelected } from 'react-icons/gr';
+import { AiOutlineUser } from 'react-icons/ai';
 
-const checkIsParentRoute = (activeRoute, current) => {
-    const { child_items } = current;
+// a reusable sign in component in both dropdown and mobile menu
+// const SignIn = ({ logo }) => {
+//     return (
+//         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+//             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+//                 <div className="flex items-center justify-center h-10">{logo}</div>
+//                 <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight">
+//                     {website.localize({
+//                         en: 'Sign in to your account',
+//                         fr: 'Connectez-vous à votre compte',
+//                         es: 'Inicia sesión en tu cuenta',
+//                         ch: '登录您的帐户',
+//                     })}
+//                 </h2>
+//             </div>
 
-    if (child_items?.length) {
-        if (child_items.some((item) => item.route === activeRoute)) {
-            return true;
+//             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+//                 <form action="#" method="POST" className="space-y-6">
+//                     <div>
+//                         <label htmlFor="email" className="block text-sm/6 font-medium">
+//                             {website.localize({
+//                                 en: 'Email address',
+//                                 fr: 'Adresse e-mail',
+//                                 es: 'Correo electrónico',
+//                                 ch: '电子邮件地址',
+//                             })}
+//                         </label>
+//                         <div className="mt-2">
+//                             <input
+//                                 id="email"
+//                                 name="email"
+//                                 type="email"
+//                                 required
+//                                 autoComplete="email"
+//                                 className="block w-full rounded-md bg-text-color-10 px-3 py-1.5 text-base text-text-color outline outline-1 -outline-offset-1 outline-text-color-20 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 sm:text-sm/6"
+//                             />
+//                         </div>
+//                     </div>
+
+//                     <div>
+//                         <div className="flex items-center justify-between">
+//                             <label htmlFor="password" className="block text-sm/6 font-medium">
+//                                 {website.localize({
+//                                     en: 'Password',
+//                                     fr: 'Mot de passe',
+//                                     es: 'Contraseña',
+//                                     ch: '密码',
+//                                 })}
+//                             </label>
+//                             <div className="text-sm">
+//                                 <a
+//                                     href="#"
+//                                     className="font-semibold text-primary-600 hover:text-primary-500"
+//                                 >
+//                                     {website.localize({
+//                                         en: 'Forgot your password?',
+//                                         fr: 'Mot de passe oublié?',
+//                                         es: '¿Olvidaste tu contraseña?',
+//                                         ch: '忘记密码了吗?',
+//                                     })}
+//                                 </a>
+//                             </div>
+//                         </div>
+//                         <div className="mt-2">
+//                             <input
+//                                 id="password"
+//                                 name="password"
+//                                 type="password"
+//                                 required
+//                                 autoComplete="current-password"
+//                                 className="block w-full rounded-md bg-text-color-10 px-3 py-1.5 text-base text-text-color outline outline-1 -outline-offset-1 outline-text-color-20 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 sm:text-sm/6"
+//                             />
+//                         </div>
+//                     </div>
+
+//                     <div>
+//                         <button
+//                             type="submit"
+//                             className="flex w-full justify-center rounded-md !bg-primary-600 px-3 py-1.5 text-sm/6 font-semibold !text-text-color shadow-sm hover:!bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+//                         >
+//                             {website.localize({
+//                                 en: 'Sign in',
+//                                 fr: 'Se connecter',
+//                                 es: 'Iniciar sesión',
+//                                 ch: '登录',
+//                             })}
+//                         </button>
+//                     </div>
+//                 </form>
+
+//                 <p className="mt-10 text-center text-sm/6 text-text-color-60">
+//                     {website.localize({
+//                         en: 'Not a member?',
+//                         fr: 'Pas encore membre?',
+//                         es: '¿No eres miembro?',
+//                         ch: '还不是会员？',
+//                     })}{' '}
+//                     <a href="#" className="font-semibold text-primary-600 hover:text-primary-500">
+//                         {website.localize({
+//                             en: 'Start for free',
+//                             fr: 'Commencer gratuitement',
+//                             es: 'Comience gratis',
+//                             ch: '免费开始',
+//                         })}
+//                     </a>
+//                 </p>
+//             </div>
+//         </div>
+//     );
+// };
+
+const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, logoOnLight }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    // const [isSignInOpen, setIsSignInOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
+    const [isNavHovered, setIsNavHovered] = useState(false);
+    const dropdownRef = useRef(null);
+    const searchInputRef = useRef(null);
+    const [searchValue, setSearchValue] = useState('');
+    const [mobileContent, setMobileContent] = useState(null);
+    const navRef = useRef(null);
+    const placeholderRef = useRef(null);
+    const languageBtnRef = useRef(null);
+    const [languageDropdownWidth, setLanguageDropdownWidth] = useState(0);
+    let lastScrollY = 0;
+    let ticking = false;
+
+    // Reset state when need refresh
+    useEffect(() => {
+        setIsOpen(false);
+        setActiveDropdown(null);
+        setIsNavHovered(false);
+        setMobileContent(null);
+    }, [refresh]);
+
+    // Update placeholder height when nav height changes
+    useEffect(() => {
+        if (!navRef.current || !placeholderRef.current) return;
+
+        const updatePlaceholderHeight = () => {
+            const navHeight = navRef.current.offsetHeight;
+            placeholderRef.current.style.height = `${navHeight}px`;
+        };
+
+        // Initial height update
+        updatePlaceholderHeight();
+
+        // Create ResizeObserver to watch for nav height changes
+        const resizeObserver = new ResizeObserver(updatePlaceholderHeight);
+        resizeObserver.observe(navRef.current);
+
+        return () => resizeObserver.disconnect();
+    }, [refresh]);
+
+    // Handle initial opacity setup on mount and when floatingOnTop changes
+    useEffect(() => {
+        if (!navRef.current) return;
+
+        if (floatingOnTop) {
+            // For floating navbar, set opacity based on current scroll
+            const currentScrollY = window.scrollY;
+            const bgOpacity = Math.min(currentScrollY / 50, 1);
+            navRef.current.style.setProperty('--nav-bg-opacity', bgOpacity);
         } else {
-            return child_items.some((item) => checkIsParentRoute(activeRoute, item));
+            // For non-floating navbar, always solid background
+            navRef.current.style.setProperty('--nav-bg-opacity', '1');
         }
-    }
 
-    return false;
-};
+        // Set initial shadow opacity
+        const bgShadowOpacity = Math.min(window.scrollY / 50, 1);
+        navRef.current.style.setProperty('--nav-bg-shadow-opacity', bgShadowOpacity);
+    }, [floatingOnTop]);
 
-const isActiveRoute = (activeRoute, current) => {
+    // Set the language dropdown width based on the language button position
+    useEffect(() => {
+        if (!languageBtnRef.current) return;
+
+        const reCalc = () => {
+            const leftDistance = languageBtnRef.current.getBoundingClientRect().left;
+            const width = languageBtnRef.current.getBoundingClientRect().width;
+
+            let paddingLeft;
+
+            if (window.innerWidth >= 1280) {
+                paddingLeft = 96;
+            } else if (window.innerWidth >= 1024) {
+                paddingLeft = 64;
+            } else if (window.innerWidth >= 768) {
+                paddingLeft = 32;
+            } else {
+                paddingLeft = 24;
+            }
+
+            const offset =
+                window.innerWidth >= 1728
+                    ? `${(window.innerWidth - 1728) / 2 + paddingLeft}`
+                    : paddingLeft;
+
+            setLanguageDropdownWidth(leftDistance - offset + width);
+        };
+
+        window.addEventListener('resize', reCalc);
+
+        reCalc();
+
+        return () => window.removeEventListener('resize', reCalc);
+    }, [languageBtnRef.current]);
+
+    // Handle scroll behavior and update navbar states
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        const updateNavPosition = () => {
+            if (!navRef.current) return;
+
+            const currentScrollY = window.scrollY;
+            const navHeight = navRef.current.offsetHeight;
+
+            // Update background opacity while scrolling (only for floating navbar)
+            if (floatingOnTop) {
+                const bgOpacity = Math.min(currentScrollY / 50, 1);
+                navRef.current.style.setProperty('--nav-bg-opacity', bgOpacity);
+            }
+
+            // Update shadow opacity while scrolling
+            const bgShadowOpacity = Math.min(currentScrollY / 50, 1);
+            navRef.current.style.setProperty('--nav-bg-shadow-opacity', bgShadowOpacity);
+
+            // Update navbar position for show/hide animation
+            if (currentScrollY <= navHeight) {
+                // During initial scroll phase - map progress directly
+                const progress = currentScrollY / navHeight;
+                navRef.current.style.setProperty('--scroll-progress', progress);
+            } else {
+                // After scroll exceeds navbar height - handle show/hide based on scroll direction
+                const isScrollingDown = currentScrollY > lastScrollY;
+                const targetProgress = isScrollingDown ? 1 : 0;
+                navRef.current.style.setProperty('--scroll-progress', targetProgress);
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        const handleScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateNavPosition);
+                ticking = true;
+            }
+        };
+
+        // Set initial state
+        updateNavPosition();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [floatingOnTop]);
+
+    // Modified scroll locking
+    useEffect(() => {
+        const shouldLockScroll =
+            (activeDropdown !== null && window.innerWidth >= 1024) ||
+            (isOpen && window.innerWidth < 1024);
+
+        if (shouldLockScroll) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+        } else {
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+        };
+    }, [activeDropdown, isOpen]);
+
+    // Handle mouse movement for dropdown
+    useEffect(() => {
+        const handleMouseMove = (e) => {
+            if (!dropdownRef.current || window.innerWidth < 1024) return;
+
+            const dropdownRect = dropdownRef.current.getBoundingClientRect();
+            const isMouseBelowDropdown = e.clientY > dropdownRect.top + dropdownRect.height;
+
+            if (isMouseBelowDropdown) {
+                setIsNavHovered(false);
+                setActiveDropdown(null);
+            }
+        };
+
+        if (activeDropdown !== null) {
+            window.addEventListener('mousemove', handleMouseMove);
+            return () => window.removeEventListener('mousemove', handleMouseMove);
+        }
+    }, [activeDropdown]);
+
+    // Focus search input when search dropdown opens
+    useEffect(() => {
+        if (activeDropdown === 'search' && searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
+    }, [activeDropdown]);
+
+    // Handle dropdown hover for desktop
+    const handleMouseEnter = (index) => {
+        if (window.innerWidth >= 1024) {
+            setActiveDropdown(index);
+            setIsNavHovered(true);
+        }
+    };
+
+    // Handle action hover for desktop
+    const handleActionMouseEnter = (action) => {
+        if (window.innerWidth >= 1024) {
+            setActiveDropdown(action);
+            setIsNavHovered(true);
+        }
+    };
+
+    // Handle mouse leave for desktop
+    const handleMouseLeave = () => {
+        if (window.innerWidth >= 1024) {
+            setIsNavHovered(false);
+            setTimeout(() => {
+                if (!isNavHovered) {
+                    setActiveDropdown(null);
+                }
+            }, 100);
+        }
+    };
+
+    // Handle mobile menu actions
+    const handleMobileAction = (action) => {
+        if (action === mobileContent) {
+            setIsOpen(false);
+            setMobileContent(null);
+        } else {
+            setIsOpen(true);
+            setMobileContent(action);
+        }
+    };
+
+    // Handle search input change
+    const handleSearchChange = (e) => {
+        setSearchValue(e.target.value);
+    };
+
+    // Handle search submit
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            // onSearch(searchValue);
+        }
+    };
+
+    const renderDropdownContent = () => {
+        const currentLanguage = website.getLanguage();
+
+        switch (activeDropdown) {
+            case 'search':
+                return (
+                    <div className="max-w-4xl mx-auto px-4 pt-10 pb-12">
+                        <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
+                            <div className="flex-1 relative">
+                                <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                                <input
+                                    ref={searchInputRef}
+                                    type="search"
+                                    placeholder={website.localize({
+                                        en: 'Search everything...',
+                                        fr: 'Rechercher tout...',
+                                        es: 'Buscar todo...',
+                                        ch: '搜索所有...',
+                                    })}
+                                    value={searchValue}
+                                    onChange={handleSearchChange}
+                                    onKeyDown={handleSearch}
+                                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent ring-offset-2 ring-offset-gray-400 bg-white text-black"
+                                />
+                            </div>
+                            <div className="hidden lg:flex flex-col gap-1 text-sm">
+                                <span>
+                                    {website.localize({
+                                        en: 'Press',
+                                        fr: 'Appuyez',
+                                        es: 'Presione',
+                                        ch: '按',
+                                    })}{' '}
+                                    <kbd className="px-1 py-0.5 bg-bg-color-70 rounded text-xs">
+                                        Esc
+                                    </kbd>{' '}
+                                    {website.localize({
+                                        en: 'to clear',
+                                        fr: 'pour effacer',
+                                        es: 'para borrar',
+                                        ch: '清除',
+                                    })}
+                                </span>
+                                <span>
+                                    {website.localize({
+                                        en: 'Press',
+                                        fr: 'Appuyez',
+                                        es: 'Presione',
+                                        ch: '按',
+                                    })}{' '}
+                                    <kbd className="px-1 py-0.5 bg-bg-color-70 rounded">↵</kbd>{' '}
+                                    {website.localize({
+                                        en: 'to search',
+                                        fr: 'pour rechercher',
+                                        es: 'para buscar',
+                                        ch: '搜索',
+                                    })}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'language':
+                return (
+                    <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-10 pb-12">
+                        <div
+                            className="flex flex-wrap gap-4 justify-end"
+                            style={{
+                                width: languageDropdownWidth,
+                            }}
+                        >
+                            {languages.map((lang, index) => (
+                                <div
+                                    key={index}
+                                    className={twJoin(
+                                        'relative flex items-center px-6 py-2 rounded-lg group',
+                                        currentLanguage === lang.value
+                                            ? 'bg-text-color/10 cursor-not-allowed'
+                                            : 'bg-transparent cursor-pointer'
+                                    )}
+                                    onClick={() => website.changeLanguage(lang.value)}
+                                >
+                                    <span className={twJoin('font-medium text-lg text-text-color')}>
+                                        {lang.label}
+                                    </span>
+                                    {currentLanguage !== lang.value && (
+                                        <span
+                                            className={twJoin(
+                                                'absolute bottom-1 left-6 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-48px)]'
+                                            )}
+                                        />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            default:
+                if (
+                    typeof activeDropdown === 'number' &&
+                    navigation[activeDropdown]?.child_items?.length
+                ) {
+                    console.log('navigation[activeDropdown]');
+                    return (
+                        <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-10 pb-12">
+                            <div className="flex flex-col lg:pl-44 xl:pl-48 2xl:pl-52">
+                                {navigation[activeDropdown].child_items.map((child, index) => (
+                                    <Link
+                                        key={index}
+                                        to={child.route}
+                                        className="block w-fit relative px-3 py-2 group"
+                                    >
+                                        <span className="text-base">{child.label}</span>
+                                        <span
+                                            className={twJoin(
+                                                'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-24px)]'
+                                            )}
+                                        />
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    );
+                }
+
+                return null;
+        }
+    };
+
+    // Render mobile menu content
+    const renderMobileContent = () => {
+        switch (mobileContent) {
+            case 'search':
+                return (
+                    <div className="px-6 md:px-8 pt-2 pb-6">
+                        <div className="flex flex-col gap-4">
+                            <div className="relative">
+                                <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                                <input
+                                    ref={searchInputRef}
+                                    type="search"
+                                    placeholder={website.localize({
+                                        en: 'Search everything...',
+                                        fr: 'Rechercher tout...',
+                                        es: 'Buscar todo...',
+                                        ch: '搜索所有...',
+                                    })}
+                                    value={searchValue}
+                                    onChange={handleSearchChange}
+                                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-black"
+                                    autoFocus
+                                />
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'language':
+                return (
+                    <div className="px-6 md:px-8 pt-2 pb-6">
+                        <div className="flex flex-col gap-3">
+                            {languages.map((lang, index) => (
+                                <div
+                                    key={index}
+                                    onClick={() => website.changeLanguage(lang.value)}
+                                    className="relative flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-lg transition-colors"
+                                >
+                                    <span className="font-medium text-black">{lang.label}</span>
+                                    {website.getLanguage() === lang.value && (
+                                        <GrRadialSelected className="absolute right-4 h-5 w-5 text-blue-600" />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            default:
+                return (
+                    <div className="px-6 md:px-8 pt-2 pb-6">
+                        <div className="space-y-1">
+                            {navigation.map((item, index) => (
+                                <div key={index}>
+                                    <div
+                                        onClick={() =>
+                                            setActiveDropdown(
+                                                activeDropdown === item.label ? null : item.label
+                                            )
+                                        }
+                                        className="w-full text-left pl-3 py-4 rounded-md"
+                                    >
+                                        <div className="flex justify-between items-center">
+                                            {item.route ? (
+                                                <Link
+                                                    className="text-gray-700 text-lg font-semibold"
+                                                    to={item.route}
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            ) : (
+                                                item.label
+                                            )}
+                                            {item.child_items.length ? (
+                                                <HiChevronDown
+                                                    className={`h-6 w-6 text-gray-700 transform transition-transform ${
+                                                        activeDropdown === item.label
+                                                            ? 'rotate-180'
+                                                            : ''
+                                                    }`}
+                                                />
+                                            ) : null}
+                                        </div>
+                                    </div>
+                                    {item.child_items.length && activeDropdown === item.label ? (
+                                        <div className="pl-4 space-y-1 pt-2">
+                                            {item.child_items.map((child, index) => (
+                                                <Link
+                                                    key={index}
+                                                    to={child.route}
+                                                    className="block px-3 py-2 text-gray-900 text-base"
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    ) : null}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+        }
+    };
+
     return (
-        activeRoute === current ||
-        activeRoute === `${current}/index` ||
-        activeRoute === `${current}/[id]`
+        <>
+            {/* Placeholder div to prevent content jump */}
+            {floatingOnTop ? null : <div ref={placeholderRef} />}
+
+            <nav
+                ref={navRef}
+                className={twJoin('w-screen fixed z-50', theme)}
+                style={{
+                    transform: 'translateY(calc(var(--scroll-progress, 0) * -100%))',
+                    transition: 'transform 0.3s ease-in-out, background-color 0.3s ease',
+                    backgroundColor:
+                        'color-mix(in srgb, var(--bg-color), transparent calc(100% - (var(--nav-bg-opacity, 0) * 100%)))',
+                    boxShadow:
+                        'rgba(0, 0, 0, calc(var(--nav-bg-shadow-opacity, 0) * 0.1)) 0px 4px 6px -1px',
+                    top: 0,
+                }}
+                onMouseLeave={handleMouseLeave}
+            >
+                <div className="w-full max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24">
+                    <div className="flex justify-between h-20 items-center">
+                        <div className="flex items-center space-x-12">
+                            {/* Logo */}
+                            <div className="flex-shrink-0 w-24 md:w-28 lg:w-32 xl:w-36 2xl:w-40">
+                                <Link to="">{logo}</Link>
+                            </div>
+
+                            {/* Desktop Navigation */}
+                            <div className="hidden lg:flex lg:items-center lg:space-x-3 xl:space-x-6">
+                                {navigation.map((item, index) => {
+                                    const { label, route, child_items } = item;
+
+                                    const Wrapper = route ? Link : 'div';
+                                    const wrapperProps = route ? { to: route } : {};
+
+                                    return (
+                                        <div
+                                            key={index}
+                                            onMouseEnter={() => handleMouseEnter(index)}
+                                            className="relative"
+                                        >
+                                            <Wrapper
+                                                {...wrapperProps}
+                                                className={`inline-flex items-center px-3 py-2`}
+                                            >
+                                                <span className="text-lg">{label}</span>
+                                                {child_items.length ? (
+                                                    <HiChevronDown
+                                                        className={twJoin(
+                                                            'ml-1 h-5 w-5 transition-transform duration-300 ease-out group-hover:rotate-180',
+                                                            activeDropdown === index
+                                                                ? 'rotate-180'
+                                                                : ''
+                                                        )}
+                                                    />
+                                                ) : null}
+                                                <span
+                                                    className={twJoin(
+                                                        'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
+                                                        activeDropdown === index
+                                                            ? 'w-[calc(100%-24px)]'
+                                                            : 'w-0'
+                                                    )}
+                                                />
+                                            </Wrapper>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Desktop Right Side Actions */}
+                        <div className="hidden lg:flex lg:items-center space-x-0 xl:space-x-1">
+                            <button
+                                className="relative !bg-transparent group px-3 py-2"
+                                onMouseEnter={() => handleActionMouseEnter('search')}
+                            >
+                                <HiSearch className="h-6 w-6" />
+                                <span
+                                    className={twJoin(
+                                        'absolute bottom-[3px] left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
+                                        activeDropdown === 'search' ? 'w-[calc(100%-24px)]' : 'w-0'
+                                    )}
+                                />
+                            </button>
+                            <button
+                                ref={languageBtnRef}
+                                className="relative !bg-transparent group px-3 py-2"
+                                onMouseEnter={() => handleActionMouseEnter('language')}
+                            >
+                                <HiOutlineGlobeAlt className="h-6 w-6" />
+                                <span
+                                    className={twJoin(
+                                        'absolute bottom-[3px] left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
+                                        activeDropdown === 'language'
+                                            ? 'w-[calc(100%-24px)]'
+                                            : 'w-0'
+                                    )}
+                                />
+                            </button>
+                            <button
+                                className="relative !bg-transparent text-lg px-3 py-2 group !text-text-color"
+                                onMouseEnter={() => handleActionMouseEnter('login')}
+                                // onClick={() => setIsSignInOpen(true)}
+                            >
+                                {website.localize({
+                                    en: 'Login',
+                                    fr: 'Connexion',
+                                    es: 'Iniciar sesión',
+                                    ch: '登录',
+                                })}
+                                <span
+                                    className={twJoin(
+                                        'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-24px)]'
+                                    )}
+                                />
+                            </button>
+                            <button
+                                className="!ml-3 xl:!ml-4 !bg-transparent text-lg !text-text-color whitespace-nowrap px-5 py-2 border-2 rounded-3xl border-text-color transition-[border-color] duration-200 ease-out hover:border-primary-600"
+                                onMouseEnter={() => handleActionMouseEnter('signup')}
+                            >
+                                {website.localize({
+                                    en: 'Start for free',
+                                    fr: 'Commencer gratuitement',
+                                    es: 'Comience gratis',
+                                    ch: '免费开始',
+                                })}
+                            </button>
+                        </div>
+
+                        {/* Mobile Actions */}
+                        <div className="lg:hidden flex items-center space-x-3.5">
+                            <div onClick={() => handleMobileAction('search')}>
+                                <HiSearch className="h-6 w-6" />
+                            </div>
+                            <div onClick={() => handleMobileAction('language')}>
+                                <HiOutlineGlobeAlt className="h-6 w-6" />
+                            </div>
+                            <div
+                                onClick={() => handleMobileAction('user')}
+                                // onClick={() => setIsSignInOpen(true)}
+                            >
+                                <AiOutlineUser className="h-6 w-6" />
+                            </div>
+                            <div onClick={() => handleMobileAction('menu')}>
+                                <HiOutlineMenu className="h-6 w-6" />
+                                {/* {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />} */}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Desktop Dropdown */}
+                {activeDropdown !== null && window.innerWidth >= 1024 && (
+                    <div
+                        ref={dropdownRef}
+                        className="absolute left-0 w-full shadow-lg"
+                        onMouseEnter={() => setIsNavHovered(true)}
+                        onMouseLeave={() => setIsNavHovered(false)}
+                        style={{
+                            backgroundColor:
+                                'color-mix(in srgb, var(--bg-color), transparent calc(100% - (var(--nav-bg-opacity, 0) * 100%)))',
+                        }}
+                    >
+                        {renderDropdownContent()}
+                    </div>
+                )}
+
+                {/* Mobile Menu */}
+                {isOpen && (
+                    <div className="lg:hidden fixed inset-0 z-50">
+                        <div className="h-screen bg-white">
+                            {/* Mobile Menu Header */}
+                            <div className="h-20 flex items-center justify-between px-6 md:px-8">
+                                <div className="flex-shrink-0 w-24 md:w-28">{logoOnLight}</div>
+                                <div
+                                    onClick={() => {
+                                        setIsOpen(false);
+                                        setMobileContent(null);
+                                    }}
+                                >
+                                    <HiX className="h-6 w-6 text-gray-700" />
+                                </div>
+                            </div>
+                            {/* Mobile Menu Content */}
+                            <div className="overflow-y-auto h-[calc(100vh-8rem)]">
+                                {renderMobileContent()}
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </nav>
+
+            {/* Overlay for desktop dropdowns only */}
+            {window.innerWidth >= 1024 &&
+            activeDropdown !== null &&
+            (activeDropdown === 'search' ||
+                activeDropdown === 'language' ||
+                (typeof activeDropdown === 'number' &&
+                    navigation[activeDropdown]?.child_items?.length)) ? (
+                <div
+                    className="fixed inset-0 bg-gray-800/20 backdrop-blur-sm z-40"
+                    onClick={() => setActiveDropdown(null)}
+                />
+            ) : null}
+
+            {/* Sign In Dialog */}
+            {/* <Dialog
+                open={isSignInOpen}
+                onClose={() => setIsSignInOpen(false)}
+                className={twJoin('relative z-[100] focus:outline-none', theme)}
+            >
+                <div className="fixed inset-0 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 backdrop-blur-2xl">
+                        <Dialog.Panel className="relative w-full max-w-md rounded-xl bg-bg-color p-6 transform transition-transform duration-300 ease-in-out">
+                            <SignIn logo={logo} />
+
+                            <div
+                                className="absolute top-4 right-4 cursor-pointer"
+                                onClick={() => setIsSignInOpen(false)}
+                            >
+                                <HiX className="w-6 h-6 text-text-color/50 hover:text-text-color" />
+                            </div>
+                        </Dialog.Panel>
+                    </div>
+                </div>
+            </Dialog> */}
+        </>
     );
 };
 
 export default function Header(props) {
-    const { block, website, page } = props;
-    const { themeName: theme, main } = block;
-    const { sticky = false, alignment = 'left', mode = 'page' } = block.getBlockProperties();
+    const { block, page } = props;
+    const { themeName, main } = block;
 
-    const nextBlockContext = getNextBlockContext(block);
+    const { theme: nextTheme = '', allowTranslucentTop = false } = getNextBlockContext(block);
 
-    const { theme: nextTheme = '', allowTranslucentTop = false } = nextBlockContext;
+    const navigation = block.getBlockLinks({ nested: true });
 
-    let navigation = [];
+    const theme = allowTranslucentTop ? nextTheme : themeName;
+    const themeVariant = theme.split('__')[1];
 
-    if (mode == 'manual') {
-        navigation = block.getBlockLinks({ nested: true });
-    } else if (mode == 'page') {
-        navigation = website.getPageHierarchy({
-            nested: true,
-            filterEmpty: true,
-        });
-    }
+    const banner = main?.banner;
+    const icon = main?.body?.icons?.[0];
+    const images = [banner, ...main?.body?.imgs].filter((img) => img);
+    const logoImg = images.find((img) => img.caption === `logo-${themeVariant}`);
 
-    const [initialPosition, setInitialPosition] = useState(true);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const logo = icon ? (
+        <Icon icon={firstIcon} className="w-full h-full" />
+    ) : logoImg ? (
+        <Image profile={getPageProfile()} {...logoImg} className="w-full h-full object-contain" />
+    ) : null;
 
-    const left_aligned = alignment == 'left';
+    const logoLightImg = images.find((img) => img.caption === 'logo-light');
+
+    const logoOnLight = logoLightImg ? (
+        <Image
+            profile={getPageProfile()}
+            {...logoLightImg}
+            className="w-full h-full object-contain"
+        />
+    ) : (
+        logo
+    );
+
+    const langOptions = website.getLanguages();
+
+    const languageMap = langOptions.map((opt) => ({
+        value: opt.value,
+        label: languages[opt.value] || opt.label,
+    }));
 
     const activeRoute = page.activeRoute;
-    const banner = main?.banner;
-    const firstIcon = main?.body?.icons?.[0];
-    const images = [];
-
-    window.onscroll = function () {
-        if (window.scrollY > 0 && initialPosition) {
-            setInitialPosition(false);
-        } else if (window.scrollY == 0 && !initialPosition) {
-            setInitialPosition(true);
-        }
-    };
-
-    useEffect(() => {
-        setMobileMenuOpen(false);
-    }, [activeRoute]);
-
-    const wrapperClass = ['flex max-w-full w-screen'];
-
-    let adaptiveTheme = theme;
-
-    if (allowTranslucentTop) {
-        if (initialPosition || !sticky) {
-            wrapperClass.push('absolute top-0 left-0 z-50 !bg-[unset]');
-        }
-
-        if (!nextTheme) {
-            adaptiveTheme = theme;
-        } else {
-            adaptiveTheme = `${nextTheme}`;
-        }
-    }
-
-    wrapperClass.push(adaptiveTheme);
-
-    if (sticky && !initialPosition) {
-        wrapperClass.push('fixed top-0 left-0 z-50 bg-bg-color');
-    }
-
-    if (!left_aligned) {
-        wrapperClass.push('justify-center');
-    }
-
-    if (main?.body?.imgs?.length) {
-        images.push(...main?.body?.imgs);
-    }
-
-    if (banner) {
-        images.unshift(banner);
-    }
-
-    let logo = null;
-
-    if (firstIcon) {
-        logo = <Icon icon={firstIcon} className="w-full h-full" />;
-    } else {
-        if (images.length) {
-            let logoImg = images.find((img) => {
-                const theme = adaptiveTheme.split('__')[1];
-
-                return img.caption === `logo-${theme}`;
-            });
-
-            if (!logoImg) {
-                logoImg = images[0];
-            }
-
-            logo = (
-                <Image
-                    profile={getPageProfile()}
-                    url={logoImg.url}
-                    value={logoImg.value}
-                    alt={logoImg.alt}
-                    className="w-full h-full object-contain"
-                />
-            );
-        }
-    }
 
     return (
-        <div className={twMerge(wrapperClass, !initialPosition && sticky && '!shadow-2xl')}>
-            <div
-                className={twMerge(
-                    'transition-transform duration-300 flex items-center w-full px-6 lg:px-10 xl:px-12 2xl:px-16 py-3 lg:py-4 xl:py-5 2xl:py-6 justify-between lg:justify-normal max-w-10xl mx-auto'
-                )}
-            >
-                {logo ? (
-                    <Link
-                        to=""
-                        title="company logo"
-                        className="w-fit max-w-[9rem] lg:max-w-[10rem] 2xl:max-w-[12rem] flex-shrink-0"
-                    >
-                        <div className="h-8 lg:h-10 2xl:h-12 w-auto max-w-full">{logo}</div>
-                    </Link>
-                ) : null}
-                <nav
-                    className={twJoin(
-                        'hidden lg:flex 2xl:space-x-6 xl:space-x-4 lg:space-x-2 items-center w-full',
-                        left_aligned ? 'justify-start xl:ml-16 lg:ml-10' : 'justify-center'
-                    )}
-                >
-                    {navigation.map((page, index) => {
-                        if (page.child_items?.length) {
-                            return (
-                                <NavbarMenu
-                                    key={index}
-                                    {...page}
-                                    activeRoute={activeRoute}
-                                    theme={adaptiveTheme}
-                                />
-                            );
-                        } else {
-                            const { route, label } = page;
-
-                            return (
-                                <Link
-                                    key={index}
-                                    to={route}
-                                    className="inline-block lg:text-base xl:text-lg px-3 py-2"
-                                >
-                                    {label}
-                                </Link>
-                            );
-                        }
-                    })}
-                </nav>
-                <div className="flex items-center space-x-8 justify-end">
-                    <div className="hidden lg:block whitespace-nowrap">
-                        <span
-                            className={twJoin(
-                                'lg:text-base xl:text-lg font-medium',
-                                allowTranslucentTop &&
-                                    sticky &&
-                                    initialPosition &&
-                                    'text-text-color-10'
-                            )}
-                        >
-                            {website.localize({
-                                en: 'Log in',
-                                fr: 'Connexion',
-                            })}
-                        </span>
-                    </div>
-                    <div
-                        className={twJoin(
-                            'hidden lg:block whitespace-nowrap px-5 py-2 border border-text-color-70 rounded-3xl',
-                            allowTranslucentTop &&
-                                sticky &&
-                                initialPosition &&
-                                'border-0 bg-text-color/60'
-                        )}
-                    >
-                        <span
-                            className={twJoin(
-                                'lg:text-base xl:text-lg font-medium',
-                                allowTranslucentTop &&
-                                    sticky &&
-                                    initialPosition &&
-                                    'text-text-color-10'
-                            )}
-                        >
-                            {website.localize({
-                                en: 'Start for free',
-                                fr: 'Commencer gratuitement',
-                            })}
-                        </span>
-                    </div>
-                    <button
-                        type="button"
-                        className="rounded-md p-2.5 lg:hidden !bg-[unset]"
-                        onClick={() => setMobileMenuOpen(true)}
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        <HiBars3
-                            className="w-6 h-6 text-text-color-70 hover:text-text-color-90"
-                            aria-hidden="true"
-                        />
-                    </button>
-                </div>
-                <Dialog
-                    as="div"
-                    open={mobileMenuOpen}
-                    onClose={setMobileMenuOpen}
-                    className={adaptiveTheme}
-                >
-                    <Dialog.Panel className="fixed inset-0 z-50 px-6 py-3 overflow-y-auto lg:hidden bg-bg-color">
-                        <div className="flex flex-row-reverse items-center justify-between">
-                            <button
-                                type="button"
-                                className="inline-flex items-center justify-center rounded-md p-2.5"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                <span className="sr-only">Close menu</span>
-                                <HiXMark
-                                    className="w-6 h-6 text-text-color-70 hover:text-text-color-90"
-                                    aria-hidden="true"
-                                />
-                            </button>
-                            <a href="#" className="p-1.5 -ml-1.5">
-                                <span className="sr-only">Your Company</span>
-                                <div className="h-8 w-auto max-w-full">
-                                    {logo && <div className="w-full h-full">{logo}</div>}
-                                </div>
-                            </a>
-                        </div>
-                        <div className="mt-6 space-y-5">
-                            {navigation.map((page, index) => {
-                                if (page.child_items?.length) {
-                                    return (
-                                        <MobileNavbarMenu
-                                            key={index}
-                                            {...page}
-                                            activeRoute={activeRoute}
-                                        />
-                                    );
-                                } else {
-                                    const { route, label } = page;
-                                    const active = isActiveRoute(activeRoute, route);
-
-                                    return (
-                                        <Link
-                                            key={index}
-                                            to={route}
-                                            className={twMerge(
-                                                'mr-2 inline-block px-3 py-2 text-xl font-semibold leading-7 text-text-color'
-                                            )}
-                                        >
-                                            {label}
-                                        </Link>
-                                    );
-                                }
-                            })}
-                        </div>
-                    </Dialog.Panel>
-                </Dialog>
-            </div>
-        </div>
-    );
-}
-
-const MobileNavbarMenu = ({ label, route, child_items, hasData, activeRoute }) => {
-    const active = isActiveRoute(activeRoute, route);
-
-    return (
-        <div>
-            {hasData ? (
-                <Link
-                    to={route}
-                    className={twMerge(
-                        'block px-3 py-2 text-xl font-semibold leading-7 text-text-color-90 hover:text-text-color w-fit'
-                    )}
-                >
-                    {label}
-                </Link>
-            ) : (
-                <p
-                    className={twMerge(
-                        'px-3 py-2 text-xl font-semibold leading-7 text-text-color-70'
-                    )}
-                >
-                    {label}
-                </p>
-            )}
-            <div className="px-3 mt-1 grid grid-cols-2 md:grid-cols-2 gap-2">
-                {child_items.map((item, index) => {
-                    const { route, label, child_items, hasData } = item;
-                    const active = isActiveRoute(activeRoute, route);
-
-                    return (
-                        <div key={index} className={twJoin('')}>
-                            {hasData ? (
-                                <Link
-                                    key={index}
-                                    to={route}
-                                    className={twMerge(
-                                        'block text-lg font-medium leading-7 text-text-color-90 hover:text-text-color w-fit'
-                                    )}
-                                >
-                                    {label}
-                                </Link>
-                            ) : (
-                                <p className="block text-lg font-medium leading-7 text-text-color-70">
-                                    {label}
-                                </p>
-                            )}
-                            {child_items?.length ? (
-                                <ul className="list-disc list-inside">
-                                    {child_items.map((item, index) => {
-                                        const { route, label } = item;
-                                        const active = isActiveRoute(activeRoute, route);
-
-                                        return (
-                                            <Link
-                                                key={index}
-                                                to={route}
-                                                className={twMerge(
-                                                    'list-item px-3 text-base font-semibold leading-7 text-text-color-90 hover:text-text-color w-fit'
-                                                )}
-                                            >
-                                                {label}
-                                            </Link>
-                                        );
-                                    })}
-                                </ul>
-                            ) : null}
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
-};
-
-const buildNavigationMenu = (items, level, activeRoute) => {
-    return items.map((item, index) => {
-        const { route, label, child_items, hasData } = item;
-
-        const isFirst = index === 0;
-        const isLast = index === items.length - 1;
-
-        const active = isActiveRoute(activeRoute, route);
-        const isParentRoute = checkIsParentRoute(activeRoute, { child_items });
-
-        return (
-            <div
-                key={index}
-                className={twJoin(
-                    'bg-text-color-0 hover:bg-text-color-10 relative group w-60 lg:w-72 xl:w-80',
-                    isFirst && 'rounded-t-md',
-                    isLast && 'rounded-b-md'
-                )}
-            >
-                {hasData ? (
-                    <Link
-                        key={index}
-                        to={route}
-                        className={twMerge(
-                            'block w-full h-full px-6 py-4 text-base font-medium lg:text-[17px] text-text-color-90 hover:text-text-color',
-                            isParentRoute && 'underline decoration-link-color'
-                        )}
-                    >
-                        {label}
-                    </Link>
-                ) : (
-                    <p
-                        className="w-full h-full px-6 py-4 text-base font-medium lg:text-[17px] text-text-color-70"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                        }}
-                    >
-                        {label}
-                    </p>
-                )}
-                {child_items?.length ? (
-                    <div
-                        className="absolute -top-1 left-[230px] lg:left-[280px] rounded-md shadow ring-1 ring-text-color-20 ring-opacity-10 divide-y divide-text-color-20 invisible group-hover:visible"
-                        style={{ zIndex: level }}
-                        onClick={(e) => {
-                            e.stopPropagation;
-                        }}
-                    >
-                        {buildNavigationMenu(child_items, level + 10, activeRoute)}
-                    </div>
-                ) : null}
-            </div>
-        );
-    });
-};
-
-const NavbarMenu = ({ label, route, child_items, hasData, activeRoute, theme }) => {
-    const linkClass = 'inline-flex items-center space-x-1 xl:text-xl lg:text-lg px-3 py-2 group';
-    const iconClass =
-        'w-5 h-5 mb-0.5 text-inherit transition-transform transform group-hover:translate-y-0.5 duration-300';
-
-    const trigger = hasData ? (
-        <Link to={route} className={linkClass}>
-            <p>{label}</p>
-            <CgChevronDown className={iconClass} />
-        </Link>
-    ) : (
-        <div className={linkClass}>
-            <p>{label}</p>
-            <CgChevronDown className={iconClass} />
-        </div>
-    );
-
-    return (
-        <PopoverMenu
-            trigger={trigger}
-            options={buildNavigationMenu(child_items, 10, activeRoute, theme)}
+        <NavBar
+            navigation={navigation}
+            logo={logo}
+            logoOnLight={logoOnLight}
+            floatingOnTop={allowTranslucentTop}
+            theme={theme}
+            languages={languageMap}
+            refresh={activeRoute}
         />
     );
-};
+}

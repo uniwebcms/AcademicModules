@@ -1,0 +1,12 @@
+title: 
+  en: Hero Pricing
+  fr: Bannière de tarification
+label:
+  en: Hero Pricing
+  fr: Tarification en-tête
+description:
+  en: Special section to be used as a hero banner with pricing information.
+  fr: Section spéciale à utiliser comme bannière d'en-tête avec des informations de tarification.
+
+category: pricing
+export: true

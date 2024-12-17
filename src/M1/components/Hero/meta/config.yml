@@ -1,12 +1,12 @@
 title: 
-  en: Hero Section
-  fr: Section d'en-tête
+  en: Hero Banner
+  fr: Bannière d'en-tête
 label:
   en: Hero
   fr: En-tête
 description: 
-  en: A large section at the top of the page, often used to introduce the page content.
-  fr: Une grande section en haut de la page, souvent utilisée pour introduire le contenu de la page.
+  en: Special section to be used as a hero banner. Creates a full-width section with a background image and text.
+  fr: Section spéciale à utiliser comme bannière d'en-tête. Crée une section pleine largeur avec une image d'arrière-plan et du texte.
 
 category: hero
 export: true

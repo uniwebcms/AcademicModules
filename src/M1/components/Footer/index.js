@@ -153,6 +153,7 @@ export default function Footer(props) {
         parseBlockData(block);
 
     const emailInputRef = useRef(null);
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     const handleSubmit = (e) => {
         const email = emailInputRef.current.value;
@@ -182,7 +183,7 @@ export default function Footer(props) {
                 </div>
             )}
             {/* content */}
-            <div className="relative px-16 lg:px-24 max-w-8xl mx-auto z-10">
+            <div className="relative px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto z-10">
                 {/* navigation */}
                 <div className="w-full flex flex-col lg:flex-row lg:gap-x-20 xl:gap-x-24 2xl:gap-x-28 gap-y-8">
                     {/* logo && media links && newsletter */}
@@ -210,7 +211,7 @@ export default function Footer(props) {
                                 return (
                                     <a
                                         key={index}
-                                        className="block w-12 h-12 rounded-full bg-icon-color/10 backdrop-blur-md p-3"
+                                        className="block w-10 h-10 2xl:w-12 2xl:h-12 rounded-full bg-icon-color/10 backdrop-blur-md p-2 lg:p-3"
                                         href={href}
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -223,15 +224,18 @@ export default function Footer(props) {
                             })}
                         </div>
                         {/* newsletter */}
-                        <div className="mt-4 lg:mt-16">
+                        <div className="mt-8 lg:mt-16">
                             <p className="pl-2 text-lg lg:text-xl border-text-color-90">
                                 {website.localize({
                                     en: 'Signup to our newsletter',
                                     fr: 'Inscrivez-vous à notre newsletter',
                                 })}
                             </p>
-                            <form onSubmit={handleSubmit} className="relative mt-4">
-                                <div className="w-72 lg:w-full">
+                            <form
+                                onSubmit={handleSubmit}
+                                className="relative mt-4 w-full lg:w-72 max-w-full"
+                            >
+                                <div className="w-full">
                                     <label htmlFor="email-address" className="sr-only">
                                         Email address
                                     </label>
@@ -261,25 +265,66 @@ export default function Footer(props) {
                         </div>
                     </div>
                     {/* grouped links */}
-                    <div className="flex-grow grid grid-col-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-6 gap-y-9">
+                    <div className="flex-grow grid grid-col-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-6 gap-y-4 lg:gap-y-9">
                         {groupedLinks.map((group, gIndex) => (
-                            <div key={`g_${gIndex}`}>
-                                <h3 className="text-lg lg:text-xl font-extralight text-text-color-80">
-                                    {group.title}
-                                </h3>
-                                <ul role="list" className="mt-3">
-                                    {group.links.map((link, lIndex) => (
-                                        <li key={`l_${lIndex}`}>
-                                            <Link
-                                                to={link.href}
-                                                className="block py-1.5 font-light text-text-color hover:underline w-fit"
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            <React.Fragment key={`g_${gIndex}`}>
+                                {/* desktop */}
+                                <div className="hidden lg:block">
+                                    <h3 className="text-xl font-extralight text-text-color-80">
+                                        {group.title}
+                                    </h3>
+                                    <ul role="list" className="mt-3">
+                                        {group.links.map((link, lIndex) => (
+                                            <li key={`l_${lIndex}`}>
+                                                <Link
+                                                    to={link.href}
+                                                    className="block py-1.5 font-light text-text-color hover:underline w-fit"
+                                                >
+                                                    {link.label}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* mobile */}
+                                <div className="block lg:hidden">
+                                    <div
+                                        onClick={() =>
+                                            setActiveDropdown(
+                                                activeDropdown === group.title ? null : group.title
+                                            )
+                                        }
+                                    >
+                                        <div className="flex justify-between items-center">
+                                            <h3 className="text-lg font-extralight text-text-color-80">
+                                                {group.title}
+                                            </h3>
+                                            <HiChevronDown
+                                                className={`h-6 w-6 transform transition-transform ${
+                                                    activeDropdown === group.title
+                                                        ? 'rotate-180'
+                                                        : ''
+                                                }`}
+                                            />
+                                        </div>
+                                        {activeDropdown === group.title ? (
+                                            <ul role="list" className="mt-3">
+                                                {group.links.map((link, lIndex) => (
+                                                    <li key={`l_${lIndex}`}>
+                                                        <Link
+                                                            to={link.href}
+                                                            className="block py-1.5 font-light text-text-color hover:underline w-fit"
+                                                        >
+                                                            {link.label}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        ) : null}
+                                    </div>
+                                </div>
+                            </React.Fragment>
                         ))}
                     </div>
                 </div>
@@ -316,3 +361,53 @@ export default function Footer(props) {
         </footer>
     );
 }
+
+/**
+ * {navigation.map((item, index) => (
+                                <div key={index}>
+                                    <div
+                                        onClick={() =>
+                                            setActiveDropdown(
+                                                activeDropdown === item.label ? null : item.label
+                                            )
+                                        }
+                                        className="w-full text-left pl-3 py-4 rounded-md"
+                                    >
+                                        <div className="flex justify-between items-center">
+                                            {item.route ? (
+                                                <Link
+                                                    className="text-gray-700 text-lg font-semibold"
+                                                    to={item.route}
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            ) : (
+                                                item.label
+                                            )}
+                                            {item.child_items.length ? (
+                                                <HiChevronDown
+                                                    className={`h-6 w-6 text-gray-700 transform transition-transform ${
+                                                        activeDropdown === item.label
+                                                            ? 'rotate-180'
+                                                            : ''
+                                                    }`}
+                                                />
+                                            ) : null}
+                                        </div>
+                                    </div>
+                                    {item.child_items.length && activeDropdown === item.label ? (
+                                        <div className="pl-4 space-y-1 pt-2">
+                                            {item.child_items.map((child, index) => (
+                                                <Link
+                                                    key={index}
+                                                    to={child.route}
+                                                    className="block px-3 py-2 text-gray-900 text-base"
+                                                >
+                                                    {child.label}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    ) : null}
+                                </div>
+                            ))}
+ */

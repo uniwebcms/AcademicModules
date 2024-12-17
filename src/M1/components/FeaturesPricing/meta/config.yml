@@ -1,0 +1,39 @@
+title: 
+  en: Pricing Features
+  fr: Fonctionnalités de tarification
+label:
+  en: Pricing Features
+  fr: Fonctionnalités de tarification
+description:
+  en: The pricing features section displays a list of features with their pricing.
+  fr: La section des fonctionnalités de tarification affiche une liste de fonctionnalités avec leurs prix.
+
+category: pricing
+export: true
+
+properties:
+  color_tone:
+    label:
+      en: Color Tone
+      fr: Tonalité de couleur
+    type: string
+    enum:
+      - 
+        label:
+          en: Primary Color
+          fr: Couleur principale
+        value: primary
+      - 
+        label:
+          en: Secondary Color
+          fr: Couleur secondaire
+        value: secondary
+      - 
+        label:
+          en: None
+          fr: Aucun
+        value: none
+    default: none
+    description:
+      en: The color tone of the pricing features section.
+      fr: La tonalité de couleur de la section des fonctionnalités de tarification.

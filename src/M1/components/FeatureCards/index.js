@@ -100,7 +100,7 @@ export default function FeatureCards(props) {
 
             if (cardStyle === 'compact') {
                 classes +=
-                    ' px-[var(--scroll-padding)] lg:px pt-1 pb-3 [--scroll-padding:calc((max(100vw,96rem)-96rem)/2+64px)] lg:[--scroll-padding:calc((max(100vw,96rem)-96rem)/2+96px)]';
+                    ' px-[var(--scroll-padding)] lg:px pt-1 pb-3 [--scroll-padding:calc((max(100vw,96rem)-96rem)/2+24px)] md:[--scroll-padding:calc((max(100vw,96rem)-96rem)/2+32px)] lg:[--scroll-padding:calc((max(100vw,96rem)-96rem)/2+64px)] xl:[--scroll-padding:calc((max(100vw,96rem)-96rem)/2+96px)]';
             }
 
             return classes;
@@ -268,7 +268,7 @@ export default function FeatureCards(props) {
 
     return (
         <Container px="none">
-            <div className="px-16 lg:px-24 max-w-8xl mx-auto">
+            <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto">
                 {title && <h2 className="text-lg lg:text-2xl font-bold mb-2">{title}</h2>}
                 {subtitle && <p className="mb-6 lg:mb-8 text-base lg:text-lg">{subtitle}</p>}
             </div>
@@ -277,7 +277,7 @@ export default function FeatureCards(props) {
                     'relative',
                     layout === 'scroll' && cardStyle === 'compact'
                         ? ''
-                        : 'px-16 lg:px-24 max-w-8xl mx-auto'
+                        : 'px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto'
                 )}
             >
                 {layout === 'scroll' && cardStyle === 'expanded' && renderNavigation()}

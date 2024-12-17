@@ -5,9 +5,9 @@ import Container from '../_utils/Container';
 export default function Hero(props) {
     const { block } = props;
 
-    const { height = '100vh', gradient = 'none', alignment = 'left' } = block.getBlockProperties();
+    const { height = '100vh', alignment = 'left' } = block.getBlockProperties();
 
-    const { banner, title, subtitle, paragraphs, links } = block.getBlockContent();
+    const { banner, title, subtitle, links } = block.getBlockContent();
 
     return (
         <Container className="w-screen" style={{ height }}>
@@ -28,7 +28,7 @@ export default function Hero(props) {
                     alignment === 'right' && 'justify-end'
                 )}
             >
-                <div className="relative z-10 max-w-[60rem]">
+                <div className="relative max-w-[60rem]">
                     {title && (
                         <h1
                             className="text-3xl font-bold md:text-4xl lg:text-5xl text-center sm:text-left"

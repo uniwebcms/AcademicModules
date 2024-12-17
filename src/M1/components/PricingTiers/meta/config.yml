@@ -1,0 +1,12 @@
+title: 
+  en: Pricing Tiers
+  fr: Tarifs
+label:
+  en: Pricing Tiers
+  fr: Tarifs
+description:
+  en: The pricing tiers section displays a list of pricing tiers with their features and prices.
+  fr: La section des tarifs affiche une liste de tarifs avec leurs fonctionnalités et leurs prix.
+
+category: pricing
+export: true

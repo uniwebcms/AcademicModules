@@ -75,6 +75,7 @@ export default function TwoColLayout(props) {
                     <div
                         key={index}
                         className={twJoin(
+                            'h-full flex-grow',
                             index % 2 === 0
                                 ? layouts.left[layout_configuration]
                                 : layouts.right[layout_configuration],

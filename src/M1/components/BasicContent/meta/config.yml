@@ -1,0 +1,12 @@
+title: 
+  en: Basic Content
+  fr: Contenu de base
+label:
+  en: Basic Content
+  fr: Contenu de base
+description:
+  en: The basic content section displays a simple text content with a title and a description.
+  fr: La section de contenu de base affiche un contenu texte simple avec un titre et une description.
+
+category: content
+export: true

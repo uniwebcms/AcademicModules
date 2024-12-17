@@ -24,7 +24,7 @@ export default function Features(props) {
                 )}
             </div>
             {items.length ? (
-                <div className="mt-12 sm:mt-16 lg:mt-24 flex justify-between max-w-8xl mx-auto gap-x-12 md:gap-x-16 xl:gap-x-24">
+                <div className="mt-12 sm:mt-16 lg:mt-20 flex justify-between max-w-8xl mx-auto gap-x-12 md:gap-x-16 xl:gap-x-24">
                     {items.map((item, index) => {
                         const { icons, title, paragraphs, links } = item;
 

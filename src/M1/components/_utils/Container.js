@@ -34,7 +34,7 @@ export default function ({
     const paddingX = {
         none: 'px-0',
         sm: 'px-3 sm:px-6 lg:px-8',
-        md: 'px-8 sm:px-16 lg:px-24',
+        md: 'px-6 md:px-8 lg:px-16 xl:px-24',
         lg: 'px-12 sm:px-28 lg:px-32',
     };
 
