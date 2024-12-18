@@ -1,2 +1,38 @@
 name: Marketing Series 1
 description: A collection of components for building marketing websites.
+
+page_templates:
+  - name:
+      en: Home Page
+      fr: Page d'accueil
+    page:
+      en: Home
+      fr: Accueil
+    components:
+      - name: Hero
+      - name: FeatureSpotlight
+      - name: FeatureCards
+      - name: MediaBroadcast
+      - name: ContentTeaser
+  - name: 
+      en: Blog Page
+      fr: Page de blog
+    page:
+      en: Blog
+      fr: Blog
+    components:
+      - name: HeroMedia
+      - name: ArticleHub
+  - name:
+      en: Pricing Page
+      fr: Page de tarification
+    page:
+      en: Pricing
+      fr: Tarification
+    components:
+      - name: HeroPricing
+      - name: PricingTiers
+        preset: billing_cycle_switcher
+      - name: FeaturesPricing
+      - name: FAQ
+      - name: CallToAction

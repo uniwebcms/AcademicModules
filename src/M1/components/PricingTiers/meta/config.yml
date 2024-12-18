@@ -54,7 +54,7 @@ items:
 properties:
   billing_cycle_switcher:
     label:
-      en: Switch Billing Cycle
+      en: Billing Cycle Switcher
       fr: Commutateur de cycle de facturation
     type: boolean
     default: false
