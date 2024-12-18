@@ -11,6 +11,10 @@ description:
 category: article
 export: true
 
+elements:
+  title:
+  subtitle:
+
 properties:
   width:  
     label:
@@ -89,5 +93,17 @@ properties:
     type: boolean
     default: false
     description:
-      en: Whether the article list is displayed in a side panel.
-      fr: Si la liste d'articles est affichée dans un panneau latéral.
+      en: Indicates if the list is displayed in a side panel, if so, the gap in between content and text size will be adjusted accordingly.
+      fr: Indique si la liste est affichée dans un panneau latéral, si c'est le cas, l'écart entre le contenu et la taille du texte sera ajusté en conséquence.
+
+presets:
+  side_list:
+    label:
+      en: List layout in side panel
+      fr: Mise en page en liste dans un panneau latéral
+    properties:
+      width: full
+      vertical_padding: lg
+      horizontal_padding: sm
+      in_side_panel: true
+    image: side_list.png

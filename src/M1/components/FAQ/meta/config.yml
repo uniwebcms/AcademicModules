@@ -10,3 +10,22 @@ description:
 
 category: content
 export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    title:
+      description:
+        en: The title of the FAQ section.
+        fr: Le titre de la section FAQ.
+    text:
+      description:
+        en: The answer to the question.
+        fr: La réponse à la question.
+   
+images:
+  - example.png

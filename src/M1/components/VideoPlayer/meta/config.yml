@@ -10,3 +10,6 @@ description:
 
 category: video
 export: true
+
+images:
+  - example.png

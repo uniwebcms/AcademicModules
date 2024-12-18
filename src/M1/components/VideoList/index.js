@@ -151,7 +151,7 @@ export default function VideoList(props) {
                                                 in_side_panel
                                                     ? 'text-xs lg:text-sm mt-1'
                                                     : 'text-base lg:text-lg mt-2',
-                                                'line-clamp-1 text-text-color-50'
+                                                'line-clamp-1 text-text-color-50 break-all'
                                             )}
                                             title={subtitle}
                                         >
@@ -159,7 +159,7 @@ export default function VideoList(props) {
                                         </p>
                                     )}
                                     {lastLocalEditTime && (
-                                        <p className="text-xs text-text-color-60 mt-1">
+                                        <p className="text-xs text-text-color-60 mt-1.5">
                                             {lastLocalEditTime}
                                         </p>
                                     )}

@@ -5,8 +5,8 @@ label:
   en: Header
   fr: En-tête
 description: 
-  en: Special section only to be used in the header page. Creates a navigation bar with automatic links to all website pages.
-  fr: Section spéciale à utiliser uniquement dans la page d'en-tête. Crée une barre de navigation avec des liens automatiques vers toutes les pages du site web.
+  en: The navigation header displays a logo, a list of navigation links, search bar, language switcher, and login/signup buttons.
+  fr: L'en-tête de navigation affiche un logo, une liste de liens de navigation, une barre de recherche, un sélecteur de langue et des boutons de connexion/inscription.
 
 category: header
 export: true
@@ -19,6 +19,11 @@ elements:
     description:
       en: The logo image to display in the header.
       fr: L'image du logo à afficher dans l'en-tête.
+  media:
+    type: image
+    description:
+      en: The logo image to display in the header if icon is not set. Use the caption to set the correct image to use under different theme settings.
+      fr: L'image du logo à afficher dans l'en-tête si l'icône n'est pas définie. Utilisez la légende pour définir l'image correcte à utiliser sous différents paramètres de thème.
   list:
     type: list
     title: 
@@ -27,3 +32,6 @@ elements:
     description:
       en: The navigation links to display in the header, it is created as a list of links, each link can have children links.
       fr: Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants.
+
+images:
+  - example.png

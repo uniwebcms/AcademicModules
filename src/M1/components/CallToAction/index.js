@@ -1,11 +1,11 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, getPageProfile, Link, twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { Image, getPageProfile, Link, twJoin } from '@uniwebcms/module-sdk';
 
 export default function CallToAction(props) {
     const { block } = props;
 
-    const { banner, links, paragraphs } = block.getBlockContent();
+    const { banner, links } = block.getBlockContent();
     const { content_position = 'left' } = block.getBlockProperties();
 
     const [firstLink, secondLink] = links;
@@ -33,7 +33,7 @@ export default function CallToAction(props) {
             {/* Content */}
             <div
                 className={twJoin(
-                    'max-w-7xl mx-auto flex',
+                    'max-w-6xl mx-auto flex',
                     content_position === 'left' ? 'justify-start' : 'justify-end'
                 )}
             >

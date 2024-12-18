@@ -5,8 +5,22 @@ label:
   en: Basic Content
   fr: Contenu de base
 description:
-  en: The basic content section displays a simple text content with a title and a description.
-  fr: La section de contenu de base affiche un contenu texte simple avec un titre et une description.
+  en: The basic content section displays the title, description and links.
+  fr: La section de contenu de base affiche le titre, la description et les liens.
 
 category: content
 export: true
+
+elements:
+  pretitle:
+  title:
+  subtitle:
+  text:
+  link:
+    description: 
+      en: One or two links that put under the text content.
+      fr: Un ou deux liens qui sont placés sous le contenu textuel.
+
+images:
+  - example.png
+  

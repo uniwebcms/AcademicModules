@@ -16,6 +16,7 @@
         "@tailwindcss/typography": "^0.5.15",
         "@uniwebcms/module-sdk": "^1.23.1",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.1.0",
+        "flexsearch": "^0.7.31",
         "flowbite": "^1.8.1",
         "flowbite-react": "^0.6.4",
         "katex": "^0.16.11",

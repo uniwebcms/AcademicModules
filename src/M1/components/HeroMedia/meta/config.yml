@@ -5,8 +5,18 @@ label:
   en: Hero - Media 
   fr: Hero - Media
 description: 
-  en: A prominent section designed to grab attention, featuring a bold title and visually engaging media such as an image or video. Perfect for highlighting key messages or showcasing impactful content at the top of a page.
-  fr: Une section proéminente conçue pour attirer l'attention, mettant en vedette un titre audacieux et un média visuellement attrayant tel qu'une image ou une vidéo. Parfait pour mettre en avant des messages clés ou présenter un contenu percutant en haut d'une page.
+  en: A prominent section designed to grab attention, featuring a bold title and visually engaging video. Perfect for highlighting key messages or showcasing impactful content at the top of a page.
+  fr: Une section importante conçue pour attirer l'attention, avec un titre audacieux et une vidéo visuellement attrayante. Parfait pour mettre en avant des messages clés ou présenter un contenu percutant en haut d'une page.
 
 category: hero
 export: true
+
+elements:
+  background:
+  title:
+  subtitle:
+  media:
+    type: video
+
+images:
+  - example.png

@@ -11,6 +11,13 @@ description:
 category: action
 export: true
 
+elements:
+  background:
+  link:
+    description:
+      en: A action link that directs users to a specific page or resource.
+      fr: Un lien d'action qui dirige les utilisateurs vers une page ou une ressource spécifique.
+
 properties:
   content_position:
     label: 
@@ -30,3 +37,12 @@ properties:
     description: 
       en: The alignment of the content within the call to action section.
       fr: L'alignement du contenu dans la section d'appel à l'action.
+
+presets:
+  content_right:
+    label:
+      en: Showcase of content on the right side with a background image.
+      fr: Mise en valeur du contenu sur le côté droit avec une image d'arrière-plan.
+    properties:
+      content_position: right
+    image: content_right.png

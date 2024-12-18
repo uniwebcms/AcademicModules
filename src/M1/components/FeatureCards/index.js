@@ -9,7 +9,7 @@ export default function FeatureCards(props) {
     const { block } = props;
 
     const { title, subtitle } = block.getBlockContent();
-    const { layout = 'scroll', cardStyle = 'compact' } = block.getBlockProperties();
+    const { layout = 'scroll', card_style: cardStyle = 'compact' } = block.getBlockProperties();
     const items = block.getBlockItems();
 
     const scrollContainerRef = useRef(null);

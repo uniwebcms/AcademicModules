@@ -39,8 +39,6 @@ export default function FeaturePricing(props) {
         };
     });
 
-    console.log(endnotes);
-
     return (
         <Container py="lg" className="max-w-8xl mx-auto">
             <div className="max-w-4xl mx-auto">

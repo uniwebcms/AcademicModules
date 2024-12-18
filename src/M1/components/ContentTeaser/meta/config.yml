@@ -10,3 +10,27 @@ description:
 
 category: content
 export: true
+
+elements:
+  title:
+  subtitle:
+  link:
+    description:
+      en: A link put on the right side of the content teaser. It can direct users to a specific page or resource.
+      fr: Un lien placé sur le côté droit de la mise en avant de contenu. Il peut diriger les utilisateurs vers une page ou une ressource spécifique.
+
+items:
+  separator: divider
+  elements:
+    background:
+    pretitle:
+    title:
+    text:
+    link:
+      type: link
+      description: 
+        en: A link make the item clickable.
+        fr: Un lien rend l'élément cliquable.
+
+images:
+  - example.png

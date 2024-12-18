@@ -10,3 +10,31 @@ description:
 
 category: feature
 export: true
+
+elements:
+  title:
+  subtitle:
+  link:
+
+items:
+  separator: divider
+  elements:
+    icon:
+      description:
+        en: The icon of the feature.
+        fr: L'icône de la fonctionnalité.
+    title:
+      description:
+        en: The title of the feature.
+        fr: Le titre de la fonctionnalité.
+    text:
+      description:
+        en: The description of the feature.
+        fr: La description de la fonctionnalité.
+    link:
+      description:
+        en: One or two links that put under the text content.
+        fr: Un ou deux liens qui sont placés sous le contenu textuel.
+
+images:
+  - example.png

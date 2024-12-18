@@ -11,4 +11,10 @@ description:
 category: video
 export: true
 
+elements:
+  title:
+  subtitle:
+
+images:
+  - example.png
 

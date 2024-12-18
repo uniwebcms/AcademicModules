@@ -4,7 +4,7 @@ import { SafeHtml, Icon, Link, twJoin } from '@uniwebcms/module-sdk';
 
 export default function Features(props) {
     const { block } = props;
-    const { title, subtitle, paragraphs, links } = block.getBlockContent();
+    const { title, subtitle, links } = block.getBlockContent();
     const [firstLink, secondLink] = links;
 
     const items = block.getBlockItems();
@@ -24,7 +24,7 @@ export default function Features(props) {
                 )}
             </div>
             {items.length ? (
-                <div className="mt-12 sm:mt-16 lg:mt-20 flex justify-between max-w-8xl mx-auto gap-x-12 md:gap-x-16 xl:gap-x-24">
+                <div className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-8xl mx-auto gap-x-12 md:gap-x-16 xl:gap-x-24">
                     {items.map((item, index) => {
                         const { icons, title, paragraphs, links } = item;
 
@@ -33,7 +33,10 @@ export default function Features(props) {
                         const [firstLink, secondLink] = links;
 
                         return (
-                            <div className="flex-1 flex flex-col" key={index}>
+                            <div
+                                className="flex-1 flex flex-col max-w-md mx-auto w-full"
+                                key={index}
+                            >
                                 {icon && <Icon icon={icon} className="w-16 h-16 mx-auto" />}
                                 {title && (
                                     <h3 className="mt-4 text-lg font-bold truncate">{title}</h3>
@@ -48,7 +51,7 @@ export default function Features(props) {
                                     {firstLink && (
                                         <Link
                                             to={firstLink.href}
-                                            className="bg-btn-color text-btn-text-color flex items-center justify-center py-1 px-2.5 rounded-3xl max-w-[48%]"
+                                            className="bg-btn-color text-btn-text-color flex items-center justify-center py-1 px-3 rounded-3xl max-w-[48%]"
                                         >
                                             <span className="truncate text-sm">
                                                 {firstLink.label}

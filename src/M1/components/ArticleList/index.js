@@ -55,7 +55,7 @@ export default function ArticleList(props) {
         width = 'md',
         vertical_padding = 'lg',
         horizontal_padding = 'sm',
-        in_side_panel = 'false',
+        in_side_panel = false,
     } = block.getBlockProperties();
 
     const articles = input?.profiles || [];
@@ -160,7 +160,7 @@ export default function ArticleList(props) {
                                             {subtitle}
                                         </p>
                                     )}
-                                    <div className="mt-1">
+                                    <div className={twJoin(in_side_panel ? 'mt-2' : 'mt-3')}>
                                         <ArticleAuthor
                                             info={articleInformation}
                                             in_side_panel={in_side_panel}

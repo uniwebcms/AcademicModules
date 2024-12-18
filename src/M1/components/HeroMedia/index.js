@@ -20,7 +20,7 @@ export default function HeroMedia(props) {
                     />
                 </div>
             )}
-            <div className="flex flex-col items-center justify-center mx-auto max-w-4xl">
+            <div className="relative flex flex-col items-center justify-center mx-auto max-w-4xl z-10">
                 {title && (
                     <h1
                         className="text-3xl font-semibold md:text-4xl lg:text-5xl text-center tracking-wide text-pretty"

@@ -10,3 +10,36 @@ description:
 
 category: pricing
 export: true
+
+elements:
+  pretitle:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    title:
+      description:
+        en: Title for the one pricing tier or a list of pricing tiers.
+        fr: Titre pour un niveau de tarification ou une liste de niveaux de tarification.
+    subtitle:
+    list:
+      description:
+        en: List of features for one pricing tier.
+        fr: Liste des fonctionnalités pour un niveau de tarification.
+    link:
+      description:
+        en: Action link for one pricing tier.
+        fr: Lien d'action pour un niveau de tarification.
+    icon:
+      description:
+        en: Icon for each pricing tier.
+        fr: Icône pour chaque niveau de tarification.
+    text:
+      description:
+        en: Description for each pricing tier.
+        fr: Description pour chaque niveau de tarification.
+
+images:
+  - example.png

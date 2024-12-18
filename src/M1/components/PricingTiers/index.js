@@ -18,8 +18,7 @@ const defaultTireButtonStyle =
     'text-text-color-70 ring-1 ring-inset ring-text-color-20 hover:ring-text-color-30';
 
 const PriceTier = (props) => {
-    const { pretitle, title, subtitle, paragraphs, links, buttons, lists, icons, billingCycle } =
-        props;
+    const { pretitle, title, subtitle, paragraphs, links, buttons, lists, icons } = props;
 
     const link = links[0];
     const badge = buttons?.[0];
@@ -139,7 +138,7 @@ const PriceTier = (props) => {
     );
 };
 
-const BillingCycleSwitch = ({ billingCycle, setBillingCycle }) => {
+const BillingCycleSwitch = ({ billingCycle, setBillingCycle, paragraphs }) => {
     const toggleSwitch = () => {
         setBillingCycle((prev) => (prev === 'monthly' ? 'annual' : 'monthly'));
     };
@@ -152,7 +151,7 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle }) => {
                 <div className="flex items-center gap-x-3">
                     <span
                         className={twJoin(
-                            'mr-3 text-sm lg:text-base cursor-pointer w-44 text-right group',
+                            'mr-3 text-sm lg:text-base cursor-pointer w-44 text-right group max-w-[35vw] truncate',
                             billingCycle === 'monthly'
                                 ? 'font-semibold text-text-color'
                                 : 'text-text-color-60 group-hover:text-text-color-80'
@@ -181,7 +180,7 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle }) => {
                         />
                     </Switch>
                     <span
-                        className="ml-3 text-sm lg:text-base cursor-pointer w-44 text-left group"
+                        className="ml-3 text-sm lg:text-base cursor-pointer w-44 text-left group max-w-[35vw] truncate"
                         onClick={() => setBillingCycle('annual')}
                     >
                         <span
@@ -202,7 +201,14 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle }) => {
                     </span>
                 </div>
             </Switch.Group>
-            <span
+            <SafeHtml
+                value={paragraphs}
+                className={twJoin(
+                    'text-sm font-medium',
+                    billingCycle === 'annual' ? 'text-green-500' : 'text-text-color-30'
+                )}
+            />
+            {/* <span
                 className={twJoin(
                     'text-sm font-medium',
                     billingCycle === 'annual' ? 'text-green-500' : 'text-text-color-30'
@@ -214,16 +220,18 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle }) => {
                     es: 'Obtenga 2 meses gratis con la facturación anual',
                     zh: '年度账单享受2个月免费',
                 })}
-            </span>
+            </span> */}
         </div>
     );
 };
 
 export default function PricingTiers(props) {
     const { block } = props;
-    const { title, subtitle } = block.getBlockContent();
+    const { title, subtitle, paragraphs } = block.getBlockContent();
 
     const items = block.getBlockItems();
+
+    const { billing_cycle_switch = false } = block.getBlockProperties();
 
     const [billingCycle, setBillingCycle] = useState('monthly');
 
@@ -240,12 +248,15 @@ export default function PricingTiers(props) {
                         {subtitle}
                     </h3>
                 )}
-                <div className={twJoin(title || subtitle ? 'mt-12' : '')}>
-                    <BillingCycleSwitch
-                        billingCycle={billingCycle}
-                        setBillingCycle={setBillingCycle}
-                    />
-                </div>
+                {billing_cycle_switch ? (
+                    <div className={twJoin(title || subtitle ? 'mt-12' : '')}>
+                        <BillingCycleSwitch
+                            billingCycle={billingCycle}
+                            setBillingCycle={setBillingCycle}
+                            paragraphs={paragraphs}
+                        />
+                    </div>
+                ) : null}
             </div>
             {items.length ? (
                 <div className="mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">

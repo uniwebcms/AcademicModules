@@ -11,6 +11,15 @@ description:
 category: hero
 export: true
 
+elements:
+  banner:
+  title:
+  subtitle:
+  link:
+    description: 
+      en: One or two links that put under the text content.
+      fr: Un ou deux liens qui sont placés sous le contenu textuel.
+
 properties:
   height:
     label: 
@@ -38,28 +47,6 @@ properties:
     description: 
       en: The height of the hero section.
       fr: La hauteur de la section d'en-tête.
-  gradient:
-    label: 
-      en: Gradient
-      fr: Dégradé
-    type: string
-    default: none
-    enum:
-      - label: 
-          en: None
-          fr: Aucun
-        value: none
-      - label: 
-          en: From Top
-          fr: Du haut
-        value: top
-      - label: 
-          en: From Bottom
-          fr: Du bas
-        value: bottom
-    description: 
-      en: The gradient direction of the hero section.
-      fr: La direction du dégradé de la section d'en-tête.
   alignment:
     label: 
       en: Content Alignment
@@ -82,3 +69,13 @@ properties:
     description: 
       en: The alignment of the content in the hero section.
       fr: L'alignement du contenu dans la section d'en-tête.
+
+presets:
+  full_left:
+    label:
+      en: Full-height hero banner with content on the left.
+      fr: Bannière d'en-tête pleine hauteur avec contenu à gauche.
+    properties:
+      height: 100vh
+      alignment: left
+    image: full_left.png

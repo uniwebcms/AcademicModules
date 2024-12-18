@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Link, twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { Link, SafeHtml } from '@uniwebcms/module-sdk';
 
 export default function BasicContent(props) {
     const { block } = props;

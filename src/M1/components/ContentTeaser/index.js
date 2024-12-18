@@ -58,7 +58,7 @@ export default function ContentTeaser(props) {
                                 )}
                                 <div className="p-4">
                                     {pretitle && (
-                                        <p className="text-xs lg:text-sm text-indigo-600">
+                                        <p className="text-xs lg:text-sm text-primary-600">
                                             {pretitle}
                                         </p>
                                     )}

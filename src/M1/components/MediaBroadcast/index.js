@@ -157,9 +157,12 @@ export default function MediaBroadcast(props) {
     const [primaryLink, secondaryLink] = otherLinks;
 
     return (
-        <Container py="lg" className="max-w-8xl mx-auto flex flex-col lg:flex-row items-center">
+        <Container
+            py="lg"
+            className="max-w-8xl mx-auto flex flex-col lg:flex-row items-center gap-y-8 lg:gap-x-12"
+        >
             {/* content */}
-            <div className="w-full lg:w-1/2 max-w-[38rem] mr-auto pr-0 lg:pr-12">
+            <div className="w-full lg:w-1/2 max-w-full lg:max-w-[38rem] mr-auto">
                 {title && (
                     <h2
                         className="text-3xl md:text-4xl lg:text-5xl tracking-wide text-pretty"
@@ -220,7 +223,7 @@ export default function MediaBroadcast(props) {
                 ) : null}
             </div>
             {/* media */}
-            <div className="grid grid-cols-2 w-full lg:w-1/2 pl-0 lg:pl-12 gap-6 lg:gap-8 xl:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 w-full lg:w-1/2 pl-0 lg:pl-12 gap-6 lg:gap-8 xl:gap-10">
                 {videos.map((video, index) => {
                     return (
                         <div key={index}>

@@ -6,6 +6,7 @@ import { languages } from '../_utils/translate';
 import { HiOutlineGlobeAlt, HiSearch, HiX, HiOutlineMenu, HiChevronDown } from 'react-icons/hi';
 import { GrRadialSelected } from 'react-icons/gr';
 import { AiOutlineUser } from 'react-icons/ai';
+import SearchManager from './SearchManager';
 
 // a reusable sign in component in both dropdown and mobile menu
 // const SignIn = ({ logo }) => {
@@ -123,14 +124,17 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
     // const [isSignInOpen, setIsSignInOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [isNavHovered, setIsNavHovered] = useState(false);
-    const dropdownRef = useRef(null);
-    const searchInputRef = useRef(null);
     const [searchValue, setSearchValue] = useState('');
     const [mobileContent, setMobileContent] = useState(null);
+    const [languageDropdownWidth, setLanguageDropdownWidth] = useState(0);
+    const [searchResults, setSearchResults] = useState(null);
     const navRef = useRef(null);
     const placeholderRef = useRef(null);
     const languageBtnRef = useRef(null);
-    const [languageDropdownWidth, setLanguageDropdownWidth] = useState(0);
+    const searchManagerRef = useRef(null);
+    const dropdownRef = useRef(null);
+    const searchInputRef = useRef(null);
+
     let lastScrollY = 0;
     let ticking = false;
 
@@ -358,9 +362,9 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
     };
 
     // Handle search submit
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         if (e.key === 'Enter') {
-            // onSearch(searchValue);
+            await searchManagerRef.current.search(e.target.value);
         }
     };
 
@@ -376,7 +380,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                 <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                                 <input
                                     ref={searchInputRef}
-                                    type="search"
+                                    type="text"
                                     placeholder={website.localize({
                                         en: 'Search everything...',
                                         fr: 'Rechercher tout...',
@@ -387,6 +391,16 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                     onChange={handleSearchChange}
                                     onKeyDown={handleSearch}
                                     className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent ring-offset-2 ring-offset-gray-400 bg-white text-black"
+                                />
+                                <HiX
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 hover:text-gray-600 cursor-pointer"
+                                    onClick={() => {
+                                        setSearchValue('');
+                                        setSearchResults(null);
+                                        if (searchInputRef.current) {
+                                            searchInputRef.current.focus();
+                                        }
+                                    }}
                                 />
                             </div>
                             <div className="hidden lg:flex flex-col gap-1 text-sm">
@@ -423,6 +437,35 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                     })}
                                 </span>
                             </div>
+                        </div>
+
+                        {/* Display search results */}
+                        <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-scroll">
+                            {searchResults?.map((result) => (
+                                <Link
+                                    key={result.id}
+                                    to={result.href}
+                                    className="flex flex-col gap-1 px-2 py-1 hover:underline"
+                                    style={{ textShadow: '1px 1px 2px var(--bg-color)' }}
+                                >
+                                    <span className="text-base lg:text-lg">{result.title}</span>
+                                    {result.description && (
+                                        <span className="text-sm lg:text-base text-text-color-80">
+                                            {result.description}
+                                        </span>
+                                    )}
+                                </Link>
+                            ))}
+                            {searchValue && searchResults?.length === 0 && (
+                                <div className="text-center text-text-color">
+                                    {website.localize({
+                                        en: 'No results found',
+                                        fr: 'Aucun résultat trouvé',
+                                        es: 'No se encontraron resultados',
+                                        ch: '没有找到结果',
+                                    })}
+                                </div>
+                            )}
                         </div>
                     </div>
                 );
@@ -503,7 +546,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                 <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                                 <input
                                     ref={searchInputRef}
-                                    type="search"
+                                    type="input"
                                     placeholder={website.localize({
                                         en: 'Search everything...',
                                         fr: 'Rechercher tout...',
@@ -512,10 +555,50 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                     })}
                                     value={searchValue}
                                     onChange={handleSearchChange}
+                                    onKeyDown={handleSearch}
                                     className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-black"
                                     autoFocus
                                 />
+                                <HiX
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 hover:text-gray-600 cursor-pointer"
+                                    onClick={() => {
+                                        setSearchValue('');
+                                        setSearchResults(null);
+                                        if (searchInputRef.current) {
+                                            searchInputRef.current.focus();
+                                        }
+                                    }}
+                                />
                             </div>
+                        </div>
+
+                        {/* Display search results */}
+                        <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-scroll">
+                            {searchResults?.map((result) => (
+                                <Link
+                                    key={result.id}
+                                    to={result.href}
+                                    className="flex flex-col gap-1 px-2 py-1 hover:underline"
+                                    style={{ textShadow: '1px 1px 2px var(--bg-color)' }}
+                                >
+                                    <span className="text-base lg:text-lg">{result.title}</span>
+                                    {result.description && (
+                                        <span className="text-sm lg:text-base text-text-color-80">
+                                            {result.description}
+                                        </span>
+                                    )}
+                                </Link>
+                            ))}
+                            {searchValue && searchResults?.length === 0 && (
+                                <div className="text-center text-text-color">
+                                    {website.localize({
+                                        en: 'No results found',
+                                        fr: 'Aucun résultat trouvé',
+                                        es: 'No se encontraron resultados',
+                                        ch: '没有找到结果',
+                                    })}
+                                </div>
+                            )}
                         </div>
                     </div>
                 );
@@ -538,6 +621,39 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                         </div>
                     </div>
                 );
+            case 'user':
+                return (
+                    <div className="px-6 md:px-8 pt-2 pb-6">
+                        <div className="flex flex-col gap-5">
+                            <Link
+                                to="/"
+                                className="relative text-center px-4 py-3 bg-gray-50 rounded-lg"
+                            >
+                                <span className="font-medium text-black">
+                                    {website.localize({
+                                        en: 'Sign in',
+                                        fr: 'Se connecter',
+                                        es: 'Iniciar sesión',
+                                        ch: '登录',
+                                    })}
+                                </span>
+                            </Link>
+                            <Link
+                                to="/"
+                                className="relative text-center px-4 py-3 bg-primary-600 rounded-lg"
+                            >
+                                <span className="font-medium text-white">
+                                    {website.localize({
+                                        en: 'Not a member? Start for free',
+                                        fr: 'Pas encore membre? Commencer gratuitement',
+                                        es: '¿No eres miembro? Comience gratis',
+                                        ch: '还不是会员？免费开始',
+                                    })}
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
+                );
             default:
                 return (
                     <div className="px-6 md:px-8 pt-2 pb-6">
@@ -550,18 +666,20 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                                 activeDropdown === item.label ? null : item.label
                                             )
                                         }
-                                        className="w-full text-left pl-3 py-4 rounded-md"
+                                        className="w-full text-left pl-2 py-3 rounded-md"
                                     >
                                         <div className="flex justify-between items-center">
                                             {item.route ? (
                                                 <Link
-                                                    className="text-gray-700 text-lg font-semibold"
+                                                    className="text-gray-700 text-base font-semibold"
                                                     to={item.route}
                                                 >
                                                     {item.label}
                                                 </Link>
                                             ) : (
-                                                item.label
+                                                <span className="text-gray-700 text-base font-semibold">
+                                                    {item.label}
+                                                </span>
                                             )}
                                             {item.child_items.length ? (
                                                 <HiChevronDown
@@ -575,12 +693,12 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                         </div>
                                     </div>
                                     {item.child_items.length && activeDropdown === item.label ? (
-                                        <div className="pl-4 space-y-1 pt-2">
+                                        <div className="pl-2 space-y-1 pt-2">
                                             {item.child_items.map((child, index) => (
                                                 <Link
                                                     key={index}
                                                     to={child.route}
-                                                    className="block px-3 py-2 text-gray-900 text-base"
+                                                    className="block px-3 py-2 text-gray-900 text-sm"
                                                 >
                                                     {child.label}
                                                 </Link>
@@ -614,7 +732,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                 }}
                 onMouseLeave={handleMouseLeave}
             >
-                <div className="w-full max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24">
+                <div className="w-full max-w-9xl mx-auto px-6 md:px-8 lg:px-10 xl:px-16 2xl:px-24">
                     <div className="flex justify-between h-20 items-center">
                         <div className="flex items-center space-x-12">
                             {/* Logo */}
@@ -796,7 +914,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                 (typeof activeDropdown === 'number' &&
                     navigation[activeDropdown]?.child_items?.length)) ? (
                 <div
-                    className="fixed inset-0 bg-gray-800/20 backdrop-blur-sm z-40"
+                    className={twJoin(theme, 'fixed inset-0 bg-bg-color/40 backdrop-blur-sm z-40')}
                     onClick={() => setActiveDropdown(null)}
                 />
             ) : null}
@@ -822,6 +940,9 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                     </div>
                 </div>
             </Dialog> */}
+
+            {/* SearchManager */}
+            <SearchManager ref={searchManagerRef} onResultsChange={setSearchResults} />
         </>
     );
 };

@@ -42,7 +42,7 @@ export default function TwoColLayout(props) {
     return (
         <Container
             className={twJoin(
-                'mx-auto flex flex-col lg:flex-row gap-y-6 lg:gap-y-0',
+                'mx-auto flex flex-col lg:flex-row gap-y-8 lg:gap-y-0',
                 max_width === 'narrow' ? 'max-w-6xl' : '',
                 max_width === 'wide' ? 'max-w-8xl' : '',
                 max_width === 'full' ? 'max-w-full' : '',
@@ -57,10 +57,10 @@ export default function TwoColLayout(props) {
                     : vertical_padding === 'sm'
                     ? 'py-4 lg:py-6 gap-y-4'
                     : vertical_padding === 'lg'
-                    ? 'py-12 lg:py-24 gap-y-8'
+                    ? 'py-6 md:py-12 lg:py-24 gap-y-8'
                     : ''
             }
-            px={'px-6 lg:px-10 xl:px-12 2xl:px-16'}
+            px={'px-4 md:px-6 lg:px-10 xl:px-12 2xl:px-16'}
         >
             {childBlocks.length === 1 ? (
                 <div className="w-full">
@@ -81,16 +81,16 @@ export default function TwoColLayout(props) {
                                 : layouts.right[layout_configuration],
                             horizontal_padding === 'none' ? 'px-0' : '',
                             horizontal_padding === 'sm' && index % 2 === 0
-                                ? 'px-4 lg:pr-0 lg:pl-6'
+                                ? 'px-2 md:px-4 lg:pr-0 lg:pl-6'
                                 : '',
                             horizontal_padding === 'sm' && index % 2 === 1
-                                ? 'px-4 lg:pl-0 lg:pr-6'
+                                ? 'px-2 md:px-4 lg:pl-0 lg:pr-6'
                                 : '',
                             horizontal_padding === 'lg' && index % 2 === 0
-                                ? 'px-6 lg:pr-0 lg:pl-8'
+                                ? 'px-3 md:px-6 lg:pr-0 lg:pl-8'
                                 : '',
                             horizontal_padding === 'lg' && index % 2 === 1
-                                ? 'px-6 lg:pl-0 lg:pr-8'
+                                ? 'px-3 md:px-6 lg:pl-0 lg:pr-8'
                                 : '',
                             vertical_alignment === 'top' ? 'justify-start' : '',
                             vertical_alignment === 'bottom' ? 'justify-end' : '',

@@ -11,4 +11,9 @@ description:
 category: article
 export: true
 
+elements:
+  title:
+  subtitle:
 
+images:
+  - example.png

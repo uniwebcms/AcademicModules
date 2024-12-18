@@ -54,7 +54,7 @@ export default function FeatureSpotlight(props) {
         <Container
             py="lg"
             className={twJoin(
-                'flex flex-col lg:flex-row items-center justify-between gap-y-12 lg:gap-y-0 max-w-8xl mx-auto',
+                'flex flex-col lg:flex-row items-center justify-between gap-y-8 lg:gap-y-0 max-w-8xl mx-auto',
                 layout === 'reverse' ? 'lg:flex-row-reverse' : ''
             )}
         >
@@ -75,7 +75,7 @@ export default function FeatureSpotlight(props) {
                     />
                 )}
                 {items.length && (
-                    <div className="mt-6 lg:mt-10 pl-14 space-y-3">
+                    <div className="mt-6 lg:mt-10 pl-0 lg:pl-14 space-y-3">
                         {items.map((item, index) => {
                             const { title } = item;
 
@@ -118,7 +118,12 @@ export default function FeatureSpotlight(props) {
                 )}
             </div>
             {/* media */}
-            <div className={twJoin('py-6 lg:w-[52%]', layout === 'reverse' ? 'pr-8' : 'pl-8')}>
+            <div
+                className={twJoin(
+                    'py-6 w-full lg:w-[52%]',
+                    layout === 'reverse' ? 'pr-0 lg:pr-8' : 'pl-0 lg:pl-8'
+                )}
+            >
                 {currentMedia && (
                     <Media
                         profile={getPageProfile()}
@@ -127,7 +132,12 @@ export default function FeatureSpotlight(props) {
                         style={{ paddingBottom: '60%' }}
                     />
                 )}
-                <div className="relative mt-4 w-full flex items-center justify-center">
+                <div
+                    className={twJoin(
+                        'relative mt-4 w-full flex items-center lg:justify-center',
+                        layout === 'reverse' ? 'justify-start' : 'justify-end'
+                    )}
+                >
                     {items.length > 1
                         ? Array.from({ length: items.length }).map((_, index) => (
                               <span

@@ -11,6 +11,23 @@ description:
 category: feature
 export: true
 
+elements:
+  title:
+  text:
+  link:
+
+items:
+  separator: divider
+  elements:
+    title:
+      description:
+        en: The title of the feature.
+        fr: Le titre de la fonctionnalité.
+    media:
+      description: 
+        en: Image or video to display for the feature.
+        fr: Image ou vidéo à afficher pour la fonctionnalité.
+
 properties:
   layout:
     label: 
@@ -56,3 +73,21 @@ properties:
     description:
       en: The color tone of the feature spotlight, choose from the base colors of current website theme.
       fr: La tonalité de couleur de la fonctionnalité en vedette, choisissez parmi les couleurs de base du thème actuel du site Web.
+
+presets:
+  content_left:
+    label:
+      en: Showcase of content on the left side with media on the right side, color tone primary.
+      fr: Mise en valeur du contenu sur le côté gauche avec un média sur le côté droit, tonalité de couleur primaire.
+    properties:
+      layout: ""
+      colorTone: primary
+    image: content_left.png
+  content_right:
+    label:
+      en: Showcase of content on the right side with media on the left side, color tone secondary.
+      fr: Mise en valeur du contenu sur le côté droit avec un média sur le côté gauche, tonalité de couleur secondaire.
+    properties:
+      layout: reverse
+      colorTone: secondary
+    image: content_right.png

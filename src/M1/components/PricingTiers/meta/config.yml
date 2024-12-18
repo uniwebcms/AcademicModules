@@ -5,8 +5,62 @@ label:
   en: Pricing Tiers
   fr: Tarifs
 description:
-  en: The pricing tiers section displays a list of pricing tiers with their features and prices.
-  fr: La section des tarifs affiche une liste de tarifs avec leurs fonctionnalités et leurs prix.
+  en: The pricing tiers section displays a list of pricing tiers with their features and prices. A monthly or yearly switcher is put above the pricing tiers.
+  fr: La section des tarifs affiche une liste de tarifs avec leurs fonctionnalités et leurs prix. Un commutateur mensuel ou annuel est placé au-dessus des tarifs.
 
 category: pricing
 export: true
+
+elements:
+  title:
+  subtitle:
+  text:
+    description:
+      en: The promotion text put under billing cycle switcher.
+      fr: Le texte de promotion placé sous le commutateur de cycle de facturation.
+
+items:
+  separator: divider
+  elements:
+    icon:
+      description:
+        en: The icon put beside the pricing tier.
+        fr: L'icône placée à côté du tarif.
+    pretitle:
+      description:
+        en: The name of the pricing tier.
+        fr: Le nom du tarif.
+    title:
+      description:
+        en: The price and the billing cycle of the pricing tier.
+        fr: Le prix et le cycle de facturation du tarif.
+    subtitle:
+      description:
+        en: The description of the pricing tier.
+        fr: La description du tarif.
+    link:
+      description:
+        en: The action button of the pricing tier.
+        fr: Le bouton d'action du tarif.
+    list:
+      description:
+        en: The list of features of the pricing tier.
+        fr: La liste des fonctionnalités du tarif.
+    button:
+      description:
+        en: The badge of the pricing tier.
+        fr: Le badge du tarif.
+
+properties:
+  billing_cycle_switcher:
+    label:
+      en: Switch Billing Cycle
+      fr: Commutateur de cycle de facturation
+    type: boolean
+    default: false
+    description:
+      en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
+      fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.
+
+images:
+  - example.png

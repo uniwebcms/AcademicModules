@@ -5,8 +5,8 @@ label:
   en: Article
   fr: Article
 description: 
-  en: Display the content of a selected article.
-  fr: Afficher le contenu d'un article sélectionné.
+  en: Display the content of a article.
+  fr: Affiche le contenu d'un article.
 
 category: article
 export: true
@@ -83,32 +83,5 @@ properties:
       en: The space on the left and right of the layout.
       fr: L'espace à gauche et à droite de la mise en page.
 
-presets:
-  md:
-    label:
-      en: Content in Medium Width
-      fr: Contenu en largeur moyenne
-    properties:
-      width: md
-    image: md.png
-  lg:
-    label:
-      en: Content in Large Width
-      fr: Contenu en largeur grande
-    properties:
-      width: lg
-    image: lg.png
-  xl:
-    label:
-      en: Content in Extra Large Width
-      fr: Contenu en largeur très grande
-    properties:
-      width: xl
-    image: xl.png
-  2xl:
-    label:
-      en: Content in Double Extra Large Width
-      fr: Contenu en largeur double très grande
-    properties:
-      width: 2xl
-    image: 2xl.png
+images:
+  - example.png

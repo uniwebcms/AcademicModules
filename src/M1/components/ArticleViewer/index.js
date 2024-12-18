@@ -69,7 +69,7 @@ export default function Article(props) {
                     </span>
                 </Link>
             )}
-            <div className={'prose prose-lg lg:prose-xl'}>
+            <div className={'prose prose-sm md:prose-lg lg:prose-xl'}>
                 <Render {...props} content={parsedContent}></Render>
             </div>
         </Container>
