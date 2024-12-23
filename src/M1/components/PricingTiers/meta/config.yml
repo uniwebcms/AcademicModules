@@ -52,6 +52,24 @@ items:
         fr: Le badge du tarif.
 
 properties:
+  default_billing_cycle:
+    label:
+      en: Default Billing Cycle
+      fr: Cycle de facturation par défaut
+    type: string
+    default: monthly
+    enum:
+      - label:
+          en: Monthly
+          fr: Mensuel
+        value: monthly
+      - label:
+          en: Yearly
+          fr: Annuel
+        value: yearly
+    description:
+      en: The default billing cycle to display.
+      fr: Le cycle de facturation par défaut à afficher.
   billing_cycle_switcher:
     label:
       en: Billing Cycle Switcher
@@ -61,6 +79,52 @@ properties:
     description:
       en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
       fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.
+  yearly_price_multiplier:
+    label:
+      en: Yearly Price Multiplier
+      fr: Multiplicateur de prix annuel
+    type: number
+    default: 12
+    description:
+      en: The multiplier to calculate the yearly price from the monthly price.
+      fr: Le multiplicateur pour calculer le prix annuel à partir du prix mensuel.
+  appearance:
+    label:
+      en: Appearance
+      fr: Apparence
+    type: string
+    default: subtle
+    enum:
+      - label:
+          en: Subtle
+          fr: Subtil
+        value: subtle
+      - label:
+          en: Fancy
+          fr: Fantaisie
+        value: fancy
+    description:
+      en: The appearance of the pricing tiers.
+      fr: L'apparence des niveaux de tarification.
+  appearance_preset:
+    label:
+      en: Appearance Preset
+      fr: Préréglage d'apparence
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Ocean
+          fr: Océan
+        value: ocean
+    description:
+      en: The appearance preset of the pricing tiers when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
+      fr: Le préréglage d'apparence des niveaux de tarification lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
+
 
 images:
   - example.png

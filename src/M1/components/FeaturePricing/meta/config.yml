@@ -14,10 +14,10 @@ export: true
 elements:
   title:
   subtitle:
-  list:
-    description:
-      en: The endnotes of the pricing features section.
-      fr: Les notes de fin de la section des fonctionnalités de tarification.
+  # list:
+  #   description:
+  #     en: The endnotes of the pricing features section.
+  #     fr: Les notes de fin de la section des fonctionnalités de tarification.
 
 items:
   separator: divider
@@ -30,41 +30,52 @@ items:
       description:
         en: The title of the feature.
         fr: Le titre de la fonctionnalité.
-    subtitle:
+    list:
       description:
-        en: The subtitle of the feature.
-        fr: Le sous-titre de la fonctionnalité.
-    text:
-      description:
-        en: The text of the feature, if text has `|` it will be split into left and right.
-        fr: Le texte de la fonctionnalité, si le texte a `|` il sera divisé en gauche et droite.
+        en: Details of the feature in list format.
+        fr: Détails de la fonctionnalité au format liste.
 
 properties:
-  color_tone:
+  appearance:
     label:
-      en: Color Tone
-      fr: Tonalité de couleur
+      en: Appearance
+      fr: Apparence
     type: string
+    default: subtle
     enum:
-      - 
-        label:
-          en: Primary Color
-          fr: Couleur principale
-        value: primary
-      - 
-        label:
-          en: Secondary Color
-          fr: Couleur secondaire
-        value: secondary
-      - 
-        label:
+      - label:
+          en: Subtle
+          fr: Subtil
+        value: subtle
+      - label:
+          en: Fancy
+          fr: Fantaisie
+        value: fancy
+    description:
+      en: The appearance of the pricing tiers.
+      fr: L'apparence des niveaux de tarification.
+  appearance_preset:
+    label:
+      en: Appearance Preset
+      fr: Préréglage d'apparence
+    type: string
+    default: none
+    enum:
+      - label:
           en: None
           fr: Aucun
         value: none
-    default: none
+      - label:
+          en: Ocean
+          fr: Océan
+        value: ocean
+      - label:
+          en: Ocean with box style
+          fr: Océan avec style de boîte
+        value: ocean-box
     description:
-      en: The color tone of the pricing features section.
-      fr: La tonalité de couleur de la section des fonctionnalités de tarification.
+      en: The appearance preset of the pricing features when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
+      fr: Le préréglage d'apparence des fonctionnalités de tarification lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
 
 images:
   - example.png

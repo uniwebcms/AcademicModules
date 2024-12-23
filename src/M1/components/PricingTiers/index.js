@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Container from '../_utils/Container';
+import { formatToCAD } from '../_utils/pricing';
 import { Link, twJoin, SafeHtml, Icon, website } from '@uniwebcms/module-sdk';
 import { HiCheck } from 'react-icons/hi';
 import { Switch } from '@headlessui/react';
+import Fancy from './Fancy';
 
 const primaryTireRingStyle = 'ring-2 ring-primary-600';
 const secondaryTireRingStyle = 'ring-2 ring-secondary-600';
@@ -18,14 +20,23 @@ const defaultTireButtonStyle =
     'text-text-color-70 ring-1 ring-inset ring-text-color-20 hover:ring-text-color-30';
 
 const PriceTier = (props) => {
-    const { pretitle, title, subtitle, paragraphs, links, buttons, lists, icons } = props;
+    const {
+        pretitle,
+        title: amount,
+        subtitle,
+        paragraphs,
+        links,
+        buttons,
+        lists,
+        icons,
+        billingCycle,
+        calculateDisplayPrice,
+    } = props;
 
     const link = links[0];
     const badge = buttons?.[0];
     const features = lists[0]?.map((item) => item.paragraphs[0]) || [];
     const icon = icons[0];
-    // const features =
-    //     lists[0]?.[0]?.lists?.[0]?.map((item) => item.paragraphs?.[0])?.filter(Boolean) || [];
 
     let borderStyle = badge
         ? badge.attrs.style === 'primary'
@@ -52,20 +63,45 @@ const PriceTier = (props) => {
               defaultTireButtonStyle
         : defaultTireButtonStyle;
 
-    let price;
+    const price = (
+        <p className="flex items-baseline gap-x-1">
+            <span className="text-4xl font-semibold tracking-tight">
+                {!isNaN(amount) ? calculateDisplayPrice(amount) : amount}
+            </span>
+            {!isNaN(amount) && (
+                <span className="text-sm/6 font-medium text-text-color-60">
+                    /
+                    {billingCycle === 'yearly'
+                        ? website.localize({
+                              en: 'year',
+                              fr: 'an',
+                              es: 'año',
+                              zh: '年',
+                          })
+                        : website.localize({
+                              en: 'month',
+                              fr: 'mois',
+                              es: 'mes',
+                              zh: '月',
+                          })}
+                </span>
+            )}
+        </p>
+    );
+    // let price;
 
-    if (title.endsWith('/month')) {
-        const [amount, period] = title.split('/');
+    // if (title.endsWith('/month')) {
+    //     const [amount, period] = title.split('/');
 
-        price = (
-            <p className="flex items-baseline gap-x-1">
-                <span className="text-4xl font-semibold tracking-tight">{amount}</span>
-                <span className="text-sm/6 font-medium text-text-color-60">/{period}</span>
-            </p>
-        );
-    } else {
-        price = <p className="text-4xl font-semibold tracking-tight">{title}</p>;
-    }
+    //     price = (
+    //         <p className="flex items-baseline gap-x-1">
+    //             <span className="text-4xl font-semibold tracking-tight">{amount}</span>
+    //             <span className="text-sm/6 font-medium text-text-color-60">/{period}</span>
+    //         </p>
+    //     );
+    // } else {
+    //     price = <p className="text-4xl font-semibold tracking-tight">{title}</p>;
+    // }
 
     return (
         <div
@@ -140,10 +176,10 @@ const PriceTier = (props) => {
 
 const BillingCycleSwitch = ({ billingCycle, setBillingCycle, paragraphs }) => {
     const toggleSwitch = () => {
-        setBillingCycle((prev) => (prev === 'monthly' ? 'annual' : 'monthly'));
+        setBillingCycle((prev) => (prev === 'monthly' ? 'yearly' : 'monthly'));
     };
 
-    const isAnnualBilling = billingCycle === 'annual';
+    const isYearlyBilling = billingCycle === 'yearly';
 
     return (
         <div className="flex flex-col items-center gap-y-4">
@@ -167,26 +203,26 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle, paragraphs }) => {
                     </span>
                     <Switch
                         as="div"
-                        checked={isAnnualBilling}
+                        checked={isYearlyBilling}
                         onChange={toggleSwitch}
                         className={`${
-                            isAnnualBilling ? 'bg-secondary-500' : 'bg-text-color-10'
+                            isYearlyBilling ? 'bg-secondary-500' : 'bg-text-color-10'
                         } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2`}
                     >
                         <span
                             className={`${
-                                isAnnualBilling ? 'translate-x-6' : 'translate-x-1'
+                                isYearlyBilling ? 'translate-x-6' : 'translate-x-1'
                             } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
                         />
                     </Switch>
                     <span
                         className="ml-3 text-sm lg:text-base cursor-pointer w-44 text-left group max-w-[35vw] truncate"
-                        onClick={() => setBillingCycle('annual')}
+                        onClick={() => setBillingCycle('yearly')}
                     >
                         <span
                             className={twJoin(
                                 'text-sm lg:text-base cursor-pointer',
-                                billingCycle === 'annual'
+                                billingCycle === 'yearly'
                                     ? 'font-semibold text-text-color'
                                     : 'text-text-color-60 group-hover:text-text-color-80'
                             )}
@@ -205,22 +241,9 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle, paragraphs }) => {
                 value={paragraphs}
                 className={twJoin(
                     'text-sm font-medium',
-                    billingCycle === 'annual' ? 'text-green-500' : 'text-text-color-30'
+                    billingCycle === 'yearly' ? 'text-green-500' : 'text-text-color-30'
                 )}
             />
-            {/* <span
-                className={twJoin(
-                    'text-sm font-medium',
-                    billingCycle === 'annual' ? 'text-green-500' : 'text-text-color-30'
-                )}
-            >
-                {website.localize({
-                    en: 'Get 2 months free with annual billing',
-                    fr: 'Obtenez 2 mois gratuits avec la facturation annuelle',
-                    es: 'Obtenga 2 meses gratis con la facturación anual',
-                    zh: '年度账单享受2个月免费',
-                })}
-            </span> */}
         </div>
     );
 };
@@ -231,40 +254,83 @@ export default function PricingTiers(props) {
 
     const items = block.getBlockItems();
 
-    const { billing_cycle_switch = false } = block.getBlockProperties();
+    const {
+        default_billing_cycle = 'monthly',
+        billing_cycle_switcher = false,
+        yearly_price_multiplier = 12,
+        appearance = 'subtle',
+        appearance_preset = 'none',
+    } = block.getBlockProperties();
 
-    const [billingCycle, setBillingCycle] = useState('monthly');
+    const [billingCycle, setBillingCycle] = useState(default_billing_cycle);
 
-    return (
-        <Container px="none">
-            <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-6xl mx-auto">
-                {title && (
-                    <h2 className="text-xl font-bold md:text-2xl lg:text-3xl text-center text-pretty">
-                        {title}
-                    </h2>
-                )}
-                {subtitle && (
-                    <h3 className="mt-4 lg:mt-5 px-0 lg:px-8 text-base md:text-lg text-text-color-60 text-center text-pretty">
-                        {subtitle}
-                    </h3>
-                )}
-                {billing_cycle_switch ? (
-                    <div className={twJoin(title || subtitle ? 'mt-12' : '')}>
-                        <BillingCycleSwitch
-                            billingCycle={billingCycle}
-                            setBillingCycle={setBillingCycle}
-                            paragraphs={paragraphs}
-                        />
+    const calculateDisplayPrice = useCallback(
+        (price) => {
+            let displayPrice = price;
+            if (billingCycle === 'yearly' && default_billing_cycle === 'monthly') {
+                displayPrice = price * yearly_price_multiplier;
+            } else if (billingCycle === 'monthly' && default_billing_cycle === 'yearly') {
+                displayPrice = (price / yearly_price_multiplier).toFixed(2);
+            }
+
+            return formatToCAD(displayPrice);
+        },
+        [billingCycle, default_billing_cycle, yearly_price_multiplier]
+    );
+
+    if (appearance === 'subtle') {
+        return (
+            <Container px="none">
+                <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-6xl mx-auto">
+                    {title && (
+                        <h2 className="text-xl font-bold md:text-2xl lg:text-3xl text-center text-pretty">
+                            {title}
+                        </h2>
+                    )}
+                    {subtitle && (
+                        <h3 className="mt-4 lg:mt-5 px-0 lg:px-8 text-base md:text-lg text-text-color-60 text-center text-pretty">
+                            {subtitle}
+                        </h3>
+                    )}
+                    {billing_cycle_switcher ? (
+                        <div className={twJoin(title || subtitle ? 'mt-12' : '')}>
+                            <BillingCycleSwitch
+                                billingCycle={billingCycle}
+                                setBillingCycle={setBillingCycle}
+                                paragraphs={paragraphs}
+                            />
+                        </div>
+                    ) : null}
+                </div>
+                {items.length ? (
+                    <div className="mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+                        {items.map((item, index) => (
+                            <PriceTier
+                                key={index}
+                                {...item}
+                                billingCycle={billingCycle}
+                                calculateDisplayPrice={calculateDisplayPrice}
+                            />
+                        ))}
                     </div>
                 ) : null}
-            </div>
-            {items.length ? (
-                <div className="mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
-                    {items.map((item, index) => (
-                        <PriceTier key={index} {...item} billingCycle={billingCycle} />
-                    ))}
-                </div>
-            ) : null}
-        </Container>
-    );
+            </Container>
+        );
+    } else {
+        return (
+            <Fancy
+                {...{
+                    title,
+                    subtitle,
+                    promotion: paragraphs[0],
+                    items,
+                    billingCycle,
+                    calculateDisplayPrice,
+                    billing_cycle_switcher,
+                    setBillingCycle,
+                }}
+                uiPreset={appearance_preset}
+            />
+        );
+    }
 }

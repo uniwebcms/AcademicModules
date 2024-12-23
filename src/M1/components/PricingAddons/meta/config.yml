@@ -1,0 +1,74 @@
+title: 
+  en: Pricing Addons
+  fr: Extensions de tarification
+label:
+  en: Pricing Addons
+  fr: Extensions de tarification
+description:
+  en: Special section for listing pricing addons.
+  fr: Section spéciale pour lister les extensions de tarification.
+
+category: pricing
+export: true
+
+elements:
+  title:
+  subtitle:
+  list:
+    description:
+      en: Optional text put beside the header of this section, usually used for promotion.
+      fr: Texte facultatif placé à côté de l'en-tête de cette section, généralement utilisé pour la promotion.
+
+items:
+  separator: divider
+  elements:
+    icon:
+      type: icon
+      description: 
+        en: Icons attached to the pricing addon items. The order of the icons should match the order of the items in the list.
+        fr: Icônes attachées aux éléments d'extension de tarification. L'ordre des icônes doit correspondre à l'ordre des éléments de la liste.
+    title:
+      description:
+        en: Title of the pricing addon.
+        fr: Titre de l'extension de tarification.
+    list:
+      description:
+        en: The list of addon items with name and prices. For the price, use the / character to separate the currency and the amount.
+        fr: La liste des éléments d'extension avec nom et prix. Pour le prix, utilisez le caractère / pour séparer la devise et le montant.
+
+properties:
+  appearance:
+    label:
+      en: Appearance
+      fr: Apparence
+    type: string
+    default: fancy
+    enum:
+      - label:
+          en: Fancy
+          fr: Fantaisie
+        value: fancy
+    description:
+      en: The appearance of the pricing addons.
+      fr: L'apparence des extensions de tarification.
+  appearance_preset:
+    label:
+      en: Appearance Preset
+      fr: Préréglage d'apparence
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Ocean
+          fr: Océan
+        value: ocean
+    description:
+      en: The appearance preset of the pricing addons when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
+      fr: Le préréglage d'apparence des extensions de tarification lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
+
+# images:
+#   - example.png

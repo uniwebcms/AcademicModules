@@ -2,24 +2,15 @@ import React from 'react';
 import Container from '../_utils/Container';
 import { HiCheck } from 'react-icons/hi';
 import { SafeHtml, Icon, Link } from '@uniwebcms/module-sdk';
-import { GoArrowRight } from 'react-icons/go';
+import Fancy from './Fancy';
 
 const PlanBox = (props) => {
     const { title, subtitle, links, lists, icons, paragraphs } = props;
 
     const features = lists[0]?.map((item) => item.paragraphs[0]);
 
-    // const solutions =
-    //     icons.length && links.length && icons.length === links.length
-    //         ? icons.map((icon, index) => {
-    //               return {
-    //                   icon,
-    //                   link: links[index],
-    //               };
-    //           })
-    //         : null;
     const solutions =
-        icons.length && paragraphs.length && icons.length === paragraphs.length
+        icons.length && paragraphs.length && icons.length === paragraphs.length /// need fix, collect from lists
             ? icons.map((icon, index) => {
                   return {
                       icon,
@@ -86,12 +77,6 @@ const PlanBox = (props) => {
                     {actionLink.label}
                 </Link>
             )}
-            {/* {paragraphs.length ? (
-                <SafeHtml
-                    value={paragraphs}
-                    className="mt-2 text-sm text-text-color-40 text-center"
-                />
-            ) : null} */}
         </div>
     );
 };
@@ -102,32 +87,38 @@ export default function HeroPricing(props) {
 
     const items = block.getBlockItems();
 
-    return (
-        <Container px="none">
-            <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-4xl mx-auto">
-                {pretitle && (
-                    <p className="mb-4 lg:mb-5 text-base md:text-lg text-primary-600 text-center">
-                        {pretitle}
-                    </p>
-                )}
-                {title && (
-                    <h1 className="text-3xl font-semibold md:text-4xl lg:text-5xl text-center tracking-wide text-pretty">
-                        {title}
-                    </h1>
-                )}
-                {subtitle && (
-                    <h2 className="mt-4 lg:mt-6 px-0 lg:px-8 text-base md:text-lg lg:text-xl text-text-color-60 text-center tracking-wide text-pretty">
-                        {subtitle}
-                    </h2>
-                )}
-            </div>
-            {items.length ? (
-                <div className="mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-10">
-                    {items.map((item, index) => (
-                        <PlanBox key={index} {...item} />
-                    ))}
+    const { appearance = 'subtle', appearance_preset = 'none' } = block.getBlockProperties();
+
+    if (appearance === 'subtle') {
+        return (
+            <Container px="none">
+                <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-4xl mx-auto">
+                    {pretitle && (
+                        <p className="mb-4 lg:mb-5 text-base md:text-lg text-primary-600 text-center">
+                            {pretitle}
+                        </p>
+                    )}
+                    {title && (
+                        <h1 className="text-3xl font-semibold md:text-4xl lg:text-5xl text-center tracking-wide text-pretty">
+                            {title}
+                        </h1>
+                    )}
+                    {subtitle && (
+                        <h2 className="mt-4 lg:mt-6 px-0 lg:px-8 text-base md:text-lg lg:text-xl text-text-color-60 text-center tracking-wide text-pretty">
+                            {subtitle}
+                        </h2>
+                    )}
                 </div>
-            ) : null}
-        </Container>
-    );
+                {items.length ? (
+                    <div className="mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-10">
+                        {items.map((item, index) => (
+                            <PlanBox key={index} {...item} />
+                        ))}
+                    </div>
+                ) : null}
+            </Container>
+        );
+    } else {
+        return <Fancy {...{ pretitle, title, subtitle, items }} uiPreset={appearance_preset} />;
+    }
 }
