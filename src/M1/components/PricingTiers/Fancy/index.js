@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../../_utils/Container';
 import { twJoin, stripTags, website, Icon, Link } from '@uniwebcms/module-sdk';
 
-const containerBgDefault = 'bg-primary-600';
+const containerBgDefault = 'bg-bg-color';
 const containerBgOcean = 'bg-slate-900';
 
 const containerBgGradientColorDefault = 'from-primary-50 via-primary-100 to-primary-50';
