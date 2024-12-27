@@ -30,9 +30,13 @@ page_templates:
       en: Pricing
       fr: Tarification
     components:
-      - name: HeroPricing
+      - name: PricingHero
+        preset: fancy_ocean
       - name: PricingTiers
-        preset: billing_cycle_switcher
-      - name: FeaturesPricing
+        preset: fancy_ocean
+      - name: PricingFeatures
+        preset: fancy_ocean
       - name: FAQ
+        preset: fancy_ocean
       - name: CallToAction
+        preset: fancy_ocean

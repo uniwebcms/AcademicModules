@@ -5,7 +5,7 @@ import { twJoin, Icon, stripTags } from '@uniwebcms/module-sdk';
 const containerBgDefault = 'bg-bg-color';
 const containerBgOcean = 'bg-slate-900';
 
-const containerBgGradientColorDefault = 'from-primary-50 via-primary-100 to-primary-50';
+const containerBgGradientColorDefault = 'from-bg-color via-primary-50 to-bg-color';
 const containerBgGradientColorOcean = 'from-blue-950 via-slate-900 to-slate-900';
 
 const containerBgHalationTopLeftColorDefault = 'bg-primary-50';
@@ -32,14 +32,14 @@ const featureItemAccentColorOcean = ['text-blue-500', 'text-orange-500', 'text-g
 const featureItemTitleColorDefault = 'text-text-color';
 const featureItemTitleColorOcean = 'text-white';
 
-const featureItemFeatureBulletFromDefault = 'from-primary-500';
+const featureItemFeatureBulletFromDefault = 'from-green-500/70';
 const featureItemFeatureBulletFromOcean = [
     'from-blue-500/50',
     'from-orange-500/50',
     'from-green-500/50',
 ];
 
-const featureItemFeatureBulletHoverDefault = 'from-primary-600';
+const featureItemFeatureBulletHoverDefault = 'from-green-400/90';
 const featureItemFeatureBulletHoverOcean = [
     'from-blue-400/70',
     'from-orange-400/70',
@@ -312,7 +312,7 @@ const OceanBox = ({ title, subtitle, items }) => {
 export default function Fancy(props) {
     const { title, subtitle, items, uiPreset } = props;
 
-    if (uiPreset === 'ocean-box') {
+    if (uiPreset === 'ocean_box') {
         return <OceanBox {...{ title, subtitle, items }} />;
     } else {
         return <Ocean {...{ title, subtitle, items, uiPreset }} />;

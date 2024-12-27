@@ -5,7 +5,7 @@ import { twJoin, Icon, stripTags } from '@uniwebcms/module-sdk';
 const containerBgDefault = 'bg-bg-color';
 const containerBgOcean = 'bg-slate-900';
 
-const containerBgGradientColorDefault = 'from-primary-50 via-primary-100 to-primary-50';
+const containerBgGradientColorDefault = 'from-bg-color via-primary-50 to-bg-color';
 const containerBgGradientColorOcean = 'from-blue-950 via-slate-900 to-slate-900';
 
 const containerBgHalationTopLeftColorDefault = 'bg-primary-50';
@@ -35,13 +35,13 @@ const detailBoxItemTitleIconColorOcean = 'text-orange-500';
 const detailBoxFirstItemTextColorDefault = 'text-text-color-80';
 const detailBoxFirstItemTextColorOcean = 'text-slate-300';
 
-const detailBoxFirstItemIconColorDefault = 'text-primary-600';
+const detailBoxFirstItemIconColorDefault = 'text-green-500';
 const detailBoxFirstItemIconColorOcean = 'text-blue-500';
 
 const detailBoxSecondItemIconBgColorDefault = 'bg-primary-50';
 const detailBoxSecondItemIconBgColorOcean = 'bg-blue-500/20';
 
-const detailBoxSecondItemIconColorDefault = 'text-primary-600';
+const detailBoxSecondItemIconColorDefault = 'text-green-500';
 const detailBoxSecondItemIconColorOcean = 'text-blue-500';
 
 const detailBoxSecondItemTitleColorDefault = 'text-text-color';

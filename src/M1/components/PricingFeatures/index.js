@@ -3,7 +3,7 @@ import Container from '../_utils/Container';
 import { Icon, twJoin, stripTags } from '@uniwebcms/module-sdk';
 import Fancy from './Fancy';
 
-export default function FeaturePricing(props) {
+export default function PricingFeatures(props) {
     const { block } = props;
     const { title, subtitle, lists } = block.getBlockContent();
 

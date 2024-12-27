@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, Link } from '@uniwebcms/module-sdk';
 
 // declare const variables
 const primaryCardHalationStartPosition = { x: 1, y: 0.35 };
@@ -41,7 +41,7 @@ const primaryCardFeatureItemStyleDefault = 'text-text-color-70';
 const primaryCardFeatureItemStyleOcean = 'text-gray-200';
 
 const primaryCardFeatureItemBulletStyleDefault =
-    'from-text-color/30 to-transparent group-hover:from-text-color/60';
+    'from-green-500/70 to-transparent group-hover:from-green-400/90';
 const primaryCardFeatureItemBulletStyleOcean =
     'from-blue-500/50 to-transparent group-hover:from-blue-400/70';
 
@@ -178,7 +178,7 @@ export default function Fancy({ pretitle, title, subtitle, items, uiPreset }) {
                                         ></div>
                                         <div
                                             className={twJoin(
-                                                'absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300',
+                                                'absolute inset-0 bg-gradient-to-br to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300',
                                                 uiPreset === 'ocean'
                                                     ? primaryCardBgGradientFromOcean
                                                     : primaryCardBgGradientFromDefault
@@ -234,30 +234,33 @@ export default function Fancy({ pretitle, title, subtitle, items, uiPreset }) {
                                                     ))}
                                             </ul>
                                         </div>
-                                        <div>
-                                            <div className="relative group/badge">
-                                                <div
-                                                    className={twJoin(
-                                                        'absolute -inset-[0.5px] rounded-full bg-gradient-to-r blur-sm opacity-60 group-hover/badge:opacity-100 transition-opacity duration-300',
-                                                        uiPreset === 'ocean'
-                                                            ? primaryCardActionBtnRingStyleOcean
-                                                            : primaryCardActionBtnRingStyleDefault
-                                                    )}
-                                                ></div>
-                                                <button
-                                                    className={twJoin(
-                                                        'relative w-full px-3 py-3 text-xs font-light rounded-full border transition-colors duration-300',
-                                                        uiPreset === 'ocean'
-                                                            ? primaryCardActionBtnStyleOcean
-                                                            : primaryCardActionBtnStyleDefault
-                                                    )}
-                                                >
-                                                    <div className="text-lg font-semibold">
-                                                        {firstItem?.links?.[0]?.label}
-                                                    </div>
-                                                </button>
+                                        {firstItem?.links?.[0] && (
+                                            <div>
+                                                <div className="relative group/badge">
+                                                    <div
+                                                        className={twJoin(
+                                                            'absolute -inset-[0.5px] rounded-full bg-gradient-to-r blur-sm opacity-60 group-hover/badge:opacity-100 transition-opacity duration-300',
+                                                            uiPreset === 'ocean'
+                                                                ? primaryCardActionBtnRingStyleOcean
+                                                                : primaryCardActionBtnRingStyleDefault
+                                                        )}
+                                                    ></div>
+                                                    <Link
+                                                        to={firstItem.links[0].href}
+                                                        className={twJoin(
+                                                            'block text-center relative w-full px-3 py-3 text-xs font-light rounded-full border transition-colors duration-300 cursor-pointer',
+                                                            uiPreset === 'ocean'
+                                                                ? primaryCardActionBtnStyleOcean
+                                                                : primaryCardActionBtnStyleDefault
+                                                        )}
+                                                    >
+                                                        <div className="text-lg font-semibold">
+                                                            {firstItem.links[0].label}
+                                                        </div>
+                                                    </Link>
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

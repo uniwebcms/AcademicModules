@@ -6,7 +6,7 @@ import { HiChevronRight } from 'react-icons/hi';
 const containerBgDefault = 'bg-bg-color';
 const containerBgOcean = 'bg-slate-900';
 
-const containerBgGradientColorDefault = 'from-primary-50 via-primary-100 to-primary-50';
+const containerBgGradientColorDefault = 'from-bg-color via-primary-50 to-bg-color';
 const containerBgGradientColorOcean = 'from-blue-950 via-slate-900 to-slate-900';
 
 const containerBgHalationTopRightColorDefault = 'bg-primary-50';
@@ -30,16 +30,16 @@ const subtitleColorOcean = 'text-slate-400';
 const faqItemIconColorDefault = 'text-primary-600';
 const faqItemIconColorOcean = ['text-blue-500', 'text-orange-500', 'text-green-500'];
 
-const faqItemIconBgStyleDefault = 'bg-primary-50 border-primary-100 hover:bg-primary-100';
+const faqItemIconBgStyleDefault = 'bg-primary-100 border-primary-200 hover:bg-primary-50';
 const faqItemIconBgStyleOcean = 'bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70';
 
-const faqItemIconBgActiveStyleDefault = 'bg-primary-100';
+const faqItemIconBgActiveStyleDefault = 'bg-primary-50';
 const faqItemIconBgActiveStyleOcean = 'bg-slate-800/70';
 
 const faqItemTitleColorDefault = '';
 const faqItemTitleColorOcean = 'text-white';
 
-const faqItemArrowColorDefault = 'text-primary-300';
+const faqItemArrowColorDefault = 'text-green-500';
 const faqItemArrowColorOcean = 'text-slate-400';
 
 const faqItemDividerViaColorDefault = 'via-primary-100';

@@ -82,3 +82,27 @@ presets:
     properties:
       content_position: right
     image: content_right.png
+  subtle:
+    label:
+      en: Subtle appearance
+      fr: Apparence subtile
+    properties:
+      appearance: subtle
+      appearance_preset: none
+    image: subtle.png
+  fancy_ocean:
+    label:
+      en: Fancy appearance with ocean preset
+      fr: Apparence fantaisie avec préréglage océan
+    properties:
+      appearance: fancy
+      appearance_preset: ocean
+    image: fancy_ocean.png
+  fancy:
+    label:
+      en: Fancy appearance with no preset
+      fr: Apparence fantaisie sans préréglage
+    properties:
+      appearance: fancy
+      appearance_preset: none
+    image: fancy.png

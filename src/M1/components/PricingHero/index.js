@@ -9,17 +9,9 @@ const PlanBox = (props) => {
 
     const features = lists[0]?.map((item) => item.paragraphs[0]);
 
-    const solutions =
-        icons.length && paragraphs.length && icons.length === paragraphs.length /// need fix, collect from lists
-            ? icons.map((icon, index) => {
-                  return {
-                      icon,
-                      text: paragraphs[index],
-                  };
-              })
-            : null;
+    const actionLink = links[0];
 
-    const actionLink = links[0] && !solutions ? links[0] : null;
+    const text = paragraphs.length ? paragraphs : null;
 
     return (
         <div className="w-full rounded-md shadow-lg p-6 lg:p-8 flex flex-col">
@@ -44,30 +36,6 @@ const PlanBox = (props) => {
                         ))}
                     </ul>
                 )}
-                {solutions && (
-                    <ul role="list" className="mt-8 lg:mt-4 h-full flex flex-col justify-evenly">
-                        {solutions.map((solution, index) => (
-                            <div
-                                key={index}
-                                className="flex items-center py-3 rounded-md"
-                                // className="flex items-center justify-between gap-x-3 group hover:bg-text-color/10 -mx-3 px-3 py-3 rounded-md"
-                            >
-                                <div className="flex items-center gap-x-3">
-                                    <Icon
-                                        icon={solution.icon}
-                                        className="h-6 w-6 flex-none text-primary-600"
-                                    />
-                                    <SafeHtml
-                                        value={solution.text}
-                                        className="text-base lg:text-lg text-text-color-80"
-                                        // className="text-base lg:text-lg font-medium text-text-color-70 group-hover:text-text-color-90"
-                                    ></SafeHtml>
-                                </div>
-                                {/* <GoArrowRight className="h-6 w-6 text-text-color-60 group-hover:text-primary-600" /> */}
-                            </div>
-                        ))}
-                    </ul>
-                )}
             </div>
             {actionLink && (
                 <Link
@@ -77,11 +45,16 @@ const PlanBox = (props) => {
                     {actionLink.label}
                 </Link>
             )}
+            {text && (
+                <div className="text-base text-text-color-60">
+                    <SafeHtml value={text} />
+                </div>
+            )}
         </div>
     );
 };
 
-export default function HeroPricing(props) {
+export default function PricingHero(props) {
     const { block } = props;
     const { pretitle, title, subtitle } = block.getBlockContent();
 
@@ -92,7 +65,7 @@ export default function HeroPricing(props) {
     if (appearance === 'subtle') {
         return (
             <Container px="none">
-                <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-4xl mx-auto">
+                <div className="px-6 md:px-8 lg:px-16 xl:px-24 max-w-6xl mx-auto">
                     {pretitle && (
                         <p className="mb-4 lg:mb-5 text-base md:text-lg text-primary-600 text-center">
                             {pretitle}

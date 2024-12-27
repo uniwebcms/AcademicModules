@@ -1,9 +1,9 @@
 title: 
-  en: Hero Pricing
+  en: Pricing Hero
   fr: Bannière de tarification
 label:
-  en: Hero Pricing
-  fr: Tarification en-tête
+  en: Pricing Hero
+  fr: Bannière de tarification
 description:
   en: Special section to be used as a hero banner with pricing information.
   fr: Section spéciale à utiliser comme bannière d'en-tête avec des informations de tarification.
@@ -96,3 +96,11 @@ presets:
       appearance: fancy
       appearance_preset: ocean
     image: fancy_ocean.png
+  fancy:
+    label:
+      en: Fancy appearance with no preset
+      fr: Apparence fantaisie sans préréglage
+    properties:
+      appearance: fancy
+      appearance_preset: none
+    image: fancy.png

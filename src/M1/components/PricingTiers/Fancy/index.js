@@ -5,7 +5,7 @@ import { twJoin, stripTags, website, Icon, Link } from '@uniwebcms/module-sdk';
 const containerBgDefault = 'bg-bg-color';
 const containerBgOcean = 'bg-slate-900';
 
-const containerBgGradientColorDefault = 'from-primary-50 via-primary-100 to-primary-50';
+const containerBgGradientColorDefault = 'from-bg-color via-primary-50 to-bg-color';
 const containerBgGradientColorOcean = 'from-blue-950 via-slate-900 to-slate-900';
 
 const containerBgHalationTopLeftColorDefault = 'bg-primary-50';

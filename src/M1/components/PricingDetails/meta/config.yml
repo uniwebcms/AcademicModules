@@ -66,5 +66,20 @@ properties:
       en: The appearance preset of the pricing addons when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
       fr: Le préréglage d'apparence des extensions de tarification lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
 
-# images:
-#   - example.png
+presets:
+  fancy_ocean:
+    label:
+      en: Fancy appearance with ocean preset
+      fr: Apparence fantaisie avec préréglage océan
+    properties:
+      appearance: fancy
+      appearance_preset: ocean
+    image: fancy_ocean.png
+  fancy:
+    label:
+      en: Fancy appearance with no preset
+      fr: Apparence fantaisie sans préréglage
+    properties:
+      appearance: fancy
+      appearance_preset: none
+    image: fancy.png

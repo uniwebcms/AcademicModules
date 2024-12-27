@@ -5,7 +5,7 @@ import { twJoin, SafeHtml, Link } from '@uniwebcms/module-sdk';
 const containerBgDefault = 'bg-bg-color';
 const containerBgOcean = 'bg-slate-900';
 
-const containerBgGradientColorDefault = 'from-primary-50 via-primary-100 to-primary-50';
+const containerBgGradientColorDefault = 'from-bg-color via-primary-50 to-bg-color';
 const containerBgGradientColorOcean = 'from-blue-950 via-slate-900 to-slate-900';
 
 const containerBgHalationLeftColorDefault = 'bg-primary-50';
@@ -27,7 +27,7 @@ const iconColorDefault = 'text-primary-600';
 const iconColorOcean = 'text-blue-500';
 
 const titleStyleDefault = '';
-const titleStyleOcean = 'from-white via-blue-100 to-white';
+const titleStyleOcean = 'from-white via-blue-100 to-white text-transparent';
 
 const textColorDefault = 'text-text-color-60';
 const textColorOcean = 'text-slate-400';
@@ -139,7 +139,7 @@ export default function Fancy(props) {
                 </div>
                 <h2
                     className={twJoin(
-                        'text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent animate-gradient-x',
+                        'text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r bg-clip-text animate-gradient-x',
                         uiPreset === 'ocean' ? titleStyleOcean : titleStyleDefault
                     )}
                 >

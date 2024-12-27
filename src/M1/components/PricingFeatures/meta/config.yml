@@ -72,10 +72,41 @@ properties:
       - label:
           en: Ocean with box style
           fr: Océan avec style de boîte
-        value: ocean-box
+        value: ocean_box
     description:
       en: The appearance preset of the pricing features when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
       fr: Le préréglage d'apparence des fonctionnalités de tarification lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
 
-images:
-  - example.png
+presets:
+  subtle:
+    label:
+      en: Subtle appearance
+      fr: Apparence subtile
+    properties:
+      appearance: subtle
+      appearance_preset: none
+    image: subtle.png
+  fancy_ocean:
+    label:
+      en: Fancy appearance with ocean preset
+      fr: Apparence fantaisie avec préréglage océan
+    properties:
+      appearance: fancy
+      appearance_preset: ocean
+    image: fancy_ocean.png
+  fancy:
+    label:
+      en: Fancy appearance with no preset
+      fr: Apparence fantaisie sans préréglage
+    properties:
+      appearance: fancy
+      appearance_preset: none
+    image: fancy.png
+  fancy_ocean_box:
+    label:
+      en: Fancy appearance with ocean box preset
+      fr: Apparence fantaisie avec préréglage de boîte océan
+    properties:
+      appearance: fancy
+      appearance_preset: ocean_box
+    image: fancy_ocean_box.png
