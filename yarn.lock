@@ -4581,6 +4581,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^11.15.0":
+  version: 11.15.0
+  resolution: "framer-motion@npm:11.15.0"
+  dependencies:
+    motion-dom: "npm:^11.14.3"
+    motion-utils: "npm:^11.14.3"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10/e31b03fb5c91095279452a8aff2c483d8a379c79a05c2c5d38520923d083168d1f21507185f47b3372adf6b5e2043dd1ccf08d747734747453b1754c7da7a3b1
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:^11.1.0":
   version: 11.2.0
   resolution: "fs-extra@npm:11.2.0"
@@ -5611,6 +5633,7 @@ __metadata:
     flexsearch: "npm:^0.7.31"
     flowbite: "npm:^1.8.1"
     flowbite-react: "npm:^0.6.4"
+    framer-motion: "npm:^11.15.0"
     katex: "npm:^0.16.11"
     prismjs: "npm:^1.29.0"
     prop-types: "npm:^15.8.1"
@@ -6297,6 +6320,20 @@ __metadata:
   version: 0.5.2
   resolution: "moo@npm:0.5.2"
   checksum: 10/fee356cb13b52e259c925fe297d71b3f47b98b06444b696dd4870d20cad4711eb58d24131afeba9bf7a51d77c77a3cbe8479066497d12a88abb51865c1be7de7
+  languageName: node
+  linkType: hard
+
+"motion-dom@npm:^11.14.3":
+  version: 11.14.3
+  resolution: "motion-dom@npm:11.14.3"
+  checksum: 10/24bd9a78c278e7622dd9347da3cb0f0e356ae72b9ef5ecba71a5b8dce9b5df05ee190d862b59d793e3d6b65756683689e7c2f96b0add72f40c2bb8268c037c8c
+  languageName: node
+  linkType: hard
+
+"motion-utils@npm:^11.14.3":
+  version: 11.14.3
+  resolution: "motion-utils@npm:11.14.3"
+  checksum: 10/594b69d60a4cabea823a7ebf0f1e2fa13df9128ee2db9c6385ab23c6d1224dcd0d09fab67c361000d8f0288d75c56cb94d00c431023d22c052c5496a4757c5e5
   languageName: node
   linkType: hard
 

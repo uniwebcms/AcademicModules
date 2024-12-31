@@ -168,19 +168,15 @@ properties:
       fr: L'alignement vertical du contenu dans les colonnes.
 
 presets:
-  narrow_left_regular:
+  article:
     label:
-      en: Narrow left layout and regular width
-      fr: Mise en page étroite à gauche et largeur régulière
+      en: Example of showing a single article and a list of articles side by side.
+      fr: Exemple montrant un seul article et une liste d'articles côte à côte.
     properties:
-      layout_configuration: 40/60
-      max_width: regular
-    image: narrow_left_regular.png
-  evenly_full:
-    label:
-      en: Even layout and full width
-      fr: Mise en page égale et pleine largeur
-    properties:
-      layout_configuration: 50/50
-      max_width: full
-    image: evenly_full.png
+      layout_configuration: 60/40
+      max_width: wide
+      vertical_padding: sm
+      horizontal_padding: lg
+      column_padding: lg
+      vertical_alignment: top
+    image: article.png

@@ -29,6 +29,7 @@ export default function ({
         sm: 'py-4 lg:py-8',
         md: 'py-8 lg:py-16',
         lg: 'py-12 lg:py-24',
+        xl: 'py-16 lg:py-32',
     };
 
     const paddingX = {

@@ -1,0 +1,22 @@
+title: 
+  en: Image Carousel
+  fr: Carrousel d'images
+label:
+  en: Image Carousel
+  fr: Carrousel d'images
+description: 
+  en: A specific component is used to display images using animated transitions.
+  fr: Un composant spécifique est utilisé pour afficher des images à l'aide de transitions animées.
+
+category: sub-content
+export: true
+
+elements:
+  media:
+    type: image
+    description: 
+      en: The showcase images.
+      fr: Les images de présentation.
+
+images:
+  - example.png

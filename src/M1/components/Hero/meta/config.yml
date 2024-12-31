@@ -19,34 +19,13 @@ elements:
     description: 
       en: One or two links that put under the text content.
       fr: Un ou deux liens qui sont placés sous le contenu textuel.
+  media:
+    type: image
+    description: 
+      en: The showcase images placed on the side of the text content.
+      fr: Les images de présentation placées à côté du contenu textuel.
 
 properties:
-  height:
-    label: 
-      en: Height
-      fr: Hauteur
-    type: string
-    default: 100vh
-    enum:
-      - label: 
-          en: 100% Screen Height
-          fr: 100% de la hauteur de l'écran
-        value: 100vh
-      - label: 
-          en: 80% Screen Height
-          fr: 80% de la hauteur de l'écran
-        value: 80vh
-      - label: 
-          en: 60% Screen Height
-          fr: 60% de la hauteur de l'écran
-        value: 60vh
-      - label: 
-          en: 40% Screen Height
-          fr: 40% de la hauteur de l'écran
-        value: 40vh
-    description: 
-      en: The height of the hero section.
-      fr: La hauteur de la section d'en-tête.
   alignment:
     label: 
       en: Content Alignment
@@ -67,8 +46,8 @@ properties:
           fr: Droite
         value: right
     description: 
-      en: The alignment of the content in the hero section.
-      fr: L'alignement du contenu dans la section d'en-tête.
+      en: The alignment of the text content in the hero section, when showcase images are present, center alignment will be ignored. In smaller screens, text content will be show first, then the showcase images.
+      fr: L'alignement du contenu textuel dans la section d'en-tête, lorsque des images de présentation sont présentes, l'alignement central sera ignoré. Sur les écrans plus petits, le contenu textuel sera affiché en premier, puis les images de présentation.
 
 presets:
   full_left:

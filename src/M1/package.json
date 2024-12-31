@@ -19,6 +19,7 @@
         "flexsearch": "^0.7.31",
         "flowbite": "^1.8.1",
         "flowbite-react": "^0.6.4",
+        "framer-motion": "^11.15.0",
         "katex": "^0.16.11",
         "prismjs": "^1.29.0",
         "prop-types": "^15.8.1",

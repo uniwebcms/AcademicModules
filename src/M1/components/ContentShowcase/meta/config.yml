@@ -1,0 +1,93 @@
+title: 
+  en: Content Showcase
+  fr: Vitrine de contenu
+label:
+  en: Content Showcase
+  fr: Vitrine de contenu
+description: 
+  en: Section showcasing a collection of content with title and description. Each content can have an icon, title, description, image and details.
+  fr: Section mettant en avant une collection de contenu avec titre et description. Chaque contenu peut avoir une icône, un titre, une description, une image et des détails.
+
+category: content
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    icon:
+      description:
+        en: The icon of the content.
+        fr: L'icône du contenu.
+    title:
+      description:
+        en: The title of the content.
+        fr: Le titre du contenu.
+    subtitle:
+      description:
+        en: The subtitle of the content.
+        fr: Le sous-titre du contenu.
+    list:
+      description:
+        en: The details of the content in list format. Each can have a icon and a text.
+        fr: Les détails du contenu au format liste. Chacun peut avoir une icône et un texte.
+    media:
+      type: image
+      description:
+        en: The image of the content.
+        fr: L'image du contenu.
+
+properties:
+  appearance:
+    label:
+      en: Appearance
+      fr: Apparence
+    type: string
+    default: subtle
+    enum:
+      - label:
+          en: Fancy
+          fr: Fantaisie
+        value: fancy
+    description:
+      en: The appearance of the content showcase section.
+      fr: L'apparence de la section de vitrine de contenu.
+  appearance_preset:
+    label:
+      en: Appearance Preset
+      fr: Préréglage d'apparence
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Rainbow
+          fr: Arc-en-ciel
+        value: rainbow
+    description:
+      en: The appearance preset of the section when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
+      fr: Le préréglage d'apparence de la section lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
+
+presets:
+  fancy_rainbow:
+    label:
+      en: Fancy appearance with rainbow preset
+      fr: Apparence fantaisie avec préréglage arc-en-ciel
+    properties:
+      appearance: fancy
+      appearance_preset: ocean
+    image: fancy_rainbow.png
+  fancy:
+    label:
+      en: Fancy appearance with no preset
+      fr: Apparence fantaisie sans préréglage
+    properties:
+      appearance: fancy
+      appearance_preset: none
+    image: fancy.png
