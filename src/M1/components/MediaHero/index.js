@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../_utils/Container';
 import { Image, getPageProfile, Media } from '@uniwebcms/module-sdk';
 
-export default function HeroMedia(props) {
+export default function MediaHero(props) {
     const { block } = props;
 
     const { banner, title, subtitle, videos } = block.getBlockContent();
