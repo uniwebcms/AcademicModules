@@ -1,0 +1,66 @@
+title:
+  en: Feature Item
+  fr: Élément de fonctionnalité
+label:
+  en: Feature Item
+  fr: Élément de fonctionnalité
+description:
+  en: A specific component used to display a feature in different ways. Each mode expect different type of content to be displayed.
+  fr: Un composant spécifique utilisé pour afficher une fonctionnalité de différentes manières. Chaque mode attend un type de contenu différent à afficher.
+
+category: sub-content
+export: true
+
+elements:
+  icon:
+  title:
+  subtitle:
+  text:
+  link:
+
+properties:
+  mode:
+    label:
+      en: Mode
+      fr: Mode
+    type: string
+    default: basic
+    enum:
+      - label:
+          en: Basic (title and subtitle)
+          fr: Basique (titre et sous-titre)
+        value: basic
+      - label:
+          en: Rich (icon, title, text and links)
+          fr: Riche (icône, titre, texte et liens)
+        value: rich
+      - label:
+          en: Catching Card (icon, title, text and link)
+          fr: Carte attrayante (icône, titre, texte et lien)
+        value: catching_card
+    description:
+      en: The mode of the feature item.
+      fr: Le mode de l'élément de fonctionnalité.
+
+presets:
+  # basic:
+  #   label:
+  #     en: Basic Feature Item
+  #     fr: Élément de fonctionnalité basique
+  #   properties:
+  #     mode: basic
+  #   image: basic.png
+  rich:
+    label:
+      en: Rich Feature Item
+      fr: Élément de fonctionnalité riche
+    properties:
+      mode: rich
+    image: rich.png
+  catching_card:
+    label:
+      en: Catching Card Feature Item
+      fr: Élément de fonctionnalité carte attrayante
+    properties:
+      mode: catching_card
+    image: catching_card.png

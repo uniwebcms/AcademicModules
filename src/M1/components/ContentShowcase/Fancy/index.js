@@ -189,7 +189,7 @@ export default function Fancy(props) {
                                 const key = `case${index}`;
 
                                 return (
-                                    <button
+                                    <div
                                         key={key}
                                         data-case={key}
                                         onClick={(e) => {
@@ -231,7 +231,7 @@ export default function Fancy(props) {
                                             </div>
                                             <span className="font-medium">{title}</span>
                                         </div>
-                                    </button>
+                                    </div>
                                 );
                             })}
                         </div>

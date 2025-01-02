@@ -9,7 +9,7 @@ description:
   fr: Section mettant en avant une collection de fonctionnalités ou de services sous forme de liste horizontale.
 
 category: feature
-export: true
+export: false
 
 elements:
   title:

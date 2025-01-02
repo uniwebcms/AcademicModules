@@ -1,0 +1,49 @@
+title: 
+  en: Code Hero
+  fr: Mise en avant de contenu
+label:
+  en: Code Hero
+  fr: Mise en avant de contenu
+description:
+  en: A prominent section designed to grab attention, featuring a bold title and visually engaging code snippets. Perfect for highlighting key messages or showcasing impactful content at the top of a page.
+  fr: Une section importante conçue pour attirer l'attention, avec un titre audacieux et des extraits de code visuellement attrayants. Parfait pour mettre en avant des messages clés ou présenter un contenu percutant en haut d'une page.
+
+category: hero
+export: true
+
+properties:
+  # appearance:
+  #   label:
+  #     en: Appearance
+  #     fr: Apparence
+  #   type: string
+  #   default: fancy
+  #   enum:
+  #     - label:
+  #         en: Fancy
+  #         fr: Fantaisie
+  #       value: fancy
+  #   description:
+  #     en: The appearance of the features section.
+  #     fr: L'apparence de la section des fonctionnalités.
+  appearance_preset:
+    label:
+      en: Appearance Preset
+      fr: Préréglage d'apparence
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Polar Night
+          fr: Nuit polaire
+        value: polar_night
+    description:
+      en: The appearance preset of the features when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
+      fr: Le préréglage d'apparence des fonctionnalités lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
+
+images:
+  - example.png
