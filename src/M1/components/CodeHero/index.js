@@ -91,9 +91,9 @@ export default function CodeHero(props) {
     }
 
     return (
-        <Container px="sm" className="relative max-w-6xl mx-auto">
+        <Container className="relative">
             {backgroundOverlay}
-            <div className="relative">
+            <div className="relative max-w-7xl mx-auto">
                 <div className="flex flex-col lg:flex-row gap-12 items-center">
                     <div className="flex-1 space-y-6">
                         <motion.div

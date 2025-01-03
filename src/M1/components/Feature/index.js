@@ -1,16 +1,24 @@
 import React from 'react';
 import Container from '../_utils/Container';
 import { SafeHtml, Icon, Link, twJoin } from '@uniwebcms/module-sdk';
+import { motion } from 'framer-motion';
 import Fancy from './Fancy';
 
 export default function Feature(props) {
     const { block } = props;
-    const { title, subtitle, links } = block.getBlockContent();
+    const { icons, title, subtitle, links } = block.getBlockContent();
     const [firstLink, secondLink] = links;
 
     const ChildBlockRenderer = block.getChildBlockRenderer();
 
-    const { appearance = 'standard' } = block.getBlockProperties(); // loose, iconic, standard
+    const { appearance = 'standard', sub_content_layout = 'grid_sm' } = block.getBlockProperties(); // loose, iconic, standard
+
+    const gridClassName =
+        sub_content_layout === 'grid_sm'
+            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'
+            : sub_content_layout === 'grid_md'
+            ? 'grid lg:grid-cols-3 gap-6 lg:gap-8'
+            : 'grid lg:grid-cols-2 gap-8 lg:gap-12';
 
     const { childBlocks } = block;
 
@@ -43,11 +51,10 @@ export default function Feature(props) {
                     {subtitle && <p className="text-lg font-base">{subtitle}</p>}
                 </div>
                 {hasChildBlocks ? (
-                    <div className="grid lg:grid-cols-3 gap-8">
+                    <div className={gridClassName}>
                         <ChildBlockRenderer
                             block={block}
-                            childBlocks={[childBlocks[0]]}
-                            pure={true}
+                            childBlocks={childBlocks}
                         ></ChildBlockRenderer>
                     </div>
                 ) : null}
@@ -80,11 +87,15 @@ export default function Feature(props) {
                     )}
                 </div>
                 {hasChildBlocks ? (
-                    <div className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-8xl mx-auto gap-x-12 md:gap-x-16 xl:gap-x-24">
+                    <div
+                        className={twJoin(
+                            'mt-12 sm:mt-16 lg:mt-20 max-w-8xl mx-auto',
+                            gridClassName
+                        )}
+                    >
                         <ChildBlockRenderer
                             block={block}
-                            childBlocks={[childBlocks[0]]}
-                            pure={true}
+                            childBlocks={childBlocks}
                         ></ChildBlockRenderer>
                     </div>
                 ) : null}
@@ -102,6 +113,33 @@ export default function Feature(props) {
     }
 
     if (appearance === 'iconic') {
-        return null;
+        const icon = icons[0];
+
+        return (
+            <Container py="lg" className="border-t border-text-color/20">
+                <div className="max-w-7xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className={twJoin('text-center', hasChildBlocks ? 'mb-12' : '')}
+                    >
+                        <div className="flex items-center justify-center gap-2 mb-4">
+                            <Icon icon={icon} className="w-5 h-5" />
+                            <h2 className="text-2xl font-bold">{title}</h2>
+                        </div>
+                        <p className="max-w-2xl mx-auto">{subtitle}</p>
+                    </motion.div>
+                    {hasChildBlocks ? (
+                        <div className={gridClassName}>
+                            <ChildBlockRenderer
+                                block={block}
+                                childBlocks={childBlocks}
+                            ></ChildBlockRenderer>
+                        </div>
+                    ) : null}
+                </div>
+            </Container>
+        );
     }
 }

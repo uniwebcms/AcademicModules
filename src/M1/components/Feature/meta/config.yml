@@ -42,6 +42,29 @@ properties:
     description:
       en: The appearance of the features section.
       fr: L'apparence de la section des fonctionnalités.
+  sub_content_layout:
+    label:
+      en: Sub-content Layout
+      fr: Mise en page du sous-contenu
+    type: string
+    default: grid_sm
+    enum:
+      - label:
+          en: Grid with small size content
+          fr: Grille avec contenu de petite taille
+        value: grid_sm
+      - label:
+          en: Grid with large size content
+          fr: Grille avec contenu de grande taille
+        value: grid_lg
+      - label:
+          en: Grid with medium size content
+          fr: Grille avec contenu de taille moyenne
+        value: grid_md
+    description:
+      en: The layout of the sub-content.
+      fr: La mise en page du sous-contenu.
+
  
 presets:
   standard:

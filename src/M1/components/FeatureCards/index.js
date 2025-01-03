@@ -112,8 +112,8 @@ export default function FeatureCards(props) {
 
     // Card classes based on card style
     const cardClasses = {
-        compact: `flex-none w-[340px] bg-white rounded-xl shadow-lg overflow-hidden snap-start scroll-ml-[var(--scroll-padding)]`,
-        expanded: `flex-none w-112 snap-start`,
+        compact: `flex-none max-w-full w-[340px] bg-white rounded-xl shadow-lg overflow-hidden snap-start scroll-ml-[var(--scroll-padding)]`,
+        expanded: `flex-none max-w-full w-112 snap-start`,
     };
 
     // Card banner classes based on card style

@@ -32,5 +32,29 @@ items:
         en: A link make the item clickable.
         fr: Un lien rend l'élément cliquable.
 
+properties:
+  card_size:
+    label:
+      en: Card Size
+      fr: Taille de la carte
+    type: string
+    default: md
+    enum:
+      # - label:
+      #     en: Small
+      #     fr: Petit
+      #   value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: Large
+          fr: Grand
+        value: lg
+    description:
+      en: The size of the content teaser card.
+      fr: La taille de la carte de mise en avant de contenu.
+
 images:
   - example.png
