@@ -2,16 +2,14 @@ import React from 'react';
 import Container from '../_utils/Container';
 import { Image, getPageProfile, Link, twJoin, SafeHtml } from '@uniwebcms/module-sdk';
 import Fancy from './Fancy';
+import Motion from './Motion';
 
 export default function CallToAction(props) {
     const { block } = props;
 
     const { banner, title, paragraphs, links } = block.getBlockContent();
-    const {
-        content_position = 'left',
-        appearance = 'subtle',
-        appearance_preset = 'none',
-    } = block.getBlockProperties();
+    const { content_position: alignment = 'left', appearance = 'subtle' } =
+        block.getBlockProperties();
 
     const [firstLink, secondLink] = links;
 
@@ -33,16 +31,17 @@ export default function CallToAction(props) {
                     className={twJoin(
                         'absolute inset-0',
                         'from-bg-color from-50% to-bg-color/10 to-70%',
-                        content_position === 'left' ? 'bg-gradient-to-r' : 'bg-gradient-to-l'
+                        alignment === 'left' && 'bg-gradient-to-r',
+                        alignment === 'right' && 'bg-gradient-to-l'
                     )}
                 />
                 {/* Content */}
                 <div
                     className={twJoin(
                         'max-w-6xl mx-auto flex',
-                        content_position === 'left' && 'justify-start',
-                        content_position === 'right' && 'justify-end',
-                        content_position === 'center' && 'justify-center'
+                        alignment === 'left' && 'justify-start',
+                        alignment === 'right' && 'justify-end',
+                        alignment === 'center' && 'justify-center'
                     )}
                 >
                     <div
@@ -88,7 +87,9 @@ export default function CallToAction(props) {
                 </div>
             </Container>
         );
-    } else {
-        return <Fancy {...{ title, paragraphs, links, uiPreset: appearance_preset }} />;
+    } else if (appearance === 'fancy') {
+        return <Fancy {...{ title, paragraphs, links, alignment }} />;
+    } else if (appearance === 'motion') {
+        return <Motion {...{ title, paragraphs, links, alignment }} />;
     }
 }

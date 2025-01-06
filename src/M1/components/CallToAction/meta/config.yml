@@ -41,8 +41,8 @@ properties:
           fr: Droite
         value: right
     description: 
-      en: The alignment of the content within the call to action section. This is only used when the appearance is set to subtle.
-      fr: L'alignement du contenu dans la section d'appel à l'action. Ceci est utilisé uniquement lorsque l'apparence est définie sur subtile.
+      en: The alignment of the content within the call to action section.
+      fr: L'alignement du contenu dans la section d'appel à l'action.
   appearance:
     label:
       en: Appearance
@@ -58,32 +58,13 @@ properties:
           en: Fancy
           fr: Fantaisie
         value: fancy
+      - label:
+          en: Motion
+          fr: Mouvement
+        value: motion
     description:
       en: The appearance of the Call to Action.
       fr: L'apparence de l'appel à l'action.
-  appearance_preset:
-    label:
-      en: Appearance Preset
-      fr: Préréglage d'apparence
-    type: string
-    default: none
-    enum:
-      - label:
-          en: None
-          fr: Aucun
-        value: none
-      - label:
-          en: Ocean
-          fr: Océan
-        value: ocean
-      # - label:
-      #     en: Rainbow
-      #     fr: Arc-en-ciel
-      #   value: rainbow
-    description:
-      en: The appearance preset of the section when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
-      fr: Le préréglage d'apparence de la section lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
-
 presets:
   subtle:
     label:
@@ -92,29 +73,18 @@ presets:
     properties:
       content_position: right
       appearance: subtle
-      appearance_preset: none
     image: subtle.png
-  fancy_ocean:
+  fancy:
     label:
       en: Fancy appearance with ocean preset
       fr: Apparence fantaisie avec préréglage océan
     properties:
       appearance: fancy
-      appearance_preset: ocean
-    image: fancy_ocean.png
-  # fancy_rainbow:
-  #   label:
-  #     en: Fancy appearance with rainbow preset
-  #     fr: Apparence fantaisie avec préréglage arc-en-ciel
-  #   properties:
-  #     appearance: fancy
-  #     appearance_preset: ocean
-  #   image: fancy_ocean.png
-  fancy:
-    label:
-      en: Fancy appearance with no preset
-      fr: Apparence fantaisie sans préréglage
-    properties:
-      appearance: fancy
-      appearance_preset: none
     image: fancy.png
+  motion:
+    label:
+      en: Fancy appearance with motion preset
+      fr: Apparence fantaisie avec préréglage de mouvement
+    properties:
+      appearance: motion
+    image: motion.png
