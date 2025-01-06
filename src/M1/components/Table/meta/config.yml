@@ -1,0 +1,18 @@
+title:
+  en: Table
+  fr: Tableau
+label:
+  en: Table
+  fr: Tableau
+description:
+  en: A dedicated component is used to present data in a tabular format. Data is provided as a structured list, with the first level defining the column headers and the second level containing the corresponding column data. Can be used as the nested component or as a standalone component.
+  fr: Un composant dédié est utilisé pour présenter des données sous forme de tableau. Les données sont fournies sous forme de liste structurée, le premier niveau définissant les en-têtes de colonne et le deuxième niveau contenant les données de colonne correspondantes. Peut être utilisé comme composant imbriqué ou comme composant autonome.
+
+category: sub-content
+export: true
+
+elements:
+  list:
+
+images:
+  - example.png

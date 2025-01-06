@@ -1,0 +1,32 @@
+title:
+  en: Timeline
+  fr: Chronologie
+label:
+  en: Timeline
+  fr: Chronologie
+description:
+  en: A specific component is used to display a timeline of events or steps of a process.
+  fr: Un composant spécifique est utilisé pour afficher une chronologie d'événements ou d'étapes d'un processus.
+
+category: content
+export: true
+
+elements:
+  title:
+  subtitle:
+  list:
+    description:
+      en: Endnotes for the timeline
+      fr: Notes de fin pour la chronologie
+
+items:
+  separator: divider
+  elements:
+    title:
+      description:
+        en: Title for each timeline
+        fr: Titre pour chaque chronologie
+    text:
+      description:
+        en: Description for each timeline
+        fr: Description pour chaque chronologie
