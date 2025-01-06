@@ -60,7 +60,7 @@ export default function PricingHero(props) {
 
     const items = block.getBlockItems();
 
-    const { appearance = 'subtle', appearance_preset = 'none' } = block.getBlockProperties();
+    const { appearance = 'subtle' } = block.getBlockProperties();
 
     if (appearance === 'subtle') {
         return (
@@ -92,6 +92,6 @@ export default function PricingHero(props) {
             </Container>
         );
     } else {
-        return <Fancy {...{ pretitle, title, subtitle, items }} uiPreset={appearance_preset} />;
+        return <Fancy {...{ pretitle, title, subtitle, items }} />;
     }
 }

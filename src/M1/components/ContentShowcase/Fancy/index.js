@@ -2,71 +2,31 @@ import React, { useState, useEffect } from 'react';
 import Container from '../../_utils/Container';
 import { twJoin, Icon, Image, getPageProfile } from '@uniwebcms/module-sdk';
 
-const containerBgDefault = 'bg-bg-color';
-const containerBgRainbow = [
-    'bg-gradient-to-b from-white via-slate-50 to-orange-50',
-    'bg-gradient-to-b from-white via-slate-50 to-green-50',
-    'bg-gradient-to-b from-white via-slate-50 to-blue-50',
-];
-
-const titleColorDefault = 'text-text-color';
-const titleColorRainbow = 'text-gray-900';
-
-const subtitleColorDefault = 'text-text-color-60';
-const subtitleColorRainbow = 'text-gray-600';
-
-const showcaseSwitcherColorDefault = 'bg-bg-color';
-const showcaseSwitcherColorRainbow = ['bg-orange-50', 'bg-green-50', 'bg-blue-50'];
-
-const showcaseSwitcherItemStyleDefault = 'text-text-color-70 hover:text-text-color-90';
-const showcaseSwitcherItemStyleRainbow = 'text-gray-600 hover:text-gray-900';
-
-const showcaseSwitcherItemActiveStyleDefault = 'text-bg-color';
-const showcaseSwitcherItemActiveStyleRainbow = 'text-white';
-
-const contentItemBgStyleDefault = '';
-const contentItemBgStyleRainbow = 'border-gray-100 bg-white';
-
-const contentItemBgColorDefault = '';
-const contentItemBgColorRainbow = [
+const containerBgGradientToColors = ['to-primary-50', 'to-accent-50', 'to-secondary-50'];
+const showcaseSwitcherColors = ['bg-primary-50', 'bg-accent-50', 'bg-secondary-50'];
+const contentItemBgColors = [
     'radial-gradient(circle at 50% 90%, rgba(255,137,0,0.1), transparent 50%)',
     'radial-gradient(circle at 50% 90%, rgba(34,197,94,0.1), transparent 50%)',
     'radial-gradient(circle at 50% 90%, rgba(59,130,246,0.1), transparent 50%)',
 ];
-
-const contentItemIconStyleDefault = 'bg-primary-50 text-primary-500';
-const contentItemIconStyleRainbow = [
-    'bg-orange-50 text-orange-500',
-    'bg-green-50 text-green-500',
-    'bg-blue-50 text-blue-500',
+const contentItemIconStyles = [
+    'bg-primary-50 text-primary-500',
+    'bg-accent-50 text-accent-500',
+    'bg-secondary-50 text-secondary-500',
 ];
-
-const contentItemTitleColorDefault = 'text-text-color';
-const contentItemTitleColorRainbow = 'text-gray-900';
-
-const contentItemSubtitleColorDefault = 'text-text-color-60';
-const contentItemSubtitleColorRainbow = 'text-gray-600';
-
-const contentItemFeatureItemStyleDefault =
-    'bg-bg-color border-text-color-10 hover:border-text-color-20 shadow-text-color-10';
-const contentItemFeatureItemStyleRainbow = [
-    'bg-white border-orange-200 hover:border-orange-300 shadow-orange-100',
-    'bg-white border-green-200 hover:border-green-300 shadow-green-100',
-    'bg-white border-blue-200 hover:border-blue-300 shadow-blue-100',
+const contentItemFeatureItemStyles = [
+    'bg-white border-primary-200 hover:border-primary-300 shadow-primary-100',
+    'bg-white border-accent-200 hover:border-accent-300 shadow-accent-100',
+    'bg-white border-secondary-200 hover:border-secondary-300 shadow-secondary-100',
 ];
-
-const contentItemFeatureItemIconColorDefault = 'text-primary-600';
-const contentItemFeatureItemIconColorRainbow = [
-    'text-orange-500',
-    'text-green-500',
-    'text-blue-500',
+const contentItemFeatureItemIconColors = [
+    'text-primary-500',
+    'text-accent-500',
+    'text-secondary-500',
 ];
-
-const contentItemFeatureItemTextColorDefault = 'text-text-color-80';
-const contentItemFeatureItemTextColorRainbow = 'text-gray-700';
 
 export default function Fancy(props) {
-    const { title, subtitle, items, uiPreset } = props;
+    const { title, subtitle, items } = props;
 
     const [activeCase, setActiveCase] = useState('case0');
     const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
@@ -132,28 +92,14 @@ export default function Fancy(props) {
             px="none"
             py="none"
             className={twJoin(
-                'relative',
-                uiPreset === 'rainbow' ? containerBgRainbow[activeIndex] : containerBgDefault
+                'relative bg-gradient-to-b from-neutral-50',
+                containerBgGradientToColors[activeIndex % 3]
             )}
         >
             <div className="max-w-7xl mx-auto px-4 pt-24 pb-12">
                 <div className="text-center mb-16">
-                    <h2
-                        className={twJoin(
-                            'text-4xl font-bold mb-4',
-                            uiPreset === 'rainbow' ? titleColorRainbow : titleColorDefault
-                        )}
-                    >
-                        {title}
-                    </h2>
-                    <p
-                        className={twJoin(
-                            'text-xl max-w-3xl mx-auto',
-                            uiPreset === 'rainbow' ? subtitleColorRainbow : subtitleColorDefault
-                        )}
-                    >
-                        {subtitle}
-                    </p>
+                    <h2 className={twJoin('text-4xl font-bold mb-4')}>{title}</h2>
+                    <p className={twJoin('text-xl max-w-3xl mx-auto')}>{subtitle}</p>
                 </div>
             </div>
             <div
@@ -169,13 +115,11 @@ export default function Fancy(props) {
                     <div
                         className={twJoin(
                             'p-2 rounded-full shadow-lg relative',
-                            uiPreset === 'rainbow'
-                                ? showcaseSwitcherColorRainbow[activeIndex]
-                                : showcaseSwitcherColorDefault
+                            showcaseSwitcherColors[activeIndex % 3]
                         )}
                     >
                         <div
-                            className="absolute top-2 bottom-2 transition-all duration-300 ease-in-out rounded-full bg-gray-900"
+                            className="absolute top-2 bottom-2 transition-all duration-300 ease-in-out rounded-full bg-neutral-900"
                             style={{
                                 left: `${sliderStyle.left}px`,
                                 width: `${sliderStyle.width}px`,
@@ -214,12 +158,8 @@ export default function Fancy(props) {
                                         className={twJoin(
                                             'relative px-6 py-3 rounded-full transition-colors duration-300 z-10',
                                             activeCase === key
-                                                ? uiPreset === 'rainbow'
-                                                    ? showcaseSwitcherItemActiveStyleRainbow
-                                                    : showcaseSwitcherItemActiveStyleDefault
-                                                : uiPreset === 'rainbow'
-                                                ? showcaseSwitcherItemStyleRainbow
-                                                : showcaseSwitcherItemStyleDefault
+                                                ? 'text-bg-color'
+                                                : 'text-neutral-600 hover:text-neutral-900'
                                         )}
                                     >
                                         <div className="flex items-center gap-2 whitespace-nowrap">
@@ -242,15 +182,10 @@ export default function Fancy(props) {
                 <div
                     className={twJoin(
                         'relative min-h-[400px] rounded-3xl border p-8 transition-all duration-500 shadow-xl mt-8',
-                        uiPreset === 'rainbow'
-                            ? contentItemBgStyleRainbow
-                            : contentItemBgStyleDefault
+                        'border-neutral-100 bg-bg-color'
                     )}
                     style={{
-                        backgroundImage:
-                            uiPreset === 'rainbow'
-                                ? contentItemBgColorRainbow[0]
-                                : contentItemBgColorDefault,
+                        backgroundImage: contentItemBgColors[activeIndex % 3],
                     }}
                 >
                     <div className="grid lg:grid-cols-2 gap-16 items-center h-full">
@@ -258,9 +193,7 @@ export default function Fancy(props) {
                             <div
                                 className={twJoin(
                                     'inline-flex p-4 rounded-2xl',
-                                    uiPreset === 'rainbow'
-                                        ? contentItemIconStyleRainbow[activeIndex]
-                                        : contentItemIconStyleDefault
+                                    contentItemIconStyles[activeIndex % 3]
                                 )}
                             >
                                 <Icon
@@ -272,21 +205,12 @@ export default function Fancy(props) {
                                 <h3
                                     className={twJoin(
                                         'text-3xl font-bold mb-4',
-                                        uiPreset === 'rainbow'
-                                            ? contentItemTitleColorRainbow
-                                            : contentItemTitleColorDefault
+                                        'text-neutral-900'
                                     )}
                                 >
                                     {activeItem.title}
                                 </h3>
-                                <p
-                                    className={twJoin(
-                                        'text-xl',
-                                        uiPreset === 'rainbow'
-                                            ? contentItemSubtitleColorRainbow
-                                            : contentItemSubtitleColorDefault
-                                    )}
-                                >
+                                <p className={twJoin('text-xl', 'text-neutral-600')}>
                                     {activeItem.subtitle}
                                 </p>
                             </div>
@@ -297,30 +221,22 @@ export default function Fancy(props) {
                                             key={index}
                                             className={twJoin(
                                                 'flex items-center gap-4 p-4 rounded-xl border transition-all duration-300 hover:scale-[1.02]',
-                                                uiPreset === 'rainbow'
-                                                    ? contentItemFeatureItemStyleRainbow[
-                                                          activeIndex
-                                                      ]
-                                                    : contentItemFeatureItemStyleDefault
+                                                contentItemFeatureItemStyles[activeIndex % 3]
                                             )}
                                         >
                                             <Icon
                                                 icon={icon}
                                                 className={twJoin(
                                                     'w-5 h-5',
-                                                    uiPreset === 'rainbow'
-                                                        ? contentItemFeatureItemIconColorRainbow[
-                                                              activeIndex
-                                                          ]
-                                                        : contentItemFeatureItemIconColorDefault
+                                                    contentItemFeatureItemIconColors[
+                                                        activeIndex % 3
+                                                    ]
                                                 )}
                                             />
                                             <span
                                                 className={twJoin(
                                                     'font-medium',
-                                                    uiPreset === 'rainbow'
-                                                        ? contentItemFeatureItemTextColorRainbow
-                                                        : contentItemFeatureItemTextColorDefault
+                                                    'text-neutral-700'
                                                 )}
                                             >
                                                 {text}
@@ -331,7 +247,7 @@ export default function Fancy(props) {
                             </div>
                         </div>
                         <div className="relative aspect-square">
-                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 opacity-5"></div>
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 opacity-5"></div>
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <Image profile={getPageProfile()} {...activeItem.images[0]}></Image>
                             </div>

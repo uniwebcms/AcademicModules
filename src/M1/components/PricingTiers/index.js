@@ -259,7 +259,6 @@ export default function PricingTiers(props) {
         billing_cycle_switcher = false,
         yearly_price_multiplier = 12,
         appearance = 'subtle',
-        appearance_preset = 'none',
     } = block.getBlockProperties();
 
     const [billingCycle, setBillingCycle] = useState(default_billing_cycle);
@@ -329,7 +328,6 @@ export default function PricingTiers(props) {
                     billing_cycle_switcher,
                     setBillingCycle,
                 }}
-                uiPreset={appearance_preset}
             />
         );
     }
