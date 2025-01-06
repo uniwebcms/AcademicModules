@@ -55,8 +55,8 @@ properties:
 presets:
   fancy:
     label:
-      en: Fancy appearance with no preset
-      fr: Apparence fantaisie sans préréglage
+      en: Fancy appearance
+      fr: Apparence fantaisie
     properties:
       appearance: fancy
     image: fancy.png

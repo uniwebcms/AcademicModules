@@ -41,72 +41,48 @@ properties:
       en: Appearance
       fr: Apparence
     type: string
-    default: subtle
+    default: fancy
     enum:
-      - label:
-          en: Subtle
-          fr: Subtil
-        value: subtle
       - label:
           en: Fancy
           fr: Fantaisie
         value: fancy
     description:
-      en: The appearance of the pricing tiers.
-      fr: L'apparence des niveaux de tarification.
-  appearance_preset:
+      en: The appearance of the pricing features.
+      fr: L'apparence des fonctionnalités de tarification.
+  layout_style:
     label:
-      en: Appearance Preset
-      fr: Préréglage d'apparence
+      en: Layout Style
+      fr: Style de mise en page
     type: string
-    default: none
+    default: grid
     enum:
       - label:
-          en: None
-          fr: Aucun
-        value: none
+          en: Feature items in a grid
+          fr: Éléments de fonctionnalité en grille
+        value: grid
       - label:
-          en: Ocean
-          fr: Océan
-        value: ocean
-      - label:
-          en: Ocean with box style
-          fr: Océan avec style de boîte
-        value: ocean_box
+          en: Feature items wrapped in a box
+          fr: Éléments de fonctionnalité enveloppés dans une boîte
+        value: box
     description:
-      en: The appearance preset of the pricing features when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
-      fr: Le préréglage d'apparence des fonctionnalités de tarification lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
+      en: The appearance preset of the pricing features when appearance is set to fancy.
+      fr: Le préréglage d'apparence des fonctionnalités de tarification lorsque l'apparence est définie sur fantaisie.
 
 presets:
-  subtle:
+  fancy_grid:
     label:
-      en: Subtle appearance
-      fr: Apparence subtile
-    properties:
-      appearance: subtle
-      appearance_preset: none
-    image: subtle.png
-  fancy_ocean:
-    label:
-      en: Fancy appearance with ocean preset
-      fr: Apparence fantaisie avec préréglage océan
+      en: Fancy appearance in grid layout
+      fr: Apparence fantaisie en mise en page de grille
     properties:
       appearance: fancy
-      appearance_preset: ocean
-    image: fancy_ocean.png
-  fancy:
+      layout: grid
+    image: fancy_grid.png
+  fancy_box:
     label:
-      en: Fancy appearance with no preset
-      fr: Apparence fantaisie sans préréglage
+      en: Fancy appearance in box layout
+      fr: Apparence fantaisie en mise en page de boîte
     properties:
       appearance: fancy
-      appearance_preset: none
-    image: fancy.png
-  fancy_ocean_box:
-    label:
-      en: Fancy appearance with ocean box preset
-      fr: Apparence fantaisie avec préréglage de boîte océan
-    properties:
-      appearance: fancy
-      appearance_preset: ocean_box
-    image: fancy_ocean_box.png
+      layout: box
+    image: fancy_box.png

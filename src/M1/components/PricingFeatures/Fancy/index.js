@@ -2,70 +2,26 @@ import React from 'react';
 import Container from '../../_utils/Container';
 import { twJoin, Icon, stripTags } from '@uniwebcms/module-sdk';
 
-const containerBgDefault = 'bg-bg-color';
-const containerBgOcean = 'bg-slate-900';
-
-const containerBgGradientColorDefault = 'from-bg-color via-primary-50 to-bg-color';
-const containerBgGradientColorOcean = 'from-blue-950 via-slate-900 to-slate-900';
-
-const containerBgHalationTopLeftColorDefault = 'bg-primary-50';
-const containerBgHalationTopLeftColorOcean = 'bg-blue-500/10';
-
-const containerBgHalationBottomRightColorDefault = 'bg-primary-50';
-const containerBgHalationBottomRightColorOcean = 'bg-blue-400/5';
-
-const containerBgHalationCenterColorDefault = 'bg-primary-100';
-const containerBgHalationCenterColorOcean = 'bg-orange-500/5';
-
-const titleColorDefault = '';
-const titleColorOcean = 'text-white';
-
-const subtitleColorDefault = 'text-text-color-80';
-const subtitleColorOcean = 'text-slate-400';
-
-const featureBoxStyleDefault = 'bg-text-color/10 border-text-color-20 hover:bg-text-color/20';
-const featureBoxStyleOcean = 'bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70';
-
-const featureItemAccentColorDefault = 'text-primary-600';
-const featureItemAccentColorOcean = ['text-blue-500', 'text-orange-500', 'text-green-500'];
-
-const featureItemTitleColorDefault = 'text-text-color';
-const featureItemTitleColorOcean = 'text-white';
-
-const featureItemFeatureBulletFromDefault = 'from-green-500/70';
-const featureItemFeatureBulletFromOcean = [
+const featureItemAccentColors = ['text-secondary-500', 'text-primary-500', 'text-accent-500'];
+const featureItemFeatureBulletStyles = [
     'from-blue-500/50',
     'from-orange-500/50',
     'from-green-500/50',
 ];
-
-const featureItemFeatureBulletHoverDefault = 'from-green-400/90';
-const featureItemFeatureBulletHoverOcean = [
-    'from-blue-400/70',
-    'from-orange-400/70',
-    'from-green-400/70',
+const featureItemFeatureBulletHoverStyles = [
+    'hover:from-blue-400/70',
+    'hover:from-orange-400/70',
+    'hover:from-green-400/70',
 ];
 
-const featureItemFeatureTextColorDefault = 'from-primary-600';
-const featureItemFeatureTextColorOcean = 'text-slate-300';
-
-const Ocean = ({ title, subtitle, items, uiPreset }) => {
+const Fancy = ({ title, subtitle, items }) => {
     return (
-        <Container
-            px="none"
-            py="lg"
-            className={twJoin(
-                'relative',
-                uiPreset === 'ocean' ? containerBgOcean : containerBgDefault
-            )}
-        >
+        <Container px="none" py="lg" className={twJoin('relative')}>
             <div className="absolute inset-0">
                 <div
                     className={twJoin(
                         'absolute inset-0 bg-gradient-to-br',
-                        uiPreset === 'ocean'
-                            ? containerBgGradientColorOcean
-                            : containerBgGradientColorDefault
+                        'from-secondary-950 via-neutral-900 to-neutral-900'
                     )}
                 ></div>
                 <div
@@ -79,46 +35,26 @@ const Ocean = ({ title, subtitle, items, uiPreset }) => {
                 <div
                     className={twJoin(
                         'absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl',
-                        uiPreset === 'ocean'
-                            ? containerBgHalationTopLeftColorOcean
-                            : containerBgHalationTopLeftColorDefault
+                        'bg-secondary-500/10'
                     )}
                 ></div>
                 <div
                     className={twJoin(
                         'absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl',
-                        uiPreset === 'ocean'
-                            ? containerBgHalationBottomRightColorOcean
-                            : containerBgHalationBottomRightColorDefault
+                        'bg-secondary-400/5'
                     )}
                 ></div>
                 <div
                     className={twJoin(
                         'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl',
-                        uiPreset === 'ocean'
-                            ? containerBgHalationCenterColorOcean
-                            : containerBgHalationCenterColorDefault
+                        'bg-primary-500/5'
                     )}
                 ></div>
             </div>
             <div className="max-w-7xl mx-auto px-8 relative">
                 <div className="max-w-xl mx-auto text-center mb-16">
-                    <h2
-                        className={twJoin(
-                            'text-3xl font-bold mb-4',
-                            uiPreset === 'ocean' ? titleColorOcean : titleColorDefault
-                        )}
-                    >
-                        {title}
-                    </h2>
-                    <p
-                        className={twJoin(
-                            'text-lg',
-                            uiPreset === 'ocean' ? subtitleColorOcean : subtitleColorDefault
-                        )}
-                    >
-                        {subtitle}
-                    </p>
+                    <h2 className={twJoin('text-3xl font-bold mb-4')}>{title}</h2>
+                    <p className={twJoin('text-lg')}>{subtitle}</p>
                 </div>
                 <div className="grid gap-8 md:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
                     {items.map((item, index) => {
@@ -133,9 +69,7 @@ const Ocean = ({ title, subtitle, items, uiPreset }) => {
                             <div
                                 className={twJoin(
                                     'group backdrop-blur-sm border rounded-xl transition-all duration-300',
-                                    uiPreset === 'ocean'
-                                        ? featureBoxStyleOcean
-                                        : featureBoxStyleDefault
+                                    'bg-neutral-800/50 border-neutral-700/50 hover:bg-neutral-800/70'
                                 )}
                                 key={index}
                             >
@@ -145,22 +79,11 @@ const Ocean = ({ title, subtitle, items, uiPreset }) => {
                                             icon={icon}
                                             className={twJoin(
                                                 'w-6 h-6',
-                                                uiPreset === 'ocean'
-                                                    ? featureItemAccentColorOcean[index % 3]
-                                                    : featureItemAccentColorDefault
+                                                featureItemAccentColors[index % 3]
                                             )}
                                         />
                                     </div>
-                                    <h3
-                                        className={twJoin(
-                                            'text-lg font-bold mb-4',
-                                            uiPreset === 'ocean'
-                                                ? featureItemTitleColorOcean
-                                                : featureItemTitleColorDefault
-                                        )}
-                                    >
-                                        {title}
-                                    </h3>
+                                    <h3 className={twJoin('text-lg font-bold mb-4')}>{title}</h3>
                                     <ul className="space-y-3">
                                         {features.map((feature, f_index) => {
                                             return (
@@ -171,27 +94,15 @@ const Ocean = ({ title, subtitle, items, uiPreset }) => {
                                                     <div
                                                         className={twJoin(
                                                             'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
-                                                            uiPreset === 'ocean'
-                                                                ? featureItemFeatureBulletFromOcean[
-                                                                      index % 3
-                                                                  ]
-                                                                : featureItemFeatureBulletFromDefault,
-                                                            uiPreset === 'ocean'
-                                                                ? featureItemFeatureBulletHoverOcean[
-                                                                      index % 3
-                                                                  ]
-                                                                : featureItemFeatureBulletHoverDefault
+                                                            featureItemFeatureBulletStyles[
+                                                                index % 3
+                                                            ],
+                                                            featureItemFeatureBulletHoverStyles[
+                                                                index % 3
+                                                            ]
                                                         )}
                                                     ></div>
-                                                    <span
-                                                        className={
-                                                            uiPreset === 'ocean'
-                                                                ? featureItemFeatureTextColorOcean
-                                                                : featureItemFeatureTextColorDefault
-                                                        }
-                                                    >
-                                                        {stripTags(feature)}
-                                                    </span>
+                                                    <span>{stripTags(feature)}</span>
                                                 </li>
                                             );
                                         })}
@@ -206,19 +117,19 @@ const Ocean = ({ title, subtitle, items, uiPreset }) => {
     );
 };
 
-const featureItemIconBgColorOceanBox = ['bg-blue-500/20', 'bg-orange-500/20', 'bg-green-500/20'];
-const featureItemIconColorOceanBox = ['text-blue-500', 'text-orange-500', 'text-green-500'];
-const featureItemDecorationColorOceanBox = [
-    'bg-blue-500/20',
-    'bg-orange-500/20',
-    'bg-green-500/20',
+const featureItemIconBgColors = ['bg-secondary-500/20', 'bg-primary-500/20', 'bg-accent-500/20'];
+const featureItemIconColors = ['text-secondary-500', 'text-primary-500', 'text-accent-500'];
+const featureItemDecorationColors = [
+    'bg-secondary-500/20',
+    'bg-primary-500/20',
+    'bg-accent-500/20',
 ];
 
-const OceanBox = ({ title, subtitle, items }) => {
+const Box = ({ title, subtitle, items }) => {
     return (
-        <Container px="none" py="lg" className="relative bg-slate-900">
+        <Container px="none" py="lg" className="relative">
             <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-gradient-to-bl from-blue-950 via-slate-900 to-slate-900"></div>
+                <div className="absolute inset-0 bg-gradient-to-bl from-secondary-950 via-neutral-900 to-neutral-900"></div>
                 <div
                     className="absolute inset-0 opacity-5"
                     style={{
@@ -227,14 +138,14 @@ const OceanBox = ({ title, subtitle, items }) => {
                         backgroundSize: '20px 20px',
                     }}
                 ></div>
-                <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-blue-400/5 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/4 right-0 w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary-400/5 rounded-full blur-3xl"></div>
             </div>
             <div className="max-w-6xl mx-auto px-8 relative">
-                <div className="bg-slate-900/60 rounded-2xl backdrop-blur-xl border border-slate-700/50 p-8 shadow-2xl">
+                <div className="bg-neutral-900/60 rounded-2xl backdrop-blur-xl border border-neutral-700/50 p-8 shadow-2xl">
                     <div className="max-w-3xl mb-16">
-                        <h2 className="text-3xl font-bold text-white mb-4">{title}</h2>
-                        <p className="text-slate-400 text-base">{subtitle}</p>
+                        <h2 className="text-3xl font-bold mb-4">{title}</h2>
+                        <p className="text-base">{subtitle}</p>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
                         {items.map((item, index) => {
@@ -247,29 +158,29 @@ const OceanBox = ({ title, subtitle, items }) => {
                             return (
                                 <div
                                     key={index}
-                                    className="bg-slate-800/50 rounded-xl p-6 backdrop-blur-sm border border-slate-700/50 transform transition-all duration-300 hover:translate-y--1 hover:bg-slate-800/70"
+                                    className="bg-neutral-800/50 rounded-xl p-6 backdrop-blur-sm border border-neutral-700/50 transform transition-all duration-300 hover:translate-y--1 hover:bg-neutral-800/70"
                                 >
                                     <div
                                         className={twJoin(
                                             'w-12 h-12 rounded-lg flex items-center justify-center mb-6',
-                                            featureItemIconBgColorOceanBox[index % 3]
+                                            featureItemIconBgColors[index % 3]
                                         )}
                                     >
                                         <Icon
                                             icon={icon}
                                             className={twJoin(
                                                 'w-6 h-6',
-                                                featureItemIconColorOceanBox[index % 3]
+                                                featureItemIconColors[index % 3]
                                             )}
                                         />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
+                                    <h3 className="text-xl font-bold mb-4">{title}</h3>
                                     <ul className="space-y-3">
                                         {features.map((feature, f_index) => {
                                             return (
                                                 <li
                                                     key={f_index}
-                                                    className="flex items-center text-slate-300"
+                                                    className="flex items-center text-neutral-300"
                                                 >
                                                     <svg
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -282,8 +193,8 @@ const OceanBox = ({ title, subtitle, items }) => {
                                                         strokeLinecap="round"
                                                         strokeLinejoin="round"
                                                         className={twJoin(
-                                                            'lucide lucide-chevron-right h-4 w-4 mr-2 flex-shrink-0',
-                                                            featureItemIconColorOceanBox[index % 3]
+                                                            'h-4 w-4 mr-2 flex-shrink-0',
+                                                            featureItemIconColors[index % 3]
                                                         )}
                                                     >
                                                         <path d="m9 18 6-6-6-6"></path>
@@ -296,7 +207,7 @@ const OceanBox = ({ title, subtitle, items }) => {
                                     <div
                                         className={twJoin(
                                             'h-1 w-16 rounded-full mt-6 opacity-50',
-                                            featureItemDecorationColorOceanBox[index % 3]
+                                            featureItemDecorationColors[index % 3]
                                         )}
                                     ></div>
                                 </div>
@@ -309,12 +220,12 @@ const OceanBox = ({ title, subtitle, items }) => {
     );
 };
 
-export default function Fancy(props) {
-    const { title, subtitle, items, uiPreset } = props;
+export default function (props) {
+    const { title, subtitle, items, layout } = props;
 
-    if (uiPreset === 'ocean_box') {
-        return <OceanBox {...{ title, subtitle, items }} />;
+    if (layout === 'box') {
+        return <Box {...{ title, subtitle, items }} />;
     } else {
-        return <Ocean {...{ title, subtitle, items, uiPreset }} />;
+        return <Fancy {...{ title, subtitle, items }} />;
     }
 }

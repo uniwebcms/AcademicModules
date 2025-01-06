@@ -8,7 +8,7 @@ export default function PricingDetails(props) {
 
     const items = block.getBlockItems();
 
-    const { appearance = 'fancy', appearance_preset = 'none' } = block.getBlockProperties();
+    const { appearance = 'fancy' } = block.getBlockProperties();
 
-    return <Fancy {...{ title, subtitle, items, uiPreset: appearance_preset }} />;
+    return <Fancy {...{ title, subtitle, items }} />;
 }
