@@ -87,7 +87,7 @@ export default function Fancy({ pretitle, title, subtitle, items }) {
                                                     mousePosition.x * 100
                                                 }% ${
                                                     mousePosition.y * 100
-                                                }%, rgba(59, 130, 246, 0.15), transparent 50%)`,
+                                                }%, var(--callout), transparent 50%)`,
                                             }}
                                         ></div>
                                         <div

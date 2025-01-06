@@ -5,9 +5,9 @@ import { twJoin, Icon, Image, getPageProfile } from '@uniwebcms/module-sdk';
 const containerBgGradientToColors = ['to-primary-50', 'to-accent-50', 'to-secondary-50'];
 const showcaseSwitcherColors = ['bg-primary-50', 'bg-accent-50', 'bg-secondary-50'];
 const contentItemBgColors = [
-    'radial-gradient(circle at 50% 90%, rgba(255,137,0,0.1), transparent 50%)',
-    'radial-gradient(circle at 50% 90%, rgba(34,197,94,0.1), transparent 50%)',
-    'radial-gradient(circle at 50% 90%, rgba(59,130,246,0.1), transparent 50%)',
+    'radial-gradient(circle at 50% 90%, var(--callout), transparent 50%)',
+    'radial-gradient(circle at 50% 90%, var(--muted), transparent 50%)',
+    'radial-gradient(circle at 50% 90%, var(--highlight), transparent 50%)',
 ];
 const contentItemIconStyles = [
     'bg-primary-50 text-primary-500',
