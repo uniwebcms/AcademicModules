@@ -1,8 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { SafeHtml, Icon, Link, twJoin } from '@uniwebcms/module-sdk';
+import { Icon, Link, twJoin } from '@uniwebcms/module-sdk';
 import { motion } from 'framer-motion';
-import Fancy from './Fancy';
 
 export default function Feature(props) {
     const { block } = props;

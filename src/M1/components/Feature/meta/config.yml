@@ -85,3 +85,10 @@ presets:
     properties:
       appearance: loose
     image: loose.png
+  iconic:
+    label:
+      en: Iconic Feature with basic sub-features
+      fr: Fonctionnalité iconique avec des sous-fonctionnalités basiques
+    properties:
+      appearance: iconic
+    image: iconic.png
