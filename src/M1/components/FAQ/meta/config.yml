@@ -46,25 +46,7 @@ properties:
     description:
       en: The appearance of the FAQ.
       fr: L'apparence de la FAQ.
-  appearance_preset:
-    label:
-      en: Appearance Preset
-      fr: Préréglage d'apparence
-    type: string
-    default: none
-    enum:
-      - label:
-          en: None
-          fr: Aucun
-        value: none
-      - label:
-          en: Ocean
-          fr: Océan
-        value: ocean
-    description:
-      en: The appearance preset of the FAQ when appearance is set to fancy. Choose none will use the Uniweb theme applied to this section.
-      fr: Le préréglage d'apparence des FAQ lorsque l'apparence est définie sur fantaisie. Choisir aucun utilisera le thème Uniweb appliqué à cette section.
-   
+  
 presets:
   subtle:
     label:
@@ -72,21 +54,11 @@ presets:
       fr: Apparence subtile
     properties:
       appearance: subtle
-      appearance_preset: none
     image: subtle.png
-  fancy_ocean:
-    label:
-      en: Fancy appearance with ocean preset
-      fr: Apparence fantaisie avec préréglage océan
-    properties:
-      appearance: fancy
-      appearance_preset: ocean
-    image: fancy_ocean.png
   fancy:
     label:
       en: Fancy appearance with no preset
       fr: Apparence fantaisie sans préréglage
     properties:
       appearance: fancy
-      appearance_preset: none
     image: fancy.png

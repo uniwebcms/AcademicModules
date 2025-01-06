@@ -10,7 +10,7 @@ export default function FAQ(props) {
 
     const items = block.getBlockItems();
 
-    const { appearance = 'subtle', appearance_preset = 'none' } = block.getBlockProperties();
+    const { appearance = 'subtle' } = block.getBlockProperties();
 
     if (appearance === 'subtle') {
         return (
@@ -46,5 +46,5 @@ export default function FAQ(props) {
         );
     }
 
-    return <Fancy {...{ title, subtitle, items }} uiPreset={appearance_preset} />;
+    return <Fancy {...{ title, subtitle, items }} />;
 }
