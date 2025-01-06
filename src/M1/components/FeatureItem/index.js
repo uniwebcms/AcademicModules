@@ -169,7 +169,6 @@ export default function FeatureItem(props) {
                 </div>
             </div>
         );
-        // });
     }
 
     if (mode === 'catching_card') {
@@ -212,6 +211,37 @@ export default function FeatureItem(props) {
                     )}
                 </div>
             </Wrapper>
+        );
+    }
+
+    if (mode === 'bullet_list') {
+        const { icons, title, lists } = block.getBlockContent();
+        const [titleIcon, bulletIcon] = icons;
+
+        const features = lists[0]?.map((item) => item.paragraphs[0])?.filter(Boolean) || [];
+
+        return (
+            <div
+                className={twJoin(
+                    with_border &&
+                        'h-full p-8 rounded-xl shadow-lg border border-text-color/10 hover:shadow-xl transition-shadow'
+                )}
+            >
+                {titleIcon && (
+                    <div className="mb-6">
+                        <Icon icon={titleIcon} className="w-12 h-12" />
+                    </div>
+                )}
+                <h3 className="text-2xl font-bold mb-4">{title}</h3>
+                <ul className="space-y-4">
+                    {features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                            <Icon icon={bulletIcon} className="w-5 h-5 mr-2 flex-shrink-0 mt-1" />
+                            <span>{feature}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         );
     }
 }

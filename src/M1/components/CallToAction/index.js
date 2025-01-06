@@ -40,10 +40,17 @@ export default function CallToAction(props) {
                 <div
                     className={twJoin(
                         'max-w-6xl mx-auto flex',
-                        content_position === 'left' ? 'justify-start' : 'justify-end'
+                        content_position === 'left' && 'justify-start',
+                        content_position === 'right' && 'justify-end',
+                        content_position === 'center' && 'justify-center'
                     )}
                 >
-                    <div className="flex flex-col items-center justify-center w-96 min-h-[28rem]">
+                    <div
+                        className={twJoin(
+                            'flex flex-col items-center justify-center w-96',
+                            banner ? 'min-h-[28rem]' : ''
+                        )}
+                    >
                         {title && (
                             <h2 className="relative text-xl font-bold md:text-2xl lg:text-3xl mb-4">
                                 {title}

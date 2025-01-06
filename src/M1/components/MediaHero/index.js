@@ -1,13 +1,14 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, getPageProfile, Media } from '@uniwebcms/module-sdk';
+import { Image, getPageProfile, Media, SafeHtml, twJoin } from '@uniwebcms/module-sdk';
 
 export default function MediaHero(props) {
     const { block } = props;
 
-    const { banner, title, subtitle, videos } = block.getBlockContent();
+    const { banner, title, subtitle, paragraphs, videos, images } = block.getBlockContent();
 
     const video = videos[0];
+    const image = images[0];
 
     return (
         <Container className="w-screen min-h-96" py="lg">
@@ -36,15 +37,28 @@ export default function MediaHero(props) {
                         {subtitle}
                     </h2>
                 )}
-                {video && (
-                    <div className="w-full max-w-[44rem] mx-auto mt-8 lg:mt-16">
+                {paragraphs.length ? (
+                    <SafeHtml
+                        value={paragraphs}
+                        className="mt-4 lg:mt-6 lg:px-8 text-lg lg:text-xl text-center tracking-wide text-pretty"
+                    >
+                        {subtitle}
+                    </SafeHtml>
+                ) : null}
+                {video || image ? (
+                    <div
+                        className={twJoin(
+                            'w-full mx-auto mt-8',
+                            video ? 'lg:mt-16 max-w-[44rem]' : 'lg:mt-10 max-w-2xl'
+                        )}
+                    >
                         <Media
                             profile={getPageProfile()}
-                            media={video}
-                            className="rounded-3xl shadow-2xl"
+                            media={video || image}
+                            className={twJoin('shadow-2xl', video ? 'rounded-3xl' : '')}
                         />
                     </div>
-                )}
+                ) : null}
             </div>
         </Container>
     );

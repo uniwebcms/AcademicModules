@@ -60,6 +60,10 @@ properties:
           en: Catching Card (icon, title, text and link)
           fr: Carte attrayante (icône, titre, texte et lien)
         value: catching_card
+      - label:
+          en: Bullet List (icon, title and list)
+          fr: Liste à puces (icône, titre et liste)
+        value: bullet_list
     description:
       en: The mode of the feature item.
       fr: Le mode de l'élément de fonctionnalité.

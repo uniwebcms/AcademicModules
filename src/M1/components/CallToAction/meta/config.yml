@@ -33,6 +33,10 @@ properties:
           fr: Gauche
         value: left
       - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
           en: Right
           fr: Droite
         value: right

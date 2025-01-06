@@ -16,10 +16,10 @@ export default function FeatureSpotlight(props) {
 
     switch (colorTone) {
         case 'primary':
-            itemIconActiveClass = 'bg-primary-600 border-primary-600 text-bg-color';
-            itemIconClass = 'bg-bg-color border-primary-600 text-primary-600';
-            linkClass = 'bg-primary-600 text-bg-color';
-            mediaIndicatorClass = 'bg-primary-600';
+            itemIconActiveClass = 'bg-primary-500 border-primary-500 text-bg-color';
+            itemIconClass = 'bg-bg-color border-primary-500 text-primary-500';
+            linkClass = 'bg-primary-500 text-bg-color';
+            mediaIndicatorClass = 'bg-primary-500';
             break;
         case 'secondary':
             itemIconActiveClass = 'bg-secondary-500 border-secondary-500 text-bg-color';

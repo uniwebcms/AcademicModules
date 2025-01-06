@@ -61,6 +61,10 @@ properties:
           en: Grid with medium size content
           fr: Grille avec contenu de taille moyenne
         value: grid_md
+      - label:
+          en: Full width
+          fr: Pleine largeur
+        value: full
     description:
       en: The layout of the sub-content.
       fr: La mise en page du sous-contenu.

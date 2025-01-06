@@ -18,7 +18,11 @@ export default function Feature(props) {
             ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'
             : sub_content_layout === 'grid_md'
             ? 'grid lg:grid-cols-3 gap-6 lg:gap-8'
-            : 'grid lg:grid-cols-2 gap-8 lg:gap-12';
+            : sub_content_layout === 'grid_lg'
+            ? 'grid lg:grid-cols-2 gap-8 lg:gap-12'
+            : sub_content_layout === 'full'
+            ? 'grid grid-cols-1'
+            : null;
 
     const { childBlocks } = block;
 
@@ -45,10 +49,14 @@ export default function Feature(props) {
 
     if (appearance === 'standard') {
         return (
-            <Container py="lg" className="relative max-w-8xl mx-auto">
+            <Container py="md" className="relative max-w-8xl mx-auto">
                 <div className="text-center mb-20">
                     {title && <h2 className={'text-4xl font-bold mb-4'}>{title}</h2>}
-                    {subtitle && <p className="text-lg font-base">{subtitle}</p>}
+                    {subtitle && (
+                        <p className="text-lg font-base max-w-3xl mx-auto text-pretty">
+                            {subtitle}
+                        </p>
+                    )}
                 </div>
                 {hasChildBlocks ? (
                     <div className={gridClassName}>
