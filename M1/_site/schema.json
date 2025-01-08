@@ -1,0 +1,3356 @@
+{
+  "_self": {
+    "name": "Marketing Series 1",
+    "description": "A collection of components for building marketing websites.",
+    "page_templates": [
+      {
+        "name": {
+          "en": "Home Page",
+          "fr": "Page d'accueil"
+        },
+        "page": {
+          "en": "Home",
+          "fr": "Accueil"
+        },
+        "components": [
+          {
+            "name": "Hero"
+          },
+          {
+            "name": "FeatureSpotlight"
+          },
+          {
+            "name": "FeatureCards"
+          },
+          {
+            "name": "MediaBroadcast"
+          },
+          {
+            "name": "ContentTeaser"
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Blog Page",
+          "fr": "Page de blog"
+        },
+        "page": {
+          "en": "Blog",
+          "fr": "Blog"
+        },
+        "components": [
+          {
+            "name": "HeroMedia"
+          },
+          {
+            "name": "ArticleHub"
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Pricing Page",
+          "fr": "Page de tarification"
+        },
+        "page": {
+          "en": "Pricing",
+          "fr": "Tarification"
+        },
+        "components": [
+          {
+            "name": "PricingHero",
+            "preset": "fancy_ocean"
+          },
+          {
+            "name": "PricingTiers",
+            "preset": "fancy_ocean"
+          },
+          {
+            "name": "PricingFeatures",
+            "preset": "fancy_ocean"
+          },
+          {
+            "name": "FAQ",
+            "preset": "fancy_ocean"
+          },
+          {
+            "name": "CallToAction",
+            "preset": "fancy_ocean"
+          }
+        ]
+      }
+    ]
+  },
+  "ArticleHub": {
+    "title": {
+      "en": "Article Hub",
+      "fr": "Hub d'articles"
+    },
+    "label": {
+      "en": "Article Hub",
+      "fr": "Hub d'articles"
+    },
+    "description": {
+      "en": "A versatile and interactive component designed to display and manage a collection of articles. Each article includes key details such as the author, title, description, publication date, and a cover image.",
+      "fr": "Un composant polyvalent et interactif conçu pour afficher et gérer une collection d'articles. Chaque article inclut des détails clés tels que l'auteur, le titre, la description, la date de publication et une image de couverture."
+    },
+    "category": "article",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1039,
+        "width": 1740,
+        "type": "webp",
+        "path": "assets/ArticleHub/example.png"
+      }
+    ],
+    "name": "ArticleHub"
+  },
+  "ArticleList": {
+    "title": {
+      "en": "Article List",
+      "fr": "Liste d'articles"
+    },
+    "label": {
+      "en": "Article List",
+      "fr": "Liste d'articles"
+    },
+    "description": {
+      "en": "A component designed to display a collection of articles in a vertical list.",
+      "fr": "Un composant conçu pour afficher une collection d'articles dans une liste verticale."
+    },
+    "category": "article",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "properties": {
+      "width": {
+        "label": {
+          "en": "Content Width",
+          "fr": "Largeur du contenu"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Full Width",
+              "fr": "Pleine largeur"
+            },
+            "value": "full"
+          }
+        ],
+        "description": {
+          "en": "The width of the section.",
+          "fr": "La largeur de la section."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      },
+      "horizontal_padding": {
+        "label": {
+          "en": "Horizontal Spacing",
+          "fr": "Espacement horizontal"
+        },
+        "type": "string",
+        "default": "sm",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on the left and right of the layout.",
+          "fr": "L'espace à gauche et à droite de la mise en page."
+        }
+      },
+      "in_side_panel": {
+        "label": {
+          "en": "In Side Panel",
+          "fr": "Dans le panneau latéral"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Indicates if the list is displayed in a side panel, if so, the gap in between content and text size will be adjusted accordingly.",
+          "fr": "Indique si la liste est affichée dans un panneau latéral, si c'est le cas, l'écart entre le contenu et la taille du texte sera ajusté en conséquence."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "List layout in side panel",
+          "fr": "Mise en page en liste dans un panneau latéral"
+        },
+        "properties": {
+          "width": "full",
+          "vertical_padding": "lg",
+          "horizontal_padding": "sm",
+          "in_side_panel": true
+        },
+        "image": {
+          "height": 892,
+          "width": 579,
+          "type": "webp",
+          "path": "assets/ArticleList/side_list.webp"
+        }
+      }
+    ],
+    "name": "ArticleList"
+  },
+  "ArticleViewer": {
+    "title": {
+      "en": "Article Viewer",
+      "fr": "Visionneuse d'articles"
+    },
+    "label": {
+      "en": "Article",
+      "fr": "Article"
+    },
+    "description": {
+      "en": "Display the content of a article.",
+      "fr": "Affiche le contenu d'un article."
+    },
+    "category": "article",
+    "export": true,
+    "properties": {
+      "width": {
+        "label": {
+          "en": "Content Width",
+          "fr": "Largeur du contenu"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Full Width",
+              "fr": "Pleine largeur"
+            },
+            "value": "full"
+          }
+        ],
+        "description": {
+          "en": "The width of the section.",
+          "fr": "La largeur de la section."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      },
+      "horizontal_padding": {
+        "label": {
+          "en": "Horizontal Spacing",
+          "fr": "Espacement horizontal"
+        },
+        "type": "string",
+        "default": "sm",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on the left and right of the layout.",
+          "fr": "L'espace à gauche et à droite de la mise en page."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1279,
+        "width": 968,
+        "type": "webp",
+        "path": "assets/ArticleViewer/example.png"
+      }
+    ],
+    "name": "ArticleViewer"
+  },
+  "CallToAction": {
+    "title": {
+      "en": "Call to Action",
+      "fr": "Appel à l'action"
+    },
+    "label": {
+      "en": "Call to Action",
+      "fr": "Appel à l'action"
+    },
+    "description": {
+      "en": "A section designed to encourage users to take a specific action such as signing up for a newsletter, downloading a resource, or contacting a sales representative. Perfect for driving conversions and generating leads.",
+      "fr": "Une section conçue pour encourager les utilisateurs à effectuer une action spécifique telle que s'inscrire à une newsletter, télécharger une ressource ou contacter un représentant commercial. Parfait pour augmenter les conversions et générer des prospects."
+    },
+    "category": "action",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "A action link that directs users to a specific page or resource.",
+          "fr": "Un lien d'action qui dirige les utilisateurs vers une page ou une ressource spécifique."
+        },
+        "type": "link"
+      }
+    },
+    "properties": {
+      "content_position": {
+        "label": {
+          "en": "Content Position",
+          "fr": "Position du contenu"
+        },
+        "type": "string",
+        "default": "left",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The alignment of the content within the call to action section.",
+          "fr": "L'alignement du contenu dans la section d'appel à l'action."
+        }
+      },
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "subtle",
+        "enum": [
+          {
+            "label": {
+              "en": "Subtle",
+              "fr": "Subtil"
+            },
+            "value": "subtle"
+          },
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          },
+          {
+            "label": {
+              "en": "Motion",
+              "fr": "Mouvement"
+            },
+            "value": "motion"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the Call to Action.",
+          "fr": "L'apparence de l'appel à l'action."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Subtle appearance",
+          "fr": "Apparence subtile"
+        },
+        "properties": {
+          "content_position": "right",
+          "appearance": "subtle"
+        },
+        "image": {
+          "height": 624,
+          "width": 2048,
+          "type": "webp",
+          "path": "assets/CallToAction/subtle.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Fancy appearance with ocean preset",
+          "fr": "Apparence fantaisie avec préréglage océan"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 518,
+          "width": 2031,
+          "type": "webp",
+          "path": "assets/CallToAction/fancy.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Fancy appearance with motion preset",
+          "fr": "Apparence fantaisie avec préréglage de mouvement"
+        },
+        "properties": {
+          "appearance": "motion"
+        },
+        "image": {
+          "height": 669,
+          "width": 1950,
+          "type": "webp",
+          "path": "assets/CallToAction/motion.webp"
+        }
+      }
+    ],
+    "name": "CallToAction"
+  },
+  "CodeHero": {
+    "title": {
+      "en": "Code Hero",
+      "fr": "Mise en avant de contenu"
+    },
+    "label": {
+      "en": "Code Hero",
+      "fr": "Mise en avant de contenu"
+    },
+    "description": {
+      "en": "A prominent section designed to grab attention, featuring a bold title and visually engaging code snippets. Perfect for highlighting key messages or showcasing impactful content at the top of a page.",
+      "fr": "Une section importante conçue pour attirer l'attention, avec un titre audacieux et des extraits de code visuellement attrayants. Parfait pour mettre en avant des messages clés ou présenter un contenu percutant en haut d'une page."
+    },
+    "category": "hero",
+    "export": true,
+    "images": [
+      {
+        "height": 1328,
+        "width": 3016,
+        "type": "webp",
+        "path": "assets/CodeHero/example.png"
+      }
+    ],
+    "name": "CodeHero"
+  },
+  "ContentShowcase": {
+    "title": {
+      "en": "Content Showcase",
+      "fr": "Vitrine de contenu"
+    },
+    "label": {
+      "en": "Content Showcase",
+      "fr": "Vitrine de contenu"
+    },
+    "description": {
+      "en": "Section showcasing a collection of content with title and description. Each content can have an icon, title, description, image and details.",
+      "fr": "Section mettant en avant une collection de contenu avec titre et description. Chaque contenu peut avoir une icône, un titre, une description, une image et des détails."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "icon": {
+          "description": {
+            "en": "The icon of the content.",
+            "fr": "L'icône du contenu."
+          }
+        },
+        "title": {
+          "description": {
+            "en": "The title of the content.",
+            "fr": "Le titre du contenu."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "description": {
+            "en": "The subtitle of the content.",
+            "fr": "Le sous-titre du contenu."
+          },
+          "type": "H2"
+        },
+        "list": {
+          "description": {
+            "en": "The details of the content in list format. Each can have a icon and a text.",
+            "fr": "Les détails du contenu au format liste. Chacun peut avoir une icône et un texte."
+          }
+        },
+        "media": {
+          "type": "image",
+          "description": {
+            "en": "The image of the content.",
+            "fr": "L'image du contenu."
+          }
+        }
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "fancy",
+        "enum": [
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the content showcase section.",
+          "fr": "L'apparence de la section de vitrine de contenu."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Fancy appearance",
+          "fr": "Apparence fantaisie"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 1200,
+          "width": 1878,
+          "type": "webp",
+          "path": "assets/ContentShowcase/fancy.webp"
+        }
+      }
+    ],
+    "name": "ContentShowcase"
+  },
+  "ContentTeaser": {
+    "title": {
+      "en": "Content Teaser",
+      "fr": "Mise en avant de contenu"
+    },
+    "label": {
+      "en": "Content Teaser",
+      "fr": "Mise en avant de contenu"
+    },
+    "description": {
+      "en": "A section that draws attention to a specific piece of content, such as a blog post, article, or product. Used to show a brief preview of the content",
+      "fr": "Une section qui attire l'attention sur un contenu spécifique, tel qu'un article de blog, un article ou un produit. Utilisé pour afficher un bref aperçu du contenu"
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "A link put on the right side of the content teaser. It can direct users to a specific page or resource.",
+          "fr": "Un lien placé sur le côté droit de la mise en avant de contenu. Il peut diriger les utilisateurs vers une page ou une ressource spécifique."
+        },
+        "type": "link"
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "pretitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that precedes the main headline.",
+            "fr": "Une phrase qui précède le titre principal."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link make the item clickable.",
+            "fr": "Un lien rend l'élément cliquable."
+          }
+        }
+      }
+    },
+    "properties": {
+      "card_size": {
+        "label": {
+          "en": "Card Size",
+          "fr": "Taille de la carte"
+        },
+        "type": "string",
+        "default": "md",
+        "enum": [
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "lg"
+          }
+        ],
+        "description": {
+          "en": "The size of the content teaser card.",
+          "fr": "La taille de la carte de mise en avant de contenu."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 589,
+        "width": 1528,
+        "type": "webp",
+        "path": "assets/ContentTeaser/example.png"
+      }
+    ],
+    "name": "ContentTeaser"
+  },
+  "FAQ": {
+    "title": {
+      "en": "FAQ",
+      "fr": "FAQ"
+    },
+    "label": {
+      "en": "FAQ",
+      "fr": "FAQ"
+    },
+    "description": {
+      "en": "The FAQ section displays a list of frequently asked questions with their answers.",
+      "fr": "La section FAQ affiche une liste de questions fréquemment posées avec leurs réponses."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "description": {
+            "en": "The title of the FAQ section.",
+            "fr": "Le titre de la section FAQ."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "text": {
+          "description": {
+            "en": "The answer to the question.",
+            "fr": "La réponse à la question."
+          },
+          "type": "paragraph"
+        }
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "subtle",
+        "enum": [
+          {
+            "label": {
+              "en": "Subtle",
+              "fr": "Subtil"
+            },
+            "value": "subtle"
+          },
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the FAQ.",
+          "fr": "L'apparence de la FAQ."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Subtle appearance",
+          "fr": "Apparence subtile"
+        },
+        "properties": {
+          "appearance": "subtle"
+        },
+        "image": {
+          "height": 757,
+          "width": 1442,
+          "type": "webp",
+          "path": "assets/FAQ/subtle.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Fancy appearance with no preset",
+          "fr": "Apparence fantaisie sans préréglage"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 754,
+          "width": 2023,
+          "type": "webp",
+          "path": "assets/FAQ/fancy.webp"
+        }
+      }
+    ],
+    "name": "FAQ"
+  },
+  "Feature": {
+    "title": {
+      "en": "Feature",
+      "fr": "Fonctionnalité"
+    },
+    "label": {
+      "en": "Feature",
+      "fr": "Fonctionnalité"
+    },
+    "description": {
+      "en": "Displays section content in different styles, showing title, description and two links. Best used to showcase product features or services. Can receive subsections to display sub-feature content.",
+      "fr": "Affiche le contenu de la section dans différents styles, montrant le titre, la description et deux liens. Idéal pour mettre en avant les fonctionnalités du produit ou les services. Peut recevoir des sous-sections pour afficher le contenu des sous-fonctionnalités."
+    },
+    "category": "feature",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "One or two links that put under the text content.",
+          "fr": "Un ou deux liens qui sont placés sous le contenu textuel."
+        },
+        "type": "link"
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "standard",
+        "enum": [
+          {
+            "label": {
+              "en": "Standard",
+              "fr": "Standard"
+            },
+            "value": "standard"
+          },
+          {
+            "label": {
+              "en": "Loose",
+              "fr": "Lâche"
+            },
+            "value": "loose"
+          },
+          {
+            "label": {
+              "en": "Iconic",
+              "fr": "Iconique"
+            },
+            "value": "iconic"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the features section.",
+          "fr": "L'apparence de la section des fonctionnalités."
+        }
+      },
+      "sub_content_layout": {
+        "label": {
+          "en": "Sub-content Layout",
+          "fr": "Mise en page du sous-contenu"
+        },
+        "type": "string",
+        "default": "grid_sm",
+        "enum": [
+          {
+            "label": {
+              "en": "Grid with small size content",
+              "fr": "Grille avec contenu de petite taille"
+            },
+            "value": "grid_sm"
+          },
+          {
+            "label": {
+              "en": "Grid with large size content",
+              "fr": "Grille avec contenu de grande taille"
+            },
+            "value": "grid_lg"
+          },
+          {
+            "label": {
+              "en": "Grid with medium size content",
+              "fr": "Grille avec contenu de taille moyenne"
+            },
+            "value": "grid_md"
+          },
+          {
+            "label": {
+              "en": "Full width",
+              "fr": "Pleine largeur"
+            },
+            "value": "full"
+          }
+        ],
+        "description": {
+          "en": "The layout of the sub-content.",
+          "fr": "La mise en page du sous-contenu."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Standard Feature with Catching Card style sub-features",
+          "fr": "Fonctionnalité standard avec des sous-fonctionnalités de style Carte attrayante"
+        },
+        "properties": {
+          "appearance": "standard"
+        },
+        "image": {
+          "height": 1338,
+          "width": 3002,
+          "type": "webp",
+          "path": "assets/Feature/standard.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Loose Feature with rich sub-features",
+          "fr": "Fonctionnalité lâche avec des sous-fonctionnalités riches"
+        },
+        "properties": {
+          "appearance": "loose"
+        },
+        "image": {
+          "height": 1368,
+          "width": 2988,
+          "type": "webp",
+          "path": "assets/Feature/loose.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Iconic Feature with basic sub-features",
+          "fr": "Fonctionnalité iconique avec des sous-fonctionnalités basiques"
+        },
+        "properties": {
+          "appearance": "iconic"
+        },
+        "image": {
+          "height": 452,
+          "width": 1736,
+          "type": "webp",
+          "path": "assets/Feature/iconic.webp"
+        }
+      }
+    ],
+    "name": "Feature"
+  },
+  "FeatureCards": {
+    "title": {
+      "en": "Feature Cards",
+      "fr": "Fonctionnalités en carte"
+    },
+    "label": {
+      "en": "Features - Card",
+      "fr": "Fonctionnalités - Carte"
+    },
+    "description": {
+      "en": "Section showcasing a collection of features or services in a card format, layout can be horizontal scrollable list or grid.",
+      "fr": "Section mettant en avant une collection de fonctionnalités ou de services sous forme de cartes, la mise en page peut être une liste horizontale défilante ou une grille."
+    },
+    "category": "feature",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link",
+            "fr": "Un lien"
+          }
+        }
+      }
+    },
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "scroll",
+        "enum": [
+          {
+            "label": {
+              "en": "Horizontal Scroll List",
+              "fr": "Liste de défilement horizontale"
+            },
+            "value": "scroll"
+          },
+          {
+            "label": {
+              "en": "Grid",
+              "fr": "Grille"
+            },
+            "value": "grid"
+          }
+        ],
+        "description": {
+          "en": "The layout of the feature cards.",
+          "fr": "La mise en page des cartes de fonctionnalités."
+        }
+      },
+      "card_style": {
+        "label": {
+          "en": "Card Style",
+          "fr": "Style de carte"
+        },
+        "type": "string",
+        "default": "compact",
+        "enum": [
+          {
+            "label": {
+              "en": "Compact",
+              "fr": "Compact"
+            },
+            "value": "compact"
+          },
+          {
+            "label": {
+              "en": "Expanded",
+              "fr": "Étendu"
+            },
+            "value": "expanded"
+          },
+          {
+            "label": {
+              "en": "Overlay",
+              "fr": "Superposition"
+            },
+            "value": "overlay"
+          }
+        ],
+        "description": {
+          "en": "The style of the feature cards.",
+          "fr": "Le style des cartes de fonctionnalités."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Showcase of showing features like a floating gallery with compact card style.",
+          "fr": "Présentation des fonctionnalités comme une galerie flottante avec un style de carte compact."
+        },
+        "properties": {
+          "layout": "scroll",
+          "card_style": "compact"
+        },
+        "image": {
+          "height": 627,
+          "width": 1508,
+          "type": "webp",
+          "path": "assets/FeatureCards/floating_gallery.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Horizontal scroll list of features with expanded card style.",
+          "fr": "Liste de défilement horizontale des fonctionnalités avec un style de carte étendu."
+        },
+        "properties": {
+          "layout": "scroll",
+          "card_style": "expanded"
+        },
+        "image": {
+          "height": 669,
+          "width": 1509,
+          "type": "webp",
+          "path": "assets/FeatureCards/scroll_list.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Grid layout of features with overlay card style.",
+          "fr": "Mise en page en grille des fonctionnalités avec un style de carte superposé."
+        },
+        "properties": {
+          "layout": "grid",
+          "card_style": "overlay"
+        },
+        "image": {
+          "height": 475,
+          "width": 1456,
+          "type": "webp",
+          "path": "assets/FeatureCards/gird.webp"
+        }
+      }
+    ],
+    "name": "FeatureCards"
+  },
+  "FeatureItem": {
+    "title": {
+      "en": "Feature Item",
+      "fr": "Élément de fonctionnalité"
+    },
+    "label": {
+      "en": "Feature Item",
+      "fr": "Élément de fonctionnalité"
+    },
+    "description": {
+      "en": "A specific component used to display a feature in different ways. Each mode expect different type of content to be displayed. Ideally used as the child of a feature section.",
+      "fr": "Un composant spécifique utilisé pour afficher une fonctionnalité de différentes manières. Chaque mode attend un type de contenu différent à afficher. Idéalement utilisé comme enfant d'une section de fonctionnalités."
+    },
+    "category": "sub-content",
+    "export": true,
+    "elements": {
+      "icon": {},
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "properties": {
+      "with_border": {
+        "label": {
+          "en": "With Border",
+          "fr": "Avec bordure"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether the feature item should have a border or not.",
+          "fr": "Si l'élément de fonctionnalité doit avoir une bordure ou non."
+        }
+      },
+      "with_motion": {
+        "label": {
+          "en": "With Motion",
+          "fr": "Avec mouvement"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether the feature item should have a motion effect or not.",
+          "fr": "Si l'élément de fonctionnalité doit avoir un effet de mouvement ou non."
+        }
+      },
+      "mode": {
+        "label": {
+          "en": "Mode",
+          "fr": "Mode"
+        },
+        "type": "string",
+        "default": "basic",
+        "enum": [
+          {
+            "label": {
+              "en": "Basic (title, text and a link)",
+              "fr": "Basique (titre, texte et un lien)"
+            },
+            "value": "basic"
+          },
+          {
+            "label": {
+              "en": "Leading icon (icon, title, text and links)",
+              "fr": "Icône principale (icône, titre, texte et liens)"
+            },
+            "value": "leading_icon"
+          },
+          {
+            "label": {
+              "en": "Rich (icon, title, text and links)",
+              "fr": "Riche (icône, titre, texte et liens)"
+            },
+            "value": "rich"
+          },
+          {
+            "label": {
+              "en": "Catching Card (icon, title, text and link)",
+              "fr": "Carte attrayante (icône, titre, texte et lien)"
+            },
+            "value": "catching_card"
+          },
+          {
+            "label": {
+              "en": "Bullet List (icon, title and list)",
+              "fr": "Liste à puces (icône, titre et liste)"
+            },
+            "value": "bullet_list"
+          }
+        ],
+        "description": {
+          "en": "The mode of the feature item.",
+          "fr": "Le mode de l'élément de fonctionnalité."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Rich Feature Item",
+          "fr": "Élément de fonctionnalité riche"
+        },
+        "properties": {
+          "mode": "rich"
+        },
+        "image": {
+          "height": 484,
+          "width": 626,
+          "type": "webp",
+          "path": "assets/FeatureItem/rich.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Catching Card Feature Item",
+          "fr": "Élément de fonctionnalité carte attrayante"
+        },
+        "properties": {
+          "mode": "catching_card"
+        },
+        "image": {
+          "height": 690,
+          "width": 970,
+          "type": "webp",
+          "path": "assets/FeatureItem/catching_card.webp"
+        }
+      }
+    ],
+    "name": "FeatureItem"
+  },
+  "FeatureSpotlight": {
+    "title": {
+      "en": "Feature Spotlight",
+      "fr": "Fonctionnalité en vedette"
+    },
+    "label": {
+      "en": "Features - Spotlight",
+      "fr": "Fonctionnalités - Vedette"
+    },
+    "description": {
+      "en": "A visually striking component designed to showcase features or services in a large format. Ideal for highlighting key features, services, or important information, it ensures an engaging and dynamic presentation that captures attention.",
+      "fr": "Un composant visuellement frappant conçu pour mettre en valeur des fonctionnalités ou des services dans un grand format. Idéal pour mettre en avant des fonctionnalités clés, des services ou des informations importantes, il garantit une présent"
+    },
+    "category": "feature",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "description": {
+            "en": "The title of the feature.",
+            "fr": "Le titre de la fonctionnalité."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "media": {
+          "description": {
+            "en": "Image or video to display for the feature.",
+            "fr": "Image ou vidéo à afficher pour la fonctionnalité."
+          },
+          "type": "image, video"
+        }
+      }
+    },
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "label": {
+              "en": "Content on left and media on right",
+              "fr": "Contenu à gauche et média à droite"
+            },
+            "value": ""
+          },
+          {
+            "label": {
+              "en": "Media on left and content on right",
+              "fr": "Média à gauche et contenu à droite"
+            },
+            "value": "reverse"
+          }
+        ],
+        "description": {
+          "en": "The order of the content and media in the feature spotlight.",
+          "fr": "L'ordre du contenu et du média dans la fonctionnalité en vedette."
+        }
+      },
+      "colorTone": {
+        "label": {
+          "en": "Color Tone",
+          "fr": "Tonalité de couleur"
+        },
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "label": {
+              "en": "Default",
+              "fr": "Par défaut"
+            },
+            "value": ""
+          },
+          {
+            "label": {
+              "en": "Primary",
+              "fr": "Primaire"
+            },
+            "value": "primary"
+          },
+          {
+            "label": {
+              "en": "Secondary",
+              "fr": "Secondaire"
+            },
+            "value": "secondary"
+          },
+          {
+            "label": {
+              "en": "Accent",
+              "fr": "Accent"
+            },
+            "value": "accent"
+          }
+        ],
+        "description": {
+          "en": "The color tone of the feature spotlight, choose from the base colors of current website theme.",
+          "fr": "La tonalité de couleur de la fonctionnalité en vedette, choisissez parmi les couleurs de base du thème actuel du site Web."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Showcase of content on the left side with media on the right side, color tone primary.",
+          "fr": "Mise en valeur du contenu sur le côté gauche avec un média sur le côté droit, tonalité de couleur primaire."
+        },
+        "properties": {
+          "layout": "",
+          "colorTone": "primary"
+        },
+        "image": {
+          "height": 681,
+          "width": 1590,
+          "type": "webp",
+          "path": "assets/FeatureSpotlight/content_left.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Showcase of content on the right side with media on the left side, color tone secondary.",
+          "fr": "Mise en valeur du contenu sur le côté droit avec un média sur le côté gauche, tonalité de couleur secondaire."
+        },
+        "properties": {
+          "layout": "reverse",
+          "colorTone": "secondary"
+        },
+        "image": {
+          "height": 575,
+          "width": 1626,
+          "type": "webp",
+          "path": "assets/FeatureSpotlight/content_right.webp"
+        }
+      }
+    ],
+    "name": "FeatureSpotlight"
+  },
+  "Footer": {
+    "title": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "label": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "description": {
+      "en": "The footer section displays a footer with logo, social media links, legal links, subscription form, other links and a language switcher.",
+      "fr": "La section pied de page affiche un pied de page avec un logo, des liens de médias sociaux, des liens légaux, un formulaire d'abonnement, d'autres liens et un sélecteur de langue."
+    },
+    "category": "footer",
+    "export": true,
+    "elements": {
+      "icon": {
+        "description": {
+          "en": "The logo put on the footer, usually the company logo.",
+          "fr": "Le logo mis sur le pied de page, généralement le logo de l'entreprise."
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The image put on the footer as the logo if the icon element is not available. Use the caption to define which image to use under different theme settings.",
+          "fr": "L'image mise sur le pied de page en tant que logo si l'élément icône n'est pas disponible. Utilisez la légende pour définir quelle image utiliser sous différents paramètres de thème."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "Social media links and legal links to put on the footer.",
+          "fr": "Liens de médias sociaux et liens légaux à mettre sur le pied de page."
+        },
+        "type": "link"
+      },
+      "list": {
+        "description": {
+          "en": "The links to put on the footer, it is created as a group of links, each with a title and a list of links.",
+          "fr": "Les liens à mettre sur le pied de page, il est créé sous forme de groupe de liens, chacun avec un titre et une liste de liens."
+        }
+      },
+      "text": {
+        "description": {
+          "en": "The copyright text to put on the footer.",
+          "fr": "Le texte de copyright à mettre sur le pied de page."
+        },
+        "type": "paragraph"
+      }
+    },
+    "images": [
+      {
+        "height": 819,
+        "width": 1768,
+        "type": "webp",
+        "path": "assets/Footer/example.png"
+      }
+    ],
+    "name": "Footer"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "The navigation header displays a logo, a list of navigation links, search bar, language switcher, and login/signup buttons.",
+      "fr": "L'en-tête de navigation affiche un logo, une liste de liens de navigation, une barre de recherche, un sélecteur de langue et des boutons de connexion/inscription."
+    },
+    "category": "header",
+    "export": true,
+    "elements": {
+      "icon": {
+        "title": {
+          "en": "Logo",
+          "fr": "Logo"
+        },
+        "description": {
+          "en": "The logo image to display in the header.",
+          "fr": "L'image du logo à afficher dans l'en-tête."
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The logo image to display in the header if icon is not set. Use the caption to set the correct image to use under different theme settings.",
+          "fr": "L'image du logo à afficher dans l'en-tête si l'icône n'est pas définie. Utilisez la légende pour définir l'image correcte à utiliser sous différents paramètres de thème."
+        }
+      },
+      "list": {
+        "type": "list",
+        "title": {
+          "en": "Navigation Links",
+          "fr": "Liens de navigation"
+        },
+        "description": {
+          "en": "The navigation links to display in the header, it is created as a list of links, each link can have children links.",
+          "fr": "Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 285,
+        "width": 1786,
+        "type": "webp",
+        "path": "assets/Header/example.png"
+      }
+    ],
+    "name": "Header"
+  },
+  "Hero": {
+    "title": {
+      "en": "Hero Banner",
+      "fr": "Bannière d'en-tête"
+    },
+    "label": {
+      "en": "Hero",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "Special section to be used as a hero banner. Creates a full-width section with a background image and text.",
+      "fr": "Section spéciale à utiliser comme bannière d'en-tête. Crée une section pleine largeur avec une image d'arrière-plan et du texte."
+    },
+    "category": "hero",
+    "export": true,
+    "elements": {
+      "banner": {},
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "One or two links that put under the text content.",
+          "fr": "Un ou deux liens qui sont placés sous le contenu textuel."
+        },
+        "type": "link"
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The showcase images placed on the side of the text content.",
+          "fr": "Les images de présentation placées à côté du contenu textuel."
+        }
+      }
+    },
+    "properties": {
+      "alignment": {
+        "label": {
+          "en": "Content Alignment",
+          "fr": "Alignement du contenu"
+        },
+        "type": "string",
+        "default": "left",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The alignment of the text content in the hero section, when showcase images are present, center alignment will be ignored. In smaller screens, text content will be show first, then the showcase images.",
+          "fr": "L'alignement du contenu textuel dans la section d'en-tête, lorsque des images de présentation sont présentes, l'alignement central sera ignoré. Sur les écrans plus petits, le contenu textuel sera affiché en premier, puis les images de présentation."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Full-height hero banner with content on the left.",
+          "fr": "Bannière d'en-tête pleine hauteur avec contenu à gauche."
+        },
+        "properties": {
+          "height": "100vh",
+          "alignment": "left"
+        },
+        "image": {
+          "height": 1349,
+          "width": 1786,
+          "type": "webp",
+          "path": "assets/Hero/full_left.webp"
+        }
+      }
+    ],
+    "name": "Hero"
+  },
+  "ImageCarousel": {
+    "title": {
+      "en": "Image Carousel",
+      "fr": "Carrousel d'images"
+    },
+    "label": {
+      "en": "Image Carousel",
+      "fr": "Carrousel d'images"
+    },
+    "description": {
+      "en": "A specific component is used to display images using animated transitions.",
+      "fr": "Un composant spécifique est utilisé pour afficher des images à l'aide de transitions animées."
+    },
+    "category": "sub-content",
+    "export": true,
+    "elements": {
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The showcase images.",
+          "fr": "Les images de présentation."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 426,
+        "width": 702,
+        "type": "webp",
+        "path": "assets/ImageCarousel/example.png"
+      }
+    ],
+    "name": "ImageCarousel"
+  },
+  "MediaBroadcast": {
+    "title": {
+      "en": "Media Broadcast",
+      "fr": "Diffusion de médias"
+    },
+    "label": {
+      "en": "Media Broadcast",
+      "fr": "Diffusion de médias"
+    },
+    "description": {
+      "en": "A section designed to showcase a collection of media content such as social links, images or videos. Perfect for displaying a gallery of media content or broadcasting a series of videos or podcasts.",
+      "fr": "Une section conçue pour mettre en avant une collection de contenus médias tels que des liens sociaux, des images ou des vidéos. Parfait pour afficher une galerie de contenus médias ou diffuser une série de vidéos ou de podcasts."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "Social media links or action links to be displayed under the title.",
+          "fr": "Liens vers les réseaux sociaux ou liens d'action à afficher sous le titre."
+        },
+        "type": "link"
+      },
+      "media": {
+        "description": {
+          "en": "The media content to display, can be combination of images or videos. For image, use the caption to set the link destination.",
+          "fr": "Le contenu média à afficher, peut être une combinaison d'images ou de vidéos. Pour l'image, utilisez la légende pour définir la destination du lien."
+        },
+        "type": "image, video"
+      }
+    },
+    "images": [
+      {
+        "height": 561,
+        "width": 1760,
+        "type": "webp",
+        "path": "assets/MediaBroadcast/example.png"
+      }
+    ],
+    "name": "MediaBroadcast"
+  },
+  "MediaHero": {
+    "title": {
+      "en": "Media Hero",
+      "fr": "Hero - Média"
+    },
+    "label": {
+      "en": "Media Hero",
+      "fr": "Hero - Média"
+    },
+    "description": {
+      "en": "A prominent section designed to grab attention, featuring a bold title and visually engaging video. Perfect for highlighting key messages or showcasing impactful content at the top of a page.",
+      "fr": "Une section importante conçue pour attirer l'attention, avec un titre audacieux et une vidéo visuellement attrayante. Parfait pour mettre en avant des messages clés ou présenter un contenu percutant en haut d'une page."
+    },
+    "category": "hero",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "media": {
+        "type": "video",
+        "description": {
+          "en": "The primary visual content.",
+          "fr": "Le contenu visuel principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 907,
+        "width": 1683,
+        "type": "webp",
+        "path": "assets/MediaHero/example.png"
+      }
+    ],
+    "name": "MediaHero"
+  },
+  "PricingAddons": {
+    "title": {
+      "en": "Pricing Addons",
+      "fr": "Extensions de tarification"
+    },
+    "label": {
+      "en": "Pricing Addons",
+      "fr": "Extensions de tarification"
+    },
+    "description": {
+      "en": "Special section for listing pricing addons.",
+      "fr": "Section spéciale pour lister les extensions de tarification."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "list": {
+        "description": {
+          "en": "Optional text put beside the header of this section, usually used for promotion.",
+          "fr": "Texte facultatif placé à côté de l'en-tête de cette section, généralement utilisé pour la promotion."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "icon": {
+          "type": "icon",
+          "description": {
+            "en": "Icons attached to the pricing addon items. The order of the icons should match the order of the items in the list.",
+            "fr": "Icônes attachées aux éléments d'extension de tarification. L'ordre des icônes doit correspondre à l'ordre des éléments de la liste."
+          }
+        },
+        "title": {
+          "description": {
+            "en": "Title of the pricing addon.",
+            "fr": "Titre de l'extension de tarification."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "list": {
+          "description": {
+            "en": "The list of addon items with name and prices. For the price, use the / character to separate the currency and the amount.",
+            "fr": "La liste des éléments d'extension avec nom et prix. Pour le prix, utilisez le caractère / pour séparer la devise et le montant."
+          }
+        }
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "fancy",
+        "enum": [
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the pricing addons.",
+          "fr": "L'apparence des extensions de tarification."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Fancy appearance",
+          "fr": "Apparence fantaisie"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 692,
+          "width": 2018,
+          "type": "webp",
+          "path": "assets/PricingAddons/fancy.webp"
+        }
+      }
+    ],
+    "name": "PricingAddons"
+  },
+  "PricingDetails": {
+    "title": {
+      "en": "Pricing Details",
+      "fr": "Détails de tarification"
+    },
+    "label": {
+      "en": "Pricing Details",
+      "fr": "Détails de tarification"
+    },
+    "description": {
+      "en": "Special component that ideal for displaying explanation of content on pricing page, for best result, exactly 2 items expected.",
+      "fr": "Composant spécial idéal pour afficher l'explication du contenu sur la page de tarification, pour un meilleur résultat, exactement 2 éléments sont attendus."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "icon": {
+          "type": "icon",
+          "description": {
+            "en": "A list icon for the detail items, the first one will be put beside the title, the rest will be put beside the list items.",
+            "fr": "Une icône de liste pour les éléments de détail, le premier sera placé à côté du titre, le reste sera placé à côté des éléments de liste."
+          }
+        },
+        "title": {
+          "description": {
+            "en": "Title of the pricing addon.",
+            "fr": "Titre de l'extension de tarification."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "list": {
+          "description": {
+            "en": "The list of detail items. Accepts two layer, one for the item title and the other for the item description.",
+            "fr": "La liste des éléments de détail. Accepte deux couches, une pour le titre de l'élément et l'autre pour la description de l'élément."
+          }
+        }
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "fancy",
+        "enum": [
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the pricing addons.",
+          "fr": "L'apparence des extensions de tarification."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Fancy appearance",
+          "fr": "Apparence fantaisie"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 681,
+          "width": 2026,
+          "type": "webp",
+          "path": "assets/PricingDetails/fancy.webp"
+        }
+      }
+    ],
+    "name": "PricingDetails"
+  },
+  "PricingFeatures": {
+    "title": {
+      "en": "Pricing Features",
+      "fr": "Fonctionnalités de tarification"
+    },
+    "label": {
+      "en": "Pricing Features",
+      "fr": "Fonctionnalités de tarification"
+    },
+    "description": {
+      "en": "The pricing features section displays a list of features with their pricing.",
+      "fr": "La section des fonctionnalités de tarification affiche une liste de fonctionnalités avec leurs prix."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "icon": {
+          "description": {
+            "en": "The icon of the feature.",
+            "fr": "L'icône de la fonctionnalité."
+          }
+        },
+        "title": {
+          "description": {
+            "en": "The title of the feature.",
+            "fr": "Le titre de la fonctionnalité."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "list": {
+          "description": {
+            "en": "Details of the feature in list format.",
+            "fr": "Détails de la fonctionnalité au format liste."
+          }
+        }
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "fancy",
+        "enum": [
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the pricing features.",
+          "fr": "L'apparence des fonctionnalités de tarification."
+        }
+      },
+      "layout_style": {
+        "label": {
+          "en": "Layout Style",
+          "fr": "Style de mise en page"
+        },
+        "type": "string",
+        "default": "grid",
+        "enum": [
+          {
+            "label": {
+              "en": "Feature items in a grid",
+              "fr": "Éléments de fonctionnalité en grille"
+            },
+            "value": "grid"
+          },
+          {
+            "label": {
+              "en": "Feature items wrapped in a box",
+              "fr": "Éléments de fonctionnalité enveloppés dans une boîte"
+            },
+            "value": "box"
+          }
+        ],
+        "description": {
+          "en": "The appearance preset of the pricing features when appearance is set to fancy.",
+          "fr": "Le préréglage d'apparence des fonctionnalités de tarification lorsque l'apparence est définie sur fantaisie."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Fancy appearance in grid layout",
+          "fr": "Apparence fantaisie en mise en page de grille"
+        },
+        "properties": {
+          "appearance": "fancy",
+          "layout": "grid"
+        },
+        "image": {
+          "height": 911,
+          "width": 2026,
+          "type": "webp",
+          "path": "assets/PricingFeatures/fancy_grid.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Fancy appearance in box layout",
+          "fr": "Apparence fantaisie en mise en page de boîte"
+        },
+        "properties": {
+          "appearance": "fancy",
+          "layout": "box"
+        },
+        "image": {
+          "height": 726,
+          "width": 2024,
+          "type": "webp",
+          "path": "assets/PricingFeatures/fancy_box.webp"
+        }
+      }
+    ],
+    "name": "PricingFeatures"
+  },
+  "PricingHero": {
+    "title": {
+      "en": "Pricing Hero",
+      "fr": "Bannière de tarification"
+    },
+    "label": {
+      "en": "Pricing Hero",
+      "fr": "Bannière de tarification"
+    },
+    "description": {
+      "en": "Special section to be used as a hero banner with pricing information.",
+      "fr": "Section spéciale à utiliser comme bannière d'en-tête avec des informations de tarification."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "description": {
+            "en": "Title for the one pricing tier or a list of pricing tiers.",
+            "fr": "Titre pour un niveau de tarification ou une liste de niveaux de tarification."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "list": {
+          "description": {
+            "en": "List of features for one pricing tier.",
+            "fr": "Liste des fonctionnalités pour un niveau de tarification."
+          }
+        },
+        "link": {
+          "description": {
+            "en": "Action link for one pricing tier.",
+            "fr": "Lien d'action pour un niveau de tarification."
+          },
+          "type": "link"
+        },
+        "icon": {
+          "description": {
+            "en": "Icon for each pricing tier.",
+            "fr": "Icône pour chaque niveau de tarification."
+          }
+        },
+        "text": {
+          "description": {
+            "en": "Description for each pricing tier.",
+            "fr": "Description pour chaque niveau de tarification."
+          },
+          "type": "paragraph"
+        }
+      }
+    },
+    "properties": {
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "subtle",
+        "enum": [
+          {
+            "label": {
+              "en": "Subtle",
+              "fr": "Subtil"
+            },
+            "value": "subtle"
+          },
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the pricing tiers.",
+          "fr": "L'apparence des niveaux de tarification."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Subtle appearance",
+          "fr": "Apparence subtile"
+        },
+        "properties": {
+          "appearance": "subtle",
+          "appearance_preset": "none"
+        },
+        "image": {
+          "height": 807,
+          "width": 1781,
+          "type": "webp",
+          "path": "assets/PricingHero/subtle.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Fancy appearance",
+          "fr": "Apparence fantaisie"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 940,
+          "width": 1642,
+          "type": "webp",
+          "path": "assets/PricingHero/fancy.webp"
+        }
+      }
+    ],
+    "name": "PricingHero"
+  },
+  "PricingTiers": {
+    "title": {
+      "en": "Pricing Tiers",
+      "fr": "Tarifs"
+    },
+    "label": {
+      "en": "Pricing Tiers",
+      "fr": "Tarifs"
+    },
+    "description": {
+      "en": "The pricing tiers section displays a list of pricing tiers with their features and prices. A monthly or yearly switcher is put above the pricing tiers.",
+      "fr": "La section des tarifs affiche une liste de tarifs avec leurs fonctionnalités et leurs prix. Un commutateur mensuel ou annuel est placé au-dessus des tarifs."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "description": {
+          "en": "The promotion text put under billing cycle switcher.",
+          "fr": "Le texte de promotion placé sous le commutateur de cycle de facturation."
+        },
+        "type": "paragraph"
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "icon": {
+          "description": {
+            "en": "The icon put beside the pricing tier.",
+            "fr": "L'icône placée à côté du tarif."
+          }
+        },
+        "pretitle": {
+          "description": {
+            "en": "The name of the pricing tier.",
+            "fr": "Le nom du tarif."
+          },
+          "type": "H2"
+        },
+        "title": {
+          "description": {
+            "en": "The price and the billing cycle of the pricing tier.",
+            "fr": "Le prix et le cycle de facturation du tarif."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "description": {
+            "en": "The description of the pricing tier.",
+            "fr": "La description du tarif."
+          },
+          "type": "H2"
+        },
+        "link": {
+          "description": {
+            "en": "The action button of the pricing tier.",
+            "fr": "Le bouton d'action du tarif."
+          },
+          "type": "link"
+        },
+        "list": {
+          "description": {
+            "en": "The list of features of the pricing tier.",
+            "fr": "La liste des fonctionnalités du tarif."
+          }
+        },
+        "button": {
+          "description": {
+            "en": "The badge of the pricing tier.",
+            "fr": "Le badge du tarif."
+          }
+        }
+      }
+    },
+    "properties": {
+      "default_billing_cycle": {
+        "label": {
+          "en": "Default Billing Cycle",
+          "fr": "Cycle de facturation par défaut"
+        },
+        "type": "string",
+        "default": "monthly",
+        "enum": [
+          {
+            "label": {
+              "en": "Monthly",
+              "fr": "Mensuel"
+            },
+            "value": "monthly"
+          },
+          {
+            "label": {
+              "en": "Yearly",
+              "fr": "Annuel"
+            },
+            "value": "yearly"
+          }
+        ],
+        "description": {
+          "en": "The default billing cycle to display.",
+          "fr": "Le cycle de facturation par défaut à afficher."
+        }
+      },
+      "billing_cycle_switcher": {
+        "label": {
+          "en": "Billing Cycle Switcher",
+          "fr": "Commutateur de cycle de facturation"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.",
+          "fr": "Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels."
+        }
+      },
+      "yearly_price_multiplier": {
+        "label": {
+          "en": "Yearly Price Multiplier",
+          "fr": "Multiplicateur de prix annuel"
+        },
+        "type": "number",
+        "default": 12,
+        "description": {
+          "en": "The multiplier to calculate the yearly price from the monthly price.",
+          "fr": "Le multiplicateur pour calculer le prix annuel à partir du prix mensuel."
+        }
+      },
+      "appearance": {
+        "label": {
+          "en": "Appearance",
+          "fr": "Apparence"
+        },
+        "type": "string",
+        "default": "subtle",
+        "enum": [
+          {
+            "label": {
+              "en": "Subtle",
+              "fr": "Subtil"
+            },
+            "value": "subtle"
+          },
+          {
+            "label": {
+              "en": "Fancy",
+              "fr": "Fantaisie"
+            },
+            "value": "fancy"
+          }
+        ],
+        "description": {
+          "en": "The appearance of the pricing tiers.",
+          "fr": "L'apparence des niveaux de tarification."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Subtle appearance",
+          "fr": "Apparence subtile"
+        },
+        "properties": {
+          "appearance": "subtle"
+        },
+        "image": {
+          "height": 1324,
+          "width": 1994,
+          "type": "webp",
+          "path": "assets/PricingTiers/subtle.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Fancy appearance",
+          "fr": "Apparence fantaisie"
+        },
+        "properties": {
+          "appearance": "fancy"
+        },
+        "image": {
+          "height": 1347,
+          "width": 2004,
+          "type": "webp",
+          "path": "assets/PricingTiers/fancy.webp"
+        }
+      }
+    ],
+    "name": "PricingTiers"
+  },
+  "Table": {
+    "title": {
+      "en": "Table",
+      "fr": "Tableau"
+    },
+    "label": {
+      "en": "Table",
+      "fr": "Tableau"
+    },
+    "description": {
+      "en": "A dedicated component is used to present data in a tabular format. Data is provided as a structured list, with the first level defining the column headers and the second level containing the corresponding column data. Can be used as the nested component or as a standalone component.",
+      "fr": "Un composant dédié est utilisé pour présenter des données sous forme de tableau. Les données sont fournies sous forme de liste structurée, le premier niveau définissant les en-têtes de colonne et le deuxième niveau contenant les données de colonne correspondantes. Peut être utilisé comme composant imbriqué ou comme composant autonome."
+    },
+    "category": "sub-content",
+    "export": true,
+    "elements": {
+      "list": {}
+    },
+    "images": [
+      {
+        "height": 460,
+        "width": 1684,
+        "type": "webp",
+        "path": "assets/Table/example.png"
+      }
+    ],
+    "name": "Table"
+  },
+  "Timeline": {
+    "title": {
+      "en": "Timeline",
+      "fr": "Chronologie"
+    },
+    "label": {
+      "en": "Timeline",
+      "fr": "Chronologie"
+    },
+    "description": {
+      "en": "A specific component is used to display a timeline of events or steps of a process.",
+      "fr": "Un composant spécifique est utilisé pour afficher une chronologie d'événements ou d'étapes d'un processus."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "list": {
+        "description": {
+          "en": "Endnotes for the timeline",
+          "fr": "Notes de fin pour la chronologie"
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "description": {
+            "en": "Title for each timeline",
+            "fr": "Titre pour chaque chronologie"
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "text": {
+          "description": {
+            "en": "Description for each timeline",
+            "fr": "Description pour chaque chronologie"
+          },
+          "type": "paragraph"
+        }
+      }
+    },
+    "name": "Timeline"
+  },
+  "TwoColLayout": {
+    "title": {
+      "en": "Two Column Layout",
+      "fr": "Mise en page à deux colonnes"
+    },
+    "label": {
+      "en": "Layout - Two Column",
+      "fr": "Mise en page - Deux colonnes"
+    },
+    "description": {
+      "en": "A section displaying content of it's child sections in a two column layout.",
+      "fr": "Une section affichant le contenu de ses sections enfants dans une mise en page à deux colonnes."
+    },
+    "category": "layout",
+    "export": true,
+    "assets": {
+      "Screenshot.png": {
+        "title": {
+          "en": "A basic usage of the Special Layout with two child sections.",
+          "fr": "Une utilisation de base de la mise en page spéciale avec deux sections enfants."
+        }
+      }
+    },
+    "items": {
+      "separator": "section",
+      "category": "Any category"
+    },
+    "properties": {
+      "layout_configuration": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "50/50",
+        "enum": [
+          {
+            "label": {
+              "en": "2 Columns - Even",
+              "fr": "2 Colonnes - Égal"
+            },
+            "value": "50/50"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrow right",
+              "fr": "2 Colonnes - Étroit à droite"
+            },
+            "value": "60/40"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrow left",
+              "fr": "2 Colonnes - Étroit à gauche"
+            },
+            "value": "40/60"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrower right",
+              "fr": "2 Colonnes - Encore plus étroit à droite"
+            },
+            "value": "70/30"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrower left",
+              "fr": "2 Colonnes - Encore plus étroit à gauche"
+            },
+            "value": "30/70"
+          }
+        ],
+        "description": {
+          "en": "Choose the desired configuration for the layout of the website block.",
+          "fr": "Choisissez la configuration souhaitée pour la mise en page du bloc de site Web."
+        }
+      },
+      "max_width": {
+        "label": {
+          "en": "Width",
+          "fr": "Largeur"
+        },
+        "type": "string",
+        "default": "wide",
+        "enum": [
+          {
+            "label": {
+              "en": "Narrow",
+              "fr": "Étroit"
+            },
+            "value": "narrow"
+          },
+          {
+            "label": {
+              "en": "Wide",
+              "fr": "Large"
+            },
+            "value": "wide"
+          },
+          {
+            "label": {
+              "en": "Full",
+              "fr": "Plein"
+            },
+            "value": "full"
+          }
+        ],
+        "description": {
+          "en": "Choose the desired width for your website block.",
+          "fr": "Choisissez la largeur souhaitée pour votre bloc de site Web."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      },
+      "horizontal_padding": {
+        "label": {
+          "en": "Horizontal Spacing",
+          "fr": "Espacement horizontal"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on the left and right of the layout.",
+          "fr": "L'espace à gauche et à droite de la mise en page."
+        }
+      },
+      "column_padding": {
+        "label": {
+          "en": "Column Spacing",
+          "fr": "Espacement des colonnes"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space in between the two columns.",
+          "fr": "L'espace entre les deux colonnes."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "string",
+        "default": "top",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The vertical alignment of the content in the columns.",
+          "fr": "L'alignement vertical du contenu dans les colonnes."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Example of showing a single article and a list of articles side by side.",
+          "fr": "Exemple montrant un seul article et une liste d'articles côte à côte."
+        },
+        "properties": {
+          "layout_configuration": "60/40",
+          "max_width": "wide",
+          "vertical_padding": "sm",
+          "horizontal_padding": "lg",
+          "column_padding": "lg",
+          "vertical_alignment": "top"
+        },
+        "image": {
+          "height": 1215,
+          "width": 1821,
+          "type": "webp",
+          "path": "assets/TwoColLayout/article.webp"
+        }
+      }
+    ],
+    "name": "TwoColLayout"
+  },
+  "VideoHub": {
+    "title": {
+      "en": "Video Hub",
+      "fr": "Hub de vidéos"
+    },
+    "label": {
+      "en": "Video Hub",
+      "fr": "Hub de vidéos"
+    },
+    "description": {
+      "en": "A versatile and interactive component designed to display a collection of videos.",
+      "fr": "Un composant polyvalent et interactif conçu pour afficher une collection de vidéos"
+    },
+    "category": "video",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 765,
+        "width": 1654,
+        "type": "webp",
+        "path": "assets/VideoHub/example.png"
+      }
+    ],
+    "name": "VideoHub"
+  },
+  "VideoList": {
+    "title": {
+      "en": "Video List",
+      "fr": "Liste de vidéos"
+    },
+    "label": {
+      "en": "Video List",
+      "fr": "Liste de vidéos"
+    },
+    "description": {
+      "en": "A component designed to display a collection of videos in a vertical list.",
+      "fr": "Un composant conçu pour afficher une collection de vidéos dans une liste verticale."
+    },
+    "category": "video",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "properties": {
+      "width": {
+        "label": {
+          "en": "Content Width",
+          "fr": "Largeur du contenu"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Full Width",
+              "fr": "Pleine largeur"
+            },
+            "value": "full"
+          }
+        ],
+        "description": {
+          "en": "The width of the section.",
+          "fr": "La largeur de la section."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      },
+      "horizontal_padding": {
+        "label": {
+          "en": "Horizontal Spacing",
+          "fr": "Espacement horizontal"
+        },
+        "type": "string",
+        "default": "sm",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on the left and right of the layout.",
+          "fr": "L'espace à gauche et à droite de la mise en page."
+        }
+      },
+      "in_side_panel": {
+        "label": {
+          "en": "In Side Panel",
+          "fr": "Dans le panneau latéral"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether the article list is displayed in a side panel.",
+          "fr": "Si la liste d'articles est affichée dans un panneau latéral."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "List layout in side panel",
+          "fr": "Mise en page en liste dans un panneau latéral"
+        },
+        "properties": {
+          "width": "full",
+          "vertical_padding": "lg",
+          "horizontal_padding": "sm",
+          "in_side_panel": true
+        },
+        "image": {
+          "height": 745,
+          "width": 510,
+          "type": "webp",
+          "path": "assets/VideoList/side_list.webp"
+        }
+      }
+    ],
+    "name": "VideoList"
+  },
+  "VideoPlayer": {
+    "title": {
+      "en": "Video Player",
+      "fr": "Lecteur vidéo"
+    },
+    "label": {
+      "en": "Video Player",
+      "fr": "Lecteur vidéo"
+    },
+    "description": {
+      "en": "A component designed to display a video.",
+      "fr": "Un composant conçu pour afficher une vidéo."
+    },
+    "category": "video",
+    "export": true,
+    "images": [
+      {
+        "height": 710,
+        "width": 1040,
+        "type": "webp",
+        "path": "assets/VideoPlayer/example.png"
+      }
+    ],
+    "name": "VideoPlayer"
+  }
+}

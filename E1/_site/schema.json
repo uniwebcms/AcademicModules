@@ -1,0 +1,62 @@
+{
+  "_self": {
+    "name": "Expert Series 1",
+    "description": "A collection of components for building expert websites."
+  },
+  "Expert": {
+    "title": {
+      "en": "Expert",
+      "fr": "Expert"
+    },
+    "export": true,
+    "name": "Expert"
+  },
+  "ExpertList": {
+    "title": {
+      "en": "Expert List",
+      "fr": "Liste des experts"
+    },
+    "export": true,
+    "name": "ExpertList"
+  },
+  "Footer": {
+    "title": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "export": true,
+    "name": "Footer"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "export": true,
+    "name": "Header"
+  },
+  "Layout": {
+    "title": {
+      "en": "Layout",
+      "fr": "Mise en page"
+    },
+    "export": true,
+    "name": "Layout"
+  },
+  "LeftPanel": {
+    "title": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "export": true,
+    "name": "LeftPanel"
+  },
+  "RightPanel": {
+    "title": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "export": true,
+    "name": "RightPanel"
+  }
+}
