@@ -181,7 +181,7 @@ export default function FeatureItem(props) {
         const wrapperProps = link ? { to: link.href } : {};
 
         return (
-            <Wrapper {...wrapperProps} className="group relative cursor-pointer">
+            <Wrapper {...wrapperProps} className="group relative cursor-pointer h-full">
                 <div
                     className={twJoin(
                         'absolute -inset-px bg-gradient-to-r rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm'
@@ -191,6 +191,7 @@ export default function FeatureItem(props) {
                 <div
                     className={twJoin(
                         'relative h-full rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300'
+                        // with_border && 'border border-text-color/20'
                     )}
                 >
                     <div className="h-12 mb-6">
@@ -199,7 +200,10 @@ export default function FeatureItem(props) {
                         </div>
                     </div>
                     <h3 className={twJoin('text-xl font-semibold mb-4')}>{title}</h3>
-                    <SafeHtml value={paragraphs} className={twJoin('mb-6 text-text-color')} />
+                    <SafeHtml
+                        value={paragraphs}
+                        className={twJoin('text-text-color', link ? 'mb-6' : '')}
+                    />
                     {link && (
                         <div className={twJoin('inline-flex items-center font-medium')}>
                             {link.label}

@@ -49,7 +49,7 @@ export default function Feature(props) {
     if (appearance === 'standard') {
         return (
             <Container py="md" className="relative max-w-8xl mx-auto">
-                <div className="text-center mb-20">
+                <div className={twJoin('text-center', title || subtitle ? ' mb-20' : '')}>
                     {title && <h2 className={'text-4xl font-bold mb-4'}>{title}</h2>}
                     {subtitle && (
                         <p className="text-lg font-base max-w-3xl mx-auto text-pretty">
@@ -65,15 +65,17 @@ export default function Feature(props) {
                         ></ChildBlockRenderer>
                     </div>
                 ) : null}
-                <div
-                    className={twJoin(
-                        'flex flex-col items-center space-y-3',
-                        hasChildBlocks ? 'mt-12 sm:mt-16 lg:mt-24' : 'mt-6 sm:mt-12 lg:mt-16'
-                    )}
-                >
-                    {primaryLink}
-                    {secondaryLink}
-                </div>
+                {primaryLink || secondLink ? (
+                    <div
+                        className={twJoin(
+                            'flex flex-col items-center space-y-3',
+                            hasChildBlocks ? 'mt-12 sm:mt-16 lg:mt-24' : 'mt-6 sm:mt-12 lg:mt-16'
+                        )}
+                    >
+                        {primaryLink}
+                        {secondaryLink}
+                    </div>
+                ) : null}
             </Container>
         );
     }

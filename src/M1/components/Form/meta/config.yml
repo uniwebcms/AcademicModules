@@ -1,0 +1,47 @@
+title:
+  en: Form
+  fr: Formulaire
+label:
+  en: Form
+  fr: Formulaire
+description:
+  en: A form component is used to collect user input.
+  fr: Un composant de formulaire est utilisé pour collecter les entrées de l'utilisateur.
+
+category: form
+export: true
+
+elements:
+  title:
+  subtitle:
+  button:
+    description:
+      en: The submit button text.
+      fr: Le texte du bouton de soumission.
+
+items:
+  separator: divider
+  elements:
+    icon:
+      description:
+        en: The icon of the field.
+        fr: L'icône du champ.
+    title:
+      description:
+        en: The title of the field.
+        fr: Le titre du champ.
+    text:
+      description:
+        en: The placeholder text of the field.
+        fr: Le texte d'indication du champ.
+    list:
+      description:
+        en: The options of the field if field type is select, radio or checkbox.
+        fr: Les options du champ si le type de champ est select, radio ou checkbox.
+    code:
+      description:
+        en: The additional properties for the field such as field type and default value.
+        fr: Les propriétés supplémentaires pour le champ telles que le type de champ et la valeur par défaut.
+
+images:
+  - example.png

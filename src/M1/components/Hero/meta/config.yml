@@ -26,6 +26,24 @@ elements:
       fr: Les images de présentation placées à côté du contenu textuel.
 
 properties:
+  height:
+    label: 
+      en: Height
+      fr: Hauteur
+    type: string
+    default: 100vh
+    enum:
+      - label: 
+          en: Full Height
+          fr: Pleine hauteur
+        value: 100vh
+      - label:
+          en: Dependent on Content
+          fr: Dépendant du contenu
+        value: auto
+    description: 
+      en: The height of the hero section.
+      fr: La hauteur de la section d'en-tête.
   alignment:
     label: 
       en: Content Alignment

@@ -30,13 +30,13 @@ export default function FAQ(props) {
                 <dl className="mt-10 space-y-8 divide-y divide-gray-900/10">
                     {items.map((item, index) => (
                         <div key={index} className="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
-                            <dt className="text-base lg:text-lg font-semibold lg:col-span-5">
+                            <dt className="text-base lg:text-lg font-semibold lg:col-span-5 text-heading-color">
                                 {item.title}
                             </dt>
                             <dd className="mt-4 lg:col-span-7 lg:mt-0">
                                 <SafeHtml
                                     value={item.paragraphs}
-                                    className="text-base text-text-color-60"
+                                    className="text-base text-text-color"
                                 />
                             </dd>
                         </div>

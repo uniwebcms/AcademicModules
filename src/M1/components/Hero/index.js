@@ -5,7 +5,7 @@ import Container from '../_utils/Container';
 export default function Hero(props) {
     const { block } = props;
 
-    const { alignment = 'left' } = block.getBlockProperties();
+    const { height = '100vh', alignment = 'left' } = block.getBlockProperties();
 
     const { banner, title, subtitle, links } = block.getBlockContent();
 
@@ -15,8 +15,9 @@ export default function Hero(props) {
 
     return (
         <Container
-            className="w-screen h-screen flex flex-col justify-center"
-            style={{ maxHeight: '982px' }}
+            className="w-screen flex flex-col justify-center"
+            py="xl"
+            style={{ maxHeight: '982px', height }}
         >
             {banner && (
                 <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
@@ -27,21 +28,36 @@ export default function Hero(props) {
                     />
                 </div>
             )}
-            <div className={twJoin('max-w-8xl mx-auto px-6 py-32 relative')}>
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className={twJoin('max-w-8xl mx-auto px-6 py-12 relative')}>
+                <div
+                    className={twJoin(
+                        'grid gap-12 items-center',
+                        alignment === 'center' ? 'lg:grid-cols-1' : 'lg:grid-cols-2'
+                    )}
+                >
                     <div
                         className={twJoin(
-                            'space-y-8 -order-1',
-                            alignment === 'right' && 'lg:order-2'
+                            '-order-1 max-w-3xl',
+                            alignment === 'right' && 'lg:order-2',
+                            alignment === 'center' && 'text-center'
                         )}
                     >
                         {title && (
-                            <h1 className="text-5xl font-bold leading-tight bg-gradient-to-r bg-clip-text text-pretty">
+                            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--callout,var(--heading-color))] via-[var(--muted,var(--heading-color))] to-[var(--highlight,var(--heading-color))] bg-clip-text text-transparent pb-2 mb-6">
                                 {title}
                             </h1>
                         )}
-                        {subtitle && <p className="text-text-color-70 text-lg">{subtitle}</p>}
-                        {links && (
+                        {subtitle && (
+                            <p
+                                className={twJoin(
+                                    links.length ? 'mb-8' : '',
+                                    alignment === 'center' ? 'text-xl' : 'text-lg'
+                                )}
+                            >
+                                {subtitle}
+                            </p>
+                        )}
+                        {links.length ? (
                             <div className="flex flex-wrap gap-8">
                                 {links.map((link, index) => (
                                     <Link
@@ -73,7 +89,7 @@ export default function Hero(props) {
                                     </Link>
                                 ))}
                             </div>
-                        )}
+                        ) : null}
                     </div>
                     {childBlocks[0] ? (
                         <ChildBlockRenderer

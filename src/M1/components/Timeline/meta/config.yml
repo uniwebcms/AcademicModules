@@ -30,3 +30,6 @@ items:
       description:
         en: Description for each timeline
         fr: Description pour chaque chronologie
+
+images:
+  - example.png
