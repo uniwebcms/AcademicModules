@@ -8,17 +8,6 @@ description:
   en: A section that wraps content (sub-components) with a title, subtitle and a optional endnote.
   fr: Une section qui enveloppe le contenu (sous-composants) avec un titre, un sous-titre et une note de fin facultative.
 
-properties:
-  as_hero:
-    label:
-      en: As Hero
-      fr: En tant que Héro
-    type: boolean
-    default: false
-    description:
-      en: Whether to display the content wrapper as a hero section.
-      fr: Indique si l'enveloppe de contenu doit être affichée en tant que section héroïque.
-
 category: content
 export: true
 
@@ -29,3 +18,6 @@ elements:
     description:
       en: The optional endnote text put under the sub-components content.
       fr: Le texte de la note de fin facultative placé sous le contenu des sous-composants.
+
+images:
+  - example.png

@@ -1,0 +1,49 @@
+title:
+  en: Content Manager
+  fr: Gestionnaire de contenu
+label:
+  en: Content Manager
+  fr: Gestionnaire de contenu
+description:
+  en: A section that manages content with search and filter capabilities.
+  fr: Une section qui gère le contenu avec des capacités de recherche et de filtrage.
+
+category: content
+export: true
+
+elements:
+  title:
+    description:
+      en: The title of the section.
+      fr: Le titre de la section.  
+  subtitle:
+    description:
+      en: The subtitle of the section.
+      fr: Le sous-titre de la section.
+
+items:
+  separator: divider
+  elements:
+    title:
+      description:
+        en: The title of the content.
+        fr: Le titre du contenu.
+    subtitle:
+      description:
+        en: The description of the content.
+        fr: La description du contenu.
+    list:
+      description:
+        en: A list of details of the content.
+        fr: Une liste de détails du contenu.
+    text:
+      description:
+        en: The text put at the bottom of the content.
+        fr: Le texte placé en bas du contenu.
+    code:
+      description:
+        en: Additional information of the content. Such as filter category, badge, examples, etc.
+        fr: Informations supplémentaires du contenu. Comme la catégorie de filtre, le badge, les exemples, etc.
+
+images:
+  - example.png

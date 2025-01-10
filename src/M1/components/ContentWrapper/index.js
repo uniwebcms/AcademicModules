@@ -6,25 +6,15 @@ export default function ContentWrapper(props) {
     const { block } = props;
     const { title, subtitle, paragraphs } = block.getBlockContent();
 
-    const { as_hero = false } = block.getBlockProperties();
-
     const ChildBlockRenderer = block.getChildBlockRenderer();
 
     const { childBlocks } = block;
 
-    const heading = title ? (
-        as_hero ? (
-            <h1 className="text-4xl md:text-5xl font-light mb-4">{title}</h1>
-        ) : (
-            <h2 className="text-4xl font-bold mb-3">{title}</h2>
-        )
-    ) : null;
-
     return (
         <Container className="max-w-7xl mx-auto">
             <div className="max-w-3xl mx-auto">
-                <div className={twJoin('text-center', as_hero ? 'mb-12' : 'mb-8')}>
-                    {heading}
+                <div className={twJoin('text-center', 'mb-8')}>
+                    <h2 className="text-4xl font-bold mb-3">{title}</h2>
                     <p className="text-lg">{subtitle}</p>
                 </div>
                 {childBlocks.length ? (

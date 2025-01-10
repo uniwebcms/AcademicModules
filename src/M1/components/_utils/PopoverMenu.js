@@ -8,49 +8,6 @@ import { Transition, Popover } from '@headlessui/react';
 import { twMerge } from '@uniwebcms/module-sdk';
 
 /**
-//  * Example implementation to use Popper: https://popper.js.org/
-//  */
-// export function usePopper(options) {
-//     let reference = useRef(null);
-//     let popper = useRef(null);
-
-//     let cleanupCallback = useRef(() => {});
-
-//     let instantiatePopper = useCallback(() => {
-//         if (!reference.current) return;
-//         if (!popper.current) return;
-
-//         if (cleanupCallback.current) cleanupCallback.current();
-
-//         cleanupCallback.current = createPopper(reference.current, popper.current, options).destroy;
-//     }, [reference, popper, cleanupCallback, options]);
-
-//     return useMemo(
-//         () => [
-//             (referenceDomNode) => {
-//                 reference.current = referenceDomNode;
-//                 instantiatePopper();
-//             },
-//             (popperDomNode) => {
-//                 popper.current = popperDomNode;
-//                 instantiatePopper();
-//             }
-//         ],
-//         [reference, popper, instantiatePopper]
-//     );
-// }
-
-// export function Portal(props) {
-//     let { children } = props;
-//     let [mounted, setMounted] = useState(false);
-
-//     useEffect(() => setMounted(true), []);
-
-//     if (!mounted) return null;
-//     return createPortal(children, document.body);
-// }
-
-/**
  * Render a menu with options to be selected by the user.
  *
  * @example
@@ -80,7 +37,7 @@ import { twMerge } from '@uniwebcms/module-sdk';
  * @returns {function} A React component.
  */
 export default function PopoverMenu(props) {
-    const { trigger, options, triggerClassName = '' } = props;
+    const { trigger, options, triggerClassName = '', menuClassName = '', autoClose = true } = props;
 
     const buttonRef = useRef(null);
     const [openState, setOpenState] = useState(false);
@@ -127,14 +84,15 @@ export default function PopoverMenu(props) {
                         <Popover.Panel
                             static
                             className={twMerge(
-                                `absolute -left-5 rounded-md shadow shadow-text-color-40 ring-1 ring-text-color-20 ring-opacity-10 divide-y divide-text-color-20 z-10`
+                                `absolute -left-5 rounded-md shadow shadow-text-color-40 ring-1 ring-text-color-20 ring-opacity-10 divide-y divide-text-color-20 z-10`,
+                                menuClassName
                             )}
                         >
                             {options.map((opt, i) => (
                                 <div
                                     key={i}
                                     onClick={() => {
-                                        setOpenState(false);
+                                        if (autoClose) setOpenState(false);
                                     }}
                                 >
                                     {opt}
@@ -147,75 +105,3 @@ export default function PopoverMenu(props) {
         </Popover>
     );
 }
-
-/////////////////////////// old code
-/**
- * 
- * export default function PopoverMenu(props) {
-    const { trigger, onTriggerClick, options, triggerClassName = '', menuClassName = '' } = props;
-
-    const buttonRef = useRef(null);
-    const [openState, setOpenState] = useState(false);
-
-    const toggleMenu = (open) => {
-        setOpenState((openState) => !openState);
-
-        buttonRef?.current?.click();
-    };
-
-    const onHover = (open, action) => {
-        if ((!open && !openState && action === 'onMouseEnter') || (open && openState && action === 'onMouseLeave')) {
-            toggleMenu(open);
-        }
-    };
-
-    const handleClick = (open) => {
-        setOpenState(!open);
-    };
-
-    return (
-        <Popover className='relative'>
-            {({ open }) => (
-                <div
-                    onMouseEnter={() => onHover(open, 'onMouseEnter')}
-                    onMouseLeave={() => onHover(open, 'onMouseLeave')}>
-                    <Popover.Button
-                        className={`${triggerClassName}`}
-                        ref={buttonRef}
-                        onClick={() => onTriggerClick ?? handleClick(open)}>
-                        {trigger}
-                    </Popover.Button>
-                    <Transition
-                        as={Fragment}
-                        show={open}
-                        enter='transition ease-out duration-200'
-                        enterFrom='opacity-0 translate-y-1'
-                        enterTo='opacity-100 translate-y-0'
-                        leave='transition ease-in duration-150'
-                        leaveFrom='opacity-100 translate-y-0'
-                        leaveTo='opacity-0 translate-y-1'>
-                        <Popover.Panel
-                            static
-                            className={`absolute -left-5 bg-neutral-200 rounded-md !shadow-xl ring-1 ring-neutral-400 ring-opacity-10 divide-y divide-neutral-600 z-10`}>
-                            {({ close }) =>
-                                options.map((opt, i) => (
-                                    <div
-                                        key={i}
-                                        onClick={() => {
-                                            setOpenState(false);
-                                            close();
-                                        }}>
-                                        {opt}
-                                    </div>
-                                ))
-                            }
-                        </Popover.Panel>
-                    </Transition>
-                </div>
-            )}
-        </Popover>
-    );
-}
-
- * 
- */

@@ -1,0 +1,17 @@
+{
+    "category": "Dynamic Content",
+    "level": "detail",
+    "titleBadge": {
+        "text": "In-depth"
+    },
+    "examples": [
+        {
+            "title": "Automatic Blog Categories",
+            "description": "Set up SmartFolders to automatically categorize blog posts based on tags, publishing date, or custom fields. New posts matching the criteria appear automatically in the appropriate sections."
+        },
+        {
+            "title": "Event Collections",
+            "description": "Create dynamic collections of events filtered by date, type, or location. When new events are added, they automatically appear in all relevant collections and calendar views."
+        }
+    ]
+}
