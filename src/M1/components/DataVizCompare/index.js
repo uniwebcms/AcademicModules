@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../_utils/Container';
-import { Icon, twJoin, website } from '@uniwebcms/module-sdk';
+import { Icon, twJoin, website, SafeHtml } from '@uniwebcms/module-sdk';
+import { LuInfo } from 'react-icons/lu';
+import { HiX } from 'react-icons/hi';
 import {
     ScatterChart,
     Scatter,
@@ -11,6 +13,7 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from 'recharts';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const CustomXAxisTick = ({ x, y, payload }) => {
     const labels = {
@@ -33,9 +36,6 @@ const CustomXAxisTick = ({ x, y, payload }) => {
 };
 
 const Chart = ({ data, settings }) => {
-    console.log('data', data);
-    console.log('settings', settings);
-
     const { xAxis, yAxis, scatters } = settings;
 
     return (
@@ -142,7 +142,112 @@ const Chart = ({ data, settings }) => {
     );
 };
 
-const parseItems = (items, settings) => {
+const TooltipFeatureItem = ({ item, isAxisItem = true }) => {
+    const { title, lists, paragraphs } = item;
+
+    const xAxisFeatures = lists[0]?.map((item) => {
+        return {
+            title: item.paragraphs?.[0],
+            description: item.lists?.[0]?.[0]?.paragraphs?.[0],
+        };
+    });
+
+    return (
+        <div className="flex-1">
+            <h4
+                className={twJoin(
+                    'font-semibold mb-2 flex items-center gap-2',
+                    isAxisItem ? 'text-secondary-500' : 'text-primary-500'
+                )}
+            >
+                {title}
+                <span className="text-sm font-normal text-neutral-500">
+                    {isAxisItem ? `(X-axis)` : `(Y-axis)`}
+                </span>
+            </h4>
+            <div className="space-y-2">
+                {xAxisFeatures.map((feature, index) => (
+                    <div
+                        key={index}
+                        className={twJoin(
+                            'py-1.5 px-2 rounded border',
+                            isAxisItem
+                                ? 'bg-secondary-50/50 border-secondary-100/50'
+                                : 'bg-primary-50/50 border-primary-100/50'
+                        )}
+                    >
+                        <p className="text-sm font-medium text-neutral-800">{feature.title}</p>
+                        <p className="text-xs text-neutral-600">{feature.description}</p>
+                    </div>
+                ))}
+                <SafeHtml value={paragraphs[0]} className="text-xs text-neutral-500 mt-1" />
+            </div>
+        </div>
+    );
+};
+
+const TooltipBlock = ({ block, triggerText }) => {
+    const { title, subtitle } = block.getBlockContent();
+    const items = block.getBlockItems();
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const [xAxis, yAxis] = items;
+
+    return (
+        <>
+            <div
+                onClick={() => setIsOpen(!isOpen)}
+                className="absolute top-[-16px] right-2 p-2 flex items-center gap-2 text-neutral-600 hover:text-neutral-900 rounded-lg hover:bg-neutral-100 transition-colors duration-200 cursor-pointer"
+            >
+                <LuInfo className="w-[18px] h-[18px] text-inherit" />
+                <span className="text-sm font-medium">{triggerText}</span>
+            </div>
+            <AnimatePresence>
+                {isOpen && (
+                    <>
+                        {/* Overlay */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="fixed inset-0 bg-neutral-900/20 backdrop-blur-sm rounded-xl z-30"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            className="absolute top-12 right-2 w-[640px] bg-neutral-50/95 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-neutral-200/50 z-40"
+                        >
+                            {/* Header */}
+                            <div className="mb-3">
+                                <h3 className="text-lg font-bold text-neutral-900">{title}</h3>
+                                <p className="text-sm text-neutral-600">{subtitle}</p>
+                            </div>
+
+                            {/* Two-column layout */}
+                            <div className="flex gap-6">
+                                {xAxis && <TooltipFeatureItem item={xAxis} isAxisItem={true} />}
+                                {yAxis && <TooltipFeatureItem item={yAxis} isAxisItem={false} />}
+                            </div>
+
+                            {/* Close Button */}
+                            <div
+                                onClick={() => setIsOpen(!isOpen)}
+                                className="absolute top-3 right-3 text-neutral-400 hover:text-neutral-600 cursor-pointer"
+                            >
+                                <HiX className="w-4 h-4 text-inherit" />
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </>
+    );
+};
+
+const parseItems = (items) => {
     const parsed = [];
 
     items.forEach((item) => {
@@ -156,14 +261,11 @@ const parseItems = (items, settings) => {
         const parsedScatters = scatters.map((scatter) => {
             const { name, x, y } = scatter;
 
-            // const info = settings.scatters.find((s) => s.name === category);
-
             return {
                 title: name,
                 x,
                 y,
                 category,
-                // ...info,
             };
         });
 
@@ -210,9 +312,12 @@ export default function DataVizCompare(props) {
     const chartSwitcherActiveBtnClassName =
         'px-6 py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-gradient-to-r from-secondary-600 to-secondary-500 text-neutral-50 shadow-secondary-500/50 cursor-pointer';
 
-    // const chartSwitcherBtnClassName = 'px-6 py-3 rounded-full flex items-center gap-2 ';
-    // const chartSwitcherActiveBtnClassName = 'px-6 py-3 rounded-full flex items-center ';
-    // console.log('settings', settings, items);
+    const { childBlocks } = block;
+
+    const tooltipBlock =
+        settings.tooltip?.contentSource === 'child_section' && childBlocks[0]
+            ? childBlocks[0]
+            : null;
 
     return (
         <Container px="none" py="none" className="relative max-w-5xl mx-auto p-4">
@@ -237,6 +342,13 @@ export default function DataVizCompare(props) {
 
                 {/* chart */}
                 <div className="relative h-[500px] bg-neutral-50/40 rounded-lg p-4 backdrop-blur-sm border border-neutral-50/50">
+                    {/* tooltip */}
+                    {tooltipBlock && (
+                        <TooltipBlock
+                            block={tooltipBlock}
+                            triggerText={settings.tooltip.triggerText}
+                        />
+                    )}
                     <Chart data={data[activeChartIndex]} settings={settings} />
                 </div>
             </div>
