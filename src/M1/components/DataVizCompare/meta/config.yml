@@ -1,0 +1,12 @@
+title:
+  en: Data Visualization Compare
+  fr: Comparaison de la visualisation des données
+label:
+  en: Data Visualization Compare
+  fr: Comparaison de la visualisation des données
+description:
+  en: Specific components are used to display or compare data graphically. It can take in different data sets and display them in a single graph for easy comparison, or display each data set individually for better visualization.
+  fr: Des composants spécifiques sont utilisés pour afficher ou comparer des données graphiquement. Il peut prendre différents ensembles de données et les afficher dans un seul graphique pour une comparaison facile, ou afficher chaque ensemble de données individuellement pour une meilleure visualisation.
+
+category: graph
+export: true

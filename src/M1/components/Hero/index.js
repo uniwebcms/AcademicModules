@@ -15,9 +15,14 @@ export default function Hero(props) {
 
     return (
         <Container
-            className="w-screen flex flex-col justify-center"
+            className={twJoin(
+                'w-screen flex flex-col justify-center',
+                !childBlocks.length || (childBlocks.length && alignment !== 'center')
+                    ? 'lg:max-h-[982px]'
+                    : ''
+            )}
             py="xl"
-            style={{ maxHeight: '982px', height }}
+            style={{ height }}
         >
             {banner && (
                 <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
@@ -37,7 +42,7 @@ export default function Hero(props) {
                 >
                     <div
                         className={twJoin(
-                            '-order-1 max-w-3xl',
+                            '-order-1 max-w-3xl mx-auto',
                             alignment === 'right' && 'lg:order-2',
                             alignment === 'center' && 'text-center'
                         )}

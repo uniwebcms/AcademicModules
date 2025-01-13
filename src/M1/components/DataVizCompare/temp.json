@@ -1,0 +1,41 @@
+{
+    "xAxis": {
+        "domain": [25, 100],
+        "ticks": [25, 50, 75, 100],
+        "label": "Ease of Use",
+        "ticksLabel": ["Simple", "", "", "Complex"]
+    },
+    "yAxis": {
+        "domain": [0, 100],
+        "ticks": [0, 25, 50, 75, 100],
+        "label": "Growth Potential",
+        "ticksLabel": ["Limited", "", "", "", "Unlimited"]
+    },
+    "Scatters": [
+        {
+            "name": "uniweb",
+            "shape": "star",
+            "color": "#EA580C"
+        },
+        {
+            "name": "builder",
+            "shape": "circle",
+            "color": "#0EA5E9"
+        },
+        {
+            "name": "documenter",
+            "shape": "diamond",
+            "color": "#F2C94C"
+        },
+        {
+            "name": "cms",
+            "shape": "square",
+            "color": "#27AE60"
+        },
+        {
+            "name": "framework",
+            "shape": "triangle",
+            "color": "#9B51E0"
+        }
+    ]
+}
