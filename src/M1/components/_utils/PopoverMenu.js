@@ -84,7 +84,7 @@ export default function PopoverMenu(props) {
                         <Popover.Panel
                             static
                             className={twMerge(
-                                `absolute -left-5 rounded-md shadow shadow-text-color-40 ring-1 ring-text-color-20 ring-opacity-10 divide-y divide-text-color-20 z-10`,
+                                `absolute -left-5 rounded-md shadow shadow-text-color-40 ring-1 ring-text-color-20 ring-opacity-10 divide-y divide-text-color-20 z-50`,
                                 menuClassName
                             )}
                         >
