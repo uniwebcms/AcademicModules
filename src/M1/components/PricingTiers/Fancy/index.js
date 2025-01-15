@@ -66,8 +66,8 @@ export default function Fancy(props) {
             </div>
             <div className="max-w-7xl mx-auto px-8 relative">
                 <div className="text-center mb-12">
-                    <h2 className={twJoin('text-3xl font-bold mb-4')}>{title}</h2>
-                    <p className={twJoin('text-base mb-8')}>{subtitle}</p>
+                    <h2 className={twJoin('text-3xl font-light mb-4')}>{title}</h2>
+                    {subtitle && <p className={twJoin('text-base mb-8')}>{subtitle}</p>}
                     {billing_cycle_switcher && (
                         <>
                             <div className="flex items-center justify-center gap-4 mb-4">
@@ -149,8 +149,8 @@ export default function Fancy(props) {
                                 )}
                                 <div className="p-6">
                                     <div className="flex items-center space-x-3 mb-3">
-                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-                                            {icon && (
+                                        {icon && (
+                                            <div className="w-10 h-10 rounded-lg flex items-center justify-center">
                                                 <Icon
                                                     icon={icon}
                                                     className={twJoin(
@@ -158,8 +158,8 @@ export default function Fancy(props) {
                                                         tierItemIconColors[index % 3]
                                                     )}
                                                 />
-                                            )}
-                                        </div>
+                                            </div>
+                                        )}
                                         <h3 className={twJoin('text-xl font-bold')}>{pretitle}</h3>
                                     </div>
                                     <div className="mb-6">
@@ -201,14 +201,16 @@ export default function Fancy(props) {
                                             </span>
                                         )}
                                     </div>
-                                    <p
-                                        className={twJoin(
-                                            'text-sm mb-0 h-10 line-clamp-2',
-                                            'text-text-color'
-                                        )}
-                                    >
-                                        {subtitle}
-                                    </p>
+                                    {subtitle && (
+                                        <p
+                                            className={twJoin(
+                                                'text-sm mb-0 h-10 line-clamp-2',
+                                                'text-text-color'
+                                            )}
+                                        >
+                                            {subtitle}
+                                        </p>
+                                    )}
                                 </div>
                                 <div
                                     className={twJoin(

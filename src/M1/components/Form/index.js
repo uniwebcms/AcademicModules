@@ -68,7 +68,7 @@ const Field = (props) => {
 
     const icon = icons?.[0];
 
-    const { widget = 'input' } = properties[0] || {};
+    const { widget = 'input' } = properties;
 
     const inputClassName =
         'flex h-10 w-full rounded-md border px-3 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-neutral-900 border-neutral-600 text-neutral-200 placeholder:text-neutral-500';
@@ -146,10 +146,8 @@ export default function Form(props) {
         items.forEach((item) => {
             const { title, properties } = item;
 
-            const property = properties[0];
-
-            if (property?.['default']) {
-                initData[title] = property['default'];
+            if (properties?.['default']) {
+                initData[title] = properties['default'];
             } else {
                 initData[title] = '';
             }

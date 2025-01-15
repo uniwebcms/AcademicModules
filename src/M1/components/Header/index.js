@@ -172,7 +172,8 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
         if (floatingOnTop) {
             // For floating navbar, set opacity based on current scroll
             const currentScrollY = window.scrollY;
-            const bgOpacity = Math.min(currentScrollY / 50, 1);
+            // const bgOpacity = Math.min(currentScrollY / 80, 1);
+            const bgOpacity = currentScrollY < 80 ? 0.8 : 1;
             navRef.current.style.setProperty('--nav-bg-opacity', bgOpacity);
         } else {
             // For non-floating navbar, always solid background
@@ -180,7 +181,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
         }
 
         // Set initial shadow opacity
-        const bgShadowOpacity = Math.min(window.scrollY / 50, 1);
+        const bgShadowOpacity = Math.min(window.scrollY / 80, 1);
         navRef.current.style.setProperty('--nav-bg-shadow-opacity', bgShadowOpacity);
     }, [floatingOnTop]);
 
@@ -231,12 +232,13 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
 
             // Update background opacity while scrolling (only for floating navbar)
             if (floatingOnTop) {
-                const bgOpacity = Math.min(currentScrollY / 50, 1);
+                // const bgOpacity = Math.min(currentScrollY / 80, 1);
+                const bgOpacity = currentScrollY < 80 ? 0.8 : 1;
                 navRef.current.style.setProperty('--nav-bg-opacity', bgOpacity);
             }
 
             // Update shadow opacity while scrolling
-            const bgShadowOpacity = Math.min(currentScrollY / 50, 1);
+            const bgShadowOpacity = Math.min(currentScrollY / 80, 1);
             navRef.current.style.setProperty('--nav-bg-shadow-opacity', bgShadowOpacity);
 
             // Update navbar position for show/hide animation

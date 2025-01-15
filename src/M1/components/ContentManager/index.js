@@ -16,9 +16,9 @@ const parseItems = (items) => {
             description: subtitle,
             features: lists[0]?.map((item) => item.paragraphs?.[0]) || [],
             importance: paragraphs[0] || '',
-            examples: properties[0]?.examples || [],
-            properties: properties[0] || {},
-            badge: properties[0]?.badge || null,
+            examples: properties?.examples || [],
+            properties: properties || {},
+            badge: properties?.badge || null,
         };
     });
 
@@ -380,7 +380,7 @@ export default function ContentManager(props) {
 
     const { title, subtitle, properties } = block.getBlockContent();
 
-    const settings = properties[0] || {};
+    const settings = properties || {};
 
     const items = parseItems(block.getBlockItems());
 

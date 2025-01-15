@@ -254,9 +254,8 @@ const parseItems = (items) => {
         const { title, icons, properties } = item;
 
         const icon = icons[0];
-        const property = properties[0];
 
-        const { scatters, category } = property;
+        const { scatters, category } = properties;
 
         const parsedScatters = scatters.map((scatter) => {
             const { name, x, y } = scatter;
@@ -298,10 +297,8 @@ const allIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
 export default function DataVizCompare(props) {
     const { block } = props;
 
-    const { properties } = block.getBlockContent();
+    const { properties: settings } = block.getBlockContent();
     const items = block.getBlockItems();
-
-    const settings = properties[0] || {};
 
     const [activeChartIndex, setActiveChartIndex] = React.useState(0);
 

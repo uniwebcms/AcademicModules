@@ -1,0 +1,27 @@
+title:
+  en: Pricing Estimator
+  fr: Estimateur de tarification
+label:
+  en: Pricing Estimator
+  fr: Estimateur de tarification
+description:
+  en: The pricing estimator component can calculate cost dynamically based on user input and showcasing multi-product discounts.
+  fr: Le composant d'estimateur de tarification peut calculer le coût dynamiquement en fonction de l'entrée de l'utilisateur et en montrant des remises multi-produits.
+
+category: pricing
+export: true
+
+elements:
+  title:
+  subtitle:
+
+properties:
+  billing_cycle_switcher:
+    label:
+      en: Billing Cycle Switcher
+      fr: Commutateur de cycle de facturation
+    type: boolean
+    default: false
+    description:
+      en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
+      fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.

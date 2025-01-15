@@ -1,0 +1,12 @@
+title:
+  en: Side Navigation Page
+  fr: Page de navigation latérale
+label:
+  en: Side Navigation Page
+  fr: Page de navigation latérale
+description:
+  en: A versatile page component that combines layout and content rendering. It displays the main content on the left and a navigation list on the right, allowing users to easily explore different sections of the page.
+  fr: Un composant de page polyvalent qui combine la mise en page et le rendu du contenu. Il affiche le contenu principal à gauche et une liste de navigation à droite, permettant aux utilisateurs d'explorer facilement différentes sections de la page.
+
+category: page
+export: true
