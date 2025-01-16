@@ -39,10 +39,9 @@ export default function CodeHero(props) {
 
     const [firstLink, secondLink] = links;
 
-    const code = properties.find((property) => typeof property === 'string');
-    const codeInfo = properties.find(
-        (property) => typeof property === 'object' && property.title && property.description
-    );
+    const { childBlocks } = block;
+
+    const code = childBlocks[0] ? childBlocks[0].getBlockContent().properties : '';
 
     return (
         <Container className="relative">
@@ -91,11 +90,7 @@ export default function CodeHero(props) {
                         transition={{ delay: 0.2 }}
                         className="flex-1"
                     >
-                        <CodeExample
-                            code={code}
-                            title={codeInfo?.title}
-                            description={codeInfo?.description}
-                        />
+                        <CodeExample code={code} {...properties} />
                     </motion.div>
                 </div>
             </div>
