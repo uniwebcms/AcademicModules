@@ -1,0 +1,64 @@
+{
+    "search_box": {
+        "placeholder": "What are you looking for?"
+    },
+    "info_modal": {
+        "text": "Design freely, preview unlimited. Publishing cost vary based on your chosen library type.",
+        "trigger_text": "library type"
+    },
+    "filters": [
+        {
+            "name": "category",
+            "title": "Category",
+            "options": [
+                {
+                    "label": "All",
+                    "value": "all"
+                },
+                {
+                    "label": "Marketing",
+                    "value": "marketing"
+                },
+                {
+                    "label": "Business",
+                    "value": "business"
+                },
+                {
+                    "label": "Documentation",
+                    "value": "documentation"
+                },
+                {
+                    "label": "Research",
+                    "value": "research"
+                }
+            ]
+        },
+        {
+            "name": "library_type",
+            "title": "Library Type",
+            "options": [
+                {
+                    "label": "All",
+                    "value": "all"
+                },
+                {
+                    "label": "Essential",
+                    "value": "essential"
+                },
+                {
+                    "label": "Advanced",
+                    "value": "advanced"
+                },
+                {
+                    "label": "Signature",
+                    "value": "signature"
+                }
+            ]
+        }
+    ],
+    "sort_by": {
+        "newest": "Newest",
+        "most_popular": "Most Popular",
+        "alphabetical": "Alphabetical"
+    }
+}
