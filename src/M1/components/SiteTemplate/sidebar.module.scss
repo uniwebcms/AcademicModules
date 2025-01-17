@@ -1,0 +1,62 @@
+.Scrollbar {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        scrollbar-width: thin;
+        &::-webkit-scrollbar {
+            position: absolute;
+            width: 0.5rem;
+            height: 0.5rem;
+            min-height: 0.5rem;
+            min-width: 0.5rem;
+        }
+    }
+    &::-webkit-scrollbar-thumb {
+        border: 5px solid transparent;
+        background-clip: content-box;
+        border-radius: 9px;
+        background: rgb(170, 170, 170) !important;
+    }
+    &::-webkit-scrollbar-track {
+        background: rgb(255, 255, 255); //rgb(245, 247, 249);
+        border-radius: 0.563rem;
+    }
+    hyphens: auto;
+    ul {
+        list-style: disc;
+        padding-left: 20px;
+    }
+    ol {
+        list-style: decimal;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+    }
+    a {
+        color: '#3B82F6';
+        &:hover {
+            color: '#2563EB';
+        }
+    }
+}
+
+/* Show scrollbar only when hovering/scrolling in Firefox */
+@supports (scrollbar-width: thin) {
+    .scroll-container {
+        scrollbar-width: none;
+    }
+
+    .scroll-container:hover,
+    .scroll-container:active,
+    .scroll-container:focus {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+    }
+}

@@ -1,0 +1,11 @@
+title:
+    en: Website Template
+    fr: Modèle de site Web
+label:
+    en: Website Template
+    fr: Modèle de site Web
+description:
+    en: A template that can be used to create a website.
+    fr: Un modèle qui peut être utilisé pour créer un site Web.
+category: content
+export: true
