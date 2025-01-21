@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeHtml } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link } from '@uniwebcms/module-sdk';
 import { LuCrown, LuLayers2 } from 'react-icons/lu';
 import { GrDiamond } from 'react-icons/gr';
 
@@ -14,7 +14,9 @@ const LibrarySection = ({ info, website }) => {
         templateInfo = JSON.parse(templateInfo);
     }
 
-    const stylerId = templateInfo?.styler;
+    const stylerId = Array.isArray(templateInfo?.styler)
+        ? templateInfo.styler[0]
+        : templateInfo.styler;
 
     const { profile: webstylerProfile } = uniweb.useCompleteProfile('webstyler', stylerId);
 
@@ -36,7 +38,7 @@ const LibrarySection = ({ info, website }) => {
             : metadata
         : {};
 
-    let { type = 'essential', creator = 'Uniweb Studio', tagline = '' } = parsedMeta;
+    let { type = 'essential', creator = 'Uniweb Studio', tagline = '', url = '' } = parsedMeta;
 
     let icon,
         price,
@@ -56,8 +58,16 @@ const LibrarySection = ({ info, website }) => {
         price = '40';
     }
 
+    let Wrapper = url
+        ? ({ children, className }) => (
+              <Link to={url} className={className} target="_blank">
+                  {children}
+              </Link>
+          )
+        : ({ children, className }) => <div className={className}>{children}</div>;
+
     let body = (
-        <div className={`flex flex-col gap-3`}>
+        <Wrapper className={`flex flex-col gap-3`}>
             <div className={`flex items-center gap-3`}>
                 {icon}
                 <div className={`flex flex-col`}>
@@ -76,7 +86,7 @@ const LibrarySection = ({ info, website }) => {
                     tagline ? `—— ${tagline}` : ''
                 }`}
             />
-        </div>
+        </Wrapper>
     );
 
     return (
