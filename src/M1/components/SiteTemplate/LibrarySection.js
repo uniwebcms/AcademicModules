@@ -38,7 +38,7 @@ const LibrarySection = ({ info, website }) => {
             : metadata
         : {};
 
-    let { type = 'essential', creator = 'Uniweb Studio', tagline = '', url = '123' } = parsedMeta;
+    let { type = 'essential', creator = 'Uniweb Studio', tagline = '', url = '' } = parsedMeta;
 
     let icon,
         price,
