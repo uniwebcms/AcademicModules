@@ -5,7 +5,8 @@ label:
     en: Website Template
     fr: Modèle de site Web
 description:
-    en: A template that can be used to create a website.
-    fr: Un modèle qui peut être utilisé pour créer un site Web.
-category: content
+    en: A component showcasing a website template with description in details and live preview side by side.
+    fr: Un composant présentant un modèle de site Web avec une description détaillée et un aperçu en direct côte à côte.
+
+category: template
 export: true
