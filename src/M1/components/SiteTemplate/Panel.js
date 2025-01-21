@@ -13,14 +13,16 @@ export default function (props) {
     const templateSite = profile.getId();
 
     return (
-        <div className={`flex h-full w-full flex-col bg-white`}>
+        <div className={`flex h-full w-full flex-col bg-neutral-50`}>
             <div className={`flex flex-col w-full px-4 py-3`}>
                 <div className={`flex items-center justify-between`}>
                     <Link
                         to={input.makeHrefToIndex()}
-                        className={`group flex items-center space-x-1 cursor-pointer text-gray-600 hover:text-gray-900`}
+                        className={`group flex items-center space-x-1 cursor-pointer text-neutral-600 hover:text-neutral-900`}
                     >
-                        <HiArrowLeft className={`w-4 h-4 text-gray-600 hover:text-gray-900`} />
+                        <HiArrowLeft
+                            className={`w-4 h-4 text-neutral-600 hover:text-neutral-900`}
+                        />
                         <span className={`font-medium`}>
                             {website.localize({
                                 en: 'Templates',
@@ -34,8 +36,8 @@ export default function (props) {
                             else setScreen('mobile');
                         }}
                         className={`w-5 h-5 cursor-pointer ${
-                            screen === 'mobile' ? 'text-blue-500' : 'text-gray-700'
-                        } hover:${screen === 'mobile' ? 'text-blue-700' : 'text-gray-900'}`}
+                            screen === 'mobile' ? 'text-secondary-500' : 'text-neutral-700'
+                        } hover:${screen === 'mobile' ? 'text-secondary-700' : 'text-neutral-900'}`}
                     />
                 </div>
             </div>
@@ -44,7 +46,7 @@ export default function (props) {
                 {description ? (
                     <div
                         className={
-                            `text-gray-600 mt-3 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
+                            `text-neutral-600 mt-3 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
                             ` ${Styles.Scrollbar}`
                         }
                     >
@@ -53,7 +55,7 @@ export default function (props) {
                 ) : null}
                 <LibrarySection {...props} info={info}></LibrarySection>
                 <div className={`w-full mt-auto mb-[120px] justify-center flex`}>
-                    <button
+                    <div
                         onClick={() => {
                             const appDomain = uniweb.getAppDomain();
                             fetch(`${appDomain}/temp_resource.php`, {
@@ -81,7 +83,7 @@ export default function (props) {
                                     console.error('Error:', error); // Handle any errors
                                 });
                         }}
-                        className={`flex items-center px-10 rounded-full h-12  border border-gray-800 text-gray-800 hover:text-black hover:bg-gray-100 cursor-pointer`}
+                        className={`flex items-center px-16 rounded-lg h-12 text-neutral-50 hover:text-neutral-50 bg-neutral-950 hover:bg-neutral-900 cursor-pointer`}
                         style={{ width: 'fit-content' }}
                     >
                         <p className={`font-medium text-base tracking-wide`}>
@@ -90,7 +92,7 @@ export default function (props) {
                                 fr: 'Utiliser ce modèle',
                             })}
                         </p>
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>

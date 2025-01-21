@@ -6,7 +6,7 @@ export default function (props) {
     const iframeSize =
         screen === 'desktop'
             ? `w-full h-full !shadow bg-white  transform` //`w-full h-full shadow-none transform`
-            : 'w-[320px] h-[566px] border !shadow-xl rounded';
+            : 'w-[430px] h-[932px] border !shadow-xl rounded';
 
     // const [h, setH] = useState('');
     // const [w, setW] = useState('');

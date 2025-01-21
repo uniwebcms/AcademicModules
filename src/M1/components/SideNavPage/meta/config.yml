@@ -10,3 +10,6 @@ description:
 
 category: page
 export: true
+
+images:
+  - example.png

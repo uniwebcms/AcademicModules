@@ -25,3 +25,6 @@ properties:
     description:
       en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
       fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.
+
+images:
+  - example.png

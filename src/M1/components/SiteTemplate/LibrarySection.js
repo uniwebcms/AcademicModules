@@ -71,8 +71,8 @@ const LibrarySection = ({ info, website }) => {
             <div className={`flex items-center gap-3`}>
                 {icon}
                 <div className={`flex flex-col`}>
-                    <p className={`font-medium text-sm text-gray-800`}>{label}</p>
-                    <p className={`text-xs text-gray-500`}>
+                    <p className={`font-medium text-sm text-neutral-800`}>{label}</p>
+                    <p className={`text-xs text-neutral-500`}>
                         {website.localize({
                             en: `by ${creator}`,
                             fr: `par ${creator}`,
@@ -81,8 +81,8 @@ const LibrarySection = ({ info, website }) => {
                 </div>
             </div>
             <SafeHtml
-                className={'text-gray-600 text-sm'}
-                value={`<strong className='text-gray-800'>${name}</strong> ${
+                className={'text-neutral-600 text-sm'}
+                value={`<strong className='text-neutral-800'>${name}</strong> ${
                     tagline ? `—— ${tagline}` : ''
                 }`}
             />
@@ -91,17 +91,17 @@ const LibrarySection = ({ info, website }) => {
 
     return (
         <>
-            <div className={`bg-gray-50 rounded-lg border border-gray-100 my-4`}>
+            <div className={`bg-neutral-100 rounded-lg border border-neutral-200 my-4`}>
                 <div className={`p-4 block group`}>{body}</div>
             </div>
             <div className={`flex flex-col`}>
-                <p className={`text-sm text-gray-600`}>
+                <p className={`text-sm text-neutral-600`}>
                     {website.localize({
                         en: `Library: $${price}/mo + hosting and add-ons`,
                         fr: `Bibliothèque: $${price}/mo + hébergement et modules complémentaires`,
                     })}
                 </p>
-                <p className={`text-xs text-gray-500`}>
+                <p className={`text-xs text-neutral-500`}>
                     {website.localize({
                         en: `Free while you customize your site. Pay only when you publish.`,
                         fr: `Gratuit pendant la personnalisation de votre site. Payez uniquement lorsque vous publiez.`,

@@ -10,3 +10,6 @@ description:
 
 category: graph
 export: true
+
+images:
+  - example.png

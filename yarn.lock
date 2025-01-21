@@ -5841,9 +5841,11 @@ __metadata:
     react-click-away-listener: "npm:^2.2.3"
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^5.4.0"
+    react-intersection-observer: "npm:^9.15.0"
     react-katex: "npm:^3.0.1"
     react-popper: "npm:^2.3.0"
     react-spinners: "npm:^0.13.8"
+    react-virtuoso: "npm:^4.12.3"
     recharts: "npm:^2.15.0"
     tailwindcss: "npm:^3.4.13"
   peerDependencies:
@@ -7623,6 +7625,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-intersection-observer@npm:^9.15.0":
+  version: 9.15.0
+  resolution: "react-intersection-observer@npm:9.15.0"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 10/fcc2ebed826e4fce4883288d61895bc2583f34abb66a80c3f7161829b87582e6ca2f54db4aded30b979b68660ab958aad97cde9f60df4ff43051be1fc367de70
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -7699,6 +7714,16 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 10/ca32d3fd2168c976c5d90a317f25d5f5cd723608b415fb3b9006f9d793c8965c619562d0884503a3e44e4b06efbca4fdd1520f30e58ca3e00a0890e637d55419
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^4.12.3":
+  version: 4.12.3
+  resolution: "react-virtuoso@npm:4.12.3"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: 10/6e43800c23b8f12dba9e304462410dc2bfe82eecfa0bea97c89929a7d14d469709f69b0ba7da4e37de6bc98dacecd656fea208a1ef05cae579bb5a41181607cd
   languageName: node
   linkType: hard
 

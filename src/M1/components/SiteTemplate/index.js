@@ -25,14 +25,14 @@ export default function ProductCatalog(props) {
     const { title: name, subtitle: description } = info;
 
     return (
-        <div className="relative w-screen flex bg-[rgb(51,51,51)] max-w-full flex-grow lg:flex-row flex-col py-6 h-screen gap-5 px-5 sm:px-6 md:px-8">
+        <div className="relative w-screen flex bg-neutral-950/90 max-w-full flex-grow lg:flex-row flex-col py-6 h-screen gap-5 px-5 sm:px-6 md:px-8">
             <div className={`${boxStyle}`}>
                 <div className="pointer-events-auto w-full transition flex-shrink-0">
                     <Panel {...{ profile, website, input, screen, setScreen }}></Panel>
                 </div>
             </div>
             <div
-                className={`py-2 px-4 bg-white w-full flex itemx-center justify-between lg:hidden rounded`}
+                className={`py-2 px-4 bg-neutral-50 w-full flex items-center justify-between lg:hidden rounded`}
             >
                 <div className={`flex items-center gap-3`}>
                     <h2 className={`text-sm font-bold`}>{name}</h2>
@@ -42,10 +42,10 @@ export default function ProductCatalog(props) {
                                 <Popover.Button
                                     as="div"
                                     className={`
-                                ${open ? 'text-blue-800' : 'text-blue-500'}
+                                ${open ? 'text-secondary-800' : 'text-secondary-500'}
                                 group inline-flex items-center rounded-md text-sm cursor-pointer `}
                                 >
-                                    <span className={`text-sm text-blue-500 cursor-pointer`}>
+                                    <span className={`text-sm text-secondary-500 cursor-pointer`}>
                                         {website.localize({ en: 'Info', fr: 'Info' })}
                                     </span>
                                 </Popover.Button>
@@ -59,13 +59,13 @@ export default function ProductCatalog(props) {
                                     leaveTo="opacity-0 translate-y-1"
                                 >
                                     <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
-                                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black/5">
-                                            <div className="relative grid gap-2 bg-white p-7 lg:grid-cols-2">
+                                        <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-neutral-950/5">
+                                            <div className="relative grid gap-2 bg-neutral-50 p-7 lg:grid-cols-2">
                                                 <h2 className={`text-lg font-bold`}>{name}</h2>
                                                 {description ? (
                                                     <div
                                                         className={
-                                                            `text-gray-600 mt-2 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
+                                                            `text-neutral-600 mt-2 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
                                                             ` ${Styles.Scrollbar}`
                                                         }
                                                     >
