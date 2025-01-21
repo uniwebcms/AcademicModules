@@ -8,11 +8,27 @@ const LibrarySection = ({ info, website }) => {
 
     if (!head?.template?.[0]) return null;
 
-    const templateInfo = head?.template?.[1] ? JSON.parse(head.template[1]) : {};
+    let templateInfo = head?.template?.[1] || {};
 
-    const libraryInfo = templateInfo?.styler?.[1] || {};
+    if (typeof templateInfo === 'string') {
+        templateInfo = JSON.parse(templateInfo);
+    }
 
-    const { name, metadata = {} } = libraryInfo;
+    const stylerId = templateInfo?.styler;
+
+    const { profile: webstylerProfile } = uniweb.useCompleteProfile('webstyler', stylerId);
+
+    if (stylerId && !webstylerProfile) return null;
+
+    const stylerBasicInfo = webstylerProfile.getBasicInfo();
+
+    const stylerHead = stylerBasicInfo?.head
+        ? typeof stylerBasicInfo.head === 'string'
+            ? JSON.parse(stylerBasicInfo.head)
+            : stylerBasicInfo.head
+        : {};
+
+    const { name, metadata = {} } = stylerHead;
 
     let parsedMeta = metadata
         ? typeof metadata === 'string'
