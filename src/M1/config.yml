@@ -14,6 +14,22 @@ page_templates:
       - name: FeatureCards
       - name: MediaBroadcast
       - name: ContentTeaser
+  - name:
+      en: Feature Page
+      fr: Page de fonctionnalités
+    page:
+      en: Features
+      fr: Fonctionnalités
+    components:
+      - name: MediaHero
+      - name: FeatureSpotlight
+        preset: content_left
+      - name: FeatureSpotlight
+        preset: content_right
+      - name: Feature
+        preset: standard
+      - name: MediaBroadcast
+      - name: ContentTeaser
   - name: 
       en: Blog Page
       fr: Page de blog
@@ -31,12 +47,13 @@ page_templates:
       fr: Tarification
     components:
       - name: PricingHero
-        preset: fancy_ocean
+        preset: fancy
       - name: PricingTiers
-        preset: fancy_ocean
+        preset: fancy
+      - name: PricingAddons
+        preset: fancy
       - name: PricingFeatures
-        preset: fancy_ocean
+        preset: fancy_grid
+      - name: PricingEstimator
       - name: FAQ
-        preset: fancy_ocean
-      - name: CallToAction
-        preset: fancy_ocean
+        preset: fancy

@@ -69,7 +69,6 @@ properties:
       en: The layout of the sub-content.
       fr: La mise en page du sous-contenu.
 
- 
 presets:
   standard:
     label:
