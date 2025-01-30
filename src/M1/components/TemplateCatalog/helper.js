@@ -1,3 +1,5 @@
+import { useGetProfile } from '@uniwebcms/module-sdk';
+
 const setItemFilterInfo = (item, config) => {
     const { filters, sort } = config;
 
@@ -56,7 +58,7 @@ export const normalizeData = (input, config) => {
 
         const stylerId = templateInfo?.styler?.[0];
 
-        const { profile: stylerProfile } = uniweb.useCompleteProfile('webstyler', stylerId);
+        const { profile: stylerProfile } = useGetProfile('webstyler', stylerId);
 
         let stylerType = '';
 

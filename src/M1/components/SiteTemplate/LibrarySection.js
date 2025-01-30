@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeHtml, Link } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link, useGetProfile } from '@uniwebcms/module-sdk';
 import { LuCrown, LuLayers2 } from 'react-icons/lu';
 import { GrDiamond } from 'react-icons/gr';
 
@@ -18,7 +18,7 @@ const LibrarySection = ({ info, website }) => {
         ? templateInfo.styler[0]
         : templateInfo.styler;
 
-    const { profile: webstylerProfile } = uniweb.useCompleteProfile('webstyler', stylerId);
+    const { profile: webstylerProfile } = useGetProfile('webstyler', stylerId);
 
     if (stylerId && !webstylerProfile) return null;
 
