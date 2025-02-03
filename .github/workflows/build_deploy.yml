@@ -40,7 +40,7 @@ jobs:
           run: |
             if [[ "${{ env.SKIP_GH_WORKFLOW }}" == "true" ]]; then
               echo "Skipping workflow."
-              exit 1
+              exit 0
             fi
 
     # prepare data for downstream jobs to use
