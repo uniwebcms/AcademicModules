@@ -5,7 +5,8 @@
     "private": true,
     "workspaces": [
         "src/*",
-        "builder"
+        "builder",
+        "tester"
     ],
     "scripts": {
         "serve": "cd builder && yarn run serve",
