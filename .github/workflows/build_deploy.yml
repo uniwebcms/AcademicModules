@@ -30,6 +30,9 @@ jobs:
           uses: falti/dotenv-action@v1.1
           with:
               path: .env
+              keys-case: 'bypass'
+              log-variables: true
+              export-variables: true
         - name: Check Skip Condition
           run: |
             if [[ "${{ env.SKIP_GH_WORKFLOW }}" == "true" ]]; then
