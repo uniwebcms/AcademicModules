@@ -26,6 +26,9 @@ jobs:
     check-skip:
       runs-on: ubuntu-latest
       steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+          
         - name: Load Environment Variables
           uses: falti/dotenv-action@v1.1
           with:
