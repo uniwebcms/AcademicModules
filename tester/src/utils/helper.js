@@ -1,6 +1,5 @@
 export const buildThemeStyles = (themeData) => {
     const fonts = themeData?.fonts || themeData?.fonts?.[0] || {};
-    // const importedFonts = themeData?.importedFonts || [];
 
     const headerFont = fonts?.heading || fonts?.header_font || '';
     const bodyFont = fonts?.body || fonts?.body_font || '';
@@ -9,7 +8,6 @@ export const buildThemeStyles = (themeData) => {
     if (bodyFont) fontStr += `\n * {font-family:${bodyFont}}`;
     if (headerFont) fontStr += `\n h1,h2,h3,h4,h5,h6 {font-family:${headerFont}}`;
 
-    // const siteContext = 'light';
     const isDarkSite = false;
 
     let vars = themeData?.vars;
@@ -62,10 +60,6 @@ export const buildThemeStyles = (themeData) => {
 
             let colorVarList = [];
 
-            // Object.entries(colorVarsData).forEach(([key, value]) => {
-            //     let color = value || defaultColorVarsData[key] || '';
-            //     colorVarList.push(`${key}: ${color};`);
-            // });
             colorNames.forEach((colorName) => {
                 shades.forEach((shade) => {
                     let colorKey = `--${colorName}-${shade}`;
@@ -81,12 +75,6 @@ export const buildThemeStyles = (themeData) => {
             let elementVarsList = [];
 
             elementVars.forEach((elementVar) => {
-                //Smart logic to set the value of the elements for dim and dark mode.
-                // let value = contextData[elementVar] || '';
-                // if (context === 'dark') {
-                // value = contextData[elementVar] || defaultContextData[elementVar] || '';
-                // }
-
                 let value = contextData[elementVar] || defaultContextData[elementVar] || '';
 
                 if (value) {
@@ -122,8 +110,6 @@ export const buildThemeStyles = (themeData) => {
             element = element.split(':')[0];
         }
 
-        // return `${tag || ''}:where(${selector})`;  // incorrect due to uniweb website style will have higher priority than the inline class.
-        // return `:where(${selector})`  // incorrect due to tailwindcss style will have higher priority than the uniweb website style.
         return `${element}:where(${selector})`;
     };
 

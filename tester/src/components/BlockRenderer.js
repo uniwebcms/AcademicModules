@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy, useState } from 'react';
+import React from 'react';
 
 const hexToRgba = (hex, opacity) => {
     const r = parseInt(hex.slice(1, 3), 16);
@@ -138,6 +138,7 @@ export default function BlockRenderer(props) {
                 block={block}
                 page={uniweb.activeWebsite.activePage}
                 website={uniweb.activeWebsite}
+                input={block.input}
             />
         </div>
     );

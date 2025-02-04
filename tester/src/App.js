@@ -4,7 +4,7 @@ import WebsiteRenderer from './components/WebsiteRenderer';
 function App() {
     const [isLoading, setIsLoading] = useState(true);
 
-    // This code is to ensuring remote has been loaded
+    // Load remote components to uniweb
     useEffect(() => {
         const loadAllComponents = () => {
             try {
