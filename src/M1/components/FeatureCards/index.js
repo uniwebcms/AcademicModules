@@ -141,7 +141,10 @@ export default function FeatureCards(props) {
         if (cardStyle === 'overlay') {
             const titleElement =
                 title && primaryLink ? (
-                    <Link className="group inline-flex items-center gap-2 text-gray-200 hover:text-white transition-colors">
+                    <Link
+                        to={primaryLink.href}
+                        className="group inline-flex items-center gap-2 text-gray-200 hover:text-white transition-colors"
+                    >
                         <h3 className="font-semibold text-xl text-inherit">{title}</h3>
                         <GoArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1 group-hover:animate-bounce-x text-inherit" />
                     </Link>

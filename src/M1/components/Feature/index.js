@@ -41,7 +41,7 @@ export default function Feature(props) {
     ) : null;
 
     const secondaryLink = secondLink ? (
-        <Link href={secondLink.href} className="text-text-color-50 hover:underline">
+        <Link to={secondLink.href} className="text-text-color-50 hover:underline">
             <span className="text-sm">{secondLink.label}</span>
         </Link>
     ) : null;
