@@ -5,8 +5,7 @@
     "private": true,
     "workspaces": [
         "src/*",
-        "builder",
-        "tester"
+        "builder"
     ],
     "scripts": {
         "serve": "cd builder && yarn run serve",
@@ -15,7 +14,7 @@
         "build": "cd builder && yarn run build"
     },
     "dependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     }
 }
