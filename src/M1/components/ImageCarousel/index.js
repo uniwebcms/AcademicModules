@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { twJoin, Image, getPageProfile, Link } from '@uniwebcms/module-sdk';
+import { twJoin, Image, getPageProfile } from '@uniwebcms/module-sdk';
 
 const LAYOUTS = {
     STACKED_3D: 'stacked3d',

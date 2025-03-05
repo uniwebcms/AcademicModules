@@ -8,6 +8,8 @@ export const getMediaLinkType = (link) => {
         tumblr: 'https://www.tumblr.com',
         youtube: 'https://www.youtube.com',
         github: 'https://github.com',
+        x: 'https://x.com',
+        instagram: 'https://www.instagram.com',
     };
 
     const { route, label, href } = link;
@@ -33,6 +35,8 @@ export const getMediaLinkLabel = (type) => {
         tumblr: 'Tumblr',
         youtube: 'YouTube',
         github: 'GitHub',
+        x: 'X',
+        instagram: 'Instagram',
     };
 
     return map[type] || type;
