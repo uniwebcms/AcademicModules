@@ -9,7 +9,7 @@ import Code from './Code';
 import Math from './Math';
 
 const Render = function (props) {
-    const { block: pageBlock, content, page } = props;
+    const { block: pageBlock, content, page, website } = props;
 
     if (!content || !content.length) return null;
 
@@ -39,7 +39,7 @@ const Render = function (props) {
                     ></Heading>
                 );
             case 'image':
-                return <Image key={index} {...block} page={page} />;
+                return <Image key={index} {...block} page={page} website={website} />;
             case 'video':
                 const { video_control: videoControl = false } = pageBlock.getBlockProperties();
                 return <Video key={index} {...block} page={page} videoControl={videoControl} />;

@@ -11,7 +11,7 @@ import { twJoin } from '@uniwebcms/module-sdk';
 import styles from './Section.module.scss';
 
 const Render = function (props) {
-    const { block: pageBlock, content, page } = props;
+    const { block: pageBlock, content, page, website } = props;
 
     if (!content || !content.length) return null;
 
@@ -25,7 +25,8 @@ const Render = function (props) {
                         key={index}
                         className={styles.Block}
                         dangerouslySetInnerHTML={{ __html: content }}
-                        style={{ textAlign: alignment }}></p>
+                        style={{ textAlign: alignment }}
+                    ></p>
                 );
             case 'heading': {
                 const { level } = block;
@@ -38,11 +39,12 @@ const Render = function (props) {
                         key={index}
                         id={`Section${pageBlock.id}-${stripTags(content).replace(/\s/g, '-')}`}
                         className={`${fontSize}` + ` ${styles.Heading}`}
-                        dangerouslySetInnerHTML={{ __html: content }}></Heading>
+                        dangerouslySetInnerHTML={{ __html: content }}
+                    ></Heading>
                 );
             }
             case 'image':
-                return <Image key={index} {...block} page={page} />;
+                return <Image key={index} {...block} page={page} website={website} />;
             case 'video':
                 const { video_control: videoControl = false } = pageBlock.getBlockProperties();
                 return <Video key={index} {...block} page={page} videoControl={videoControl} />;
@@ -98,14 +100,15 @@ const Render = function (props) {
                 const { style } = block.attrs;
 
                 return (
-                    <div key={index} className='mt-8'>
+                    <div key={index} className="mt-8">
                         <button
-                            type='button'
+                            type="button"
                             className={twJoin(
                                 style === 'secondary' ? 'btn-secondary' : '',
                                 'px-2.5 py-1 lg:px-4 lg:py-2 border text-base lg:text-lg'
                             )}
-                            dangerouslySetInnerHTML={{ __html: content }}></button>
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        ></button>
                     </div>
                 );
             }

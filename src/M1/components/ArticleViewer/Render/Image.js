@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import styles from './Section.module.scss';
-import { Image } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/module-sdk';
 
 const imageCaptionStyle = `block outline-none border-none text-gray-500 text-sm text-center ${styles.ImageCaption}}`;
 
 export default function ImageBlock(props) {
-    const { url, caption, direction, filter, info, targetId, aspect_ratio, page } = props;
+    const { url, caption, direction, filter, info, targetId, aspect_ratio, page, href, website } =
+        props;
 
     if (targetId) info.contentId = targetId;
 
@@ -145,5 +146,9 @@ export default function ImageBlock(props) {
         );
     }
 
-    return body;
+    if (href) {
+        return <Link to={website.makeHref(href)}>{body}</Link>;
+    } else {
+        return body;
+    }
 }
