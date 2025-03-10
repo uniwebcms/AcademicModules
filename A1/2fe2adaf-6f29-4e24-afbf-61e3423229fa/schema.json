@@ -1,0 +1,5339 @@
+{
+  "_self": {
+    "name": "Academic Series 1",
+    "description": "A collection of components for building academic websites.",
+    "page_templates": [
+      {
+        "name": {
+          "en": "Personal page - About",
+          "fr": "Page personnelle - À propos"
+        },
+        "page": {
+          "en": "About",
+          "fr": "À propos"
+        },
+        "components": [
+          {
+            "name": "TwoColLayout",
+            "preset": "narrow_left_regular",
+            "children": [
+              {
+                "name": "Aside"
+              },
+              {
+                "name": "Section"
+              }
+            ]
+          },
+          {
+            "name": "Accent",
+            "preset": "right"
+          },
+          {
+            "name": "Features",
+            "preset": "center"
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Personal page - Publications",
+          "fr": "Page personnelle - Publications"
+        },
+        "page": {
+          "en": "Publications",
+          "fr": "Publications"
+        },
+        "components": [
+          {
+            "name": "Hero",
+            "preset": "content_center_gradient_top"
+          },
+          {
+            "name": "Reference"
+          }
+        ],
+        "children": [
+          {
+            "page": {
+              "en": "index",
+              "fr": "index"
+            },
+            "components": [
+              {
+                "name": "References"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Blog or News",
+          "fr": "Blog ou Actualités"
+        },
+        "page": {
+          "en": "Blog",
+          "fr": "Blog"
+        },
+        "components": [
+          {
+            "name": "Hero",
+            "preset": "content_center_gradient_top"
+          },
+          {
+            "name": "DynamicList",
+            "preset": "grid"
+          }
+        ],
+        "children": [
+          {
+            "page": {
+              "en": "index",
+              "fr": "index"
+            },
+            "components": [
+              {
+                "name": "Article",
+                "preset": "2xl"
+              },
+              {
+                "name": "DynamicList",
+                "preset": "snapping"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Contact page",
+          "fr": "Page de contact"
+        },
+        "page": {
+          "en": "Contact Us",
+          "fr": "Contactez-nous"
+        },
+        "components": [
+          {
+            "name": "Hero",
+            "preset": "content_center_gradient_top"
+          },
+          {
+            "name": "Locations",
+            "preset": "multiple"
+          },
+          {
+            "name": "ContactForm",
+            "preset": "right"
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Member and staff directory",
+          "fr": "Annuaire des membres et du personnel"
+        },
+        "page": {
+          "en": "Members",
+          "fr": "Membres"
+        },
+        "components": [
+          {
+            "name": "Hero",
+            "preset": "content_center_gradient_top"
+          },
+          {
+            "name": "TeamRoster",
+            "preset": "1:1"
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Dynamic content with detail page",
+          "fr": "Contenu dynamique avec page de détail"
+        },
+        "page": {
+          "en": "Connections",
+          "fr": "Connexions"
+        },
+        "components": [
+          {
+            "name": "ProfileHero",
+            "preset": "content_center_title_backdrop_gradient_top"
+          },
+          {
+            "name": "ProfileSection",
+            "preset": "lg_1"
+          }
+        ],
+        "children": [
+          {
+            "page": {
+              "en": "index",
+              "fr": "index"
+            },
+            "components": [
+              {
+                "name": "Hero",
+                "preset": "content_center_gradient_top"
+              },
+              {
+                "name": "DynamicList",
+                "preset": "list"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": {
+          "en": "Global Research Network",
+          "fr": "Réseau mondial de recherche"
+        },
+        "page": {
+          "en": "Map",
+          "fr": "Carte"
+        },
+        "components": [
+          {
+            "name": "DynamicMap",
+            "preset": "full_detail"
+          }
+        ]
+      }
+    ],
+    "categories": {
+      "content": {
+        "label": {
+          "en": "Content",
+          "fr": "Contenu"
+        },
+        "description": {
+          "en": "Components that display content.",
+          "fr": "Composants qui affichent du contenu."
+        }
+      },
+      "dynamic_content": {
+        "label": {
+          "en": "Dynamic Content",
+          "fr": "Contenu dynamique"
+        },
+        "description": {
+          "en": "Components that display content from a source.",
+          "fr": "Composants qui affichent du contenu à partir d'une source."
+        }
+      },
+      "cards": {
+        "label": {
+          "en": "Cards",
+          "fr": "Cartes"
+        },
+        "description": {
+          "en": "Components that display content in a card format.",
+          "fr": "Composants qui affichent du contenu sous forme de cartes."
+        }
+      },
+      "downloadable": {
+        "label": {
+          "en": "Downloadable",
+          "fr": "Téléchargeable"
+        },
+        "description": {
+          "en": "Components that allow users to download files.",
+          "fr": "Composants qui permettent aux utilisateurs de télécharger des fichiers."
+        }
+      },
+      "map": {
+        "label": {
+          "en": "Map",
+          "fr": "Carte"
+        },
+        "description": {
+          "en": "Components that display a map.",
+          "fr": "Composants qui affichent une carte."
+        }
+      },
+      "hero": {
+        "label": {
+          "en": "Hero",
+          "fr": "Héros"
+        },
+        "description": {
+          "en": "Components that display a large banner with text content.",
+          "fr": "Composants qui affichent une grande bannière avec du contenu textuel."
+        }
+      },
+      "list": {
+        "label": {
+          "en": "List",
+          "fr": "Liste"
+        },
+        "description": {
+          "en": "Components that display a list of items.",
+          "fr": "Composants qui affichent une liste d'éléments."
+        }
+      },
+      "reference": {
+        "label": {
+          "en": "Reference",
+          "fr": "Référence"
+        },
+        "description": {
+          "en": "Components that display reference, citation or publication information.",
+          "fr": "Composants qui affichent des informations de référence, de citation ou de publication."
+        }
+      },
+      "media": {
+        "label": {
+          "en": "Media",
+          "fr": "Médias"
+        },
+        "description": {
+          "en": "Components that display media content.",
+          "fr": "Composants qui affichent du contenu multimédia."
+        }
+      },
+      "form": {
+        "label": {
+          "en": "Form",
+          "fr": "Formulaire"
+        },
+        "description": {
+          "en": "Components that allow users to input data.",
+          "fr": "Composants qui permettent aux utilisateurs de saisir des données."
+        }
+      },
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "description": {
+          "en": "Components that perform a layout for child components.",
+          "fr": "Composants qui effectuent une mise en page pour les composants enfants."
+        }
+      },
+      "header": {
+        "label": {
+          "en": "Header",
+          "fr": "En-tête"
+        },
+        "description": {
+          "en": "Components that display a page navigation header.",
+          "fr": "Composants qui affichent un en-tête de navigation de page."
+        }
+      },
+      "footer": {
+        "label": {
+          "en": "Footer",
+          "fr": "Pied de page"
+        },
+        "description": {
+          "en": "Components that display a page footer.",
+          "fr": "Composants qui affichent un pied de page de page."
+        }
+      }
+    }
+  },
+  "Accent": {
+    "title": {
+      "en": "Accent with Background image",
+      "fr": "Accent avec image de fond"
+    },
+    "label": {
+      "en": "Accent",
+      "fr": "Accent"
+    },
+    "description": {
+      "en": "This section calls attention to a specific block of text on the website by putting an image in the background.",
+      "fr": "Cette section attire l'attention sur un bloc de texte spécifique du site web en plaçant une image en arrière-plan."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "properties": {
+      "alignment": {
+        "label": {
+          "en": "Content alignment",
+          "fr": "Alignement du contenu"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "left",
+        "description": {
+          "en": "The alignment of the text content.",
+          "fr": "L'alignement du contenu texte."
+        }
+      },
+      "show_back_drop": {
+        "label": {
+          "en": "Text Backdrop",
+          "fr": "Toile de fond du texte"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether or not the text will have a backdrop.",
+          "fr": "Si le texte aura ou non une toile de fond."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content on the Right",
+          "fr": "Contenu à droite"
+        },
+        "properties": {
+          "alignment": "right"
+        },
+        "image": {
+          "height": 558,
+          "width": 1510,
+          "type": "webp",
+          "path": "assets/Accent/right.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content in the Center",
+          "fr": "Contenu au centre"
+        },
+        "properties": {
+          "alignment": "center"
+        },
+        "image": {
+          "height": 556,
+          "width": 1510,
+          "type": "webp",
+          "path": "assets/Accent/center.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Left with Text Backdrop",
+          "fr": "Contenu à gauche avec toile de fond de texte"
+        },
+        "properties": {
+          "alignment": "left",
+          "show_back_drop": true
+        },
+        "image": {
+          "height": 559,
+          "width": 1512,
+          "type": "webp",
+          "path": "assets/Accent/left_backdrop.webp"
+        }
+      }
+    ],
+    "name": "Accent"
+  },
+  "Article": {
+    "title": {
+      "en": "Article Viewer",
+      "fr": "Visionneuse d'articles"
+    },
+    "label": {
+      "en": "Article",
+      "fr": "Article"
+    },
+    "description": {
+      "en": "Display the content of a selected article.",
+      "fr": "Afficher le contenu d'un article sélectionné."
+    },
+    "category": "dynamic_content",
+    "export": true,
+    "input": {
+      "type": "articles",
+      "limit": "one"
+    },
+    "properties": {
+      "width": {
+        "label": {
+          "en": "Content Width",
+          "fr": "Largeur du contenu"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large",
+              "fr": "Très grand"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "Double Extra Large",
+              "fr": "Double très grand"
+            },
+            "value": "2xl"
+          }
+        ],
+        "description": {
+          "en": "The width of the section.",
+          "fr": "La largeur de la section."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content in Medium Width",
+          "fr": "Contenu en largeur moyenne"
+        },
+        "properties": {
+          "width": "md"
+        },
+        "image": {
+          "height": 1217,
+          "width": 2284,
+          "type": "webp",
+          "path": "assets/Article/md.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content in Large Width",
+          "fr": "Contenu en largeur grande"
+        },
+        "properties": {
+          "width": "lg"
+        },
+        "image": {
+          "height": 1225,
+          "width": 2285,
+          "type": "webp",
+          "path": "assets/Article/lg.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content in Extra Large Width",
+          "fr": "Contenu en largeur très grande"
+        },
+        "properties": {
+          "width": "xl"
+        },
+        "image": {
+          "height": 1223,
+          "width": 2294,
+          "type": "webp",
+          "path": "assets/Article/xl.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content in Double Extra Large Width",
+          "fr": "Contenu en largeur double très grande"
+        },
+        "properties": {
+          "width": "2xl"
+        },
+        "image": {
+          "height": 1225,
+          "width": 2298,
+          "type": "webp",
+          "path": "assets/Article/2xl.webp"
+        }
+      }
+    ],
+    "name": "Article"
+  },
+  "Aside": {
+    "title": {
+      "en": "Aside",
+      "fr": "Aside"
+    },
+    "label": {
+      "en": "Aside",
+      "fr": "Aside"
+    },
+    "description": {
+      "en": "Display content aside from the main content, usually on one side of a two column layout.",
+      "fr": "Afficher du contenu à côté du contenu principal, généralement sur un côté d'une mise en page à deux colonnes."
+    },
+    "category": "content",
+    "export": true,
+    "input": {
+      "type": "any",
+      "limit": "one",
+      "manualFormatting": true
+    },
+    "elements": {
+      "background": {
+        "label": {
+          "en": "Profile Banner/Avatar",
+          "fr": "Bannière/Avatar de profil"
+        },
+        "description": {
+          "en": "The picture of the profile.",
+          "fr": "L'image du profil."
+        },
+        "type": "image",
+        "layout": ""
+      },
+      "title": {
+        "description": {
+          "en": "The title of the profile.",
+          "fr": "Le titre du profil."
+        },
+        "type": "H1",
+        "alignment": ""
+      },
+      "subtitle": {
+        "description": {
+          "en": "The subtitle of the profile.",
+          "fr": "Le sous-titre du profil."
+        },
+        "type": "H2"
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "One or more links that attach to the profile.",
+          "fr": "Un ou plusieurs liens qui s'attachent au profil."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 602,
+        "width": 550,
+        "type": "webp",
+        "path": "assets/Aside/example.png"
+      }
+    ],
+    "name": "Aside"
+  },
+  "CTA": {
+    "title": {
+      "en": "Call-to-Action",
+      "fr": "Appel à l'action"
+    },
+    "label": {
+      "en": "CTA",
+      "fr": "CTA"
+    },
+    "description": {
+      "en": "This section is designed to be eye-catching with an big image and button.",
+      "fr": "Cette section est conçue pour attirer l'attention avec une grande image et un bouton."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The primary visual content.",
+          "fr": "Le contenu visuel principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 358,
+        "width": 1508,
+        "type": "webp",
+        "path": "assets/CTA/example.png"
+      }
+    ],
+    "name": "CTA"
+  },
+  "Cards": {
+    "title": {
+      "en": "Basic Cards",
+      "fr": "Cartes de base"
+    },
+    "label": {
+      "en": "Cards - Basic",
+      "fr": "Cartes - De base"
+    },
+    "description": {
+      "en": "A component to show distinct pieces of information each with their own visual card.",
+      "fr": "Un composant permettant de présenter des éléments d'information distincts, chacun avec sa propre carte visuelle."
+    },
+    "category": "cards",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link",
+            "fr": "Un lien"
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 816,
+        "width": 1501,
+        "type": "webp",
+        "path": "assets/Cards/example.png"
+      }
+    ],
+    "name": "Cards"
+  },
+  "ContactForm": {
+    "title": {
+      "en": "Contact Form",
+      "fr": "Formulaire de contact"
+    },
+    "label": {
+      "en": "Contact",
+      "fr": "Contact"
+    },
+    "description": {
+      "en": "This section provides an easy way for visitors to send you a message. All inquiries will be emailed to your Uniweb account email.",
+      "fr": "Cette section permet aux visiteurs de vous envoyer facilement un message. Toutes les demandes seront envoyées à le courriel de votre compte Uniweb."
+    },
+    "category": "form",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "description": {
+          "en": "The address(es) and contact number(s) to attach to the contact form, separated by new lines.",
+          "fr": "L'(es) adresse(s) et le(s) numéro(s) de contact à attacher au formulaire de contact, séparés par des sauts de ligne."
+        },
+        "type": "paragraph"
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "One or more email addresses that attach to the contact form.",
+          "fr": "Une ou plusieurs adresses e-mail qui s'attachent au formulaire de contact."
+        }
+      }
+    },
+    "properties": {
+      "form_align": {
+        "label": {
+          "en": "Form Alignment",
+          "fr": "Alignement du formulaire"
+        },
+        "type": "string",
+        "default": "left",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The alignment of the form.",
+          "fr": "L'alignement du formulaire."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Form on the Right",
+          "fr": "Formulaire à droite"
+        },
+        "properties": {
+          "form_align": "right"
+        },
+        "image": {
+          "height": 760,
+          "width": 1476,
+          "type": "webp",
+          "path": "assets/ContactForm/right.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Form on the Left",
+          "fr": "Formulaire à gauche"
+        },
+        "properties": {
+          "form_align": "left"
+        },
+        "image": {
+          "height": 754,
+          "width": 1489,
+          "type": "webp",
+          "path": "assets/ContactForm/left.webp"
+        }
+      }
+    ],
+    "name": "ContactForm"
+  },
+  "Details": {
+    "title": {
+      "en": "Details",
+      "fr": "Détails"
+    },
+    "label": {
+      "en": "Details - Accordion",
+      "fr": "Détails - Accordéon"
+    },
+    "description": {
+      "en": "Explain things or answer questions using collapsable blocks of text. Commonly known as an \"accordion\" section. Content alignment is controlled by the title alignment in the editor.",
+      "fr": "Expliquez des choses ou répondez à des questions en utilisant des blocs de texte réductibles. Communément appelé une section \"accordéon\". L'alignement du contenu est contrôlé par l'alignement du titre dans l'éditeur."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content on the Right",
+          "fr": "Contenu à droite"
+        },
+        "properties": {
+          "alignment": "right"
+        },
+        "image": {
+          "height": 1320,
+          "width": 2934,
+          "type": "webp",
+          "path": "assets/Details/right.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content in the Center",
+          "fr": "Contenu au centre"
+        },
+        "properties": {
+          "alignment": "center"
+        },
+        "image": {
+          "height": 1250,
+          "width": 2886,
+          "type": "webp",
+          "path": "assets/Details/center.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Left",
+          "fr": "Contenu à gauche"
+        },
+        "properties": {
+          "alignment": "left"
+        },
+        "image": {
+          "height": 1216,
+          "width": 2920,
+          "type": "webp",
+          "path": "assets/Details/left.webp"
+        }
+      }
+    ],
+    "name": "Details"
+  },
+  "DownloadableAssets": {
+    "title": {
+      "en": "Downloadable Assets",
+      "fr": "Actifs téléchargeables"
+    },
+    "label": {
+      "en": "Assets",
+      "fr": "Actifs"
+    },
+    "description": {
+      "en": "Renders web assets(files) for download, the source is from the current website's folder, or directly from the editor.",
+      "fr": "Rend les actifs web (fichiers) téléchargeables, la source provient du dossier actuel du site web, ou directement de l'éditeur."
+    },
+    "category": "downloadable",
+    "export": true,
+    "input": {
+      "type": "any",
+      "limit": "one"
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "card": {
+        "description": {
+          "en": "Add a card elements, choose type 'Document' and upload the file.",
+          "fr": "Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier."
+        },
+        "type": "card"
+      }
+    },
+    "images": [
+      {
+        "height": 509,
+        "width": 1507,
+        "type": "webp",
+        "path": "assets/DownloadableAssets/example.png"
+      }
+    ],
+    "name": "DownloadableAssets"
+  },
+  "DynamicList": {
+    "title": {
+      "en": "Dynamic List",
+      "fr": "Liste dynamique"
+    },
+    "label": {
+      "en": "List - Dynamic",
+      "fr": "Liste - Dynamique"
+    },
+    "description": {
+      "en": "A component takes input of content profiles and displays them in a list, grid, or snapping card layout.",
+      "fr": "Un composant prend en entrée des profils de contenu et les affiche dans une liste, une grille ou une carte de défilement."
+    },
+    "category": "dynamic_content",
+    "export": true,
+    "input": {
+      "type": "any",
+      "limit": false,
+      "manualFormatting": true
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "limit": 1,
+      "manualFormattingOnly": true,
+      "elements": {
+        "background": {
+          "title": {
+            "en": "Profile Banner",
+            "fr": "Bannière de profil"
+          },
+          "description": {
+            "en": "The picture of the profile.",
+            "fr": "L'image du profil."
+          },
+          "type": "image",
+          "layout": ""
+        },
+        "title": {
+          "description": {
+            "en": "The title of the profile.",
+            "fr": "Le titre du profil."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "description": {
+            "en": "The subtitle of the profile.",
+            "fr": "Le sous-titre du profil."
+          },
+          "type": "H2"
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "One or more social media links that attach to the profile.",
+            "fr": "Un ou plusieurs liens de médias sociaux qui s'attachent au profil."
+          }
+        }
+      }
+    },
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "list",
+        "enum": [
+          {
+            "label": {
+              "en": "List",
+              "fr": "Liste"
+            },
+            "value": "list"
+          },
+          {
+            "label": {
+              "en": "Grid",
+              "fr": "Grille"
+            },
+            "value": "grid"
+          },
+          {
+            "label": {
+              "en": "Snapping Cards",
+              "fr": "Cartes de défilement"
+            },
+            "value": "snapping"
+          }
+        ],
+        "description": {
+          "en": "The layout of the section.",
+          "fr": "La mise en page de la section."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "List Layout",
+          "fr": "Mise en page de la liste"
+        },
+        "properties": {
+          "layout": "list"
+        },
+        "image": {
+          "height": 972,
+          "width": 1713,
+          "type": "webp",
+          "path": "assets/DynamicList/list.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Grid Layout",
+          "fr": "Mise en page de la grille"
+        },
+        "properties": {
+          "layout": "grid"
+        },
+        "image": {
+          "height": 622,
+          "width": 1771,
+          "type": "webp",
+          "path": "assets/DynamicList/grid.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Snapping Cards Layout",
+          "fr": "Mise en page de cartes de défilement"
+        },
+        "properties": {
+          "layout": "snapping"
+        },
+        "image": {
+          "height": 511,
+          "width": 1785,
+          "type": "webp",
+          "path": "assets/DynamicList/snapping.webp"
+        }
+      }
+    ],
+    "name": "DynamicList"
+  },
+  "DynamicMap": {
+    "title": {
+      "en": "Dynamic Map",
+      "fr": "Carte dynamique"
+    },
+    "label": {
+      "en": "Map - Dynamic",
+      "fr": "Carte - Dynamique"
+    },
+    "description": {
+      "en": "Show locations as Pins on a Google Map, data is coming from the Research Places section of one or more selected profiles.",
+      "fr": "Affichez les emplacements sous forme d'épingles sur une carte Google, les données proviennent de la section Lieux de recherche d'un ou de plusieurs profils sélectionnés."
+    },
+    "category": "map",
+    "export": true,
+    "input": {
+      "type": "any",
+      "limit": false
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "properties": {
+      "full_size": {
+        "label": {
+          "en": "Full Size",
+          "fr": "Taille réelle"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Weather or not the map will take the full width and height of the screen.",
+          "fr": "Si oui ou non la carte prendra toute la largeur et la hauteur de l'écran."
+        }
+      },
+      "show_detail": {
+        "label": {
+          "en": "Show Details",
+          "fr": "Afficher les détails"
+        },
+        "type": "boolean",
+        "default": true,
+        "description": {
+          "en": "Whether or not to show the details of the source profile of the location.",
+          "fr": "Si oui ou non afficher les détails du profil source de l'emplacement."
+        }
+      },
+      "zoom": {
+        "label": {
+          "en": "Initial Zoom Level",
+          "fr": "Niveau de zoom initial"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "World view",
+              "fr": "Vue du monde"
+            },
+            "value": "1"
+          },
+          {
+            "label": {
+              "en": "Continent view",
+              "fr": "Vue du continent"
+            },
+            "value": "5"
+          },
+          {
+            "label": {
+              "en": "City view",
+              "fr": "Vue de la ville"
+            },
+            "value": "10"
+          },
+          {
+            "label": {
+              "en": "Street view",
+              "fr": "Vue de la rue"
+            },
+            "value": "15"
+          },
+          {
+            "label": {
+              "en": "Building view",
+              "fr": "Vue du bâtiment"
+            },
+            "value": "20"
+          }
+        ],
+        "default": "5",
+        "description": {
+          "en": "The zoom level of the map.",
+          "fr": "Le niveau de zoom de la carte."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Full size map with detail of a single location",
+          "fr": "Carte de taille réelle avec détail d'un seul emplacement"
+        },
+        "properties": {
+          "full_size": true
+        },
+        "image": {
+          "height": 1360,
+          "width": 1990,
+          "type": "webp",
+          "path": "assets/DynamicMap/full_detail.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Standard size map",
+          "fr": "Carte de taille standard"
+        },
+        "properties": {
+          "show_detail": false
+        },
+        "image": {
+          "height": 994,
+          "width": 1814,
+          "type": "webp",
+          "path": "assets/DynamicMap/standard.webp"
+        }
+      }
+    ],
+    "name": "DynamicMap"
+  },
+  "DynamicReferences": {
+    "title": {
+      "en": "References Table",
+      "fr": "Tableau de références"
+    },
+    "label": {
+      "en": "References - Table",
+      "fr": "Références - Tableau"
+    },
+    "description": {
+      "en": "Show references (APA) in table view with search, source configured in input widget.",
+      "fr": "Afficher les références (APA) en vue de tableau avec recherche, source configurée dans le widget d'entrée."
+    },
+    "category": "reference",
+    "export": true,
+    "input": {
+      "type": "reference",
+      "limit": false
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1160,
+        "width": 2922,
+        "type": "webp",
+        "path": "assets/DynamicReferences/example.png"
+      }
+    ],
+    "name": "DynamicReferences"
+  },
+  "EmbedContent": {
+    "title": {
+      "en": "Embed Content",
+      "fr": "Intégrer du contenu"
+    },
+    "label": {
+      "en": "Content - iFrame",
+      "fr": "Contenu - iFrame"
+    },
+    "description": {
+      "en": "Allows you to display content from another website directly on your own page.",
+      "fr": "Vous permet d'afficher le contenu d'un autre site Web directement sur votre propre page."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "The URL of the website you want to embed.",
+          "fr": "L'URL du site Web que vous souhaitez intégrer."
+        },
+        "type": "link"
+      }
+    },
+    "images": [
+      {
+        "height": 894,
+        "width": 1426,
+        "type": "webp",
+        "path": "assets/EmbedContent/example.png"
+      }
+    ],
+    "name": "EmbedContent"
+  },
+  "FeatureList": {
+    "title": {
+      "en": "Feature with sub features",
+      "fr": "Fonctionnalité avec sous-fonctionnalités"
+    },
+    "label": {
+      "en": "Features - Card",
+      "fr": "Fonctionnalités - Carte"
+    },
+    "description": {
+      "en": "A section to display content in individual cards with a background image, every card can have a title, sub-features and a link.",
+      "fr": "Une section pour afficher du contenu dans des cartes individuelles avec une image d'arrière-plan, chaque carte peut avoir un titre, des sous-fonctionnalités et un lien."
+    },
+    "category": "cards",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "list": {
+          "type": "list",
+          "description": {
+            "en": "A list of texts attached to the solution item.",
+            "fr": "Une liste de textes attachés à l'élément de solution."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link attached to the solution item.",
+            "fr": "Un lien attaché à l'élément de solution."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 972,
+        "width": 2007,
+        "type": "webp",
+        "path": "assets/FeatureList/example.png"
+      }
+    ],
+    "name": "FeatureList"
+  },
+  "Features": {
+    "title": {
+      "en": "Feature Section",
+      "fr": "Section de fonctionnalités"
+    },
+    "label": {
+      "en": "Features",
+      "fr": "Fonctionnalités"
+    },
+    "description": {
+      "en": "A section to display an overview of multiple related points, to convey an overall message about the items.",
+      "fr": "Une section permettant d'afficher une vue d'ensemble de plusieurs points liés, afin de transmettre un message global sur les éléments."
+    },
+    "elements": {
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "description": {
+            "en": "Icons attached to the feature.",
+            "fr": "Icônes attachées à la fonctionnalité."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link attached to the feature.",
+            "fr": "Un lien attaché à la fonctionnalité."
+          }
+        }
+      }
+    },
+    "properties": {
+      "alignment": {
+        "label": {
+          "en": "Content alignment",
+          "fr": "Alignement du contenu"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "left",
+        "description": {
+          "en": "The alignment of the main content.",
+          "fr": "L'alignement du contenu principal."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content on the Left and title at the right",
+          "fr": "Contenu à gauche et titre à droite"
+        },
+        "properties": {
+          "alignment": "left"
+        },
+        "image": {
+          "height": 610,
+          "width": 989,
+          "type": "webp",
+          "path": "assets/Features/left.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content in the Center and tired at the top",
+          "fr": "Contenu au centre et titre en haut"
+        },
+        "properties": {
+          "alignment": "center"
+        },
+        "image": {
+          "height": 716,
+          "width": 992,
+          "type": "webp",
+          "path": "assets/Features/center.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Right and title at the left",
+          "fr": "Contenu à droite et titre à gauche"
+        },
+        "properties": {
+          "alignment": "right"
+        },
+        "image": {
+          "height": 597,
+          "width": 1017,
+          "type": "webp",
+          "path": "assets/Features/right.webp"
+        }
+      }
+    ],
+    "name": "Features"
+  },
+  "Gallery": {
+    "title": {
+      "en": "Image Gallery",
+      "fr": "Galerie d'images"
+    },
+    "description": {
+      "en": "This is a section to showcase your images, plesantly arranged in a masonry layout that dynamically responds to your website.",
+      "fr": "Une section destinée à présenter vos images, disposées dans une disposition en maçonnerie qui s'adapte à votre site web."
+    },
+    "label": {
+      "en": "Gallery",
+      "fr": "Galerie"
+    },
+    "elements": {
+      "title": {
+        "alignment": "left,right,center",
+        "type": "H1",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The image to display.",
+          "fr": "L'image à afficher."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1194,
+        "width": 1869,
+        "type": "webp",
+        "path": "assets/Gallery/example.png"
+      }
+    ],
+    "name": "Gallery"
+  },
+  "Hero": {
+    "title": {
+      "en": "Introduction",
+      "fr": "Introduction"
+    },
+    "description": {
+      "en": "The opening section of your website providing a key piece of information and a strong presence. Commonly known as a \"hero\" section.",
+      "fr": "La section d'ouverture de votre site web fournit un élément d'information clé et une présence forte. Communément appelée section \"hero\"."
+    },
+    "label": {
+      "en": "Introduction - Hero",
+      "fr": "Introduction - Hero"
+    },
+    "category": "hero",
+    "export": true,
+    "elements": {
+      "background": {
+        "layout": "center, wide",
+        "type": "image",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "alignment": "left,right,center",
+        "type": "H1",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "One or more links that attach to the hero section.",
+          "fr": "Un ou plusieurs liens qui s'attachent à la section hero."
+        }
+      }
+    },
+    "properties": {
+      "min_height": {
+        "label": {
+          "en": "Section height",
+          "fr": "Hauteur de la section"
+        },
+        "type": "string",
+        "default": "100vh",
+        "enum": [
+          {
+            "label": {
+              "en": "100% Screen Height",
+              "fr": "100% de la hauteur de l'écran"
+            },
+            "value": "100vh"
+          },
+          {
+            "label": {
+              "en": "80% Screen Height",
+              "fr": "80% de la hauteur de l'écran"
+            },
+            "value": "80vh"
+          },
+          {
+            "label": {
+              "en": "60% Screen Height",
+              "fr": "60% de la hauteur de l'écran"
+            },
+            "value": "60vh"
+          },
+          {
+            "label": {
+              "en": "40% Screen Height",
+              "fr": "40% de la hauteur de l'écran"
+            },
+            "value": "40vh"
+          }
+        ],
+        "description": {
+          "en": "The height of the section.",
+          "fr": "La hauteur de la section."
+        }
+      },
+      "show_back_drop": {
+        "label": {
+          "en": "Text Backdrop",
+          "fr": "Toile de fond du texte"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether or not the text will have a backdrop.",
+          "fr": "Si le texte aura ou non une toile de fond."
+        }
+      },
+      "show_gradient": {
+        "label": {
+          "en": "Gradient",
+          "fr": "Dégradé"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Weather or not the background will have a gradient.",
+          "fr": "Si l'arrière-plan aura ou non un dégradé."
+        }
+      },
+      "gradient_from_pos": {
+        "label": {
+          "en": "Gradient From Position",
+          "fr": "Position du dégradé à partir de"
+        },
+        "type": "string",
+        "default": "bottom",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The position of the gradient from.",
+          "fr": "La position du dégradé à partir de."
+        }
+      },
+      "horizontal_alignment": {
+        "label": {
+          "en": "Horizontal Alignment",
+          "fr": "Alignement horizontal"
+        },
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The horizontal alignment of the text.",
+          "fr": "L'alignement horizontal du texte."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The vertical alignment of the text.",
+          "fr": "L'alignement vertical du texte."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content Center and Gradient Top",
+          "fr": "Contenu centré et dégradé en haut"
+        },
+        "properties": {
+          "min_height": "60vh",
+          "show_gradient": true,
+          "gradient_from_pos": "top",
+          "horizontal_alignment": "center",
+          "vertical_alignment": "center"
+        },
+        "image": {
+          "height": 771,
+          "width": 1749,
+          "type": "webp",
+          "path": "assets/Hero/content_center_gradient_top.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Left with Text Backdrop",
+          "fr": "Contenu à gauche avec toile de fond de texte"
+        },
+        "properties": {
+          "min_height": "60vh",
+          "show_back_drop": true,
+          "horizontal_alignment": "left",
+          "vertical_alignment": "center"
+        },
+        "image": {
+          "height": 772,
+          "width": 1754,
+          "type": "webp",
+          "path": "assets/Hero/content_left_backdrop.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Right with Gradient Bottom",
+          "fr": "Contenu à droite avec dégradé en bas"
+        },
+        "properties": {
+          "min_height": "60vh",
+          "show_gradient": true,
+          "gradient_from_pos": "bottom",
+          "horizontal_alignment": "right",
+          "vertical_alignment": "center"
+        },
+        "image": {
+          "height": 757,
+          "width": 1749,
+          "type": "webp",
+          "path": "assets/Hero/content_right_gradient_bottom.webp"
+        }
+      }
+    ],
+    "name": "Hero"
+  },
+  "HeroMedia": {
+    "title": {
+      "en": "Introduction with Media",
+      "fr": "Introduction avec les médias"
+    },
+    "label": {
+      "en": "Introduction - Media",
+      "fr": "Introduction - Média"
+    },
+    "description": {
+      "en": "The opening section of your website providing a key piece of information and a video background. Commonly known as a \"hero\" section.",
+      "fr": "La section d'ouverture de votre site web fournissant un élément d'information clé et un arrière-plan vidéo. Communément appelée section \"hero\"."
+    },
+    "category": "hero",
+    "export": true,
+    "elements": {
+      "background": {
+        "description": {
+          "en": "The optional background image.",
+          "fr": "L'image d'arrière-plan facultative."
+        },
+        "type": "image",
+        "layout": ""
+      },
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "One or more links that attach to the hero section.",
+          "fr": "Un ou plusieurs liens qui s'attachent à la section hero."
+        }
+      },
+      "media": {
+        "type": "image,video",
+        "description": {
+          "en": "The image or video of the hero section, if both present, the image will be used as a facade.",
+          "fr": "L'image ou la vidéo de la section hero, si les deux sont présents, l'image sera utilisée comme façade."
+        }
+      }
+    },
+    "properties": {
+      "min_height": {
+        "label": {
+          "en": "Section height",
+          "fr": "Hauteur de la section"
+        },
+        "type": "string",
+        "default": "100vh",
+        "enum": [
+          {
+            "label": {
+              "en": "100% Screen Height",
+              "fr": "100% de la hauteur de l'écran"
+            },
+            "value": "100vh"
+          },
+          {
+            "label": {
+              "en": "80% Screen Height",
+              "fr": "80% de la hauteur de l'écran"
+            },
+            "value": "80vh"
+          },
+          {
+            "label": {
+              "en": "60% Screen Height",
+              "fr": "60% de la hauteur de l'écran"
+            },
+            "value": "60vh"
+          },
+          {
+            "label": {
+              "en": "40% Screen Height",
+              "fr": "40% de la hauteur de l'écran"
+            },
+            "value": "40vh"
+          }
+        ],
+        "description": {
+          "en": "The minimum height of the section, it grows if the content is larger.",
+          "fr": "La hauteur minimale de la section, elle augmente si le contenu est plus grand."
+        }
+      },
+      "show_back_drop": {
+        "label": {
+          "en": "Text Backdrop",
+          "fr": "Toile de fond du texte"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether or not the text will have a backdrop.",
+          "fr": "Si le texte aura ou non une toile de fond."
+        }
+      },
+      "show_gradient": {
+        "label": {
+          "en": "Gradient",
+          "fr": "Dégradé"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Weather or not the background will have a gradient.",
+          "fr": "Si l'arrière-plan aura ou non un dégradé."
+        }
+      },
+      "gradient_from_pos": {
+        "label": {
+          "en": "Gradient From Position",
+          "fr": "Position du dégradé à partir de"
+        },
+        "type": "string",
+        "default": "bottom",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The position of the gradient from.",
+          "fr": "La position du dégradé à partir de."
+        }
+      },
+      "horizontal_alignment": {
+        "label": {
+          "en": "Horizontal Alignment",
+          "fr": "Alignement horizontal"
+        },
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The horizontal alignment of the text content or the media content, in case both exist, it is the horizontal alignment of the text content.",
+          "fr": "L'alignement horizontal du contenu texte ou du contenu média, dans le cas où les deux existent, c'est l'alignement horizontal du contenu texte."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The vertical alignment of the content.",
+          "fr": "L'alignement vertical du contenu."
+        }
+      },
+      "media_as_bg": {
+        "label": {
+          "en": "Media as Background",
+          "fr": "Média comme arrière-plan"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Weather or not the media (video or image) will be used as a background, the background image will be ignored, if both image and video are present, the video will be used.",
+          "fr": "Si le média (vidéo ou image) sera utilisé comme arrière-plan, l'image d'arrière-plan sera ignorée, si les deux images et vidéos sont présentes, la vidéo sera utilisée."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content aligned left with gradient from top, height 60% of the screen",
+          "fr": "Contenu aligné à gauche avec un dégradé du haut, hauteur 60% de l'écran"
+        },
+        "properties": {
+          "min_height": "60vh",
+          "show_gradient": true,
+          "gradient_from_pos": "top",
+          "horizontal_alignment": "left"
+        },
+        "image": {
+          "height": 775,
+          "width": 1888,
+          "type": "webp",
+          "path": "assets/HeroMedia/60_h_content_left_gradient_top.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content aligned right, height 60% of the screen",
+          "fr": "Contenu aligné à droite, hauteur 60% de l'écran"
+        },
+        "properties": {
+          "min_height": "60vh",
+          "horizontal_alignment": "right"
+        },
+        "image": {
+          "height": 776,
+          "width": 1892,
+          "type": "webp",
+          "path": "assets/HeroMedia/60_h_content_right.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content aligned center with gradient from top, height 80% of the screen, media as background",
+          "fr": "Contenu aligné au centre avec un dégradé du haut, hauteur 80% de l'écran, média comme arrière-plan"
+        },
+        "properties": {
+          "min_height": "80vh",
+          "show_gradient": true,
+          "gradient_from_pos": "top",
+          "horizontal_alignment": "center",
+          "media_as_bg": true
+        },
+        "image": {
+          "height": 1030,
+          "width": 1887,
+          "type": "webp",
+          "path": "assets/HeroMedia/80_h_content_center_gradient_top_media_bg.webp"
+        }
+      }
+    ],
+    "name": "HeroMedia"
+  },
+  "HeroSlider": {
+    "title": {
+      "en": "Introduction with Slider",
+      "fr": "Introduction avec Slider"
+    },
+    "description": {
+      "en": "The opening section of your website providing multiple rotating key pieces of information and images. Commonly known as a \"carousel\" section.",
+      "fr": "La section d'ouverture de votre site web présentant plusieurs éléments clés d'information et d'images en rotation. Communément appelée section \"carrousel\"."
+    },
+    "label": {
+      "en": "Introduction - Slider",
+      "fr": "Introduction - Slider"
+    },
+    "category": "hero",
+    "export": true,
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "layout": "center, wide",
+          "type": "image",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "pretitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that precedes the main headline.",
+            "fr": "Une phrase qui précède le titre principal."
+          }
+        },
+        "title": {
+          "alignment": "left,right,center",
+          "type": "H1",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "One or more links that attach to the hero section.",
+            "fr": "Un ou plusieurs liens qui s'attachent à la section hero."
+          }
+        }
+      }
+    },
+    "properties": {
+      "min_height": {
+        "label": {
+          "en": "Section height",
+          "fr": "Hauteur de la section"
+        },
+        "type": "string",
+        "default": "100vh",
+        "enum": [
+          {
+            "label": {
+              "en": "100% Screen Height",
+              "fr": "100% de la hauteur de l'écran"
+            },
+            "value": "100vh"
+          },
+          {
+            "label": {
+              "en": "80% Screen Height",
+              "fr": "80% de la hauteur de l'écran"
+            },
+            "value": "80vh"
+          },
+          {
+            "label": {
+              "en": "60% Screen Height",
+              "fr": "60% de la hauteur de l'écran"
+            },
+            "value": "60vh"
+          },
+          {
+            "label": {
+              "en": "40% Screen Height",
+              "fr": "40% de la hauteur de l'écran"
+            },
+            "value": "40vh"
+          }
+        ],
+        "description": {
+          "en": "The height of the section.",
+          "fr": "La hauteur de la section."
+        }
+      },
+      "bg_size": {
+        "label": {
+          "en": "Background Size",
+          "fr": "Taille de l'arrière-plan"
+        },
+        "type": "string",
+        "default": "full",
+        "enum": [
+          {
+            "label": {
+              "en": "Full",
+              "fr": "Plein"
+            },
+            "value": "full"
+          },
+          {
+            "label": {
+              "en": "Double Extra Large",
+              "fr": "Double très grand"
+            },
+            "value": "partial"
+          }
+        ],
+        "description": {
+          "en": "The width of the background image.",
+          "fr": "La largeur de l'image d'arrière-plan."
+        }
+      },
+      "show_back_drop": {
+        "label": {
+          "en": "Text Backdrop",
+          "fr": "Toile de fond du texte"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether or not the text will have a backdrop.",
+          "fr": "Si le texte aura ou non une toile de fond."
+        }
+      },
+      "show_gradient": {
+        "label": {
+          "en": "Gradient",
+          "fr": "Dégradé"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Weather or not the background will have a gradient.",
+          "fr": "Si l'arrière-plan aura ou non un dégradé."
+        }
+      },
+      "gradient_from_pos": {
+        "label": {
+          "en": "Gradient From Position",
+          "fr": "Position du dégradé à partir de"
+        },
+        "type": "string",
+        "default": "bottom",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The position of the gradient from.",
+          "fr": "La position du dégradé à partir de."
+        }
+      },
+      "horizontal_alignment": {
+        "label": {
+          "en": "Horizontal Alignment",
+          "fr": "Alignement horizontal"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The horizontal alignment of the text.",
+          "fr": "L'alignement horizontal du texte."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The vertical alignment of the text.",
+          "fr": "L'alignement vertical du texte."
+        }
+      },
+      "slider_indicator": {
+        "label": {
+          "en": "Slider Indicator",
+          "fr": "Indicateur de slider"
+        },
+        "type": "boolean",
+        "default": true,
+        "description": {
+          "en": "Weather or not show the slider indicator at the bottom.",
+          "fr": "Si oui ou non afficher l'indicateur de slider en bas."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content align center with top gradient and bottom indicator, height is 40% of window",
+          "fr": "Contenu aligné au centre avec un dégradé en haut et un indicateur en bas, la hauteur est de 40% de la fenêtre"
+        },
+        "properties": {
+          "min_height": "40vh",
+          "show_gradient": true,
+          "gradient_from_pos": "top",
+          "slider_indicator": true
+        },
+        "image": {
+          "height": 512,
+          "width": 1891,
+          "type": "webp",
+          "path": "assets/HeroSlider/40_h_content_center_gradient_top_indicator.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content align left with text backdrop and bottom indicator, height is 40% of window",
+          "fr": "Contenu aligné à gauche avec toile de fond de texte et indicateur en bas, la hauteur est de 40% de la fenêtre"
+        },
+        "properties": {
+          "min_height": "40vh",
+          "horizontal_alignment": "left",
+          "show_back_drop": true,
+          "slider_indicator": true
+        },
+        "image": {
+          "height": 515,
+          "width": 1891,
+          "type": "webp",
+          "path": "assets/HeroSlider/40_h_content_left_backdrop_indicator.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content align right with bottom gradient, height is 40% of window",
+          "fr": "Contenu aligné à droite avec un dégradé en bas, la hauteur est de 40% de la fenêtre"
+        },
+        "properties": {
+          "min_height": "40vh",
+          "horizontal_alignment": "right",
+          "show_gradient": true,
+          "gradient_from_pos": "bottom"
+        },
+        "image": {
+          "height": 514,
+          "width": 1891,
+          "type": "webp",
+          "path": "assets/HeroSlider/40_h_content_right_gradient_bottom.webp"
+        }
+      }
+    ],
+    "name": "HeroSlider"
+  },
+  "InformationMedia": {
+    "title": {
+      "en": "Media Highlight",
+      "fr": "Médias en vedette"
+    },
+    "label": {
+      "en": "Media Highlight",
+      "fr": "Média en vedette"
+    },
+    "description": {
+      "en": "This section calls attention to a specific image or video with plenty of space for a description, content alignment controlled in editor.",
+      "fr": "Cette section attire l'attention sur une image ou une vidéo spécifique avec beaucoup d'espace pour une description, l'alignement du contenu est contrôlé dans l'éditeur."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "media": {
+        "type": "image,video",
+        "description": {
+          "en": "The primary visual content.",
+          "fr": "Le contenu visuel principal."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content in the Center with Image",
+          "fr": "Contenu au centre avec image"
+        },
+        "properties": {
+          "alignment": "center"
+        },
+        "image": {
+          "height": 1194,
+          "width": 1669,
+          "type": "webp",
+          "path": "assets/InformationMedia/content_center_img.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Left with Image",
+          "fr": "Contenu à gauche avec image"
+        },
+        "properties": {
+          "alignment": "left"
+        },
+        "image": {
+          "height": 458,
+          "width": 1768,
+          "type": "webp",
+          "path": "assets/InformationMedia/content_left_img.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content on the Right with Video",
+          "fr": "Contenu à droite avec vidéo"
+        },
+        "properties": {
+          "alignment": "right"
+        },
+        "image": {
+          "height": 467,
+          "width": 1519,
+          "type": "webp",
+          "path": "assets/InformationMedia/content_right_video.webp"
+        }
+      }
+    ],
+    "name": "InformationMedia"
+  },
+  "InteractiveMap": {
+    "title": {
+      "en": "Interactive Map",
+      "fr": "Carte Interactive"
+    },
+    "label": {
+      "en": "Map - Interactive",
+      "fr": "Carte - Interactive"
+    },
+    "description": {
+      "en": "A full size map with pins and side details that ideally for embedding in a page.",
+      "fr": "Une carte en taille réelle avec des épingles et des détails latéraux, idéalement pour l'intégration dans une page."
+    },
+    "category": "map",
+    "export": true,
+    "properties": {
+      "zoom": {
+        "label": {
+          "en": "Initial Zoom Level",
+          "fr": "Niveau de zoom initial"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "World view",
+              "fr": "Vue du monde"
+            },
+            "value": "1"
+          },
+          {
+            "label": {
+              "en": "Continent view",
+              "fr": "Vue du continent"
+            },
+            "value": "5"
+          },
+          {
+            "label": {
+              "en": "City view",
+              "fr": "Vue de la ville"
+            },
+            "value": "10"
+          },
+          {
+            "label": {
+              "en": "Street view",
+              "fr": "Vue de la rue"
+            },
+            "value": "15"
+          },
+          {
+            "label": {
+              "en": "Building view",
+              "fr": "Vue du bâtiment"
+            },
+            "value": "20"
+          }
+        ],
+        "default": "5",
+        "description": {
+          "en": "The zoom level of the map.",
+          "fr": "Le niveau de zoom de la carte."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "em": "Map zoomed to city view initially",
+          "fr": "Carte zoomée sur la vue de la ville initialement"
+        },
+        "properties": {
+          "zoom": "10"
+        },
+        "image": {
+          "height": 1296,
+          "width": 1891,
+          "type": "webp",
+          "path": "assets/InteractiveMap/city_view.webp"
+        }
+      }
+    ],
+    "name": "InteractiveMap"
+  },
+  "List": {
+    "title": {
+      "en": "Detailed List",
+      "fr": "Liste détaillée"
+    },
+    "label": {
+      "en": "List",
+      "fr": "Liste"
+    },
+    "description": {
+      "en": "A section to list longer blocks of content one after the other and complemented by titles and images.",
+      "fr": "Une section pour lister des blocs de contenu plus longs l'un après l'autre et complétés par des titres et des images."
+    },
+    "category": "list",
+    "export": true,
+    "assets": {
+      "Screenshot.png": {
+        "title": {
+          "en": "Two list items with images, titles, text and links.",
+          "fr": "Deux éléments de liste avec des images, des titres, du texte et des liens."
+        }
+      },
+      "List-Dark.png": {
+        "title": {
+          "en": "Two rich list items with information and image thumbnail in light mode.",
+          "fr": "Deux éléments de liste enrichie avec des informations et une vignette d'image en mode léger."
+        }
+      },
+      "List-Light.png": {
+        "title": {
+          "en": "Two rich list items with information and image thumbnail in dark mode.",
+          "fr": "Deux éléments de liste enrichie avec des informations et une vignette d'image en mode foncé."
+        }
+      }
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link attached to the list item.",
+            "fr": "Un lien attaché à l'élément de liste."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 878,
+        "width": 1710,
+        "type": "webp",
+        "path": "assets/List/example.png"
+      }
+    ],
+    "name": "List"
+  },
+  "Locations": {
+    "title": {
+      "en": "Map - Locations",
+      "fr": "Carte - Emplacements"
+    },
+    "label": {
+      "en": "Map - Locations",
+      "fr": "Carte - Emplacements"
+    },
+    "description": {
+      "en": "Display points of interest on an interactive map, addresses are from the selected input or manual input cards.",
+      "fr": "Affichez des points d'intérêt sur une carte interactive, les adresses proviennent de l'entrée sélectionnée ou des cartes d'entrée manuelles."
+    },
+    "category": "map",
+    "export": true,
+    "assets": {
+      "Screenshot.png": {
+        "title": {
+          "en": "Use case of showing multiple location's information within one map.",
+          "fr": "Cas d'utilisation de l'affichage des informations de plusieurs emplacements dans une carte."
+        }
+      },
+      "MapLocations-Light.png": {
+        "title": {
+          "en": "One map for each location, zoomed in to the city level.",
+          "fr": "Une carte pour chaque lieu, zoomée au niveau de la ville."
+        }
+      },
+      "MapLocations-Light1.png": {
+        "title": {
+          "en": "Two locations displayed on one map, zoomed out to world level.",
+          "fr": "Deux lieux affichés sur une même carte, avec un zoom arrière au niveau mondial."
+        }
+      },
+      "MapLocations-Dark.png": {
+        "title": {
+          "en": "One map for both locations, zoomed in to the city level.",
+          "fr": "Une seule carte pour les deux sites, zoomée au niveau de la ville."
+        }
+      }
+    },
+    "input": {
+      "type": "any",
+      "limit": false
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "card": {
+        "description": {
+          "en": "One or more card with Address type.",
+          "fr": "Une ou plusieurs cartes avec le type Adresse."
+        },
+        "type": "card"
+      }
+    },
+    "properties": {
+      "show_single_map": {
+        "label": {
+          "en": "Single Map",
+          "fr": "Carte unique"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether or not to show all addresses in a single map.",
+          "fr": "Si oui ou non afficher toutes les adresses dans une seule carte."
+        }
+      },
+      "zoom": {
+        "label": {
+          "en": "Initial Zoom Level",
+          "fr": "Niveau de zoom initial"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "World view",
+              "fr": "Vue du monde"
+            },
+            "value": "1"
+          },
+          {
+            "label": {
+              "en": "Continent view",
+              "fr": "Vue du continent"
+            },
+            "value": "5"
+          },
+          {
+            "label": {
+              "en": "City view",
+              "fr": "Vue de la ville"
+            },
+            "value": "10"
+          },
+          {
+            "label": {
+              "en": "Street view",
+              "fr": "Vue de la rue"
+            },
+            "value": "15"
+          },
+          {
+            "label": {
+              "en": "Building view",
+              "fr": "Vue du bâtiment"
+            },
+            "value": "20"
+          }
+        ],
+        "default": "5",
+        "description": {
+          "en": "The zoom level of the map.",
+          "fr": "Le niveau de zoom de la carte."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Multiple locations in a single map",
+          "fr": "Plusieurs emplacements dans une seule carte"
+        },
+        "properties": {
+          "show_single_map": true
+        },
+        "image": {
+          "height": 543,
+          "width": 1042,
+          "type": "webp",
+          "path": "assets/Locations/single.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "One map for each location",
+          "fr": "Une carte pour chaque emplacement"
+        },
+        "properties": {
+          "show_single_map": false
+        },
+        "image": {
+          "height": 779,
+          "width": 1089,
+          "type": "webp",
+          "path": "assets/Locations/multiple.webp"
+        }
+      }
+    ],
+    "name": "Locations"
+  },
+  "LogoCloud": {
+    "title": {
+      "en": "Icon Grid",
+      "fr": "Grille d'icônes"
+    },
+    "label": {
+      "en": "Icon Grid",
+      "fr": "Grille d'icônes"
+    },
+    "description": {
+      "en": "A section to show a selection of icons, logos, or other images.",
+      "fr": "Section permettant d'afficher une sélection d'icônes, de logos ou d'autres images."
+    },
+    "category": "content",
+    "export": true,
+    "assets": {
+      "Screenshot.png": {
+        "title": {
+          "en": "Basic usage.",
+          "fr": "Utilisation de base."
+        }
+      }
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 395,
+        "width": 1799,
+        "type": "webp",
+        "path": "assets/LogoCloud/example.png"
+      }
+    ],
+    "name": "LogoCloud"
+  },
+  "MediaFooter": {
+    "title": {
+      "en": "Media Footer",
+      "fr": "Pied de page média"
+    },
+    "label": {
+      "en": "Footer - Media",
+      "fr": "Pied de page - Média"
+    },
+    "description": {
+      "en": "This special section is designed exclusively for use in the footer section of the editor. It displays a logo, media links, links to internal pages, external links, copyright information, and a newsletter subscription form.",
+      "fr": "Cette section spéciale est conçue exclusivement pour être utilisée dans la section pied de page de l'éditeur. Elle affiche un logo, des liens médias, des liens vers des pages internes, des liens externes, des informations de droits d'auteur et un formulaire d'abonnement à la newsletter."
+    },
+    "category": "footer",
+    "export": true,
+    "elements": {
+      "title": {
+        "description": {
+          "en": "The text put beside the logo.",
+          "fr": "Le texte mis à côté du logo."
+        },
+        "type": "H1",
+        "alignment": ""
+      },
+      "subtitle": {
+        "description": {
+          "en": "The text put under the logo.",
+          "fr": "Le texte mis sous le logo."
+        },
+        "type": "H2"
+      },
+      "text": {
+        "description": {
+          "en": "The text to display at the bottom of the footer, usually used for copyright information.",
+          "fr": "Le texte à afficher en bas du pied de page, généralement utilisé pour les informations de droits d'auteur."
+        },
+        "type": "paragraph"
+      },
+      "icon": {
+        "type": "icon",
+        "description": {
+          "en": "Website logo.",
+          "fr": "Logo du site Web."
+        }
+      },
+      "list": {
+        "type": "bullet",
+        "title": {
+          "en": "Navigation Links",
+          "fr": "Liens de navigation"
+        },
+        "description": {
+          "en": "The navigation links are organized into groups in the footer, created as a list with a 2-level hierarchy. The first level consists of the group label, while the second level contains the links within the group",
+          "fr": "Les liens de navigation sont organisés en groupes dans le pied de page, créés sous forme de liste avec une hiérarchie à 2 niveaux. Le premier niveau est composé de l'étiquette du groupe, tandis que le deuxième niveau contient les liens du groupe."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "One or more external links, usually to social media.",
+          "fr": "Un ou plusieurs liens externes, généralement vers les médias sociaux."
+        }
+      }
+    },
+    "properties": {
+      "with_newsletter": {
+        "type": "boolean",
+        "label": {
+          "en": "Newsletter Subscription",
+          "fr": "Abonnement à la newsletter"
+        },
+        "default": true,
+        "description": {
+          "en": "Whether or not to display the newsletter subscription form on the right side of the footer.",
+          "fr": "Afficher ou non le formulaire d'abonnement à la newsletter sur le côté droit du pied de page."
+        }
+      },
+      "with_back_to_top": {
+        "type": "boolean",
+        "label": {
+          "en": "Back to Top Button",
+          "fr": "Bouton Retour en haut"
+        },
+        "default": false,
+        "description": {
+          "en": "Whether or not to display the back to top button on the right side of the footer.",
+          "fr": "Afficher ou non le bouton de retour en haut sur le côté droit du pied de page."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Newsletter & Back to Top",
+          "fr": "Newsletter et Retour en haut"
+        },
+        "with_newsletter": true,
+        "with_back_to_top": true,
+        "image": {
+          "height": 495,
+          "width": 1904,
+          "type": "webp",
+          "path": "assets/MediaFooter/newsletter_back_to_top.webp"
+        }
+      }
+    ],
+    "name": "MediaFooter"
+  },
+  "Newsletter": {
+    "title": {
+      "en": "Newsletter Subscription",
+      "fr": "Abonnement à la lettre d'information"
+    },
+    "label": {
+      "en": "Newsletter",
+      "fr": "Newsletter"
+    },
+    "description": {
+      "en": "A section to allow you to remain in contact with your visitors by letting them sign up to recieve updates when you post new content.",
+      "fr": "Une section qui vous permet de rester en contact avec vos visiteurs en leur permettant de s'inscrire pour recevoir des mises à jour lorsque vous publiez du nouveau contenu."
+    },
+    "category": "form",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "text": {
+        "description": {
+          "en": "Text shown below the subscription form.",
+          "fr": "Texte affiché sous le formulaire d'abonnement."
+        },
+        "type": "paragraph"
+      }
+    },
+    "images": [
+      {
+        "height": 369,
+        "width": 1738,
+        "type": "webp",
+        "path": "assets/Newsletter/example.png"
+      }
+    ],
+    "name": "Newsletter"
+  },
+  "PageEnd": {
+    "title": {
+      "en": "Page End",
+      "fr": "Fin de page"
+    },
+    "label": {
+      "en": "Page End",
+      "fr": "Fin de page"
+    },
+    "description": {
+      "en": "A dedicated section positioned at the bottom of a webpage, serving as the concluding wrapper for various footer elements.",
+      "fr": "Une section dédiée positionnée au bas d'une page Web, servant d'enveloppe de conclusion pour divers éléments de pied de page."
+    },
+    "category": "footer",
+    "export": true,
+    "items": {
+      "separator": "section",
+      "category": "Footer"
+    },
+    "name": "PageEnd"
+  },
+  "PageFooter": {
+    "title": {
+      "en": "Page Footer",
+      "fr": "Pied de page"
+    },
+    "label": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "description": {
+      "en": "Special section to only be used in the footer section of the editor. Creates lists of links mirroring those of the navigation bar.",
+      "fr": "Section spéciale à utiliser uniquement dans le pied de page de l'éditeur. Crée des listes de liens reflétant celles de la barre de navigation."
+    },
+    "category": "footer",
+    "export": true,
+    "elements": {
+      "title": {
+        "description": {
+          "en": "The copyright text.",
+          "fr": "Le texte des droits d'auteur."
+        },
+        "type": "H1",
+        "alignment": ""
+      },
+      "list": {
+        "type": "list",
+        "title": {
+          "en": "Navigation Links",
+          "fr": "Liens de navigation"
+        },
+        "description": {
+          "en": "The navigation links to display in the footer, it is created as a list of links with hierarchy.",
+          "fr": "Les liens de navigation à afficher dans le pied de page, il est créé sous forme de liste de liens avec hiérarchie."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "One or more external or social links.",
+          "fr": "Un ou plusieurs liens externes ou sociaux."
+        }
+      }
+    },
+    "properties": {
+      "mode": {
+        "type": "string",
+        "label": {
+          "en": "Navigation Links Generation Mode",
+          "fr": "Mode de génération des liens de navigation"
+        },
+        "enum": [
+          {
+            "label": {
+              "en": "Automatic",
+              "fr": "Automatique"
+            },
+            "value": "auto"
+          },
+          {
+            "label": {
+              "en": "Always Page Hierarchy",
+              "fr": "Toujours la hiérarchie des pages"
+            },
+            "value": "page"
+          },
+          {
+            "label": {
+              "en": "Always Manual Links",
+              "fr": "Toujours des liens manuels"
+            },
+            "value": "manual"
+          }
+        ],
+        "default": "auto",
+        "description": {
+          "en": "The mode used to generate the navigation links, auto will use the manual links if available, otherwise it will use the page hierarchy.",
+          "fr": "Le mode utilisé pour générer les liens de navigation, auto utilisera les liens manuels s'ils sont disponibles, sinon il utilisera la hiérarchie des pages."
+        }
+      },
+      "with_lang_toggle": {
+        "type": "boolean",
+        "label": {
+          "en": "Language Toggle",
+          "fr": "Basculer la langue"
+        },
+        "description": {
+          "en": "Whether or not the language toggle will be displayed in the footer.",
+          "fr": "Si oui ou non le basculement de langue sera affiché dans le pied de page."
+        },
+        "default": false
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "With Language Toggle",
+          "fr": "Avec basculement de langue"
+        },
+        "properties": {
+          "with_lang_toggle": true
+        },
+        "image": {
+          "height": 315,
+          "width": 1890,
+          "type": "webp",
+          "path": "assets/PageFooter/with_lang_toggle.webp"
+        }
+      }
+    ],
+    "name": "PageFooter"
+  },
+  "PageHeader": {
+    "title": {
+      "en": "Page Header",
+      "fr": "En-tête de page"
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "Special section only to be used in the header page. Creates a navigation bar with automatic links to all website pages.",
+      "fr": "Section spéciale à utiliser uniquement dans la page d'en-tête. Crée une barre de navigation avec des liens automatiques vers toutes les pages du site web."
+    },
+    "category": "header",
+    "export": true,
+    "elements": {
+      "icon": {
+        "title": {
+          "en": "Logo",
+          "fr": "Logo"
+        },
+        "description": {
+          "en": "The logo image to display in the header.",
+          "fr": "L'image du logo à afficher dans l'en-tête."
+        }
+      },
+      "list": {
+        "type": "list",
+        "title": {
+          "en": "Navigation Links",
+          "fr": "Liens de navigation"
+        },
+        "description": {
+          "en": "The navigation links to display in the header, it is created as a list of links, each link can have children links.",
+          "fr": "Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants."
+        }
+      }
+    },
+    "properties": {
+      "mode": {
+        "type": "string",
+        "label": {
+          "en": "Navigation Links Generation Mode",
+          "fr": "Mode de génération des liens de navigation"
+        },
+        "enum": [
+          {
+            "label": {
+              "en": "Automatic",
+              "fr": "Automatique"
+            },
+            "value": "auto"
+          },
+          {
+            "label": {
+              "en": "Always Page Hierarchy",
+              "fr": "Toujours la hiérarchie des pages"
+            },
+            "value": "page"
+          },
+          {
+            "label": {
+              "en": "Always Manual Links",
+              "fr": "Toujours des liens manuels"
+            },
+            "value": "manual"
+          }
+        ],
+        "default": "auto",
+        "description": {
+          "en": "The mode used to generate the navigation links, auto will use the manual links if available, otherwise it will use the page hierarchy.",
+          "fr": "Le mode utilisé pour générer les liens de navigation, auto utilisera les liens manuels s'ils sont disponibles, sinon il utilisera la hiérarchie des pages."
+        }
+      },
+      "sticky": {
+        "type": "boolean",
+        "label": {
+          "en": "Sticky",
+          "fr": "Sticky"
+        },
+        "description": {
+          "en": "Whether or not the header will be sticky at the top of the page on scroll.",
+          "fr": "Si l'en-tête sera ou non collant en haut de la page lors du défilement."
+        },
+        "default": false
+      },
+      "alignment": {
+        "type": "string",
+        "label": {
+          "en": "Navigation Alignment",
+          "fr": "Alignement de la navigation"
+        },
+        "description": {
+          "en": "The alignment of the navigation links in the header.",
+          "fr": "L'alignement des liens de navigation dans l'en-tête."
+        },
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          }
+        ],
+        "default": "left"
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Navigation links aligned to the left",
+          "fr": "Liens de navigation alignés à gauche"
+        },
+        "properties": {
+          "alignment": "left"
+        },
+        "image": {
+          "height": 225,
+          "width": 1891,
+          "type": "webp",
+          "path": "assets/PageHeader/left.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Navigation links aligned to the center and sticky at the top when page is scrolled",
+          "fr": "Liens de navigation alignés au centre et collants en haut lors du défilement de la page"
+        },
+        "properties": {
+          "alignment": "center",
+          "sticky": true
+        },
+        "image": {
+          "height": 221,
+          "width": 1890,
+          "type": "webp",
+          "path": "assets/PageHeader/center_sticky.webp"
+        }
+      }
+    ],
+    "name": "PageHeader"
+  },
+  "PowerFeatures": {
+    "title": {
+      "en": "Features - Line",
+      "fr": "Fonctionnalités - Ligne"
+    },
+    "label": {
+      "en": "Features - Line",
+      "fr": "Fonctionnalités - Ligne"
+    },
+    "description": {
+      "en": "A section for showing multiple related points in a horizontal line on large screens, or a vertical line on small ones.",
+      "fr": "Section permettant d'afficher plusieurs points connexes sur une ligne horizontale sur les grands écrans, ou sur une ligne verticale sur les petits écrans."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "alignment": "",
+        "type": "H1",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "alignment": "",
+          "type": "H1",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link attached to the feature.",
+            "fr": "Un lien attaché à la fonctionnalité."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 884,
+        "width": 1660,
+        "type": "webp",
+        "path": "assets/PowerFeatures/example.png"
+      }
+    ],
+    "name": "PowerFeatures"
+  },
+  "ProfileAssets": {
+    "title": {
+      "en": "Assets - Dynamic",
+      "fr": "Actifs - Dynamique"
+    },
+    "label": {
+      "en": "Assets - Dynamic",
+      "fr": "Actifs - Dynamique"
+    },
+    "description": {
+      "en": "A component that renders downloadable assets(files), the files come from one section of the content profile, config the source in the input widget.",
+      "fr": "Un composant qui rend les actifs téléchargeables (fichiers), les fichiers proviennent d'une section du profil de contenu, configurez la source dans le widget d'entrée."
+    },
+    "category": "downloadable",
+    "export": true,
+    "input": {
+      "type": "any",
+      "limit": "one"
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 452,
+        "width": 1479,
+        "type": "webp",
+        "path": "assets/ProfileAssets/example.png"
+      }
+    ],
+    "name": "ProfileAssets"
+  },
+  "ProfileSection": {
+    "title": {
+      "en": "Information - Dynamic",
+      "fr": "Information - Dynamique"
+    },
+    "label": {
+      "en": "Information - Dynamic",
+      "fr": "Information - Dynamique"
+    },
+    "description": {
+      "en": "A component renders the content of a given input.",
+      "fr": "Un composant rend le contenu d'une entrée donnée."
+    },
+    "category": "dynamic_content",
+    "export": true,
+    "input": {
+      "type": "any",
+      "limit": "one"
+    },
+    "properties": {
+      "width": {
+        "label": {
+          "en": "Section Width",
+          "fr": "Largeur de la section"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large",
+              "fr": "Très grand"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "Double Extra Large",
+              "fr": "Double très grand"
+            },
+            "value": "2xl"
+          }
+        ],
+        "description": {
+          "en": "The width of the section.",
+          "fr": "La largeur de la section."
+        }
+      },
+      "columns": {
+        "label": {
+          "en": "Number of Columns",
+          "fr": "Nombre de colonnes"
+        },
+        "type": "string",
+        "default": "1",
+        "enum": [
+          {
+            "label": {
+              "en": "One",
+              "fr": "Un"
+            },
+            "value": "1"
+          },
+          {
+            "label": {
+              "en": "Two",
+              "fr": "Deux"
+            },
+            "value": "2"
+          },
+          {
+            "label": {
+              "en": "Three",
+              "fr": "Trois"
+            },
+            "value": "3"
+          }
+        ],
+        "description": {
+          "en": "The number of columns in the section.",
+          "fr": "Le nombre de colonnes dans la section."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Double extra large width with two columns layout",
+          "fr": "Largeur double extra large avec une disposition à deux colonnes"
+        },
+        "properties": {
+          "width": "2xl",
+          "columns": "2"
+        },
+        "image": {
+          "height": 1070,
+          "width": 1825,
+          "type": "webp",
+          "path": "assets/ProfileSection/2xl_2.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Large width with one column layout",
+          "fr": "Largeur large avec une disposition à une colonne"
+        },
+        "properties": {
+          "width": "lg",
+          "columns": "1"
+        },
+        "image": {
+          "height": 1180,
+          "width": 1729,
+          "type": "webp",
+          "path": "assets/ProfileSection/lg_1.webp"
+        }
+      }
+    ],
+    "name": "ProfileSection"
+  },
+  "Reference": {
+    "title": {
+      "en": "Reference Viewer",
+      "fr": "Visualiseur de référence"
+    },
+    "label": {
+      "en": "Reference - Item",
+      "fr": "Référence"
+    },
+    "description": {
+      "en": "Showing the detail of a reference profile.",
+      "fr": "Affichage du détail d'un profil de référence."
+    },
+    "input": {
+      "type": "reference",
+      "limit": false
+    },
+    "category": "reference",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1122,
+        "width": 2412,
+        "type": "webp",
+        "path": "assets/Reference/example.png"
+      }
+    ],
+    "name": "Reference"
+  },
+  "References": {
+    "title": {
+      "en": "References List",
+      "fr": "Liste de références"
+    },
+    "label": {
+      "en": "References - List",
+      "fr": "Références - Liste"
+    },
+    "description": {
+      "en": "Showing the references from the input in a list with filtering and sorting.",
+      "fr": "Affichage des références de l'entrée dans une liste avec filtrage et tri."
+    },
+    "input": {
+      "type": "reference",
+      "limit": false
+    },
+    "category": "reference",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 963,
+        "width": 2319,
+        "type": "webp",
+        "path": "assets/References/example.png"
+      }
+    ],
+    "name": "References"
+  },
+  "Section": {
+    "title": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "description": {
+      "en": "A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.",
+      "fr": "Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "_raw": {
+        "en": "This category renders content from the Webpages editor as-is.",
+        "fr": "Cette catégorie affiche le contenu de l'éditeur de pages tel quel."
+      }
+    },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Padding",
+          "fr": "Rembourrage vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Center in Full Screen",
+              "fr": "Centrer en plein écran"
+            },
+            "value": "center"
+          }
+        ],
+        "description": {
+          "en": "The vertical padding of the section.",
+          "fr": "Le rembourrage vertical de la section."
+        }
+      },
+      "width": {
+        "label": {
+          "en": "Section Width",
+          "fr": "Largeur de la section"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large",
+              "fr": "Très grand"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "Double Extra Large",
+              "fr": "Double très grand"
+            },
+            "value": "2xl"
+          }
+        ],
+        "description": {
+          "en": "The width of the section.",
+          "fr": "La largeur de la section."
+        }
+      },
+      "columns": {
+        "label": {
+          "en": "Number of Columns",
+          "fr": "Nombre de colonnes"
+        },
+        "type": "string",
+        "default": "1",
+        "enum": [
+          {
+            "label": {
+              "en": "One",
+              "fr": "Un"
+            },
+            "value": "1"
+          },
+          {
+            "label": {
+              "en": "Two",
+              "fr": "Deux"
+            },
+            "value": "2"
+          },
+          {
+            "label": {
+              "en": "Three",
+              "fr": "Trois"
+            },
+            "value": "3"
+          }
+        ],
+        "description": {
+          "en": "The number of columns in the section.",
+          "fr": "Le nombre de colonnes dans la section."
+        }
+      },
+      "video_control": {
+        "label": {
+          "en": "Video Control",
+          "fr": "Contrôle vidéo"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether to display the additional video control, such as mini player and overlay play button.",
+          "fr": "Afficher ou non le contrôle vidéo supplémentaire, tel que le mini lecteur et le bouton de lecture superposé."
+        }
+      }
+    },
+    "name": "Section"
+  },
+  "Slider": {
+    "title": {
+      "en": "Carousel Slider",
+      "fr": "Carrousel Slider"
+    },
+    "label": {
+      "en": "Slider",
+      "fr": "Slider"
+    },
+    "description": {
+      "en": "Display multiple rotating pieces of information, each with a background immage.",
+      "fr": "Affichez plusieurs éléments d'information en rotation, chacun avec une image de fond."
+    },
+    "category": "content",
+    "export": true,
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "pretitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that precedes the main headline.",
+            "fr": "Une phrase qui précède le titre principal."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "One or more links that attach to the hero section.",
+            "fr": "Un ou plusieurs liens qui s'attachent à la section hero."
+          }
+        }
+      }
+    },
+    "properties": {
+      "show_back_drop": {
+        "label": {
+          "en": "Text Backdrop",
+          "fr": "Toile de fond du texte"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether or not the text will have a backdrop.",
+          "fr": "Si le texte aura ou non une toile de fond."
+        }
+      },
+      "background_overlay": {
+        "label": {
+          "en": "Background Overlay",
+          "fr": "Superposition d'arrière-plan"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Weather or not the background will have an overlay to make the text more readable.",
+          "fr": "Si l'arrière-plan aura ou non une superposition pour rendre le texte plus lisible."
+        }
+      },
+      "horizontal_alignment": {
+        "label": {
+          "en": "Horizontal Alignment",
+          "fr": "Alignement horizontal"
+        },
+        "type": "string",
+        "default": "",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The horizontal alignment of the text.",
+          "fr": "L'alignement horizontal du texte."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The vertical alignment of the text.",
+          "fr": "L'alignement vertical du texte."
+        }
+      },
+      "slider_indicator": {
+        "label": {
+          "en": "Slider Indicator",
+          "fr": "Indicateur de slider"
+        },
+        "type": "boolean",
+        "default": true,
+        "description": {
+          "en": "Weather or not the slider will have an indicator.",
+          "fr": "Si le slider aura ou non un indicateur."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Content aligned to the left with background overlay and the slider indicator at the bottom",
+          "fr": "Contenu aligné à gauche avec superposition d'arrière-plan et l'indicateur de slider en bas"
+        },
+        "properties": {
+          "horizontal_alignment": "left",
+          "background_overlay": true,
+          "slider_indicator": true
+        },
+        "image": {
+          "height": 699,
+          "width": 1956,
+          "type": "webp",
+          "path": "assets/Slider/left_content_overlay_indicator.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Content aligned to the right with a text backdrop",
+          "fr": "Contenu aligné à droite avec une toile de fond de texte"
+        },
+        "properties": {
+          "horizontal_alignment": "right",
+          "show_back_drop": true
+        },
+        "image": {
+          "height": 696,
+          "width": 1952,
+          "type": "webp",
+          "path": "assets/Slider/right_content_backdrop.webp"
+        }
+      }
+    ],
+    "name": "Slider"
+  },
+  "SocialConnector": {
+    "title": {
+      "en": "Social Connector",
+      "fr": "Connecteur social"
+    },
+    "label": {
+      "en": "Social Connector",
+      "fr": "Connecteur social"
+    },
+    "description": {
+      "en": "A component renders a newseltter subscription form and a list of social media links.",
+      "fr": "Un composant qui affiche un formulaire d'abonnement à la newsletter et une liste de liens vers les médias sociaux."
+    },
+    "input": {
+      "type": "any",
+      "limit": "one"
+    },
+    "category": "form",
+    "export": true,
+    "elements": {
+      "title": {
+        "label": {
+          "en": "Newsletter form title",
+          "fr": "Titre du formulaire d'abonnement à la newsletter"
+        },
+        "default": "Subscribe for updates",
+        "description": {
+          "en": "The title of the newsletter subscription form.",
+          "fr": "Le titre du formulaire d'abonnement à la newsletter."
+        },
+        "type": "H1",
+        "alignment": ""
+      },
+      "subtitle": {
+        "label": {
+          "en": "Social media links title",
+          "fr": "Titre des liens vers les réseaux sociaux"
+        },
+        "default": "Follow us",
+        "description": {
+          "en": "The title of the social media links.",
+          "fr": "Le titre des liens vers les réseaux sociaux."
+        },
+        "type": "H2"
+      }
+    },
+    "images": [
+      {
+        "height": 247,
+        "width": 2029,
+        "type": "webp",
+        "path": "assets/SocialConnector/example.png"
+      }
+    ],
+    "name": "SocialConnector"
+  },
+  "Solutions": {
+    "title": {
+      "en": "Feature Cards",
+      "fr": "Fonctionnalités en carte"
+    },
+    "label": {
+      "en": "Features - Card",
+      "fr": "Fonctionnalités - Carte"
+    },
+    "description": {
+      "en": "A component to show distinct pieces of information each with their own visual card.",
+      "fr": "Un composant permettant de présenter des éléments d'information distincts, chacun avec sa propre carte visuelle."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 599,
+        "width": 1134,
+        "type": "webp",
+        "path": "assets/Solutions/example.png"
+      }
+    ],
+    "name": "Solutions"
+  },
+  "Spotlight": {
+    "title": {
+      "en": "Feature Spotlight",
+      "fr": "Fonctionnalités spéciales"
+    },
+    "description": {
+      "en": "A serction for showcasing important information accompanied by a large image or visual.",
+      "fr": "Une fonction permettant de mettre en valeur des informations importantes accompagnées d'une grande image ou d'un visuel."
+    },
+    "label": {
+      "en": "Features - Spotlight",
+      "fr": "Fonctionnalités - Spotlight"
+    },
+    "category": "content",
+    "export": true,
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "description": {
+            "en": "Icons attached to the feature.",
+            "fr": "Icônes attachées à la fonctionnalité."
+          }
+        },
+        "media": {
+          "type": "image",
+          "description": {
+            "en": "The primary visual content.",
+            "fr": "Le contenu visuel principal."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link attached to the feature.",
+            "fr": "Un lien attaché à la fonctionnalité."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 718,
+        "width": 880,
+        "type": "webp",
+        "path": "assets/Spotlight/example.png"
+      }
+    ],
+    "name": "Spotlight"
+  },
+  "TeamRoster": {
+    "title": {
+      "en": "Team Roster",
+      "fr": "Liste d'équipe"
+    },
+    "label": {
+      "en": "Team",
+      "fr": "Équipe"
+    },
+    "description": {
+      "en": "Display a grid of team members with large pictures and social media links, source is coming from the editor or input.",
+      "fr": "Affiche une grille de membres de l'équipe avec de grandes images et des liens vers les médias sociaux, la source provient de l'éditeur ou de l'entrée."
+    },
+    "category": "content",
+    "export": true,
+    "input": {
+      "type": "members",
+      "limit": false,
+      "manualFormatting": true
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "description": {
+            "en": "The picture of the member.",
+            "fr": "L'image du membre."
+          },
+          "type": "image",
+          "layout": ""
+        },
+        "title": {
+          "description": {
+            "en": "The name of the member.",
+            "fr": "Le nom du membre."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "description": {
+            "en": "The title of the member.",
+            "fr": "Le titre du membre."
+          },
+          "type": "H2"
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "One or more social media links that attach to the member.",
+            "fr": "Un ou plusieurs liens de médias sociaux qui s'attachent au membre."
+          }
+        }
+      }
+    },
+    "properties": {
+      "aspect_ratio": {
+        "label": {
+          "en": "Picture Aspect Ratio",
+          "fr": "Rapport d'aspect de l'image"
+        },
+        "type": "string",
+        "default": "3/2",
+        "enum": [
+          {
+            "label": {
+              "en": "1:1",
+              "fr": "1:1"
+            },
+            "value": "1/1"
+          },
+          {
+            "label": {
+              "en": "3:2",
+              "fr": "3:2"
+            },
+            "value": "3/2"
+          },
+          {
+            "label": {
+              "en": "3:4",
+              "fr": "3:4"
+            },
+            "value": "3/4"
+          },
+          {
+            "label": {
+              "en": "4:5",
+              "fr": "4:5"
+            },
+            "value": "4/5"
+          },
+          {
+            "label": {
+              "en": "16:9",
+              "fr": "16:9"
+            },
+            "value": "16/9"
+          }
+        ],
+        "description": {
+          "en": "The aspect ratio of the picture (width:height).",
+          "fr": "Le rapport d'aspect de l'image (largeur:hauteur)."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Image aspect ratio 1:1",
+          "fr": "Rapport d'aspect de l'image 1:1"
+        },
+        "properties": {
+          "aspect_ratio": "1/1"
+        },
+        "image": {
+          "height": 1240,
+          "width": 2382,
+          "type": "webp",
+          "path": "assets/TeamRoster/11.webp"
+        }
+      }
+    ],
+    "name": "TeamRoster"
+  },
+  "TermDefinition": {
+    "title": {
+      "en": "Term Definitions",
+      "fr": "Définitions des termes"
+    },
+    "label": {
+      "en": "Glossary",
+      "fr": "Glossaire"
+    },
+    "description": {
+      "en": "A section to briefly explain a set of terms.",
+      "fr": "Une section pour expliquer brièvement un ensemble de termes."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "type": "image",
+          "layout": "",
+          "description": {
+            "en": "The background image.",
+            "fr": "L'image d'arrière-plan."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "pretitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that precedes the main headline.",
+            "fr": "Une phrase qui précède le titre principal."
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "description": {
+            "en": "Icons attached to the feature.",
+            "fr": "Icônes attachées à la fonctionnalité."
+          }
+        },
+        "media": {
+          "type": "video",
+          "description": {
+            "en": "A video attached to the feature.",
+            "fr": "Une vidéo attachée à la fonctionnalité."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1059,
+        "width": 1695,
+        "type": "webp",
+        "path": "assets/TermDefinition/example.png"
+      }
+    ],
+    "name": "TermDefinition"
+  },
+  "Testimonials": {
+    "title": {
+      "en": "Testimonials & Reviews",
+      "fr": "Témoignages et critiques"
+    },
+    "label": {
+      "en": "Testimonials",
+      "fr": "Témoignages"
+    },
+    "description": {
+      "en": "A section to display important words and key messages from key people.",
+      "fr": "Une section pour afficher les mots importants et les messages clés des personnes clés."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "background": {
+          "description": {
+            "en": "The image put above the testimonial.",
+            "fr": "L'image mise au-dessus du témoignage."
+          },
+          "type": "image",
+          "layout": ""
+        },
+        "title": {
+          "alignment": "",
+          "description": {
+            "en": "The person who gave the testimonial.",
+            "fr": "La personne qui a donné le témoignage."
+          },
+          "type": "H1"
+        },
+        "text": {
+          "description": {
+            "en": "The testimonial.",
+            "fr": "Le témoignage."
+          },
+          "type": "paragraph"
+        },
+        "media": {
+          "type": "image",
+          "description": {
+            "en": "The image of the person who gave the testimonial.",
+            "fr": "L'image de la personne qui a donné le témoignage."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1430,
+        "width": 3004,
+        "type": "webp",
+        "path": "assets/Testimonials/example.png"
+      }
+    ],
+    "name": "Testimonials"
+  },
+  "Timeline": {
+    "title": {
+      "en": "Timeline",
+      "fr": "Chronologie"
+    },
+    "label": {
+      "en": "Timeline",
+      "fr": "Chronologie"
+    },
+    "description": {
+      "en": "A section to show a visual timeline and progression throughout multiple steps.",
+      "fr": "Une section pour montrer une chronologie visuelle et une progression à travers plusieurs étapes."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 515,
+        "width": 1703,
+        "type": "webp",
+        "path": "assets/Timeline/example.png"
+      }
+    ],
+    "name": "Timeline"
+  },
+  "TwoColLayout": {
+    "title": {
+      "en": "Two Column Layout",
+      "fr": "Mise en page à deux colonnes"
+    },
+    "label": {
+      "en": "Layout - Two Column",
+      "fr": "Mise en page - Deux colonnes"
+    },
+    "description": {
+      "en": "A section displaying content of it's child sections in a two column layout.",
+      "fr": "Une section affichant le contenu de ses sections enfants dans une mise en page à deux colonnes."
+    },
+    "category": "layout",
+    "export": true,
+    "assets": {
+      "Screenshot.png": {
+        "title": {
+          "en": "A basic usage of the Special Layout with two child sections.",
+          "fr": "Une utilisation de base de la mise en page spéciale avec deux sections enfants."
+        }
+      }
+    },
+    "items": {
+      "separator": "section",
+      "category": "Any category"
+    },
+    "properties": {
+      "layout_configuration": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "50/50",
+        "enum": [
+          {
+            "label": {
+              "en": "2 Columns - Even",
+              "fr": "2 Colonnes - Égal"
+            },
+            "value": "50/50"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrow right",
+              "fr": "2 Colonnes - Étroit à droite"
+            },
+            "value": "60/40"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrow left",
+              "fr": "2 Colonnes - Étroit à gauche"
+            },
+            "value": "40/60"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrower right",
+              "fr": "2 Colonnes - Encore plus étroit à droite"
+            },
+            "value": "75/25"
+          },
+          {
+            "label": {
+              "en": "2 Columns - Narrower left",
+              "fr": "2 Colonnes - Encore plus étroit à gauche"
+            },
+            "value": "25/75"
+          }
+        ],
+        "description": {
+          "en": "Choose the desired configuration for the layout of the website block.",
+          "fr": "Choisissez la configuration souhaitée pour la mise en page du bloc de site Web."
+        }
+      },
+      "max_width": {
+        "label": {
+          "en": "Width",
+          "fr": "Largeur"
+        },
+        "type": "string",
+        "default": "regular",
+        "enum": [
+          {
+            "label": {
+              "en": "Regular",
+              "fr": "Régulier"
+            },
+            "value": "regular"
+          },
+          {
+            "label": {
+              "en": "Wide",
+              "fr": "Large"
+            },
+            "value": "wide"
+          },
+          {
+            "label": {
+              "en": "Full",
+              "fr": "Plein"
+            },
+            "value": "full"
+          }
+        ],
+        "description": {
+          "en": "Choose the desired width for your website block.",
+          "fr": "Choisissez la largeur souhaitée pour votre bloc de site Web."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      },
+      "horizontal_padding": {
+        "label": {
+          "en": "Horizontal Spacing",
+          "fr": "Espacement horizontal"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on the left and right of the layout.",
+          "fr": "L'espace à gauche et à droite de la mise en page."
+        }
+      },
+      "column_padding": {
+        "label": {
+          "en": "Column Spacing",
+          "fr": "Espacement des colonnes"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space in between the two columns.",
+          "fr": "L'espace entre les deux colonnes."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "The vertical alignment of the content in the columns.",
+          "fr": "L'alignement vertical du contenu dans les colonnes."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Narrow left layout and regular width",
+          "fr": "Mise en page étroite à gauche et largeur régulière"
+        },
+        "properties": {
+          "layout_configuration": "40/60",
+          "max_width": "regular"
+        },
+        "image": {
+          "height": 806,
+          "width": 1911,
+          "type": "webp",
+          "path": "assets/TwoColLayout/narrow_left_regular.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Even layout and full width",
+          "fr": "Mise en page égale et pleine largeur"
+        },
+        "properties": {
+          "layout_configuration": "50/50",
+          "max_width": "full"
+        },
+        "image": {
+          "height": 780,
+          "width": 1541,
+          "type": "webp",
+          "path": "assets/TwoColLayout/evenly_full.webp"
+        }
+      }
+    ],
+    "name": "TwoColLayout"
+  },
+  "VideoPlayer": {
+    "title": {
+      "en": "Video Player",
+      "fr": "Lecteur vidéo"
+    },
+    "label": {
+      "en": "Video",
+      "fr": "Vidéo"
+    },
+    "description": {
+      "en": "A component plays a video.",
+      "fr": "Un composant lit une vidéo."
+    },
+    "category": "media",
+    "export": true,
+    "input": {
+      "type": "video",
+      "limit": "one"
+    },
+    "images": [
+      {
+        "height": 1480,
+        "width": 2198,
+        "type": "webp",
+        "path": "assets/VideoPlayer/example.png"
+      }
+    ],
+    "name": "VideoPlayer"
+  },
+  "Videos": {
+    "title": {
+      "en": "Videos Gallery",
+      "fr": "Galerie de vidéos"
+    },
+    "label": {
+      "en": "Videos - Dynamic",
+      "fr": "Vidéos - Dynamique"
+    },
+    "description": {
+      "en": "A component takes input of videos and displays them in a list or grid.",
+      "fr": "Un composant prend en entrée des vidéos et les affiche dans une liste ou une grille."
+    },
+    "category": "media",
+    "export": true,
+    "input": {
+      "type": "video",
+      "limit": false
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "list",
+        "enum": [
+          {
+            "label": {
+              "en": "List",
+              "fr": "Liste"
+            },
+            "value": "list"
+          },
+          {
+            "label": {
+              "en": "Grid",
+              "fr": "Grille"
+            },
+            "value": "grid"
+          }
+        ],
+        "description": {
+          "en": "The layout of the section.",
+          "fr": "La mise en page de la section."
+        }
+      },
+      "is_panel": {
+        "label": {
+          "en": "Panel Mode",
+          "fr": "Mode panneau"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Click yes in case the list is to be displayed in a side panel.",
+          "fr": "Cliquez sur oui si la liste doit être affichée dans un panneau latéral."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Grid layout",
+          "fr": "Mise en page en grille"
+        },
+        "properties": {
+          "layout": "grid"
+        },
+        "image": {
+          "height": 1088,
+          "width": 1404,
+          "type": "webp",
+          "path": "assets/Videos/grid.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "List layout in side panel",
+          "fr": "Mise en page en liste dans un panneau latéral"
+        },
+        "properties": {
+          "layout": "list",
+          "is_panel": true
+        },
+        "image": {
+          "height": 909,
+          "width": 458,
+          "type": "webp",
+          "path": "assets/Videos/list_panel.webp"
+        }
+      }
+    ],
+    "name": "Videos"
+  }
+}

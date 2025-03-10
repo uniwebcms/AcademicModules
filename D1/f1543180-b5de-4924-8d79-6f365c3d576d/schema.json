@@ -1,0 +1,102 @@
+{
+  "_self": {
+    "name": "Documentation Series 1",
+    "description": "A collection of components for building documentation websites."
+  },
+  "Footer": {
+    "title": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "label": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "description": {
+      "en": "Render the footer of a page.",
+      "fr": "Rendre le pied de page d'une page."
+    },
+    "export": true,
+    "name": "Footer"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "Render the header of a page.",
+      "fr": "Rendre l'en-tête d'une page."
+    },
+    "export": true,
+    "name": "Header"
+  },
+  "LeftPanel": {
+    "title": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "label": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "description": {
+      "en": "A component that renders a left panel with page navigation.",
+      "fr": "Un composant qui rend un panneau de gauche avec une navigation de page."
+    },
+    "export": true,
+    "name": "LeftPanel"
+  },
+  "PageSection": {
+    "title": {
+      "en": "Page Section",
+      "fr": "Section de page"
+    },
+    "label": {
+      "en": "Page Section",
+      "fr": "Section de page"
+    },
+    "description": {
+      "en": "A warpper for sections of a page.",
+      "fr": "Un enrobage pour les sections d'une page."
+    },
+    "export": true,
+    "name": "PageSection"
+  },
+  "RightPanel": {
+    "title": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "label": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "description": {
+      "en": "A component that renders a right panel with section navigation within a page.",
+      "fr": "Un composant qui rend un panneau de droite avec une navigation de section dans une page."
+    },
+    "export": true,
+    "name": "RightPanel"
+  },
+  "Section": {
+    "title": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "label": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "description": {
+      "en": "A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.",
+      "fr": "Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur."
+    },
+    "export": true,
+    "name": "Section"
+  }
+}
