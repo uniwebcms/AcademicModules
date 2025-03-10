@@ -60,11 +60,7 @@ export default function Cards({ website, block }) {
                                             }
 
                                             return (
-                                                <Link
-                                                    key={index}
-                                                    to={website.makeHref(href)}
-                                                    target="_blank"
-                                                >
+                                                <Link key={index} to={website.makeHref(href)}>
                                                     {label}
                                                 </Link>
                                             );
