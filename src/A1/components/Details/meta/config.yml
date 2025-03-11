@@ -21,6 +21,30 @@ items:
     title:
     text:
 
+properties:
+  alignment:
+    label: 
+      en: Content Alignment
+      fr: Alignement du contenu
+    type: string
+    default: left
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+    description: 
+      en: The alignment of the content.
+      fr: L'alignement du contenu.
+
 presets:
   right:
     label:

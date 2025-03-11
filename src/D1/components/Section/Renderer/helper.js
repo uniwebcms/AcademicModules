@@ -80,12 +80,10 @@ const buildTextNode = (content) => {
                 // Check if the extracted extension matches any known file extensions
                 const isFileLink = fileExtensions.includes(extension);
 
-                let downloadLink = linkProps?.downloadLink || linkHref;
-
                 start =
                     `<a href="${linkHref}"${external ? ' target="_blank"' : ''}${
                         isFileLink
-                            ? ` download onclick="event.preventDefault(); uniweb.downloadFile('${downloadLink}');return false;"`
+                            ? ` download onclick="event.preventDefault(); uniweb.downloadFile('${linkHref}');return false;"`
                             : ''
                     }>` + start;
 

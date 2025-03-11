@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { SafeHtml, stripTags } from '@uniwebcms/module-sdk';
 import { Disclosure } from '@headlessui/react';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
@@ -114,10 +114,13 @@ function centerAligned(title, subtitle, items) {
                                                 </span>
                                             </Disclosure.Button>
                                         </dt>
-                                        <Disclosure.Panel as="dd" className="pr-12 mt-2">
+                                        <Disclosure.Panel
+                                            as="dd"
+                                            className="pr-12 mt-2 prose max-w-none"
+                                        >
                                             <SafeHtml
                                                 value={item.paragraphs}
-                                                className="text-base leading-7 !text-neutral-800"
+                                                className="text-base leading-7 text-neutral-800"
                                             />
                                         </Disclosure.Panel>
                                     </>
