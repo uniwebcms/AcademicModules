@@ -1,4 +1,4 @@
-import { stripTags } from '@uniwebcms/module-sdk';
+import { stripTags, twJoin } from '@uniwebcms/module-sdk';
 import React from 'react';
 import Divider from './Divider';
 import Video from './Video';
