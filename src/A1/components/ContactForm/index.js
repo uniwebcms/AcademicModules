@@ -101,6 +101,10 @@ export default function ContactForm({ block, website }) {
                                         {emails.map((email, index) => (
                                             <dd key={index}>
                                                 <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        uniweb.mailto(`mailto:${email.href}`);
+                                                    }}
                                                     href={`mailto:${email.href}`}
                                                     className="hover:underline"
                                                 >
@@ -301,6 +305,10 @@ const Form = (props) => {
                     {mailto ? (
                         <a
                             href={createMailtoLink()}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                uniweb.mailto(createMailtoLink());
+                            }}
                             className="rounded-md bg-primary-200 px-3.5 py-2.5 text-center text-sm font-semibold text-primary-900 shadow-sm hover:bg-primary-900 hover:text-primary-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
                             {website.localize({ en: 'Send message', es: 'Enviar mensaje' })}
