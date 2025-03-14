@@ -114,7 +114,7 @@ export default function ContactForm({ block, website }) {
                         </dl>
                     </div>
                 </div>
-                {right_align && <Form website={website} />}
+                {right_align && <Form website={website} mailto={mailto} />}
             </div>
         </Container>
     );
