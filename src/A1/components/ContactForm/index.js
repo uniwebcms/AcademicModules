@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { HiPhone } from 'react-icons/hi';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
@@ -10,7 +10,7 @@ export default function ContactForm({ block, website }) {
 
     const { title = '', subtitle = '' } = main.header || {};
 
-    const { form_align = 'left' } = block.getBlockProperties();
+    const { form_align = 'left', mailto = '' } = block.getBlockProperties();
 
     const phoneNumberRegex =
         /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g;
@@ -32,7 +32,7 @@ export default function ContactForm({ block, website }) {
                     !right_align ? 'flex-col-reverse' : 'space-y-12 lg:space-y-0'
                 )}
             >
-                {!right_align ? <Form website={website} /> : null}
+                {!right_align ? <Form website={website} mailto={mailto} /> : null}
                 <div
                     className={twJoin(
                         'relative px-6 lg:static lg:px-8',
@@ -121,46 +121,89 @@ export default function ContactForm({ block, website }) {
 }
 
 const Form = (props) => {
-    const { website } = props;
+    const { website, mailto } = props;
+
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        message: '',
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name === 'first-name'
+                ? 'firstName'
+                : name === 'last-name'
+                ? 'lastName'
+                : name === 'phone-number'
+                ? 'phoneNumber'
+                : name]: value,
+        });
+    };
+
+    const createMailtoLink = () => {
+        // Get the first email from the emails array or use a default recipient
+        const recipient = mailto || '';
+
+        // Create email subject
+        const subject = encodeURIComponent(
+            website.localize({
+                en: `Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
+                es: `Envío de formulario de contacto de ${formData.firstName} ${formData.lastName}`,
+            })
+        );
+
+        // Create email body
+        const body = encodeURIComponent(
+            website.localize({
+                en: `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phoneNumber}\n\nMessage:\n${formData.message}`,
+                es: `Nombre: ${formData.firstName} ${formData.lastName}\nCorreo electrónico: ${formData.email}\nTeléfono: ${formData.phoneNumber}\n\nMensaje:\n${formData.message}`,
+            })
+        );
+
+        return `mailto:${recipient}?subject=${subject}&body=${body}`;
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        website
+            .submitWebsiteForm('contact', {
+                email: formData.email,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                phoneNumber: formData.phoneNumber,
+                message: formData.message,
+            })
+            .then((res) => {
+                alert(
+                    website.localize({
+                        en: 'Thank you for contacting us.',
+                        es: 'Gracias por contactarnos.',
+                    })
+                );
+
+                // Reset form after submission
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phoneNumber: '',
+                    message: '',
+                });
+            });
+    };
 
     return (
         <form
             action="#"
             method="POST"
             className="px-6 lg:px-8"
-            onSubmit={(event) => {
-                event.preventDefault();
-
-                // get email
-                const email = event.target.email.value;
-                // get first name
-                const firstName = event.target['first-name'].value;
-                // get last name
-                const lastName = event.target['last-name'].value;
-                // get phone number
-                const phoneNumber = event.target['phone-number'].value;
-                // get message
-                const message = event.target.message.value;
-
-                website
-                    .submitWebsiteForm('contact', {
-                        email,
-                        firstName,
-                        lastName,
-                        phoneNumber,
-                        message,
-                    })
-                    .then((res) => {
-                        alert(
-                            website.localize({
-                                en: 'Thank you for contacting us.',
-                                es: 'Gracias por contactarnos.',
-                            })
-                        );
-
-                        event.target.reset();
-                    });
-            }}
+            onSubmit={mailto ? (e) => e.preventDefault() : handleSubmit}
         >
             <div className="max-w-full mx-auto lg:mr-0 lg:max-w-lg px-6 lg:px-0">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -178,6 +221,8 @@ const Form = (props) => {
                                 id="first-name"
                                 autoComplete="given-name"
                                 className="block w-full rounded-md border-0 px-3.5 py-2 !text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:!text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={formData.firstName}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -195,6 +240,8 @@ const Form = (props) => {
                                 id="last-name"
                                 autoComplete="family-name"
                                 className="block w-full rounded-md border-0 px-3.5 py-2 !text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:!text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={formData.lastName}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -209,6 +256,8 @@ const Form = (props) => {
                                 id="email"
                                 autoComplete="email"
                                 className="block w-full rounded-md border-0 px-3.5 py-2 !text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:!text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={formData.email}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -226,6 +275,8 @@ const Form = (props) => {
                                 id="phone-number"
                                 autoComplete="tel"
                                 className="block w-full rounded-md border-0 px-3.5 py-2 !text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:!text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                value={formData.phoneNumber}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
@@ -240,17 +291,28 @@ const Form = (props) => {
                                 rows={4}
                                 className="block w-full rounded-md border-0 px-3.5 py-2 !text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:!text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 defaultValue={''}
+                                value={formData.message}
+                                onChange={handleInputChange}
                             />
                         </div>
                     </div>
                 </div>
                 <div className="flex justify-end mt-8">
-                    <button
-                        type="submit"
-                        className="rounded-md bg-primary-200 px-3.5 py-2.5 text-center text-sm font-semibold text-primary-900 shadow-sm hover:bg-primary-900 hover:text-primary-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    >
-                        {website.localize({ en: 'Send message', es: 'Enviar mensaje' })}
-                    </button>
+                    {mailto ? (
+                        <a
+                            href={createMailtoLink()}
+                            className="rounded-md bg-primary-200 px-3.5 py-2.5 text-center text-sm font-semibold text-primary-900 shadow-sm hover:bg-primary-900 hover:text-primary-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                            {website.localize({ en: 'Send message', es: 'Enviar mensaje' })}
+                        </a>
+                    ) : (
+                        <button
+                            type="submit"
+                            className="rounded-md bg-primary-200 px-3.5 py-2.5 text-center text-sm font-semibold text-primary-900 shadow-sm hover:bg-primary-900 hover:text-primary-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                            {website.localize({ en: 'Send message', es: 'Enviar mensaje' })}
+                        </button>
+                    )}
                 </div>
             </div>
         </form>
