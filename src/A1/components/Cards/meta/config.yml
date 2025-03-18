@@ -1,28 +1,76 @@
-title: 
-  en: Basic Cards
-  fr: Cartes de base
+title:
+    en: Basic Cards
+    fr: Cartes de base
 label:
-  en: Cards - Basic
-  fr: Cartes - De base
-description: 
-  en: A component to show distinct pieces of information each with their own visual card.
-  fr: Un composant permettant de présenter des éléments d'information distincts, chacun avec sa propre carte visuelle.
+    en: Cards - Basic
+    fr: Cartes - De base
+description:
+    en: A component to show distinct pieces of information each with their own visual card.
+    fr: Un composant permettant de présenter des éléments d'information distincts, chacun avec sa propre carte visuelle.
 
 category: cards
 export: true
 
 elements:
-  title:
-  subtitle:
-  
-items:
-  separator: divider
-  elements:
-    background:
     title:
     subtitle:
-    text:
-    link:
+
+properties:
+    size:
+        label:
+            en: Card Width
+            fr: Largeur de la carte
+        type: string
+        default: small
+        enum:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: small
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: regular
+            - label:
+                  en: Large
+                  fr: Grand
+              value: large
+            - label:
+                  en: Extra Large
+                  fr: Très grand
+              value: xlarge
+    layout:
+        label:
+            en: Cards Layout
+            fr: Disposition des cartes
+        type: string
+        default: start
+        enum:
+            - label:
+                  en: Left-aligned
+                  fr: Aligné à gauche
+              value: start
+            - label:
+                  en: Right-aligned
+                  fr: Aligné à droite
+              value: end
+            - label:
+                  en: Centered
+                  fr: Centré
+              value: center
+            - label:
+                  en: Evenly spaced
+                  fr: Espacement égal
+              value: space-around
+
+items:
+    separator: divider
+    elements:
+        background:
+        title:
+        subtitle:
+        text:
+        link:
 
 images:
-  - example.png
+    - example.png

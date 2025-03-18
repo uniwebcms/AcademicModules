@@ -11,6 +11,30 @@ export default function Cards({ website, block }) {
 
     const items = block.getBlockItems();
 
+    let cardWidth, cardLayout;
+
+    const { size = 'small', layout = 'start' } = block.getBlockProperties();
+
+    if (size === 'small') {
+        cardWidth = 'w-64';
+    } else if (size === 'regular') {
+        cardWidth = 'w-[18rem]';
+    } else if (size === 'large') {
+        cardWidth = 'w-[20rem]';
+    } else if (size === 'xlarge') {
+        cardWidth = 'w-[24rem]';
+    }
+
+    if (layout === 'start') {
+        cardLayout = 'justify-start';
+    } else if (layout === 'center') {
+        cardLayout = 'justify-center';
+    } else if (layout === 'end') {
+        cardLayout = 'justify-end';
+    } else if (layout === 'space-around') {
+        cardLayout = 'justify-around';
+    }
+
     return (
         <Container>
             <div className={'relative max-w-8xl mx-auto px-6 lg:px-8'}>
@@ -22,12 +46,15 @@ export default function Cards({ website, block }) {
                         {stripTags(subtitle)}
                     </h3>
                 ) : null}
-                <div className="mt-12 flex flex-wrap gap-6">
+                <div className={`mt-12 flex flex-wrap gap-6 ${cardLayout}`}>
                     {items.map((item, index) => {
                         const { banner, title, subtitle, paragraphs, links } = item;
 
                         return (
-                            <div key={index} className="w-64 border border-text-color-20 rounded">
+                            <div
+                                key={index}
+                                className={`${cardWidth} border border-text-color-20 rounded`}
+                            >
                                 <div className="h-40 w-full">
                                     {banner ? (
                                         <Image
