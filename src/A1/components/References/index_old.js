@@ -3,70 +3,6 @@ import { website, stripTags, Link, Image } from '@uniwebcms/module-sdk';
 import Container from '../_utils/Container';
 import { parseReference, getDateFromIssued } from '../_utils/reference';
 import Sidebar from './Sidebar';
-import AdvancedSmartCards from './AdvancedSmartCards';
-import DOILogo from './doi.svg';
-
-const ItemMarkup = (props) => {
-    const { profile, url, ...rest } = props;
-
-    const { title, issued, author, DOI = '' } = rest;
-
-    let year = issued?.['date-parts']?.[0]?.[0] || '';
-    const journal = rest['container-title'] || '';
-
-    const banner = profile.getBanner();
-
-    let finalDoi =
-        DOI && DOI.startsWith('https://doi.org/') ? DOI.replace('https://doi.org/', '') : DOI;
-
-    let completeDoi = finalDoi ? `https://doi.org/${DOI}` : '';
-
-    return (
-        <div className={`flex`} key={url}>
-            <div className={`flex flex-col space-y-2 ${banner ? 'mr-4' : ''}`}>
-                <Link href={url} className={`text-text-color font-medium hover:underline`}>
-                    {title}
-                </Link>
-                <p className="text-sm text-text-color-90">
-                    {author && author.length
-                        ? author
-                              .map((author) => {
-                                  const { given, family } = author;
-                                  return `${family} ${given}${given.length === 1 ? '.' : ''}`;
-                              })
-                              .join(', ')
-                        : null}
-                </p>
-                <span className={`text-text-color-80 text-sm`}>
-                    {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}`}
-                </span>
-                <div className={`flex items-center space-x-1`}>
-                    {completeDoi ? (
-                        <div className={`w-7 h-7 flex`}>
-                            <a
-                                target="_blank"
-                                className={`w-7 h-7 rounded-full cursor-pointer`}
-                                href={completeDoi}
-                            >
-                                <DOILogo className={`w-7 h-7`}></DOILogo>
-                            </a>
-                        </div>
-                    ) : null}
-                </div>
-            </div>
-            {banner ? (
-                <Link
-                    href={url}
-                    className={
-                        'cursor-pointer w-[111px] h-[142px] flex-shrink-0 overflow-hidden ml-auto !shadow-[0_1px_2px_rgba(0,0,0,0.15)] border border-[rgba(0,0,0,0.15)] bg-white'
-                    }
-                >
-                    <Image profile={profile} type="banner"></Image>
-                </Link>
-            ) : null}
-        </div>
-    );
-};
 
 export default function ProfileReferences({ block, input }) {
     const title = block.mainTitle || '';
@@ -89,8 +25,6 @@ export default function ProfileReferences({ block, input }) {
         selection: initSelection,
     });
 
-    const { groupReferences = false } = block.getBlockProperties();
-
     let groups = {};
 
     let parsedReferences = input.profiles.map((profile) => {
@@ -104,11 +38,14 @@ export default function ProfileReferences({ block, input }) {
 
         let url = input.makeHref(profile);
 
+        if (!groups[category]) {
+            groups[category] = [];
+        }
+
         let item = {
             ...parsedData,
             url,
             profile,
-            category,
             _type: categoryLabel,
             _topics: topics
                 .map(({ topic }) => {
@@ -125,8 +62,12 @@ export default function ProfileReferences({ block, input }) {
                 .filter(Boolean),
         };
 
+        groups[category].push(item);
+
         return item;
     });
+
+    console.log(groups);
 
     const years = new Set();
     const topics = new Set();
@@ -145,7 +86,7 @@ export default function ProfileReferences({ block, input }) {
             const title = reference?.title || '';
             const journal = reference?.['container-title'] || '';
 
-            const { _type, _topics = [], category } = reference;
+            const { _type, _topics = [] } = reference;
 
             years.add(isNaN(yearLabel) ? yearLabel : yearLabel.toString());
 
@@ -178,16 +119,6 @@ export default function ProfileReferences({ block, input }) {
         })
         .sort((a, b) => {
             return getDateFromIssued(b.issued || {}) - getDateFromIssued(a.issued || {});
-        })
-        .map((item) => {
-            const { category } = item;
-            if (!groups[category]) {
-                groups[category] = [];
-            }
-
-            groups[category].push(item);
-
-            return item;
         });
 
     const seen = new Set();
@@ -200,17 +131,6 @@ export default function ProfileReferences({ block, input }) {
             return true;
         }
     });
-
-    let args = {
-        ItemMarkup,
-        columnCount: 1,
-    };
-
-    if (groupReferences) {
-        args.groups = groups;
-    } else {
-        args.cards = filteredReferences;
-    }
 
     return (
         <Container className="px-6 mx-auto max-w-7xl lg:px-8 flex md:space-x-6 lg:space-x-10">
@@ -262,7 +182,7 @@ export default function ProfileReferences({ block, input }) {
                 ]}
                 // categories={Array.from(categories).sort()}
             />
-            <div className={`block flex-1`}>
+            <div className={`block`}>
                 {title ? (
                     <h2 className="text-3xl font-bold tracking-tight md:text-4xl mb-8 lg:pl-12">
                         {stripTags(title)}
@@ -276,10 +196,7 @@ export default function ProfileReferences({ block, input }) {
                         })}
                     </h3>
                 )}
-                <div className="block w-full lg:pb-12 lg:border-l lg:pl-12 pt-3.5">
-                    <AdvancedSmartCards {...args} />
-                </div>
-                {/* <ul
+                <ul
                     className={`flex flex-col space-y-6 lg:space-y-10 lg:pb-12 lg:border-l lg:pl-12 pt-3.5`}
                 >
                     {filteredReferences.map((reference) => {
@@ -329,8 +246,22 @@ export default function ProfileReferences({ block, input }) {
                             </div>
                         );
                     })}
-                </ul> */}
+                </ul>
             </div>
+            {/* {title ? (
+                <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl mb-8">{stripTags(title)}</h2>
+            ) : null}
+            <div className="flex space-x-2 items-center justify-end mb-6">
+                <Searcher filter={filter} setFilter={setFilter} />
+                <Sorter filter={filter} setFilter={setFilter} />
+            </div>
+            {filtered.length ? (
+                <div className="w-full bg-bg-color-80 border border-text-color-60 rounded-xl divide-y divide-text-color-60">
+                    {filtered.map((publication) => (
+                        <Publication key={publication.contentId} publication={publication} />
+                    ))}
+                </div>
+            ) : null} */}
         </Container>
     );
 }

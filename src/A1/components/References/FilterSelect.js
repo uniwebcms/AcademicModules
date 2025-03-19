@@ -11,7 +11,7 @@ export default function Select({ selected, setSelected, options, label }) {
     let [referenceElement, setReferenceElement] = useState();
     let [popperElement, setPopperElement] = useState();
     let { styles, attributes } = usePopper(referenceElement, popperElement, {
-        placement: 'bottom'
+        placement: 'bottom',
     });
 
     return (
@@ -56,7 +56,9 @@ export default function Select({ selected, setSelected, options, label }) {
                                     {({ selected }) => (
                                         <>
                                             <span
-                                                className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}
+                                                className={`block capitalize truncate ${
+                                                    selected ? 'font-medium' : 'font-normal'
+                                                }`}
                                             >
                                                 {label}
                                             </span>

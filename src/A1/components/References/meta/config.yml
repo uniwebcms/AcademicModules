@@ -17,5 +17,16 @@ export: true
 elements:
     title:
 
+properties:
+    groupReferences:
+        label:
+            en: Group references
+            fr: Grouper les références
+        type: boolean
+        default: false
+        description:
+            en: Group references by the reference type.
+            fr: Grouper les références par type de référence.
+
 images:
-  - example.png
+    - example.png
