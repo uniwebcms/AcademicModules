@@ -11,19 +11,19 @@ const Video = (props) => {
                 key={url}
                 className={`absolute top-0 left-0 w-full h-full rounded-lg`}
                 src={url}
-                frameBorder='0'
+                frameBorder="0"
                 allowFullScreen={true}
-                width='560'
-                height='349'
+                width="560"
+                height="349"
             />
         </div>
     );
 };
 
 const LocalVideo = (props) => {
-    const { url } = props;
-
-    return <video src={url} className={`w-full h-auto`} controls></video>;
+    const { url, profile } = props;
+    const { src } = profile.getAssetInfo(url);
+    return <video src={src} className={`w-full h-auto`} controls></video>;
 };
 
 export default function (props) {
@@ -46,7 +46,7 @@ export default function (props) {
     if (type === 'video') {
         body = <Video url={embedSrc}></Video>;
     } else {
-        body = <LocalVideo url={url}></LocalVideo>;
+        body = <LocalVideo url={url} profile={profile}></LocalVideo>;
     }
 
     const mainStyle = 'xl:max-w-[calc(80vh*(16/9))] xl:min-w-[calc(480px*(16/9))]';
@@ -55,10 +55,14 @@ export default function (props) {
         <Container className={twJoin('!py-0 flex-1 max-w-full box-border xl:box-content flex-col')}>
             <div className={twJoin('mx-auto', mainStyle)}>
                 {body}
-                <div className='border-b border-text-color-40 pt-3 pb-2'>
-                    <h2 className='text-lg break-words lg:text-xl 2xl:text-2xl font-semibold'>{title}</h2>
-                    <p className='text-base lg:text-lg mt-1 text-text-color-80'>{subtitle}</p>
-                    <p className='text-sm lg:text-base text-text-color-60 mt-1'>{lastLocalEditTime}</p>
+                <div className="border-b border-text-color-40 pt-3 pb-2">
+                    <h2 className="text-lg break-words lg:text-xl 2xl:text-2xl font-semibold">
+                        {title}
+                    </h2>
+                    <p className="text-base lg:text-lg mt-1 text-text-color-80">{subtitle}</p>
+                    <p className="text-sm lg:text-base text-text-color-60 mt-1">
+                        {lastLocalEditTime}
+                    </p>
                 </div>
             </div>
         </Container>
