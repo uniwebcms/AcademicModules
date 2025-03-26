@@ -19,11 +19,15 @@ elements:
     description: 
       en: One or two links that put under the text content.
       fr: Un ou deux liens qui sont placés sous le contenu textuel.
-  media:
-    type: image
-    description: 
-      en: The showcase images placed on the side of the text content.
-      fr: Les images de présentation placées à côté du contenu textuel.
+
+items:
+  separator: section
+  category: Any section type
+  limit: 1
+  elements:
+    _raw:
+      en: The first subsection will be displayed beside the content of the hero.
+      fr: La première sous-section sera affichée à côté du contenu de l'en-tête.
 
 properties:
   height:
@@ -76,3 +80,19 @@ presets:
       height: 100vh
       alignment: left
     image: full_left.png
+  full_center:
+    label:
+      en: Full-height hero banner with content in the center.
+      fr: Bannière d'en-tête pleine hauteur avec contenu au centre.
+    properties:
+      height: 100vh
+      alignment: center
+    image: full_center.png
+  full_right:
+    label:
+      en: Full-height hero banner with content on the right.
+      fr: Bannière d'en-tête pleine hauteur avec contenu à droite.
+    properties:
+      height: 100vh
+      alignment: right
+    image: full_right.png

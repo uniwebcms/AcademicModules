@@ -88,8 +88,8 @@ export default function CallToAction(props) {
             </Container>
         );
     } else if (appearance === 'fancy') {
-        return <Fancy {...{ title, paragraphs, links, alignment }} />;
+        return <Fancy {...{ title, paragraphs, links }} />;
     } else if (appearance === 'motion') {
-        return <Motion {...{ title, paragraphs, links, alignment }} />;
+        return <Motion {...{ title, paragraphs, links }} />;
     }
 }

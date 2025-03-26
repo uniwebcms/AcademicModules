@@ -43,7 +43,7 @@ export default function Hero(props) {
                     <div
                         className={twJoin(
                             '-order-1 max-w-3xl mx-auto',
-                            alignment === 'right' && 'lg:order-2',
+                            alignment === 'right' && 'lg:order-2 text-right',
                             alignment === 'center' && 'text-center'
                         )}
                     >
@@ -63,7 +63,14 @@ export default function Hero(props) {
                             </p>
                         )}
                         {links.length ? (
-                            <div className="flex flex-wrap gap-8">
+                            <div
+                                className={twJoin(
+                                    'flex flex-wrap gap-8',
+                                    alignment === 'left' ? 'justify-start' : '',
+                                    alignment === 'center' ? 'justify-center' : '',
+                                    alignment === 'right' ? 'justify-end' : ''
+                                )}
+                            >
                                 {links.map((link, index) => (
                                     <Link
                                         key={index}
@@ -103,7 +110,9 @@ export default function Hero(props) {
                             extra={{ className: 'max-w-xl scale-150' }}
                             pure={true}
                         ></ChildBlockRenderer>
-                    ) : null}
+                    ) : (
+                        <div></div>
+                    )}
                 </div>
             </div>
         </Container>

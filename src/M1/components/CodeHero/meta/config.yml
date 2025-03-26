@@ -11,5 +11,33 @@ description:
 category: hero
 export: true
 
+
+elements:
+  title:
+  subtitle:
+  link:
+    description:
+      en: One or two action links that direct users to a specific page or resource.
+      fr: Un ou deux liens d'action qui dirigent les utilisateurs vers une page ou une ressource spécifique.
+  properties:
+    label:
+      en: JSON properties
+      fr: Propriétés JSON
+    description:
+      en: The properties of the code snippets such as title and description.
+      fr: Les propriétés des extraits de code tels que le titre et la description.
+
+items:
+  separator: section
+  limit: 1
+  elements:
+    properties:
+      label:
+        en: Code Snippet
+        fr: Extrait de code
+      description:
+        en: The Code Snippet to be displayed in the Code Hero.
+        fr: L'extrait de code à afficher dans la Mise en avant de contenu.
+
 images:
   - example.png

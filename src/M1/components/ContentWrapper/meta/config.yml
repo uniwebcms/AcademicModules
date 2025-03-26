@@ -19,5 +19,9 @@ elements:
       en: The optional endnote text put under the sub-components content.
       fr: Le texte de la note de fin facultative placé sous le contenu des sous-composants.
 
+items:
+  separator: section
+  category: Any section type
+
 images:
   - example.png

@@ -4,7 +4,7 @@ import { Link, stripTags } from '@uniwebcms/module-sdk';
 import { motion, useInView } from 'framer-motion';
 
 export default function Motion(props) {
-    const { title, subtitle, paragraphs, links } = props;
+    const { title, paragraphs, links } = props;
 
     const [firstLink, secondLink] = links;
 

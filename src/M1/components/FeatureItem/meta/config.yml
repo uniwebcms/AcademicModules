@@ -30,8 +30,8 @@ properties:
       fr: Si l'élément de fonctionnalité doit avoir une bordure ou non.
   with_motion:
     label:
-      en: With Motion
-      fr: Avec mouvement
+      en: With Motion (work with basic and Leading icon mode only)
+      fr: Avec mouvement (fonctionne uniquement avec les modes de base et d'icône principale)
     type: boolean
     default: false
     description:
@@ -69,13 +69,13 @@ properties:
       fr: Le mode de l'élément de fonctionnalité.
 
 presets:
-  # basic:
-  #   label:
-  #     en: Basic Feature Item
-  #     fr: Élément de fonctionnalité basique
-  #   properties:
-  #     mode: basic
-  #   image: basic.png
+  basic:
+    label:
+      en: Basic Feature Item
+      fr: Élément de fonctionnalité basique
+    properties:
+      mode: basic
+    image: basic.png
   rich:
     label:
       en: Rich Feature Item
@@ -90,3 +90,11 @@ presets:
     properties:
       mode: catching_card
     image: catching_card.png
+  leading_icon_border:
+    label:
+      en: Leading Icon Feature Item with Border
+      fr: Élément de fonctionnalité avec icône principale et bordure
+    properties:
+      mode: leading_icon
+      with_border: true
+    image: leading_icon_border.png

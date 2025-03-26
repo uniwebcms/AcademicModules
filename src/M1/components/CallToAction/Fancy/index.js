@@ -13,7 +13,7 @@ const FloatingParticle = ({ className = '' }) => (
 );
 
 export default function Fancy(props) {
-    const { title, subtitle, paragraphs, links } = props;
+    const { title, paragraphs, links } = props;
 
     const [firstLink, secondLink] = links;
 

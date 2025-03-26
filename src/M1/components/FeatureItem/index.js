@@ -190,8 +190,8 @@ export default function FeatureItem(props) {
                 ></div>
                 <div
                     className={twJoin(
-                        'relative h-full rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300'
-                        // with_border && 'border border-text-color/20'
+                        'relative h-full rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300',
+                        with_border && 'border border-text-color/20'
                     )}
                 >
                     <div className="h-12 mb-6">

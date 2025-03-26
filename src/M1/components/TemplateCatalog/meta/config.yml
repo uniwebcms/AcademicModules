@@ -11,5 +11,14 @@ description:
 category: template
 export: true
 
+elements:
+  properties:
+    label:
+      en: JSON Properties
+      fr: Propriétés JSON
+    description:
+      en: The JSON properties as configuration for the template catalog, required properties are 'search_box', 'info', 'filters' and 'sort'.
+      fr: Les propriétés JSON comme configuration pour le catalogue de modèles, les propriétés requises sont 'search_box', 'info', 'filters' et 'sort'.
+
 images:
   - example.png

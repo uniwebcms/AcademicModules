@@ -93,7 +93,7 @@ const VideoThumbnail = (props) => {
         <div className="relative">
             {/* Video thumbnail */}
             <div
-                className="relative hover:scale-105 cursor-pointer"
+                className="relative hover:scale-105 cursor-pointer max-w-72"
                 onClick={() => setIsFullscreen(true)}
             >
                 <img src={thumbnail} alt={title} className="w-full aspect-video object-cover" />
@@ -238,7 +238,7 @@ export default function MediaBroadcast(props) {
                         <Image
                             key={index}
                             {...image}
-                            className="w-full aspect-video object-cover"
+                            className="w-full aspect-video object-cover max-w-72"
                         />
                     );
 

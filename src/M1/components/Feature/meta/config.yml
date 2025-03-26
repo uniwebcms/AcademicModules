@@ -5,8 +5,8 @@ label:
   en: Feature
   fr: Fonctionnalité
 description: 
-  en: Displays section content in different styles, showing title, description and two links. Best used to showcase product features or services. Can receive subsections to display sub-feature content.
-  fr: Affiche le contenu de la section dans différents styles, montrant le titre, la description et deux liens. Idéal pour mettre en avant les fonctionnalités du produit ou les services. Peut recevoir des sous-sections pour afficher le contenu des sous-fonctionnalités.
+  en: Displays section content in different styles, showing title, description and links. Best used to showcase product features or services. Can receive subsections to display sub-feature content.
+  fr: Affiche le contenu de la section dans différents styles, montrant le titre, la description et les liens. Idéal pour mettre en valeur les fonctionnalités des produits ou services. Peut recevoir des sous-sections pour afficher le contenu des sous-fonctionnalités.
 
 category: feature
 export: true
@@ -15,15 +15,16 @@ elements:
   title:
   subtitle:
   link:
-    description:
-      en: One or two links that put under the text content.
-      fr: Un ou deux liens qui sont placés sous le contenu textuel.
+
+items:
+  separator: section
+  category: Feature Item
 
 properties:
   appearance:
     label:
-      en: Appearance
-      fr: Apparence
+      en: Appearance Style
+      fr: Style d'apparence
     type: string
     default: standard
     enum:
@@ -44,8 +45,8 @@ properties:
       fr: L'apparence de la section des fonctionnalités.
   sub_content_layout:
     label:
-      en: Sub-content Layout
-      fr: Mise en page du sous-contenu
+      en: Sub-content Style
+      fr: Style du sous-contenu
     type: string
     default: grid_sm
     enum:
@@ -62,8 +63,8 @@ properties:
           fr: Grille avec contenu de taille moyenne
         value: grid_md
       - label:
-          en: Full width
-          fr: Pleine largeur
+          en: Full width content
+          fr: Contenu pleine largeur
         value: full
     description:
       en: The layout of the sub-content.
@@ -91,3 +92,11 @@ presets:
     properties:
       appearance: iconic
     image: iconic.png
+  standard_full:
+    label:
+      en: Standard Feature with Full-width sub-features
+      fr: Fonctionnalité standard avec des sous-fonctionnalités pleine largeur
+    properties:
+      appearance: standard
+      sub_content_layout: full
+    image: standard_full.png

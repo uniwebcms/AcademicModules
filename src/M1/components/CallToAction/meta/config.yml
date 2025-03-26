@@ -13,18 +13,21 @@ export: true
 
 elements:
   background:
+    description:
+      en: The background image for the call to action section, only visible in the subtle appearance.
+      fr: L'image d'arrière-plan de la section d'appel à l'action, visible uniquement dans l'apparence subtile.
   title:
   text:
   link:
     description:
-      en: A action link that directs users to a specific page or resource.
-      fr: Un lien d'action qui dirige les utilisateurs vers une page ou une ressource spécifique.
+      en: One or two action links that direct users to a specific page or resource.
+      fr: Un ou deux liens d'action qui dirigent les utilisateurs vers une page ou une ressource spécifique.
 
 properties:
   content_position:
     label: 
-      en: Content Position
-      fr: Position du contenu
+      en: Content Position (for subtle appearance only)
+      fr: Position du contenu (pour une apparence subtile uniquement)
     type: string
     default: left
     enum:
@@ -65,15 +68,16 @@ properties:
     description:
       en: The appearance of the Call to Action.
       fr: L'apparence de l'appel à l'action.
+
 presets:
-  subtle:
+  subtle_right:
     label:
-      en: Subtle appearance
-      fr: Apparence subtile
+      en: Subtle appearance with right content
+      fr: Apparence subtile avec contenu à droite
     properties:
       content_position: right
       appearance: subtle
-    image: subtle.png
+    image: subtle_right.png
   fancy:
     label:
       en: Fancy appearance with ocean preset

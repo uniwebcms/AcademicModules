@@ -11,11 +11,11 @@ description:
 category: layout
 export: true
 
-assets:
-  Screenshot.png:
-    title: 
-      en: A basic usage of the Special Layout with two child sections.
-      fr: Une utilisation de base de la mise en page spéciale avec deux sections enfants.
+# assets:
+#   Screenshot.png:
+#     title: 
+#       en: A basic usage of the Special Layout with two child sections.
+#       fr: Une utilisation de base de la mise en page spéciale avec deux sections enfants.
 
 items:
   separator: section

@@ -27,6 +27,10 @@ items:
       description: 
         en: Image or video to display for the feature.
         fr: Image ou vidéo à afficher pour la fonctionnalité.
+    link:
+      description:
+        en: A link put under the media.
+        fr: Un lien placé sous le média.
 
 properties:
   layout:

@@ -11,5 +11,24 @@ description:
 category: page
 export: true
 
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: section
+  elements:
+    title:
+    properties:
+      label:
+        en: JSON Properties
+        fr: Propriétés JSON
+      description:
+        en: JSON properties for each List Item subsection, required properties are 'component' (choose from 'simple_card', 'news', 'details', 'assets' and 'contact') and 'id' (unique identifier).
+        fr: Propriétés JSON pour chaque sous-section Élément de liste, les propriétés requises sont 'component' (choisir parmi 'simple_card', 'news', 'details', 'assets' et 'contact') et 'id' (identifiant unique).
+    _raw: 
+      en: |
+        <i style='color: #6b7280;'>List item with different component will need different type of content</i>
+
 images:
   - example.png

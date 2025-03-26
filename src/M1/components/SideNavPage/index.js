@@ -320,40 +320,49 @@ export default function SideNavPage(props) {
 
                         const component = properties.component;
 
-                        // Store ref for this section
-                        const sectionProps = {
-                            ref: (el) => (sectionRefs.current[properties.id] = el),
-                            key: index,
-                        };
-
                         switch (component) {
                             case 'simple_card':
                                 return (
-                                    <div {...sectionProps}>
+                                    <div
+                                        key={index}
+                                        ref={(el) => (sectionRefs.current[properties.id] = el)}
+                                    >
                                         <SimpleCard block={childBlock} />
                                     </div>
                                 );
                             case 'news':
                                 return (
-                                    <div {...sectionProps}>
+                                    <div
+                                        key={index}
+                                        ref={(el) => (sectionRefs.current[properties.id] = el)}
+                                    >
                                         <News block={childBlock} />
                                     </div>
                                 );
                             case 'details':
                                 return (
-                                    <div {...sectionProps}>
+                                    <div
+                                        key={index}
+                                        ref={(el) => (sectionRefs.current[properties.id] = el)}
+                                    >
                                         <Details block={childBlock} />
                                     </div>
                                 );
                             case 'assets':
                                 return (
-                                    <div {...sectionProps}>
+                                    <div
+                                        key={index}
+                                        ref={(el) => (sectionRefs.current[properties.id] = el)}
+                                    >
                                         <Assets block={childBlock} />
                                     </div>
                                 );
                             case 'contact':
                                 return (
-                                    <div {...sectionProps}>
+                                    <div
+                                        key={index}
+                                        ref={(el) => (sectionRefs.current[properties.id] = el)}
+                                    >
                                         <Contact block={childBlock} />
                                     </div>
                                 );
