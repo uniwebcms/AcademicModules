@@ -7,10 +7,6 @@ label:
 description:
     en: A component plays a video.
     fr: Un composant lit une vidéo.
-
-category: media
-export: true
-
 properties:
     showVideoOnly:
         label:
@@ -30,6 +26,10 @@ properties:
         description:
             en: Wheather or not the component will fit the video size.
             fr: Si le composant adaptera ou non la taille de la vidéo.
+
+category: media
+export: true
+
 input:
     type: video
     limit: one

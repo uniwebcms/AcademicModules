@@ -56,7 +56,11 @@ export default function (props) {
     }`;
 
     return (
-        <Container className={twJoin('!py-0 flex-1 max-w-full box-border xl:box-content flex-col')}>
+        <Container
+            className={twJoin(
+                `${fitVideo ? '' : '!py-0'} flex-1 max-w-full box-border xl:box-content flex-col`
+            )}
+        >
             <div className={twJoin('mx-auto', mainStyle)}>
                 {body}
                 {!showVideoOnly && (
