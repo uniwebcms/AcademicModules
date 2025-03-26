@@ -2684,9 +2684,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-sdk@npm:^1.23.8":
-  version: 1.23.8
-  resolution: "@uniwebcms/module-sdk@npm:1.23.8"
+"@uniwebcms/module-sdk@npm:^1.23.9":
+  version: 1.23.9
+  resolution: "@uniwebcms/module-sdk@npm:1.23.9"
   dependencies:
     "@headlessui/react": "npm:^1.7.3"
     "@popperjs/core": "npm:^2.10.1"
@@ -2698,7 +2698,7 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10/99638ff24be4c64f3719872737b54ca57a6ae8961530af88bba718cf660da04e0fb038b5703a9b8bd2fb557553863d4376985bf12bbfe91bcf26d9935200438f
+  checksum: 10/cd37033610a579b444de498519da2e2a2cc5f320b23046b6da2c8b3e1baa47a4e3759f86a1eb45d8bee195b1fcdca86c4ec2b2eac76320cda3e0932fcaefb9fb
   languageName: node
   linkType: hard
 
@@ -2924,7 +2924,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "npm:^1.23.8"
+    "@uniwebcms/module-sdk": "npm:^1.23.9"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     citation-js: "npm:^0.7.14"
     flowbite: "npm:^1.8.1"
@@ -4279,7 +4279,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "npm:^1.23.8"
+    "@uniwebcms/module-sdk": "npm:^1.23.9"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     flexsearch: "npm:^0.7.31"
     katex: "npm:^0.16.11"
@@ -4778,7 +4778,7 @@ __metadata:
   resolution: "expert-series-1@workspace:src/E1"
   dependencies:
     "@headlessui/react": "npm:^1.7.13"
-    "@uniwebcms/module-sdk": "npm:^1.23.8"
+    "@uniwebcms/module-sdk": "npm:^1.23.9"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^5.3.0"
@@ -6204,7 +6204,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "npm:^1.23.8"
+    "@uniwebcms/module-sdk": "npm:^1.23.9"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     flexsearch: "npm:^0.7.31"
     flowbite: "npm:^1.8.1"
