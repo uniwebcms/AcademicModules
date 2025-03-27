@@ -1,19 +1,38 @@
-title: 
-  en: Video Player
-  fr: Lecteur vidéo
+title:
+    en: Video Player
+    fr: Lecteur vidéo
 label:
-  en: Video
-  fr: Vidéo
+    en: Video
+    fr: Vidéo
 description:
-  en: A component plays a video.
-  fr: Un composant lit une vidéo.
+    en: A component plays a video.
+    fr: Un composant lit une vidéo.
+properties:
+    showVideoOnly:
+        label:
+            en: Show Video Only
+            fr: Afficher uniquement la vidéo
+        type: boolean
+        default: false
+        description:
+            en: Weather or not the video will be shown without any other content.
+            fr: Si la vidéo sera ou non affichée sans aucun autre contenu.
+    fitVideo:
+        label:
+            en: Fit Video Size
+            fr: Adapter la taille de la vidéo
+        type: boolean
+        default: false
+        description:
+            en: Wheather or not the component will fit the video size.
+            fr: Si le composant adaptera ou non la taille de la vidéo.
 
 category: media
 export: true
 
 input:
-  type: video
-  limit: one
+    type: video
+    limit: one
 
 images:
-  - example.png
+    - example.png

@@ -10,10 +10,10 @@ const vimeoRegex =
 
 function getVideos(sections) {
     const videos = sections
-        .map((section) => section.content.content?.filter((object) => object.type === 'Video'))
+        .map((section) => section?.content?.content?.filter((object) => object.type === 'Video'))
         .flat()
-        .map((video) => video.attrs);
-    return videos;
+        .map((video) => video?.attrs);
+    return videos.filter(Boolean);
 }
 
 async function getVideoThumbnail(url) {
@@ -44,6 +44,7 @@ async function getVideoThumbnail(url) {
 export default function Video({ page, videoControl, ...video }) {
     const profile = page.getPageProfile();
     const sections = page.blockGroups.body;
+
     const videos = getVideos(sections);
 
     let caption = video?.caption || '';
@@ -116,7 +117,7 @@ export default function Video({ page, videoControl, ...video }) {
     useEffect(() => {
         async function fetchThumbnails() {
             const array = await Promise.all(
-                videos.map(async ({ src }) => {
+                videos.map(async ({ src = '' }) => {
                     const thumb = await getVideoThumbnail(src);
                     return thumb;
                 })
@@ -157,70 +158,76 @@ export default function Video({ page, videoControl, ...video }) {
         <Image className="relative z-0 flex-1 block m-0" {...{ profile, url: ogThumbnail }} />
     );
 
+    let isLocalVideo = currentVideo.src.startsWith('https://assets.uniweb.app/');
+
     return (
         <div className="not-prose mb-6 lg:my-8">
-            <div className="relative">
-                <div
-                    className={outerClasses}
-                    onClick={(event) => {
-                        if (event.target === event.currentTarget) {
-                            toggleOverlay();
-                        }
-                    }}
-                >
-                    <div className={playerClasses}>
-                        {/* Main Video Area */}
-                        <div className={`flex-1 block`}>
-                            <Media
-                                className="mt-0"
-                                media={currentVideo}
-                                {...(thumbnail && { thumbnail: { url: thumbnail } })}
-                            />
-                        </div>
-                        {/* Thumbnail Grid */}
-                        {overlay && (
-                            <div className="w-1/4 p-4 overflow-y-auto bg-gray-800 flex items-center justify-center">
-                                <div className="grid grid-cols-1 gap-4">
-                                    {videos.map((video, index) => {
-                                        const currentThumbnail = thumbnails[index];
-                                        return (
-                                            <div
-                                                key={index}
-                                                className={`cursor-pointer p-2 rounded-lg transition-transform transform hover:scale-105 ${
-                                                    video === currentVideo
-                                                        ? 'border-2 border-indigo-500'
-                                                        : ''
-                                                }`}
-                                                onClick={changeVideo(video)}
-                                            >
-                                                <Image
-                                                    className="w-full h-auto object-contain rounded-md m-2"
-                                                    {...{ profile, url: currentThumbnail }}
-                                                />
-                                            </div>
-                                        );
-                                    })}
+            {isLocalVideo ? (
+                <Media className="mt-0" media={currentVideo} />
+            ) : (
+                <div className="relative">
+                    <div
+                        className={outerClasses}
+                        onClick={(event) => {
+                            if (event.target === event.currentTarget) {
+                                toggleOverlay();
+                            }
+                        }}
+                    >
+                        <div className={playerClasses}>
+                            {/* Main Video Area */}
+                            <div className={`flex-1 block`}>
+                                <Media
+                                    className="mt-0"
+                                    media={currentVideo}
+                                    {...(thumbnail && { thumbnail: { url: thumbnail } })}
+                                />
+                            </div>
+                            {/* Thumbnail Grid */}
+                            {overlay && (
+                                <div className="w-1/4 p-4 overflow-y-auto bg-gray-800 flex items-center justify-center">
+                                    <div className="grid grid-cols-1 gap-4">
+                                        {videos.map((video, index) => {
+                                            const currentThumbnail = thumbnails[index];
+                                            return (
+                                                <div
+                                                    key={index}
+                                                    className={`cursor-pointer p-2 rounded-lg transition-transform transform hover:scale-105 ${
+                                                        video === currentVideo
+                                                            ? 'border-2 border-indigo-500'
+                                                            : ''
+                                                    }`}
+                                                    onClick={changeVideo(video)}
+                                                >
+                                                    <Image
+                                                        className="w-full h-auto object-contain rounded-md m-2"
+                                                        {...{ profile, url: currentThumbnail }}
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                        {/* Additional Buttons */}
-                        {overlay && (
-                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                                <Buttons />
-                            </div>
-                        )}
-                    </div>
-                    {caption ? (
-                        <div
-                            className={`block outline-none text-primary-80 border-none text-sm text-center mt-1`}
-                        >
-                            {caption}
+                            )}
+                            {/* Additional Buttons */}
+                            {overlay && (
+                                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                                    <Buttons />
+                                </div>
+                            )}
                         </div>
-                    ) : null}
+                        {caption ? (
+                            <div
+                                className={`block outline-none text-primary-80 border-none text-sm text-center mt-1`}
+                            >
+                                {caption}
+                            </div>
+                        ) : null}
+                    </div>
+                    {/* Conditional Rendering of FakeBlock and Buttons */}
+                    {<FakeBlock />}
                 </div>
-                {/* Conditional Rendering of FakeBlock and Buttons */}
-                {<FakeBlock />}
-            </div>
+            )}
             {!overlay && <Buttons />}
         </div>
     );
