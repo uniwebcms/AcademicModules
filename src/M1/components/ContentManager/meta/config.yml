@@ -20,7 +20,7 @@ elements:
     description:
       en: The subtitle of the section.
       fr: Le sous-titre de la section.
-  properties:
+  code:
     description:
       en: The properties of the section, such as sidebar information, search box, filter, etc.
       fr: Les propriétés de la section, comme les informations de la barre latérale, la boîte de recherche, le filtre, etc.
@@ -44,7 +44,10 @@ items:
       description:
         en: The text put at the bottom of the content.
         fr: Le texte placé en bas du contenu.
-    properties:
+    code:
+      label:
+        en: Additional Information
+        fr: Informations supplémentaires
       description:
         en: Additional information of the content. Such as filter category, badge, examples, etc.
         fr: Informations supplémentaires du contenu. Comme la catégorie de filtre, le badge, les exemples, etc.

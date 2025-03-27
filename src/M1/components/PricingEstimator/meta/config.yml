@@ -15,6 +15,21 @@ elements:
   title:
   subtitle:
 
+items:
+  separator: divider
+  elements:
+    title:
+    subtitle:
+    icon:
+    list:
+      description:
+        en: List of features.
+        fr: Liste des fonctionnalités.
+    code:
+      description:
+        en: JSON code defines the details of calculation such as price, discount, etc.
+        fr: Le code JSON définit les détails du calcul tels que le prix, la remise, etc.
+
 properties:
   billing_cycle_switcher:
     label:

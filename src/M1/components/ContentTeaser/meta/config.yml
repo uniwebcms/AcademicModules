@@ -40,10 +40,6 @@ properties:
     type: string
     default: md
     enum:
-      # - label:
-      #     en: Small
-      #     fr: Petit
-      #   value: small
       - label:
           en: Medium
           fr: Moyen

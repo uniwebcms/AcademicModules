@@ -305,9 +305,9 @@ export default function DataVizCompare(props) {
     const data = parseItems(items, settings);
 
     const chartSwitcherBtnClassName =
-        'px-6 py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-neutral-100/50 hover:bg-neutral-100/80 text-neutral-700 cursor-pointer hover:scale-105';
+        'px-2.5 py-1.5 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-neutral-100/50 hover:bg-neutral-100/80 text-neutral-700 cursor-pointer hover:scale-105';
     const chartSwitcherActiveBtnClassName =
-        'px-6 py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-gradient-to-r from-secondary-600 to-secondary-500 text-neutral-50 shadow-secondary-500/50 cursor-pointer';
+        'px-2.5 py-1.5 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-gradient-to-r from-secondary-600 to-secondary-500 text-neutral-50 shadow-secondary-500/50 cursor-pointer';
 
     const { childBlocks } = block;
 
@@ -317,10 +317,10 @@ export default function DataVizCompare(props) {
             : null;
 
     return (
-        <Container px="none" py="none" className="relative max-w-5xl mx-auto p-4">
-            <div className="backdrop-blur-xl bg-neutral-100/70 rounded-xl shadow-2xl p-8 border border-neutral-100/20">
+        <Container px="none" py="none" className="relative max-w-8xl w-full mx-auto p-4">
+            <div className="w-full backdrop-blur-xl bg-neutral-100/70 rounded-xl shadow-2xl p-8 border border-neutral-100/20">
                 {/* chart switcher btn group */}
-                <div className="flex gap-4 mb-8 overflow-visible pb-4 justify-center">
+                <div className="flex gap-4 mb-8 pb-4 justify-center">
                     {data.map((item, index) => (
                         <div
                             key={index}

@@ -11,5 +11,34 @@ description:
 category: graph
 export: true
 
+elements:
+  code:
+    label:
+      en: Chart configuration
+      fr: Configuration du graphique
+    description:
+      en: The configuration of the chart, required properties are 'xAxis', 'yAxis', 'scatters' and 'tooltip' (optional).
+      fr: La configuration du graphique, les propriétés requises sont 'xAxis', 'yAxis', 'scatters' et 'tooltip' (optionnel).
+
+items:
+  separator: section, divider
+  limit: 1
+  elements:
+    title:
+      description:
+        en: Sub-sheet Title
+        fr: Titre de la sous-feuille
+    icon:
+      description:
+        en: Sub-sheet Icon
+        fr: Icône de la sous-feuille
+    code:
+      description:
+        en: Sub-sheet properties, required properties are 'scatters' and 'category' (unique identifier).
+        fr: Propriétés de la sous-feuille, les propriétés requises sont 'scatters' et 'category' (identifiant unique).
+    _raw:
+      en: Use divider to define Sub-sheet data and use the sub-section to define the tooltip content (title, subtitle, text)
+      fr: Utilisez le séparateur pour définir les données de la sous-feuille et utilisez la sous-section pour définir le contenu de l'info-bulle (titre, sous-titre, texte)
+
 images:
   - example.png

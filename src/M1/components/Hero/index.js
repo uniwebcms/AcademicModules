@@ -56,7 +56,7 @@ export default function Hero(props) {
                             <p
                                 className={twJoin(
                                     links.length ? 'mb-8' : '',
-                                    alignment === 'center' ? 'text-xl' : 'text-lg'
+                                    alignment === 'center' ? 'text-lg md:text-xl' : 'text-lg'
                                 )}
                             >
                                 {subtitle}
@@ -65,7 +65,7 @@ export default function Hero(props) {
                         {links.length ? (
                             <div
                                 className={twJoin(
-                                    'flex flex-wrap gap-8',
+                                    'flex flex-wrap gap-6 lg:gap-8',
                                     alignment === 'left' ? 'justify-start' : '',
                                     alignment === 'center' ? 'justify-center' : '',
                                     alignment === 'right' ? 'justify-end' : ''
@@ -76,7 +76,7 @@ export default function Hero(props) {
                                         key={index}
                                         href={link.href}
                                         className={twJoin(
-                                            'pl-6 pr-5 py-3 text-lg font-semibold rounded-full flex items-center gap-2 transition-all',
+                                            'pl-4 pr-3 lg:pl-6 lg:pr-5 py-2 lg:py-3 text-base lg:text-lg font-semibold rounded-full flex items-center gap-2 transition-all',
                                             index === 0 &&
                                                 'bg-text-color/90 text-bg-color hover:bg-text-color',
                                             index === 1 &&
@@ -107,7 +107,6 @@ export default function Hero(props) {
                         <ChildBlockRenderer
                             block={block}
                             childBlocks={[childBlocks[0]]}
-                            extra={{ className: 'max-w-xl scale-150' }}
                             pure={true}
                         ></ChildBlockRenderer>
                     ) : (

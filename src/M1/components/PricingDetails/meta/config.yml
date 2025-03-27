@@ -18,11 +18,6 @@ elements:
 items:
   separator: divider
   elements:
-    icon:
-      type: icon
-      description: 
-        en: A list icon for the detail items, the first one will be put beside the title, the rest will be put beside the list items.
-        fr: Une icône de liste pour les éléments de détail, le premier sera placé à côté du titre, le reste sera placé à côté des éléments de liste.
     title:
       description:
         en: Title of the pricing addon.
@@ -31,28 +26,10 @@ items:
       description:
         en: The list of detail items. Accepts two layer, one for the item title and the other for the item description.
         fr: La liste des éléments de détail. Accepte deux couches, une pour le titre de l'élément et l'autre pour la description de l'élément.
+    icon:
+      description: 
+        en: A list icon for the detail items, the first one will be put beside the title, the rest will be put beside the list items.
+        fr: Une icône de liste pour les éléments de détail, le premier sera placé à côté du titre, le reste sera placé à côté des éléments de liste.
 
-properties:
-  appearance:
-    label:
-      en: Appearance
-      fr: Apparence
-    type: string
-    default: fancy
-    enum:
-      - label:
-          en: Fancy
-          fr: Fantaisie
-        value: fancy
-    description:
-      en: The appearance of the pricing addons.
-      fr: L'apparence des extensions de tarification.
-
-presets:
-  fancy:
-    label:
-      en: Fancy appearance
-      fr: Apparence fantaisie
-    properties:
-      appearance: fancy
-    image: fancy.png
+images:
+  - example.png

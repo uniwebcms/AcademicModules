@@ -12,7 +12,7 @@ category: template
 export: true
 
 elements:
-  properties:
+  code:
     label:
       en: JSON Properties
       fr: Propriétés JSON

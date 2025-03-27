@@ -38,7 +38,10 @@ items:
       description:
         en: The options of the field if field type is select, radio or checkbox.
         fr: Les options du champ si le type de champ est select, radio ou checkbox.
-    properties:
+    code:
+      label:
+        en: Field information
+        fr: Informations sur le champ
       description:
         en: The additional properties for the field such as field type and default value.
         fr: Les propriétés supplémentaires pour le champ telles que le type de champ et la valeur par défaut.

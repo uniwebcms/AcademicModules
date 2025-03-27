@@ -19,7 +19,7 @@ elements:
     description:
       en: One or two action links that direct users to a specific page or resource.
       fr: Un ou deux liens d'action qui dirigent les utilisateurs vers une page ou une ressource spécifique.
-  properties:
+  code:
     label:
       en: JSON properties
       fr: Propriétés JSON
@@ -31,7 +31,7 @@ items:
   separator: section
   limit: 1
   elements:
-    properties:
+    code:
       label:
         en: Code Snippet
         fr: Extrait de code

@@ -79,7 +79,7 @@ const ImageShowcase = ({
 
                         return {
                             position: 'absolute',
-                            left: '50%',
+                            left: '45%',
                             top: '50%',
                             width: '300px',
                             height: '200px',
@@ -137,7 +137,7 @@ const ImageShowcase = ({
     const layoutStyles = getLayoutStyles();
 
     return (
-        <div className={twJoin('w-full overflow-hidden', className, layoutStyles.container)}>
+        <div className={twJoin('overflow-hidden', className, layoutStyles.container)}>
             {images.map((image, index) => (
                 <div
                     key={index}
@@ -164,9 +164,9 @@ const ImageShowcase = ({
 };
 
 export default function ImageCarousel(props) {
-    const { block, extra } = props;
+    const { block } = props;
 
-    const className = extra?.className || '';
+    const { in_hero = false } = block.getBlockProperties();
 
     const { banner, images } = block.getBlockContent();
 
@@ -176,7 +176,7 @@ export default function ImageCarousel(props) {
             layout={LAYOUTS.STACKED_3D}
             playMode={PLAY_MODES.HOVER}
             glassEffect={true}
-            className={className}
+            className={in_hero ? 'max-w-xl scale-125 2xl:scale-150 mx-auto' : ''}
         />
     );
 }

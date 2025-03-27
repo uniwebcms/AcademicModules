@@ -18,5 +18,16 @@ elements:
       en: The showcase images.
       fr: Les images de présentation.
 
+properties:
+  in_hero:
+    label:
+      en: In Hero
+      fr: Dans le héros
+    type: boolean
+    default: false
+    description:
+      en: Whether the image carousel should be used in a hero section or not.
+      fr: Si le carrousel d'images doit être utilisé dans une section de héros ou non.
+
 images:
   - example.png
