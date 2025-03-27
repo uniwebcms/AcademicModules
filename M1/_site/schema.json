@@ -686,7 +686,7 @@
         },
         "type": "link"
       },
-      "properties": {
+      "code": {
         "label": {
           "en": "JSON properties",
           "fr": "Propriétés JSON"
@@ -701,7 +701,7 @@
       "separator": "section",
       "limit": 1,
       "elements": {
-        "properties": {
+        "code": {
           "label": {
             "en": "Code Snippet",
             "fr": "Extrait de code"
@@ -754,7 +754,7 @@
         },
         "type": "H2"
       },
-      "properties": {
+      "code": {
         "description": {
           "en": "The properties of the section, such as sidebar information, search box, filter, etc.",
           "fr": "Les propriétés de la section, comme les informations de la barre latérale, la boîte de recherche, le filtre, etc."
@@ -792,7 +792,11 @@
           },
           "type": "paragraph"
         },
-        "properties": {
+        "code": {
+          "label": {
+            "en": "Additional Information",
+            "fr": "Informations supplémentaires"
+          },
           "description": {
             "en": "Additional information of the content. Such as filter category, badge, examples, etc.",
             "fr": "Informations supplémentaires du contenu. Comme la catégorie de filtre, le badge, les exemples, etc."
@@ -1112,6 +1116,48 @@
     },
     "category": "graph",
     "export": true,
+    "elements": {
+      "code": {
+        "label": {
+          "en": "Chart configuration",
+          "fr": "Configuration du graphique"
+        },
+        "description": {
+          "en": "The configuration of the chart, required properties are 'xAxis', 'yAxis', 'scatters' and 'tooltip' (optional).",
+          "fr": "La configuration du graphique, les propriétés requises sont 'xAxis', 'yAxis', 'scatters' et 'tooltip' (optionnel)."
+        }
+      }
+    },
+    "items": {
+      "separator": "section, divider",
+      "limit": 1,
+      "elements": {
+        "title": {
+          "description": {
+            "en": "Sub-sheet Title",
+            "fr": "Titre de la sous-feuille"
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "icon": {
+          "description": {
+            "en": "Sub-sheet Icon",
+            "fr": "Icône de la sous-feuille"
+          }
+        },
+        "code": {
+          "description": {
+            "en": "Sub-sheet properties, required properties are 'scatters' and 'category' (unique identifier).",
+            "fr": "Propriétés de la sous-feuille, les propriétés requises sont 'scatters' et 'category' (identifiant unique)."
+          }
+        },
+        "_raw": {
+          "en": "Use divider to define Sub-sheet data and use the sub-section to define the tooltip content (title, subtitle, text)",
+          "fr": "Utilisez le séparateur pour définir les données de la sous-feuille et utilisez la sous-section pour définir le contenu de l'info-bulle (titre, sous-titre, texte)"
+        }
+      }
+    },
     "images": [
       {
         "height": 1107,
@@ -2105,7 +2151,11 @@
             "fr": "Les options du champ si le type de champ est select, radio ou checkbox."
           }
         },
-        "properties": {
+        "code": {
+          "label": {
+            "en": "Field information",
+            "fr": "Informations sur le champ"
+          },
           "description": {
             "en": "The additional properties for the field such as field type and default value.",
             "fr": "Les propriétés supplémentaires pour le champ telles que le type de champ et la valeur par défaut."
@@ -2370,6 +2420,20 @@
         }
       }
     },
+    "properties": {
+      "in_hero": {
+        "label": {
+          "en": "In Hero",
+          "fr": "Dans le héros"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether the image carousel should be used in a hero section or not.",
+          "fr": "Si le carrousel d'images doit être utilisé dans une section de héros ou non."
+        }
+      }
+    },
     "images": [
       {
         "height": 426,
@@ -2627,13 +2691,6 @@
     "items": {
       "separator": "divider",
       "elements": {
-        "icon": {
-          "type": "icon",
-          "description": {
-            "en": "A list icon for the detail items, the first one will be put beside the title, the rest will be put beside the list items.",
-            "fr": "Une icône de liste pour les éléments de détail, le premier sera placé à côté du titre, le reste sera placé à côté des éléments de liste."
-          }
-        },
         "title": {
           "description": {
             "en": "Title of the pricing addon.",
@@ -2647,47 +2704,21 @@
             "en": "The list of detail items. Accepts two layer, one for the item title and the other for the item description.",
             "fr": "La liste des éléments de détail. Accepte deux couches, une pour le titre de l'élément et l'autre pour la description de l'élément."
           }
-        }
-      }
-    },
-    "properties": {
-      "appearance": {
-        "label": {
-          "en": "Appearance",
-          "fr": "Apparence"
         },
-        "type": "string",
-        "default": "fancy",
-        "enum": [
-          {
-            "label": {
-              "en": "Fancy",
-              "fr": "Fantaisie"
-            },
-            "value": "fancy"
+        "icon": {
+          "description": {
+            "en": "A list icon for the detail items, the first one will be put beside the title, the rest will be put beside the list items.",
+            "fr": "Une icône de liste pour les éléments de détail, le premier sera placé à côté du titre, le reste sera placé à côté des éléments de liste."
           }
-        ],
-        "description": {
-          "en": "The appearance of the pricing addons.",
-          "fr": "L'apparence des extensions de tarification."
         }
       }
     },
-    "presets": [
+    "images": [
       {
-        "label": {
-          "en": "Fancy appearance",
-          "fr": "Apparence fantaisie"
-        },
-        "properties": {
-          "appearance": "fancy"
-        },
-        "image": {
-          "height": 681,
-          "width": 2026,
-          "type": "webp",
-          "path": "assets/PricingDetails/fancy.webp"
-        }
+        "height": 681,
+        "width": 2026,
+        "type": "webp",
+        "path": "assets/PricingDetails/example.png"
       }
     ],
     "name": "PricingDetails"
@@ -2721,6 +2752,39 @@
         "description": {
           "en": "A phrase that follows the main headline.",
           "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "icon": {},
+        "list": {
+          "description": {
+            "en": "List of features.",
+            "fr": "Liste des fonctionnalités."
+          }
+        },
+        "code": {
+          "description": {
+            "en": "JSON code defines the details of calculation such as price, discount, etc.",
+            "fr": "Le code JSON définit les détails du calcul tels que le prix, la remise, etc."
+          }
         }
       }
     },
@@ -3283,6 +3347,7 @@
     },
     "items": {
       "separator": "section",
+      "category": "List Item",
       "elements": {
         "title": {
           "type": "H1",
@@ -3292,7 +3357,7 @@
             "fr": "Le titre principal."
           }
         },
-        "properties": {
+        "code": {
           "label": {
             "en": "JSON Properties",
             "fr": "Propriétés JSON"
@@ -3302,8 +3367,19 @@
             "fr": "Propriétés JSON pour chaque sous-section Élément de liste, les propriétés requises sont 'component' (choisir parmi 'simple_card', 'news', 'details', 'assets' et 'contact') et 'id' (identifiant unique)."
           }
         },
+        "text": {
+          "label": {
+            "en": "Content",
+            "fr": "Contenu"
+          },
+          "description": {
+            "en": "The extra content to display, for 'contact' component only.",
+            "fr": "Le contenu supplémentaire à afficher, pour le composant 'contact' uniquement."
+          },
+          "type": "paragraph"
+        },
         "_raw": {
-          "en": "<i style='color: #6b7280;'>List item with different component will need different type of content</i>\n"
+          "en": "<p><i style='color: #6b7280;margin-bottom: 5px;display: block;'>Each component will need different type of content</i></p>\n<p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Simple Card</strong>: value 'simple_card'. Requires a collection of 'pretitle' and 'title' split by 'divider'. Data rendered in a grid layout, each item has a tag and main text.</p>\n<p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>News</strong>: value 'news'. Optional configuration: 'reversed_layout'. Requires a collection of 'pretitle', 'title' and 'subtitle' split by 'divider'. Data rendered in a two column layout, left side is the pretitle, right side is the title and subtile. When 'reversed_layout' is true, pretitle will be placed on right side.</p>\n<p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Details</strong>: value 'details'. Requires a collection of 'title' and 'text' split by 'divider'. Data rendered in a box, a title follow by the text.</p>\n<p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Assets</strong>: value 'assets'. Requires a collection of 'title', 'properties' and 'list' split by 'divider'. Data rendered in a box, with downloadable link and features in detail.</p>\n<p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Contact</strong>: value 'contact'. Requires one item with title and list and one item for clickable links.</p>\n"
         }
       }
     },
@@ -3386,7 +3462,7 @@
     "category": "template",
     "export": true,
     "elements": {
-      "properties": {
+      "code": {
         "label": {
           "en": "JSON Properties",
           "fr": "Propriétés JSON"
