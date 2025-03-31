@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Profile } from '@uniwebcms/module-sdk';
+import { Profile, Icon } from '@uniwebcms/module-sdk';
 import { InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
@@ -120,6 +120,26 @@ const buildTextNode = (content) => {
             const mathHtml = ReactDOMServer.renderToStaticMarkup(math);
 
             data += mathHtml;
+        } else if (type === 'UniwebIcon') {
+            if (item.attrs?.svg || item.attrs?.url) {
+                if (!item.attrs?.className && !item.attrs?.size) {
+                    item.attrs.size = '1em';
+                }
+
+                const iconHtml = ReactDOMServer.renderToStaticMarkup(
+                    <span
+                        className={`mb-1 inline-block relative cursor-default select-text align-middle`}
+                    >
+                        <Icon {...item.attrs} />
+                    </span>
+                );
+
+                data += iconHtml;
+            }
+        } else if (type === 'emoji') {
+            if (item.attrs?.emoji) {
+                data += item.attrs.emoji;
+            }
         }
     });
 
