@@ -1,0 +1,836 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2025-03-31T20:08:30.645Z",
+  "files": [
+    {
+      "name": "main.0ebc12274decf4177799.js",
+      "size": 15228268,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "dcbcbd93bac0470b462d.woff2",
+      "size": 16400,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "7e873d3833eb108a0758.ttf",
+      "size": 12344,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "f650f111a3b890d116f1.woff2",
+      "size": 26272,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "e418bf257af1052628d8.woff2",
+      "size": 4928,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "39890742bc957b368704.woff2",
+      "size": 25324,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "7947224e8a9914fa332b.woff",
+      "size": 4420,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "7489a2fbfb9bfe704420.ttf",
+      "size": 12368,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "96759856b4e70f3a8338.woff",
+      "size": 18748,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "c81d1b2a4b75d3eded60.woff2",
+      "size": 9644,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "95591a929f0d32aa282a.woff2",
+      "size": 12216,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "9eba1d77abcf2aa6e94e.ttf",
+      "size": 53580,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "0108e89c9003e8c14ea3.woff",
+      "size": 6496,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "8a5f936332e8028c7278.ttf",
+      "size": 31308,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "2f7bc363fc5424ebda59.ttf",
+      "size": 19436,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "4ad7c7e8bb8d10a34bb7.ttf",
+      "size": 10364,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "73ea273a72f4aca30ca5.woff2",
+      "size": 28076,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "8d6b6822586eea3d3b20.ttf",
+      "size": 7588,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "3a99e70aee4076660d38.woff",
+      "size": 6188,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "b257a18c016f37ee4543.ttf",
+      "size": 22364,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "d562e886c52f12660a41.woff",
+      "size": 33516,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "c295e7f71970f03c0549.woff2",
+      "size": 13568,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "4c761b3711973ab04edf.ttf",
+      "size": 19584,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "aeffd8025cba3647f1a6.woff",
+      "size": 5980,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "8d593cfaa96238d5e2f8.woff",
+      "size": 14112,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "4c6b94fd1d07f8beff7c.woff",
+      "size": 16028,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "02271ec5cb9f5b4588ac.woff",
+      "size": 12316,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "7d393d382f3e7fb1c637.woff2",
+      "size": 12028,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "db074fa22cf224af93d7.woff",
+      "size": 7656,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "172d3529b26f8cedef6b.woff2",
+      "size": 11316,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "853be92419a6c3766b9a.ttf",
+      "size": 63632,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "354501bac435c3264834.woff",
+      "size": 13296,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "2960900c4f271311eb36.woff2",
+      "size": 5208,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "6d3d25f4820d0da8f01f.woff2",
+      "size": 16440,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "fd947498bc16392e76c2.woff",
+      "size": 19676,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "cd5e231e0cc53b2cb2c0.woff2",
+      "size": 10344,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "4f35fbcc9ee8614c2bcc.woff",
+      "size": 30772,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "8169508bf58f8bd92ad8.ttf",
+      "size": 51336,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "e1951519f6f0596f7356.woff2",
+      "size": 3624,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "b9cd458ac6d5889ff9c3.woff",
+      "size": 14408,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "fe2176f79edaa716e621.woff2",
+      "size": 16988,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "57f5c1837853986ea1db.ttf",
+      "size": 11508,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "6eec866c69313624be60.woff2",
+      "size": 5468,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "d6484fce1ef428d5bd94.woff2",
+      "size": 6908,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "fc9ba5249878cd8f8d88.ttf",
+      "size": 16648,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "a1abf90dfd72792a577a.woff2",
+      "size": 6912,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "5b49f4993ae22d7975b4.ttf",
+      "size": 24504,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "d757c535a2e5902f1325.woff",
+      "size": 7716,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "3f07ed67f06c720120ce.woff",
+      "size": 18668,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "ed305b5434865e06ffde.ttf",
+      "size": 19572,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "20f389c4120be058d80a.woff2",
+      "size": 16780,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "fa675e5e4bec9eb250b6.ttf",
+      "size": 33580,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "bf2d440b3a42ea78a998.ttf",
+      "size": 31196,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "073b3402d036714b4370.woff",
+      "size": 10588,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "c5c02d763c89380dcb4e.ttf",
+      "size": 27556,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "6fdf0ac577be0ba82a4c.woff",
+      "size": 13208,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "0c3b8929d377c0e9b2f3.woff",
+      "size": 29912,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "6de7d4b539221a49e9e2.ttf",
+      "size": 12228,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "931d67ea207ab37ee693.woff2",
+      "size": 11348,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "828abcb200061cffbaae.ttf",
+      "size": 32968,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "428978dc7837d46de091.woff",
+      "size": 19412,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "remoteEntry.js",
+      "size": 6780,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.425d06b79d6f68cfa0de.js",
+      "size": 6610,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.02e190a9c77539e4d247.js",
+      "size": 132731,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.4e054a29ffe6c924d332.js",
+      "size": 980474,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.597509a8bad99142a60f.js",
+      "size": 14798824,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Accent/right.webp",
+      "size": 74436,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Accent/left_backdrop.webp",
+      "size": 53754,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Accent/center.webp",
+      "size": 79136,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Article/lg.webp",
+      "size": 95066,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Article/md.webp",
+      "size": 84918,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Article/xl.webp",
+      "size": 101530,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Article/2xl.webp",
+      "size": 120194,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Aside/example.png",
+      "size": 13464,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/CTA/example.png",
+      "size": 51036,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Cards/example.png",
+      "size": 96770,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/ContactForm/right.webp",
+      "size": 11580,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/ContactForm/left.webp",
+      "size": 11330,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Details/right.webp",
+      "size": 82148,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Details/center.webp",
+      "size": 71570,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Details/left.webp",
+      "size": 83168,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DownloadableAssets/example.png",
+      "size": 27422,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicList/snapping.webp",
+      "size": 35114,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicList/grid.webp",
+      "size": 45200,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicList/list.webp",
+      "size": 57638,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicMap/standard.webp",
+      "size": 142998,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicMap/full_detail.webp",
+      "size": 371572,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicReferences/example.png",
+      "size": 46808,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/EmbedContent/example.png",
+      "size": 91896,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/FeatureList/example.png",
+      "size": 151892,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Features/center.webp",
+      "size": 56032,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Features/left.webp",
+      "size": 56030,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Features/right.webp",
+      "size": 56406,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Gallery/example.png",
+      "size": 132948,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Hero/content_left_backdrop.webp",
+      "size": 28662,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Hero/content_right_gradient_bottom.webp",
+      "size": 24080,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Hero/content_center_gradient_top.webp",
+      "size": 29964,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/HeroMedia/80_h_content_center_gradient_top_media_bg.webp",
+      "size": 42392,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/HeroMedia/60_h_content_right.webp",
+      "size": 281816,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/HeroMedia/60_h_content_left_gradient_top.webp",
+      "size": 228064,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/HeroSlider/40_h_content_left_backdrop_indicator.webp",
+      "size": 130892,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/HeroSlider/40_h_content_right_gradient_bottom.webp",
+      "size": 76030,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/HeroSlider/40_h_content_center_gradient_top_indicator.webp",
+      "size": 129644,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/InformationMedia/content_right_video.webp",
+      "size": 37846,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/InformationMedia/content_left_img.webp",
+      "size": 46506,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/InformationMedia/content_center_img.webp",
+      "size": 90924,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/InteractiveMap/city_view.webp",
+      "size": 302906,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/List/example.png",
+      "size": 68524,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Locations/single.webp",
+      "size": 45276,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Locations/multiple.webp",
+      "size": 81160,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/LogoCloud/example.png",
+      "size": 20702,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/MediaFooter/newsletter_back_to_top.webp",
+      "size": 22034,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Newsletter/example.png",
+      "size": 9368,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/PageFooter/with_lang_toggle.webp",
+      "size": 6058,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/PageHeader/center_sticky.webp",
+      "size": 8296,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/PageHeader/left.webp",
+      "size": 8028,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/PowerFeatures/example.png",
+      "size": 57046,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/ProfileAssets/example.png",
+      "size": 20748,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/ProfileSection/lg_1.webp",
+      "size": 119602,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/ProfileSection/2xl_2.webp",
+      "size": 141252,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Reference/example.png",
+      "size": 138660,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/References/example.png",
+      "size": 41324,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Slider/left_content_overlay_indicator.webp",
+      "size": 34920,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Slider/right_content_backdrop.webp",
+      "size": 75776,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/SocialConnector/example.png",
+      "size": 5334,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Solutions/example.png",
+      "size": 46054,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Spotlight/example.png",
+      "size": 56630,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/TeamRoster/11.webp",
+      "size": 157652,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/TermDefinition/example.png",
+      "size": 30694,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Testimonials/example.png",
+      "size": 360804,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Timeline/example.png",
+      "size": 36454,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/TwoColLayout/evenly_full.webp",
+      "size": 73374,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/TwoColLayout/narrow_left_regular.webp",
+      "size": 73226,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/VideoPlayer/example.png",
+      "size": 73666,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Videos/list_panel.webp",
+      "size": 57974,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Videos/grid.webp",
+      "size": 126914,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "schema.json",
+      "size": 145529,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Aside/example.webp",
+      "size": 13464,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/CTA/example.webp",
+      "size": 51036,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Cards/example.webp",
+      "size": 96770,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DownloadableAssets/example.webp",
+      "size": 27422,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/DynamicReferences/example.webp",
+      "size": 46808,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/EmbedContent/example.webp",
+      "size": 91896,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/FeatureList/example.webp",
+      "size": 151892,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Gallery/example.webp",
+      "size": 132948,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/List/example.webp",
+      "size": 68524,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/LogoCloud/example.webp",
+      "size": 20702,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Newsletter/example.webp",
+      "size": 9368,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/PowerFeatures/example.webp",
+      "size": 57046,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/ProfileAssets/example.webp",
+      "size": 20748,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Reference/example.webp",
+      "size": 138660,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/References/example.webp",
+      "size": 41324,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Section/example.webp",
+      "size": 46386,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/SocialConnector/example.webp",
+      "size": 5334,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Solutions/example.webp",
+      "size": 46054,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Spotlight/example.webp",
+      "size": 56630,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/TeamRoster/1_1.webp",
+      "size": 157652,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/TermDefinition/example.webp",
+      "size": 30694,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Testimonials/example.webp",
+      "size": 360804,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/Timeline/example.webp",
+      "size": 36454,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "assets/VideoPlayer/example.webp",
+      "size": 73666,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.0ebc12274decf4177799.js.LICENSE.txt",
+      "size": 18830,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.597509a8bad99142a60f.js.LICENSE.txt",
+      "size": 19639,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.425d06b79d6f68cfa0de.js.LICENSE.txt",
+      "size": 237,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.02e190a9c77539e4d247.js.LICENSE.txt",
+      "size": 483,
+      "hash": "489b2f805df54ffa7ff2"
+    },
+    {
+      "name": "main.4e054a29ffe6c924d332.js.LICENSE.txt",
+      "size": 149,
+      "hash": "489b2f805df54ffa7ff2"
+    }
+  ]
+}
