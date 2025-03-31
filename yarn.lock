@@ -2684,12 +2684,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-sdk@link:../../../uniweb-module-sdk::locator=academic-series-1%40workspace%3Asrc%2FA1":
-  version: 0.0.0-use.local
-  resolution: "@uniwebcms/module-sdk@link:../../../uniweb-module-sdk::locator=academic-series-1%40workspace%3Asrc%2FA1"
-  languageName: node
-  linkType: soft
-
 "@uniwebcms/module-sdk@npm:^1.23.12":
   version: 1.23.12
   resolution: "@uniwebcms/module-sdk@npm:1.23.12"
@@ -2930,7 +2924,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "link:../../../uniweb-module-sdk"
+    "@uniwebcms/module-sdk": "npm:^1.23.12"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     citation-js: "npm:^0.7.14"
     flowbite: "npm:^1.8.1"
