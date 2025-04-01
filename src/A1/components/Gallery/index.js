@@ -113,7 +113,7 @@ export default function Gallery({ block }) {
                         onClick={showPrev}
                         disabled={activeIndex === 0}
                         className={twJoin(
-                            'absolute left-4 text-3xl transition',
+                            'absolute left-4 text-3xl transition z-10',
                             activeIndex === 0
                                 ? 'text-gray-500 cursor-not-allowed'
                                 : 'text-gray-300 hover:text-white'
@@ -121,16 +121,18 @@ export default function Gallery({ block }) {
                     >
                         <FaChevronLeft />
                     </button>
-                    <img
-                        src={images[activeIndex].url}
+                    <Image
+                        profile={getPageProfile()}
+                        value={images[activeIndex].value}
+                        url={images[activeIndex].url}
                         alt={images[activeIndex].alt}
-                        className="max-w-full max-h-full"
+                        className="h-[90vh] w-auto max-w-[95vw]"
                     />
                     <button
                         onClick={showNext}
                         disabled={activeIndex === images.length - 1}
                         className={twJoin(
-                            'absolute right-4 text-3xl transition',
+                            'absolute right-4 text-3xl transition z-10',
                             activeIndex === images.length - 1
                                 ? 'text-gray-500 cursor-not-allowed'
                                 : 'text-gray-300 hover:text-white'
