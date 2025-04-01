@@ -96,7 +96,7 @@ export default function Features({ block, website }) {
                                     </dt>
                                     <SafeHtml
                                         value={paragraphs}
-                                        className="mt-3 text-base leading-7 line-clamp-4 lg:text-lg text-text-color-90"
+                                        className="mt-3 text-base leading-7 lg:text-lg text-text-color-90"
                                     />
                                     {link ? (
                                         <Link
@@ -208,7 +208,7 @@ const centerAlign = (pretitle, title, subtitle, link, banner, items, website) =>
                                     </dt>
                                     <SafeHtml
                                         value={paragraphs}
-                                        className={`mt-2 text-base leading-7 lg:text-lg line-clamp-4 ${
+                                        className={`mt-2 text-base leading-7 lg:text-lg ${
                                             icon ? 'pl-10' : ''
                                         }`}
                                     />

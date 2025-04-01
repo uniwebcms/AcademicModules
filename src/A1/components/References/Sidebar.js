@@ -4,7 +4,16 @@ import Select from './FilterSelect';
 import { HiX } from 'react-icons/hi';
 
 export default function (props) {
-    const { mode = 'sticky', sticky = true, filter, setFilter, categories, category, setCategory, website } = props;
+    const {
+        mode = 'sticky',
+        sticky = true,
+        filter,
+        setFilter,
+        categories,
+        category,
+        setCategory,
+        website,
+    } = props;
 
     const sidebarStyle = props.sidebarStyle ? `${props.sidebarStyle}` : `flex flex-col`;
 
@@ -21,7 +30,7 @@ export default function (props) {
                 style={{
                     width: 'inherit',
                     paddingLeft: '1px',
-                    paddingRight: '1px'
+                    paddingRight: '1px',
                 }}
             >
                 <div className={`${sidebarStyle} scrollbar`} style={{ maxHeight: '100%' }}>
@@ -33,16 +42,16 @@ export default function (props) {
                                 setFilter: (selection) => {
                                     setFilter({
                                         ...filter,
-                                        selection
+                                        selection,
                                     });
-                                }
+                                },
                             }}
                         />
                     </div>
                     <h2 className={`font-bold uppercase mt-4`}>
                         {website.localize({
                             en: 'Filter By',
-                            fr: 'Filtrer par'
+                            fr: 'Filtrer par',
                         })}
                     </h2>
                     <div className={`w-full mb-3 flex flex-col mt-3 gap-6`}>
@@ -73,13 +82,17 @@ export default function (props) {
                                                 key={val}
                                                 className={`flex items-center justify-between px-3 py-1 bg-bg-color-80 rounded text-sm truncate`}
                                             >
-                                                <span className="line-clamp-1">{label}</span>
+                                                <span className="line-clamp-1" title={label}>
+                                                    {label}
+                                                </span>
                                                 <HiX
                                                     className={`text-text-color-90 cursor-pointer`}
                                                     onClick={() => {
                                                         setCategory(
                                                             name,
-                                                            selectedVal.filter((item) => item !== val)
+                                                            selectedVal.filter(
+                                                                (item) => item !== val
+                                                            )
                                                         );
                                                     }}
                                                 />
