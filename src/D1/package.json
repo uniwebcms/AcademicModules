@@ -14,7 +14,7 @@
         "@headlessui/react": "^1.7.13",
         "@react-google-maps/api": "^2.19.3",
         "@tailwindcss/typography": "^0.5.15",
-        "@uniwebcms/module-sdk": "^1.23.15",
+        "@uniwebcms/module-sdk": "^1.23.16",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.0.1",
         "flexsearch": "^0.7.31",
         "katex": "^0.16.11",
