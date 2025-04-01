@@ -14,7 +14,7 @@
         "@popperjs/core": "^2.11.6",
         "@react-google-maps/api": "^2.19.3",
         "@tailwindcss/typography": "^0.5.15",
-        "@uniwebcms/module-sdk": "^1.23.12",
+        "@uniwebcms/module-sdk": "^1.23.13",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.1.0",
         "flexsearch": "^0.7.31",
         "flowbite": "^1.8.1",
