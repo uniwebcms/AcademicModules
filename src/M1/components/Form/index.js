@@ -157,9 +157,13 @@ export default function Form(props) {
     }, [items.length]);
 
     return (
-        <Container px="none" py="none" className="rounded-lg border border-neutral-700 shadow-xl">
+        <Container
+            px="none"
+            py="none"
+            className="bg-neutral-800 rounded-lg border border-neutral-700 shadow-xl overflow-hidden"
+        >
             {title || subtitle ? (
-                <div className="flex flex-col space-y-1.5 p-6 border-y border-neutral-700">
+                <div className="flex flex-col space-y-1.5 p-6 border-b border-neutral-700">
                     {title && <h2 className="font-semibold tracking-tight text-2xl">{title}</h2>}
                     {subtitle && <p className="text-sm">{subtitle}</p>}
                 </div>
