@@ -4125,6 +4125,39 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@uniwebcms/core-components", [\
+      ["npm:1.5.8", {\
+        "packageLocation": "./.yarn/cache/@uniwebcms-core-components-npm-1.5.8-98426c6689-1b8d08717b.zip/node_modules/@uniwebcms/core-components/",\
+        "packageDependencies": [\
+          ["@uniwebcms/core-components", "npm:1.5.8"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.5.8", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-core-components-virtual-ff06d687e2/0/cache/@uniwebcms-core-components-npm-1.5.8-98426c6689-1b8d08717b.zip/node_modules/@uniwebcms/core-components/",\
+        "packageDependencies": [\
+          ["@uniwebcms/core-components", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.5.8"],\
+          ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.19"],\
+          ["@popperjs/core", "npm:2.11.8"],\
+          ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["katex", "npm:0.16.21"],\
+          ["prismjs", "npm:1.30.0"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
+          ["react-icons", "virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:4.12.0"],\
+          ["react-katex", "virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:3.0.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@uniwebcms/module-builder", [\
       ["npm:1.9.0", {\
         "packageLocation": "./.yarn/cache/@uniwebcms-module-builder-npm-1.9.0-15332af306-15bee951d6.zip/node_modules/@uniwebcms/module-builder/",\
@@ -4221,10 +4254,42 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.18", {\
-        "packageLocation": "./.yarn/__virtual__/@uniwebcms-module-sdk-virtual-59b5778185/0/cache/@uniwebcms-module-sdk-npm-1.23.18-66ef60136b-e5805a70cf.zip/node_modules/@uniwebcms/module-sdk/",\
+      ["npm:1.23.19", {\
+        "packageLocation": "./.yarn/cache/@uniwebcms-module-sdk-npm-1.23.19-e9ec2b8770-cc52cc1908.zip/node_modules/@uniwebcms/module-sdk/",\
         "packageDependencies": [\
-          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.18"],\
+          ["@uniwebcms/module-sdk", "npm:1.23.19"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.19", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-module-sdk-virtual-8800bb9aac/0/cache/@uniwebcms-module-sdk-npm-1.23.19-e9ec2b8770-cc52cc1908.zip/node_modules/@uniwebcms/module-sdk/",\
+        "packageDependencies": [\
+          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.19"],\
+          ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.19"],\
+          ["@popperjs/core", "npm:2.11.8"],\
+          ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["@uniwebcms/core-components", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.5.8"],\
+          ["dompurify", "npm:3.2.4"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
+          ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
+          ["react-inlinesvg", "virtual:8800bb9aacd2f593ced73ecb4ae05649947864892c0f75e7cc4e4c9b9d415098ee430d768d0b71735308883644925ec6400966b3f1e0d4e29b9f0dbbd9ed896b#npm:3.0.3"],\
+          ["tailwind-merge", "npm:1.14.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:1.23.18", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-module-sdk-virtual-c045d080ae/0/cache/@uniwebcms-module-sdk-npm-1.23.18-66ef60136b-e5805a70cf.zip/node_modules/@uniwebcms/module-sdk/",\
+        "packageDependencies": [\
+          ["@uniwebcms/module-sdk", "virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:1.23.18"],\
           ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.19"],\
           ["@popperjs/core", "npm:2.11.8"],\
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
@@ -4234,7 +4299,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
           ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
-          ["react-inlinesvg", "virtual:59b577818500899d76a520eda6b5935239e0b5a3912ca1417e496c7e2dcc12819a1d9e1c5c86e7ca6a161f0045a63f030ba970f90feb45f91473cc58fee40de1#npm:3.0.3"],\
+          ["react-inlinesvg", "virtual:8800bb9aacd2f593ced73ecb4ae05649947864892c0f75e7cc4e4c9b9d415098ee430d768d0b71735308883644925ec6400966b3f1e0d4e29b9f0dbbd9ed896b#npm:3.0.3"],\
           ["tailwind-merge", "npm:1.14.0"]\
         ],\
         "packagePeers": [\
@@ -4550,7 +4615,8 @@ const RAW_RUNTIME_STATE =
           ["@popperjs/core", "npm:2.11.8"],\
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
-          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.18"],\
+          ["@uniwebcms/core-components", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.5.8"],\
+          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.19"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
           ["citation-js", "npm:0.7.18"],\
           ["flowbite", "npm:1.8.1"],\
@@ -6256,7 +6322,7 @@ const RAW_RUNTIME_STATE =
           ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.19"],\
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
-          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.18"],\
+          ["@uniwebcms/module-sdk", "virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:1.23.18"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
           ["flexsearch", "npm:0.7.43"],\
           ["katex", "npm:0.16.21"],\
@@ -6816,7 +6882,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["expert-series-1", "workspace:src/E1"],\
           ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.19"],\
-          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.18"],\
+          ["@uniwebcms/module-sdk", "virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:1.23.18"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
           ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
@@ -7036,7 +7102,7 @@ const RAW_RUNTIME_STATE =
           ["flowbite", "npm:1.8.1"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
-          ["react-icons", "virtual:6aeb8e1df3e3d606234db7d452ec41ffff687965353b9add2a3d4b87b710105597ea6d76d7e7399d099a6cea00dcea69ab96a4b16c11ff1cb7eabb6578a75ee8#npm:4.12.0"],\
+          ["react-icons", "virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:4.12.0"],\
           ["react-indiana-drag-scroll", "virtual:6aeb8e1df3e3d606234db7d452ec41ffff687965353b9add2a3d4b87b710105597ea6d76d7e7399d099a6cea00dcea69ab96a4b16c11ff1cb7eabb6578a75ee8#npm:2.2.1"],\
           ["tailwind-merge", "npm:1.14.0"],\
           ["tailwindcss", "npm:3.4.17"]\
@@ -8459,7 +8525,7 @@ const RAW_RUNTIME_STATE =
           ["@popperjs/core", "npm:2.11.8"],\
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
-          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.23.18"],\
+          ["@uniwebcms/module-sdk", "virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:1.23.18"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
           ["flexsearch", "npm:0.7.43"],\
           ["flowbite", "npm:1.8.1"],\
@@ -10934,10 +11000,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:4f5969acf2dddbb40ec2e9f5bcb7c2d21ec8da976f9a75da0f1c26629c59edb4f3fd020760613424ba70717e274eefde65c141136fa81022323e5f1c941f50c0#npm:0.6.2", {\
-        "packageLocation": "./.yarn/__virtual__/react-from-dom-virtual-d101c8bbbe/0/cache/react-from-dom-npm-0.6.2-f8d11c6090-f3954737c2.zip/node_modules/react-from-dom/",\
+      ["virtual:595f1017c0e864f9b0168b63e795f75e473a5f43e3a995a3c0d37ea213f21902073396c6461c6b14f8a0f60f4fc105a09445d364450891fe02989b145e3ec220#npm:0.6.2", {\
+        "packageLocation": "./.yarn/__virtual__/react-from-dom-virtual-c6209167a9/0/cache/react-from-dom-npm-0.6.2-f8d11c6090-f3954737c2.zip/node_modules/react-from-dom/",\
         "packageDependencies": [\
-          ["react-from-dom", "virtual:4f5969acf2dddbb40ec2e9f5bcb7c2d21ec8da976f9a75da0f1c26629c59edb4f3fd020760613424ba70717e274eefde65c141136fa81022323e5f1c941f50c0#npm:0.6.2"],\
+          ["react-from-dom", "virtual:595f1017c0e864f9b0168b63e795f75e473a5f43e3a995a3c0d37ea213f21902073396c6461c6b14f8a0f60f4fc105a09445d364450891fe02989b145e3ec220#npm:0.6.2"],\
           ["@types/react", null],\
           ["react", "npm:18.3.1"]\
         ],\
@@ -10976,10 +11042,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:6aeb8e1df3e3d606234db7d452ec41ffff687965353b9add2a3d4b87b710105597ea6d76d7e7399d099a6cea00dcea69ab96a4b16c11ff1cb7eabb6578a75ee8#npm:4.12.0", {\
-        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-7c8a59555e/0/cache/react-icons-npm-4.12.0-8fe2109eaf-5cc20509ca.zip/node_modules/react-icons/",\
+      ["virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:4.12.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-b0bc5f6bfc/0/cache/react-icons-npm-4.12.0-8fe2109eaf-5cc20509ca.zip/node_modules/react-icons/",\
         "packageDependencies": [\
-          ["react-icons", "virtual:6aeb8e1df3e3d606234db7d452ec41ffff687965353b9add2a3d4b87b710105597ea6d76d7e7399d099a6cea00dcea69ab96a4b16c11ff1cb7eabb6578a75ee8#npm:4.12.0"],\
+          ["react-icons", "virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:4.12.0"],\
           ["@types/react", null],\
           ["react", "npm:18.3.1"]\
         ],\
@@ -11027,14 +11093,14 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:59b577818500899d76a520eda6b5935239e0b5a3912ca1417e496c7e2dcc12819a1d9e1c5c86e7ca6a161f0045a63f030ba970f90feb45f91473cc58fee40de1#npm:3.0.3", {\
-        "packageLocation": "./.yarn/__virtual__/react-inlinesvg-virtual-4f5969acf2/0/cache/react-inlinesvg-npm-3.0.3-85ba65380b-e2b6ec1c0c.zip/node_modules/react-inlinesvg/",\
+      ["virtual:8800bb9aacd2f593ced73ecb4ae05649947864892c0f75e7cc4e4c9b9d415098ee430d768d0b71735308883644925ec6400966b3f1e0d4e29b9f0dbbd9ed896b#npm:3.0.3", {\
+        "packageLocation": "./.yarn/__virtual__/react-inlinesvg-virtual-595f1017c0/0/cache/react-inlinesvg-npm-3.0.3-85ba65380b-e2b6ec1c0c.zip/node_modules/react-inlinesvg/",\
         "packageDependencies": [\
-          ["react-inlinesvg", "virtual:59b577818500899d76a520eda6b5935239e0b5a3912ca1417e496c7e2dcc12819a1d9e1c5c86e7ca6a161f0045a63f030ba970f90feb45f91473cc58fee40de1#npm:3.0.3"],\
+          ["react-inlinesvg", "virtual:8800bb9aacd2f593ced73ecb4ae05649947864892c0f75e7cc4e4c9b9d415098ee430d768d0b71735308883644925ec6400966b3f1e0d4e29b9f0dbbd9ed896b#npm:3.0.3"],\
           ["@types/react", null],\
           ["exenv", "npm:1.2.2"],\
           ["react", "npm:18.3.1"],\
-          ["react-from-dom", "virtual:4f5969acf2dddbb40ec2e9f5bcb7c2d21ec8da976f9a75da0f1c26629c59edb4f3fd020760613424ba70717e274eefde65c141136fa81022323e5f1c941f50c0#npm:0.6.2"]\
+          ["react-from-dom", "virtual:595f1017c0e864f9b0168b63e795f75e473a5f43e3a995a3c0d37ea213f21902073396c6461c6b14f8a0f60f4fc105a09445d364450891fe02989b145e3ec220#npm:0.6.2"]\
         ],\
         "packagePeers": [\
           "@types/react",\
@@ -11101,6 +11167,24 @@ const RAW_RUNTIME_STATE =
           ["@types/react", null],\
           ["katex", "npm:0.16.21"],\
           ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/prop-types",\
+          "@types/react",\
+          "prop-types",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:3.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/react-katex-virtual-0d772cdce5/0/cache/react-katex-npm-3.0.1-d7a023a9b3-8a4ad73fc6.zip/node_modules/react-katex/",\
+        "packageDependencies": [\
+          ["react-katex", "virtual:ff06d687e2bb963db85bec04ec89577e8c5c875d7c703fae9432e735ad910e17086dffb889a4f325d49f7d932a27a402080d73981c68da84fc8af4517226cdf2#npm:3.0.1"],\
+          ["@types/prop-types", null],\
+          ["@types/react", null],\
+          ["katex", "npm:0.16.21"],\
+          ["prop-types", null],\
           ["react", "npm:18.3.1"]\
         ],\
         "packagePeers": [\

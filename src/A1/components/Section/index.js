@@ -1,54 +1,57 @@
-import React from 'react';
-import { twJoin } from '@uniwebcms/module-sdk';
-import Render from '../_utils/articles/Render';
-import styles from '../_utils/articles/Render/Section.module.scss';
-import { buildArticleBlocks } from '../_utils/articles';
+import { Section } from '@uniwebcms/core-components';
 
-export default function Section(props) {
-    const { block, extra, website } = props;
+export default Section;
+// import React from 'react';
+// import { twJoin } from '@uniwebcms/module-sdk';
+// import Render from '../_utils/articles/Render';
+// import styles from '../_utils/articles/Render/Section.module.scss';
+// import { buildArticleBlocks } from '../_utils/articles';
 
-    const Tag = extra?.as || 'section';
-    const noPadding = extra?.noPadding || false;
+// export default function Section(props) {
+//     const { block, extra, website } = props;
 
-    const {
-        width = 'lg',
-        columns = '1',
-        vertical_padding: verticalPadding = 'lg',
-    } = block.getBlockProperties();
+//     const Tag = extra?.as || 'section';
+//     const noPadding = extra?.noPadding || false;
 
-    const { content } = block;
+//     const {
+//         width = 'lg',
+//         columns = '1',
+//         vertical_padding: verticalPadding = 'lg',
+//     } = block.getBlockProperties();
 
-    if (!content || !Object.keys(content).length) return null;
+//     const { content } = block;
 
-    const parsedContent = buildArticleBlocks(website.parseLinksInArticle(content));
+//     if (!content || !Object.keys(content).length) return null;
 
-    return (
-        <Tag
-            className={twJoin(
-                verticalPadding === 'lg' ? 'py-12 lg:py-24' : '',
-                verticalPadding === 'md' ? 'py-6 lg:py-12' : '',
-                verticalPadding === 'sm' ? 'py-3 lg:py-6' : '',
-                verticalPadding === 'center' ? 'min-h-screen flex flex-col justify-center' : '',
-                noPadding ? 'py-0 lg:py-0' : ''
-            )}
-        >
-            <div className={twJoin('max-w-full relative flex flex-col')}>
-                <div
-                    className={twJoin(
-                        'mx-auto w-full prose prose-base lg:prose-lg px-6 lg:px-8 lg:gap-8 xl:gap-12 2xl:gap-16',
-                        width === 'md' && 'max-w-2xl',
-                        width === 'lg' && 'max-w-3xl',
-                        width === 'xl' && 'max-w-5xl',
-                        width === '2xl' && 'max-w-7xl',
-                        styles.SectionWrapper,
-                        columns == '1' && 'columns-1',
-                        columns == '2' && 'columns-1 lg:columns-2',
-                        columns == '3' && 'columns-1 lg:columns-2 xl:columns-3'
-                    )}
-                >
-                    <Render {...props} content={parsedContent}></Render>
-                </div>
-            </div>
-        </Tag>
-    );
-}
+//     const parsedContent = buildArticleBlocks(website.parseLinksInArticle(content));
+
+//     return (
+//         <Tag
+//             className={twJoin(
+//                 verticalPadding === 'lg' ? 'py-12 lg:py-24' : '',
+//                 verticalPadding === 'md' ? 'py-6 lg:py-12' : '',
+//                 verticalPadding === 'sm' ? 'py-3 lg:py-6' : '',
+//                 verticalPadding === 'center' ? 'min-h-screen flex flex-col justify-center' : '',
+//                 noPadding ? 'py-0 lg:py-0' : ''
+//             )}
+//         >
+//             <div className={twJoin('max-w-full relative flex flex-col')}>
+//                 <div
+//                     className={twJoin(
+//                         'mx-auto w-full prose prose-base lg:prose-lg px-6 lg:px-8 lg:gap-8 xl:gap-12 2xl:gap-16',
+//                         width === 'md' && 'max-w-2xl',
+//                         width === 'lg' && 'max-w-3xl',
+//                         width === 'xl' && 'max-w-5xl',
+//                         width === '2xl' && 'max-w-7xl',
+//                         styles.SectionWrapper,
+//                         columns == '1' && 'columns-1',
+//                         columns == '2' && 'columns-1 lg:columns-2',
+//                         columns == '3' && 'columns-1 lg:columns-2 xl:columns-3'
+//                     )}
+//                 >
+//                     <Render {...props} content={parsedContent}></Render>
+//                 </div>
+//             </div>
+//         </Tag>
+//     );
+// }

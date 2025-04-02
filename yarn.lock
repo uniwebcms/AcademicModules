@@ -2198,7 +2198,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-google-maps/api@npm:^2.17.1, @react-google-maps/api@npm:^2.19.3":
+"@react-google-maps/api@npm:^2.17.1, @react-google-maps/api@npm:^2.19.1, @react-google-maps/api@npm:^2.19.3":
   version: 2.20.6
   resolution: "@react-google-maps/api@npm:2.20.6"
   dependencies:
@@ -2641,6 +2641,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uniwebcms/core-components@npm:1.5.8":
+  version: 1.5.8
+  resolution: "@uniwebcms/core-components@npm:1.5.8"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.3"
+    "@popperjs/core": "npm:^2.10.1"
+    "@react-google-maps/api": "npm:^2.19.1"
+    katex: "npm:^0.16.11"
+    prismjs: "npm:^1.29.0"
+    react-icons: "npm:^4.11.0"
+    react-katex: "npm:^3.0.1"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/1b8d08717bc4a8aa0a869547c26bd7738b1f72270247961bf98e5d2c3b2749e420f1b621fabe7c0e0f80d7774eb412781acc5b7cef13fcf15e2724199c580d18
+  languageName: node
+  linkType: hard
+
 "@uniwebcms/module-builder@npm:^1.7.2":
   version: 1.9.0
   resolution: "@uniwebcms/module-builder@npm:1.9.0"
@@ -2699,6 +2717,25 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
   checksum: 10/e5805a70cfcb79eea1931de729a33f8c66ada273ae89ab4d8c62e2924efeedb1bcd254a659a0f0f7deef343fff3d83e2dce0a240b6bdc6018a397f576ee7d558
+  languageName: node
+  linkType: hard
+
+"@uniwebcms/module-sdk@npm:^1.23.19":
+  version: 1.23.19
+  resolution: "@uniwebcms/module-sdk@npm:1.23.19"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.3"
+    "@popperjs/core": "npm:^2.10.1"
+    "@react-google-maps/api": "npm:^2.17.1"
+    "@uniwebcms/core-components": "npm:1.5.8"
+    dompurify: "npm:^3.0.4"
+    react-icons: "npm:^5.4.0"
+    react-inlinesvg: "npm:^3.0.2"
+    tailwind-merge: "npm:^1.13.2"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/cc52cc19081ef745c255235c732faae61d8b827144411d9f256e5d25eaf307ca10afe2a3b718fb1c5635e31a1bf6990836c193c8e29c2cedfba736cd80ae11eb
   languageName: node
   linkType: hard
 
@@ -2924,7 +2961,8 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "npm:^1.23.18"
+    "@uniwebcms/core-components": "npm:1.5.8"
+    "@uniwebcms/module-sdk": "npm:^1.23.19"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     citation-js: "npm:^0.7.14"
     flowbite: "npm:^1.8.1"
@@ -7985,7 +8023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.10.1":
+"react-icons@npm:^4.10.1, react-icons@npm:^4.11.0":
   version: 4.12.0
   resolution: "react-icons@npm:4.12.0"
   peerDependencies:
