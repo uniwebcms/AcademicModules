@@ -129,7 +129,7 @@ export default function FeatureSpotlight(props) {
                         profile={getPageProfile()}
                         media={currentMedia}
                         className="rounded-xl shadow-lg"
-                        style={{ paddingBottom: '60%' }}
+                        style={{ paddingBottom: '56.25%' }}
                     />
                 )}
                 <div
