@@ -9,6 +9,7 @@ const contentItemBgColors = [
     'radial-gradient(circle at 50% 90%, var(--muted), transparent 50%)',
     'radial-gradient(circle at 50% 90%, var(--highlight), transparent 50%)',
 ];
+const navItemIconStyle = ['text-primary-500', 'text-accent-500', 'text-secondary-500'];
 const contentItemIconStyles = [
     'bg-primary-50 text-primary-500',
     'bg-accent-50 text-accent-500',
@@ -187,12 +188,13 @@ export default function Fancy(props) {
                                         )}
                                     >
                                         <div className="flex items-center gap-2 whitespace-nowrap">
-                                            <div className="w-5 h-5">
-                                                <Icon
-                                                    icon={icon}
-                                                    className="w-5 h-5 text-inherit"
-                                                />
-                                            </div>
+                                            <Icon
+                                                icon={icon}
+                                                className={twJoin(
+                                                    'w-5 h-5',
+                                                    navItemIconStyle[index % 3]
+                                                )}
+                                            />
                                             <span className="font-medium">{title}</span>
                                         </div>
                                     </div>
