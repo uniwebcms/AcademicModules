@@ -186,7 +186,7 @@ const centerAlign = (pretitle, title, subtitle, link, banner, items, website) =>
 
                             const icon = icons[0];
                             const link = links[0];
-                            console.log(icon);
+
                             return (
                                 <div key={index} className="relative px-8">
                                     <dt className="text-base font-semibold leading-7 text-gray-900">
