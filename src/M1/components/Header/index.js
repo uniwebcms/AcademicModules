@@ -224,6 +224,8 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
     useEffect(() => {
         if (typeof window === 'undefined') return;
 
+        let isProgrammatic = false;
+
         const updateNavPosition = () => {
             if (!navRef.current) return;
 
@@ -258,6 +260,8 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
         };
 
         const handleScroll = () => {
+            if (isProgrammatic) return;
+
             if (!ticking) {
                 requestAnimationFrame(updateNavPosition);
                 ticking = true;
@@ -267,8 +271,19 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
         // Set initial state
         updateNavPosition();
 
+        const onStart = () => (isProgrammatic = true);
+        const onEnd = () => (isProgrammatic = false);
+
+        // this two custom event is dispatch in ContentShowcase component, when user click on the button to scroll to the top, we not show the navbar
+        window.addEventListener('programmatically-scrolling-start', onStart);
+        window.addEventListener('programmatically-scrolling-end', onEnd);
+
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('programmatically-scrolling-start', onStart);
+            window.removeEventListener('programmatically-scrolling-end', onEnd);
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, [floatingOnTop]);
 
     // Modified scroll locking

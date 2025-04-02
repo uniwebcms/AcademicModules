@@ -96,19 +96,17 @@ export default function Fancy(props) {
                 containerBgGradientToColors[activeIndex % 3]
             )}
         >
-            <div className="max-w-7xl mx-auto px-4 pt-24 pb-12">
-                <div className="text-center mb-16">
-                    <h2 className={twJoin('text-4xl font-bold mb-4')}>{title}</h2>
+            <div className="max-w-7xl mx-auto px-4 pt-24 pb-4" id="use-cases-nav">
+                <div className="text-center">
+                    <h2 className={twJoin('text-4xl font-bold mb-3')}>{title}</h2>
                     <p className={twJoin('text-xl max-w-3xl mx-auto')}>{subtitle}</p>
                 </div>
             </div>
             <div
-                id="use-cases-nav"
+                // id="use-cases-nav"
                 className={twJoin(
-                    'relative',
-                    isSticky
-                        ? 'sticky top-0 z-50 py-4 backdrop-blur-sm transition-all duration-300'
-                        : 'py-4'
+                    'relative pt-8 pb-4',
+                    isSticky ? 'sticky top-0 z-50 backdrop-blur-sm transition-all duration-300' : ''
                 )}
             >
                 <div className="flex justify-center max-w-7xl mx-auto px-4">
@@ -149,11 +147,37 @@ export default function Fancy(props) {
                                                 .getElementById('use-cases-content')
                                                 ?.getBoundingClientRect().top;
 
-                                            // Scroll to position that places content right below the sticky nav
+                                            const scrollToTop =
+                                                window.scrollY + contentTop - navHeight;
+
+                                            const isScrollingUp = scrollToTop < window.scrollY;
+
+                                            // we set a flag to indicate that we are programmatically scrolling, prevent the navbar from showing up
+                                            if (isScrollingUp) {
+                                                window.dispatchEvent(
+                                                    new CustomEvent(
+                                                        'programmatically-scrolling-start'
+                                                    )
+                                                );
+                                            }
+
+                                            // Scroll to position that places content right below the sticky nav(title)
                                             window.scrollTo({
-                                                top: window.scrollY + contentTop - navHeight - 20,
+                                                // top: window.scrollY + contentTop - navHeight - 20,
+                                                top: scrollToTop - 80,
                                                 behavior: 'smooth',
                                             });
+
+                                            // we set a timeout to remove the flag after a while
+                                            setTimeout(() => {
+                                                if (isScrollingUp) {
+                                                    window.dispatchEvent(
+                                                        new CustomEvent(
+                                                            'programmatically-scrolling-end'
+                                                        )
+                                                    );
+                                                }
+                                            }, 500);
                                         }}
                                         className={twJoin(
                                             'relative px-6 py-3 rounded-full transition-colors duration-300 z-10',
