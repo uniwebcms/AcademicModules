@@ -643,7 +643,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                     <div className="px-6 md:px-8 pt-2 pb-6">
                         <div className="flex flex-col gap-5">
                             <Link
-                                to="/"
+                                to={login_url}
                                 className="relative text-center px-4 py-3 bg-gray-50 rounded-lg"
                             >
                                 <span className="font-medium text-black">
@@ -656,7 +656,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                 </span>
                             </Link>
                             <Link
-                                to="/"
+                                to={login_url}
                                 className="relative text-center px-4 py-3 bg-primary-600 rounded-lg"
                             >
                                 <span className="font-medium text-white">
@@ -969,6 +969,8 @@ export default function Header(props) {
     const { themeName, main } = block;
 
     const { theme: nextTheme = '', allowTranslucentTop = false } = getNextBlockContext(block);
+
+    const { login_url = '/' } = block.getBlockProperties();
 
     const navigation = block.getBlockLinks({ nested: true });
 
