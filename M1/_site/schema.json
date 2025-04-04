@@ -2218,6 +2218,19 @@
         }
       }
     },
+    "properties": {
+      "login_url": {
+        "label": {
+          "en": "Login URL",
+          "fr": "URL de connexion"
+        },
+        "type": "string",
+        "description": {
+          "en": "The URL to the login page.",
+          "fr": "L'URL de la page de connexion."
+        }
+      }
+    },
     "images": [
       {
         "height": 285,
