@@ -7,6 +7,8 @@ import 'katex/dist/katex.min.css';
 const buildTextNode = (content) => {
     let data = '';
 
+    ////
+
     let linkStart = '';
 
     if (!content || !Array.isArray(content)) return data;
