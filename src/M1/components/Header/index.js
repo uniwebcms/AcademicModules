@@ -830,7 +830,8 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                     )}
                                 />
                             </button>
-                            <button
+                            <a
+                                href={login_url}
                                 className="relative !bg-transparent text-lg px-3 py-2 group !text-text-color"
                                 onMouseEnter={() => handleActionMouseEnter('login')}
                                 // onClick={() => setIsSignInOpen(true)}
@@ -846,8 +847,9 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                         'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-24px)]'
                                     )}
                                 />
-                            </button>
-                            <button
+                            </a>
+                            <a
+                                href={login_url}
                                 className="!ml-3 xl:!ml-4 !bg-transparent text-lg !text-text-color whitespace-nowrap px-5 py-2 border-2 rounded-3xl border-text-color transition-[border-color] duration-200 ease-out hover:border-primary-600"
                                 onMouseEnter={() => handleActionMouseEnter('signup')}
                             >
@@ -857,7 +859,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                                     es: 'Comience gratis',
                                     ch: '免费开始',
                                 })}
-                            </button>
+                            </a>
                         </div>
 
                         {/* Mobile Actions */}
