@@ -804,7 +804,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                         {/* Desktop Right Side Actions */}
                         <div className="hidden lg:flex lg:items-center space-x-0 xl:space-x-1">
                             <button
-                                className="relative !bg-transparent group px-3 py-2"
+                                className="relative !bg-transparent text-text-color group px-3 py-2"
                                 onMouseEnter={() => handleActionMouseEnter('search')}
                             >
                                 <HiSearch className="h-6 w-6" />
@@ -817,7 +817,7 @@ const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, lo
                             </button>
                             <button
                                 ref={languageBtnRef}
-                                className="relative !bg-transparent group px-3 py-2"
+                                className="relative !bg-transparent text-text-color group px-3 py-2"
                                 onMouseEnter={() => handleActionMouseEnter('language')}
                             >
                                 <HiOutlineGlobeAlt className="h-6 w-6" />
