@@ -970,7 +970,10 @@ export default function Header(props) {
 
     const { theme: nextTheme = '', allowTranslucentTop = false } = getNextBlockContext(block);
 
-    const { login_url = '/' } = block.getBlockProperties();
+    let { login_url = '' } = block.getBlockProperties();
+
+    const appDomain = uniweb.getAppDomain();
+    login_url = login_url || `${appDomain}/login`;
 
     const navigation = block.getBlockLinks({ nested: true });
 
