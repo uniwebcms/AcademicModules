@@ -984,7 +984,7 @@ export default function Header(props) {
     let { login_url = '' } = block.getBlockProperties();
 
     const appDomain = uniweb.getAppDomain();
-    login_url = login_url || `${appDomain}/login`;
+    login_url = login_url || `${appDomain}login`;
 
     const navigation = block.getBlockLinks({ nested: true });
 
