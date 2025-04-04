@@ -119,7 +119,16 @@ import SearchManager from './SearchManager';
 //     );
 // };
 
-const NavBar = ({ logo, navigation, floatingOnTop, theme, languages, refresh, logoOnLight }) => {
+const NavBar = ({
+    logo,
+    navigation,
+    floatingOnTop,
+    theme,
+    languages,
+    refresh,
+    logoOnLight,
+    login_url,
+}) => {
     const [isOpen, setIsOpen] = useState(false);
     // const [isSignInOpen, setIsSignInOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -1016,6 +1025,7 @@ export default function Header(props) {
 
     return (
         <NavBar
+            login_url={login_url}
             navigation={navigation}
             logo={logo}
             logoOnLight={logoOnLight}
