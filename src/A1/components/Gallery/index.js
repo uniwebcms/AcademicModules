@@ -18,7 +18,7 @@ function getColumnImages(array, numColumns) {
 export default function Gallery({ block }) {
     const { main } = block;
 
-    const { allow_fullscreen = false, max_column = 4 } = block.getBlockProperties();
+    const { allow_fullscreen = true, max_column = 4 } = block.getBlockProperties();
 
     const images = [];
 
@@ -162,21 +162,25 @@ export default function Gallery({ block }) {
                 <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
                     <button
                         onClick={closeViewer}
-                        className="absolute top-4 right-4 text-gray-400 text-3xl hover:text-white transition"
+                        className="absolute top-4 right-4 text-3xl transition"
                     >
-                        <HiX />
+                        <HiX className="text-gray-400 hover:text-white" />
                     </button>
                     <button
                         onClick={showPrev}
                         disabled={activeIndex === 0}
                         className={twJoin(
                             'absolute left-4 text-3xl transition z-10',
-                            activeIndex === 0
-                                ? 'text-gray-500 cursor-not-allowed'
-                                : 'text-gray-300 hover:text-white'
+                            activeIndex === 0 && 'cursor-not-allowed'
                         )}
                     >
-                        <FaChevronLeft />
+                        <FaChevronLeft
+                            className={twJoin(
+                                activeIndex === 0
+                                    ? 'text-gray-500'
+                                    : 'text-gray-300 hover:text-white'
+                            )}
+                        />
                     </button>
                     <Image
                         profile={getPageProfile()}
@@ -190,12 +194,16 @@ export default function Gallery({ block }) {
                         disabled={activeIndex === images.length - 1}
                         className={twJoin(
                             'absolute right-4 text-3xl transition z-10',
-                            activeIndex === images.length - 1
-                                ? 'text-gray-500 cursor-not-allowed'
-                                : 'text-gray-300 hover:text-white'
+                            activeIndex === images.length - 1 && 'cursor-not-allowed'
                         )}
                     >
-                        <FaChevronRight />
+                        <FaChevronRight
+                            className={twJoin(
+                                activeIndex === images.length - 1
+                                    ? 'text-gray-500'
+                                    : 'text-gray-300 hover:text-white'
+                            )}
+                        />
                     </button>
                 </div>
             )}
