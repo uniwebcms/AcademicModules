@@ -5,8 +5,8 @@ label:
   en: Icon Grid
   fr: Grille d'icônes
 description: 
-  en: A section to show a selection of icons, logos, or other images.
-  fr: Section permettant d'afficher une sélection d'icônes, de logos ou d'autres images.
+  en: A section to show a selection of images in a Logo Clouds style.
+  fr: Une section pour afficher une sélection d'images dans un style Logo Clouds.
 
 category: content
 export: true
@@ -24,6 +24,13 @@ items:
   separator: divider
   elements:
     background:
+      description:
+        en: The image to display.
+        fr: L'image à afficher.
+    link:
+      description:
+        en: Link to a page or external URL when the image is clicked.
+        fr: Lien vers une page ou une URL externe lorsque l'image est cliquée.
 
 images:
   - example.png
