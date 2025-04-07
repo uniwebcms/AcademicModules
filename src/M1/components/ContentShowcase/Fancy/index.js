@@ -178,7 +178,7 @@ export default function Fancy(props) {
                                                         )
                                                     );
                                                 }
-                                            }, 500);
+                                            }, 800);
                                         }}
                                         className={twJoin(
                                             'relative px-6 py-3 rounded-full transition-colors duration-300 z-10',
