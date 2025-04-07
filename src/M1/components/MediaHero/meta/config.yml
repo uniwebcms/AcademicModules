@@ -15,6 +15,14 @@ elements:
   background:
   title:
   subtitle:
+  link:
+    description:
+      en: One or two links to a page or external URL
+      fr: Un ou deux liens vers une page ou une URL externe
+  button:
+    description:
+      en: Full rounded styled button stay below the links
+      fr: Un bouton arrondi plein reste en dessous des liens
   media:
     type: video
 

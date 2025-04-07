@@ -85,12 +85,7 @@ export default function Fancy(props) {
                         <path d="M5 18H3"></path>
                     </svg>
                 </div>
-                <h2
-                    className={twJoin(
-                        'text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r bg-clip-text animate-gradient-x',
-                        'from-heading-color via-secondary-100 to-heading-color text-transparent'
-                    )}
-                >
+                <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r bg-clip-text animate-gradient-x from-heading-color via-secondary-100 to-heading-color text-transparent pb-[3px]">
                     {title}
                 </h2>
                 <SafeHtml
