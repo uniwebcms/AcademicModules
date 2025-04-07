@@ -17,5 +17,38 @@ elements:
       en: The image to display.
       fr: L'image à afficher.
 
+properties:
+  allow_fullscreen:
+    label:
+      en: Allow Image Fullscreen
+      fr: Autoriser l'image en plein écran
+    type: boolean
+    default: false
+    description:
+      en: Whether the image can be showed in fullscreen when being clicked or not.
+      fr: Si l'image peut être affichée en plein écran lorsqu'elle est cliquée ou non.
+  max_column:
+    label:
+      en: Layout Max Column
+      fr: Mise en page Max Colonne
+    type: string
+    default: 4
+    enum:
+    - label: 
+        en: Three
+        fr: Trois
+      value: 3
+    - label: 
+        en: Four
+        fr: Quatre
+      value: 4
+    - label: 
+        en: Five
+        fr: Cinq
+      value: 5
+    description:
+      en: Defines the maximum number of columns displayed on larger screens. A higher value means each image will be shown with a smaller width, allowing more images to fit within a single screen view.
+      fr: Définit le nombre maximum de colonnes affichées sur les écrans plus grands. Une valeur plus élevée signifie que chaque image sera affichée avec une largeur plus petite, permettant à plus d'images de tenir dans une seule vue d'écran.
+
 images:
   - example.png
