@@ -1882,7 +1882,7 @@
           "fr": "Autoriser l'image en plein écran"
         },
         "type": "boolean",
-        "default": false,
+        "default": true,
         "description": {
           "en": "Whether the image can be showed in fullscreen when being clicked or not.",
           "fr": "Si l'image peut être affichée en plein écran lorsqu'elle est cliquée ou non."
