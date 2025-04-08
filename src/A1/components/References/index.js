@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { website, stripTags, Link, Image } from '@uniwebcms/module-sdk';
 import Container from '../_utils/Container';
 import { parseReference, getDateFromIssued } from '../_utils/reference';
@@ -212,8 +212,13 @@ export default function ProfileReferences({ block, input }) {
         args.cards = filteredReferences;
     }
 
+    const containerRef = useRef(null);
+
     return (
-        <Container className="px-6 mx-auto max-w-7xl lg:px-8 flex md:space-x-6 lg:space-x-10">
+        <Container
+            className="px-6 mx-auto max-w-7xl lg:px-8 flex md:space-x-6 lg:space-x-10"
+            ref={containerRef}
+        >
             <Sidebar
                 filter={filter}
                 setFilter={setFilter}
@@ -277,7 +282,7 @@ export default function ProfileReferences({ block, input }) {
                     </h3>
                 )}
                 <div className="block w-full lg:pb-12 lg:border-l lg:pl-12 pt-3.5">
-                    <AdvancedSmartCards {...args} />
+                    <AdvancedSmartCards {...args} containerRef={containerRef} />
                 </div>
                 {/* <ul
                     className={`flex flex-col space-y-6 lg:space-y-10 lg:pb-12 lg:border-l lg:pl-12 pt-3.5`}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { twMerge } from '@uniwebcms/module-sdk';
 
 /**
@@ -16,16 +16,15 @@ import { twMerge } from '@uniwebcms/module-sdk';
  *
  * @returns {JSX.Element} The rendered React component with the specified element, children, and class names.
  */
-export default function ({
-    as: Component = 'section',
-    children,
-    className = '',
-    py = 'py-12 lg:py-24',
-    ...rest
-}) {
-    return (
-        <Component className={twMerge(`${py} relative`, className)} {...rest}>
-            {children}
-        </Component>
-    );
-}
+export default forwardRef(
+    (
+        { as: Component = 'section', children, className = '', py = 'py-12 lg:py-24', ...rest },
+        ref = null
+    ) => {
+        return (
+            <Component className={twMerge(`${py} relative`, className)} {...rest} ref={ref}>
+                {children}
+            </Component>
+        );
+    }
+);

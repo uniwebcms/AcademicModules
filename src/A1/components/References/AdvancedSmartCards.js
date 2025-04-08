@@ -47,6 +47,7 @@ export default function SmartCards(props) {
         sorting = '',
         sort = null,
         groups,
+        containerRef: parentRef,
     } = props;
 
     const [data, setData] = useState([]);
@@ -197,8 +198,12 @@ export default function SmartCards(props) {
     }, []);
 
     useEffect(() => {
-        window.scrollTo({ top: 0 });
-    }, [data.length]);
+        if (parentRef.current) {
+            parentRef.current.scrollIntoView({ block: 'start' });
+        } else {
+            window.scrollTo({ top: 0 });
+        }
+    }, [data.length, parentRef]);
 
     if (!data.length) return null;
 
