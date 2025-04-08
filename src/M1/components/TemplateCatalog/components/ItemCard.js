@@ -28,7 +28,7 @@ const ItemCard = React.memo(({ item }) => {
     }, []);
 
     // Memoize card content to prevent unnecessary re-renders
-    const cardContent = useMemo(() => {
+    const cardInfo = useMemo(() => {
         let { title, description } = item;
 
         description = description ? stripTags(description) : '';
@@ -39,7 +39,7 @@ const ItemCard = React.memo(({ item }) => {
         return (
             <Wrapper
                 className={twJoin(
-                    'my-2 px-1 py-1 relative z-[1] block space-y-0.5',
+                    'block my-2 px-1 py-1 relative space-y-0.5',
                     item.href && 'group cursor-pointer'
                 )}
                 {...wrapperProps}
@@ -53,11 +53,9 @@ const ItemCard = React.memo(({ item }) => {
                 >
                     {title}
                 </p>
-                {description && (
-                    <p className="truncate text-sm text-text-color/70" title={description}>
-                        {description}
-                    </p>
-                )}
+                <p className="truncate text-sm text-text-color/70 h-5" title={description}>
+                    {description}
+                </p>
             </Wrapper>
         );
     }, [item]);
@@ -108,8 +106,8 @@ const ItemCard = React.memo(({ item }) => {
                 </div>
             )}
 
-            {/* Card Content */}
-            {cardContent}
+            {/* Card Info */}
+            {cardInfo}
 
             {/* Overlay for link click */}
             {/* {item.href && <Link to={item.href} className="absolute inset-0 z-[1]" />} */}
