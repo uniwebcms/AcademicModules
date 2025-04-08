@@ -43,7 +43,7 @@ export const parseReference = (profile) => {
     let finalData = { title, DOI: finalDoi, type: 'article-journal', volume, issue, journal };
 
     if (authors) {
-        const { parsedAuthorArray } = init(authors);
+        const { parsedAuthorArray, hasOtherAuthors } = init(authors);
 
         finalData.originalAuthors = authors;
 
@@ -61,6 +61,8 @@ export const parseReference = (profile) => {
 
             return { given: given.trim(), family: `${asterisk ? '*' : ''}${family.trim()}` };
         });
+
+        if (hasOtherAuthors) authors.push({ given: '', family: 'et al.' });
 
         finalData.author = authors;
     }
@@ -334,8 +336,11 @@ const parseAuthors = (authors) => {
 };
 
 const init = (initialValue) => {
-    const { parsedAuthors, parsedType, parsedAccuracy, hasOtherAuthors } =
-        parseAuthors(initialValue);
+    let { parsedAuthors, parsedType, parsedAccuracy, hasOtherAuthors } = parseAuthors(initialValue);
+
+    //trim ',' and ';'
+    parsedAuthors = parsedAuthors.replace(/^[;,]+|[;,]+$/g, '');
+
     let parsedAuthorArray = [];
     let rawMode = false;
     switch (parsedType) {
