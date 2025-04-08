@@ -854,6 +854,48 @@
             "value": "space-around"
           }
         ]
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
       }
     },
     "items": {
@@ -993,6 +1035,48 @@
           "en": "The alignment of the form.",
           "fr": "L'alignement du formulaire."
         }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
       }
     },
     "presets": [
@@ -1115,6 +1199,48 @@
         "description": {
           "en": "The alignment of the content.",
           "fr": "L'alignement du contenu."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -1318,6 +1444,48 @@
         "description": {
           "en": "The layout of the section.",
           "fr": "La mise en page de la section."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -1579,6 +1747,50 @@
         "type": "link"
       }
     },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      }
+    },
     "images": [
       {
         "height": 894,
@@ -1661,6 +1873,50 @@
             "en": "A link attached to the solution item.",
             "fr": "Un lien attaché à l'élément de solution."
           }
+        }
+      }
+    },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -1793,6 +2049,48 @@
         "description": {
           "en": "The alignment of the main content.",
           "fr": "L'alignement du contenu principal."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -2033,6 +2331,48 @@
         "description": {
           "en": "Defines the border radius of the images displayed. The None option has no border radius, the Small option has a slight border radius, the Medium option has a moderate border radius, and the Large option has a significant border radius.",
           "fr": "Définit le rayon de bordure des images affichées. L'option Aucune n'a pas de rayon de bordure, l'option Petite a un léger rayon de bordure, l'option Moyenne a un rayon de bordure modéré et l'option Grande a un rayon de bordure important."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -3045,6 +3385,85 @@
         }
       }
     },
+    "properties": {
+      "alignment": {
+        "label": {
+          "en": "Content Alignment",
+          "fr": "Alignement du contenu"
+        },
+        "type": "string",
+        "default": "left",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          }
+        ],
+        "description": {
+          "en": "The alignment of the content.",
+          "fr": "L'alignement du contenu."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      }
+    },
     "presets": [
       {
         "label": {
@@ -3228,6 +3647,50 @@
         "description": {
           "en": "A phrase that follows the main headline.",
           "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -3492,6 +3955,50 @@
             "fr": "Lien vers une page ou une URL externe lorsque l'image est cliquée."
           },
           "type": "link"
+        }
+      }
+    },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
@@ -4693,6 +5200,50 @@
         "type": "H2"
       }
     },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      }
+    },
     "images": [
       {
         "height": 247,
@@ -4836,6 +5387,50 @@
         }
       }
     },
+    "properties": {
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      }
+    },
     "images": [
       {
         "height": 718,
@@ -4966,6 +5561,48 @@
         "description": {
           "en": "The aspect ratio of the picture (width:height).",
           "fr": "Le rapport d'aspect de l'image (largeur:hauteur)."
+        }
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Spacing",
+          "fr": "Espacement vertical"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Large"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "The space on top and bottom of the layout.",
+          "fr": "L'espace en haut et en bas de la mise en page."
         }
       }
     },
