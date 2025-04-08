@@ -10,8 +10,22 @@ export default function FeatureList({ block, website }) {
     const banner = main.banner;
     const { title = '', subtitle = '' } = main.header || {};
 
+    const { vertical_padding = 'lg' } = block.getBlockProperties();
+
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             {banner ? (
                 <div className="absolute inset-0">
                     <Image
@@ -34,7 +48,11 @@ export default function FeatureList({ block, website }) {
                         </p>
                     ) : null}
                 </div>
-                <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
+                <div
+                    className={`${
+                        title || subtitle ? 'mt-12' : ''
+                    } grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10`}
+                >
                     {items.map((item, index) => {
                         const { banner, title, links, lists } = item;
 

@@ -11,8 +11,22 @@ export default function (props) {
     const links = main.body?.links;
     const link = links?.[0];
 
+    const { vertical_padding = 'lg' } = block.getBlockProperties();
+
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             <div className="relative max-w-7xl mx-auto">
                 <div
                     className={twJoin(

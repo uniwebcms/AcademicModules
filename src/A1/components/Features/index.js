@@ -18,14 +18,26 @@ export default function Features({ block, website }) {
     const { title = '', subtitle = '', pretitle = '' } = main.header || {};
     const link = main.body?.links?.[0];
 
-    const { alignment = 'left' } = block.getBlockProperties();
+    const { alignment = 'left', vertical_padding = 'lg' } = block.getBlockProperties();
+
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
 
     const banner = main.banner;
     if (alignment == 'center')
-        return centerAlign(pretitle, title, subtitle, link, banner, items, website);
+        return centerAlign(pretitle, title, subtitle, link, banner, items, website, py);
 
     return (
-        <Container>
+        <Container py={py}>
             {banner ? (
                 <div className="absolute inset-0">
                     <Image
@@ -141,9 +153,9 @@ export default function Features({ block, website }) {
     );
 }
 
-const centerAlign = (pretitle, title, subtitle, link, banner, items, website) => {
+const centerAlign = (pretitle, title, subtitle, link, banner, items, website, py) => {
     return (
-        <Container>
+        <Container py={py}>
             {banner ? (
                 <div className="absolute inset-0">
                     <Image

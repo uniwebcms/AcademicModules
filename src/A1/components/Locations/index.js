@@ -23,7 +23,7 @@ const formatPhoneNumber = (phoneNumber, ext) => {
 export default function Locations(props) {
     const { website, block, input } = props;
 
-    const { show_single_map = false, zoom } = block.getBlockProperties();
+    const { show_single_map = false, zoom, vertical_padding = 'lg' } = block.getBlockProperties();
 
     const { title = '' } = block.main?.header || {};
     const alignment = block.main?.header?.alignment || 'left';
@@ -37,8 +37,20 @@ export default function Locations(props) {
 
     entries.sort((a, b) => a.title.localeCompare(b.title));
 
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8 mb-12 md:mb-16">
                 <h2
                     className={twJoin(

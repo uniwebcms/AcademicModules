@@ -13,7 +13,11 @@ export default function Cards({ website, block }) {
 
     let cardWidth, cardLayout;
 
-    const { size = 'small', layout = 'start' } = block.getBlockProperties();
+    const {
+        size = 'small',
+        layout = 'start',
+        vertical_padding = 'lg',
+    } = block.getBlockProperties();
 
     if (size === 'small') {
         cardWidth = 'w-64';
@@ -35,18 +39,36 @@ export default function Cards({ website, block }) {
         cardLayout = 'justify-around';
     }
 
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             <div className={'relative max-w-8xl mx-auto px-6 lg:px-8'}>
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-center">
-                    {stripTags(title)}
-                </h2>
+                {!!title && (
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-center">
+                        {stripTags(title)}
+                    </h2>
+                )}
                 {subtitle ? (
                     <h3 className="mt-2 text-lg leading-8 sm:text-xl text-text-color-80 text-center">
                         {stripTags(subtitle)}
                     </h3>
                 ) : null}
-                <div className={`mt-12 flex flex-wrap gap-6 ${cardLayout}`}>
+                <div
+                    className={`${
+                        title || subtitle ? 'mt-12' : ''
+                    } flex flex-wrap gap-6 ${cardLayout}`}
+                >
                     {items.map((item, index) => {
                         const { banner, title, subtitle, paragraphs, links } = item;
 

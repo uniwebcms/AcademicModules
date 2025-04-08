@@ -9,8 +9,22 @@ export default function Solutions({ block, website }) {
 
     const { pretitle = '', title = '', subtitle = '', alignment = '' } = main.header || {};
 
+    let py = '';
+
+    const { vertical_padding = 'lg' } = block.getBlockProperties();
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className={`lg:text-${alignment} px-6`}>
                     {pretitle ? (

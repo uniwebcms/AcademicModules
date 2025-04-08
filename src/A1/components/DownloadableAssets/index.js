@@ -99,16 +99,22 @@ export default function DownloadableAssets({ input, block }) {
 
     return (
         <Container className="px-6 mx-auto max-w-7xl lg:px-8">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-center">
-                {stripTags(title)}
-            </h2>
+            {!!title && (
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-center">
+                    {stripTags(title)}
+                </h2>
+            )}
             {subtitle ? (
                 <p className="mt-2 text-lg leading-8 sm:text-xl text-text-color-80 text-center">
                     {stripTags(subtitle)}
                 </p>
             ) : null}
             <div>
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-20 mt-12">
+                <div
+                    className={`grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-20 ${
+                        title || subtitle ? 'mt-12' : ''
+                    }`}
+                >
                     <Layout profiles={combined} />
                 </div>
             </div>

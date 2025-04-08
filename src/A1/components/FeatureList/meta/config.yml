@@ -1,36 +1,64 @@
-title: 
-  en: Feature with sub features
-  fr: Fonctionnalité avec sous-fonctionnalités
+title:
+    en: Feature with sub features
+    fr: Fonctionnalité avec sous-fonctionnalités
 label:
-  en: Features - Card
-  fr: Fonctionnalités - Carte
-description: 
-  en: A section to display content in individual cards with a background image, every card can have a title, sub-features and a link.
-  fr: Une section pour afficher du contenu dans des cartes individuelles avec une image d'arrière-plan, chaque carte peut avoir un titre, des sous-fonctionnalités et un lien.
+    en: Features - Card
+    fr: Fonctionnalités - Carte
+description:
+    en: A section to display content in individual cards with a background image, every card can have a title, sub-features and a link.
+    fr: Une section pour afficher du contenu dans des cartes individuelles avec une image d'arrière-plan, chaque carte peut avoir un titre, des sous-fonctionnalités et un lien.
 
 category: cards
 export: true
 
 elements:
-  background:
-  title:
-  subtitle:
-
-items:
-  separator: divider
-  elements:
     background:
     title:
-    list:
-      type: list
-      description: 
-        en: A list of texts attached to the solution item.
-        fr: Une liste de textes attachés à l'élément de solution.
-    link:
-      type: link
-      description: 
-        en: A link attached to the solution item.
-        fr: Un lien attaché à l'élément de solution.
+    subtitle:
+
+items:
+    separator: divider
+    elements:
+        background:
+        title:
+        list:
+            type: list
+            description:
+                en: A list of texts attached to the solution item.
+                fr: Une liste de textes attachés à l'élément de solution.
+        link:
+            type: link
+            description:
+                en: A link attached to the solution item.
+                fr: Un lien attaché à l'élément de solution.
+
+properties:
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 
 images:
-  - example.png
+    - example.png

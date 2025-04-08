@@ -1,36 +1,63 @@
-title: 
-  en: Social Connector
-  fr: Connecteur social
+title:
+    en: Social Connector
+    fr: Connecteur social
 label:
-  en: Social Connector
-  fr: Connecteur social
-description: 
-  en: A component renders a newseltter subscription form and a list of social media links.
-  fr: Un composant qui affiche un formulaire d'abonnement à la newsletter et une liste de liens vers les médias sociaux.
+    en: Social Connector
+    fr: Connecteur social
+description:
+    en: A component renders a newseltter subscription form and a list of social media links.
+    fr: Un composant qui affiche un formulaire d'abonnement à la newsletter et une liste de liens vers les médias sociaux.
 input:
-  type: any
-  limit: one
+    type: any
+    limit: one
 
 category: form
 export: true
 
 elements:
-  title:
-    label:
-      en: Newsletter form title
-      fr: Titre du formulaire d'abonnement à la newsletter
-    default: Subscribe for updates
-    description:
-      en: The title of the newsletter subscription form.
-      fr: Le titre du formulaire d'abonnement à la newsletter.
-  subtitle:
-    label:
-      en: Social media links title
-      fr: Titre des liens vers les réseaux sociaux
-    default: Follow us
-    description:
-      en: The title of the social media links.
-      fr: Le titre des liens vers les réseaux sociaux.
+    title:
+        label:
+            en: Newsletter form title
+            fr: Titre du formulaire d'abonnement à la newsletter
+        default: Subscribe for updates
+        description:
+            en: The title of the newsletter subscription form.
+            fr: Le titre du formulaire d'abonnement à la newsletter.
+    subtitle:
+        label:
+            en: Social media links title
+            fr: Titre des liens vers les réseaux sociaux
+        default: Follow us
+        description:
+            en: The title of the social media links.
+            fr: Le titre des liens vers les réseaux sociaux.
 
+properties:
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 images:
-  - example.png
+    - example.png

@@ -1,33 +1,61 @@
-title: 
-  en: Feature Spotlight
-  fr: Fonctionnalités spéciales
-description: 
-  en: A serction for showcasing important information accompanied by a large image or visual.
-  fr: Une fonction permettant de mettre en valeur des informations importantes accompagnées d'une grande image ou d'un visuel.
+title:
+    en: Feature Spotlight
+    fr: Fonctionnalités spéciales
+description:
+    en: A serction for showcasing important information accompanied by a large image or visual.
+    fr: Une fonction permettant de mettre en valeur des informations importantes accompagnées d'une grande image ou d'un visuel.
 label:
-  en: Features - Spotlight
-  fr: Fonctionnalités - Spotlight
+    en: Features - Spotlight
+    fr: Fonctionnalités - Spotlight
 
 category: content
 export: true
 
 items:
-  separator: divider
-  elements:
-    title:
-    text:
-    icon:
-      type: icon
-      description: 
-        en: Icons attached to the feature.
-        fr: Icônes attachées à la fonctionnalité.
-    media:
-      type: image
-    link:
-      type: link
-      description: 
-        en: A link attached to the feature.
-        fr: Un lien attaché à la fonctionnalité.
+    separator: divider
+    elements:
+        title:
+        text:
+        icon:
+            type: icon
+            description:
+                en: Icons attached to the feature.
+                fr: Icônes attachées à la fonctionnalité.
+        media:
+            type: image
+        link:
+            type: link
+            description:
+                en: A link attached to the feature.
+                fr: Un lien attaché à la fonctionnalité.
+
+properties:
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 
 images:
-  - example.png
+    - example.png

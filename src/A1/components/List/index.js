@@ -8,19 +8,38 @@ export default function List({ block, website }) {
 
     const items = block.getBlockItems();
 
+    const { vertical_padding = 'lg' } = block.getBlockProperties();
+
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
     return (
-        <Container>
+        <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="max-w-2xl mx-auto lg:max-w-4xl">
-                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                        {stripTags(title)}
-                    </h2>
+                    {!!title && (
+                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                            {stripTags(title)}
+                        </h2>
+                    )}
                     {subtitle ? (
                         <h3 className="mt-3 leading-8 text-lg md:text-xl lg:text-2xl text-text-color-90">
                             {stripTags(subtitle)}
                         </h3>
                     ) : null}
-                    <div className="mt-12 space-y-20 lg:mt-16 lg:space-y-20">
+                    <div
+                        className={`${
+                            title || subtitle ? 'mt-12' : ''
+                        } space-y-20 lg:mt-16 lg:space-y-20`}
+                    >
                         {items.map((item, index) => {
                             const { banner, title, subtitle, links, paragraphs } = item;
                             const link = links[0];

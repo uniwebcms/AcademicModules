@@ -62,6 +62,32 @@ properties:
                   en: Evenly spaced
                   fr: Espacement égal
               value: space-around
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 
 items:
     separator: divider

@@ -10,7 +10,7 @@ export default function (props) {
 
     const profiles = input.profiles;
 
-    const { layout = 'list' } = block.getBlockProperties();
+    const { layout = 'list', vertical_padding = 'lg' } = block.getBlockProperties();
     const items = block.getBlockItems();
 
     const wrapperClassName =
@@ -23,29 +23,51 @@ export default function (props) {
             : '';
 
     const wrapperStyle =
-        layout === 'snapping' ? { gridTemplateColumns: `repeat(${profiles.length || items.length}, 320px)` } : {};
+        layout === 'snapping'
+            ? { gridTemplateColumns: `repeat(${profiles.length || items.length}, 320px)` }
+            : {};
 
     if (!profiles.length && !items.length) return null;
 
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             {title || link ? (
-                <div className='px-6 mx-auto max-w-7xl lg:px-8 mb-8 md:mb-12 lg:mb-16 flex items-center justify-between'>
-                    <h2 className='text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl'>{stripTags(title)}</h2>
+                <div className="px-6 mx-auto max-w-7xl lg:px-8 mb-8 md:mb-12 lg:mb-16 flex items-center justify-between">
+                    <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+                        {stripTags(title)}
+                    </h2>
                     {link ? (
                         <Link
                             to={website.makeHref(link.href)}
-                            target='_self'
-                            className='text-base md:text-lg lg:text-xl font-medium hover:underline'>
+                            target="_self"
+                            className="text-base md:text-lg lg:text-xl font-medium hover:underline"
+                        >
                             {link.label}
                         </Link>
                     ) : null}
                 </div>
             ) : null}
-            <div className='px-6 mx-auto max-w-7xl lg:px-8'>
+            <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className={wrapperClassName} style={wrapperStyle}>
                     {profiles.length ? (
-                        <Profiles profiles={profiles} website={website} input={input} layout={layout} />
+                        <Profiles
+                            profiles={profiles}
+                            website={website}
+                            input={input}
+                            layout={layout}
+                        />
                     ) : items.length ? (
                         <Items items={items} layout={layout} />
                     ) : null}
@@ -61,17 +83,20 @@ const Profiles = ({ profiles, website, input, layout }) => {
 
         if (layout === 'list') {
             return (
-                <div key={index} className='w-full flex justify-between items-start space-x-12'>
-                    <div className='w-64 h-44 flex-shrink-0'>
-                        <Image profile={profile} type='banner' rounded='rounded-xl' />
+                <div key={index} className="w-full flex justify-between items-start space-x-12">
+                    <div className="w-64 h-44 flex-shrink-0">
+                        <Image profile={profile} type="banner" rounded="rounded-xl" />
                     </div>
-                    <div className='flex-grow h-44 flex flex-col'>
-                        <h3 className='text-lg font-medium md:text-xl lg:text-2xl mb-2'>{title}</h3>
-                        <p className='text-head-color-80 text-base md:text-lg lg:text-xl mb-5'>{subtitle}</p>
+                    <div className="flex-grow h-44 flex flex-col">
+                        <h3 className="text-lg font-medium md:text-xl lg:text-2xl mb-2">{title}</h3>
+                        <p className="text-head-color-80 text-base md:text-lg lg:text-xl mb-5">
+                            {subtitle}
+                        </p>
                         <Link
                             to={input.makeHref(profile)}
-                            target='_self'
-                            className='inline-block w-fit rounded-md px-3 py-1.5 text-sm sm:text-base font-medium bg-link-color/20 text-link-color hover:bg-link-color/10 hover:underline'>
+                            target="_self"
+                            className="inline-block w-fit rounded-md px-3 py-1.5 text-sm sm:text-base font-medium bg-link-color/20 text-link-color hover:bg-link-color/10 hover:underline"
+                        >
                             {website.localize({ en: 'Explore more', es: 'Explorar más' })} →
                         </Link>
                     </div>
@@ -82,19 +107,20 @@ const Profiles = ({ profiles, website, input, layout }) => {
                 <Link
                     key={index}
                     to={input.makeHref(profile)}
-                    target='_self'
+                    target="_self"
                     className={twJoin(
                         'w-full h-52 border border-text-color-30 rounded-lg shadow-md shadow-color-30 overflow-hidden group',
                         layout === 'snapping' && 'snap-center'
-                    )}>
-                    <div className='w-full h-32'>
-                        <Image profile={profile} type='banner' />
+                    )}
+                >
+                    <div className="w-full h-32">
+                        <Image profile={profile} type="banner" />
                     </div>
-                    <div className='w-full h-20 px-4 py-3 relative'>
-                        <h3 className='text-base sm:text-lg font-medium mb-1 truncate leading-6 group-hover:text-link-color'>
+                    <div className="w-full h-20 px-4 py-3 relative">
+                        <h3 className="text-base sm:text-lg font-medium mb-1 truncate leading-6 group-hover:text-link-color">
                             {title}
                         </h3>
-                        <p className='text-text-color-80 text-sm truncate'>{subtitle}</p>
+                        <p className="text-text-color-80 text-sm truncate">{subtitle}</p>
                     </div>
                 </Link>
             );
@@ -108,15 +134,19 @@ const Items = ({ items, layout }) => {
 
         if (layout === 'list') {
             return (
-                <div key={index} className='w-full flex justify-between items-start space-x-12'>
+                <div key={index} className="w-full flex justify-between items-start space-x-12">
                     {banner?.url ? (
-                        <div className='w-64 h-44 flex-shrink-0'>
-                            <Image url={banner.url} rounded='rounded-xl' />
+                        <div className="w-64 h-44 flex-shrink-0">
+                            <Image url={banner.url} rounded="rounded-xl" />
                         </div>
                     ) : null}
-                    <div className='flex-grow h-44 flex flex-col'>
-                        <h3 className='text-lg font-medium  md:text-xl lg:text-2xl mb-2'>{title}</h3>
-                        <p className='text-head-color-80 text-base md:text-lg lg:text-xl mb-5'>{subtitle}</p>
+                    <div className="flex-grow h-44 flex flex-col">
+                        <h3 className="text-lg font-medium  md:text-xl lg:text-2xl mb-2">
+                            {title}
+                        </h3>
+                        <p className="text-head-color-80 text-base md:text-lg lg:text-xl mb-5">
+                            {subtitle}
+                        </p>
                     </div>
                 </div>
             );
@@ -127,17 +157,18 @@ const Items = ({ items, layout }) => {
                     className={twJoin(
                         'w-full h-52 border border-text-color-30 rounded-md shadow-color-30 overflow-hidden group',
                         layout === 'snapping' && 'snap-center'
-                    )}>
+                    )}
+                >
                     {banner?.url ? (
-                        <div className='w-full h-32'>
+                        <div className="w-full h-32">
                             <Image url={banner.url} />
                         </div>
                     ) : null}
-                    <div className='w-full h-20 px-3 py-2 relative group'>
-                        <h3 className='text-base sm:text-lg font-medium mb-1 truncate leading-6  bg-heading-color-10 group-hover:bg-heading-color-0'>
+                    <div className="w-full h-20 px-3 py-2 relative group">
+                        <h3 className="text-base sm:text-lg font-medium mb-1 truncate leading-6  bg-heading-color-10 group-hover:bg-heading-color-0">
                             {title}
                         </h3>
-                        <p className='text-text-color-80 text-sm truncate'>{subtitle}</p>
+                        <p className="text-text-color-80 text-sm truncate">{subtitle}</p>
                     </div>
                 </div>
             );

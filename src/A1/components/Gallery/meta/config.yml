@@ -1,141 +1,167 @@
-title: 
-  en: Image Gallery
-  fr: Galerie d'images
-description: 
-  en: This is a section to showcase your images, plesantly arranged in a masonry layout that dynamically responds to your website.
-  fr: Une section destinée à présenter vos images, disposées dans une disposition en maçonnerie qui s'adapte à votre site web.
+title:
+    en: Image Gallery
+    fr: Galerie d'images
+description:
+    en: This is a section to showcase your images, plesantly arranged in a masonry layout that dynamically responds to your website.
+    fr: Une section destinée à présenter vos images, disposées dans une disposition en maçonnerie qui s'adapte à votre site web.
 label:
-  en: Gallery
-  fr: Galerie
+    en: Gallery
+    fr: Galerie
 
 elements:
-  title:
-    alignment: left,right,center
-  media:
-    type: image
-    description: 
-      en: The image to display.
-      fr: L'image à afficher.
+    title:
+        alignment: left,right,center
+    media:
+        type: image
+        description:
+            en: The image to display.
+            fr: L'image à afficher.
 
 properties:
-  allow_fullscreen:
-    label:
-      en: Allow Image Fullscreen
-      fr: Autoriser l'image en plein écran
-    type: boolean
-    default: true
-    description:
-      en: Whether the image can be showed in fullscreen when being clicked or not.
-      fr: Si l'image peut être affichée en plein écran lorsqu'elle est cliquée ou non.
-  mode:
-    label:
-      en: Gallery Mode
-      fr: Mode Galerie
-    type: string
-    default: masonry
-    enum:
-    - label: 
-        en: Masonry
-        fr: Maçonnerie
-      value: masonry
-    - label: 
-        en: Thumbnail
-        fr: Vignettes
-      value: thumbnail
-    description:
-      en: Defines the layout mode of the gallery. The Masonry mode arranges images in a grid with varying heights, creating a dynamic and visually appealing layout. The Thumbnails mode displays images in a uniform grid, providing a more structured appearance.
-      fr: Définit le mode de mise en page de la galerie. Le mode Maçonnerie dispose les images dans une grille avec des hauteurs variables, créant une mise en page dynamique et visuellement attrayante. Le mode Vignettes affiche les images dans une grille uniforme, offrant une apparence plus structurée.
-  image_size:
-    label:
-      en: Image Size
-      fr: Taille de l'image
-    type: string
-    default: medium
-    enum:
-    - label: 
-        en: Small
-        fr: Petit
-      value: small
-    - label: 
-        en: Medium
-        fr: Moyen
-      value: medium
-    - label: 
-        en: Large
-        fr: Grand
-      value: large
-    description:
-      en: Defines the size of the images displayed. The Small size is ideal for smaller images, the Medium size is suitable for standard images, and the Large size is perfect for showcasing high-resolution images.
-      fr: Définit la taille des images affichées. La petite taille est idéale pour les petites images, la taille moyenne convient aux images standard et la grande taille est parfaite pour mettre en valeur des images haute résolution.
-  image_ratio:
-    label:
-      en: Image Ratio
-      fr: Ratio d'image
-    type: string
-    default: auto
-    enum:
-    - label: 
-        en: 1:1 (Square)
-        fr: 1:1 (Carré)
-      value: square
-    - label: 
-        en: 9:16 (Portrait)
-        fr: 9:16 (Portrait)
-      value: portrait
-    - label: 
-        en: 16:9 (Landscape)
-        fr: 16:9 (Paysage)
-      value: landscape
-    - label: 
-        en: Auto
-        fr: Automatique
-      value: auto
-    description:
-      en: Defines the aspect ratio of the images displayed. The "1:1" ratio is perfect for square images, the "4:3" ratio is ideal for standard images, and the "16:9" ratio is suitable for widescreen images. The Auto option allows the images to maintain their original aspect ratio.
-      fr: Définit le rapport d'aspect des images affichées. Le rapport "1:1" est parfait pour les images carrées, le rapport "4:3" est idéal pour les images standard et le rapport "16:9" convient aux images grand écran. L'option Automatique permet aux images de conserver leur rapport d'aspect d'origine.
-  image_border_radius:
-    label:
-      en: Image Border Radius
-      fr: Rayon de bordure de l'image
-    type: string
-    default: none
-    enum:
-    - label: 
-        en: None
-        fr: Aucun
-      value: none
-    - label: 
-        en: Small
-        fr: Petit
-      value: small
-    - label: 
-        en: Medium
-        fr: Moyen
-      value: medium
-    - label: 
-        en: Large
-        fr: Grand
-      value: large
-    description:
-      en: Defines the border radius of the images displayed. The None option has no border radius, the Small option has a slight border radius, the Medium option has a moderate border radius, and the Large option has a significant border radius.
-      fr: Définit le rayon de bordure des images affichées. L'option Aucune n'a pas de rayon de bordure, l'option Petite a un léger rayon de bordure, l'option Moyenne a un rayon de bordure modéré et l'option Grande a un rayon de bordure important.
+    allow_fullscreen:
+        label:
+            en: Allow Image Fullscreen
+            fr: Autoriser l'image en plein écran
+        type: boolean
+        default: true
+        description:
+            en: Whether the image can be showed in fullscreen when being clicked or not.
+            fr: Si l'image peut être affichée en plein écran lorsqu'elle est cliquée ou non.
+    mode:
+        label:
+            en: Gallery Mode
+            fr: Mode Galerie
+        type: string
+        default: masonry
+        enum:
+            - label:
+                  en: Masonry
+                  fr: Maçonnerie
+              value: masonry
+            - label:
+                  en: Thumbnail
+                  fr: Vignettes
+              value: thumbnail
+        description:
+            en: Defines the layout mode of the gallery. The Masonry mode arranges images in a grid with varying heights, creating a dynamic and visually appealing layout. The Thumbnails mode displays images in a uniform grid, providing a more structured appearance.
+            fr: Définit le mode de mise en page de la galerie. Le mode Maçonnerie dispose les images dans une grille avec des hauteurs variables, créant une mise en page dynamique et visuellement attrayante. Le mode Vignettes affiche les images dans une grille uniforme, offrant une apparence plus structurée.
+    image_size:
+        label:
+            en: Image Size
+            fr: Taille de l'image
+        type: string
+        default: medium
+        enum:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: small
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: medium
+            - label:
+                  en: Large
+                  fr: Grand
+              value: large
+        description:
+            en: Defines the size of the images displayed. The Small size is ideal for smaller images, the Medium size is suitable for standard images, and the Large size is perfect for showcasing high-resolution images.
+            fr: Définit la taille des images affichées. La petite taille est idéale pour les petites images, la taille moyenne convient aux images standard et la grande taille est parfaite pour mettre en valeur des images haute résolution.
+    image_ratio:
+        label:
+            en: Image Ratio
+            fr: Ratio d'image
+        type: string
+        default: auto
+        enum:
+            - label:
+                  en: 1:1 (Square)
+                  fr: 1:1 (Carré)
+              value: square
+            - label:
+                  en: 9:16 (Portrait)
+                  fr: 9:16 (Portrait)
+              value: portrait
+            - label:
+                  en: 16:9 (Landscape)
+                  fr: 16:9 (Paysage)
+              value: landscape
+            - label:
+                  en: Auto
+                  fr: Automatique
+              value: auto
+        description:
+            en: Defines the aspect ratio of the images displayed. The "1:1" ratio is perfect for square images, the "4:3" ratio is ideal for standard images, and the "16:9" ratio is suitable for widescreen images. The Auto option allows the images to maintain their original aspect ratio.
+            fr: Définit le rapport d'aspect des images affichées. Le rapport "1:1" est parfait pour les images carrées, le rapport "4:3" est idéal pour les images standard et le rapport "16:9" convient aux images grand écran. L'option Automatique permet aux images de conserver leur rapport d'aspect d'origine.
+    image_border_radius:
+        label:
+            en: Image Border Radius
+            fr: Rayon de bordure de l'image
+        type: string
+        default: none
+        enum:
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+            - label:
+                  en: Small
+                  fr: Petit
+              value: small
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: medium
+            - label:
+                  en: Large
+                  fr: Grand
+              value: large
+        description:
+            en: Defines the border radius of the images displayed. The None option has no border radius, the Small option has a slight border radius, the Medium option has a moderate border radius, and the Large option has a significant border radius.
+            fr: Définit le rayon de bordure des images affichées. L'option Aucune n'a pas de rayon de bordure, l'option Petite a un léger rayon de bordure, l'option Moyenne a un rayon de bordure modéré et l'option Grande a un rayon de bordure important.
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 
 presets:
-  masonry_md_auto:
-    label:
-      en: Masonry layout with Medium size and Auto ratio
-      fr: Mise en page en maçonnerie avec taille moyenne et ratio automatique
-    properties:
-      mode: masonry
-      image_size: medium
-      image_ratio: auto
-    image: masonry_md_auto.png
-  thumbnail_md_landscape:
-    label:
-      en: Thumbnail layout with Medium size and Landscape ratio
-      fr: Mise en page de vignettes avec taille moyenne et ratio paysage
-    properties:
-      mode: thumbnail
-      image_size: medium
-      image_ratio: landscape
-    image: thumbnail_md_landscape.png
+    masonry_md_auto:
+        label:
+            en: Masonry layout with Medium size and Auto ratio
+            fr: Mise en page en maçonnerie avec taille moyenne et ratio automatique
+        properties:
+            mode: masonry
+            image_size: medium
+            image_ratio: auto
+        image: masonry_md_auto.png
+    thumbnail_md_landscape:
+        label:
+            en: Thumbnail layout with Medium size and Landscape ratio
+            fr: Mise en page de vignettes avec taille moyenne et ratio paysage
+        properties:
+            mode: thumbnail
+            image_size: medium
+            image_ratio: landscape
+        image: thumbnail_md_landscape.png

@@ -1,36 +1,64 @@
-title: 
-  en: Icon Grid
-  fr: Grille d'icônes
+title:
+    en: Icon Grid
+    fr: Grille d'icônes
 label:
-  en: Icon Grid
-  fr: Grille d'icônes
-description: 
-  en: A section to show a selection of images in a Logo Clouds style.
-  fr: Une section pour afficher une sélection d'images dans un style Logo Clouds.
+    en: Icon Grid
+    fr: Grille d'icônes
+description:
+    en: A section to show a selection of images in a Logo Clouds style.
+    fr: Une section pour afficher une sélection d'images dans un style Logo Clouds.
 
 category: content
 export: true
 
 assets:
-  Screenshot.png:
-    title: 
-      en: Basic usage.
-      fr: Utilisation de base.
+    Screenshot.png:
+        title:
+            en: Basic usage.
+            fr: Utilisation de base.
 
 elements:
-  title:
+    title:
 
 items:
-  separator: divider
-  elements:
-    background:
-      description:
-        en: The image to display.
-        fr: L'image à afficher.
-    link:
-      description:
-        en: Link to a page or external URL when the image is clicked.
-        fr: Lien vers une page ou une URL externe lorsque l'image est cliquée.
+    separator: divider
+    elements:
+        background:
+            description:
+                en: The image to display.
+                fr: L'image à afficher.
+        link:
+            description:
+                en: Link to a page or external URL when the image is clicked.
+                fr: Lien vers une page ou une URL externe lorsque l'image est cliquée.
+
+properties:
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 
 images:
-  - example.png
+    - example.png

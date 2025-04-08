@@ -10,7 +10,11 @@ export default function ContactForm({ block, website }) {
 
     const { title = '', subtitle = '' } = main.header || {};
 
-    const { form_align = 'left', mailto = '' } = block.getBlockProperties();
+    const {
+        form_align = 'left',
+        mailto = '',
+        vertical_padding = 'lg',
+    } = block.getBlockProperties();
 
     const phoneNumberRegex =
         /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g;
@@ -24,8 +28,20 @@ export default function ContactForm({ block, website }) {
 
     const right_align = form_align === 'right';
 
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             <div
                 className={twJoin(
                     'mx-auto max-w-7xl flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-6 xl:gap-x-12 lg:gap-y-0',
@@ -40,15 +56,21 @@ export default function ContactForm({ block, website }) {
                     )}
                 >
                     <div className="max-w-full mx-auto lg:mx-0 lg:max-w-lg px-6 lg:px-0">
-                        <h2 className="text-3xl font-bold tracking-tight  md:text-4xl ld:text-5xl">
-                            {stripTags(title)}
-                        </h2>
+                        {!!title && (
+                            <h2 className="text-3xl font-bold tracking-tight  md:text-4xl ld:text-5xl">
+                                {stripTags(title)}
+                            </h2>
+                        )}
                         {subtitle && (
                             <h3 className="mt-4 text-base leading-8 md:text-lg ld:text-xl text-text-color-80">
                                 {stripTags(subtitle)}
                             </h3>
                         )}
-                        <dl className="mt-10 space-y-4 text-base leading-7">
+                        <dl
+                            className={`${
+                                title || subtitle ? 'mt-10' : ''
+                            } space-y-4 text-base leading-7`}
+                        >
                             {addresses.length ? (
                                 <div className="flex gap-x-4">
                                     <dt className="flex-none">

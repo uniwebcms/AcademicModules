@@ -188,6 +188,7 @@ export default function Gallery({ block }) {
         image_size = 'medium',
         image_ratio = 'auto',
         image_border_radius = 'none',
+        vertical_padding = 'lg',
     } = block.getBlockProperties();
 
     const images = [];
@@ -232,8 +233,20 @@ export default function Gallery({ block }) {
 
     if (!images.length) return null;
 
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
     return (
-        <Container>
+        <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <h2
                     className={twJoin(

@@ -10,14 +10,26 @@ export default function Details({ block }) {
 
     const { title = '', subtitle = '' } = main.header || {};
 
-    const { alignment = 'left' } = block.getBlockProperties();
+    const { alignment = 'left', vertical_padding = 'lg' } = block.getBlockProperties();
 
     const items = block.getBlockItems();
 
-    if (alignment === 'center') return centerAligned(title, subtitle, items);
+    let py = '';
+
+    if (vertical_padding === 'none') {
+        py = 'py-0 lg:py-0';
+    } else if (vertical_padding === 'sm') {
+        py = 'py-6 lg:py-12';
+    } else if (vertical_padding === 'md') {
+        py = 'py-8 lg:py-16';
+    } else if (vertical_padding === 'lg') {
+        py = 'py-12 lg:py-24';
+    }
+
+    if (alignment === 'center') return centerAligned(title, subtitle, items, py);
 
     return (
-        <Container>
+        <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8">
                     {alignment === 'right' && (
@@ -64,9 +76,9 @@ export default function Details({ block }) {
     );
 }
 
-function centerAligned(title, subtitle, items) {
+function centerAligned(title, subtitle, items, py) {
     return (
-        <Container>
+        <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="max-w-4xl mx-auto">
                     <div>

@@ -1,69 +1,95 @@
-title: 
-  en: Details
-  fr: Détails
+title:
+    en: Details
+    fr: Détails
 label:
-  en: Details - Accordion
-  fr: Détails - Accordéon
-description: 
-  en: Explain things or answer questions using collapsable blocks of text. Commonly known as an "accordion" section. Content alignment is controlled by the title alignment in the editor.
-  fr: Expliquez des choses ou répondez à des questions en utilisant des blocs de texte réductibles. Communément appelé une section "accordéon". L'alignement du contenu est contrôlé par l'alignement du titre dans l'éditeur.
+    en: Details - Accordion
+    fr: Détails - Accordéon
+description:
+    en: Explain things or answer questions using collapsable blocks of text. Commonly known as an "accordion" section. Content alignment is controlled by the title alignment in the editor.
+    fr: Expliquez des choses ou répondez à des questions en utilisant des blocs de texte réductibles. Communément appelé une section "accordéon". L'alignement du contenu est contrôlé par l'alignement du titre dans l'éditeur.
 
 category: content
 export: true
 
 elements:
-  title:
-  subtitle:
+    title:
+    subtitle:
 
 items:
-  separator: divider
-  elements:
-    title:
-    text:
+    separator: divider
+    elements:
+        title:
+        text:
 
 properties:
-  alignment:
-    label: 
-      en: Content Alignment
-      fr: Alignement du contenu
-    type: string
-    default: left
-    enum:
-      - label: 
-          en: Left
-          fr: Gauche
-        value: left
-      - label: 
-          en: Right
-          fr: Droite
-        value: right
-      - label: 
-          en: Center
-          fr: Centre
-        value: center
-    description: 
-      en: The alignment of the content.
-      fr: L'alignement du contenu.
+    alignment:
+        label:
+            en: Content Alignment
+            fr: Alignement du contenu
+        type: string
+        default: left
+        enum:
+            - label:
+                  en: Left
+                  fr: Gauche
+              value: left
+            - label:
+                  en: Right
+                  fr: Droite
+              value: right
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+        description:
+            en: The alignment of the content.
+            fr: L'alignement du contenu.
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
 
 presets:
-  right:
-    label:
-      en: Content on the Right
-      fr: Contenu à droite
-    properties:
-      alignment: right
-    image: right.png
-  center:
-    label:
-      en: Content in the Center
-      fr: Contenu au centre
-    properties:
-      alignment: center
-    image: center.png
-  left:
-    label:
-      en: Content on the Left
-      fr: Contenu à gauche
-    properties:
-      alignment: left
-    image: left.png
+    right:
+        label:
+            en: Content on the Right
+            fr: Contenu à droite
+        properties:
+            alignment: right
+        image: right.png
+    center:
+        label:
+            en: Content in the Center
+            fr: Contenu au centre
+        properties:
+            alignment: center
+        image: center.png
+    left:
+        label:
+            en: Content on the Left
+            fr: Contenu à gauche
+        properties:
+            alignment: left
+        image: left.png

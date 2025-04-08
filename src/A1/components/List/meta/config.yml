@@ -1,46 +1,74 @@
-title: 
-  en: Detailed List
-  fr: Liste détaillée
+title:
+    en: Detailed List
+    fr: Liste détaillée
 label:
-  en: List
-  fr: Liste
-description: 
-  en: A section to list longer blocks of content one after the other and complemented by titles and images.
-  fr: Une section pour lister des blocs de contenu plus longs l'un après l'autre et complétés par des titres et des images.
+    en: List
+    fr: Liste
+description:
+    en: A section to list longer blocks of content one after the other and complemented by titles and images.
+    fr: Une section pour lister des blocs de contenu plus longs l'un après l'autre et complétés par des titres et des images.
 
 category: list
 export: true
 
 assets:
-  Screenshot.png:
-    title: 
-      en: Two list items with images, titles, text and links.
-      fr: Deux éléments de liste avec des images, des titres, du texte et des liens.
-  List-Dark.png:
-    title: 
-      en: Two rich list items with information and image thumbnail in light mode.
-      fr: Deux éléments de liste enrichie avec des informations et une vignette d'image en mode léger.
-  List-Light.png:
-    title: 
-      en: Two rich list items with information and image thumbnail in dark mode.
-      fr: Deux éléments de liste enrichie avec des informations et une vignette d'image en mode foncé.
+    Screenshot.png:
+        title:
+            en: Two list items with images, titles, text and links.
+            fr: Deux éléments de liste avec des images, des titres, du texte et des liens.
+    List-Dark.png:
+        title:
+            en: Two rich list items with information and image thumbnail in light mode.
+            fr: Deux éléments de liste enrichie avec des informations et une vignette d'image en mode léger.
+    List-Light.png:
+        title:
+            en: Two rich list items with information and image thumbnail in dark mode.
+            fr: Deux éléments de liste enrichie avec des informations et une vignette d'image en mode foncé.
 
 elements:
-  title:
-  subtitle:
-
-items:
-  separator: divider
-  elements:
-    background:
     title:
     subtitle:
-    text:
-    link:
-      type: link
-      description: 
-        en: A link attached to the list item.
-        fr: Un lien attaché à l'élément de liste.
+
+properties:
+    vertical_padding:
+        label:
+            en: Vertical Spacing
+            fr: Espacement vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        description:
+            en: The space on top and bottom of the layout.
+            fr: L'espace en haut et en bas de la mise en page.
+
+items:
+    separator: divider
+    elements:
+        background:
+        title:
+        subtitle:
+        text:
+        link:
+            type: link
+            description:
+                en: A link attached to the list item.
+                fr: Un lien attaché à l'élément de liste.
 
 images:
-  - example.png
+    - example.png
