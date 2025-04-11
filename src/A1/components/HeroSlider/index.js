@@ -127,15 +127,26 @@ const Item = ({ item, properties, block }) => {
     return (
         <div className={show_gradient ? gradient : ''} style={{ height: min_height }}>
             {banner && (
-                <div className="absolute inset-0">
-                    <Image
-                        profile={getPageProfile()}
-                        value={banner.value}
-                        alt={banner.alt}
-                        url={banner.url}
-                        className="object-cover w-full h-full"
-                    />
-                </div>
+                <>
+                    <div className="absolute inset-0">
+                        <Image
+                            profile={getPageProfile()}
+                            value={banner.value}
+                            alt={banner.alt}
+                            url={banner.url}
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
+                    {banner.caption ? (
+                        <figcaption className="absolute bottom-0 w-full">
+                            <div
+                                className={`text-center tracking-normal text-sm outline-none text-text-color-10 bg-text-color/70`}
+                            >
+                                {banner.caption}
+                            </div>
+                        </figcaption>
+                    ) : null}
+                </>
             )}
             {content}
         </div>
@@ -182,12 +193,12 @@ export default function HeroSlider(props) {
                         pauseOnHover
                         leftControl={
                             <div className="w-10 h-10 p-2 rounded-full bg-text-color/60 hover:bg-text-color/70">
-                                <HiOutlineChevronLeft className="w-full h-full text-text-color" />
+                                <HiOutlineChevronLeft className="w-full h-full text-text-color-10" />
                             </div>
                         }
                         rightControl={
                             <div className="w-10 h-10 p-2 rounded-full bg-text-color/60 hover:bg-text-color/70">
-                                <HiOutlineChevronRight className="w-full h-full text-text-color" />
+                                <HiOutlineChevronRight className="w-full h-full text-text-color-10" />
                             </div>
                         }
                         indicators={showIndicator}

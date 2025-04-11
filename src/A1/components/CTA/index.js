@@ -30,6 +30,15 @@ export default function CTA({ block, website }) {
                         alt={image.alt}
                         className="object-cover w-full h-full"
                     />
+                    {image.caption ? (
+                        <figcaption className="absolute bottom-0 w-full">
+                            <div
+                                className={`text-center tracking-normal text-sm outline-none text-text-color-10 bg-text-color/70`}
+                            >
+                                {image.caption}
+                            </div>
+                        </figcaption>
+                    ) : null}
                 </div>
             )}
             <div className="flex flex-col justify-center w-full px-24 py-24 lg:w-1/2">
@@ -66,6 +75,15 @@ export default function CTA({ block, website }) {
                         alt={image.alt}
                         className="object-cover w-full h-full"
                     />
+                    {image.caption ? (
+                        <figcaption className="absolute bottom-0 w-full">
+                            <div
+                                className={`text-center tracking-normal text-sm outline-none text-text-color/70 bg-text-color/70`}
+                            >
+                                {image.caption}
+                            </div>
+                        </figcaption>
+                    ) : null}
                 </div>
             )}
         </Container>

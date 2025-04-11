@@ -79,12 +79,23 @@ export default function Cards({ website, block }) {
                             >
                                 <div className="h-40 w-full">
                                     {banner ? (
-                                        <Image
-                                            profile={getPageProfile()}
-                                            value={banner.value}
-                                            url={banner.url}
-                                            alt={banner.alt}
-                                        ></Image>
+                                        <div className="relative w-full">
+                                            <Image
+                                                profile={getPageProfile()}
+                                                value={banner.value}
+                                                url={banner.url}
+                                                alt={banner.alt}
+                                            ></Image>
+                                            {banner.caption ? (
+                                                <figcaption className="absolute bottom-0 w-full">
+                                                    <div
+                                                        className={`text-center tracking-normal text-sm outline-none text-text-color-10 bg-text-color/70`}
+                                                    >
+                                                        {banner.caption}
+                                                    </div>
+                                                </figcaption>
+                                            ) : null}
+                                        </div>
                                     ) : null}
                                 </div>
                                 <div className="w-full px-4 py-4">

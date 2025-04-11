@@ -48,11 +48,22 @@ export default function Spotlight({ block, website }) {
                 const hasMedia = image || video;
 
                 const media = (
-                    <Media
-                        profile={getPageProfile()}
-                        media={video || image}
-                        className={'rounded-lg'}
-                    />
+                    <>
+                        <Media
+                            profile={getPageProfile()}
+                            media={video || image}
+                            className={'rounded-lg'}
+                        />
+                        {image && image.caption ? (
+                            <figcaption>
+                                <div
+                                    className={`text-center mt-0.5 tracking-normal text-sm outline-none text-text-color/70`}
+                                >
+                                    {image.caption}
+                                </div>
+                            </figcaption>
+                        ) : null}
+                    </>
                 );
 
                 return (
@@ -60,15 +71,7 @@ export default function Spotlight({ block, website }) {
                         <div className="px-6 mx-auto max-w-7xl lg:px-8">
                             <div className="grid max-w-2xl grid-cols-1 mx-auto gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-x-16">
                                 {index % 2 === 0 && hasMedia && (
-                                    <div className="h-full">
-                                        {media}
-                                        {/* <Image
-                                            profile={getPageProfile()}
-                                            value={image.value}
-                                            url={image.url}
-                                            alt={image.alt}
-                                            className='rounded-lg'></Image> */}
-                                    </div>
+                                    <div className="h-full">{media}</div>
                                 )}
                                 <div
                                     className={`${
@@ -107,15 +110,7 @@ export default function Spotlight({ block, website }) {
                                     </div>
                                 </div>
                                 {index % 2 === 1 && hasMedia && (
-                                    <div className="h-full">
-                                        {media}
-                                        {/* <Image
-                                            profile={getPageProfile()}
-                                            value={image.value}
-                                            url={image.url}
-                                            alt={image.alt}
-                                            className='rounded-lg'></Image> */}
-                                    </div>
+                                    <div className="h-full">{media}</div>
                                 )}
                             </div>
                         </div>

@@ -74,6 +74,15 @@ export default function InformationMedia(props) {
                             media={image && video ? video : video || image}
                             thumbnail={image && video ? image : undefined}
                         />
+                        {image && image.caption ? (
+                            <figcaption>
+                                <div
+                                    className={`text-center mt-1.5 tracking-normal text-sm outline-none text-text-color/70`}
+                                >
+                                    {image.caption}
+                                </div>
+                            </figcaption>
+                        ) : null}
                     </div>
                 </div>
             </div>
@@ -169,6 +178,15 @@ const Centered = (props) => {
                             />
                         </div>
                     </div>
+                    {image.caption ? (
+                        <figcaption className="absolute bottom-0 w-full bg-bg-color">
+                            <div
+                                className={`text-center mt-0.5 tracking-normal text-sm outline-none text-text-color/70`}
+                            >
+                                {image.caption}
+                            </div>
+                        </figcaption>
+                    ) : null}
                 </div>
             ) : null}
             {video ? (

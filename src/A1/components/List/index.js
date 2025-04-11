@@ -49,17 +49,28 @@ export default function List({ block, website }) {
                                     key={index}
                                     className="relative flex flex-col gap-8 isolate lg:flex-row"
                                 >
-                                    <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-                                        {banner && (
-                                            <Image
-                                                profile={getPageProfile()}
-                                                value={banner.value}
-                                                alt={banner.alt}
-                                                url={banner.url}
-                                                className="absolute inset-0 object-cover w-full h-full rounded-2xl bg-text-color-10"
-                                            />
-                                        )}
-                                        <div className="absolute inset-0 rounded-2xl" />
+                                    <div className="relative">
+                                        <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+                                            {banner && (
+                                                <Image
+                                                    profile={getPageProfile()}
+                                                    value={banner.value}
+                                                    alt={banner.alt}
+                                                    url={banner.url}
+                                                    className="absolute inset-0 object-cover w-full h-full rounded-2xl bg-text-color-10"
+                                                />
+                                            )}
+                                            <div className="absolute inset-0 rounded-2xl" />
+                                        </div>
+                                        {banner.caption ? (
+                                            <figcaption className="lg:w-64">
+                                                <div
+                                                    className={`text-center mt-0.5 tracking-normal text-sm outline-none text-text-color/70`}
+                                                >
+                                                    {banner.caption}
+                                                </div>
+                                            </figcaption>
+                                        ) : null}
                                     </div>
                                     <div>
                                         <div className="relative max-w-xl group">

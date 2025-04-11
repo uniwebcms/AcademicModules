@@ -18,8 +18,6 @@ elements:
   subtitle:
   link:
     type: link
-  media:
-    type: image
 
 images:
   - example.png

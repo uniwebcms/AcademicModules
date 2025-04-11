@@ -17,14 +17,25 @@ const ItemsRenderer = ({ items, aspectRatio, website }) => {
         return (
             <li key={index}>
                 {banner ? (
-                    <Image
-                        profile={getPageProfile()}
-                        value={banner.value}
-                        alt={banner.alt}
-                        url={banner.url}
-                        className="h-auto w-full rounded-2xl object-cover"
-                        style={{ aspectRatio }}
-                    />
+                    <div className="relative rounded-2xl overflow-hidden">
+                        <Image
+                            profile={getPageProfile()}
+                            value={banner.value}
+                            alt={banner.alt}
+                            url={banner.url}
+                            className="h-auto w-full rounded-2xl object-cover"
+                            style={{ aspectRatio }}
+                        />
+                        {banner.caption ? (
+                            <figcaption className="absolute bottom-0 w-full">
+                                <div
+                                    className={`text-center tracking-normal text-sm outline-none text-text-color-10 bg-text-color/70`}
+                                >
+                                    {banner.caption}
+                                </div>
+                            </figcaption>
+                        ) : null}
+                    </div>
                 ) : null}
                 <h3 className="mt-3 text-lg font-semibold tracking-tight">{stripTags(title)}</h3>
                 <p className="text-text-color-80">{stripTags(subtitle)}</p>
