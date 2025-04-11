@@ -727,13 +727,6 @@
           "en": "A link",
           "fr": "Un lien"
         }
-      },
-      "media": {
-        "type": "image",
-        "description": {
-          "en": "The primary visual content.",
-          "fr": "Le contenu visuel principal."
-        }
       }
     },
     "images": [
