@@ -14,21 +14,6 @@ const setItemFilterInfo = (item, config) => {
             }
         });
     }
-
-    // random given preview url (manual made video, youtube or vimeo)
-    const manualVideo = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm';
-    const ytbVideo = 'https://www.youtube.com/watch?v=wDchsz8nmbo&pp=ygUMc2FtcGxlIHZpZGVv';
-    const vimeoVideo = 'https://vimeo.com/671676988';
-
-    const videoOptions = [manualVideo, ytbVideo, vimeoVideo];
-    const videoType = ['video', 'youtube', 'vimeo']; // 'uniweb'
-
-    const index = Math.floor(Math.random() * videoOptions.length);
-
-    item.preview = {
-        src: videoOptions[index],
-        type: videoType[index],
-    };
 };
 
 export const normalizeData = (input, config) => {
@@ -43,7 +28,7 @@ export const normalizeData = (input, config) => {
                 : head.metadata
             : {};
 
-        const { category } = metadata;
+        const { category, previewVideo } = metadata;
 
         const { url: src, alt } = profile.getImageInfo('banner', 'lg');
 
@@ -91,6 +76,14 @@ export const normalizeData = (input, config) => {
             libraryType: stylerType,
             lastEdit: head.last_edit,
         };
+
+        if (previewVideo) {
+            const { type, src } = previewVideo;
+            item.preview = {
+                src,
+                type,
+            };
+        }
 
         setItemFilterInfo(item, config);
 
