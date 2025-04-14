@@ -300,13 +300,27 @@ export default function Gallery({ block }) {
                             )}
                         />
                     </button>
-                    <Image
-                        profile={getPageProfile()}
-                        value={images[activeIndex].value}
-                        url={images[activeIndex].url}
-                        alt={images[activeIndex].alt}
-                        className="h-[90vh] w-auto max-w-[95vw] max-h-[700px]"
-                    />
+                    <div className="flex flex-col items-center gap-2">
+                        <Image
+                            profile={getPageProfile()}
+                            value={images[activeIndex].value}
+                            url={images[activeIndex].url}
+                            alt={images[activeIndex].alt}
+                            className="h-[90vh] w-auto max-w-[95vw] max-h-[700px]"
+                        />
+                        <div className="h-10">
+                            {images[activeIndex].caption && (
+                                <figcaption>
+                                    <div
+                                        className="text-center tracking-normal text-sm outline-none text-white line-clamp-2"
+                                        title={images[activeIndex].caption}
+                                    >
+                                        {images[activeIndex].caption}
+                                    </div>
+                                </figcaption>
+                            )}
+                        </div>
+                    </div>
                     <button
                         onClick={showNext}
                         disabled={activeIndex === images.length - 1}
