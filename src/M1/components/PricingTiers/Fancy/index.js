@@ -26,6 +26,7 @@ export default function Fancy(props) {
         setBillingCycle,
         calculateDisplayPrice,
         billing_cycle_switcher,
+        card_size,
     } = props;
 
     const toggleSwitch = () => {
@@ -121,7 +122,15 @@ export default function Fancy(props) {
                         </p>
                     )}
                 </div>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div
+                    className={twJoin(
+                        'grid',
+                        card_size === 'medium' &&
+                            'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8',
+                        card_size === 'small' &&
+                            'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+                    )}
+                >
                     {items.map((item, index) => {
                         const { pretitle, title, subtitle, buttons, icons, links, lists } = item;
 
@@ -160,20 +169,39 @@ export default function Fancy(props) {
                                                 />
                                             </div>
                                         )}
-                                        <h3 className={twJoin('text-xl font-bold')}>{pretitle}</h3>
+                                        <h3
+                                            className={twJoin(
+                                                'font-bold',
+                                                card_size === 'medium' && 'text-lg lg:text-xl',
+                                                card_size === 'small' && 'text-base lg:text-lg'
+                                            )}
+                                        >
+                                            {pretitle}
+                                        </h3>
                                     </div>
                                     <div className="mb-6">
                                         {!isNaN(title) ? (
                                             <>
                                                 <span
                                                     className={twJoin(
-                                                        'text-4xl font-bold',
-                                                        'text-heading-color'
+                                                        'font-bold',
+                                                        'text-heading-color',
+                                                        card_size === 'medium' &&
+                                                            'text-2xl lg:text-3xl xl:text-4xl',
+                                                        card_size === 'small' &&
+                                                            'text-xl lg:text-2xl xl:text-3xl'
                                                     )}
                                                 >
                                                     {calculateDisplayPrice(title)}
                                                 </span>
-                                                <span className={twJoin('text-text-color')}>
+                                                <span
+                                                    className={twJoin(
+                                                        'text-text-color',
+                                                        card_size === 'small'
+                                                            ? 'text-sm'
+                                                            : 'text-base'
+                                                    )}
+                                                >
                                                     /
                                                     {billingCycle === 'yearly'
                                                         ? website.localize({
@@ -193,8 +221,10 @@ export default function Fancy(props) {
                                         ) : (
                                             <span
                                                 className={twJoin(
-                                                    'text-2xl font-bold',
-                                                    'text-heading-color'
+                                                    'font-bold',
+                                                    'text-heading-color',
+                                                    card_size === 'medium' && 'text-xl lg:text-2xl',
+                                                    card_size === 'small' && 'text-lg lg:text-xl'
                                                 )}
                                             >
                                                 {title}
@@ -225,7 +255,8 @@ export default function Fancy(props) {
                                                 key={f_index}
                                                 className={twJoin(
                                                     'group/item flex items-center',
-                                                    'text-neutral-300'
+                                                    'text-neutral-300',
+                                                    card_size === 'small' ? 'text-sm' : 'text-base'
                                                 )}
                                             >
                                                 <div
@@ -243,7 +274,8 @@ export default function Fancy(props) {
                                             to={actionLink.route}
                                             className={twJoin(
                                                 'block w-full py-2 px-4 rounded-lg font-medium transition-colors opacity-70 text-center cursor-pointer',
-                                                'bg-neutral-700 hover:bg-neutral-600 text-heading-color'
+                                                'bg-neutral-700 hover:bg-neutral-600 text-heading-color',
+                                                card_size === 'small' ? 'text-sm' : 'text-base'
                                             )}
                                         >
                                             {actionLink.label}

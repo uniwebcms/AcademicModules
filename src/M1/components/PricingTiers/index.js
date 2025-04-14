@@ -17,7 +17,7 @@ const primaryTireButtonStyle = 'bg-primary-600 text-white shadow-sm hover:bg-pri
 const secondaryTireButtonStyle = 'bg-secondary-600 text-white shadow-sm hover:bg-secondary-500';
 const defaultBadgedTireButtonStyle = 'text-bg-color bg-text-color-70 hover:bg-text-color-60';
 const defaultTireButtonStyle =
-    'text-text-color-70 ring-1 ring-inset ring-text-color-20 hover:ring-text-color-30';
+    'text-text-color-80 ring-1 ring-inset ring-text-color-30 hover:ring-text-color-40';
 
 const PriceTier = (props) => {
     const {
@@ -31,6 +31,7 @@ const PriceTier = (props) => {
         icons,
         billingCycle,
         calculateDisplayPrice,
+        cardSize,
     } = props;
 
     const link = links[0];
@@ -43,8 +44,8 @@ const PriceTier = (props) => {
             ? primaryTireRingStyle
             : badge.attrs.style === 'secondary'
             ? secondaryTireRingStyle
-            : 'ring-1 ring-text-color-20'
-        : 'ring-1 ring-text-color-20';
+            : 'ring-1 ring-text-color-30'
+        : 'ring-1 ring-text-color-30';
 
     let pretitleStyle = badge
         ? badge.attrs.style === 'primary'
@@ -65,11 +66,23 @@ const PriceTier = (props) => {
 
     const price = (
         <p className="flex items-baseline gap-x-1">
-            <span className="text-4xl font-semibold tracking-tight">
+            <span
+                className={twJoin(
+                    'font-semibold tracking-tight',
+                    cardSize === 'small' && 'text-xl md:text-2xl lg:text-3xl',
+                    cardSize === 'medium' && 'text-2xl md:text-3xl lg:text-4xl'
+                )}
+            >
                 {!isNaN(amount) ? calculateDisplayPrice(amount) : amount}
             </span>
             {!isNaN(amount) && (
-                <span className="text-sm/6 font-medium text-text-color-60">
+                <span
+                    className={twJoin(
+                        'text-sm/6 font-medium text-text-color-60',
+                        'text-neutral-300',
+                        cardSize === 'small' ? 'text-sm' : 'text-base'
+                    )}
+                >
                     /
                     {billingCycle === 'yearly'
                         ? website.localize({
@@ -111,7 +124,15 @@ const PriceTier = (props) => {
                 {pretitle && (
                     <div className={twJoin('mb-3 flex items-center gap-x-3', pretitleStyle)}>
                         {icon && <Icon icon={icon} className="h-6 w-6 flex-none text-inherit" />}
-                        <span className="text-lg lg:text-xl font-semibold">{pretitle}</span>
+                        <span
+                            className={twJoin(
+                                'font-semibold',
+                                cardSize === 'small' && 'text-base lg:text-lg',
+                                cardSize === 'medium' && 'text-lg lg:text-xl'
+                            )}
+                        >
+                            {pretitle}
+                        </span>
                     </div>
                 )}
                 {price}
@@ -135,7 +156,10 @@ const PriceTier = (props) => {
                             />
                             <SafeHtml
                                 value={feature}
-                                className="text-sm lg:text-base text-text-color-60"
+                                className={twJoin(
+                                    'text-text-color-70',
+                                    cardSize === 'small' ? 'text-sm' : 'text-sm lg:text-base'
+                                )}
                             />
                         </li>
                     ))}
@@ -241,7 +265,7 @@ const BillingCycleSwitch = ({ billingCycle, setBillingCycle, paragraphs }) => {
                 value={paragraphs}
                 className={twJoin(
                     'text-sm font-medium',
-                    billingCycle === 'yearly' ? 'text-green-500' : 'text-text-color-30'
+                    billingCycle === 'yearly' ? 'text-green-500' : 'text-text-color-50'
                 )}
             />
         </div>
@@ -259,6 +283,7 @@ export default function PricingTiers(props) {
         billing_cycle_switcher = false,
         yearly_price_multiplier = 12,
         appearance = 'subtle',
+        card_size = 'medium',
     } = block.getBlockProperties();
 
     const [billingCycle, setBillingCycle] = useState(default_billing_cycle);
@@ -302,13 +327,22 @@ export default function PricingTiers(props) {
                     ) : null}
                 </div>
                 {items.length ? (
-                    <div className="mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+                    <div
+                        className={twJoin(
+                            'mt-12 sm:mt-16 lg:mt-20 px-6 md:px-8 lg:px-16 xl:px-24 max-w-8xl mx-auto grid',
+                            card_size === 'medium' &&
+                                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10',
+                            card_size === 'small' &&
+                                'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+                        )}
+                    >
                         {items.map((item, index) => (
                             <PriceTier
                                 key={index}
                                 {...item}
                                 billingCycle={billingCycle}
                                 calculateDisplayPrice={calculateDisplayPrice}
+                                cardSize={card_size}
                             />
                         ))}
                     </div>
@@ -327,6 +361,7 @@ export default function PricingTiers(props) {
                     calculateDisplayPrice,
                     billing_cycle_switcher,
                     setBillingCycle,
+                    card_size,
                 }}
             />
         );
