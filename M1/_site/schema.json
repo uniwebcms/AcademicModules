@@ -3303,6 +3303,34 @@
           "en": "The appearance of the pricing tiers.",
           "fr": "L'apparence des niveaux de tarification."
         }
+      },
+      "card_size": {
+        "label": {
+          "en": "Card Size",
+          "fr": "Taille de la carte"
+        },
+        "type": "string",
+        "default": "medium",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "medium"
+          }
+        ],
+        "description": {
+          "en": "The size of the pricing tier cards.",
+          "fr": "La taille des cartes de tarification."
+        }
       }
     },
     "presets": [
