@@ -86,7 +86,7 @@ export default function Cards({ website, block }) {
                         return (
                             <div
                                 key={index}
-                                className={`${cardWidth} border border-text-color-20 rounded`}
+                                className={`${cardWidth} border border-text-color-20 rounded bg-bg-color-70`}
                             >
                                 <div className={twJoin('w-full', imageAspectRatio)}>
                                     {banner ? (
