@@ -68,7 +68,9 @@ export default function Modal(props) {
                                 >
                                     <div className="flex items-center justify-between gap-3 mb-2">
                                         <div className="flex items-center gap-3">
-                                            <Icon className="w-5 h-5 text-neutral-800" />
+                                            {Icon ? (
+                                                <Icon className="w-5 h-5 text-neutral-800" />
+                                            ) : null}
                                             <h3 className="text-lg font-semibold text-neutral-900">
                                                 {title}
                                             </h3>
