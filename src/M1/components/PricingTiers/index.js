@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import Container from '../_utils/Container';
 import { formatToCAD } from '../_utils/pricing';
 import { Link, twJoin, SafeHtml, Icon, website, stripTags } from '@uniwebcms/module-sdk';
@@ -38,14 +38,12 @@ const PriceTier = (props) => {
         setActiveFeature,
     } = props;
 
-    const hasPopup = (feature) => {
-        return properties['popups']?.[stripTags(feature)] ?? false;
-    };
-
     const link = links[0];
     const badge = buttons?.[0];
     const features = lists[0]?.map((item) => item.paragraphs[0]) || [];
     const icon = icons[0];
+
+    const popup = properties['popup'];
 
     let borderStyle = badge
         ? badge.attrs.style === 'primary'
@@ -112,7 +110,15 @@ const PriceTier = (props) => {
 
     return (
         <div
-            className={twJoin('relative w-full h-full flex flex-col rounded-3xl p-8', borderStyle)}
+            className={twJoin(
+                'relative w-full h-full flex flex-col rounded-3xl p-8 group',
+                borderStyle
+            )}
+            onClick={() => {
+                if (popup) {
+                    setActiveFeature(popup);
+                }
+            }}
         >
             <div className="flex flex-col flex-grow">
                 {pretitle && (
@@ -142,48 +148,21 @@ const PriceTier = (props) => {
                     />
                 ) : null}
                 <ul role="list" className="mt-6 space-y-3">
-                    {features.map((feature, index) => {
-                        const popup = hasPopup(feature);
-
-                        return (
-                            <li
-                                key={index}
-                                className="flex gap-x-3"
-                                onClick={() => {
-                                    if (popup) {
-                                        setActiveFeature(popup);
-                                    }
-                                }}
-                            >
-                                <HiCheck
-                                    aria-hidden="true"
-                                    className="h-5 w-5 flex-none text-green-600"
-                                />
-                                <div
-                                    className={twJoin(
-                                        'flex-grow flex justify-between gap-x-3 group',
-                                        popup && 'cursor-pointer'
-                                    )}
-                                >
-                                    <SafeHtml
-                                        value={feature}
-                                        className={twJoin(
-                                            'text-text-color-80',
-                                            popup && 'group-hover:text-text-color',
-                                            cardSize === 'small'
-                                                ? 'text-sm'
-                                                : 'text-sm lg:text-base'
-                                        )}
-                                    />
-                                    {hasPopup(feature) && (
-                                        <div className="invisible group-hover:visible h-5 w-5 border border-text-color-90 p-0.5 rounded-full">
-                                            <AiOutlineQuestion className="w-full h-full text-text-color" />
-                                        </div>
-                                    )}
-                                </div>
-                            </li>
-                        );
-                    })}
+                    {features.map((feature, index) => (
+                        <li key={index} className="flex gap-x-3">
+                            <HiCheck
+                                aria-hidden="true"
+                                className="h-5 w-5 flex-none text-green-600"
+                            />
+                            <SafeHtml
+                                value={feature}
+                                className={twJoin(
+                                    'text-text-color-80',
+                                    cardSize === 'small' ? 'text-sm' : 'text-sm lg:text-base'
+                                )}
+                            />
+                        </li>
+                    ))}
                 </ul>
             </div>
 
@@ -213,6 +192,11 @@ const PriceTier = (props) => {
                     >
                         {badge.content}
                     </div>
+                </div>
+            )}
+            {popup && (
+                <div className="absolute invisible group-hover:visible top-4 right-4 h-5 w-5 border border-text-color-90 p-0.5 rounded-full cursor-pointer">
+                    <AiOutlineQuestion className="w-full h-full text-text-color" />
                 </div>
             )}
         </div>

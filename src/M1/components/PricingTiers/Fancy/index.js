@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
 import { twJoin, stripTags, website, Icon, Link } from '@uniwebcms/module-sdk';
+import { AiOutlineQuestion } from 'react-icons/ai';
 
 const tierItemIconColors = ['text-secondary-500', 'text-primary-500', 'text-accent-500'];
 
@@ -150,9 +151,7 @@ export default function Fancy(props) {
                             lists[0]?.map((item) => item.paragraphs[0])?.filter(Boolean) || [];
                         const actionLink = links[0];
 
-                        const hasPopup = (feature) => {
-                            return properties['popups']?.[stripTags(feature)] ?? false;
-                        };
+                        const popup = properties['popup'];
 
                         return (
                             <div
@@ -162,6 +161,11 @@ export default function Fancy(props) {
                                     'bg-neutral-800/50 border-neutral-700/50 hover:bg-neutral-800/70',
                                     badge && 'ring-2 ring-secondary-500'
                                 )}
+                                onClick={() => {
+                                    if (popup) {
+                                        setActiveFeature(popup);
+                                    }
+                                }}
                             >
                                 {badge && (
                                     <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -264,39 +268,24 @@ export default function Fancy(props) {
                                 ></div>
                                 <div className="flex flex-col flex-grow p-6">
                                     <ul className="flex-grow space-y-3 mb-8">
-                                        {features.map((feature, f_index) => {
-                                            const popup = hasPopup(feature);
-
-                                            return (
-                                                <li
-                                                    key={f_index}
+                                        {features.map((feature, f_index) => (
+                                            <li
+                                                key={f_index}
+                                                className={twJoin(
+                                                    'group/item flex items-center',
+                                                    'text-neutral-300',
+                                                    card_size === 'small' ? 'text-sm' : 'text-base'
+                                                )}
+                                            >
+                                                <div
                                                     className={twJoin(
-                                                        'group/item flex items-center',
-                                                        'text-neutral-300',
-                                                        card_size === 'small'
-                                                            ? 'text-sm'
-                                                            : 'text-base',
-                                                        popup &&
-                                                            'cursor-help hover:text-neutral-200'
+                                                        'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
+                                                        tierItemFeatureBulletFromColors[index % 3]
                                                     )}
-                                                    onClick={() => {
-                                                        if (popup) {
-                                                            setActiveFeature(popup);
-                                                        }
-                                                    }}
-                                                >
-                                                    <div
-                                                        className={twJoin(
-                                                            'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
-                                                            tierItemFeatureBulletFromColors[
-                                                                index % 3
-                                                            ]
-                                                        )}
-                                                    ></div>
-                                                    {stripTags(feature)}
-                                                </li>
-                                            );
-                                        })}
+                                                ></div>
+                                                {stripTags(feature)}
+                                            </li>
+                                        ))}
                                     </ul>
                                     {actionLink && (
                                         <Link
@@ -311,6 +300,11 @@ export default function Fancy(props) {
                                         </Link>
                                     )}
                                 </div>
+                                {popup && (
+                                    <div className="absolute invisible group-hover:visible top-4 right-4 h-5 w-5 border border-text-color-90 p-0.5 rounded-full cursor-pointer">
+                                        <AiOutlineQuestion className="w-full h-full text-text-color" />
+                                    </div>
+                                )}
                             </div>
                         );
                     })}
