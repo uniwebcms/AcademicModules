@@ -1,61 +1,61 @@
 {
   "version": "0.1.0",
-  "generatedAt": "2025-03-11T19:46:14.694Z",
+  "generatedAt": "2025-04-15T12:21:55.028Z",
   "files": [
     {
-      "name": "main.8bcb57dd427dbc14caa0.js",
-      "size": 315079,
-      "hash": "c13364aee54015a38a1a"
+      "name": "main.3668fe6c0769c513fe80.js",
+      "size": 11642126,
+      "hash": "e239b97d26ede3c44180"
     },
     {
       "name": "remoteEntry.js",
       "size": 6591,
-      "hash": "c13364aee54015a38a1a"
+      "hash": "e239b97d26ede3c44180"
     },
     {
       "name": "main.5c69daed4f58c15da0a2.js",
       "size": 6607,
-      "hash": "c13364aee54015a38a1a"
+      "hash": "e239b97d26ede3c44180"
     },
     {
-      "name": "main.349197110c99f4d70687.js",
+      "name": "main.fc9f4a28346ed323238c.js",
       "size": 132723,
-      "hash": "c13364aee54015a38a1a"
+      "hash": "e239b97d26ede3c44180"
     },
     {
-      "name": "main.d72aa8b385017cfd1e80.js",
-      "size": 202232,
-      "hash": "c13364aee54015a38a1a"
+      "name": "main.576ffbf7500ab06539ed.js",
+      "size": 204549,
+      "hash": "e239b97d26ede3c44180"
     },
     {
-      "name": "main.b3cdf3ffac5bb4840d2b.js",
-      "size": 188567,
-      "hash": "c13364aee54015a38a1a"
+      "name": "main.3e8d23bed56453eee657.js",
+      "size": 11511940,
+      "hash": "e239b97d26ede3c44180"
     },
     {
       "name": "schema.json",
       "size": 1087,
-      "hash": "c13364aee54015a38a1a"
+      "hash": "e239b97d26ede3c44180"
     },
     {
-      "name": "main.349197110c99f4d70687.js.LICENSE.txt",
+      "name": "main.3e8d23bed56453eee657.js.LICENSE.txt",
+      "size": 17889,
+      "hash": "e239b97d26ede3c44180"
+    },
+    {
+      "name": "main.fc9f4a28346ed323238c.js.LICENSE.txt",
       "size": 483,
-      "hash": "c13364aee54015a38a1a"
+      "hash": "e239b97d26ede3c44180"
     },
     {
       "name": "main.5c69daed4f58c15da0a2.js.LICENSE.txt",
       "size": 237,
-      "hash": "c13364aee54015a38a1a"
+      "hash": "e239b97d26ede3c44180"
     },
     {
-      "name": "main.8bcb57dd427dbc14caa0.js.LICENSE.txt",
-      "size": 249,
-      "hash": "c13364aee54015a38a1a"
-    },
-    {
-      "name": "main.b3cdf3ffac5bb4840d2b.js.LICENSE.txt",
-      "size": 249,
-      "hash": "c13364aee54015a38a1a"
+      "name": "main.3668fe6c0769c513fe80.js.LICENSE.txt",
+      "size": 17889,
+      "hash": "e239b97d26ede3c44180"
     }
   ]
 }

@@ -774,8 +774,8 @@
     "properties": {
       "size": {
         "label": {
-          "en": "Card Width",
-          "fr": "Largeur de la carte"
+          "en": "Card Size",
+          "fr": "Taille de la carte"
         },
         "type": "string",
         "default": "small",
@@ -888,6 +888,41 @@
         "description": {
           "en": "The space on top and bottom of the layout.",
           "fr": "L'espace en haut et en bas de la mise en page."
+        }
+      },
+      "image_aspect_ratio": {
+        "label": {
+          "en": "Image Aspect Ratio",
+          "fr": "Ratio d'aspect de l'image"
+        },
+        "type": "string",
+        "default": "landscape",
+        "enum": [
+          {
+            "label": {
+              "en": "Landscape",
+              "fr": "Paysage"
+            },
+            "value": "landscape"
+          },
+          {
+            "label": {
+              "en": "Portrait",
+              "fr": "Portrait"
+            },
+            "value": "portrait"
+          },
+          {
+            "label": {
+              "en": "Square",
+              "fr": "Carré"
+            },
+            "value": "square"
+          }
+        ],
+        "description": {
+          "en": "The aspect ratio of the image.",
+          "fr": "Le ratio d'aspect de l'image."
         }
       }
     },
