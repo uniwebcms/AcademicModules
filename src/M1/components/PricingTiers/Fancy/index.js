@@ -24,6 +24,7 @@ export default function Fancy(props) {
         items,
         billingCycle,
         setBillingCycle,
+        setActiveFeature,
         calculateDisplayPrice,
         billing_cycle_switcher,
         card_size,
@@ -132,13 +133,26 @@ export default function Fancy(props) {
                     )}
                 >
                     {items.map((item, index) => {
-                        const { pretitle, title, subtitle, buttons, icons, links, lists } = item;
+                        const {
+                            pretitle,
+                            title,
+                            subtitle,
+                            buttons,
+                            icons,
+                            links,
+                            lists,
+                            properties,
+                        } = item;
 
                         const badge = buttons?.[0];
                         const icon = icons?.[0];
                         const features =
                             lists[0]?.map((item) => item.paragraphs[0])?.filter(Boolean) || [];
                         const actionLink = links[0];
+
+                        const hasPopup = (feature) => {
+                            return properties['popups']?.[stripTags(feature)] ?? false;
+                        };
 
                         return (
                             <div
@@ -250,24 +264,39 @@ export default function Fancy(props) {
                                 ></div>
                                 <div className="flex flex-col flex-grow p-6">
                                     <ul className="flex-grow space-y-3 mb-8">
-                                        {features.map((feature, f_index) => (
-                                            <li
-                                                key={f_index}
-                                                className={twJoin(
-                                                    'group/item flex items-center',
-                                                    'text-neutral-300',
-                                                    card_size === 'small' ? 'text-sm' : 'text-base'
-                                                )}
-                                            >
-                                                <div
+                                        {features.map((feature, f_index) => {
+                                            const popup = hasPopup(feature);
+
+                                            return (
+                                                <li
+                                                    key={f_index}
                                                     className={twJoin(
-                                                        'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
-                                                        tierItemFeatureBulletFromColors[index % 3]
+                                                        'group/item flex items-center',
+                                                        'text-neutral-300',
+                                                        card_size === 'small'
+                                                            ? 'text-sm'
+                                                            : 'text-base',
+                                                        popup &&
+                                                            'cursor-help hover:text-neutral-200'
                                                     )}
-                                                ></div>
-                                                {stripTags(feature)}
-                                            </li>
-                                        ))}
+                                                    onClick={() => {
+                                                        if (popup) {
+                                                            setActiveFeature(popup);
+                                                        }
+                                                    }}
+                                                >
+                                                    <div
+                                                        className={twJoin(
+                                                            'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
+                                                            tierItemFeatureBulletFromColors[
+                                                                index % 3
+                                                            ]
+                                                        )}
+                                                    ></div>
+                                                    {stripTags(feature)}
+                                                </li>
+                                            );
+                                        })}
                                     </ul>
                                     {actionLink && (
                                         <Link

@@ -1,10 +1,12 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Container from '../_utils/Container';
 import { formatToCAD } from '../_utils/pricing';
-import { Link, twJoin, SafeHtml, Icon, website } from '@uniwebcms/module-sdk';
+import { Link, twJoin, SafeHtml, Icon, website, stripTags } from '@uniwebcms/module-sdk';
+import { AiOutlineQuestion } from 'react-icons/ai';
 import { HiCheck } from 'react-icons/hi';
 import { Switch } from '@headlessui/react';
 import Fancy from './Fancy';
+import Modal from './components/Modal';
 
 const primaryTireRingStyle = 'ring-2 ring-primary-600';
 const secondaryTireRingStyle = 'ring-2 ring-secondary-600';
@@ -29,10 +31,16 @@ const PriceTier = (props) => {
         buttons,
         lists,
         icons,
+        properties,
         billingCycle,
         calculateDisplayPrice,
         cardSize,
+        setActiveFeature,
     } = props;
+
+    const hasPopup = (feature) => {
+        return properties['popups']?.[stripTags(feature)] ?? false;
+    };
 
     const link = links[0];
     const badge = buttons?.[0];
@@ -101,20 +109,6 @@ const PriceTier = (props) => {
             )}
         </p>
     );
-    // let price;
-
-    // if (title.endsWith('/month')) {
-    //     const [amount, period] = title.split('/');
-
-    //     price = (
-    //         <p className="flex items-baseline gap-x-1">
-    //             <span className="text-4xl font-semibold tracking-tight">{amount}</span>
-    //             <span className="text-sm/6 font-medium text-text-color-60">/{period}</span>
-    //         </p>
-    //     );
-    // } else {
-    //     price = <p className="text-4xl font-semibold tracking-tight">{title}</p>;
-    // }
 
     return (
         <div
@@ -148,21 +142,48 @@ const PriceTier = (props) => {
                     />
                 ) : null}
                 <ul role="list" className="mt-6 space-y-3">
-                    {features.map((feature, index) => (
-                        <li key={index} className="flex gap-x-3">
-                            <HiCheck
-                                aria-hidden="true"
-                                className="h-6 w-5 flex-none text-green-600"
-                            />
-                            <SafeHtml
-                                value={feature}
-                                className={twJoin(
-                                    'text-text-color-70',
-                                    cardSize === 'small' ? 'text-sm' : 'text-sm lg:text-base'
-                                )}
-                            />
-                        </li>
-                    ))}
+                    {features.map((feature, index) => {
+                        const popup = hasPopup(feature);
+
+                        return (
+                            <li
+                                key={index}
+                                className="flex gap-x-3"
+                                onClick={() => {
+                                    if (popup) {
+                                        setActiveFeature(popup);
+                                    }
+                                }}
+                            >
+                                <HiCheck
+                                    aria-hidden="true"
+                                    className="h-5 w-5 flex-none text-green-600"
+                                />
+                                <div
+                                    className={twJoin(
+                                        'flex-grow flex justify-between gap-x-3 group',
+                                        popup && 'cursor-pointer'
+                                    )}
+                                >
+                                    <SafeHtml
+                                        value={feature}
+                                        className={twJoin(
+                                            'text-text-color-80',
+                                            popup && 'group-hover:text-text-color',
+                                            cardSize === 'small'
+                                                ? 'text-sm'
+                                                : 'text-sm lg:text-base'
+                                        )}
+                                    />
+                                    {hasPopup(feature) && (
+                                        <div className="invisible group-hover:visible h-5 w-5 border border-text-color-90 p-0.5 rounded-full">
+                                            <AiOutlineQuestion className="w-full h-full text-text-color" />
+                                        </div>
+                                    )}
+                                </div>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
 
@@ -287,6 +308,7 @@ export default function PricingTiers(props) {
     } = block.getBlockProperties();
 
     const [billingCycle, setBillingCycle] = useState(default_billing_cycle);
+    const [activeFeature, setActiveFeature] = useState(null);
 
     const calculateDisplayPrice = useCallback(
         (price) => {
@@ -343,27 +365,45 @@ export default function PricingTiers(props) {
                                 billingCycle={billingCycle}
                                 calculateDisplayPrice={calculateDisplayPrice}
                                 cardSize={card_size}
+                                setActiveFeature={setActiveFeature}
                             />
                         ))}
                     </div>
                 ) : null}
+                <FeaturePopup feature={activeFeature} setFeature={setActiveFeature} />
             </Container>
         );
     } else {
         return (
-            <Fancy
-                {...{
-                    title,
-                    subtitle,
-                    promotion: paragraphs[0],
-                    items,
-                    billingCycle,
-                    calculateDisplayPrice,
-                    billing_cycle_switcher,
-                    setBillingCycle,
-                    card_size,
-                }}
-            />
+            <>
+                <Fancy
+                    {...{
+                        title,
+                        subtitle,
+                        promotion: paragraphs[0],
+                        items,
+                        billingCycle,
+                        calculateDisplayPrice,
+                        setActiveFeature,
+                        billing_cycle_switcher,
+                        setBillingCycle,
+                        card_size,
+                    }}
+                />
+                <FeaturePopup feature={activeFeature} setFeature={setActiveFeature} />
+            </>
         );
     }
 }
+
+const FeaturePopup = ({ feature, setFeature }) => {
+    return (
+        <Modal
+            open={!!feature}
+            onClose={() => {
+                setFeature(null);
+            }}
+            {...feature}
+        />
+    );
+};
