@@ -62,7 +62,7 @@ export default function List({ block, website }) {
                                             )}
                                             <div className="absolute inset-0 rounded-2xl" />
                                         </div>
-                                        {banner.caption ? (
+                                        {banner?.caption ? (
                                             <figcaption className="lg:w-64">
                                                 <div
                                                     className={`text-center mt-0.5 tracking-normal text-sm outline-none text-text-color/70`}
