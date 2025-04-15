@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, Link, stripTags, getPageProfile, SafeHtml } from '@uniwebcms/module-sdk';
+import { Image, Link, stripTags, getPageProfile, SafeHtml, twJoin } from '@uniwebcms/module-sdk';
 
 export default function Cards({ website, block }) {
     const { main } = block;
@@ -11,12 +11,13 @@ export default function Cards({ website, block }) {
 
     const items = block.getBlockItems();
 
-    let cardWidth, cardLayout;
+    let cardWidth, cardLayout, imageAspectRatio;
 
     const {
         size = 'small',
         layout = 'start',
         vertical_padding = 'lg',
+        image_aspect_ratio = 'landscape',
     } = block.getBlockProperties();
 
     if (size === 'small') {
@@ -51,9 +52,19 @@ export default function Cards({ website, block }) {
         py = 'py-12 lg:py-24';
     }
 
+    if (image_aspect_ratio === 'landscape') {
+        imageAspectRatio = 'aspect-video';
+    }
+    if (image_aspect_ratio === 'portrait') {
+        imageAspectRatio = 'aspect-[2/3]';
+    }
+    if (image_aspect_ratio === 'square') {
+        imageAspectRatio = 'aspect-square';
+    }
+
     return (
         <Container py={py}>
-            <div className={'relative max-w-8xl mx-auto px-6 lg:px-8'}>
+            <div className={'relative max-w-7xl mx-auto px-6 lg:px-8'}>
                 {!!title && (
                     <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-center">
                         {stripTags(title)}
@@ -77,9 +88,9 @@ export default function Cards({ website, block }) {
                                 key={index}
                                 className={`${cardWidth} border border-text-color-20 rounded`}
                             >
-                                <div className="h-40 w-full">
+                                <div className={twJoin('w-full', imageAspectRatio)}>
                                     {banner ? (
-                                        <div className="relative w-full">
+                                        <div className="relative w-full h-full">
                                             <Image
                                                 profile={getPageProfile()}
                                                 value={banner.value}
