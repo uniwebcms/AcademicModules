@@ -2,33 +2,46 @@ import React from 'react';
 import { Dialog } from '@headlessui/react';
 import { HiX } from 'react-icons/hi';
 import { twJoin, Link } from '@uniwebcms/module-sdk';
-import { LuLayers2, LuCrown, LuGem, LuBlocks } from 'react-icons/lu';
+import {
+    LuLayers2,
+    LuCrown,
+    LuGem,
+    LuFileStack,
+    LuDatabase,
+    LuLayoutPanelTop,
+    LuLanguages,
+    LuUsers,
+    LuFolderInput,
+    LuBrainCircuit,
+    LuFileLock,
+    LuHotel,
+    LuServer,
+    LuFileCode2,
+    LuSearch,
+    LuChartLine,
+} from 'react-icons/lu';
 
 const icons = {
-    layer: LuLayers2,
-    crown: LuCrown,
+    'layers-2': LuLayers2,
     gem: LuGem,
-    block: LuBlocks,
+    crown: LuCrown,
+    'file-stack': LuFileStack,
+    database: LuDatabase,
+    'layout-panel-top': LuLayoutPanelTop,
+    languages: LuLanguages,
+    users: LuUsers,
+    'folder-input': LuFolderInput,
+    'brain-circuit': LuBrainCircuit,
+    'file-lock': LuFileLock,
+    hotel: LuHotel,
+    server: LuServer,
+    'file-code-2': LuFileCode2,
+    search: LuSearch,
+    'chart-line': LuChartLine,
 };
 
 export default function Modal(props) {
-    const {
-        open,
-        onClose,
-        title,
-        subtitle,
-        features = [],
-        links = [],
-        // triggerText,
-        // triggerClassName,
-        // title,
-        // subtitle,
-        // examples,
-        // tagEndnote,
-        // button,
-        // theme,
-        // style,
-    } = props;
+    const { open, onClose, title, subtitle, features = [], links = [] } = props;
 
     return (
         <Dialog open={open} onClose={onClose} className="relative z-50 focus:outline-none">
