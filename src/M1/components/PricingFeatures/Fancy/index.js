@@ -17,7 +17,7 @@ const featureItemFeatureBulletHoverStyles = [
 const Fancy = ({ title, subtitle, items }) => {
     return (
         <Container px="none" py="lg" className={twJoin('relative')}>
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 overflow-hidden">
                 <div
                     className={twJoin(
                         'absolute inset-0 bg-gradient-to-br',
