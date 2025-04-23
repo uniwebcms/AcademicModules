@@ -1,0 +1,12 @@
+title: 
+  en: Right Panel
+  fr: Panneau de droite
+label:
+  en: Right Panel
+  fr: Panneau de droite
+description:
+  en: A component that renders a right panel with section navigation within a page.
+  fr: Un composant qui rend un panneau de droite avec une navigation de section dans une page.
+
+export: true
+  

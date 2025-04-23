@@ -1,0 +1,11 @@
+title: 
+  en: Quick Links
+  fr: Liens rapides
+label:
+  en: Quick Links
+  fr: Liens rapides
+description:
+  en: Render a list of quick links.
+  fr: Rendre une liste de liens rapides.
+
+export: true

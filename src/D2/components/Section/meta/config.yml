@@ -1,0 +1,25 @@
+title:
+    en: Section
+    fr: Section
+description:
+    en: A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.
+    fr: Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur.
+
+category: content
+export: true
+
+elements:
+    _raw:
+        en: This category renders content from the Webpages editor as-is.
+        fr: Cette catégorie affiche le contenu de l'éditeur de pages tel quel.
+
+properties:
+    paragraph_standout:
+        label:
+            en: Paragraph Standout
+            fr: Mise en valeur du paragraphe
+        type: boolean
+        default: false
+        description:
+            en: Whether to make the paragraph standout.
+            fr: Indique si le paragraphe doit être mis en valeur.

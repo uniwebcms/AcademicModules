@@ -1,0 +1,31 @@
+title: 
+  en: Call Out
+  fr: Appel
+label:
+  en: Call Out
+  fr: Appel
+description:
+  en: Render a call out.
+  fr: Rendre un appel.
+
+export: true
+
+properties:
+  type:
+    label:
+      en: Call Out Type
+      fr: Type d'appel
+    type: string
+    default: info
+    enum:
+      - label:
+          en: Info
+          fr: Info
+        value: info
+      - label:
+          en: Warning
+          fr: Avertissement
+        value: warning
+    description:
+      en: The type of call out.
+      fr: Le type d'appel.
