@@ -87,13 +87,10 @@ const Fancy = ({ title, subtitle, items }) => {
                                     <ul className="space-y-3">
                                         {features.map((feature, f_index) => {
                                             return (
-                                                <li
-                                                    key={f_index}
-                                                    className="flex items-center group/item"
-                                                >
+                                                <li key={f_index} className="flex items-center">
                                                     <div
                                                         className={twJoin(
-                                                            'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
+                                                            'flex-shrink-0 mr-3 w-6 h-px bg-gradient-to-r to-transparent',
                                                             featureItemFeatureBulletStyles[
                                                                 index % 3
                                                             ],
