@@ -272,14 +272,14 @@ export default function Fancy(props) {
                                             <li
                                                 key={f_index}
                                                 className={twJoin(
-                                                    'group/item flex items-center',
+                                                    'flex items-center',
                                                     'text-neutral-300',
                                                     card_size === 'small' ? 'text-sm' : 'text-base'
                                                 )}
                                             >
                                                 <div
                                                     className={twJoin(
-                                                        'mr-3 w-6 h-px bg-gradient-to-r group-hover/item:w-8 transition-all duration-300 to-transparent',
+                                                        'flex-shrink-0 mr-3 w-6 h-px bg-gradient-to-r to-transparent',
                                                         tierItemFeatureBulletFromColors[index % 3]
                                                     )}
                                                 ></div>
@@ -292,7 +292,7 @@ export default function Fancy(props) {
                                             to={actionLink.route}
                                             className={twJoin(
                                                 'block w-full py-2 px-4 rounded-lg font-medium transition-colors opacity-70 text-center cursor-pointer',
-                                                'bg-neutral-700 hover:bg-neutral-600 text-heading-color',
+                                                'bg-neutral-700 hover:bg-neutral-600 text-neutral-50',
                                                 card_size === 'small' ? 'text-sm' : 'text-base'
                                             )}
                                         >
