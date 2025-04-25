@@ -323,25 +323,34 @@ export default function TemplateCatalog(props) {
     const { useLocation } = website.getRoutingComponents();
     const location = useLocation();
 
-    // get the category from the URL if it exists, set it to the filters
+    // get the category and libraryType from the URL if they exist, set them to the filters
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         const category = searchParams.get('category');
+        const libraryType = searchParams.get('libraryType');
 
-        if (category) {
-            // Update filters state with 'category' if it's not already set
+        if (category || libraryType) {
             setFilters((prevFilters) => {
-                if (prevFilters.category === category) return prevFilters;
-                return { ...prevFilters, category };
+                const updatedFilters = { ...prevFilters };
+
+                if (category && prevFilters.category !== category) {
+                    updatedFilters.category = category;
+                }
+
+                if (libraryType && prevFilters.libraryType !== libraryType) {
+                    updatedFilters.libraryType = libraryType;
+                }
+
+                return updatedFilters;
             });
 
-            // Clean up the URL to remove 'category' param (without causing a page reload)
-            const newParams = new URLSearchParams(location.search);
-            newParams.delete('category');
+            // Clean up the URL to remove 'category' and 'libraryType' params (without causing a page reload)
+            searchParams.delete('category');
+            searchParams.delete('libraryType');
 
             const newUrl =
                 window.location.pathname +
-                (newParams.toString() ? '?' + newParams.toString() : '') +
+                (searchParams.toString() ? '?' + searchParams.toString() : '') +
                 window.location.hash;
 
             window.history.replaceState(null, '', newUrl);
