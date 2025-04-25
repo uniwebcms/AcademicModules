@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Icon, Image, Link, twJoin, MediaIcon } from '@uniwebcms/module-sdk';
+import { Icon, Link, twJoin, MediaIcon } from '@uniwebcms/module-sdk';
 import { ThemeSelector } from './ThemeSelector';
 import { getMediaLinkType } from '../_utils/media';
 import LangSwitch from './LangSwitch';
@@ -60,7 +60,7 @@ export default function Header(props) {
                     <ThemeSelector className="relative z-10" />
                     {mediaLinks.map((link, index) => {
                         return (
-                            <Link key={index} to={link.route} target="_blank">
+                            <Link key={index} to={website.makeHref(link.href)} target="_blank">
                                 <span className="sr-only">{link.type}</span>
                                 <MediaIcon
                                     type={link.type}
