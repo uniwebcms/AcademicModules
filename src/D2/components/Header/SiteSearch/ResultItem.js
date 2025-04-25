@@ -8,7 +8,7 @@ function HighlightQuery({ text, query }) {
             highlightClassName="group-aria-selected:underline bg-transparent text-sky-600 dark:text-sky-400"
             searchWords={[query]}
             autoEscape={true}
-            textToHighlight={text}
+            textToHighlight={text || ''}
         />
     );
 }
@@ -57,7 +57,9 @@ const ResultItem = (props) => {
         contentType,
         contentId,
         content,
+        viewType,
         query,
+        navigate,
         ...rest
     } = props;
 
@@ -67,13 +69,13 @@ const ResultItem = (props) => {
         <li
             {...rest}
             data-route={route}
-            className="group block cursor-default rounded-lg px-3 py-2 aria-selected:bg-slate-100 dark:aria-selected:bg-slate-700/30"
-            // onClick={() => navigate(route)}
+            className="group block cursor-default rounded-lg px-3 py-2 aria-selected:bg-slate-100 dark:aria-selected:bg-slate-600/30"
+            onClick={() => navigate(route)}
         >
             <div className="text-sm text-slate-700 group-aria-selected:text-sky-600 dark:text-slate-300 dark:group-aria-selected:text-sky-400">
                 <HighlightQuery text={content} query={query} />
             </div>
-            <div className="mt-0.5 truncate whitespace-nowrap text-xs text-slate-500 dark:text-slate-400">
+            <div className="mt-0.5 truncate whitespace-nowrap text-xs text-slate-500 dark:text-slate-400 group-aria-selected:text-slate-600 dark:group-aria-selected:text-slate-300">
                 {hierarchy.map((item, index, items) => (
                     <Fragment key={index}>
                         <HighlightQuery text={item} query={query} />

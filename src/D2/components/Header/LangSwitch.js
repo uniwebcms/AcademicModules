@@ -1,17 +1,22 @@
 import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import { HiGlobeAlt } from 'react-icons/hi';
+import { GrLanguage } from 'react-icons/gr';
+import { twJoin } from '@uniwebcms/module-sdk';
 
 export default function ({ website }) {
     const validLanguages = website.getLanguages();
-    let btnStyle = `mx-4 !outline-none cursor-pointer md:p-2.5 rounded-md flex items-center justify-center group rounded-md text-[rgba(0,0,0,0.6)] hover:bg-[rgb(236,242,254)] hover:text-[rgb(98,151,248)]`;
 
     return (
         <Popover className={`relative`}>
             {({ open }) => (
                 <>
-                    <Popover.Button as="div" className={btnStyle}>
-                        <HiGlobeAlt className={`w-5 h-5 lg:w-6 lg:h-6`} />
+                    <Popover.Button
+                        as="div"
+                        className={
+                            'h-5 w-5 text-slate-500 hover:text-slate-400 dark:text-slate-400 dark:hover:text-slate-300'
+                        }
+                    >
+                        <GrLanguage className="w-full h-full" />
                     </Popover.Button>
                     <Transition
                         as={Fragment}
@@ -25,22 +30,24 @@ export default function ({ website }) {
                     >
                         <Popover.Panel
                             static
-                            className={`absolute z-[999] top-full right-0 translate-x-5 md:translate-x-1/4 w-64 mt-2.5 -mr-0.5 sm:-mr-3.5 bg-white rounded-lg !shadow-xl border ring-1 ring-gray-900 ring-opacity-5 font-normal text-sm text-gray-900 divide-y divide-gray-100`}
+                            className="absolute z-50 top-full -right-5 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2"
                         >
-                            <div className={`py-1.5 px-3.5 flex flex-col`}>
+                            <div className="flex flex-col">
                                 {validLanguages.map((item) => {
                                     const { label, value } = item;
+                                    const selected = website.getLanguage() === value;
+
                                     return (
-                                        <Popover.Button
-                                            key={value}
-                                            as={Fragment}
-                                        >
+                                        <Popover.Button key={value} as={Fragment}>
                                             <span
-                                                className={`py-1.5 hover:text-blue-500 text-gray-900 cursor-pointer`}
+                                                className={twJoin(
+                                                    'cursor-pointer select-none px-2 py-1.5',
+                                                    selected
+                                                        ? 'text-sky-500'
+                                                        : 'text-slate-900 dark:text-slate-200 hover:bg-slate-100 hover:dark:bg-slate-700/40'
+                                                )}
                                                 onClick={() => {
-                                                    website.changeLanguage(
-                                                        value
-                                                    );
+                                                    website.changeLanguage(value);
                                                 }}
                                             >
                                                 {label}

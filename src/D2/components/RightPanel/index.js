@@ -58,6 +58,44 @@ export default function RightPanel(props) {
         [offset]
     );
 
+    let getHeadings = useCallback((pageContent) => {
+        return pageContent
+            .flatMap((node) => [node.id, ...node.children.map((child) => child.id)])
+            .map((id) => {
+                let el = document.getElementById(id);
+                if (!el) return null;
+
+                let style = window.getComputedStyle(el);
+                let scrollMt = parseFloat(style.scrollMarginTop);
+
+                let top = window.scrollY + el.getBoundingClientRect().top - scrollMt - offset;
+                return { id, top };
+            })
+            .filter((x) => x !== null);
+    }, []);
+
+    useEffect(() => {
+        if (pageContent.length === 0) return;
+        let headings = getHeadings(pageContent);
+        function onScroll() {
+            let top = window.scrollY;
+            let current = headings[0]?.id;
+            for (let heading of headings) {
+                if (top >= heading.top - 10) {
+                    current = heading.id;
+                } else {
+                    break;
+                }
+            }
+            setActiveId(current);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, [getHeadings, pageContent]);
+
     // const handleScroll = useCallback(() => {
     //     const scrollPosition = window.pageYOffset + offset + 1;
     //     let current = '';
@@ -94,18 +132,18 @@ export default function RightPanel(props) {
                 <h2 className="text-xs font-medium uppercase tracking-wide text-slate-900 dark:text-white">
                     {website.localize({
                         en: 'On this page',
-                        es: 'En esta página',
+                        fr: 'Sur cette page',
                     })}
                 </h2>
-                <nav className="text-sm font-medium text-slate-500 hover:text-slate-700">
+                <nav className="text-sm">
                     <ul role="list" className="mt-4 space-y-4">
                         {pageContent.map((content) => (
                             <li key={content.id}>
                                 <button
                                     className={twJoin(
                                         isActive(content)
-                                            ? 'text-sky-500'
-                                            : ' dark:text-slate-400 dark:hover:text-slate-300'
+                                            ? 'text-sky-500 font-semibold'
+                                            : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 hover:font-semibold'
                                     )}
                                     onClick={() => {
                                         scrollTo(content.id);
@@ -120,8 +158,8 @@ export default function RightPanel(props) {
                                                 <button
                                                     className={
                                                         isActive(subContent)
-                                                            ? 'text-sky-500'
-                                                            : ' dark:text-slate-400 dark:hover:text-slate-300'
+                                                            ? 'text-sky-500 font-semibold'
+                                                            : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 hover:font-semibold'
                                                     }
                                                     onClick={() => {
                                                         scrollTo(subContent.id);

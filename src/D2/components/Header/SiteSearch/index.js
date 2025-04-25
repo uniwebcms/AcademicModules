@@ -52,7 +52,8 @@ const SearchResult = React.memo((props) => {
     const { input, result, website, setResult, searchFn, box } = props;
     const [fallback, setFallback] = useState(null);
     const [ariaSelected, setAriaSelected] = useState(0);
-    // const navigate = useNavigate();
+    const { useNavigate } = website.getRoutingComponents();
+    const navigate = useNavigate();
 
     const listRef = useRef(null);
 
@@ -112,7 +113,7 @@ const SearchResult = React.memo((props) => {
             const route = selectedItem?.getAttribute('data-route');
 
             if (route) {
-                // navigate(route);
+                navigate(route);
             }
         } else {
             box.current.focus();
@@ -134,6 +135,7 @@ const SearchResult = React.memo((props) => {
                         website={website}
                         aria-selected={ariaSelected === i ? 'true' : 'false'}
                         onMouseEnter={switchAriaSelected(i)}
+                        navigate={navigate}
                         {...item?.doc}
                     />
                 );
@@ -172,33 +174,8 @@ const SearchKit = (props) => {
     );
 };
 
-// function useSearchProps() {
-//     let buttonRef = useRef(null);
-//     let [open, setOpen] = useState(false);
-
-//     return {
-//         buttonProps: {
-//             ref: buttonRef,
-//             onClick() {
-//                 setOpen(true);
-//             },
-//         },
-//         dialogProps: {
-//             open,
-//             setOpen: useCallback((open) => {
-//                 let { width = 0, height = 0 } = buttonRef.current?.getBoundingClientRect() ?? {};
-//                 if (!open || (width !== 0 && height !== 0)) {
-//                     setOpen(open);
-//                 }
-//             }, []),
-//         },
-//     };
-// }
-
 const Search = (props) => {
     const { website } = props;
-
-    // let { buttonProps, dialogProps } = useSearchProps();
 
     let [isOpen, setIsOpen] = useState(false);
 
@@ -216,77 +193,6 @@ const Search = (props) => {
     const path = location.pathname;
 
     const [searcher, setSearcher] = useState(null);
-
-    // const query = useCallback(
-    //     (text) => {
-    //         if (!searcher) {
-    //             return website.getSearchData().then((data) => {
-    //                 const index = new FlexSearch.Document({
-    //                     document: {
-    //                         id: 'href',
-    //                         index: ['content'],
-    //                         store: [
-    //                             'href',
-    //                             'title',
-    //                             'description',
-    //                             'route',
-    //                             'content',
-    //                             'contentType',
-    //                             'viewType',
-    //                             'contentId',
-    //                             'banner',
-    //                             'avatar',
-    //                         ],
-    //                     },
-    //                     cache: true,
-    //                     tokenize: 'forward',
-    //                 });
-
-    //                 const add = (sequential_data) => {
-    //                     for (let x = 0, data; x < sequential_data.length; x++) {
-    //                         data = sequential_data[x];
-
-    //                         index.add({
-    //                             ...data,
-    //                             content: `${data.title} ${data.description} ${data.content}`,
-    //                         });
-    //                     }
-    //                 };
-
-    //                 add(data);
-
-    //                 setSearcher(index);
-
-    //                 if (website) {
-    //                     website.submitEvent('search', {
-    //                         search_term: text,
-    //                     });
-    //                 }
-
-    //                 return processResults(
-    //                     text,
-    //                     index.search(text, {
-    //                         enrich: true,
-    //                     })
-    //                 );
-    //             });
-    //         } else {
-    //             if (website) {
-    //                 website.submitEvent('search', {
-    //                     search_term: text,
-    //                 });
-    //             }
-
-    //             return processResults(
-    //                 text,
-    //                 searcher.search(text, {
-    //                     enrich: true,
-    //                 })
-    //             );
-    //         }
-    //     },
-    //     [searcher]
-    // );
 
     const query = useCallback(
         (text) => {
@@ -352,30 +258,6 @@ const Search = (props) => {
         [searcher]
     );
 
-    const processResults = (text, documents) => {
-        if (documents[0] == null) return documents;
-        return [
-            {
-                ...documents[0],
-                result: documents[0].result.map(({ doc, ...rest }) => {
-                    const sentences = doc.content.split(/[.!?\|]/);
-                    const matchingSentence = sentences
-                        .find((sentence) => sentence.toLowerCase().includes(text.toLowerCase()))
-                        ?.trim();
-
-                    return {
-                        ...rest,
-                        doc: {
-                            ...doc,
-                            content: matchingSentence || '',
-                            query: text,
-                        },
-                    };
-                }),
-            },
-        ];
-    };
-
     useEffect(() => {
         if (isOpen) {
             return;
@@ -405,12 +287,15 @@ const Search = (props) => {
         <>
             <button
                 type="button"
-                className="flex p-1 hover:px-1.5 items-center w-8 h-8 rounded-lg hover:w-64 transition-all duration-300 focus:outline-none group overflow-hidden gap-2 ring-0 hover:ring-1 ring-slate-900/10 shadow-none hover:shadow-sm hover:ring-slate-300 bg-transparent dark:highlight-white/5 dark:hover:bg-slate-700 dark:hover:ring-slate-600"
+                className="flex p-1 hover:px-1.5 items-center w-8 h-8 rounded-lg hover:bg-white hover:w-64 transition-all duration-300 focus:outline-none group overflow-hidden gap-2 ring-0 hover:ring-1 ring-slate-900/10 shadow-none hover:shadow-sm hover:ring-slate-300 bg-transparent dark:highlight-white/5 dark:hover:bg-slate-700 dark:hover:ring-slate-600"
                 onClick={openModal}
             >
                 <LuSearch className="h-6 w-6 text-slate-400 flex-shrink-0" />
                 <p className="text-sm w-0 group-hover:w-fit hidden group-hover:block transition-all duration-1000 text-nowrap text-slate-500 dark:text-slate-400">
-                    Quick search...
+                    {website.localize({
+                        en: 'Quick Search',
+                        fr: 'Recherche rapide',
+                    })}
                 </p>
             </button>
             <Dialog open={isOpen} as="div" className={`relative inset-0 z-50`} onClose={closeModal}>

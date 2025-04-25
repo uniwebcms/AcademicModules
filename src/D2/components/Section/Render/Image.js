@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../Section.module.scss';
 import { Image } from '@uniwebcms/module-sdk';
 
-const imageCaptionStyle = `block outline-none border-none text-gray-500 text-sm text-center ${styles.ImageCaption}}`;
+const imageCaptionStyle = `block outline-none border-none text-slate-500 dark:text-slate-400 text-sm text-center ${styles.ImageCaption}}`;
 
 export default function ImageBlock(props) {
     const { url, caption, direction, filter, info, targetId, aspect_ratio, page } = props;

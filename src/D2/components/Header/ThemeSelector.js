@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Listbox } from '@headlessui/react';
-import { twJoin } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
 
 const themes = [
-    { name: 'Light', value: 'light', icon: LightIcon },
-    { name: 'Dark', value: 'dark', icon: DarkIcon },
-    { name: 'System', value: 'system', icon: SystemIcon },
+    {
+        name: 'Light',
+        value: 'light',
+        icon: LightIcon,
+        label: { en: 'Light', fr: 'Clair' },
+    },
+    {
+        name: 'Dark',
+        value: 'dark',
+        icon: DarkIcon,
+        label: { en: 'Dark', fr: 'Sombre' },
+    },
+    {
+        name: 'System',
+        value: 'system',
+        icon: SystemIcon,
+        label: { en: 'System', fr: 'Système' },
+    },
 ];
 
 function LightIcon(props) {
@@ -87,11 +102,7 @@ export function ThemeSelector(props) {
     return (
         <Listbox as="div" value={theme} onChange={setTheme} {...props}>
             <Listbox.Label className="sr-only">Theme</Listbox.Label>
-            <Listbox.Button
-                className="flex"
-                // className="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/5 dark:bg-slate-700 dark:ring-inset dark:ring-white/5"
-                aria-label="Theme"
-            >
+            <Listbox.Button className="flex" aria-label="Theme">
                 <LightIcon
                     className={twJoin(
                         'h-5 w-5 dark:hidden',
@@ -105,10 +116,10 @@ export function ThemeSelector(props) {
                     )}
                 />
             </Listbox.Button>
-            <Listbox.Options className="absolute z-50 top-full right-0 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2">
+            <Listbox.Options className="absolute z-50 top-full -right-5 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2">
                 {themes.map((theme) => (
                     <Listbox.Option
-                        key={theme.value}
+                        key={theme.name}
                         value={theme.value}
                         className={({ active, selected }) =>
                             twJoin(
@@ -117,12 +128,6 @@ export function ThemeSelector(props) {
                                 active && !selected && 'text-slate-900 dark:text-slate-200',
                                 !active && !selected && 'text-slate-700 dark:text-slate-400',
                                 active && 'bg-slate-100 dark:bg-slate-700/40'
-                                // {
-                                //     'text-sky-500': selected,
-                                //     'text-slate-900 dark:text-white': focus && !selected,
-                                //     'text-slate-700 dark:text-slate-400': !focus && !selected,
-                                //     'bg-slate-100 dark:bg-slate-900/40': focus,
-                                // }
                             )
                         }
                     >
@@ -138,7 +143,7 @@ export function ThemeSelector(props) {
                                         )}
                                     />
                                 </div>
-                                <div className="ml-3">{theme.name}</div>
+                                <div className="ml-3">{website.localize(theme.label)}</div>
                             </>
                         )}
                     </Listbox.Option>

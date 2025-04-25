@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaCompress, FaExpand } from 'react-icons/fa';
+import { HiX } from 'react-icons/hi';
 import { twJoin, Media, Image, website, stripTags } from '@uniwebcms/module-sdk';
 
 const youtubeRegex =
@@ -49,7 +50,7 @@ export default function Video({ page, videoControl, ...video }) {
     let caption = video?.caption || '';
     caption = stripTags(caption);
 
-    const [src, setSrc] = useState(video.src);
+    // const [src, setSrc] = useState(video.src);
     const [currentVideo, setCurrentVideo] = useState(video);
     const [miniPlayer, setMiniPlayer] = useState(false);
     const [overlay, setOverlay] = useState(false);
@@ -88,12 +89,12 @@ export default function Video({ page, videoControl, ...video }) {
 
     const playerClasses = twJoin(
         miniPlayer && 'fixed bottom-4 right-4 w-64 h-36 z-50',
-        overlay && 'flex w-full max-w-6xl mx-auto bg-white shadow-lg'
+        overlay && 'flex w-full max-w-6xl mx-auto shadow-lg px-4'
     );
 
     const outerClasses = twJoin(
         !overlay && 'absolute inset-0 z-10',
-        overlay && 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75'
+        overlay && 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80'
     );
 
     useEffect(() => {
@@ -109,7 +110,7 @@ export default function Video({ page, videoControl, ...video }) {
             const thumb = await getVideoThumbnail(currentVideo.src);
             setThumbnail(thumb);
         }
-        setSrc(currentVideo.src);
+        // setSrc(currentVideo.src);
         fetchThumbnail();
     }, [currentVideo]);
 
@@ -126,24 +127,44 @@ export default function Video({ page, videoControl, ...video }) {
         fetchThumbnails();
     }, []);
 
+    // hit esc to close overlay
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                if (overlay) {
+                    setOverlay(false);
+                } else if (miniPlayer) {
+                    setMiniPlayer(false);
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [overlay, miniPlayer]);
+
     const Buttons = () =>
         videoControl ? (
-            <div className="flex space-x-4 mt-4">
+            <div className={twJoin('flex space-x-4', caption ? 'mt-10' : 'mt-6')}>
                 <button
                     onClick={toggleMiniPlayer}
-                    className="flex items-center px-4 py-2 rounded-lg"
+                    className="flex items-center px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-600 dark:hover:bg-slate-500"
                 >
-                    <FaCompress className="mr-2" />
-                    <span className="text-sm md:text-base">
+                    <FaCompress className="mr-2 text-slate-700 dark:text-slate-100" />
+                    <span className="text-sm md:text-base text-slate-700 dark:text-slate-100">
                         {website.localize({
                             en: 'Mini Player',
                             es: 'Reproductor Mini',
                         })}
                     </span>
                 </button>
-                <button onClick={toggleOverlay} className="flex items-center px-4 py-2 rounded-lg">
-                    <FaExpand className="mr-2" />
-                    <span className="text-sm md:text-base">
+                <button
+                    onClick={toggleOverlay}
+                    className="flex items-center px-4 py-2 rounded-lg border border-slate-300 hover:bg-slate-50 dark:border-slate-500 dark:hover:bg-slate-700"
+                >
+                    <FaExpand className="mr-2 text-slate-600 dark:text-slate-400" />
+                    <span className="text-sm md:text-base text-slate-700 dark:text-slate-300">
                         {website.localize({
                             en: 'Overlay',
                             es: 'Superposición',
@@ -154,21 +175,35 @@ export default function Video({ page, videoControl, ...video }) {
         ) : null;
 
     const FakeBlock = () => (
-        <Image className="relative z-0 flex-1 block m-0" {...{ profile, url: ogThumbnail }} />
+        <Image
+            className="relative z-0 flex-1 block m-0 aspect-video"
+            {...{ profile, url: ogThumbnail }}
+        />
     );
 
     return (
         <div className="not-prose mb-6 lg:my-8">
             <div className="relative">
-                <div
-                    className={outerClasses}
-                    onClick={(event) => {
-                        if (event.target === event.currentTarget) {
-                            toggleOverlay();
-                        }
-                    }}
-                >
+                {/* Mini close button */}
+                {miniPlayer && (
+                    <button
+                        className="fixed bottom-[166px] right-4 bg-slate-100 text-slate-400 hover:text-slate-600"
+                        onClick={toggleMiniPlayer}
+                    >
+                        <HiX className="h-5 w-5" />
+                    </button>
+                )}
+                <div className={outerClasses}>
                     <div className={playerClasses}>
+                        {/* Overlay close button */}
+                        {overlay && (
+                            <button
+                                className="absolute top-4 right-4 text-slate-400 hover:text-slate-200"
+                                onClick={toggleOverlay}
+                            >
+                                <HiX className="h-6 w-6" />
+                            </button>
+                        )}
                         {/* Main Video Area */}
                         <div className={`flex-1 block`}>
                             <Media
@@ -179,40 +214,50 @@ export default function Video({ page, videoControl, ...video }) {
                         </div>
                         {/* Thumbnail Grid */}
                         {overlay && (
-                            <div className="w-1/4 p-4 overflow-y-auto bg-gray-800 flex items-center justify-center">
-                                <div className="grid grid-cols-1 gap-4">
-                                    {videos.map((video, index) => {
-                                        const currentThumbnail = thumbnails[index];
-                                        return (
-                                            <div
-                                                key={index}
-                                                className={`cursor-pointer p-2 rounded-lg transition-transform transform hover:scale-105 ${
-                                                    video === currentVideo
-                                                        ? 'border-2 border-indigo-500'
-                                                        : ''
-                                                }`}
-                                                onClick={changeVideo(video)}
-                                            >
-                                                <Image
-                                                    className="w-full h-auto object-contain rounded-md m-2"
-                                                    {...{ profile, url: currentThumbnail }}
-                                                />
-                                            </div>
-                                        );
+                            <div className="hidden lg:block w-1/4 px-6 py-4 overflow-y-auto bg-gray-900/75 overscroll-contain aspect-video">
+                                <p className="text-slate-300 text-lg font-medium mb-4">
+                                    {website.localize({
+                                        en: 'Related Videos',
+                                        es: 'Videos Relacionados',
                                     })}
-                                </div>
+                                </p>
+                                {videos.map((video, index) => {
+                                    const currentThumbnail = thumbnails[index];
+
+                                    return (
+                                        <div
+                                            key={index}
+                                            className={`cursor-pointer rounded-lg transition-transform transform hover:scale-105 mb-4 ${
+                                                video === currentVideo
+                                                    ? 'border-2 border-indigo-500'
+                                                    : ''
+                                            }`}
+                                            onClick={changeVideo(video)}
+                                        >
+                                            <Image
+                                                className="w-full aspect-video object-contain rounded-md"
+                                                {...{ profile, url: currentThumbnail }}
+                                            />
+                                            {video.caption && (
+                                                <div className="text-slate-300 text-xs text-center mt-1">
+                                                    {video.caption}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         )}
-                        {/* Additional Buttons */}
-                        {overlay && (
-                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-                                <Buttons />
+                        {/* Show caption under full screen */}
+                        {overlay && currentVideo?.caption ? (
+                            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-slate-200 text-sm bg-slate-950">
+                                {currentVideo.caption}
                             </div>
-                        )}
+                        ) : null}
                     </div>
-                    {caption ? (
+                    {caption && !overlay ? (
                         <div
-                            className={`block outline-none text-primary-80 border-none text-sm text-center mt-1`}
+                            className={`block outline-none text-slate-500 dark:text-slate-400 border-none text-sm text-center mt-1`}
                         >
                             {caption}
                         </div>
