@@ -292,7 +292,7 @@ export default function Fancy(props) {
                                             to={actionLink.route}
                                             className={twJoin(
                                                 'block w-full py-2 px-4 rounded-lg font-medium text-center cursor-pointer',
-                                                'btn-secondary',
+                                                'text-btn-text-color bg-btn-color hover:text-btn-hover-text-color hover:bg-btn-hover-color',
                                                 card_size === 'small' ? 'text-sm' : 'text-base'
                                             )}
                                         >
