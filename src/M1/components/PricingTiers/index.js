@@ -168,7 +168,7 @@ const PriceTier = (props) => {
 
             {link && (
                 <Link
-                    to={link.route}
+                    to={website.makeHref(link.href)}
                     className={twJoin(
                         'mt-8 block rounded-md px-3 py-2 text-center text-sm lg:text-base/7 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
                         buttonStyle

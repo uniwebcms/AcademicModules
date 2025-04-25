@@ -289,7 +289,7 @@ export default function Fancy(props) {
                                     </ul>
                                     {actionLink && (
                                         <Link
-                                            to={actionLink.route}
+                                            to={website.makeHref(actionLink.href)}
                                             className={twJoin(
                                                 'block w-full py-2 px-4 rounded-lg font-medium text-center cursor-pointer',
                                                 'text-btn-text-color bg-btn-color hover:text-btn-hover-text-color hover:bg-btn-hover-color',

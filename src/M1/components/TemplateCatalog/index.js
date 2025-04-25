@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Container from '../_utils/Container';
-import PopoverMenu from '../_utils/PopoverMenu';
-import { Link, twJoin, website, Image } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
 import { HiSearch, HiArrowRight } from 'react-icons/hi';
 import { TbSortDescending } from 'react-icons/tb';
-import { RiFilter3Line } from 'react-icons/ri';
 import { LuChevronDown, LuListFilter } from 'react-icons/lu';
 import VirtualGrid from './components/VirtualGrid';
 import { normalizeData } from './helper';
@@ -314,7 +312,7 @@ const initFilters = (config) => {
     return filterObj;
 };
 
-export default function ProductCatalog(props) {
+export default function TemplateCatalog(props) {
     const { block, input } = props;
 
     const { title, links, properties } = block.getBlockContent();
@@ -322,9 +320,33 @@ export default function ProductCatalog(props) {
     const [filters, setFilters] = useState(initFilters(properties));
     const [sectionStyle, setSectionStyle] = useState({});
 
-    // useEffect(() => {
-    //     setData(normalizeData(input, properties));
-    // }, [input, properties]);
+    const { useLocation } = website.getRoutingComponents();
+    const location = useLocation();
+
+    // get the category from the URL if it exists, set it to the filters
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const category = searchParams.get('category');
+
+        if (category) {
+            // Update filters state with 'category' if it's not already set
+            setFilters((prevFilters) => {
+                if (prevFilters.category === category) return prevFilters;
+                return { ...prevFilters, category };
+            });
+
+            // Clean up the URL to remove 'category' param (without causing a page reload)
+            const newParams = new URLSearchParams(location.search);
+            newParams.delete('category');
+
+            const newUrl =
+                window.location.pathname +
+                (newParams.toString() ? '?' + newParams.toString() : '') +
+                window.location.hash;
+
+            window.history.replaceState(null, '', newUrl);
+        }
+    }, [location.search]);
 
     // this is for the Dialog (Modal) to use all css variables from the section
     useEffect(() => {
