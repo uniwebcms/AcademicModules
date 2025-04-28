@@ -20,10 +20,10 @@ export default function Hero(props) {
                 'w-screen flex flex-col justify-center',
                 !childBlocks.length || (childBlocks.length && alignment !== 'center')
                     ? 'lg:max-h-[982px]'
-                    : ''
+                    : '',
+                height === '100vh' ? 'h-auto lg:h-screen' : 'h-auto'
             )}
             py="xl"
-            style={{ height }}
         >
             {banner && (
                 <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
