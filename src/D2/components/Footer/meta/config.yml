@@ -5,7 +5,10 @@ label:
   en: Footer
   fr: Pied de page
 description:
-  en: Render the footer of a page.
-  fr: Rendre le pied de page d'une page.
+  en: A footer component renders the navigation to the next and previous pages.
+  fr: Un composant de pied de page rend la navigation vers les pages suivantes et précédentes.
 
 export: true
+
+images:
+  - example.png

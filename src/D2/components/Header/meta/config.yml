@@ -5,7 +5,10 @@ label:
   en: Header
   fr: En-tête
 description:
-  en: Render the header of a page.
-  fr: Rendre l'en-tête d'une page.
+  en: A component to render a header with a website logo, search bar, dark mode toggle, language selector, and media links.
+  fr: Un composant pour rendre un en-tête avec un logo de site Web, une barre de recherche, un basculement du mode sombre, un sélecteur de langue et des liens multimédias.
 
 export: true
+
+images:
+  - example.png

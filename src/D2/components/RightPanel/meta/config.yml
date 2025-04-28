@@ -5,8 +5,10 @@ label:
   en: Right Panel
   fr: Panneau de droite
 description:
-  en: A component that renders a right panel with section navigation within a page.
-  fr: Un composant qui rend un panneau de droite avec une navigation de section dans une page.
+  en: A component that renders a list of links to the topics of the current page.
+  fr: Un composant qui rend une liste de liens vers les sujets de la page actuelle.
 
 export: true
   
+images:
+  - example.png
