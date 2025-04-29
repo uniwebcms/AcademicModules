@@ -93,7 +93,7 @@ export default function (props) {
                         {parsedReferences.map((reference) => {
                             const { profile, url, ...rest } = reference;
 
-                            const { title, issued, isStandard } = rest;
+                            const { title, issued, isStandard, pages, page_range, page } = rest;
 
                             let year = issued?.['date-parts']?.[0]?.[0] || '';
                             const journal = rest['container-title'] || '';
@@ -103,6 +103,8 @@ export default function (props) {
                             let refMarkup = null;
 
                             if (isStandard) {
+                                let pageNum = page || pages || page_range || '';
+
                                 refMarkup = (
                                     <div className={`flex`} key={url}>
                                         <div
@@ -119,7 +121,7 @@ export default function (props) {
                                             <span className={`text-text-color-80 text-xs`}>
                                                 {`${journal}${
                                                     year ? `${journal ? ', ' : ''}${year}` : ''
-                                                }`}
+                                                }${pageNum ? `, ${pageNum}` : ''}`}
                                             </span>
                                         </div>
                                         {banner ? (

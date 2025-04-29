@@ -24,7 +24,7 @@ export default function Reference({ website, input }) {
 
     let categoryLabel = category.replace('_', ' ');
 
-    const { title, author, isStandard } = parsedData;
+    const { title, author, isStandard, page, pages, page_range } = parsedData;
     const journal = parsedData?.['container-title'] || '';
 
     const topics = profile.at('topics');
@@ -32,6 +32,8 @@ export default function Reference({ website, input }) {
     const fullDocument = profile.at('full_document/file');
 
     const assetInfo = profile.getAssetInfo(fullDocument, false) || {};
+
+    let pageNum = page || pages || page_range || '';
 
     const { href, src } = assetInfo;
 
@@ -118,6 +120,7 @@ export default function Reference({ website, input }) {
                 <p className="text-lg text-text-color-90 mb-4 flex items-center space-x-1.5">
                     <span className="italic">{journal}</span>
                     {year ? <span>{`(${year})`}</span> : null}
+                    {pageNum ? <span>{`${pageNum}`}</span> : null}
                 </p>
             </>
         );
