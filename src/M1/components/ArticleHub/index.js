@@ -65,7 +65,7 @@ const TagFilter = ({ tags, tag, setTag }) => {
                     </span>
                 </div>
             </Listbox.Button>
-            <Listbox.Options className="absolute z-50 top-full right-0 bg-bg-color rounded-lg ring-1 ring-text-color-20 shadow-lg overflow-hidden w-36 py-1 mt-4 lg:mt-3 translate-x-2">
+            <Listbox.Options className="absolute z-50 top-full right-0 max-h-[30vh] bg-bg-color rounded-lg ring-1 ring-text-color-20 shadow-lg overflow-x-hidden overflow-y-auto w-36 py-1 mt-4 lg:mt-3 translate-x-2">
                 {tags.map((tag, index) => (
                     <Listbox.Option
                         key={index}
@@ -91,14 +91,15 @@ const TagFilter = ({ tags, tag, setTag }) => {
 };
 
 const getArticleTags = (article) => {
-    return (
+    const allTags =
         article
             ?.map((article) => {
                 const { head } = article.getBasicInfo();
                 return head?.tag || '';
             })
-            ?.filter((tag) => tag !== '') || []
-    );
+            ?.filter((tag) => tag !== '') || [];
+
+    return [...new Set(allTags)];
 };
 
 export default function ArticleHub(props) {
