@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { website, stripTags, Link, Image } from '@uniwebcms/module-sdk';
 import Container from '../_utils/Container';
-import { parseReference, getDateFromIssued } from '../_utils/reference';
+import { parseReference, getDateFromIssued, parseProfileData } from '../_utils/reference';
+import CVRefRender from '../_utils/reference/CVRefRender';
 import Sidebar from './Sidebar';
 import AdvancedSmartCards from './AdvancedSmartCards';
 import DOILogo from './doi.svg';
@@ -9,7 +10,7 @@ import DOILogo from './doi.svg';
 const ItemMarkup = (props) => {
     const { profile, url, ...rest } = props;
 
-    const { title, issued, author, DOI = '' } = rest;
+    const { title, issued, author, DOI = '', isStandard, pages, page_range, page } = rest;
 
     let year = issued?.['date-parts']?.[0]?.[0] || '';
     const journal = rest['container-title'] || '';
@@ -21,8 +22,12 @@ const ItemMarkup = (props) => {
 
     let completeDoi = finalDoi ? `https://doi.org/${DOI}` : '';
 
-    return (
-        <div className={`flex`} key={url}>
+    let refMarkup = null;
+
+    let pageNum = page || pages || page_range || '';
+
+    if (isStandard) {
+        refMarkup = (
             <div className={`flex flex-col space-y-2 ${banner ? 'mr-4' : ''}`}>
                 <Link href={url} className={`text-text-color font-medium hover:underline`}>
                     {title}
@@ -38,7 +43,9 @@ const ItemMarkup = (props) => {
                         : null}
                 </p>
                 <span className={`text-text-color-80 text-sm`}>
-                    {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}`}
+                    {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}${
+                        pageNum ? `, ${pageNum}` : ''
+                    }`}
                 </span>
                 <div className={`flex items-center space-x-1`}>
                     {completeDoi ? (
@@ -54,6 +61,20 @@ const ItemMarkup = (props) => {
                     ) : null}
                 </div>
             </div>
+        );
+    } else {
+        const { parsedMeta, parsedData } = rest;
+        let sectionPath = (parsedMeta?.['_section'] || []).join('/');
+        let parsed = parseProfileData({ sections: [parsedData] });
+        refMarkup = (
+            <Link href={url}>
+                <CVRefRender value={parsed?.[0]?.value || []} sectionPath={sectionPath} />
+            </Link>
+        );
+    }
+    return (
+        <div className={`flex`} key={url}>
+            {refMarkup}
             {banner ? (
                 <Link
                     href={url}
@@ -89,7 +110,7 @@ export default function ProfileReferences({ block, input }) {
         selection: initSelection,
     });
 
-    const { groupReferences = false } = block.getBlockProperties();
+    const { groupReferences = false, noLink = false } = block.getBlockProperties();
 
     let groups = {};
 

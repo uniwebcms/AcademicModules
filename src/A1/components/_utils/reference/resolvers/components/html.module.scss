@@ -1,0 +1,22 @@
+.HtmlRenderer {
+    a {
+        color: var(--color-link, #3b82f6);
+        text-decoration: none; // Base style often removes underline
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    ul {
+        list-style-type: disc;
+        margin-left: 1rem;
+    }
+
+    div {
+        margin-bottom: 0.5rem !important;
+    }
+
+    p + p {
+        margin-top: 0.75rem !important;
+    }
+}

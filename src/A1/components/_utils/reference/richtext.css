@@ -1,0 +1,22 @@
+/* Define this in your global CSS or a relevant CSS module */
+.rich-text-style {
+    word-wrap: break-word; /* Equivalent to break-words */
+    overflow-wrap: break-word; /* Modern equivalent */
+}
+
+.rich-text-style a {
+    color: #3b82f6; /* Example link color, adjust as needed */
+    text-decoration: none;
+}
+
+.rich-text-style a:hover {
+    text-decoration: underline;
+}
+
+/* Add any other base styles needed for TextTruncator or the rendered HTML */
+.rich-text-style p:empty {
+    min-height: 1em; /* Or similar to handle empty paragraphs if needed */
+}
+.rich-text-style p + p {
+    margin-top: 1em; /* Example spacing between paragraphs */
+}

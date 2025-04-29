@@ -1,0 +1,6016 @@
+{
+    "personal_information/identification": [
+        [
+            "div",
+            {
+                "strong": ["title", "first_name", "middle_name", "family_name"],
+                "@": [
+                    "$.title",
+                    "$.first_name",
+                    "$.middle_name",
+                    "$.family_name",
+                    [
+                        "inline",
+                        {
+                            "@": ["$.previous_first_name", "$.previous_family_name"]
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "personalInfo",
+            {
+                "@": ["$.date_of_birth", "$.sex", "$.correspondence_language"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["designated_group"],
+                "@": ["$.designated_group"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.canadian_residency_status"
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["permanent_residency_start_date"],
+                "@": ["$.permanent_residency_start_date"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.applied_for_permanent_residency"
+            }
+        ]
+    ],
+    "personal_information/identification/country_of_citizenship": [
+        [
+            "span",
+            {
+                "@": "$.country_of_citizenship"
+            }
+        ]
+    ],
+    "personal_information/language_skills": [
+        [
+            "span",
+            {
+                "strong": ["language"],
+                "@": [
+                    "$.language",
+                    [
+                        "inline",
+                        {
+                            "glue": ", ",
+                            "@": ["$.read", "$.write", "$.speak", "$.understand", "$.peer_review"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "personal_information/address": [
+        [
+            "p",
+            {
+                "suffix": {
+                    "address_type": ":"
+                },
+                "strong": ["address_type"],
+                "@": [
+                    "$.address_type",
+                    "$.address_-_line_1",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.address_start_date",
+                            "end": "$.address_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.line_2"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.line_3"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.line_4"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.line_5"
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.city", "$.location"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.postal_zip_code"
+            }
+        ]
+    ],
+    "personal_information/telephone": [
+        [
+            "telephone",
+            {
+                "@": [
+                    "$.phone_type",
+                    "$.country_code",
+                    "$.area_code",
+                    "$.telephone_number",
+                    "$.extension",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.telephone_start_date",
+                            "end": "$.telephone_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "personal_information/email": [
+        [
+            "span",
+            {
+                "suffix": {
+                    "email_type": ":"
+                },
+                "strong": ["email_type"],
+                "@": [
+                    "$.email_type",
+                    "$.email_address",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.email_start_date",
+                            "end": "$.email_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "personal_information/website": [
+        [
+            "div",
+            {
+                "suffix": {
+                    "website_type": ":"
+                },
+                "strong": ["website_type"],
+                "@": ["$.website_type", "$.url"]
+            }
+        ]
+    ],
+    "education/degrees": [
+        [
+            "p",
+            {
+                "strong": ["degree_type"],
+                "label": ["degree_expected_date"],
+                "@": [
+                    "$.degree_type",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.degree_start_date",
+                            "end": "$.degree_received_date",
+                            "@": []
+                        }
+                    ],
+                    "$.degree_expected_date"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.degree_name",
+                    "$.specialization",
+                    [
+                        "inline",
+                        {
+                            "@": "$.degree_status"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.thesis_title"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.transferred_to_phd_without_completing_masters"
+            }
+        ]
+    ],
+    "education/degrees/supervisors": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.supervisor_name",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "education/degrees/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "education/degrees/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "education/degrees/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "education/credentials": [
+        [
+            "p",
+            {
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.effective_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description"
+            }
+        ]
+    ],
+    "education/credentials/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "education/credentials/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "education/credentials/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "recognitions": [
+        [
+            "p",
+            {
+                "strong": ["recognition_type"],
+                "em": ["recognition_name"],
+                "@": ["$.recognition_type", "$.recognition_name"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.effective_date",
+                            "end": "$.end_date",
+                            "groupSuffix": " ",
+                            "@": []
+                        }
+                    ],
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["amount"],
+                "@": [
+                    [
+                        "currency",
+                        {
+                            "amount": "$.amount",
+                            "currency": "$.currency",
+                            "convertedAmount": "$.converted_amount",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "em": ["description"],
+                "@": ["$.description"]
+            }
+        ]
+    ],
+    "recognitions/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "recognitions/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "recognitions/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "user_profile": [
+        [
+            "p",
+            {
+                "label": ["researcher_status"],
+                "@": [
+                    "$.researcher_status",
+                    [
+                        "inline",
+                        {
+                            "label": ["research_career_start_date"],
+                            "groupSuffix": " ",
+                            "@": ["$.research_career_start_date"]
+                        }
+                    ],
+                    "$.orcid",
+                    "$.scopus_id"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.engaged_in_clinical_research"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "$.key_theory_methodology",
+                    "$.research_interests",
+                    "$.research_experience_summary"
+                ]
+            }
+        ]
+    ],
+    "user_profile/research_specialization_keywords": [
+        [
+            "span",
+            {
+                "@": "$.research_specialization_keywords"
+            }
+        ]
+    ],
+    "user_profile/research_centres": [
+        [
+            "span",
+            {
+                "@": "$.research_centre"
+            }
+        ]
+    ],
+    "user_profile/technological_applications": [
+        [
+            "span",
+            {
+                "@": "$.technological_application"
+            }
+        ]
+    ],
+    "user_profile/disciplines_trained_in": [
+        [
+            "span",
+            {
+                "@": "$.discipline_trained_in"
+            }
+        ]
+    ],
+    "user_profile/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "user_profile/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "user_profile/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "user_profile/temporal_periods": [
+        [
+            "temporalPeriods",
+            {
+                "@": ["$.from_year", "$.from_year_period", "$.to_year", "$.to_year_period"]
+            }
+        ]
+    ],
+    "user_profile/geographical_regions": [
+        [
+            "span",
+            {
+                "@": "$.geographical_region"
+            }
+        ]
+    ],
+    "user_profile/countries": [
+        [
+            "span",
+            {
+                "@": "$.country"
+            }
+        ]
+    ],
+    "employment/academic_work_experience": [
+        [
+            "strong",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.position_type",
+                    "$.position_title",
+                    "$.position_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.academic_rank",
+                    "$.tenure_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.tenure_start_date",
+                            "end": "$.tenure_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.faculty_school_campus"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.department"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.work_description"
+            }
+        ]
+    ],
+    "employment/academic_work_experience/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "employment/academic_work_experience/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "employment/academic_work_experience/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "employment/non-academic_work_experience": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["position_title"],
+                "@": [
+                    "$.position_title",
+                    "$.position_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.work_description"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.unit_division"
+            }
+        ]
+    ],
+    "employment/non-academic_work_experience/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "employment/non-academic_work_experience/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "employment/non-academic_work_experience/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "employment/affiliations": [
+        [
+            "strong",
+            {
+                "@": [
+                    "$.position_title",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.department"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.activity_description"
+            }
+        ]
+    ],
+    "employment/leaves_of_absence_and_impact_on_research": [
+        [
+            "strong",
+            {
+                "@": [
+                    "$.leave_type",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.absence_and_impact_description"
+            }
+        ]
+    ],
+    "research_funding_history": [
+        [
+            "p",
+            {
+                "strong": ["funding_role", "funding_status"],
+                "@": [
+                    "$.funding_role",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.funding_start_date",
+                            "end": "$.funding_end_date",
+                            "groupSuffix": " ",
+                            "@": []
+                        }
+                    ],
+                    "$.funding_status"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "em": ["funding_title"],
+                "@": ["$.funding_title"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.funding_type", "$.grant_type"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.project_description"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.clinical_research_project"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.research_uptake"
+            }
+        ]
+    ],
+    "research_funding_history/other_investigators": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.investigator_name",
+                    [
+                        "inline",
+                        {
+                            "@": "$.role"
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "research_funding_history/research_uptake_stakeholders": [
+        [
+            "span",
+            {
+                "@": "$.stakeholder"
+            }
+        ]
+    ],
+    "research_funding_history/funding_by_year": [
+        [
+            "p",
+            {
+                "@": [
+                    "dateRange",
+                    {
+                        "start": "$.start_date",
+                        "end": "$.end_date",
+                        "@": []
+                    }
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["total_funding"],
+                "@": [
+                    [
+                        "currency",
+                        {
+                            "amount": "$.total_funding",
+                            "currency": "$.currency_of_total_funding",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["portion_of_funding_received"],
+                "@": [
+                    [
+                        "currency",
+                        {
+                            "amount": "$.portion_of_funding_received",
+                            "currency": "$.currency_of_portion_of_funding_received",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["time_commitment"],
+                "@": ["$.time_commitment"]
+            }
+        ]
+    ],
+    "research_funding_history/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "research_funding_history/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "research_funding_history/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "research_funding_history/research_settings": [
+        [
+            "span",
+            {
+                "glue": ", ",
+                "@": ["$.location", "$.setting_type"]
+            }
+        ]
+    ],
+    "research_funding_history/funding_sources": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["funding_organization"],
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.funding_start_date",
+                            "end": "$.funding_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["funding_reference_number"],
+                "glue": ", ",
+                "@": ["$.program_name", "$.funding_reference_number"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["total_funding"],
+                "@": [
+                    [
+                        "currency",
+                        {
+                            "amount": "$.total_funding",
+                            "currency": "$.currency_of_total_funding",
+                            "convertedAmount": "$.converted_total_funding",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["portion_of_funding_received"],
+                "@": [
+                    [
+                        "currency",
+                        {
+                            "amount": "$.portion_of_funding_received",
+                            "currency": "$.currency_of_portion_of_funding_received",
+                            "convertedAmount": "$.converted_portion_of_funding_received",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.funding_renewable"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.funding_competitive"
+            }
+        ]
+    ],
+    "activities/teaching_activities/courses_taught": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    "$.course_code",
+                    "$.academic_session",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "$.course_title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.guest_lecture"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.department",
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.course_level", "$.course_topic"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["section"],
+                "@": ["$.section"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_students", "number_of_credits"],
+                "glue": ", ",
+                "@": ["$.number_of_students", "$.number_of_credits"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": [
+                    "lecture_hours_per_week",
+                    "lab_hours_per_week",
+                    "tutorial_hours_per_week"
+                ],
+                "glue": ", ",
+                "@": [
+                    "$.lecture_hours_per_week",
+                    "$.lab_hours_per_week",
+                    "$.tutorial_hours_per_week"
+                ]
+            }
+        ]
+    ],
+    "activities/teaching_activities/courses_taught/co-instructors": [
+        [
+            "span",
+            {
+                "@": ["$.first_name", "$.family_name"]
+            }
+        ]
+    ],
+    "activities/teaching_activities/course_development": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": ["$.role", "$.department"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["course_title"],
+                "@": ["$.course_title"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["course_level"],
+                "@": ["$.course_level"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["date_first_taught"],
+                "@": ["$.date_first_taught"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.course_description"
+            }
+        ]
+    ],
+    "activities/teaching_activities/course_development/co-developers": [
+        [
+            "span",
+            {
+                "@": ["$.first_name", "$.family_name"]
+            }
+        ]
+    ],
+    "activities/teaching_activities/program_development": [
+        [
+            "p",
+            {
+                "strong": ["role"],
+                "@": ["$.role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["program_title"],
+                "@": ["$.program_title"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.program_description"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.department"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.unique_innovative_characteristics"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["course_level"],
+                "@": ["$.course_level"]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["date_first_taught"],
+                "@": ["$.date_first_taught"]
+            }
+        ]
+    ],
+    "activities/teaching_activities/program_development/co-developers": [
+        [
+            "span",
+            {
+                "@": ["$.first_name", "$.family_name"]
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision": [
+        [
+            "p",
+            {
+                "strong": ["supervision_role"],
+                "@": [
+                    "$.supervision_role",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.supervision_start_date",
+                            "end": "$.supervision_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["student_name", "student_degree_status"],
+                "label": ["student_degree_expected_date"],
+                "@": [
+                    "$.student_name",
+                    "$.study_postdoctoral_level",
+                    "$.student_degree_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.student_degree_start_date",
+                            "end": "$.student_degree_received_date",
+                            "@": []
+                        }
+                    ],
+                    "$.student_degree_expected_date"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.student_institution", "$.present_organization"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.degree_name"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.specialization"
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["student_canadian_residency_status"],
+                "@": ["$.student_canadian_residency_status"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["present_position"],
+                "@": ["$.present_position"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["thesis_project_title"],
+                "@": ["$.thesis_project_title"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.project_description"
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/student_country_of_citizenship": [
+        [
+            "span",
+            {
+                "@": "$.student_country_of_citizenship"
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/other_supervisors": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.family_name",
+                    "$.first_name",
+                    [
+                        "inline",
+                        {
+                            "@": "$.role"
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/project_funding_sources": [
+        [
+            "p",
+            {
+                "label": ["funding_reference_number"],
+                "@": [
+                    "$.funding_reference_number",
+                    [
+                        "currency",
+                        {
+                            "amount": "$.amount",
+                            "currency": "$.currency",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": ["$.funding_organization", "$.other_funding_organization"]
+            }
+        ]
+    ],
+    "activities/supervisory_activities/student_postdoctoral_supervision/student_recognitions": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.recognition_type",
+                    "$.recognition_name",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location",
+                    "$.other_organization"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "currency",
+                    {
+                        "amount": "$.amount",
+                        "currency": "$.currency",
+                        "@": []
+                    }
+                ]
+            }
+        ]
+    ],
+    "activities/supervisory_activities/staff_supervision": [
+        [
+            "p",
+            {
+                "label": ["number_of_scientific_and_technical_staff"],
+                "@": ["$.number_of_scientific_and_technical_staff"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_visiting_researchers"],
+                "@": ["$.number_of_visiting_researchers"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_highly_qualified_personnel_in_research_training"],
+                "@": ["$.number_of_highly_qualified_personnel_in_research_training"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_personnel"],
+                "@": ["$.number_of_personnel"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_volunteers"],
+                "@": ["$.number_of_volunteers"]
+            }
+        ]
+    ],
+    "activities/administrative_activities/event_administration": [
+        [
+            "div",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    "$.event_type",
+                    "$.event_name",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.activity_start_date",
+                            "end": "$.activity_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.primary_event_organizer"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["event_start_date", "event_end_date"],
+                "@": [
+                    "$.activity_description",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.event_start_date",
+                            "end": "$.event_end_date",
+                            "label": ["event_start_date", "event_end_date"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "activities/administrative_activities/editorial_activities": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    "$.publication_type",
+                    "$.publication_name",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.activity_description"
+            }
+        ]
+    ],
+    "activities/administrative_activities/editorial_activities/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "activities/administrative_activities/editorial_activities/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "activities/administrative_activities/editorial_activities/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "activities/advisory_activities/mentoring_activities": [
+        [
+            "p",
+            {
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location",
+                    "$.other_organization"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["mentorees"],
+                "strong": ["mentorees"],
+                "@": [
+                    "$.mentorees",
+                    [
+                        "inline",
+                        {
+                            "label": ["number_of_mentorees"],
+                            "@": ["$.number_of_mentorees"]
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.activity_description"
+            }
+        ]
+    ],
+    "activities/advisory_activities/expert_witness_activities": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": ["$.role", "$.case", "$.location", "$.city"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "dateRange",
+                    {
+                        "start": "$.start_date",
+                        "end": "$.end_date",
+                        "@": []
+                    }
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.activity_description"
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/journal_review_activities": [
+        [
+            "div",
+            {
+                "glue": ", ",
+                "strong": ["role", "journal"],
+                "@": ["$.role", "$.review_type", "$.journal"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.press"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["number_of_works_reviewed_refereed"],
+                "@": ["$.number_of_works_reviewed_refereed"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "dateRange",
+                    {
+                        "start": "$.start_date",
+                        "end": "$.end_date",
+                        "@": []
+                    }
+                ]
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/conference_review_activities": [
+        [
+            "div",
+            {
+                "glue": ", ",
+                "strong": ["role", "conference"],
+                "@": ["$.role", "$.review_type", "$.conference"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.conference_host"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["number_of_works_reviewed_refereed"],
+                "@": ["$.number_of_works_reviewed_refereed"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "dateRange",
+                    {
+                        "start": "$.start_date",
+                        "end": "$.end_date",
+                        "@": []
+                    }
+                ]
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/graduate_examination_activities": [
+        [
+            "div",
+            {
+                "strong": ["graduate_examination_activity_role"],
+                "@": ["$.graduate_examination_activity_role", "$.organization"]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["other_organization"],
+                "glue": ", ",
+                "@": [
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "$.department",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.student_name"
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/research_funding_application_assessment_activities": [
+        [
+            "div",
+            {
+                "label": ["committee_name"],
+                "glue": ", ",
+                "@": ["$.funding_reviewer_role", "$.reviewer_type", "$.committee_name"]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["assessment_type"],
+                "@": ["$.assessment_type"]
+            }
+        ],
+        [
+            "div",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.other_organization_type"]
+                        }
+                    ],
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["funding_organization"],
+                "@": ["$.funding_organization"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "$.number_of_applications_assessed",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/research_funding_application_assessment_activities/research_disciplines": [
+        [
+            "span",
+            {
+                "@": "$.research_discipline"
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/research_funding_application_assessment_activities/areas_of_research": [
+        [
+            "span",
+            {
+                "@": "$.area_of_research"
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/research_funding_application_assessment_activities/fields_of_application": [
+        [
+            "span",
+            {
+                "@": "$.field_of_application"
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/promotion_tenure_assessment_activities": [
+        [
+            "div",
+            {
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["other_organization"],
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["number_of_assessments"],
+                "glue": ", ",
+                "@": ["$.department", "$.number_of_assessments"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.activity_description"
+            }
+        ]
+    ],
+    "activities/assessment_and_review_activities/organizational_review_activities": [
+        [
+            "div",
+            {
+                "strong": ["role"],
+                "@": ["$.role"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.organization"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["other_organization"],
+                "glue": ", ",
+                "@": [
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "$.activity_description",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "activities/participation_activities/event_participation": [
+        [
+            "div",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    "$.event_type",
+                    "$.event_name",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["event_start_date", "event_end_date"],
+                "@": [
+                    "$.activity_description",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.event_start_date",
+                            "end": "$.event_end_date",
+                            "label": ["event_start_date", "event_end_date"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "activities/community_and_volunteer_activities": [
+        [
+            "div",
+            {
+                "strong": ["role"],
+                "@": ["$.role"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.organization"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["other_organization"],
+                "glue": ", ",
+                "@": [
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "$.activity_description",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "activities/knowledge_and_technology_translation": [
+        [
+            "div",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    "$.knowledge_and_technology_translation_activity_type",
+                    "$.group_organization_business_serviced",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "div",
+            {
+                "glue": ", ",
+                "@": ["$.target_stakeholder", "$.references_citations_web_sites"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.outcome_deliverable"
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.evidence_of_uptake_impact"
+            }
+        ],
+        [
+            "div",
+            {
+                "@": "$.activity_description"
+            }
+        ]
+    ],
+    "activities/international_collaboration_activities": [
+        [
+            "div",
+            {
+                "glue": ", ",
+                "strong": ["role"],
+                "@": ["$.role", "$.location"]
+            }
+        ],
+        [
+            "div",
+            {
+                "@": [
+                    "$.activity_description",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "memberships/committee_memberships": [
+        [
+            "p",
+            {
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.membership_start_date",
+                            "end": "$.membership_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.committee_name"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.organization"
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description"
+            }
+        ]
+    ],
+    "memberships/other_memberships": [
+        [
+            "p",
+            {
+                "strong": ["role"],
+                "@": [
+                    "$.role",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.membership_start_date",
+                            "end": "$.membership_end_date",
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.organization"
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.other_organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description"
+            }
+        ]
+    ],
+    "contributions/presentations": [
+        [
+            "p",
+            {
+                "strong": ["presentation_title"],
+                "@": [
+                    "$.presentation_title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.presentation_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.conference_event_name"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": ["$.location", "$.city"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["main_audience"],
+                "@": ["$.main_audience"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.invited", "$.keynote", "$.competitive"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "div",
+            {
+                "label": ["co-presenters"],
+                "@": ["$.co-presenters"]
+            }
+        ]
+    ],
+    "contributions/presentations/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/interviews_and_media_relations/broadcast_interviews": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["topic"],
+                "@": ["$.topic", "$.interviewer", "$.program", "$.network"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "dateRange",
+                    {
+                        "start": "$.first_broadcast_date",
+                        "end": "$.end_date",
+                        "@": []
+                    }
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ]
+    ],
+    "contributions/interviews_and_media_relations/broadcast_interviews/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/interviews_and_media_relations/text_interviews": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["topic"],
+                "@": ["$.topic", "$.interviewer", "$.forum"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.publication_date"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ]
+    ],
+    "contributions/interviews_and_media_relations/text_interviews/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/journal_articles": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["refereed", "contribution_role"],
+                "@": ["$.refereed", "$.publishing_status", "$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["volume", "issue"],
+                "glue": ", ",
+                "strong": ["article_title"],
+                "em": ["journal"],
+                "@": [
+                    "$.authors",
+                    "$.article_title",
+                    "$.journal",
+                    "$.volume",
+                    "$.issue",
+                    "$.page_range",
+                    [
+                        "inline",
+                        {
+                            "glue": ", ",
+                            "@": ["$.publisher", "$.publication_location", "$.date"]
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.open_access", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.synthesis"
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/journal_articles/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/journal_issues": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["refereed", "contribution_role", "publishing_status"],
+                "@": ["$.refereed", "$.publishing_status", "$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["volume", "issue", "number_of_pages"],
+                "glue": ", ",
+                "strong": ["issue_title"],
+                "em": ["journal"],
+                "@": [
+                    "$.authors",
+                    "$.issue_title",
+                    "$.journal",
+                    "$.volume",
+                    "$.issue",
+                    "$.number_of_pages",
+                    "$.publisher",
+                    "$.publication_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.date", "$.url", "$.open_access", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/journal_issues/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/books": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["refereed", "contribution_role", "publishing_status"],
+                "@": ["$.refereed", "$.publishing_status", "$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["edition", "volume", "number_of_pages"],
+                "glue": ", ",
+                "strong": ["book_title"],
+                "em": ["publisher"],
+                "@": [
+                    "$.authors",
+                    "$.book_title",
+                    "$.edition",
+                    "$.volume",
+                    "$.number_of_pages",
+                    "$.publisher",
+                    "$.publication_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.publication_city", "$.date", "$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/books/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/book_chapters": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["refereed", "publishing_status"],
+                "@": ["$.refereed", "$.publishing_status", "$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["edition", "volume", "page_range"],
+                "glue": ", ",
+                "em": ["book_title", "publisher"],
+                "strong": ["chapter_title"],
+                "@": [
+                    "$.authors",
+                    "$.chapter_title",
+                    "$.book_title",
+                    "$.edition",
+                    "$.volume",
+                    "$.page_range",
+                    "$.publisher",
+                    "$.publication_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.publication_city", "$.date", "$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/book_chapters/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/book_reviews": [
+        [
+            "p",
+            {
+                "label": ["volume"],
+                "glue": ", ",
+                "strong": ["review_title", "refereed", "publishing_status"],
+                "@": [
+                    "$.refereed",
+                    "$.review_title",
+                    "$.published_in",
+                    "$.volume",
+                    "$.issue",
+                    "$.page_range",
+                    [
+                        "inline",
+                        {
+                            "label": ["review_date"],
+                            "groupSuffix": " ",
+                            "@": ["$.review_date"]
+                        }
+                    ],
+                    "$.publishing_status"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.publisher",
+                    "$.publication_location",
+                    "$.book_reviewed_title",
+                    "$.book_reviewed_edition",
+                    "$.book_reviewed_volume"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["book_reviewed_publication_date"],
+                "@": ["$.book_reviewed_publication_date"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.book_reviewed_authors"
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/book_reviews/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/translations": [
+        [
+            "p",
+            {
+                "label": ["edition", "volume"],
+                "glue": ", ",
+                "strong": ["translation_title", "publishing_status"],
+                "@": [
+                    "$.translation_title",
+                    "$.published_in",
+                    "$.edition",
+                    "$.volume",
+                    "$.page_range",
+                    "$.publishing_status"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.publisher",
+                    "$.publication_location",
+                    "$.publication_city"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/translations/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/dissertations": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["dissertation_title"],
+                "@": [
+                    "$.dissertation_title",
+                    "$.organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location",
+                    "$.other_organization",
+                    "$.supervisor"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_pages"],
+                "glue": ", ",
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.completion_date"]
+                        }
+                    ],
+                    "$.degree_type",
+                    "$.number_of_pages"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/dissertations/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/supervised_student_publications": [
+        [
+            "p",
+            {
+                "label": ["edition", "volume", "page_range"],
+                "glue": ", ",
+                "strong": ["publication_title"],
+                "@": [
+                    "$.student",
+                    "$.publication_title",
+                    "$.published_in",
+                    "$.edition",
+                    "$.volume",
+                    "$.page_range"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["publishing_status"],
+                "@": ["$.publishing_status"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["publisher"],
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": ["$.date", "$.publisher", "$.publication_location"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["student_contribution_(%)"],
+                "@": ["$.student_contribution_(%)"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/supervised_student_publications/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/litigations": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["case_name"],
+                "@": [
+                    "$.case_name",
+                    "$.person_acted_for",
+                    "$.court",
+                    "$.location",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "groupSuffix": " ",
+                            "@": []
+                        }
+                    ],
+                    "$.key_legal_issues"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/litigations/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/newspaper_articles": [
+        [
+            "p",
+            {
+                "label": ["edition", "section", "page_range"],
+                "glue": ", ",
+                "strong": ["article_title"],
+                "@": [
+                    "$.article_title",
+                    "$.newspaper",
+                    "$.edition",
+                    "$.section",
+                    "$.page_range",
+                    [
+                        "inline",
+                        {
+                            "@": "$.publication_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.publication_location", "$.publication_city"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.contribution_role"
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/newspaper_articles/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/newsletter_articles": [
+        [
+            "p",
+            {
+                "label": ["volume", "issue", "page_range"],
+                "glue": ", ",
+                "strong": ["article_title"],
+                "@": [
+                    "$.article_title",
+                    "$.newsletter",
+                    "$.volume",
+                    "$.issue",
+                    "$.page_range",
+                    [
+                        "inline",
+                        {
+                            "@": "$.publication_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.publication_location"
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.contribution_role"
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/newsletter_articles/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/encyclopedia_entries": [
+        [
+            "p",
+            {
+                "label": ["edition", "volume", "number_of_volumes", "page_range"],
+                "glue": ", ",
+                "strong": ["entry_title", "publishing_status"],
+                "@": [
+                    "$.entry_title",
+                    "$.encyclopedia_name",
+                    "$.edition",
+                    "$.volume",
+                    "$.number_of_volumes",
+                    "$.page_range",
+                    "$.publishing_status"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": [
+                    "$.publisher",
+                    "$.publication_location",
+                    "$.publication_city",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/encyclopedia_entries/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/magazine_entries": [
+        [
+            "p",
+            {
+                "label": ["volume", "issue", "page_range"],
+                "glue": ", ",
+                "strong": ["article_title", "publishing_status"],
+                "@": [
+                    "$.article_title",
+                    "$.magazine_name",
+                    "$.volume",
+                    "$.issue",
+                    "$.page_range",
+                    "$.publishing_status"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.publisher",
+                    "$.publication_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/magazine_entries/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/dictionary_entries": [
+        [
+            "p",
+            {
+                "label": ["edition", "volume", "number_of_volumes", "page_range"],
+                "glue": ", ",
+                "strong": ["entry_title"],
+                "@": [
+                    "$.publishing_status",
+                    "$.entry_title",
+                    "$.dictionary_name",
+                    "$.edition",
+                    "$.volume",
+                    "$.number_of_volumes",
+                    "$.page_range"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.publisher",
+                    "$.publication_location",
+                    "$.publication_city"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/dictionary_entries/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/reports": [
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_pages"],
+                "glue": ", ",
+                "strong": ["report_title"],
+                "@": [
+                    "$.authors",
+                    "$.report_title",
+                    "$.synthesis",
+                    "$.number_of_pages",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date_submitted"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": [
+                    "$.organization",
+                    "$.other_organization_type",
+                    "$.other_organization_location",
+                    "$.other_organization"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/reports/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/working_papers": [
+        [
+            "p",
+            {
+                "label": ["number_of_pages"],
+                "glue": ", ",
+                "strong": ["paper_title"],
+                "@": [
+                    "$.authors",
+                    "$.paper_title",
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date_completed"]
+                        }
+                    ],
+                    "$.number_of_pages"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/working_papers/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/manuals": [
+        [
+            "p",
+            {
+                "label": ["edition", "volume", "number_of_volumes", "number_of_pages"],
+                "glue": ", ",
+                "strong": ["manual_title"],
+                "@": [
+                    "$.manual_title",
+                    "$.published_in",
+                    "$.edition",
+                    "$.volume",
+                    "$.number_of_volumes",
+                    "$.number_of_pages"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "strong": ["publishing_status"],
+                "@": [
+                    "$.publishing_status",
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.publisher",
+                    "$.publication_location",
+                    "$.publication_city"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/manuals/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/online_resources": [
+        [
+            "p",
+            {
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date_posted_online"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "glue": ", ",
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role", "$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/online_resources/funding_sources": [
+        [
+            "p",
+            {
+                "@": ["$.funding_organization", "$.other_funding_organization"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["funding_reference_number"],
+                "@": ["$.funding_reference_number"]
+            }
+        ]
+    ],
+    "contributions/publications/tests": [
+        [
+            "p",
+            {
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date_first_used"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "glue": ", ",
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role", "$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/tests/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/clinical_care_guidelines": [
+        [
+            "p",
+            {
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date_first_released"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/clinical_care_guidelines/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/publications/conference_publications": [
+        [
+            "p",
+            {
+                "strong": ["refereed", "publishing_status", "contribution_role"],
+                "@": [
+                    "$.refereed",
+                    "$.contribution_role",
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.conference_publication_type"]
+                        }
+                    ],
+                    "$.publishing_status"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["page_range", "conference_date"],
+                "glue": ", ",
+                "strong": ["publication_title"],
+                "em": ["conference_name"],
+                "@": [
+                    "$.authors",
+                    "$.publication_title",
+                    "$.conference_name",
+                    "$.conference_location",
+                    "$.city",
+                    "$.page_range",
+                    "$.published_in",
+                    "$.publisher",
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.publication_location",
+                    "$.conference_date"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.invited"
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.url", "$.doi", "$.contribution_percentage"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_of_contribution_role"
+            }
+        ]
+    ],
+    "contributions/publications/conference_publications/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/artistic_exhibitions": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["title_of_work"],
+                "@": [
+                    "$.title_of_work",
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date_of_first_performance"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/artistic_exhibitions/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/audio_recordings": [
+        [
+            "p",
+            {
+                "label": ["producer"],
+                "glue": ", ",
+                "strong": ["piece_title"],
+                "@": ["$.piece_title", "$.album_title", "$.producer"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["distributor"],
+                "@": ["$.distributor"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "inline",
+                    {
+                        "label": ["release_date"],
+                        "@": ["$.release_date"]
+                    }
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/audio_recordings/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/exhibition_catalogues": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["catalogue_title"],
+                "@": [
+                    "$.catalogue_title",
+                    "$.gallery_publisher",
+                    [
+                        "inline",
+                        {
+                            "@": "$.publication_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.publication_location", "$.publication_city"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_pages"],
+                "@": ["$.number_of_pages"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["artists"],
+                "@": ["$.artists"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/exhibition_catalogues/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/musical_compositions": [
+        [
+            "p",
+            {
+                "label": ["number_of_pages"],
+                "glue": ", ",
+                "strong": ["composition_title"],
+                "@": ["$.composition_title", "$.instrumentation_tags", "$.number_of_pages"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": ["$.duration", "$.publisher"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.publication_date"]
+                        }
+                    ],
+                    "$.publication_location"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/musical_compositions/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/musical_performances": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["title_of_work"],
+                "@": [
+                    "$.title_of_work",
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date_of_first_performance"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/musical_performances/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/radio_and_tv_programs": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["program_title"],
+                "@": ["$.program_title", "$.episode_title", "$.number_of_episodes"]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["series_title"],
+                "em": ["publisher"],
+                "@": ["$.series_title", "$.publisher"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.publication_location"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/radio_and_tv_programs/broadcasts": [
+        [
+            "span",
+            {
+                "@": [
+                    [
+                        "inline",
+                        {
+                            "groupSuffix": " ",
+                            "@": ["$.date"]
+                        }
+                    ],
+                    "$.network_name"
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/radio_and_tv_programs/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/scripts": [
+        [
+            "p",
+            {
+                "strong": ["script_title"],
+                "@": [
+                    "$.script_title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.publication_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/scripts/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/short_fiction": [
+        [
+            "p",
+            {
+                "label": ["volume", "issue", "page_range"],
+                "glue": ", ",
+                "strong": ["short_fiction_title"],
+                "@": [
+                    "$.short_fiction_title",
+                    "$.appeared_in",
+                    "$.volume",
+                    "$.issue",
+                    "$.page_range",
+                    [
+                        "inline",
+                        {
+                            "@": "$.publication_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "em": ["publisher"],
+                "@": ["$.publisher", "$.publication_location"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/short_fiction/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/theatre_performances_and_productions": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["title_of_work"],
+                "@": [
+                    "$.title_of_work",
+                    "$.producer",
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.first_performance_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/theatre_performances_and_productions/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/video_recordings": [
+        [
+            "p",
+            {
+                "label": ["director", "producer", "distributor"],
+                "glue": ", ",
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    "$.director",
+                    "$.producer",
+                    "$.distributor",
+                    [
+                        "inline",
+                        {
+                            "@": "$.release_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/video_recordings/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/visual_artworks": [
+        [
+            "p",
+            {
+                "strong": ["artwork_title"],
+                "@": [
+                    "$.artwork_title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.publication_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/visual_artworks/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/sound_design": [
+        [
+            "p",
+            {
+                "label": ["writer", "producer"],
+                "glue": ", ",
+                "strong": ["show_title"],
+                "@": [
+                    "$.show_title",
+                    "$.writer",
+                    "$.producer",
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.opening_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/sound_design/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/set_design": [
+        [
+            "p",
+            {
+                "label": ["writer", "producer"],
+                "glue": ", ",
+                "strong": ["show_title"],
+                "@": [
+                    "$.show_title",
+                    "$.writer",
+                    "$.producer",
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.opening_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/set_design/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/light_design": [
+        [
+            "p",
+            {
+                "label": ["writer", "producer"],
+                "glue": ", ",
+                "strong": ["show_title"],
+                "@": [
+                    "$.show_title",
+                    "$.writer",
+                    "$.producer",
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.opening_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/light_design/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/choreography": [
+        [
+            "p",
+            {
+                "@": [
+                    "$.show_title",
+                    "$.composer",
+                    "$.company",
+                    [
+                        "inline",
+                        {
+                            "label": ["premiere_date", "media_release_date"],
+                            "glue": " - ",
+                            "@": ["$.premiere_date", "$.media_release_date"]
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["principal_dancers"],
+                "@": ["$.principal_dancers"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/choreography/major_performance_dates": [
+        [
+            "span",
+            {
+                "@": "$.major_performance_date"
+            }
+        ]
+    ],
+    "contributions/artistic_performances/choreography/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/museum_exhibitions": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["exhibition_title"],
+                "@": [
+                    "$.exhibition_title",
+                    "$.venue",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.start_date",
+                            "end": "$.end_date",
+                            "groupSuffix": " ",
+                            "@": []
+                        }
+                    ],
+                    "$.exhibition_catalogue_title"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/museum_exhibitions/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/performance_art": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["performance_title"],
+                "@": ["$.performance_title", "$.venue"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["contributors"],
+                "@": ["$.contributors"]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/performance_art/performance_date": [
+        [
+            "span",
+            {
+                "@": "$.performance_dates"
+            }
+        ]
+    ],
+    "contributions/artistic_performances/performance_art/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/poetry": [
+        [
+            "p",
+            {
+                "label": ["volume", "issue", "page_range"],
+                "glue": ", ",
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    "$.venue",
+                    "$.appeared_in",
+                    "$.volume",
+                    "$.issue",
+                    "$.page_range",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "glue": ", ",
+                "@": ["$.publisher", "$.country"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "glue": ", ",
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role", "$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["authors"],
+                "@": ["$.authors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["editors"],
+                "@": ["$.editors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ]
+    ],
+    "contributions/artistic_performances/poetry/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/artistic_performances/other_artistic_contributions": [
+        [
+            "p",
+            {
+                "strong": ["title"],
+                "@": ["$.title"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": [
+                    "$.venue",
+                    [
+                        "inline",
+                        {
+                            "@": "$.date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["number_of_contributors"],
+                "@": ["$.number_of_contributors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["contribution_role"],
+                "@": ["$.contribution_role"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ]
+    ],
+    "contributions/artistic_performances/other_artistic_contributions/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/intellectual_property/patents": [
+        [
+            "p",
+            {
+                "glue": ", ",
+                "strong": ["patent_title"],
+                "@": ["$.patent_title", "$.patent_number", "$.patent_location", "$.patent_status"]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["filing_date", "date_issued", "date_of_end_term"],
+                "@": [
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.filing_date",
+                            "mid": "$.date_issued",
+                            "end": "$.date_of_end_term",
+                            "label": ["filing_date", "date_issued", "date_of_end_term"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "label": ["inventors"],
+                "@": ["$.inventors"]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value_impact"
+            }
+        ]
+    ],
+    "contributions/intellectual_property/patents/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/intellectual_property/licenses": [
+        [
+            "p",
+            {
+                "label": ["filing_date", "date_issued", "end_date"],
+                "glue": ", ",
+                "strong": ["license_title"],
+                "@": [
+                    "$.license_title",
+                    "$.license_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.filing_date",
+                            "mid": "$.date_issued",
+                            "end": "$.end_date",
+                            "label": ["filing_date", "date_issued", "end_date"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value_impact"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ]
+    ],
+    "contributions/intellectual_property/licenses/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/intellectual_property/disclosures": [
+        [
+            "p",
+            {
+                "label": ["filing_date", "date_issued", "end_date"],
+                "glue": ", ",
+                "strong": ["disclosure_title"],
+                "@": [
+                    "$.disclosure_title",
+                    "$.disclosure_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.filing_date",
+                            "mid": "$.date_issued",
+                            "end": "$.end_date",
+                            "label": ["filing_date", "date_issued", "end_date"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value_impact"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ]
+    ],
+    "contributions/intellectual_property/disclosures/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/intellectual_property/registered_copyrights": [
+        [
+            "p",
+            {
+                "label": ["filing_date", "date_issued", "end_date"],
+                "glue": ", ",
+                "strong": ["copyright_title"],
+                "@": [
+                    "$.copyright_title",
+                    "$.copyright_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.filing_date",
+                            "mid": "$.date_issued",
+                            "end": "$.end_date",
+                            "label": ["filing_date", "date_issued", "end_date"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value_impact"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ]
+    ],
+    "contributions/intellectual_property/registered_copyrights/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "contributions/intellectual_property/trademarks": [
+        [
+            "p",
+            {
+                "label": ["filing_date", "date_issued", "end_date"],
+                "glue": ", ",
+                "strong": ["trademark_title"],
+                "@": [
+                    "$.trademark_title",
+                    "$.trademark_status",
+                    [
+                        "dateRange",
+                        {
+                            "start": "$.filing_date",
+                            "mid": "$.date_issued",
+                            "end": "$.end_date",
+                            "label": ["filing_date", "date_issued", "end_date"],
+                            "@": []
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value_impact"
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.url"
+            }
+        ]
+    ],
+    "contributions/intellectual_property/trademarks/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "pubmed_articles": [
+        [
+            "p",
+            {
+                "label": ["volume", "issue"],
+                "glue": ", ",
+                "strong": ["title"],
+                "em": ["journal"],
+                "@": [
+                    "$.authors",
+                    "$.pubmed_id",
+                    "$.title",
+                    "$.journal",
+                    "$.volume",
+                    "$.issue",
+                    "$.publication_date"
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value"
+            }
+        ],
+        [
+            "p",
+            {
+                "strong": ["open_access"],
+                "@": ["$.open_access", "$.url_to_free_article"]
+            }
+        ]
+    ],
+    "pubmed_articles/funding_sources": [
+        [
+            "span",
+            {
+                "@": [
+                    "$.funding_organization",
+                    "$.other_funding_organization",
+                    [
+                        "inline",
+                        {
+                            "label": ["funding_reference_number"],
+                            "@": ["$.funding_reference_number"]
+                        }
+                    ]
+                ]
+            }
+        ]
+    ],
+    "most_significant_contributions": [
+        [
+            "p",
+            {
+                "strong": ["title"],
+                "@": [
+                    "$.title",
+                    [
+                        "inline",
+                        {
+                            "@": "$.contribution_date"
+                        }
+                    ]
+                ]
+            }
+        ],
+        [
+            "p",
+            {
+                "@": "$.description_contribution_value_impact"
+            }
+        ]
+    ]
+}

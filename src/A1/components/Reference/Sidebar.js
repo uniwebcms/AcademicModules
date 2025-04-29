@@ -3,7 +3,8 @@ import Cite from '../_utils/cite/Render';
 import { SafeHtml, Link, Image } from '@uniwebcms/module-sdk';
 import CitationStyle from './CitationStyles';
 import { MdFileCopy } from 'react-icons/md';
-import { parseReference, getDateFromIssued } from '../_utils/reference';
+import { parseReference, getDateFromIssued, parseProfileData } from '../_utils/reference';
+import CVRefRender from '../_utils/reference/CVRefRender';
 
 const options = [
     { id: 'apa', name: 'APA' },
@@ -92,43 +93,61 @@ export default function (props) {
                         {parsedReferences.map((reference) => {
                             const { profile, url, ...rest } = reference;
 
-                            const { title, issued } = rest;
+                            const { title, issued, isStandard } = rest;
 
                             let year = issued?.['date-parts']?.[0]?.[0] || '';
                             const journal = rest['container-title'] || '';
 
                             const banner = profile.getBanner();
-                            return (
-                                <div className={`flex`} key={url}>
-                                    <div
-                                        className={`flex flex-col space-y-2 ${
-                                            banner ? 'mr-2' : ''
-                                        }`}
-                                    >
-                                        <Link
-                                            href={url}
-                                            className={`text-text-color font-medium hover:underline`}
-                                        >
-                                            {title}
-                                        </Link>
-                                        <span className={`text-text-color-80 text-xs`}>
-                                            {`${journal}${
-                                                year ? `${journal ? ', ' : ''}${year}` : ''
+
+                            let refMarkup = null;
+
+                            if (isStandard) {
+                                refMarkup = (
+                                    <div className={`flex`} key={url}>
+                                        <div
+                                            className={`flex flex-col space-y-2 ${
+                                                banner ? 'mr-2' : ''
                                             }`}
-                                        </span>
-                                    </div>
-                                    {banner ? (
-                                        <Link
-                                            href={url}
-                                            className={
-                                                'cursor-pointer w-[83px] h-[106px] flex-shrink-0 overflow-hidden ml-auto !shadow-[0_1px_2px_rgba(0,0,0,0.15)] border border-[rgba(0,0,0,0.15)] bg-white'
-                                            }
                                         >
-                                            <Image profile={profile} type="banner"></Image>
-                                        </Link>
-                                    ) : null}
-                                </div>
-                            );
+                                            <Link
+                                                href={url}
+                                                className={`text-text-color font-medium hover:underline`}
+                                            >
+                                                {title}
+                                            </Link>
+                                            <span className={`text-text-color-80 text-xs`}>
+                                                {`${journal}${
+                                                    year ? `${journal ? ', ' : ''}${year}` : ''
+                                                }`}
+                                            </span>
+                                        </div>
+                                        {banner ? (
+                                            <Link
+                                                href={url}
+                                                className={
+                                                    'cursor-pointer w-[83px] h-[106px] flex-shrink-0 overflow-hidden ml-auto !shadow-[0_1px_2px_rgba(0,0,0,0.15)] border border-[rgba(0,0,0,0.15)] bg-white'
+                                                }
+                                            >
+                                                <Image profile={profile} type="banner"></Image>
+                                            </Link>
+                                        ) : null}
+                                    </div>
+                                );
+                            } else {
+                                const { parsedMeta, parsedData } = rest;
+                                let sectionPath = (parsedMeta?.['_section'] || []).join('/');
+                                let parsed = parseProfileData({ sections: [parsedData] });
+                                refMarkup = (
+                                    <Link href={url} key={url}>
+                                        <CVRefRender
+                                            value={parsed?.[0]?.value || []}
+                                            sectionPath={sectionPath}
+                                        />
+                                    </Link>
+                                );
+                            }
+                            return refMarkup;
                         })}
                     </div>
                 </div>
