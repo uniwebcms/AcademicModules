@@ -6,10 +6,51 @@ import { HiOutlineGlobeAlt, HiSearch, HiX, HiOutlineMenu, HiChevronDown } from '
 import { GrRadialSelected } from 'react-icons/gr';
 import { AiOutlineUser } from 'react-icons/ai';
 import SearchManager from './SearchManager';
+import {
+    LuCodeXml,
+    LuPenLine,
+    LuFileText,
+    LuGraduationCap,
+    LuHotel,
+    LuLandmark,
+    LuSearch,
+    LuSquareLibrary,
+    LuFileInput,
+    LuLanguages,
+    LuRocket,
+    LuHardDrive,
+    LuChartLine,
+    LuFolderOpen,
+    LuNewspaper,
+    LuPlay,
+    LuCloudUpload,
+    LuChartScatter,
+    LuCircleHelp,
+    LuAlbum,
+} from 'react-icons/lu';
 
 const LinkIcon = ({ icon }) => {
     const map = {
-        // name: icon
+        'code-xml': LuCodeXml,
+        'pen-line': LuPenLine,
+        'file-text': LuFileText,
+        'graduation-cap': LuGraduationCap,
+        hotel: LuHotel,
+        landmark: LuLandmark,
+        search: LuSearch,
+        'square-library': LuSquareLibrary,
+        'file-input': LuFileInput,
+        languages: LuLanguages,
+        rocket: LuRocket,
+        'hard-drive': LuHardDrive,
+        'chart-line': LuChartLine,
+        'folder-open': LuFolderOpen,
+        newspaper: LuNewspaper,
+        play: LuPlay,
+        'cloud-upload': LuCloudUpload,
+        'chart-scatter': LuChartScatter,
+        'circle-help': LuCircleHelp,
+        album: LuAlbum,
     };
 
     const IconComponent = map[icon] || 'div';
