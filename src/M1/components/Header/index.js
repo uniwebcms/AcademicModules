@@ -127,12 +127,12 @@ const NavBar = ({
         if (!button) return;
 
         const calculateLayout = () => {
-            const { left, right } = button.getBoundingClientRect();
+            const { left } = button.getBoundingClientRect();
             const width = window.innerWidth;
             const paddingLeft = width >= 1280 ? 96 : width >= 1024 ? 64 : width >= 768 ? 32 : 24;
             const offsetLeft = width >= 1728 ? (width - 1728) / 2 + paddingLeft : paddingLeft;
 
-            const spaceToRight = width - right;
+            const spaceToRight = width - left;
 
             const offset = left - offsetLeft;
             const alignRight = false;
@@ -525,7 +525,8 @@ const NavBar = ({
                             <div
                                 className="grid gap-x-4 gap-y-1 relative max-w-[500px]"
                                 style={{
-                                    gridTemplateColumns: 'auto 1fr',
+                                    gridTemplateColumns:
+                                        navDropdownLayout.columns === 1 ? 'auto' : 'auto 1fr',
                                     // gridTemplateColumns: `repeat(${navDropdownLayout.columns}, auto)`,
                                     marginLeft: navDropdownLayout.offset,
                                 }}
