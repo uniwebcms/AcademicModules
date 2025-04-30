@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, SafeHtml, Asset, FileLogo, Link } from '@uniwebcms/module-sdk';
 import Container from '../_utils/Container';
-import { parseReference } from '../_utils/reference';
+import { parseReference, parseProfileData } from '../_utils/reference';
+import CVRefRender from '../_utils/reference/CVRefRender';
 import Sidebar from './Sidebar';
 
 export default function Reference({ website, input }) {
@@ -23,7 +24,7 @@ export default function Reference({ website, input }) {
 
     let categoryLabel = category.replace('_', ' ');
 
-    const { title, author } = parsedData;
+    const { title, author, isStandard, page, pages, page_range } = parsedData;
     const journal = parsedData?.['container-title'] || '';
 
     const topics = profile.at('topics');
@@ -31,6 +32,8 @@ export default function Reference({ website, input }) {
     const fullDocument = profile.at('full_document/file');
 
     const assetInfo = profile.getAssetInfo(fullDocument, false) || {};
+
+    let pageNum = page || pages || page_range || '';
 
     const { href, src } = assetInfo;
 
@@ -62,12 +65,11 @@ export default function Reference({ website, input }) {
             </p>
         ) : null;
 
-    return (
-        <Container
-            py="py-12 lg:py-16"
-            className="px-6 mx-auto max-w-8xl lg:px-8 flex flex-col space-y-8 lg:flex-row lg:space-x-10 lg:space-y-0"
-        >
-            <div className="flex flex-col flex-1">
+    let refMarkup = null;
+
+    if (isStandard) {
+        refMarkup = (
+            <>
                 <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
                     {originalCategory ? (
                         <Link
@@ -118,7 +120,66 @@ export default function Reference({ website, input }) {
                 <p className="text-lg text-text-color-90 mb-4 flex items-center space-x-1.5">
                     <span className="italic">{journal}</span>
                     {year ? <span>{`(${year})`}</span> : null}
+                    {pageNum ? <span>{`${pageNum}`}</span> : null}
                 </p>
+            </>
+        );
+    } else {
+        const { parsedMeta, parsedData: parsedSection } = parsedData;
+        let sectionPath = (parsedMeta?.['_section'] || []).join('/');
+        let parsed = parseProfileData({ sections: [parsedSection] });
+
+        refMarkup = (
+            <>
+                <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
+                    {originalCategory ? (
+                        <Link
+                            to={input.makeHrefToIndex(`?type=${categoryLabel}`)}
+                            className="text-text-color-80 hover:underline cursor-pointer"
+                        >
+                            <span>{categoryLabel}</span>
+                        </Link>
+                    ) : (
+                        <span>{categoryLabel}</span>
+                    )}
+                    {categoryLabel && year ? <span className="mx-2">|</span> : null}
+                    {year ? (
+                        <Link
+                            to={input.makeHrefToIndex(`?year=${year}`)}
+                            className="text-text-color-80 hover:underline cursor-pointer"
+                        >
+                            <span>{`${website.localize({
+                                en: 'Date: ',
+                                fr: 'Date: ',
+                            })} ${year}`}</span>
+                        </Link>
+                    ) : null}
+                </h2>
+
+                <div className={'flex mb-4'}>
+                    {banner ? (
+                        <div
+                            className={
+                                'w-[111px] h-[142px] flex-shrink-0 overflow-hidden !shadow-[0_1px_2px_rgba(255,255,255,0.15)] border border-[rgba(255,255,255,0.15)] bg-white mr-5'
+                            }
+                        >
+                            <Image profile={profile} type="banner"></Image>
+                        </div>
+                    ) : null}
+                    {/* <h1 className="text-3xl font-bold tracking-tight">{title}</h1> */}
+                    <CVRefRender value={parsed?.[0]?.value || []} sectionPath={sectionPath} />
+                </div>
+            </>
+        );
+    }
+
+    return (
+        <Container
+            py="py-12 lg:py-16"
+            className="px-6 mx-auto max-w-8xl lg:px-8 flex flex-col space-y-8 lg:flex-row lg:space-x-10 lg:space-y-0"
+        >
+            <div className="flex flex-col flex-1">
+                {refMarkup}
                 {topicsMarkup}
                 {fullDocument && (
                     <div className={`flex items-center space-x-4 mt-5 mb-1 text-lg`}>

@@ -19,7 +19,7 @@ import { twMerge } from '@uniwebcms/module-sdk';
 export default forwardRef(
     (
         { as: Component = 'section', children, className = '', py = 'py-12 lg:py-24', ...rest },
-        ref = null
+        ref
     ) => {
         return (
             <Component className={twMerge(`${py} relative`, className)} {...rest} ref={ref}>

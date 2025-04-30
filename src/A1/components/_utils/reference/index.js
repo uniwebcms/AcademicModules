@@ -3,7 +3,22 @@ export const parseReference = (profile) => {
 
     const { data, title, doi, date, meta_data } = head;
 
+    let isStandard = true;
+
     let parsedData = data;
+
+    if (parsedData?.section_id) {
+        if (parsedData?.['standardData']) {
+            parsedData = {
+                ...parsedData?.['standardData'],
+                title,
+                date,
+            };
+        } else {
+            isStandard = false;
+        }
+    }
+
     //For some reason, maybe beacuse the raw editor is not working properly, the data is being saved as a string
     if (typeof parsedData === 'string') {
         parsedData = JSON.parse(parsedData);
@@ -40,7 +55,23 @@ export const parseReference = (profile) => {
         url,
     } = parsedData;
 
-    let finalData = { title, DOI: finalDoi, type: 'article-journal', volume, issue, journal };
+    let finalData = {
+        title,
+        DOI: finalDoi,
+        type: 'article-journal',
+        volume,
+        issue,
+        journal,
+        isStandard,
+    };
+
+    if (!isStandard) {
+        finalData = {
+            ...finalData,
+            parsedData,
+            parsedMeta,
+        };
+    }
 
     if (authors) {
         const { parsedAuthorArray, hasOtherAuthors } = init(authors);
@@ -420,3 +451,450 @@ export function getDateFromIssued(issued) {
     }
     return '0'; // Return a very old date if no valid data is available
 }
+
+export const isEmptySectionValue = (value) => {
+    if (!value.length) return true;
+
+    const copy = structuredClone(value);
+
+    const filtered = copy.filter((item) => {
+        const { itemId, _primaryItem, ...fields } = item;
+
+        if (!Object.keys(fields).length) return false;
+
+        let hasValue = false;
+
+        Object.values(fields).forEach((field) => {
+            if (!field.value) return;
+
+            if (field.type === 'localstr') {
+                if (Object.values(field.value).filter(Boolean).length) {
+                    hasValue = true;
+                }
+            } else {
+                hasValue = true;
+            }
+        });
+
+        return hasValue;
+    });
+
+    return !filtered.length;
+};
+
+const parseItemAttributes = (attributes, format) => {
+    const { _attributes_ } = format;
+    const parsedAttributes = {};
+    for (const [attributeId, attributeValue] of Object.entries(attributes)) {
+        for (const [_attributeName_, _attribute_] of Object.entries(_attributes_)) {
+            if (_attribute_.type_id === attributeId) {
+                parsedAttributes[_attributeName_] = attributeValue;
+            }
+        }
+    }
+    return parsedAttributes;
+};
+
+const getCardFileNames = (fields, subsections) => {
+    let cardFileNames = [];
+
+    Object.values(fields).forEach((field) => {
+        if (field.constraints?.autocomplete) {
+            cardFileNames.push(field.constraints.autocomplete);
+        }
+    });
+    Object.values(subsections).forEach((subsection) => {
+        const { fields, subsections } = subsection;
+        cardFileNames.push(...getCardFileNames(fields, subsections));
+    });
+    return cardFileNames;
+};
+
+const getSubtypeIds = (fields, subsections) => {
+    let subtypeIds = [];
+    Object.values(fields).forEach((field) => {
+        if (field.type === 'lov' || field.type === 'systable') {
+            subtypeIds.push(field.subtype_id);
+        } else if (field.type === 'reftable') {
+            subtypeIds.push([field.subtype_id, field.dependencies]);
+        } else if (field.type === 'profile') {
+            // this is to handle the case where the field is profile type without subtype
+            // we set the subtype_id to the field name to help the rest code to parse selector options
+            // warning: the field name might not be unique, consider use field_id with a special symbol or use field name with section id.
+            if (!field.subtype_id) {
+                field.subtype_id = field.name;
+            }
+            subtypeIds.push(field.subtype_id);
+        }
+    });
+    Object.values(subsections).forEach((subsection) => {
+        const { fields, subsections } = subsection;
+        subtypeIds.push(...getSubtypeIds(fields, subsections));
+    });
+
+    return subtypeIds;
+};
+
+export const parseFieldValue = (
+    fieldType,
+    fieldSubtype,
+    fieldValue = null,
+    attributes = {},
+    lang
+) => {
+    if (fieldValue === null)
+        return {
+            value: null,
+        };
+
+    let parsedValue = {};
+
+    switch (fieldType) {
+        case 'systable':
+        case 'lov':
+        case 'reftable': {
+            if (!Array.isArray(fieldValue))
+                return {
+                    value: '_invalid_',
+                }; // "invalid" waring will be display in view page and in edit page the field will be empty
+
+            const [id, value = null, ...other_values] = fieldValue;
+
+            const result = {
+                value_id: id,
+            };
+
+            if (value) result.value = value;
+
+            if (other_values) result.other_values = other_values.filter(Boolean);
+
+            return result;
+        }
+        case 'bilingual':
+            if (fieldValue.english) parsedValue.en = fieldValue.english;
+
+            if (fieldValue.french) parsedValue.fr = fieldValue.french;
+
+            return {
+                value: parsedValue,
+            };
+        case 'localstr':
+            try {
+                parsedValue = JSON.parse(fieldValue);
+            } catch (error) {
+                parsedValue = { [uniweb.language()]: fieldValue, '@': {} };
+            }
+
+            const { '@': metadata = {}, ...langValue } = parsedValue;
+
+            return {
+                value: langValue,
+                activeValue:
+                    langValue[uniweb.language()] ||
+                    Object.values(langValue).filter(Boolean)[0] ||
+                    '',
+                activeLang: uniweb.language(),
+                metadata,
+            };
+        case 'address':
+            return { value: JSON.parse(fieldValue) };
+        default:
+            return {
+                value: fieldValue,
+            };
+    }
+};
+
+const parseFields = (
+    fields,
+    itemValues,
+    subsections,
+    subsectionItemOrder = null,
+    attributes = {},
+    lang
+) => {
+    const parsedFields = {};
+
+    for (const [fieldId, field] of Object.entries(fields)) {
+        const { type, subtype, label, constraints, subsection_id, name, field_id } = field;
+
+        const fieldValue = itemValues ? itemValues[fieldId] : '';
+        const parsedField = {
+            name,
+            type,
+            subtype,
+            label,
+            constraints,
+            fieldId: field_id,
+        };
+
+        if (type !== 'section') {
+            Object.assign(
+                parsedField,
+                fieldValue ? parseFieldValue(type, subtype, fieldValue, attributes, lang) : ''
+            );
+            if (name === 'order') {
+                parsedField['value'] = parsedField['value'] ?? subsectionItemOrder;
+            }
+        } else {
+            const subsectionValue = [];
+            const subsection = subsections[subsection_id];
+            if (!fieldValue) parsedField['value'] = null;
+            else {
+                fieldValue.forEach((subItem) => {
+                    const parsedSubsection = parseFields(
+                        subsection.fields,
+                        subItem.values,
+                        subsection.subsections,
+                        subItem.order,
+                        attributes,
+                        lang
+                    );
+                    parsedSubsection['itemId'] = subItem.id;
+                    subsectionValue.push(parsedSubsection);
+                });
+
+                parsedField['value'] = subsectionValue;
+            }
+        }
+        parsedFields[name] = parsedField;
+    }
+    return parsedFields;
+};
+
+// TODO check field permission
+const filterFields = (fields) => {
+    for (const [fieldId, field] of Object.entries(fields)) {
+        if (field.disabled === '1') {
+            delete fields[fieldId];
+        }
+    }
+};
+
+const filterSubsections = (subsections) => {
+    for (const [subsectionId, subsection] of Object.entries(subsections)) {
+        if (subsection.disabled === '1') {
+            delete subsections[subsectionId];
+        }
+    }
+};
+
+export const parseSection = (
+    section,
+    format,
+    contentInfo,
+    filterOption = { skip: [], keep: [], ignoreEmpty: false },
+    editMode,
+    lang
+) => {
+    const {
+        name,
+        sectionPath,
+        label,
+        max_item_count,
+        section_id,
+        fields,
+        has_fields,
+        disabled,
+        items,
+        description,
+        constraints = {},
+        subsections = [],
+        source_id,
+    } = section;
+
+    const { skip, keep, ignoreEmpty } = filterOption;
+
+    const value = [];
+    let subtypeIds = [];
+    let cardFileNames = [];
+    let forceKeep = false;
+
+    if (keep.indexOf(name) !== -1) forceKeep = true;
+    // if (disabled === '1' && !forceKeep) return null;
+    if (disabled === '1') return null;
+    if ((skip === 'all' || skip.indexOf(name) !== -1) && !forceKeep) return null;
+
+    // const permission = constraints ? constraints.permission : null;
+    // if (permission && contentInfo) {
+    //     if (!uniweb.checkUserPermission(permission, contentInfo)) {
+    //         return null;
+    //     }
+    // }
+
+    filterFields(fields);
+    filterSubsections(subsections);
+
+    if (has_fields === '1') {
+        if (items) {
+            items.forEach((item) => {
+                const { id, values, attributes } = item;
+
+                const attrVal = {};
+
+                if (attributes) {
+                    if (attributes.primary === true) {
+                        attrVal['_primaryItem'] = true;
+                    } else {
+                        if (format)
+                            attrVal['_attributes'] = parseItemAttributes(attributes, format);
+                    }
+                }
+
+                const parsedItem = {
+                    itemId: id,
+                    ...parseFields(fields, values, subsections, null, attrVal?._attributes, lang),
+                    ...attrVal,
+                };
+
+                value.push(parsedItem);
+            });
+        }
+        subtypeIds = getSubtypeIds(fields, subsections);
+        cardFileNames = getCardFileNames(fields, subsections);
+    } else {
+        if (items?.[0]) {
+            const { values, id } = items[0];
+            for (const [fieldId, field] of Object.entries(fields)) {
+                const { subsection_id } = field;
+                const subsection = subsections[subsection_id];
+                const subsectionItems = values[fieldId];
+                subsection['items'] = subsectionItems ?? [];
+                const parsedSubsection = parseSection(
+                    subsection,
+                    format,
+                    contentInfo,
+                    filterOption,
+                    editMode,
+                    lang
+                );
+
+                if (parsedSubsection) {
+                    subsections[subsection_id] = {
+                        parentFieldId: fieldId,
+                        parentItemId: id,
+                        ...parsedSubsection,
+                    };
+                } else {
+                    delete subsections[subsection_id];
+                }
+            }
+        } else {
+            if (ignoreEmpty && !forceKeep) {
+                return null;
+            } else {
+                for (const [fieldId, field] of Object.entries(fields)) {
+                    const { subsection_id } = field;
+                    const subsection = subsections[subsection_id];
+
+                    subsection['items'] = [];
+                    const parsedSubsection = parseSection(
+                        subsection,
+                        format,
+                        contentInfo,
+                        filterOption,
+                        editMode,
+                        lang
+                    );
+
+                    if (parsedSubsection) {
+                        subsections[subsection_id] = {
+                            parentItemId: '0',
+                            parentFieldId: fieldId,
+                            ...parsedSubsection,
+                        };
+                    } else {
+                        delete subsections[subsection_id];
+                    }
+                }
+            }
+        }
+    }
+
+    let parsedSection;
+
+    if (
+        ignoreEmpty &&
+        !forceKeep &&
+        ((has_fields === '1' && isEmptySectionValue(value)) ||
+            (has_fields !== '1' && Object.keys(subsections).length === 0))
+    )
+        return null;
+
+    if (!editMode) {
+        parsedSection = {
+            name,
+            label,
+            max_item_count,
+            section_id,
+            value,
+            has_fields,
+            fields,
+            subsections,
+            constraints,
+            source_id,
+        };
+    } else {
+        parsedSection = {
+            name,
+            sectionPath,
+            label,
+            max_item_count,
+            section_id,
+            value,
+            has_fields,
+            fields,
+            subsections,
+            subtypeIds,
+            cardFileNames,
+            description,
+            constraints,
+            source_id,
+        };
+    }
+
+    return parsedSection;
+};
+
+/**
+ * @todo Add comments about how the data is parsed. Define the options.
+ *
+ * @param {*} profileData
+ * @param {*} filterSetting
+ * @param {*} editMode
+ * @returns
+ */
+export const parseProfileData = (profileData, filterSetting, editMode = false, lang = '') => {
+    let parsedProfileData = [];
+
+    let filterOption = {};
+
+    const { sections, format, contentInfo } = profileData;
+
+    if (!filterSetting) {
+        filterOption = { skip: [], keep: [], ignoreEmpty: false };
+    } else {
+        if (filterSetting === true) {
+            filterOption = { skip: [], keep: [], ignoreEmpty: true };
+        } else {
+            filterOption = Object.assign({ skip: [], keep: [], ignoreEmpty: false }, filterSetting);
+        }
+    }
+
+    sections.forEach((section) => {
+        const parsedSection = parseSection(
+            section,
+            format,
+            contentInfo,
+            filterOption,
+            editMode,
+            lang
+        );
+
+        if (parsedSection) {
+            parsedProfileData.push(parsedSection);
+        }
+    });
+
+    return parsedProfileData;
+};
