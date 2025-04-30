@@ -549,7 +549,7 @@ const NavBar = ({
                                             className={twJoin(
                                                 'absolute bottom-1.5 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0',
                                                 navIcons?.length
-                                                    ? ' left-8 group-hover:w-[calc(100%-44px)]'
+                                                    ? 'left-9 group-hover:w-[calc(100%-48px)]'
                                                     : 'left-3 group-hover:w-[calc(100%-24px)]'
                                             )}
                                         />
