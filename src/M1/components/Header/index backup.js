@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Dialog, Button } from '@headlessui/react';
 import { getNextBlockContext } from '../_utils/context';
 import { Image, Icon, getPageProfile, twJoin, Link, website } from '@uniwebcms/module-sdk';
 import { languages } from '../_utils/translate';
@@ -7,15 +8,116 @@ import { GrRadialSelected } from 'react-icons/gr';
 import { AiOutlineUser } from 'react-icons/ai';
 import SearchManager from './SearchManager';
 
-const LinkIcon = ({ icon }) => {
-    const map = {
-        // name: icon
-    };
+// a reusable sign in component in both dropdown and mobile menu
+// const SignIn = ({ logo }) => {
+//     return (
+//         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+//             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+//                 <div className="flex items-center justify-center h-10">{logo}</div>
+//                 <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight">
+//                     {website.localize({
+//                         en: 'Sign in to your account',
+//                         fr: 'Connectez-vous à votre compte',
+//                         es: 'Inicia sesión en tu cuenta',
+//                         ch: '登录您的帐户',
+//                     })}
+//                 </h2>
+//             </div>
 
-    const IconComponent = map[icon] || 'div';
+//             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+//                 <form action="#" method="POST" className="space-y-6">
+//                     <div>
+//                         <label htmlFor="email" className="block text-sm/6 font-medium">
+//                             {website.localize({
+//                                 en: 'Email address',
+//                                 fr: 'Adresse e-mail',
+//                                 es: 'Correo electrónico',
+//                                 ch: '电子邮件地址',
+//                             })}
+//                         </label>
+//                         <div className="mt-2">
+//                             <input
+//                                 id="email"
+//                                 name="email"
+//                                 type="email"
+//                                 required
+//                                 autoComplete="email"
+//                                 className="block w-full rounded-md bg-text-color-10 px-3 py-1.5 text-base text-text-color outline outline-1 -outline-offset-1 outline-text-color-20 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 sm:text-sm/6"
+//                             />
+//                         </div>
+//                     </div>
 
-    return <IconComponent className="h-4 w-4 mr-2 text-text-color-70" />;
-};
+//                     <div>
+//                         <div className="flex items-center justify-between">
+//                             <label htmlFor="password" className="block text-sm/6 font-medium">
+//                                 {website.localize({
+//                                     en: 'Password',
+//                                     fr: 'Mot de passe',
+//                                     es: 'Contraseña',
+//                                     ch: '密码',
+//                                 })}
+//                             </label>
+//                             <div className="text-sm">
+//                                 <a
+//                                     href="#"
+//                                     className="font-semibold text-primary-600 hover:text-primary-500"
+//                                 >
+//                                     {website.localize({
+//                                         en: 'Forgot your password?',
+//                                         fr: 'Mot de passe oublié?',
+//                                         es: '¿Olvidaste tu contraseña?',
+//                                         ch: '忘记密码了吗?',
+//                                     })}
+//                                 </a>
+//                             </div>
+//                         </div>
+//                         <div className="mt-2">
+//                             <input
+//                                 id="password"
+//                                 name="password"
+//                                 type="password"
+//                                 required
+//                                 autoComplete="current-password"
+//                                 className="block w-full rounded-md bg-text-color-10 px-3 py-1.5 text-base text-text-color outline outline-1 -outline-offset-1 outline-text-color-20 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 sm:text-sm/6"
+//                             />
+//                         </div>
+//                     </div>
+
+//                     <div>
+//                         <button
+//                             type="submit"
+//                             className="flex w-full justify-center rounded-md !bg-primary-600 px-3 py-1.5 text-sm/6 font-semibold !text-text-color shadow-sm hover:!bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+//                         >
+//                             {website.localize({
+//                                 en: 'Sign in',
+//                                 fr: 'Se connecter',
+//                                 es: 'Iniciar sesión',
+//                                 ch: '登录',
+//                             })}
+//                         </button>
+//                     </div>
+//                 </form>
+
+//                 <p className="mt-10 text-center text-sm/6 text-text-color-60">
+//                     {website.localize({
+//                         en: 'Not a member?',
+//                         fr: 'Pas encore membre?',
+//                         es: '¿No eres miembro?',
+//                         ch: '还不是会员？',
+//                     })}{' '}
+//                     <a href="#" className="font-semibold text-primary-600 hover:text-primary-500">
+//                         {website.localize({
+//                             en: 'Start for free',
+//                             fr: 'Commencer gratuitement',
+//                             es: 'Comience gratis',
+//                             ch: '免费开始',
+//                         })}
+//                     </a>
+//                 </p>
+//             </div>
+//         </div>
+//     );
+// };
 
 const NavBar = ({
     logo,
@@ -26,28 +128,21 @@ const NavBar = ({
     refresh,
     logoOnLight,
     login_url,
-    navIcons,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    // const [isSignInOpen, setIsSignInOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [isNavHovered, setIsNavHovered] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [mobileContent, setMobileContent] = useState(null);
     const [languageDropdownWidth, setLanguageDropdownWidth] = useState(0);
     const [searchResults, setSearchResults] = useState(null);
-    const [navDropdownLayout, setNavDropdownLayout] = useState({
-        alignRight: false,
-        columns: 1,
-        offset: 0,
-    });
-
     const navRef = useRef(null);
     const placeholderRef = useRef(null);
     const languageBtnRef = useRef(null);
     const searchManagerRef = useRef(null);
     const dropdownRef = useRef(null);
     const searchInputRef = useRef(null);
-    const navButtonRefs = useRef([]);
 
     let lastScrollY = 0;
     let ticking = false;
@@ -79,43 +174,6 @@ const NavBar = ({
         return () => resizeObserver.disconnect();
     }, [refresh]);
 
-    // Update dropdown layout for each nav button when resized
-    useEffect(() => {
-        if (typeof activeDropdown !== 'number') return;
-        const button = navButtonRefs.current[activeDropdown];
-        if (!button) return;
-
-        const calculateLayout = () => {
-            const { left, right } = button.getBoundingClientRect();
-            const width = window.innerWidth;
-            const paddingLeft = width >= 1280 ? 96 : width >= 1024 ? 64 : width >= 768 ? 32 : 24;
-            const offsetLeft = width >= 1728 ? (width - 1728) / 2 + paddingLeft : paddingLeft;
-
-            const spaceToRight = width - right;
-
-            const offset = left - offsetLeft;
-            const alignRight = false;
-            const columns =
-                spaceToRight < 500 // 500 is the max width of the dropdown grid
-                    ? 1
-                    : navigation[activeDropdown]?.child_items?.length > 3
-                    ? 2
-                    : 1;
-
-            setNavDropdownLayout({ alignRight, columns, offset });
-        };
-
-        const observer = new ResizeObserver(calculateLayout);
-        observer.observe(button);
-        window.addEventListener('resize', calculateLayout);
-        calculateLayout();
-
-        return () => {
-            observer.disconnect();
-            window.removeEventListener('resize', calculateLayout);
-        };
-    }, [activeDropdown, navigation]);
-
     // Handle initial opacity setup on mount and when floatingOnTop changes
     useEffect(() => {
         if (!navRef.current) return;
@@ -136,41 +194,40 @@ const NavBar = ({
         navRef.current.style.setProperty('--nav-bg-shadow-opacity', bgShadowOpacity);
     }, [floatingOnTop]);
 
-    // Set the language dropdown width based on the language button position using ResizeObserver and window resize
+    // Set the language dropdown width based on the language button position
     useEffect(() => {
-        const button = languageBtnRef.current;
-        if (!button) return;
+        if (!languageBtnRef.current) return;
 
-        const calculateWidth = () => {
-            const { right } = button.getBoundingClientRect();
+        const reCalc = () => {
+            const leftDistance = languageBtnRef.current.getBoundingClientRect().left;
+            const width = languageBtnRef.current.getBoundingClientRect().width;
 
             let paddingLeft;
-            if (window.innerWidth >= 1280) paddingLeft = 96;
-            else if (window.innerWidth >= 1024) paddingLeft = 64;
-            else if (window.innerWidth >= 768) paddingLeft = 32;
-            else paddingLeft = 24;
+
+            if (window.innerWidth >= 1280) {
+                paddingLeft = 96;
+            } else if (window.innerWidth >= 1024) {
+                paddingLeft = 64;
+            } else if (window.innerWidth >= 768) {
+                paddingLeft = 32;
+            } else {
+                paddingLeft = 24;
+            }
 
             const offset =
                 window.innerWidth >= 1728
-                    ? (window.innerWidth - 1728) / 2 + paddingLeft
+                    ? `${(window.innerWidth - 1728) / 2 + paddingLeft}`
                     : paddingLeft;
 
-            setLanguageDropdownWidth(right - offset);
+            setLanguageDropdownWidth(leftDistance - offset + width);
         };
 
-        const observer = new ResizeObserver(calculateWidth);
-        observer.observe(button);
+        window.addEventListener('resize', reCalc);
 
-        window.addEventListener('resize', calculateWidth);
+        reCalc();
 
-        // Initial call with proper offset
-        calculateWidth();
-
-        return () => {
-            observer.disconnect();
-            window.removeEventListener('resize', calculateWidth);
-        };
-    }, []);
+        return () => window.removeEventListener('resize', reCalc);
+    }, [languageBtnRef.current]);
 
     // Handle scroll behavior and update navbar states
     useEffect(() => {
@@ -343,7 +400,7 @@ const NavBar = ({
         switch (activeDropdown) {
             case 'search':
                 return (
-                    <div className="max-w-4xl mx-auto px-4 pt-8 pb-12">
+                    <div className="max-w-4xl mx-auto px-4 pt-10 pb-12">
                         <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
                             <div className="flex-1 relative">
                                 <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -414,7 +471,6 @@ const NavBar = ({
                                 <Link
                                     key={result.id}
                                     to={result.href}
-                                    target="_self"
                                     className="flex flex-col gap-1 px-2 py-1 hover:underline"
                                     style={{ textShadow: '1px 1px 2px var(--bg-color)' }}
                                 >
@@ -441,9 +497,9 @@ const NavBar = ({
                 );
             case 'language':
                 return (
-                    <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-5 pb-12">
+                    <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-10 pb-12">
                         <div
-                            className="flex flex-col items-end"
+                            className="flex flex-wrap gap-4 justify-end"
                             style={{
                                 width: languageDropdownWidth,
                             }}
@@ -452,18 +508,20 @@ const NavBar = ({
                                 <div
                                     key={index}
                                     className={twJoin(
-                                        'relative flex items-center group py-2',
+                                        'relative flex items-center px-6 py-2 rounded-lg group',
                                         currentLanguage === lang.value
-                                            ? 'text-primary-600 cursor-not-allowed'
-                                            : 'text-text-color cursor-pointer'
+                                            ? 'bg-text-color/10 cursor-not-allowed'
+                                            : 'bg-transparent cursor-pointer'
                                     )}
                                     onClick={() => website.changeLanguage(lang.value)}
                                 >
-                                    <span className={twJoin('text-base')}>{lang.label}</span>
+                                    <span className={twJoin('font-medium text-lg text-text-color')}>
+                                        {lang.label}
+                                    </span>
                                     {currentLanguage !== lang.value && (
                                         <span
                                             className={twJoin(
-                                                'absolute bottom-1.5 left-0 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-full'
+                                                'absolute bottom-1 left-6 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-48px)]'
                                             )}
                                         />
                                     )}
@@ -477,39 +535,19 @@ const NavBar = ({
                     typeof activeDropdown === 'number' &&
                     navigation[activeDropdown]?.child_items?.length
                 ) {
-                    const items = navigation[activeDropdown].child_items;
-
                     return (
-                        <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-5 pb-12">
-                            <div
-                                className="grid gap-x-4 gap-y-1 relative max-w-[500px]"
-                                style={{
-                                    gridTemplateColumns: 'auto 1fr',
-                                    // gridTemplateColumns: `repeat(${navDropdownLayout.columns}, auto)`,
-                                    marginLeft: navDropdownLayout.offset,
-                                }}
-                            >
-                                {items.map((child, index) => (
+                        <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-10 pb-12">
+                            <div className="flex flex-col lg:pl-44 xl:pl-48 2xl:pl-52">
+                                {navigation[activeDropdown].child_items.map((child, index) => (
                                     <Link
                                         key={index}
                                         to={child.route}
-                                        className="flex items-center w-fit relative px-3 py-2 group"
+                                        className="block w-fit relative px-3 py-2 group"
                                     >
-                                        {navIcons?.length ? (
-                                            <LinkIcon
-                                                icon={
-                                                    navIcons.find((i) => i.link === child.label)
-                                                        ?.icon
-                                                }
-                                            />
-                                        ) : null}
                                         <span className="text-base">{child.label}</span>
                                         <span
                                             className={twJoin(
-                                                'absolute bottom-1.5 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0',
-                                                navIcons?.length
-                                                    ? ' left-8 group-hover:w-[calc(100%-44px)]'
-                                                    : 'left-3 group-hover:w-[calc(100%-24px)]'
+                                                'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-24px)]'
                                             )}
                                         />
                                     </Link>
@@ -722,14 +760,14 @@ const NavBar = ({
             >
                 <div className="w-full max-w-9xl mx-auto px-6 md:px-8 lg:px-10 xl:px-16 2xl:px-24">
                     <div className="flex justify-between h-20 items-center">
-                        <div className="flex items-center lg:space-x-8 xl:space-x-10 2xl:space-x-12">
+                        <div className="flex items-center space-x-12">
                             {/* Logo */}
                             <div className="flex-shrink-0 w-24 md:w-28 lg:w-32 xl:w-36 2xl:w-40">
                                 <Link to="">{logo}</Link>
                             </div>
 
                             {/* Desktop Navigation */}
-                            <div className="hidden lg:flex lg:items-center lg:space-x-2 xl:space-x-4 2xl:space-x-6">
+                            <div className="hidden lg:flex lg:items-center lg:space-x-3 xl:space-x-6">
                                 {navigation.map((item, index) => {
                                     const { label, route, child_items } = item;
 
@@ -739,16 +777,12 @@ const NavBar = ({
                                     return (
                                         <div
                                             key={index}
-                                            ref={(el) => (navButtonRefs.current[index] = el)}
                                             onMouseEnter={() => handleMouseEnter(index)}
                                             className="relative"
                                         >
                                             <Wrapper
                                                 {...wrapperProps}
-                                                className={twJoin(
-                                                    'inline-flex items-center py-2',
-                                                    child_items.length ? 'pl-3 pr-1.5' : 'px-3'
-                                                )}
+                                                className={`inline-flex items-center px-3 py-2`}
                                             >
                                                 <span className="text-lg">{label}</span>
                                                 {child_items.length ? (
@@ -913,6 +947,28 @@ const NavBar = ({
                 />
             ) : null}
 
+            {/* Sign In Dialog */}
+            {/* <Dialog
+                open={isSignInOpen}
+                onClose={() => setIsSignInOpen(false)}
+                className={twJoin('relative z-[100] focus:outline-none', theme)}
+            >
+                <div className="fixed inset-0 w-screen overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 backdrop-blur-2xl">
+                        <Dialog.Panel className="relative w-full max-w-md rounded-xl bg-bg-color p-6 transform transition-transform duration-300 ease-in-out">
+                            <SignIn logo={logo} />
+
+                            <div
+                                className="absolute top-4 right-4 cursor-pointer"
+                                onClick={() => setIsSignInOpen(false)}
+                            >
+                                <HiX className="w-6 h-6 text-text-color/50 hover:text-text-color" />
+                            </div>
+                        </Dialog.Panel>
+                    </div>
+                </div>
+            </Dialog> */}
+
             {/* SearchManager */}
             <SearchManager ref={searchManagerRef} onResultsChange={setSearchResults} />
         </>
@@ -939,7 +995,6 @@ export default function Header(props) {
     const icon = main?.body?.icons?.[0];
     const images = [banner, ...main?.body?.imgs].filter((img) => img);
     const logoImg = images.find((img) => img.caption === `logo-${themeVariant}`);
-    const linkIcons = main?.body?.properties?.linkIcons;
 
     const logo = icon ? (
         <Icon icon={firstIcon} className="w-full h-full" />
@@ -972,7 +1027,6 @@ export default function Header(props) {
         <NavBar
             login_url={login_url}
             navigation={navigation}
-            navIcons={linkIcons}
             logo={logo}
             logoOnLight={logoOnLight}
             floatingOnTop={allowTranslucentTop}
