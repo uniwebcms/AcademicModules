@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
 import { twJoin, Image, Link, Profile } from '@uniwebcms/module-sdk';
+import { normalizeDate } from '../_utils/date';
 
 const ArticleAuthor = ({ info, in_side_panel }) => {
     if (!info.author) return null;
@@ -35,7 +36,7 @@ const ArticleAuthor = ({ info, in_side_panel }) => {
                             'text-text-color-40'
                         )}
                     >
-                        {new Date(info.date).toLocaleDateString('en-US', {
+                        {new Date(normalizeDate(info.date)).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',

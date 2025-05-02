@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
 import { Link, Image, Profile, twJoin, website, twMerge } from '@uniwebcms/module-sdk';
+import { normalizeDate } from '../_utils/date';
 import { Listbox } from '@headlessui/react';
 import { BiFilter } from 'react-icons/bi';
 import { HiX } from 'react-icons/hi';
@@ -22,7 +23,7 @@ const ArticleAuthor = ({ info }) => {
                 <p className="text-sm lg:text-base text-text-color-70">{title}</p>
                 {info.date && (
                     <p className="text-xs lg:text-sm text-text-color-40">
-                        {new Date(info.date).toLocaleDateString('en-US', {
+                        {new Date(normalizeDate(info.date)).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
