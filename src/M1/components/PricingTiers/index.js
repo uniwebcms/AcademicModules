@@ -300,7 +300,7 @@ export default function PricingTiers(props) {
             if (billingCycle === 'yearly' && default_billing_cycle === 'monthly') {
                 displayPrice = price * yearly_price_multiplier;
             } else if (billingCycle === 'monthly' && default_billing_cycle === 'yearly') {
-                displayPrice = (price / yearly_price_multiplier).toFixed(2);
+                displayPrice = price / yearly_price_multiplier;
             }
 
             return formatToCAD(displayPrice);
