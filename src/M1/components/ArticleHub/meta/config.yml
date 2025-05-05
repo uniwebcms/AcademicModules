@@ -15,5 +15,25 @@ elements:
   title:
   subtitle:
 
+properties:
+  layout:
+    label:
+      en: Layout
+      fr: Mise en page
+    type: string
+    default: grid
+    enum:
+      - label:
+          en: Flat Grid
+          fr: Grille plate
+        value: grid
+      - label:
+          en: Grouped
+          fr: Groupé
+        value: grouped
+    description:
+      en: The layout of the articles in the hub.
+      fr: La mise en page des articles dans le hub.
+  
 images:
   - example.png

@@ -57,11 +57,21 @@ export default function ArticleList(props) {
         vertical_padding = 'lg',
         horizontal_padding = 'sm',
         in_side_panel = false,
+        max_display,
     } = block.getBlockProperties();
 
-    const articles = input?.profiles || [];
+    console.log('max_display', max_display);
+
+    let articles = input?.profiles || [];
 
     if (!articles.length) return null;
+
+    if (max_display) {
+        const maxDisplayNumber = parseInt(max_display, 10);
+        if (!isNaN(maxDisplayNumber)) {
+            articles = articles.slice(0, maxDisplayNumber);
+        }
+    }
 
     return (
         <Container

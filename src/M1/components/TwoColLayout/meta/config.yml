@@ -166,6 +166,28 @@ properties:
     description:
       en: The vertical alignment of the content in the columns.
       fr: L'alignement vertical du contenu dans les colonnes.
+  sticky_side:
+    label:
+      en: Sticky Side
+      fr: Côté collant
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Right
+          fr: Droite
+        value: right
+    description:
+      en: The side of the layout that will be sticky.
+      fr: Le côté de la mise en page qui sera collant.
 
 presets:
   article:

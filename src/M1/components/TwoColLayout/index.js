@@ -33,6 +33,7 @@ export default function TwoColLayout(props) {
         horizontal_padding = 'lg',
         column_padding = 'lg',
         vertical_alignment = 'top',
+        sticky_side = 'none',
     } = properties || {};
 
     if (!childBlocks.length) return null;
@@ -94,7 +95,9 @@ export default function TwoColLayout(props) {
                                 : '',
                             vertical_alignment === 'top' ? 'justify-start' : '',
                             vertical_alignment === 'bottom' ? 'justify-end' : '',
-                            vertical_alignment === 'center' ? 'justify-center' : ''
+                            vertical_alignment === 'center' ? 'justify-center' : '',
+                            sticky_side === 'left' && index % 2 === 0 ? 'sticky top-0' : '',
+                            sticky_side === 'right' && index % 2 === 1 ? 'sticky top-0' : ''
                         )}
                     >
                         <ChildBlocks

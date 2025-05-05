@@ -95,6 +95,15 @@ properties:
     description:
       en: Indicates if the list is displayed in a side panel, if so, the gap in between content and text size will be adjusted accordingly.
       fr: Indique si la liste est affichée dans un panneau latéral, si c'est le cas, l'écart entre le contenu et la taille du texte sera ajusté en conséquence.
+  max_display:
+    label:
+      en: Max Displayed Articles
+      fr: Articles affichés max
+    type: number
+    default: ""
+    description:
+      en: The maximum number of articles to display in the list.
+      fr: Le nombre maximum d'articles à afficher dans la liste.
 
 presets:
   side_list:
