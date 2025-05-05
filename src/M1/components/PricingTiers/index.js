@@ -10,16 +10,9 @@ import Modal from './components/Modal';
 
 const primaryTireRingStyle = 'ring-2 ring-primary-600';
 const secondaryTireRingStyle = 'ring-2 ring-secondary-600';
-const defaultTireRingStyle = 'ring-1 ring-text-color-70';
 
 const primaryTirePretitleStyle = 'text-primary-600';
 const secondaryTirePretitleStyle = 'text-secondary-600';
-
-const primaryTireButtonStyle = 'bg-primary-600 text-white shadow-sm hover:bg-primary-500';
-const secondaryTireButtonStyle = 'bg-secondary-600 text-white shadow-sm hover:bg-secondary-500';
-const defaultBadgedTireButtonStyle = 'text-bg-color bg-text-color-70 hover:bg-text-color-60';
-const defaultTireButtonStyle =
-    'text-text-color-80 ring-1 ring-inset ring-text-color-30 hover:ring-text-color-40';
 
 const PriceTier = (props) => {
     const {
@@ -60,15 +53,6 @@ const PriceTier = (props) => {
             ? secondaryTirePretitleStyle
             : ''
         : '';
-
-    let buttonStyle = badge
-        ? badge.attrs.style === 'primary'
-            ? primaryTireButtonStyle
-            : badge.attrs.style === 'secondary'
-            ? secondaryTireButtonStyle
-            : // : defaultBadgedTireButtonStyle
-              defaultTireButtonStyle
-        : defaultTireButtonStyle;
 
     const price = (
         <p className="flex items-baseline gap-x-1">
@@ -171,7 +155,7 @@ const PriceTier = (props) => {
                     to={website.makeHref(link.href)}
                     className={twJoin(
                         'mt-8 block rounded-md px-3 py-2 text-center text-sm lg:text-base/7 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
-                        buttonStyle
+                        'text-btn-text-color bg-btn-color hover:text-btn-hover-text-color hover:bg-btn-hover-color'
                     )}
                 >
                     {link.label}
