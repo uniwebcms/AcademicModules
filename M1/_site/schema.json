@@ -150,6 +150,36 @@
         }
       }
     },
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "grid",
+        "enum": [
+          {
+            "label": {
+              "en": "Flat Grid",
+              "fr": "Grille plate"
+            },
+            "value": "grid"
+          },
+          {
+            "label": {
+              "en": "Grouped",
+              "fr": "Groupé"
+            },
+            "value": "grouped"
+          }
+        ],
+        "description": {
+          "en": "The layout of the articles in the hub.",
+          "fr": "La mise en page des articles dans le hub."
+        }
+      }
+    },
     "images": [
       {
         "height": 1039,
@@ -315,6 +345,18 @@
         "description": {
           "en": "Indicates if the list is displayed in a side panel, if so, the gap in between content and text size will be adjusted accordingly.",
           "fr": "Indique si la liste est affichée dans un panneau latéral, si c'est le cas, l'écart entre le contenu et la taille du texte sera ajusté en conséquence."
+        }
+      },
+      "max_display": {
+        "label": {
+          "en": "Max Displayed Articles",
+          "fr": "Articles affichés max"
+        },
+        "type": "number",
+        "default": "",
+        "description": {
+          "en": "The maximum number of articles to display in the list.",
+          "fr": "Le nombre maximum d'articles à afficher dans la liste."
         }
       }
     },
@@ -3854,6 +3896,41 @@
         "description": {
           "en": "The vertical alignment of the content in the columns.",
           "fr": "L'alignement vertical du contenu dans les colonnes."
+        }
+      },
+      "sticky_side": {
+        "label": {
+          "en": "Sticky Side",
+          "fr": "Côté collant"
+        },
+        "type": "string",
+        "default": "none",
+        "enum": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          },
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "The side of the layout that will be sticky.",
+          "fr": "Le côté de la mise en page qui sera collant."
         }
       }
     },
