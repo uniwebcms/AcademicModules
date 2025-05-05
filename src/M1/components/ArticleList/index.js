@@ -48,8 +48,36 @@ const ArticleAuthor = ({ info, in_side_panel }) => {
     );
 };
 
+const findRelatedArticles = (articles, page, blockId) => {
+    const pageBlocks = page.blockGroups.body;
+    const parentBlock = pageBlocks.find((block) =>
+        block.childBlocks?.find((cb) => cb.id === blockId)
+    );
+
+    const siblingBlock = parentBlock?.childBlocks.find((block) => block.id !== blockId);
+    if (siblingBlock) {
+        const mainArticle =
+            siblingBlock.input?.profile?.profileType === 'articles/profile'
+                ? siblingBlock.input?.profile
+                : null;
+
+        if (mainArticle) {
+            const mainArticleTag = mainArticle.getBasicInfo().head?.tag;
+            console.log('mainArticleTag', mainArticleTag);
+            if (mainArticleTag) {
+                return articles.filter((article) => {
+                    const articleTag = article.getBasicInfo().head?.tag;
+                    return articleTag && articleTag === mainArticleTag;
+                });
+            }
+        }
+    }
+
+    return [];
+};
+
 export default function ArticleList(props) {
-    const { block, input } = props;
+    const { block, input, page } = props;
     const { title, subtitle } = block.getBlockContent();
 
     const {
@@ -58,13 +86,16 @@ export default function ArticleList(props) {
         horizontal_padding = 'sm',
         in_side_panel = false,
         max_display,
+        related_only = false,
     } = block.getBlockProperties();
-
-    console.log('max_display', max_display);
 
     let articles = input?.profiles || [];
 
     if (!articles.length) return null;
+
+    if (related_only) {
+        articles = findRelatedArticles(articles, page, block.id);
+    }
 
     if (max_display) {
         const maxDisplayNumber = parseInt(max_display, 10);

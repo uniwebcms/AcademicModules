@@ -104,6 +104,15 @@ properties:
     description:
       en: The maximum number of articles to display in the list.
       fr: Le nombre maximum d'articles à afficher dans la liste.
+  related_only:
+    label:
+      en: Related Articles Only
+      fr: Articles uniquement liés
+    type: boolean
+    default: false
+    description:
+      en: If true, only articles related to the current main article will be displayed in the list. Only works if this is the side panel of a dynamic page.
+      fr: Si vrai, seuls les articles liés à l'article principal actuel seront affichés dans la liste. Ne fonctionne que si c'est le panneau latéral d'une page dynamique.
 
 presets:
   side_list:
