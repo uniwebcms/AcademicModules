@@ -33,29 +33,24 @@ const ItemCard = React.memo(({ item }) => {
 
         description = description ? stripTags(description) : '';
 
-        const Wrapper = item.href ? Link : 'div';
+        const Wrapper = item.href ? Link : 'p';
         const wrapperProps = item.href ? { to: item.href } : {};
 
         return (
             <Wrapper
                 className={twJoin(
-                    'block my-2 px-1 py-1 relative space-y-0.5',
-                    item.href && 'group cursor-pointer'
+                    'block mt-4 px-1 relative truncate text-sm md:text-base',
+                    item.href && 'hover:underline cursor-pointer'
                 )}
                 {...wrapperProps}
             >
-                <p
-                    className={twJoin(
-                        'text-base font-bold truncate',
-                        item.href && 'group-hover:underline'
-                    )}
-                    title={title}
-                >
+                <span className={twJoin('font-bold')} title={title}>
                     {title}
-                </p>
-                <p className="truncate text-sm text-text-color/70 h-5" title={description}>
-                    {description}
-                </p>
+                </span>
+                <span className="text-text-color/70" title={description}>
+                    {' '}
+                    – {description}
+                </span>
             </Wrapper>
         );
     }, [item]);
@@ -69,7 +64,7 @@ const ItemCard = React.memo(({ item }) => {
         >
             {/* Static Image */}
             <div
-                className={`relative w-full aspect-video transition-opacity duration-300 overflow-hidden ${
+                className={`relative w-full aspect-video transition-opacity duration-300 overflow-hidden shadow ${
                     isHovering && previewReady ? 'opacity-0 rounded-none' : 'opacity-100 rounded-lg'
                 }`}
             >

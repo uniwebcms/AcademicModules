@@ -61,7 +61,8 @@ const VirtualGrid = ({ data, filters }) => {
             data={filteredData}
             overscan={900}
             itemContent={(index, item) => <ItemCard item={item} index={index} />}
-            listClassName="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-6 md:gap-8 lg:gap-12"
+            listClassName="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-12"
+            // listClassName="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-6 md:gap-8 lg:gap-12"
             itemClassName="h-full"
         />
     );

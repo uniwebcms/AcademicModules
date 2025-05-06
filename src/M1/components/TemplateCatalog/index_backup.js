@@ -3,25 +3,62 @@ import Container from '../_utils/Container';
 import { twJoin, website } from '@uniwebcms/module-sdk';
 import { HiSearch, HiArrowRight } from 'react-icons/hi';
 import { TbSortDescending } from 'react-icons/tb';
-import { LuChevronDown, LuLayers2, LuCrown, LuGem } from 'react-icons/lu';
-import { IoPricetagsOutline } from 'react-icons/io5';
+import { LuChevronDown, LuListFilter } from 'react-icons/lu';
 import VirtualGrid from './components/VirtualGrid';
 import { normalizeData } from './helper';
 import Modal from './components/Modal';
 
-const icons = {
-    layer: LuLayers2,
-    crown: LuCrown,
-    gem: LuGem,
-    'price-tag': IoPricetagsOutline,
+const Information = ({ data, ...props }) => {
+    const {
+        text,
+        modalTriggerText,
+        modalTitle,
+        modalSubtitle,
+        modalExamples,
+        modalTagEndnote,
+        modalButton,
+    } = data;
+
+    // check if modalTriggerText is substring of the text, and split the text into parts, [before, modalTriggerText, after]
+    const parts = text.split(modalTriggerText);
+
+    const className = 'text-sm 2xl:text-base text-neutral-600';
+
+    if (parts.length > 1) {
+        return (
+            <div className={className}>
+                {parts[0]}
+                <Modal
+                    triggerClassName={'cursor-pointer underline hover:text-neutral-700'}
+                    triggerText={modalTriggerText}
+                    title={modalTitle}
+                    subtitle={modalSubtitle}
+                    examples={modalExamples}
+                    tagEndnote={modalTagEndnote}
+                    button={modalButton}
+                    {...props}
+                />
+                {parts[1]}
+            </div>
+        );
+    }
+
+    return <p className={className}>{text}</p>;
 };
 
-const FilterBar = ({ name, options, filters, onChange }) => {
+const FilterBar = ({ name, options, filters, onChange, filled = true }) => {
+    const activeClassFilled = 'border-neutral-900 bg-neutral-900 text-neutral-50';
+    const activeClass = 'border-neutral-300 bg-neutral-50 text-neutral-900';
+
+    const inactiveClassFilled = 'border-transparent text-neutral-800 hover:bg-neutral-200';
+    const inactiveClass = 'border-neutral-200 text-neutral-800 hover:bg-neutral-100';
+
     return (
-        <div className="max-w-full w-fit">
+        <div className="w-fit">
             <div
                 className={twJoin(
-                    'flex border rounded-full p-1 gap-1 xl:gap-2 w-full overflow-x-auto no-scrollbar hover:shadow-sm border-neutral-300'
+                    'flex justify-center border rounded-full p-1 gap-1 xl:gap-2',
+                    filled ? 'border-neutral-300' : 'border-transparent bg-neutral-200'
                 )}
             >
                 {options.map((option, index) => {
@@ -32,10 +69,14 @@ const FilterBar = ({ name, options, filters, onChange }) => {
                             key={index}
                             onClick={() => onChange(name, option.value)}
                             className={twJoin(
-                                'text-xs md:text-sm font-medium px-2 md:px-3 2xl:px-4 py-1 2xl:py-1.5 rounded-full border cursor-pointer',
+                                'text-sm font-medium px-3 2xl:px-4 py-1 2xl:py-1.5 rounded-full border cursor-pointer',
                                 active
-                                    ? 'border-neutral-900 bg-neutral-900 text-neutral-50'
-                                    : 'border-transparent text-neutral-800 hover:bg-neutral-200'
+                                    ? filled
+                                        ? activeClassFilled
+                                        : activeClass
+                                    : filled
+                                    ? inactiveClassFilled
+                                    : inactiveClass
                             )}
                         >
                             {option.label}
@@ -83,31 +124,34 @@ const SortMenu = ({ data, filters, onChange }) => {
                     checked={checked}
                     onChange={() => onChange(value)}
                 />
-                <span className="text-neutral-700">{label}</span>
+                <span>{label}</span>
             </label>
         );
     });
 
     return (
-        <div className="relative w-fit ml-4 lg:ml-6 xl:ml-8">
+        <div className="relative w-fit">
             <div
                 ref={triggerRef}
-                className="flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 sm:py-[9px] 2xl:px-4 2xl:py-2.5 border border-neutral-300 cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2 hover:shadow-sm"
+                className="flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 sm:py-[9px] 2xl:px-4 2xl:py-2.5 border border-neutral-300 cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2"
                 onClick={() => setOpen(!open)}
             >
                 <TbSortDescending
                     className={twJoin(
-                        'w-4 h-4 text-inherit flex-shrink-0',
+                        'w-5 h-5 sm:w-4 sm:h-4 text-inherit flex-shrink-0',
                         open ? 'opacity-90' : 'opacity-60 md:opacity-70 group-hover:opacity-100'
                     )}
                 />
+                <span
+                    className={twJoin(
+                        'hidden md:block',
+                        open ? 'opacity-80 ' : 'opacity-60 group-hover:opacity-100'
+                    )}
+                >
+                    {data.title}:
+                </span>
                 {filters['sort'] && (
-                    <span
-                        className={twJoin(
-                            'truncate hidden lg:block',
-                            open ? 'opacity-80' : 'opacity-80 group-hover:opacity-100'
-                        )}
-                    >
+                    <span className="truncate hidden sm:block">
                         {data.options.find((opt) => opt.value === filters['sort'])?.label}
                     </span>
                 )}
@@ -123,7 +167,7 @@ const SortMenu = ({ data, filters, onChange }) => {
                     <div
                         ref={dropdownRef}
                         role="radiogroup"
-                        className="bg-neutral-50 border border-neutral-300 rounded-xl space-y-3 px-2 py-3 w-44 shadow-xl"
+                        className="bg-neutral-50 border border-neutral-300 rounded-md space-y-3 px-2 py-3 w-44"
                     >
                         {options}
                     </div>
@@ -133,28 +177,10 @@ const SortMenu = ({ data, filters, onChange }) => {
     );
 };
 
-const Information = ({ data, modalProps }) => {
-    const { title, description, examples, endnote, buttons } = data;
-
-    return (
-        <Modal
-            title={title}
-            description={description}
-            examples={examples}
-            tagEndnote={endnote}
-            button={buttons}
-            {...modalProps}
-        />
-    );
-};
-
-const FilterMenu = ({ data, filters, onChange, modalProps }) => {
+const FilterMenu = ({ data, filters, onChange }) => {
     const [open, setOpen] = useState(false);
-    const [modalOpen, setModalOpen] = useState(false);
     const dropdownRef = useRef(null);
     const triggerRef = useRef(null);
-
-    const modalInfo = data.options.find((opt) => opt.info.type === 'dialog')?.info;
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -175,103 +201,92 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
         };
     }, []);
 
-    const options = data.options.map((opt, index) => {
-        const { icon, label, value, info } = opt;
-
-        const Icon = icons[icon] || 'div';
+    const options = data.map((filter) => {
+        const { name, title, options } = filter;
 
         return (
-            <div
-                className="flex items-center justify-between gap-3 px-3 py-2 cursor-pointer hover:bg-neutral-200"
-                key={index}
-                onClick={() => {
-                    onChange(data.name, value);
-                    setOpen(false);
-                }}
-            >
-                <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-neutral-500" />
-                    <span className="text-sm font-medium text-neutral-700">{label}</span>
+            <div key={name} className="px-2">
+                <p className="text-sm font-medium text-neutral-600 mb-2">{title}</p>
+                <div className="mt-1">
+                    {options.map((opt) => {
+                        const { label, value } = opt;
+                        const checked = filters[name] === value;
+
+                        return (
+                            <label
+                                className="flex items-center gap-x-3 text-sm mb-3 cursor-pointer"
+                                key={label}
+                            >
+                                <input
+                                    type="radio"
+                                    value={value}
+                                    checked={checked}
+                                    onChange={() => onChange(name, value)}
+                                />
+                                <span>{label}</span>
+                            </label>
+                        );
+                    })}
                 </div>
-                {info.type === 'dialog' && (
-                    <span
-                        className="text-xs text-neutral-500 cursor-pointer underline hover:text-neutral-600 italic"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setModalOpen(true);
-                        }}
-                    >
-                        {info.trigger}
-                    </span>
-                )}
-                {info.type === 'text' && (
-                    <span className="text-xs font-medium text-neutral-500">{info.value}</span>
-                )}
             </div>
         );
     });
 
     const { searchText, sort, ...actualFilters } = filters;
 
-    const activeValue = actualFilters[data.name];
-    const activeOption = data.options.find((opt) => opt.value === activeValue);
-    const ActiveIcon = icons[activeOption?.icon] || 'div';
-    const activeLabel = activeOption?.label;
+    const filterState = Object.entries(actualFilters).map(([key, value]) => {
+        const cate = data.find((filter) => filter.name === key);
+        const val = cate?.options.find((opt) => opt.value === value)?.label;
+
+        return val ? `${cate.title}: ${val}` : '';
+    });
 
     return (
-        <>
-            <div className="relative w-fit ml-auto">
-                <div
-                    ref={triggerRef}
-                    className="flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 py-[9px] 2xl:px-4 2xl:py-2.5 border border-neutral-300 cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2 hover:shadow-sm"
-                    onClick={() => setOpen(!open)}
-                >
-                    <ActiveIcon
-                        className={twJoin(
-                            'w-4 h-4 text-inherit flex-shrink-0',
-                            open ? 'opacity-90' : 'opacity-60 md:opacity-70 group-hover:opacity-100'
-                        )}
-                    />
-                    <span
-                        className={twJoin(
-                            'hidden lg:block',
-                            open ? 'opacity-80' : 'opacity-80 group-hover:opacity-100'
-                        )}
-                    >
-                        {activeLabel}
-                    </span>
-                    <LuChevronDown
-                        className={twJoin(
-                            'w-4 h-4 text-inherit hidden sm:block flex-shrink-0',
-                            open ? 'rotate-180 opacity-90' : 'opacity-70 group-hover:opacity-100'
-                        )}
-                    />
-                </div>
-                <div className="absolute top-12 right-0 lg:left-0 lg:right-auto z-50">
-                    {open && (
-                        <div
-                            ref={dropdownRef}
-                            role="radiogroup"
-                            className="bg-neutral-50 border border-neutral-300 rounded-xl py-1 w-60 shadow-xl overflow-hidden"
-                        >
-                            {options}
-                        </div>
+        <div className="relative w-fit">
+            <div
+                ref={triggerRef}
+                className="flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 py-[9px] 2xl:px-4 2xl:py-2.5 border border-neutral-300 cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2"
+                onClick={() => setOpen(!open)}
+            >
+                <LuListFilter
+                    className={twJoin(
+                        'w-5 h-5 sm:w-4 sm:h-4 text-inherit flex-shrink-0',
+                        open ? 'opacity-90' : 'opacity-60 md:opacity-70 group-hover:opacity-100'
                     )}
-                </div>
-            </div>
-
-            {/* Information Modal */}
-            {modalInfo && (
-                <Information
-                    data={modalInfo}
-                    modalProps={{
-                        open: modalOpen,
-                        updateOpen: setModalOpen,
-                        ...modalProps,
-                    }}
                 />
-            )}
-        </>
+                <span
+                    className={twJoin(
+                        'hidden md:block',
+                        open ? 'opacity-80 ' : 'opacity-60 group-hover:opacity-100'
+                    )}
+                >
+                    {website.localize({
+                        en: 'Filter by:',
+                        fr: 'Filtrer par:',
+                        es: 'Filtrar por:',
+                        zh: '筛选：',
+                    })}
+                </span>
+                <span className="truncate hidden sm:block">{filterState.join(', ')}</span>
+                <LuChevronDown
+                    className={twJoin(
+                        'w-4 h-4 text-inherit hidden sm:block flex-shrink-0',
+                        open ? 'rotate-180 opacity-90' : 'opacity-70 group-hover:opacity-100'
+                    )}
+                />
+            </div>
+            <div className="absolute top-12 right-0 z-50">
+                {open && (
+                    <div
+                        ref={dropdownRef}
+                        role="radiogroup"
+                        className="bg-neutral-50 border border-neutral-300 rounded-md space-y-3 px-2 py-3 w-64"
+                    >
+                        {options}
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 
@@ -299,29 +314,14 @@ const initFilters = (config) => {
 
 export default function TemplateCatalog(props) {
     const { block, input } = props;
-    const { title, properties } = block.getBlockContent();
-    const { search_box, filters: filterInfo = [], sort } = properties;
-    const inlineFilter = filterInfo.find((filter) => filter.type === 'inline');
-    const menuFilter = filterInfo.find((filter) => filter.type === 'menu');
-    const templates = normalizeData(input, properties);
 
-    const { useLocation } = website.getRoutingComponents();
-    const location = useLocation();
-
-    const updateSearchText = (text) => {
-        setFilters((prevFilters) => ({ ...prevFilters, searchText: text }));
-    };
-
-    const updateFilters = (key, newValue) => {
-        setFilters((prevFilters) => ({ ...prevFilters, [key]: newValue }));
-    };
-
-    const updateSort = (newSort) => {
-        setFilters((prevFilters) => ({ ...prevFilters, sort: newSort }));
-    };
+    const { title, links, properties } = block.getBlockContent();
 
     const [filters, setFilters] = useState(initFilters(properties));
     const [sectionStyle, setSectionStyle] = useState({});
+
+    const { useLocation } = website.getRoutingComponents();
+    const location = useLocation();
 
     // get the category and libraryType from the URL if they exist, set them to the filters
     useEffect(() => {
@@ -379,14 +379,26 @@ export default function TemplateCatalog(props) {
         }
     }, [block.id]);
 
-    const mainTitle = (
-        <h2 className="text-xl lg:text-2xl xl:text-3xl font-semibold text-nowrap lg:mr-8 w-44 lg:w-fit">
-            {title}
-        </h2>
-    );
+    const templates = normalizeData(input, properties);
+
+    const { search_box, info, filters: filterInfo = [], sort } = properties;
+
+    const updateSearchText = (text) => {
+        setFilters((prevFilters) => ({ ...prevFilters, searchText: text }));
+    };
+
+    const updateFilters = (key, newValue) => {
+        setFilters((prevFilters) => ({ ...prevFilters, [key]: newValue }));
+    };
+
+    const updateSort = (newSort) => {
+        setFilters((prevFilters) => ({ ...prevFilters, sort: newSort }));
+    };
+
+    const mainTitle = <h2 className="text-2xl xl:text-3xl font-semibold text-nowrap">{title}</h2>;
 
     const searchBox = search_box ? (
-        <div className="relative border border-neutral-300 rounded-full text-xs lg:text-sm xl:text-base px-2.5 lg:px-3 py-[9px] xl:px-5 xl:py-2.5 w-56 lg:w-60 xl:w-72 flex-shrink-0 hover:shadow-sm">
+        <div className="relative border border-neutral-300 rounded-full text-sm xl:text-base px-2.5 lg:px-3 py-[9px] xl:px-5 xl:py-2.5 w-56 lg:w-60 xl:w-72 flex-shrink-0">
             <HiSearch className="absolute top-1/2 left-3 lg:left-4 transform -translate-y-1/2 text-neutral-400 w-5 h-5 xl:w-6 xl:h-6" />
             <input
                 type="text"
@@ -398,24 +410,27 @@ export default function TemplateCatalog(props) {
         </div>
     ) : null;
 
-    const filterBar = inlineFilter ? (
-        <FilterBar {...inlineFilter} filters={filters} onChange={updateFilters} />
+    const information = info ? (
+        <Information data={info} theme={block.themeName} style={sectionStyle} />
     ) : null;
 
-    const filterMenu = (
-        <FilterMenu
-            data={menuFilter}
+    const filterBar = filterInfo.map((filter, index) => (
+        <FilterBar
+            key={index}
+            {...filter}
+            filled={index % 2 === 0}
             filters={filters}
             onChange={updateFilters}
-            modalProps={{ theme: block.themeName, style: sectionStyle }}
         />
-    );
+    ));
+
+    const filterMenu = <FilterMenu data={filterInfo} filters={filters} onChange={updateFilters} />;
 
     const sortMenu = sort ? <SortMenu data={sort} filters={filters} onChange={updateSort} /> : null;
 
-    const skipLink = (
+    const titleLink = (
         <div
-            className="flex items-center space-x-1 text-base lg:text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer ml-6 lg:ml-auto w-44 lg:w-fit justify-end lg:justify-normal"
+            className="flex items-center space-x-1 text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer"
             onClick={() => {
                 const appDomain = uniweb.getAppDomain();
                 fetch(`${appDomain}/temp_resource.php`, {
@@ -444,44 +459,52 @@ export default function TemplateCatalog(props) {
                     });
             }}
         >
-            <span className="text-nowrap">
-                {website.localize({
-                    en: 'Skip template',
-                    fr: 'Passer le modèle',
-                    es: 'Saltar plantilla',
-                    zh: '跳过模板',
-                })}
-            </span>
+            <span className="text-nowrap">{links[0].label}</span>
             <HiArrowRight className="w-5 h-5 text-inherit group-hover:translate-x-1 transition-transform flex-shrink-0" />
         </div>
     );
 
     return (
         <Container className="max-w-9xl mx-auto">
-            {/* title, search and link in a bar */}
-            <div className="flex justify-between lg:justify-normal items-center mb-8">
-                {mainTitle}
-                <div className="hidden md:block">{searchBox}</div>
-                {skipLink}
-            </div>
-
+            {/* header, search, info_modal and link in a bar */}
+            <>
+                <div className="hidden xl:flex justify-between items-center mb-8 gap-x-6">
+                    {mainTitle}
+                    {searchBox}
+                    {information}
+                    {titleLink}
+                </div>
+                <div className="hidden lg:flex flex-col gap-y-6 xl:hidden mb-12">
+                    <div className="flex justify-between items-center gap-x-6">
+                        {mainTitle}
+                        {information}
+                        {titleLink}
+                    </div>
+                </div>
+                <div className="flex flex-col gap-y-3 lg:hidden mb-8">
+                    <div className="flex justify-between items-center gap-x-6">
+                        {mainTitle}
+                        {titleLink}
+                    </div>
+                    <div>{information}</div>
+                </div>
+            </>
             {/* filters and sorts */}
             <>
-                <div className="hidden md:flex items-center mb-10">
-                    {filterBar}
-                    {filterMenu}
+                <div className="hidden xl:flex justify-between items-center mb-10 gap-x-8">
+                    <div className="flex justify-between items-center gap-y-4 gap-x-8">
+                        {filterBar}
+                    </div>
                     {sortMenu}
                 </div>
-                <div className="block md:hidden mb-6">
-                    <div>{filterBar}</div>
-                    <div className="flex items-center mt-4">
-                        {searchBox}
+                <div className="flex xl:hidden justify-between items-start mb-10 gap-x-4">
+                    {searchBox}
+                    <div className="flex items-center gap-x-4">
                         {filterMenu}
                         {sortMenu}
                     </div>
                 </div>
             </>
-
             {/* grid */}
             <VirtualGrid data={templates} filters={filters} />
         </Container>
