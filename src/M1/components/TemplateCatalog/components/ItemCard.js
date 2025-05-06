@@ -33,38 +33,31 @@ const ItemCard = React.memo(({ item }) => {
 
         description = description ? stripTags(description) : '';
 
-        const Wrapper = item.href ? Link : 'p';
-        const wrapperProps = item.href ? { to: item.href } : {};
-
         return (
-            <Wrapper
-                className={twJoin(
-                    'block mt-4 px-1 relative truncate text-sm md:text-base',
-                    item.href && 'hover:underline cursor-pointer'
-                )}
-                {...wrapperProps}
-            >
-                <span className={twJoin('font-bold')} title={title}>
+            <div className={twJoin('block mt-2 px-1 py-1 relative space-y-0.5')}>
+                <p
+                    className={twJoin('text-base font-bold truncate group-hover:underline')}
+                    title={title}
+                >
                     {title}
-                </span>
-                <span className="text-text-color/70" title={description}>
-                    {' '}
-                    – {description}
-                </span>
-            </Wrapper>
+                </p>
+                <p className="truncate text-sm text-text-color/70 h-5" title={description}>
+                    {description}
+                </p>
+            </div>
         );
     }, [item]);
 
     return (
         <div
             ref={cardRef}
-            className="relative"
+            className="relative group p-2 rounded-lg hover:shadow-md"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             {/* Static Image */}
             <div
-                className={`relative w-full aspect-video transition-opacity duration-300 overflow-hidden shadow ${
+                className={`relative w-full aspect-video transition-opacity duration-300 overflow-hidden ${
                     isHovering && previewReady ? 'opacity-0 rounded-none' : 'opacity-100 rounded-lg'
                 }`}
             >
@@ -78,7 +71,7 @@ const ItemCard = React.memo(({ item }) => {
             {/* Video Preview - Only render if in view */}
             {inView && showPreview && (
                 <div
-                    className={`absolute inset-0 transition-opacity duration-300 ${
+                    className={`absolute inset-2 transition-opacity duration-300 ${
                         isHovering && previewReady ? 'opacity-100' : 'opacity-0'
                     }`}
                 >
@@ -105,7 +98,7 @@ const ItemCard = React.memo(({ item }) => {
             {cardInfo}
 
             {/* Overlay for link click */}
-            {/* {item.href && <Link to={item.href} className="absolute inset-0 z-[1]" />} */}
+            {item.href && <Link to={item.href} className="absolute inset-0 z-[1]" />}
         </div>
     );
 });
