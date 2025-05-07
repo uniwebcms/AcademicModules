@@ -30,12 +30,16 @@ const SearchBox = (props) => {
 
     const placeholder = website.localize({
         en: 'Search...',
-        fr: 'Recherche...'
+        fr: 'Recherche...',
     });
 
     return (
-        <div className={`relative mx-auto text-gray-600 w-full flex items-center max-w-3xl md:px-4`}>
-            <div className={`bg-white rounded-lg !shadow-md overflow-hidden flex-auto flex items-center`}>
+        <div
+            className={`relative mx-auto text-gray-600 w-full flex items-center max-w-3xl md:px-4`}
+        >
+            <div
+                className={`bg-white rounded-lg !shadow-md overflow-hidden flex-auto flex items-center`}
+            >
                 <input
                     className={`w-full flex-auto appearance-none bg-transparent pl-4 pr-8 py-4 text-gray-600 text-base sm:text-sm placeholder-gray-500 focus:outline-none`}
                     placeholder={placeholder}
@@ -54,8 +58,11 @@ const SearchBox = (props) => {
                     className={`p-4 cursor-pointer group`}
                     onClick={() => {
                         handleSearch();
-                    }}>
-                    <HiSearch className={`cursor-pointer w-5 h-5 text-gray-600 group-hover:text-gray-900`} />
+                    }}
+                >
+                    <HiSearch
+                        className={`cursor-pointer w-5 h-5 text-gray-600 group-hover:text-gray-900`}
+                    />
                 </div>
             </div>
         </div>
@@ -70,7 +77,7 @@ const SearchResult = React.memo((props) => {
             <span className={`text-white mb-4`}>
                 {website.localize({
                     en: 'No search result.',
-                    fr: 'Aucun résultat de recherche.'
+                    fr: 'Aucun résultat de recherche.',
                 })}
             </span>
         </div>
@@ -96,10 +103,12 @@ const SearchResult = React.memo((props) => {
             <span className={`text-white mb-4 text-sm`}>
                 {website.localize({
                     en: `${total} search results.`,
-                    fr: `${total} Résultats de recherche.`
+                    fr: `${total} Résultats de recherche.`,
                 })}
             </span>
-            <div className={`bg-white relative rounded-lg [overflow:overlay] max-h-[calc(100vh-240px)]`}>
+            <div
+                className={`bg-white relative rounded-lg [overflow:overlay] max-h-[calc(100vh-240px)]`}
+            >
                 {hits.length
                     ? hits.map((item, i) => {
                           return <ResultItem key={i} website={website} {...item?.doc} />;
@@ -115,9 +124,15 @@ const SearchKit = (props) => {
     const [input, setInput] = useState('');
 
     return (
-        <main className={`w-screen max-w-full h-screen p-5`}>
+        <main className={`w-full max-w-screen h-screen p-5`}>
             <div className={`pt-11 mx-auto max-w-6xl`}>
-                <SearchBox {...props} result={result} setResult={setResult} input={input} setInput={setInput} />
+                <SearchBox
+                    {...props}
+                    result={result}
+                    setResult={setResult}
+                    input={input}
+                    setInput={setInput}
+                />
                 <SearchResult {...{ result, ...props }} />
             </div>
         </main>
@@ -180,11 +195,11 @@ const Search = (props) => {
                                 'viewType',
                                 'contentId',
                                 'banner',
-                                'avatar'
-                            ]
+                                'avatar',
+                            ],
                         },
                         cache: true,
-                        tokenize: 'forward'
+                        tokenize: 'forward',
                     });
 
                     const add = (sequential_data) => {
@@ -193,7 +208,7 @@ const Search = (props) => {
 
                             index.add({
                                 ...data,
-                                content: `${data.title} ${data.description} ${data.content}`
+                                content: `${data.title} ${data.description} ${data.content}`,
                             });
                         }
                     };
@@ -204,23 +219,23 @@ const Search = (props) => {
 
                     if (website) {
                         website.submitEvent('search', {
-                            search_term: text
+                            search_term: text,
                         });
                     }
 
                     return index.search(text, {
-                        enrich: true
+                        enrich: true,
                     });
                 });
             } else {
                 if (website) {
                     website.submitEvent('search', {
-                        search_term: text
+                        search_term: text,
                     });
                 }
 
                 return searcher.search(text, {
-                    enrich: true
+                    enrich: true,
                 });
             }
         },
@@ -274,14 +289,17 @@ const Search = (props) => {
 
     return (
         <>
-            <div className={`rounded-lg flex items-center justify-${iconPosition}`} onClick={openModal}>
+            <div
+                className={`rounded-lg flex items-center justify-${iconPosition}`}
+                onClick={openModal}
+            >
                 <HiSearch
                     className={`cursor-pointer w-6 h-6 text-gray-600 hover:text-gray-800 ${props.iconClassName}`}
                     style={props.iconStyle}
                 />
             </div>
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as='div' className={`relative inset-0 z-50`} onClose={closeModal}>
+                <Dialog as="div" className={`relative inset-0 z-50`} onClose={closeModal}>
                     <Transition.Child
                         as={Fragment}
                         enter={`ease-out duration-300`}
@@ -289,25 +307,29 @@ const Search = (props) => {
                         enterTo={`opacity-100`}
                         leave={`ease-in duration-200`}
                         leaveFrom={`opacity-100`}
-                        leaveTo={`opacity-0`}>
+                        leaveTo={`opacity-0`}
+                    >
                         <div
                             onClick={closeModal}
                             className={`fixed inset-0 bg-gray-900 bg-opacity-60 transition-opacity`}
-                            aria-hidden='true'></div>
+                            aria-hidden="true"
+                        ></div>
                     </Transition.Child>
-                    <div className='fixed inset-0 overflow-y-auto'>
+                    <div className="fixed inset-0 overflow-y-auto">
                         <div className={`min-h-screen px-4 flex justify-center`}>
                             <MdClose
                                 className={`w-10 h-10 text-gray-200 hover:text-white cursor-pointer absolute top-4 right-6 z-[51]`}
-                                onClick={closeModal}></MdClose>
+                                onClick={closeModal}
+                            ></MdClose>
                             <Transition.Child
-                                as='div'
+                                as="div"
                                 enter={`ease-out duration-300`}
                                 enterFrom={`opacity-0 scale-95`}
                                 enterTo={`opacity-100 scale-100`}
                                 leave={`ease-in duration-200`}
                                 leaveFrom={`opacity-100 scale-100`}
-                                leaveTo={`opacity-0 scale-95`}>
+                                leaveTo={`opacity-0 scale-95`}
+                            >
                                 <Dialog.Panel>
                                     <SearchKit website={website} searchFn={query}></SearchKit>
                                 </Dialog.Panel>

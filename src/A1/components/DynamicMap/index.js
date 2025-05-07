@@ -581,7 +581,7 @@ export default function DynamicMap(props) {
     return (
         <Container
             className={twJoin(
-                bigSize ? '!py-0 w-screen h-screen' : 'mx-auto max-w-7xl px-6 md:px-8'
+                bigSize ? '!py-0 w-full max-w-screen h-screen' : 'mx-auto max-w-7xl px-6 md:px-8'
             )}
         >
             {!bigSize && title ? (

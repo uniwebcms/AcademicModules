@@ -35,7 +35,7 @@ export default function Header(props) {
     return (
         <div
             className={twJoin(
-                'h-16 w-screen z-50 transition duration-500 border-b border-slate-200 dark:border-slate-700/95',
+                'h-16 w-full max-w-screen z-50 transition duration-500 border-b border-slate-200 dark:border-slate-700/95',
                 isScrolled
                     ? 'shadow-md border-none backdrop-blur bg-slate-50/75 dark:bg-slate-800/95 dark:[@supports(backdrop-filter:blur(0))]:bg-slate-900/75'
                     : 'bg-transparent'

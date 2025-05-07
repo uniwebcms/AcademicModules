@@ -114,7 +114,7 @@ export default function InteractiveMap(props) {
     }, [location.search, location.pathname, map.current, showSidePanel]);
 
     return (
-        <Container className="!py-0 w-screen h-screen">
+        <Container className="!py-0 w-full max-w-screen h-screen">
             <div className={'w-full h-full'}>
                 <div
                     className="absolute top-5 z-[2] group"
