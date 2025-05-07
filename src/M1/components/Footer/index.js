@@ -171,7 +171,7 @@ export default function Footer(props) {
     };
 
     return (
-        <footer className="relative w-screen py-8 lg:py-16 xl:py-24">
+        <footer className="relative w-full max-w-screen py-8 lg:py-16 xl:py-24">
             {/* background */}
             {background && (
                 <div className="absolute inset-0">
@@ -335,7 +335,7 @@ export default function Footer(props) {
                         {copyright && (
                             <SafeHtml
                                 value={copyright}
-                                className="text-sm font-light mr-3 w-screen mb-2 lg:w-auto lg:mb-0 text-text-color/90"
+                                className="text-sm font-light mr-3 w-full max-w-screen mb-2 lg:w-auto lg:mb-0 text-text-color/90"
                             />
                         )}
                         {/* legal links */}

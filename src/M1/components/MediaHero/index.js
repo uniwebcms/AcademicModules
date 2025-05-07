@@ -36,7 +36,7 @@ export default function MediaHero(props) {
     const buttonLink = button ? parseButtonContent(button.content) : null;
 
     return (
-        <Container className="w-screen min-h-96" py="lg">
+        <Container className="w-full max-w-screen min-h-96" py="lg">
             {banner && (
                 <div className="absolute inset-0">
                     <Image

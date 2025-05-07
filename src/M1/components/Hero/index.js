@@ -17,7 +17,7 @@ export default function Hero(props) {
     return (
         <Container
             className={twJoin(
-                'w-screen flex flex-col justify-center',
+                'w-full max-w-screen flex flex-col justify-center',
                 !childBlocks.length || (childBlocks.length && alignment !== 'center')
                     ? 'lg:max-h-[982px]'
                     : '',

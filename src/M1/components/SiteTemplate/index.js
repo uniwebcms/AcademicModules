@@ -25,7 +25,7 @@ export default function ProductCatalog(props) {
     const { title: name, subtitle: description } = info;
 
     return (
-        <div className="relative w-screen flex bg-neutral-950/90 max-w-full flex-grow lg:flex-row flex-col py-6 h-screen gap-5 px-5 sm:px-6 md:px-8">
+        <div className="relative w-full max-w-screen flex bg-neutral-950/90 max-w-full flex-grow lg:flex-row flex-col py-6 h-screen gap-5 px-5 sm:px-6 md:px-8">
             <div className={`${boxStyle}`}>
                 <div className="pointer-events-auto w-full transition flex-shrink-0">
                     <Panel {...{ profile, website, input, screen, setScreen }}></Panel>
@@ -58,7 +58,7 @@ export default function ProductCatalog(props) {
                                     leaveFrom="opacity-100 translate-y-0"
                                     leaveTo="opacity-0 translate-y-1"
                                 >
-                                    <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+                                    <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-full max-w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
                                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-neutral-950/5">
                                             <div className="relative grid gap-2 bg-neutral-50 p-7 lg:grid-cols-2">
                                                 <h2 className={`text-lg font-bold`}>{name}</h2>

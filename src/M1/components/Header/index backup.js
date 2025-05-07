@@ -746,7 +746,7 @@ const NavBar = ({
 
             <nav
                 ref={navRef}
-                className={twJoin('w-screen fixed z-50', theme)}
+                className={twJoin('w-full max-w-screen fixed z-50', theme)}
                 style={{
                     transform: 'translateY(calc(var(--scroll-progress, 0) * -100%))',
                     transition: 'transform 0.3s ease-in-out, background-color 0.3s ease',
