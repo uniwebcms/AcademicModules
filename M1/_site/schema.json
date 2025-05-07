@@ -939,29 +939,6 @@
         }
       }
     },
-    "properties": {
-      "appearance": {
-        "label": {
-          "en": "Appearance",
-          "fr": "Apparence"
-        },
-        "type": "string",
-        "default": "fancy",
-        "enum": [
-          {
-            "label": {
-              "en": "Fancy",
-              "fr": "Fantaisie"
-            },
-            "value": "fancy"
-          }
-        ],
-        "description": {
-          "en": "The appearance of the content showcase section.",
-          "fr": "L'apparence de la section de vitrine de contenu."
-        }
-      }
-    },
     "presets": [
       {
         "label": {
