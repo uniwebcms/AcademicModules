@@ -7,9 +7,9 @@ export default function ContentShowcase(props) {
 
     const items = block.getBlockItems();
 
-    const { appearance = 'fancy' } = block.getBlockProperties();
+    // const { appearance = 'fancy' } = block.getBlockProperties();
 
-    if (appearance === 'fancy') {
-        return <Fancy {...{ title, subtitle, items }} />;
-    }
+    // if (appearance === 'fancy') {
+    return <Fancy {...{ title, subtitle, items }} />;
+    // }
 }

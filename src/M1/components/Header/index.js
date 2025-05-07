@@ -789,7 +789,10 @@ const NavBar = ({
                                                 {...wrapperProps}
                                                 className={twJoin(
                                                     'inline-flex items-center py-2',
-                                                    child_items.length ? 'pl-3 pr-1.5' : 'px-3'
+                                                    child_items.length ? 'pl-3 pr-1.5' : 'px-3',
+                                                    child_items.length && !route
+                                                        ? 'cursor-default'
+                                                        : ''
                                                 )}
                                             >
                                                 <span className="text-lg">{label}</span>

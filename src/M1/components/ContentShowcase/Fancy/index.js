@@ -113,7 +113,7 @@ export default function Fancy(props) {
                 <div className="flex justify-center max-w-7xl mx-auto px-4">
                     <div
                         className={twJoin(
-                            'p-2 rounded-full shadow-lg relative',
+                            'p-2 rounded-full shadow-lg relative overflow-auto no-scrollbar',
                             showcaseSwitcherColors[activeIndex % 3]
                         )}
                     >
@@ -181,7 +181,7 @@ export default function Fancy(props) {
                                             }, 800);
                                         }}
                                         className={twJoin(
-                                            'relative px-6 py-3 rounded-full transition-colors duration-300 z-10',
+                                            'relative px-4 py-2 md:px-6 md:py-3 rounded-full transition-colors duration-300 z-10 cursor-pointer',
                                             activeCase === key
                                                 ? 'text-bg-color'
                                                 : 'text-neutral-600 hover:text-neutral-900'

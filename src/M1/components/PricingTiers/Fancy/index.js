@@ -161,8 +161,8 @@ export default function Fancy(props) {
                                     'bg-neutral-800/50 border-neutral-700/50 hover:bg-neutral-800/70',
                                     badge && 'ring-2 ring-secondary-500'
                                 )}
-                                onClick={() => {
-                                    if (popup) {
+                                onClick={(e) => {
+                                    if (popup && e.target.tagName !== 'A') {
                                         setActiveFeature(popup);
                                     }
                                 }}

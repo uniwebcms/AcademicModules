@@ -180,9 +180,14 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
 
         const Icon = icons[icon] || 'div';
 
+        const active = filters[data.name] === value;
+
         return (
             <div
-                className="flex items-center justify-between gap-3 px-3 py-2 cursor-pointer hover:bg-neutral-200"
+                className={twJoin(
+                    'flex items-center justify-between gap-3 px-3 py-2 cursor-pointer',
+                    active ? 'bg-neutral-900' : 'hover:bg-neutral-200'
+                )}
                 key={index}
                 onClick={() => {
                     onChange(data.name, value);
@@ -190,12 +195,29 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
                 }}
             >
                 <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-neutral-500" />
-                    <span className="text-sm font-medium text-neutral-700">{label}</span>
+                    <Icon
+                        className={twJoin(
+                            'w-4 h-4',
+                            active ? 'text-neutral-300' : 'text-neutral-500'
+                        )}
+                    />
+                    <span
+                        className={twJoin(
+                            'text-sm font-medium',
+                            active ? 'text-neutral-50' : 'text-neutral-700'
+                        )}
+                    >
+                        {label}
+                    </span>
                 </div>
                 {info.type === 'dialog' && (
                     <span
-                        className="text-xs text-neutral-500 cursor-pointer underline hover:text-neutral-600 italic"
+                        className={twJoin(
+                            'text-xs cursor-pointer underline italic',
+                            active
+                                ? 'text-neutral-300 hover:text-neutral-200'
+                                : 'text-neutral-500 hover:text-neutral-600'
+                        )}
                         onClick={(e) => {
                             e.stopPropagation();
                             setModalOpen(true);
@@ -205,7 +227,14 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
                     </span>
                 )}
                 {info.type === 'text' && (
-                    <span className="text-xs font-medium text-neutral-500">{info.value}</span>
+                    <span
+                        className={twJoin(
+                            'text-xs font-medium',
+                            active ? 'text-neutral-300' : 'text-neutral-500'
+                        )}
+                    >
+                        {info.value}
+                    </span>
                 )}
             </div>
         );

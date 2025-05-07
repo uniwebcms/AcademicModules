@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Container from '../_utils/Container';
 import { formatToCAD } from '../_utils/pricing';
-import { Link, twJoin, SafeHtml, Icon, website, stripTags } from '@uniwebcms/module-sdk';
+import { Link, twJoin, SafeHtml, Icon, website } from '@uniwebcms/module-sdk';
 import { AiOutlineQuestion } from 'react-icons/ai';
 import { HiCheck } from 'react-icons/hi';
 import { Switch } from '@headlessui/react';
@@ -277,6 +277,29 @@ export default function PricingTiers(props) {
 
     const [billingCycle, setBillingCycle] = useState(default_billing_cycle);
     const [activeFeature, setActiveFeature] = useState(null);
+    const [sectionStyle, setSectionStyle] = useState({});
+
+    // this is for the Dialog (Modal) to use all css variables from the section
+    useEffect(() => {
+        const sourceElement = document.getElementById(`Section${block.id}`);
+
+        if (sourceElement) {
+            const styleObject = {};
+
+            // Loop through inline styles explicitly set on the element
+            const inlineStyles = sourceElement.style;
+
+            for (let i = 0; i < inlineStyles.length; i++) {
+                const key = inlineStyles[i];
+                const value = inlineStyles.getPropertyValue(key);
+
+                styleObject[key] = value;
+            }
+
+            // Store the styles in the state
+            setSectionStyle(styleObject);
+        }
+    }, [block.id]);
 
     const calculateDisplayPrice = useCallback(
         (price) => {
@@ -338,7 +361,11 @@ export default function PricingTiers(props) {
                         ))}
                     </div>
                 ) : null}
-                <FeaturePopup feature={activeFeature} setFeature={setActiveFeature} />
+                <FeaturePopup
+                    feature={activeFeature}
+                    setFeature={setActiveFeature}
+                    modalProps={{ theme: block.themeName, style: sectionStyle }}
+                />
             </Container>
         );
     } else {
@@ -358,13 +385,17 @@ export default function PricingTiers(props) {
                         card_size,
                     }}
                 />
-                <FeaturePopup feature={activeFeature} setFeature={setActiveFeature} />
+                <FeaturePopup
+                    feature={activeFeature}
+                    setFeature={setActiveFeature}
+                    modalProps={{ theme: block.themeName, style: sectionStyle, darkMode: true }}
+                />
             </>
         );
     }
 }
 
-const FeaturePopup = ({ feature, setFeature }) => {
+const FeaturePopup = ({ feature, setFeature, modalProps }) => {
     return (
         <Modal
             open={!!feature}
@@ -372,6 +403,7 @@ const FeaturePopup = ({ feature, setFeature }) => {
                 setFeature(null);
             }}
             {...feature}
+            {...modalProps}
         />
     );
 };
