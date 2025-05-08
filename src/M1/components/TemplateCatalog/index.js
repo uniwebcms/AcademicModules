@@ -89,7 +89,7 @@ const SortMenu = ({ data, filters, onChange }) => {
     });
 
     return (
-        <div className="relative w-fit ml-4 lg:ml-6 xl:ml-8">
+        <div className="relative w-fit ml-2 md:ml-4 lg:ml-6 xl:ml-8">
             <div
                 ref={triggerRef}
                 className="flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 sm:py-[9px] 2xl:px-4 2xl:py-2.5 border border-neutral-300 cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2 hover:shadow-sm"
@@ -98,14 +98,14 @@ const SortMenu = ({ data, filters, onChange }) => {
                 <TbSortDescending
                     className={twJoin(
                         'w-4 h-4 text-inherit flex-shrink-0',
-                        open ? 'opacity-90' : 'opacity-60 md:opacity-70 group-hover:opacity-100'
+                        open ? 'opacity-90' : 'opacity-70 group-hover:opacity-100'
                     )}
                 />
                 {filters['sort'] && (
                     <span
                         className={twJoin(
                             'truncate hidden lg:block',
-                            open ? 'opacity-80' : 'opacity-80 group-hover:opacity-100'
+                            open ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'
                         )}
                     >
                         {data.options.find((opt) => opt.value === filters['sort'])?.label}
@@ -186,7 +186,7 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
             <div
                 className={twJoin(
                     'flex items-center justify-between gap-3 px-3 py-2 cursor-pointer',
-                    active ? 'bg-neutral-900' : 'hover:bg-neutral-200'
+                    active ? 'bg-neutral-200' : 'hover:bg-neutral-200'
                 )}
                 key={index}
                 onClick={() => {
@@ -198,13 +198,13 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
                     <Icon
                         className={twJoin(
                             'w-4 h-4',
-                            active ? 'text-neutral-300' : 'text-neutral-500'
+                            active ? 'text-neutral-600' : 'text-neutral-500'
                         )}
                     />
                     <span
                         className={twJoin(
                             'text-sm font-medium',
-                            active ? 'text-neutral-50' : 'text-neutral-700'
+                            active ? 'text-neutral-800' : 'text-neutral-700'
                         )}
                     >
                         {label}
@@ -215,7 +215,7 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
                         className={twJoin(
                             'text-xs cursor-pointer underline italic',
                             active
-                                ? 'text-neutral-300 hover:text-neutral-200'
+                                ? 'text-neutral-600 hover:text-neutral-700'
                                 : 'text-neutral-500 hover:text-neutral-600'
                         )}
                         onClick={(e) => {
@@ -230,7 +230,7 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
                     <span
                         className={twJoin(
                             'text-xs font-medium',
-                            active ? 'text-neutral-300' : 'text-neutral-500'
+                            active ? 'text-neutral-600' : 'text-neutral-500'
                         )}
                     >
                         {info.value}
@@ -247,24 +247,39 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
     const ActiveIcon = icons[activeOption?.icon] || 'div';
     const activeLabel = activeOption?.label;
 
+    const isActive = activeValue && activeValue !== 'all';
+
     return (
         <>
             <div className="relative w-fit ml-auto">
                 <div
                     ref={triggerRef}
-                    className="flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 py-[9px] 2xl:px-4 2xl:py-2.5 border border-neutral-300 cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2 hover:shadow-sm"
+                    className={twJoin(
+                        'flex items-center whitespace-nowrap rounded-full text-sm font-medium p-[9px] sm:px-3 py-[9px] 2xl:px-4 2xl:py-2.5 border cursor-pointer max-w-48 md:max-w-60 lg:max-w-64 group gap-x-2 hover:shadow-sm',
+                        isActive
+                            ? 'bg-neutral-900 border-neutral-900 text-neutral-50'
+                            : ' border-neutral-300 text-neutral-950'
+                    )}
                     onClick={() => setOpen(!open)}
                 >
                     <ActiveIcon
                         className={twJoin(
                             'w-4 h-4 text-inherit flex-shrink-0',
-                            open ? 'opacity-90' : 'opacity-60 md:opacity-70 group-hover:opacity-100'
+                            !isActive
+                                ? open
+                                    ? 'opacity-90'
+                                    : 'opacity-70 group-hover:opacity-100'
+                                : ''
                         )}
                     />
                     <span
                         className={twJoin(
                             'hidden lg:block',
-                            open ? 'opacity-80' : 'opacity-80 group-hover:opacity-100'
+                            !isActive
+                                ? open
+                                    ? 'opacity-100'
+                                    : 'opacity-80 group-hover:opacity-100'
+                                : ''
                         )}
                     >
                         {activeLabel}
