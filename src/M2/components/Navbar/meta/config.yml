@@ -1,0 +1,43 @@
+title: 
+  en: Navbar
+  fr: Barre de navigation
+label:
+  en: Navbar
+  fr: Barre de navigation
+description:
+  en: A navigation bar component that can be used to display a logo and navigation links.
+  fr: Un composant de barre de navigation qui peut être utilisé pour afficher un logo et des liens de navigation.
+
+category: navigation
+export: true
+
+elements:
+  icon:
+    title:
+      en: Logo
+      fr: Logo
+    description:
+      en: The logo image to display in the header.
+      fr: L'image du logo à afficher dans l'en-tête.
+  list:
+    type: list
+    title:
+      en: Navigation Links
+      fr: Liens de navigation
+    description:
+      en: The navigation links to display in the header, it is created as a list of links, each link can have children links.
+      fr: Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants.
+
+properties:
+  sign_up_link:
+    label:
+      en: Sign Up Link
+      fr: Lien d'inscription
+    type: string
+    default: ""
+    description:
+      en: The link to the sign-up page.
+      fr: Le lien vers la page d'inscription.
+
+# images:
+#   - example.png

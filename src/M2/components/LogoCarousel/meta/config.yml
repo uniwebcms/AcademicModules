@@ -1,0 +1,21 @@
+title: 
+  en: Logo Carousel
+  fr: Carrousel de logos
+label:  
+  en: Logo Carousel
+  fr: Carrousel de logos
+description:
+  en: A logo carousel component that can be used to showcase logos.
+  fr: Un composant de carrousel de logos qui peut être utilisé pour mettre en valeur des logos.
+
+export: true
+
+elements:
+  title:
+  media:
+    type: image
+    description: 
+      en: The showcase images.
+      fr: Les images de présentation.
+# images:
+#   - example.png

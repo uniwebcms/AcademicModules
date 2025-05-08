@@ -1,0 +1,20 @@
+title: 
+  en: Hero
+  fr: Héros
+label:
+  en: Hero
+  fr: Héros
+description:
+  en: A hero component that can be used to showcase title, subtitle, and links.
+  fr: Un composant héros qui peut être utilisé pour mettre en valeur le titre, le sous-titre et les liens.
+
+category: hero
+export: true
+
+elements:
+  title:
+  subtitle:
+  link:
+
+# images:
+#   - example.png

@@ -1,0 +1,29 @@
+title: 
+  en: Feature Cards
+  fr: Cartes de fonctionnalités
+label:
+  en: Feature Cards
+  fr: Cartes de fonctionnalités
+description:
+  en: A feature cards component that can be used to showcase features.
+  fr: Un composant de cartes de fonctionnalités qui peut être utilisé pour mettre en valeur des fonctionnalités.
+
+category: feature
+export: true
+
+elements:
+  title:
+  subtitle:
+  link:
+
+items:
+  separator: divider
+  elements:
+    banner:
+    title:
+    subtitle:
+    link:
+  
+
+# images:
+#   - example.png
