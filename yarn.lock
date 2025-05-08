@@ -6307,6 +6307,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
+    "@uniwebcms/core-components": "npm:^1.6.2"
     "@uniwebcms/module-sdk": "npm:^1.23.18"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     flexsearch: "npm:^0.7.31"
@@ -6326,6 +6327,25 @@ __metadata:
     react-spinners: "npm:^0.13.8"
     react-virtuoso: "npm:^4.12.3"
     recharts: "npm:^2.15.0"
+    tailwindcss: "npm:^3.4.13"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
+"marketing-series-2@workspace:src/M2":
+  version: 0.0.0-use.local
+  resolution: "marketing-series-2@workspace:src/M2"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.13"
+    "@tailwindcss/typography": "npm:^0.5.15"
+    "@uniwebcms/module-sdk": "npm:^1.23.18"
+    "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
+    prop-types: "npm:^15.8.1"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-icons: "npm:^5.4.0"
     tailwindcss: "npm:^3.4.13"
   peerDependencies:
     react: "*"
