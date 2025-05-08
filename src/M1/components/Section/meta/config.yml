@@ -1,0 +1,99 @@
+title:
+    en: Section
+    fr: Section
+description:
+    en: A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.
+    fr: Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur.
+
+category: content
+export: true
+
+elements:
+    _raw:
+        en: This category renders content from the Webpages editor as-is.
+        fr: Cette catégorie affiche le contenu de l'éditeur de pages tel quel.
+
+properties:
+    vertical_padding:
+        label:
+            en: Vertical Padding
+            fr: Rembourrage vertical
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: Center in Full Screen
+                  fr: Centrer en plein écran
+              value: center
+        description:
+            en: The vertical padding of the section.
+            fr: Le rembourrage vertical de la section.
+    width:
+        label:
+            en: Section Width
+            fr: Largeur de la section
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Large
+                  fr: Large
+              value: lg
+            - label:
+                  en: Extra Large
+                  fr: Très grand
+              value: xl
+            - label:
+                  en: Double Extra Large
+                  fr: Double très grand
+              value: 2xl
+        description:
+            en: The width of the section.
+            fr: La largeur de la section.
+    columns:
+        label:
+            en: Number of Columns
+            fr: Nombre de colonnes
+        type: string
+        default: '1'
+        enum:
+            - label:
+                  en: One
+                  fr: Un
+              value: '1'
+            - label:
+                  en: Two
+                  fr: Deux
+              value: '2'
+            - label:
+                  en: Three
+                  fr: Trois
+              value: '3'
+        description:
+            en: The number of columns in the section.
+            fr: Le nombre de colonnes dans la section.
+    video_control:
+        label:
+            en: Video Control
+            fr: Contrôle vidéo
+        type: boolean
+        default: false
+        description:
+            en: Whether to display the additional video control, such as mini player and overlay play button.
+            fr: Afficher ou non le contrôle vidéo supplémentaire, tel que le mini lecteur et le bouton de lecture superposé.
