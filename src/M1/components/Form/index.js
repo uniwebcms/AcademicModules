@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Container from '../_utils/Container';
-import { SafeHtml, Icon, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, Icon, stripTags } from '@uniwebcms/module-sdk';
 import { HiCheck, HiChevronDown } from 'react-icons/hi';
 
 const SelectWidget = ({ data, setData, options, placeholder }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [openUpward, setOpenUpward] = useState(false);
 
     const containerRef = useRef(null);
 
@@ -23,6 +24,20 @@ const SelectWidget = ({ data, setData, options, placeholder }) => {
         };
     }, []);
 
+    useEffect(() => {
+        if (isOpen && containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const formEl = containerRef.current.closest('form');
+            if (formEl) {
+                const formRect = formEl.getBoundingClientRect();
+                const spaceBelow = formRect.bottom - rect.bottom;
+
+                console.log('spaceBelow', spaceBelow);
+                setOpenUpward(spaceBelow < 220);
+            }
+        }
+    }, [isOpen]);
+
     return (
         <div ref={containerRef} className="relative w-full">
             <button
@@ -35,7 +50,12 @@ const SelectWidget = ({ data, setData, options, placeholder }) => {
             </button>
 
             {isOpen && (
-                <div className="absolute left-0 right-0 top-full mt-1 rounded-md border border-neutral-600 bg-neutral-900 py-1">
+                <div
+                    className={twJoin(
+                        'absolute left-0 right-0 rounded-md border border-neutral-600 bg-neutral-900 py-1 max-h-[200px] overflow-y-auto',
+                        openUpward ? 'bottom-full mb-1' : 'top-full mt-1'
+                    )}
+                >
                     {options.map((option) => (
                         <div
                             key={option.value}
