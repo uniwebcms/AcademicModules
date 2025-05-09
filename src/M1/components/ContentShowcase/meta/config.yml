@@ -35,26 +35,14 @@ items:
         en: The details of the content in list format. Each can have a icon and a text.
         fr: Les détails du contenu au format liste. Chacun peut avoir une icône et un texte.
     media:
-      type: image
+      type: image, video
       description:
-        en: The image of the content.
-        fr: L'image du contenu.
-
-# properties:
-#   appearance:
-#     label:
-#       en: Appearance
-#       fr: Apparence
-#     type: string
-#     default: fancy
-#     enum:
-#       - label:
-#           en: Fancy
-#           fr: Fantaisie
-#         value: fancy
-#     description:
-#       en: The appearance of the content showcase section.
-#       fr: L'apparence de la section de vitrine de contenu.
+        en: The image or video of the content.
+        fr: L'image ou la vidéo du contenu.
+    link:
+      description:
+        en: The link of the content.
+        fr: Le lien du contenu.
 
 presets:
   fancy:

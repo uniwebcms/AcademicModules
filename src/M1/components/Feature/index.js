@@ -49,7 +49,7 @@ export default function Feature(props) {
     if (appearance === 'standard') {
         return (
             <Container py="md" className="relative max-w-8xl mx-auto">
-                <div className={twJoin('text-center', title || subtitle ? ' mb-20' : '')}>
+                <div className={twJoin('text-center', title || subtitle ? 'mb-12 lg:mb-20' : '')}>
                     {title && <h2 className={'text-4xl font-bold mb-4'}>{title}</h2>}
                     {subtitle && (
                         <p className="text-lg font-base max-w-3xl mx-auto text-pretty">
