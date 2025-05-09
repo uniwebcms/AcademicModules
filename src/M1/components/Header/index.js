@@ -465,7 +465,7 @@ const NavBar = ({
                         </div>
 
                         {/* Display search results */}
-                        <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-scroll">
+                        <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-auto">
                             {searchResults?.map((result) => (
                                 <Link
                                     key={result.id}
@@ -618,7 +618,7 @@ const NavBar = ({
                         </div>
 
                         {/* Display search results */}
-                        <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-scroll">
+                        <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-auto">
                             {searchResults?.map((result) => (
                                 <Link
                                     key={result.id}
@@ -626,16 +626,18 @@ const NavBar = ({
                                     className="flex flex-col gap-1 px-2 py-1 hover:underline"
                                     style={{ textShadow: '1px 1px 2px var(--bg-color)' }}
                                 >
-                                    <span className="text-base lg:text-lg">{result.title}</span>
+                                    <span className="text-base lg:text-lg text-gray-900">
+                                        {result.title}
+                                    </span>
                                     {result.description && (
-                                        <span className="text-sm lg:text-base text-text-color-80">
+                                        <span className="text-sm lg:text-base text-gray-700">
                                             {result.description}
                                         </span>
                                     )}
                                 </Link>
                             ))}
                             {searchValue && searchResults?.length === 0 && (
-                                <div className="text-center text-text-color">
+                                <div className="text-center text-gray-500">
                                     {website.localize({
                                         en: 'No results found',
                                         fr: 'Aucun résultat trouvé',
