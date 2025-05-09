@@ -27,6 +27,7 @@ import {
     LuChartScatter,
     LuCircleHelp,
     LuAlbum,
+    LuInfo,
 } from 'react-icons/lu';
 
 const LinkIcon = ({ icon }) => {
@@ -51,6 +52,7 @@ const LinkIcon = ({ icon }) => {
         'chart-scatter': LuChartScatter,
         'circle-help': LuCircleHelp,
         album: LuAlbum,
+        info: LuInfo,
     };
 
     const IconComponent = map[icon] || 'div';
