@@ -5,7 +5,8 @@ import { HiCheck, HiChevronDown } from 'react-icons/hi';
 
 const SelectWidget = ({ data, setData, options, placeholder }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [openUpward, setOpenUpward] = useState(false);
+    const [menuDirection, setMenuDirection] = useState('down');
+    const [menuHeight, setMenuHeight] = useState(200);
 
     const containerRef = useRef(null);
 
@@ -28,12 +29,25 @@ const SelectWidget = ({ data, setData, options, placeholder }) => {
         if (isOpen && containerRef.current) {
             const rect = containerRef.current.getBoundingClientRect();
             const formEl = containerRef.current.closest('form');
+
             if (formEl) {
                 const formRect = formEl.getBoundingClientRect();
                 const spaceBelow = formRect.bottom - rect.bottom;
+                const spaceAbove = rect.top - formRect.top;
 
-                console.log('spaceBelow', spaceBelow);
-                setOpenUpward(spaceBelow < 220);
+                if (spaceBelow >= 220) {
+                    setMenuDirection('down');
+                    setMenuHeight(200);
+                } else if (spaceAbove >= 220) {
+                    setMenuDirection('up');
+                    setMenuHeight(200);
+                } else if (spaceAbove > spaceBelow) {
+                    setMenuDirection('up');
+                    setMenuHeight(spaceAbove - 10);
+                } else {
+                    setMenuDirection('down');
+                    setMenuHeight(spaceBelow - 10);
+                }
             }
         }
     }, [isOpen]);
@@ -52,9 +66,10 @@ const SelectWidget = ({ data, setData, options, placeholder }) => {
             {isOpen && (
                 <div
                     className={twJoin(
-                        'absolute left-0 right-0 rounded-md border border-neutral-600 bg-neutral-900 py-1 max-h-[200px] overflow-y-auto',
-                        openUpward ? 'bottom-full mb-1' : 'top-full mt-1'
+                        'absolute left-0 right-0 rounded-md border border-neutral-600 bg-neutral-900 py-1 overflow-auto',
+                        menuDirection === 'up' ? 'bottom-full mb-1' : 'top-full mt-1'
                     )}
+                    style={{ maxHeight: `${menuHeight}px` }}
                 >
                     {options.map((option) => (
                         <div
