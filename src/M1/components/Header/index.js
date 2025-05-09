@@ -624,7 +624,6 @@ const NavBar = ({
                                     key={result.id}
                                     to={result.href}
                                     className="flex flex-col gap-1 px-2 py-1 hover:underline"
-                                    style={{ textShadow: '1px 1px 2px var(--bg-color)' }}
                                 >
                                     <span className="text-base lg:text-lg text-gray-900">
                                         {result.title}
