@@ -931,11 +931,18 @@
           }
         },
         "media": {
-          "type": "image",
+          "type": "image, video",
           "description": {
-            "en": "The image of the content.",
-            "fr": "L'image du contenu."
+            "en": "The image or video of the content.",
+            "fr": "L'image ou la vidéo du contenu."
           }
+        },
+        "link": {
+          "description": {
+            "en": "The link of the content.",
+            "fr": "Le lien du contenu."
+          },
+          "type": "link"
         }
       }
     },
