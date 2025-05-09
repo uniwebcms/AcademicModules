@@ -74,6 +74,7 @@ const NavBar = ({
     const [isNavHovered, setIsNavHovered] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [mobileContent, setMobileContent] = useState(null);
+    const [navWidth, setNavWidth] = useState(document.documentElement.clientWidth);
     const [languageDropdownWidth, setLanguageDropdownWidth] = useState(0);
     const [searchResults, setSearchResults] = useState(null);
     const [navDropdownLayout, setNavDropdownLayout] = useState({
@@ -100,6 +101,18 @@ const NavBar = ({
         setIsNavHovered(false);
         setMobileContent(null);
     }, [refresh]);
+
+    // update nav width on resize
+    useEffect(() => {
+        const updateNavWidth = () => {
+            setNavWidth(document.documentElement.clientWidth);
+        };
+
+        updateNavWidth(); // initial
+
+        window.addEventListener('resize', updateNavWidth);
+        return () => window.removeEventListener('resize', updateNavWidth);
+    }, []);
 
     // Update placeholder height when nav height changes
     useEffect(() => {
@@ -750,7 +763,7 @@ const NavBar = ({
 
             <nav
                 ref={navRef}
-                className={twJoin('w-full max-w-screen fixed z-50', theme)}
+                className={twJoin('w-full fixed z-50', theme)}
                 style={{
                     transform: 'translateY(calc(var(--scroll-progress, 0) * -100%))',
                     transition: 'transform 0.3s ease-in-out, background-color 0.3s ease',
@@ -759,6 +772,7 @@ const NavBar = ({
                     boxShadow:
                         'rgba(0, 0, 0, calc(var(--nav-bg-shadow-opacity, 0) * 0.1)) 0px 4px 6px -1px',
                     top: 0,
+                    maxWidth: navWidth,
                 }}
                 onMouseLeave={handleMouseLeave}
             >
