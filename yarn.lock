@@ -5115,28 +5115,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^12.10.5":
-  version: 12.10.6
-  resolution: "framer-motion@npm:12.10.6"
-  dependencies:
-    motion-dom: "npm:^12.10.6"
-    motion-utils: "npm:^12.9.4"
-    tslib: "npm:^2.4.0"
-  peerDependencies:
-    "@emotion/is-prop-valid": "*"
-    react: ^18.0.0 || ^19.0.0
-    react-dom: ^18.0.0 || ^19.0.0
-  peerDependenciesMeta:
-    "@emotion/is-prop-valid":
-      optional: true
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 10/d19f1464cbac58372d6ab9c39977416eff6f69b1cc8a67a5ab474caf9f0f8283def5a4979630cb89654d3a5c99ab183c6b87a8f7d5b3ac85f1ada4091ab5c766
-  languageName: node
-  linkType: hard
-
 "fs-extra@npm:^11.1.0":
   version: 11.3.0
   resolution: "fs-extra@npm:11.3.0"
@@ -6364,7 +6342,6 @@ __metadata:
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/module-sdk": "npm:^1.23.18"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
-    framer-motion: "npm:^12.10.5"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -7071,26 +7048,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion-dom@npm:^12.10.6":
-  version: 12.10.6
-  resolution: "motion-dom@npm:12.10.6"
-  dependencies:
-    motion-utils: "npm:^12.9.4"
-  checksum: 10/757c2219bcc16cfd4df6c6b4b95d2ae5af837059c2261aa7e4b084ed44977858a64b6a8e1c2ff4f8e1f79ad66f92c2f178cfc79c616870dc5b868b72c1e8dccc
-  languageName: node
-  linkType: hard
-
 "motion-utils@npm:^11.18.1":
   version: 11.18.1
   resolution: "motion-utils@npm:11.18.1"
   checksum: 10/8af61c8260ed6abe9c0d4e1037bd80de95a461a62c89daaf26bfdcdccc96799eed5c45adbdff90ea78614336bf2e3b91f4eb6ecb4e4028a3bce53977b54822a2
-  languageName: node
-  linkType: hard
-
-"motion-utils@npm:^12.9.4":
-  version: 12.9.4
-  resolution: "motion-utils@npm:12.9.4"
-  checksum: 10/528276c3515a66365a8bae2073f9615b57d58e1b57284a4b6e92ba3f27e86974e0a37b410ea528a4c2961646a6bf398db4ca411e28db930ec4623620e05e059a
   languageName: node
   linkType: hard
 
