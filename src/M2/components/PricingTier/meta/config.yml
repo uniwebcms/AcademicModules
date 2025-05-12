@@ -1,0 +1,15 @@
+title: 
+  en: Pricing Tier
+  fr: Niveau de tarification
+label:
+  en: Pricing Tier
+  fr: Niveau de tarification
+description:
+  en: A pricing tier component that can be used to showcase pricing options.
+  fr: Un composant de niveau de tarification qui peut être utilisé pour mettre en valeur les options de tarification.
+
+category: pricing
+export: true
+
+# images:
+#   - example.png

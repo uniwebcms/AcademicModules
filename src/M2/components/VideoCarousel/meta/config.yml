@@ -1,0 +1,21 @@
+title: 
+  en: Video Carousel
+  fr: Carrousel de Videos
+label:  
+  en: Video Carousel
+  fr: Carrousel de Videos
+description:
+  en: A video carousel component that can be used to showcase videos.
+  fr: Un composant de carrousel de vidéos qui peut être utilisé pour mettre en valeur des vidéos.
+
+export: true
+
+elements:
+  title:
+  media:
+    type: video
+    description: 
+      en: The showcase videos.
+      fr: Les vidéos de présentation.
+# images:
+#   - example.png

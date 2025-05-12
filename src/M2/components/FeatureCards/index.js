@@ -4,12 +4,12 @@ import { Image, Link, SafeHtml } from '@uniwebcms/module-sdk';
 export default function FeatureCard(props) {
     const { block, page } = props;
 
-    const { title, subtitle, links } = block.getBlockContent();
+    const { title, subtitle } = block.getBlockContent();
 
     const items = block.getBlockItems();
 
     return (
-        <div className="px-6 py-30">
+        <div className="px-6 py-12">
             <div className="max-w-[1600px] mx-auto">
                 <div className="text-center">
                     <h2 className="text-[42px] md:text-[48px] xl:text-[72px] leading-[118%] md:leading-[112%]">
@@ -29,7 +29,7 @@ export default function FeatureCard(props) {
                             <li key={index}>
                                 <Wrapper
                                     {...wrapperProps}
-                                    className="relative block h-full bg-text-color-10 p-6 sm:p-8 rounded-[12px] text-left hover:bg-text-color-20 hover:shadow-elevation1"
+                                    className="relative block h-full bg-text-color-10 p-6 sm:p-8 rounded-[12px] text-left hover:bg-text-color-20"
                                 >
                                     <Image
                                         profile={page.getPageProfile()}

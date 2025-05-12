@@ -7262,6 +7262,13 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:12.10.6", {\
+        "packageLocation": "./.yarn/cache/framer-motion-npm-12.10.6-b6d744abd0-d19f1464cb.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "npm:12.10.6"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:11.18.2", {\
         "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-35f96f156d/0/cache/framer-motion-npm-11.18.2-badab02ede-f8805f9f56.zip/node_modules/framer-motion/",\
         "packageDependencies": [\
@@ -7272,6 +7279,30 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", null],\
           ["motion-dom", "npm:11.18.1"],\
           ["motion-utils", "npm:11.18.1"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
+          ["tslib", "npm:2.8.1"]\
+        ],\
+        "packagePeers": [\
+          "@emotion/is-prop-valid",\
+          "@types/emotion__is-prop-valid",\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:c3e6bf1c0981424ba74581ed2a719b22f6763267ac947830e9f9d560a8951730f649cc9fc5f26f1424ca56efdc54dc2b51b6d7a1dd38e0382d1b8efd4e775e8d#npm:12.10.6", {\
+        "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-e0c1a92aa7/0/cache/framer-motion-npm-12.10.6-b6d744abd0-d19f1464cb.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "virtual:c3e6bf1c0981424ba74581ed2a719b22f6763267ac947830e9f9d560a8951730f649cc9fc5f26f1424ca56efdc54dc2b51b6d7a1dd38e0382d1b8efd4e775e8d#npm:12.10.6"],\
+          ["@emotion/is-prop-valid", null],\
+          ["@types/emotion__is-prop-valid", null],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["motion-dom", "npm:12.10.6"],\
+          ["motion-utils", "npm:12.9.4"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
           ["tslib", "npm:2.8.1"]\
@@ -8652,6 +8683,7 @@ const RAW_RUNTIME_STATE =
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
           ["@uniwebcms/module-sdk", "virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:1.23.18"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
+          ["framer-motion", "virtual:c3e6bf1c0981424ba74581ed2a719b22f6763267ac947830e9f9d560a8951730f649cc9fc5f26f1424ca56efdc54dc2b51b6d7a1dd38e0382d1b8efd4e775e8d#npm:12.10.6"],\
           ["prop-types", "npm:15.8.1"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
@@ -9416,6 +9448,14 @@ const RAW_RUNTIME_STATE =
           ["motion-utils", "npm:11.18.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:12.10.6", {\
+        "packageLocation": "./.yarn/cache/motion-dom-npm-12.10.6-e64774ce59-757c2219bc.zip/node_modules/motion-dom/",\
+        "packageDependencies": [\
+          ["motion-dom", "npm:12.10.6"],\
+          ["motion-utils", "npm:12.9.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["motion-utils", [\
@@ -9423,6 +9463,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/motion-utils-npm-11.18.1-2341a6fcf2-8af61c8260.zip/node_modules/motion-utils/",\
         "packageDependencies": [\
           ["motion-utils", "npm:11.18.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:12.9.4", {\
+        "packageLocation": "./.yarn/cache/motion-utils-npm-12.9.4-47e89790bd-528276c351.zip/node_modules/motion-utils/",\
+        "packageDependencies": [\
+          ["motion-utils", "npm:12.9.4"]\
         ],\
         "linkType": "HARD"\
       }]\

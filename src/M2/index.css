@@ -11,3 +11,7 @@
         transform: translateX(-50%);
     }
 }
+
+body {
+    overflow-x: hidden;
+}

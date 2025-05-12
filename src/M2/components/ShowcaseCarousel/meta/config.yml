@@ -1,0 +1,11 @@
+title: 
+  en: Showcase Carousel
+  fr: Carrousel de Présentation
+label:
+  en: Showcase Carousel
+  fr: Carrousel de Présentation
+description:
+  en: The Showcase Carousel is a dynamic content section designed to highlight key offerings, services, features, or stories in a visually engaging way. It displays a row of stylish cards, each featuring a background image, a title, and additional text that appears on hover. This interaction brings the content to life and encourages exploration without overwhelming the viewer.
+  fr: Le carrousel de présentation est une section de contenu dynamique conçue pour mettre en valeur des offres, services, fonctionnalités ou histoires clés de manière visuellement attrayante. Il affiche une rangée de cartes élégantes, chacune présentant une image de fond, un titre et un texte supplémentaire qui apparaît au survol. Cette interaction donne vie au contenu et encourage l'exploration sans submerger le spectateur.
+
+export: true
