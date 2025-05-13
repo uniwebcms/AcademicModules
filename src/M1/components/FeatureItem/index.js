@@ -185,7 +185,6 @@ export default function FeatureItem(props) {
                 <div
                     className={twJoin(
                         'absolute -inset-px bg-gradient-to-r rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm'
-                        // 'from-slate-300 to-slate-300'
                     )}
                 ></div>
                 <div
@@ -245,6 +244,37 @@ export default function FeatureItem(props) {
                         </li>
                     ))}
                 </ul>
+            </div>
+        );
+    }
+
+    if (mode === 'centered') {
+        const { title, icons, paragraphs, links } = block.getBlockContent();
+
+        const icon = icons[0];
+
+        return (
+            <div className="flex-1 flex flex-col items-center max-w-md mx-auto w-full text-center">
+                {icon && (
+                    <div className="w-12 h-12 rounded-full bg-icon-color/10 flex items-center justify-center">
+                        <Icon icon={icon} className="w-8 h-8"></Icon>
+                    </div>
+                )}
+                {title && <h3 className="mt-4 text-lg font-bold">{title}</h3>}
+                {paragraphs && (
+                    <SafeHtml value={paragraphs} className="mt-2 text-base !leading-snug" />
+                )}
+                <div className="flex flex-col items-center mt-4 space-y-3">
+                    {links.map((link, index) => (
+                        <Link
+                            key={index}
+                            to={link.href}
+                            className="bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color flex items-center justify-center py-1 px-3 rounded-3xl max-w-full"
+                        >
+                            <span className="truncate text-sm">{link.label}</span>
+                        </Link>
+                    ))}
+                </div>
             </div>
         );
     }

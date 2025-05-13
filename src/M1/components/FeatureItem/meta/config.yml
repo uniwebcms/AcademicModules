@@ -17,6 +17,10 @@ elements:
   subtitle:
   text:
   link:
+  list:
+    description:
+      en: A list of details or features that highlight the key aspects of the content. Only available in Bullet List mode.
+      fr: Une liste de détails ou de caractéristiques qui mettent en avant les aspects clés du contenu. Disponible uniquement en mode liste à puces.
 
 properties:
   with_border:
@@ -64,6 +68,10 @@ properties:
           en: Bullet List (icon, title and list)
           fr: Liste à puces (icône, titre et liste)
         value: bullet_list
+      - label:
+          en: Centered (icon, title, text and links)
+          fr: Centré (icône, titre, texte et liens)
+        value: centered
     description:
       en: The mode of the feature item.
       fr: Le mode de l'élément de fonctionnalité.
@@ -98,3 +106,18 @@ presets:
       mode: leading_icon
       with_border: true
     image: leading_icon_border.png
+  bullet_list_border:
+    label:
+      en: Bullet List Feature Item with Border
+      fr: Élément de fonctionnalité liste à puces avec bordure
+    properties:
+      mode: bullet_list
+      with_border: true
+    image: bullet_list_border.png
+  centered:
+    label:
+      en: Centered Feature Item
+      fr: Élément de fonctionnalité centré
+    properties:
+      mode: centered
+    image: centered.png

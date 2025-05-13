@@ -1,0 +1,58 @@
+title: 
+  en: Content Highlight
+  fr: Mise en avant du contenu
+label:
+  en: Content Highlight
+  fr: Mise en avant du contenu
+description: 
+  en: The Content Highlight component is designed to showcase key content in a visually appealing manner. It features a title, subtitle, and a list of details or features that highlight the key aspects of the content. An image is placed beside the content to visually represent it, and a call-out text is positioned at the bottom to draw attention.
+  fr: Le composant de mise en avant du contenu est conçu pour mettre en valeur un contenu clé de manière visuellement attrayante. Il comprend un titre, un sous-titre et une liste de détails ou de caractéristiques qui mettent en avant les aspects clés du contenu. Une image est placée à côté du contenu pour le représenter visuellement, et un texte d'appel est positionné en bas pour attirer l'attention.
+
+category: content
+export: true
+
+elements:
+  title:
+  subtitle:
+  list:
+    description:
+      en: A list of details or features that highlight the key aspects of the content.
+      fr: Une liste de détails ou de caractéristiques qui mettent en avant les aspects clés du contenu.
+  media:
+    type: image
+    description:
+      en: The image placed beside the content, which show case the content visually.
+      fr: L'image placée à côté du contenu, qui met en valeur le contenu visuellement.
+  text:
+    description:
+      en: The call out text that placed at the bottom of the content.
+      fr: Le texte d'appel placé au bas du contenu.
+
+properties:
+  image_position:
+    label: 
+      en: Image Position
+      fr: Position de l'image
+    type: string
+    default: right
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The alignment of the image within the content highlight section.
+      fr: L'alignement de l'image dans la section de mise en avant du contenu.
+
+presets:
+  img_right:
+    label:
+      en: Image on the right
+      fr: Image à droite
+    properties:
+      image_position: right
+    image: img_right.png
