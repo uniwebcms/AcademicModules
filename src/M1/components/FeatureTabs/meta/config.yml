@@ -1,0 +1,26 @@
+title: 
+  en: Feature Tabs
+  fr: Onglets de Fonctionnalités
+label:
+  en: Feature Tabs
+  fr: Onglets de Fonctionnalités
+description:
+  en: The Feature Tabs component is designed to present a collection of features or services in a tabbed format. Each tab contains a title, an icon, and a list of details or features that highlight the key aspects of the content. This layout allows users to easily navigate through different features while keeping the interface clean and organized.
+  fr: Le composant des onglets de fonctionnalités est conçu pour présenter une collection de fonctionnalités ou de services sous un format d'onglet. Chaque onglet contient un titre, une icône et une liste de détails ou de caractéristiques qui mettent en avant les aspects clés du contenu. Cette mise en page permet aux utilisateurs de naviguer facilement à travers différentes fonctionnalités tout en gardant l'interface propre et organisée.
+
+category: feature
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    title:
+    icon:
+    list:
+
+images:
+  - example.png
