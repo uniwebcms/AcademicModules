@@ -10,7 +10,7 @@ export default function FeatureSpotlight(props) {
 
     const items = block.getBlockItems();
 
-    const { layout = '', colorTone = '' } = block.getBlockProperties();
+    const { layout = '', colorTone = '', video_autoplay = false } = block.getBlockProperties();
 
     let itemIconActiveClass, itemIconClass, linkClass, mediaIndicatorClass;
 
@@ -50,6 +50,10 @@ export default function FeatureSpotlight(props) {
         null;
     const currentItemLink = items[currentIndex]?.links?.[0];
 
+    const autoplayVideo =
+        video_autoplay &&
+        items[currentIndex]?.videos?.[0]?.src?.startsWith('https://assets.uniweb.app/');
+
     return (
         <Container
             py="lg"
@@ -59,12 +63,7 @@ export default function FeatureSpotlight(props) {
             )}
         >
             {/* content */}
-            <div
-                className={twJoin(
-                    'flex flex-col w-full lg:w-[44%]'
-                    // layout === 'reverse' ? 'lg:w-[52%]' : 'lg:w-[44%]'
-                )}
-            >
+            <div className={twJoin('flex flex-col w-full lg:w-[44%]')}>
                 <h2 className="text-2xl font-medium md:text-3xl lg:text-4xl text-left text-pretty">
                     {title}
                 </h2>
@@ -124,14 +123,29 @@ export default function FeatureSpotlight(props) {
                     layout === 'reverse' ? 'pr-0 lg:pr-8' : 'pl-0 lg:pl-8'
                 )}
             >
-                {currentMedia && (
-                    <Media
-                        profile={getPageProfile()}
-                        media={currentMedia}
-                        className="rounded-xl shadow-lg"
-                        style={{ paddingBottom: '56.25%' }}
-                    />
-                )}
+                {currentMedia ? (
+                    autoplayVideo ? (
+                        <div className={'relative'} style={{ paddingBottom: '56.25%' }}>
+                            <video
+                                src={currentMedia.src}
+                                className="absolute inset-0 w-full h-full object-cover"
+                                muted
+                                loop
+                                playsInline
+                                autoPlay
+                                controls
+                            ></video>
+                        </div>
+                    ) : (
+                        <Media
+                            profile={getPageProfile()}
+                            media={currentMedia}
+                            className="rounded-xl shadow-lg"
+                            style={{ paddingBottom: '56.25%' }}
+                            autoplay={true}
+                        />
+                    )
+                ) : null}
                 <div
                     className={twJoin(
                         'relative mt-4 w-full flex items-center lg:justify-center',

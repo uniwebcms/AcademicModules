@@ -77,6 +77,15 @@ properties:
     description:
       en: The color tone of the feature spotlight, choose from the base colors of current website theme.
       fr: La tonalité de couleur de la fonctionnalité en vedette, choisissez parmi les couleurs de base du thème actuel du site Web.
+  video_autoplay:
+    label: 
+      en: Video Autoplay (Upload only)
+      fr: Lecture automatique de la vidéo (téléchargement uniquement)
+    type: boolean
+    default: false
+    description:
+      en: Whether the video should autoplay or not.
+      fr: Si la vidéo doit être lue automatiquement ou non.
 
 presets:
   content_left:
