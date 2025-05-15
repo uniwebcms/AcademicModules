@@ -98,33 +98,6 @@ const previewMessenger = {
         try {
             const { message, targetOrigin } = handler(startTime);
 
-            // // Handle callback registration for time-related commands
-            // if (callback && (command === 'getCurrentTime' || command === 'getDuration')) {
-            //     // Register message handler for time-related commands
-            //     const messageHandler = (event) => {
-            //         try {
-            //             const data =
-            //                 typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-
-            //             if (type === 'youtube') {
-            //                 if (data.info && data.info.currentTime !== undefined) {
-            //                     callback(data.info.currentTime);
-            //                     window.removeEventListener('message', messageHandler);
-            //                 }
-            //             } else if (type === 'vimeo') {
-            //                 if (data.currentTime !== undefined) {
-            //                     callback(data.currentTime);
-            //                     window.removeEventListener('message', messageHandler);
-            //                 }
-            //             }
-            //         } catch (error) {
-            //             console.error('Error parsing message:', error);
-            //         }
-            //     };
-
-            //     window.addEventListener('message', messageHandler);
-            // }
-
             // Handle array of messages
             if (Array.isArray(message)) {
                 message.forEach((msg) => {

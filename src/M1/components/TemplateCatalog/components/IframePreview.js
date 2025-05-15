@@ -64,13 +64,10 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
         const handleMessage = (event) => {
             try {
                 const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-                // console.log('YouTube message received:', data);
 
                 if (data.event === 'onReady') {
-                    // console.log('YouTube player ready');
                     // Only start polling if we don't have a valid duration yet
                     if (duration === 0 && !durationInterval) {
-                        // console.log('Starting duration polling');
                         durationInterval = setInterval(() => {
                             previewMessenger.sendCommand(iframe, type, 'listening');
                         }, 500);
@@ -84,11 +81,9 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
 
                     if (duration === 0 && receivedDuration) {
                         if (typeof receivedDuration === 'number' && receivedDuration > 0) {
-                            // console.log('Valid duration received:', receivedDuration);
                             setDuration(receivedDuration);
                             // Clear interval since we have a valid duration
                             if (durationInterval) {
-                                // console.log('Stopping duration polling');
                                 clearInterval(durationInterval);
                                 durationInterval = null;
                             }
@@ -108,7 +103,6 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
 
         // Initial listening command
         if (duration === 0) {
-            // console.log('Sending initial listening command');
             previewMessenger.sendCommand(iframe, type, 'listening');
         }
 
@@ -116,7 +110,6 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
         return () => {
             window.removeEventListener('message', handleMessage);
             if (durationInterval) {
-                // console.log('Cleaning up duration polling');
                 clearInterval(durationInterval);
                 durationInterval = null;
             }
@@ -131,16 +124,12 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
         const handleMessage = (event) => {
             try {
                 const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-                // console.log('Vimeo message received:', data);
 
                 if (data.event === 'ready') {
-                    // console.log('Vimeo player ready');
                     previewMessenger.sendCommand(iframe, type, 'getDuration');
                 } else if (data.method === 'getDuration' && typeof data.value === 'number') {
-                    // console.log('Vimeo duration received:', data.value);
                     setDuration(data.value);
                 } else if (data.method === 'getCurrentTime' && typeof data.value === 'number') {
-                    // console.log('Vimeo currentTime received:', data.value);
                     setCurrentTime(data.value);
                 }
             } catch (error) {
@@ -296,15 +285,6 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
                 allowFullScreen
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
-                // onLoad={() => {
-                //     // console.log('Iframe loaded');
-                //     setIsLoaded(true);
-                //     if (onReady) onReady();
-                // }}
-                // onError={(e) => {
-                //     console.error(`${type} video loading failed:`, e);
-                //     setIsLoaded(false);
-                // }}
             />
 
             {/* Sound Control */}

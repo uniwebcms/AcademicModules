@@ -63,7 +63,7 @@ const findRelatedArticles = (articles, page, blockId) => {
 
         if (mainArticle) {
             const mainArticleTag = mainArticle.getBasicInfo().head?.tag;
-            console.log('mainArticleTag', mainArticleTag);
+
             if (mainArticleTag) {
                 return articles.filter((article) => {
                     const articleTag = article.getBasicInfo().head?.tag;
