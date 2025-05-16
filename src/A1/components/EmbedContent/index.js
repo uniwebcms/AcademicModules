@@ -11,7 +11,7 @@ export default function (props) {
     const links = main.body?.links;
     const link = links?.[0];
 
-    const { vertical_padding = 'lg' } = block.getBlockProperties();
+    const { vertical_padding = 'lg', iframe_height: rawHeight = '' } = block.getBlockProperties();
 
     let py = '';
 
@@ -25,14 +25,15 @@ export default function (props) {
         py = 'py-12 lg:py-24';
     }
 
+    const validHeight =
+        typeof rawHeight === 'string' && /^\d+(\.\d+)?(px|%|vh)$/.test(rawHeight.trim())
+            ? rawHeight.trim()
+            : '56.25%';
+
     return (
         <Container py={py}>
             <div className="relative max-w-7xl mx-auto">
-                <div
-                    className={twJoin(
-                        'relative z-10 flex flex-col w-full h-full min-h-[800px] max-h-full'
-                    )}
-                >
+                <div className="relative z-10 flex flex-col w-full">
                     {pretitle ? (
                         <h3 className="mb-2 font-medium text-xl md:text-2xl lg:text-3xl">
                             {stripTags(pretitle)}
@@ -51,10 +52,9 @@ export default function (props) {
                             style={{
                                 width: '100%',
                                 position: 'relative',
-                                width: '100%',
-                                paddingBottom: '56.25%',
-                                height: 0,
                                 marginTop: '2rem',
+                                height: validHeight,
+                                minHeight: '600px',
                             }}
                         >
                             <iframe
@@ -68,7 +68,6 @@ export default function (props) {
                                     height: '100%',
                                     border: 'none',
                                 }}
-                                // sandbox="allow-same-origin allow-scripts"
                                 loading="lazy"
                             ></iframe>
                         </div>
