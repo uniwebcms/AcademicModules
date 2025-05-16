@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-    Image,
     Icon,
     SafeHtml,
     Link,
     stripTags,
     getPageProfile,
     Media,
+    twJoin,
 } from '@uniwebcms/module-sdk';
 import Container from '../_utils/Container';
 
@@ -16,7 +16,7 @@ export default function Spotlight({ block, website }) {
     const { main } = block;
     const { title = '' } = main.header || {};
 
-    const { vertical_padding = 'lg' } = block.getBlockProperties();
+    const { vertical_padding = 'lg', vertical_alignment = 'top' } = block.getBlockProperties();
 
     let py = '';
 
@@ -45,73 +45,72 @@ export default function Spotlight({ block, website }) {
                 const link = links[0];
                 const video = videos[0];
 
-                const hasMedia = image || video;
-
-                const media = (
-                    <>
-                        <Media
-                            profile={getPageProfile()}
-                            media={video || image}
-                            className={'rounded-lg'}
-                        />
-                        {image && image.caption ? (
-                            <figcaption>
-                                <div
-                                    className={`text-center mt-0.5 tracking-normal text-sm outline-none text-text-color/70`}
-                                >
-                                    {image.caption}
-                                </div>
-                            </figcaption>
-                        ) : null}
-                    </>
-                );
-
                 return (
-                    <div key={index} className={`py-16 overflow-hidden`}>
+                    <div key={index} className="py-8 lg:py-16 overflow-hidden">
                         <div className="px-6 mx-auto max-w-7xl lg:px-8">
-                            <div className="grid max-w-2xl grid-cols-1 mx-auto gap-y-16 gap-x-8 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-x-16">
-                                {index % 2 === 0 && hasMedia && (
-                                    <div className="h-full">{media}</div>
+                            <div
+                                className={twJoin(
+                                    'grid grid-cols-1 md:grid-cols-2 lg:gap-x-16 gap-x-8 gap-y-6',
+                                    vertical_alignment === 'top' ? 'md:items-start' : '',
+                                    vertical_alignment === 'center' ? 'md:items-center' : '',
+                                    vertical_alignment === 'bottom' ? 'md:items-end' : ''
                                 )}
+                            >
                                 <div
-                                    className={`${
-                                        index % 2 === 0 && image ? 'lg:pt-4 lg:pr-4' : ''
-                                    } ${index % 2 === 1 && image ? 'lg:pt-4 lg:pl-4' : ''}`}
+                                    className={twJoin(
+                                        '-order-1',
+                                        index % 2 === 0 ? 'md:pr-4' : '',
+                                        index % 2 === 1 ? 'md:pl-4 md:order-2' : '',
+                                        vertical_alignment === 'top' ? 'md:pt-4' : '',
+                                        vertical_alignment === 'center' ? 'md:py-2' : '',
+                                        vertical_alignment === 'bottom' ? 'md:pb-4' : ''
+                                    )}
                                 >
-                                    <div className="lg:max-w-lg">
+                                    <div>
                                         {icon && (
                                             <Icon
                                                 icon={icon}
                                                 className="w-12 h-12 p-1 rounded-md bg-primary-200 fill-primary-800"
                                             />
                                         )}
-                                        <h3 className="mt-1 text-xl font-bold tracking-tight sm:text-2xl md:text-3xl">
+                                        <h3 className="mt-1 text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
                                             {stripTags(title)}
                                         </h3>
                                         {subtitle && (
-                                            <p className="mt-1 text-lg font-medium sm:text-xl text-text-color-80">
+                                            <p className="mt-1 font-medium lg:text-xl md:text-lg text-base text-text-color-80">
                                                 {stripTags(subtitle)}
                                             </p>
                                         )}
                                         <SafeHtml
                                             value={paragraphs}
-                                            className="mt-4 prose prose-base lg:prose-lg"
+                                            className="mt-4 prose prose-sm md:prose-base lg:prose-lg"
                                         />
-                                        <div className="mt-6">
-                                            {link && (
+                                        {link && (
+                                            <div className="mt-6">
                                                 <Link
                                                     to={website.makeHref(link.href)}
                                                     className="inline-flex rounded-md bg-primary-200 px-3.5 py-1.5 text-base font-medium group leading-7 text-primary-800 shadow-sm hover:bg-primary-800 hover:text-primary-100 hover:underline border border-primary-100 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-100"
                                                 >
                                                     {stripTags(link.label)}
                                                 </Link>
-                                            )}
-                                        </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                                {index % 2 === 1 && hasMedia && (
-                                    <div className="h-full">{media}</div>
-                                )}
+                                <div className="w-full aspect-[16/9] md:aspect-[4/3]">
+                                    <Media
+                                        profile={getPageProfile()}
+                                        media={video || image}
+                                        className={'rounded-lg'}
+                                    />
+                                    {image && image.caption ? (
+                                        <figcaption>
+                                            <div className="text-center mt-0.5 tracking-normal text-sm outline-none text-text-color/70">
+                                                {image.caption}
+                                            </div>
+                                        </figcaption>
+                                    ) : null}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -56,6 +56,28 @@ properties:
         description:
             en: The space on top and bottom of the layout.
             fr: L'espace en haut et en bas de la mise en page.
+    vertical_alignment:
+        label:
+            en: Vertical Alignment
+            fr: Alignement vertical
+        type: string
+        default: top
+        enum:
+            - label:
+                  en: Top
+                  fr: Haut
+              value: top
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+            - label:
+                  en: Bottom
+                  fr: Bas
+              value: bottom
+        description:
+            en: The alignment of the content in the layout.
+            fr: L'alignement du contenu dans la mise en page.
 
 images:
     - example.png
