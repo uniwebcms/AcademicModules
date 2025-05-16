@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { twJoin, Link } from '@uniwebcms/module-sdk';
-import { IoMdPlay } from 'react-icons/io';
+import { IoMdPlay, IoMdPause } from 'react-icons/io';
 
 const liClassNames = [
     'hidden xl:block relative rotate-[-2deg] z-10 3xl:left-[-40px] top-[45%] flex-shrink-0',
     'hidden xl:block relative rotate-[4deg] z-20 3xl:left-[-65px] top-[36%] flex-shrink-0',
     'hidden xl:block relative rotate-[4deg] z-10 left-[-40px] 3xl:left-[-110px] top-[48%] flex-shrink-0',
-    'z-[200] inline-block rounded-lg border border-black/10 w-[calc(100vw-40px)] sm:w-[calc(100vw-48px)] xl:w-auto mx-auto relative xl:left-[-136px] flex-shrink-0 shadow-xl',
+    'xl:z-[200] inline-block rounded-lg border border-black/10 w-[calc(100vw-40px)] sm:w-[calc(100vw-48px)] xl:w-auto mx-auto relative xl:left-[-136px] flex-shrink-0 shadow-xl',
     'hidden xl:block relative rotate-[-2deg] right-[180px] 3xl:right-[160px] top-[32%] z-[20] flex-shrink-0',
     'hidden xl:block relative rotate-[-3deg] right-[200px] 3xl:right-[180px] top-[41%] z-[40] flex-shrink-0',
     'hidden xl:block relative rotate-[4deg] right-[200px] top-[45%] z-[30] flex-shrink-0',
@@ -30,6 +30,7 @@ export default function VideoCarousel(props) {
     const { links, videos } = block.getBlockContent();
     const actionLink = links[0];
 
+    const [clickedIndex, setClickedIndex] = useState(null);
     const videoRefs = useRef([]);
 
     const handleVideoClick = (index) => {
@@ -41,10 +42,15 @@ export default function VideoCarousel(props) {
         } else {
             video.pause();
         }
+
+        setClickedIndex(index);
+        setTimeout(() => {
+            setClickedIndex(null);
+        }, 400);
     };
 
     return (
-        <div className="text-center mx-auto xl:h-[625px] relative">
+        <div className="text-center mx-auto xl:h-[625px] relative overflow-hidden">
             <ul className="xl:absolute xl:left-[50%] xl:translate-x-[-50%] xl:w-[2500px] flex items-center">
                 {videos.map((video, index) => {
                     const videoSize = videoSizes[index];
@@ -69,6 +75,32 @@ export default function VideoCarousel(props) {
                                         onClick={() => handleVideoClick(index)}
                                         ref={(el) => (videoRefs.current[index] = el)}
                                     />
+                                    {clickedIndex === index && (
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                            <div
+                                                className={twJoin(
+                                                    'animate-ping rounded-full flex items-center justify-center',
+                                                    index === 3
+                                                        ? 'bg-black/70 w-16 h-16 p-3'
+                                                        : 'bg-black/70 w-10 h-10 p-2'
+                                                )}
+                                            >
+                                                {videoRefs.current[index]?.paused ? (
+                                                    <IoMdPlay
+                                                        className={twJoin(
+                                                            'ml-1 text-white w-full h-full'
+                                                        )}
+                                                    />
+                                                ) : (
+                                                    <IoMdPause
+                                                        className={twJoin(
+                                                            'text-white w-full h-full'
+                                                        )}
+                                                    />
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </li>
@@ -76,7 +108,6 @@ export default function VideoCarousel(props) {
                 })}
             </ul>
             {actionLink && (
-                // <div className="absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] z-50">
                 <Link
                     to={actionLink.href}
                     className="bg-btn-color hover:bg-btn-hover-color p-[6px] sm:p-2 lg:p-[10px] absolute left-[50%] top-[75%] sm:top-[50%] translate-x-[-50%] translate-y-[-50%] cursor-pointer hover:drop-shadow-2xl flex gap-3 items-center rounded-[200px] w-full max-w-[220px] sm:max-w-[250px] lg:max-w-[260px]"

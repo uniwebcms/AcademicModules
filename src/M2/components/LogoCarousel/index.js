@@ -19,7 +19,7 @@ export default function LogoCarousel(props) {
     });
 
     return (
-        <div className="overflow-hidden pb-16">
+        <div className="overflow-hidden py-8">
             <h2 className="text-base sm:text-lg lg:text-2xl mt-4 md:mt-12 mb-4 sm:mb-6 md:mb-10 text-center px-5">
                 {title}
             </h2>

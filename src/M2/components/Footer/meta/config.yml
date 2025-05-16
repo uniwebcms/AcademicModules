@@ -1,0 +1,34 @@
+title: 
+  en: Footer
+  fr: Pied de page
+label:
+  en: Footer
+  fr: Pied de page
+description: 
+  en: Section for the footer of the page. It includes copyright text, navigation links, and social links.
+  fr: Section pour le pied de page de la page. Il comprend le texte des droits d'auteur, les liens de navigation et les liens sociaux.
+
+category: footer
+export: true
+
+elements:
+  text:
+    description: 
+      en: The copyright text.
+      fr: Le texte des droits d'auteur.
+  media:
+    type: image
+    description: 
+      en: The logo image to display in the footer.
+      fr: L'image du logo à afficher dans le pied de page.
+  list:
+    title: 
+      en: Navigation Links
+      fr: Liens de navigation
+    description:
+      en: The navigation links to display in the footer, it is created as a list of links with hierarchy.
+      fr: Les liens de navigation à afficher dans le pied de page, il est créé sous forme de liste de liens avec hiérarchie.
+  link:
+    description: 
+        en: Social links to display in the footer.
+        fr: Liens sociaux à afficher dans le pied de page.
