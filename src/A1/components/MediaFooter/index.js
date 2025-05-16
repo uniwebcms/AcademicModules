@@ -15,12 +15,18 @@ import { getMediaLinkType } from '../_utils/media';
 import { MdEmail } from 'react-icons/md';
 import { BiSolidChevronUp } from 'react-icons/bi';
 
-const Branding = ({ logo, title, subtitle, mediaLinks }) => {
-    mediaLinks.map((link) => {
+const Branding = ({ logo, title, subtitle, links }) => {
+    const mediaLinks = [],
+        regularLinks = [];
+
+    links.forEach((link) => {
         const type = getMediaLinkType(link);
 
         if (type) {
             link.type = type;
+            mediaLinks.push(link);
+        } else {
+            regularLinks.push(link);
         }
     });
 
@@ -39,28 +45,50 @@ const Branding = ({ logo, title, subtitle, mediaLinks }) => {
             <p className="mt-2 text-md sm:text-base font-medium text-text-color-80">
                 {stripTags(subtitle)}
             </p>
-            <div className="flex flex-wrap mt-6">
-                {mediaLinks.map((link, index) => {
-                    const { label, href, type } = link;
+            <div className="flex flex-col mt-8">
+                {regularLinks.length > 0 && (
+                    <div className="flex flex-col space-y-2">
+                        {regularLinks.map((link, index) => {
+                            const { label, href } = link;
 
-                    const linkTitle = {
-                        en: `${label || type} link of the main website`,
-                        fr: `Lien ${label || type} du site principal`,
-                    };
+                            return (
+                                <a
+                                    key={index}
+                                    href={href}
+                                    target="_blank"
+                                    className="hover:underline"
+                                >
+                                    {stripTags(label)}
+                                </a>
+                            );
+                        })}
+                    </div>
+                )}
+                {mediaLinks.length > 0 && (
+                    <div className="flex flex-wrap mt-4">
+                        {mediaLinks.map((link, index) => {
+                            const { label, href, type } = link;
 
-                    return (
-                        <a
-                            key={index}
-                            className="mr-4"
-                            href={href}
-                            target="_blank"
-                            title={website.localize(linkTitle)}
-                        >
-                            <span className="sr-only">{type}</span>
-                            <MediaIcon type={type} className="w-6 h-6 hover:scale-105" />
-                        </a>
-                    );
-                })}
+                            const linkTitle = {
+                                en: `${label || type} link of the main website`,
+                                fr: `Lien ${label || type} du site principal`,
+                            };
+
+                            return (
+                                <a
+                                    key={index}
+                                    className="mr-4"
+                                    href={href}
+                                    target="_blank"
+                                    title={website.localize(linkTitle)}
+                                >
+                                    <span className="sr-only">{type}</span>
+                                    <MediaIcon type={type} className="w-6 h-6 hover:scale-105" />
+                                </a>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -253,7 +281,7 @@ export default function MediaFooter(props) {
     const banner = main?.banner;
     const firstIcon = main?.body?.icons?.[0];
     const images = [];
-    const mediaLinks = main?.body?.links || [];
+    const links = main?.body?.links || [];
     const groupedLinks = main?.body?.lists?.[0] || [];
 
     const copyright = main?.body?.paragraphs || [];
@@ -303,12 +331,7 @@ export default function MediaFooter(props) {
             <div className="px-6 md:px-8">
                 <div className="relative mx-auto max-w-10xl grid gap-12 lg:grid-cols-6 lg:gap-18">
                     <div className="col-span-2">
-                        <Branding
-                            title={title}
-                            subtitle={subtitle}
-                            logo={logo}
-                            mediaLinks={mediaLinks}
-                        />
+                        <Branding title={title} subtitle={subtitle} logo={logo} links={links} />
                     </div>
                     <div
                         className={twJoin(
