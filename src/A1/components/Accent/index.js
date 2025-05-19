@@ -29,6 +29,7 @@ export default function (props) {
                         value={banner.value}
                         alt={banner.alt}
                         url={banner.url}
+                        href={banner.href}
                         className="object-cover w-full h-full"
                     />
                 </div>

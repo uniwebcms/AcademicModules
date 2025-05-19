@@ -93,6 +93,7 @@ const Content = ({ main, website }) => {
                     value={image.value}
                     alt={image.alt}
                     url={image.url}
+                    href={image.href}
                     rounded
                     className="w-32 h-32 lg:w-44 lg:h-44"
                 />
