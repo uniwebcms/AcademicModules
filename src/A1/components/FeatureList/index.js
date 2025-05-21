@@ -72,6 +72,7 @@ export default function FeatureList({ block, website }) {
                                                 value={banner.value}
                                                 alt={banner.alt}
                                                 url={banner.url}
+                                                href={banner.href}
                                                 className="w-full h-full rounded-lg"
                                             />
                                         </div>

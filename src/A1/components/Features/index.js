@@ -45,6 +45,7 @@ export default function Features({ block, website }) {
                         value={banner.value}
                         url={banner.url}
                         alt={banner.alt}
+                        href={banner.href}
                     />
                     <div className="absolute inset-0" aria-hidden="true" />
                 </div>
@@ -163,6 +164,7 @@ const centerAlign = (pretitle, title, subtitle, link, banner, items, website, py
                         value={banner.value}
                         url={banner.url}
                         alt={banner.alt}
+                        href={banner.href}
                     />
                     <div className="absolute inset-0" aria-hidden="true" />
                 </div>

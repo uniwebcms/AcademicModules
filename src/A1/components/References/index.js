@@ -6,9 +6,10 @@ import CVRefRender from '../_utils/reference/CVRefRender';
 import Sidebar from './Sidebar';
 import AdvancedSmartCards from './AdvancedSmartCards';
 import DOILogo from './doi.svg';
+import UrlLogo from './external.png';
 
 const ItemMarkup = (props) => {
-    const { profile, url, ...rest } = props;
+    const { profile, href, ...rest } = props;
 
     const { title, issued, author, DOI = '', isStandard, pages, page_range, page } = rest;
 
@@ -22,6 +23,8 @@ const ItemMarkup = (props) => {
 
     let completeDoi = finalDoi ? `https://doi.org/${DOI}` : '';
 
+    let externalUrl = rest?.url || '';
+
     let refMarkup = null;
 
     let pageNum = page || pages || page_range || '';
@@ -29,10 +32,10 @@ const ItemMarkup = (props) => {
     if (isStandard) {
         refMarkup = (
             <div className={`flex flex-col space-y-2 ${banner ? 'mr-4' : ''}`}>
-                <Link href={url} className={`text-text-color font-medium hover:underline`}>
+                <Link href={href} className={`text-text-color font-semibold hover:underline`}>
                     {title}
                 </Link>
-                <p className="text-sm text-text-color-90">
+                <p className="text-sm text-text-color-80">
                     {author && author.length
                         ? author
                               .map((author) => {
@@ -42,7 +45,7 @@ const ItemMarkup = (props) => {
                               .join(', ')
                         : null}
                 </p>
-                <span className={`text-text-color-80 text-sm`}>
+                <span className={`text-text-color-60 text-sm`}>
                     {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}${
                         pageNum ? `, ${pageNum}` : ''
                     }`}
@@ -59,6 +62,18 @@ const ItemMarkup = (props) => {
                             </a>
                         </div>
                     ) : null}
+                    {externalUrl ? (
+                        <div className={`w-8 h-8 flex items-center`}>
+                            <a
+                                target="_blank"
+                                className={`w-8 h-8 rounded-full cursor-pointer text-text-color-60 hover:text-text-color-80`}
+                                href={externalUrl}
+                            >
+                                <img src={UrlLogo} className={`block w-full h-full rounded-full`} />
+                                {/* <UrlLogo className={`w-8 h-8`}></UrlLogo> */}
+                            </a>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         );
@@ -67,17 +82,17 @@ const ItemMarkup = (props) => {
         let sectionPath = (parsedMeta?.['_section'] || []).join('/');
         let parsed = parseProfileData({ sections: [parsedData] });
         refMarkup = (
-            <Link href={url}>
+            <Link href={href} className={'text-text-color font-semibold hover:underline'}>
                 <CVRefRender value={parsed?.[0]?.value || []} sectionPath={sectionPath} />
             </Link>
         );
     }
     return (
-        <div className={`flex`} key={url}>
+        <div className={`flex`} key={href}>
             {refMarkup}
             {banner ? (
                 <Link
-                    href={url}
+                    href={href}
                     className={
                         'cursor-pointer w-[111px] h-[142px] flex-shrink-0 overflow-hidden ml-auto !shadow-[0_1px_2px_rgba(0,0,0,0.15)] border border-[rgba(0,0,0,0.15)] bg-white'
                     }
@@ -123,11 +138,11 @@ export default function ProfileReferences({ block, input }) {
         const category = metaData['_category'] || 'others'; //'journal article';
         let categoryLabel = category.replace('_', ' ');
 
-        let url = input.makeHref(profile);
+        let href = input.makeHref(profile);
 
         let item = {
             ...parsedData,
-            url,
+            href,
             profile,
             category,
             _type: categoryLabel,

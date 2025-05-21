@@ -27,6 +27,7 @@
         "babel-loader": "^8.2.2",
         "css-loader": "^5.2.0",
         "dotenv": "^10.0.0",
+        "file-loader": "6.2.0",
         "postcss": "^8.4.20",
         "postcss-loader": "^7.0.2",
         "raw-loader": "^4.0.2",

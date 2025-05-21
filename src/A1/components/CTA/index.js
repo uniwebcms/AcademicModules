@@ -29,6 +29,7 @@ export default function CTA({ block, website }) {
                         value={image.value}
                         alt={image.alt}
                         className="object-cover w-full h-full"
+                        href={image.href}
                     />
                     {image.caption ? (
                         <figcaption className="absolute bottom-0 w-full">
@@ -73,6 +74,7 @@ export default function CTA({ block, website }) {
                         value={image.value}
                         url={image.url}
                         alt={image.alt}
+                        href={image.href}
                         className="object-cover w-full h-full"
                     />
                     {image.caption ? (
