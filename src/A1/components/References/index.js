@@ -63,11 +63,7 @@ const ItemMarkup = (props) => {
                         </div>
                     ) : null}
                     {externalUrl ? (
-                        <div
-                            className={`w-8 h-8 flex items-center`}
-                            data-tooltip-content={externalUrl}
-                            data-tooltip-id={tooltipId}
-                        >
+                        <div className={`w-8 h-8 flex items-center`}>
                             <a
                                 target="_blank"
                                 className={`w-8 h-8 rounded-full cursor-pointer text-gray-400 hover:text-gray-600`}

@@ -63,6 +63,7 @@ export const parseReference = (profile) => {
         issue,
         journal,
         isStandard,
+        url,
     };
 
     if (!isStandard) {
