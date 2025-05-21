@@ -6,6 +6,7 @@ import CVRefRender from '../_utils/reference/CVRefRender';
 import Sidebar from './Sidebar';
 import AdvancedSmartCards from './AdvancedSmartCards';
 import DOILogo from './doi.svg';
+import UrlLogo from './external.png';
 
 const ItemMarkup = (props) => {
     const { profile, url, ...rest } = props;
@@ -21,6 +22,8 @@ const ItemMarkup = (props) => {
         DOI && DOI.startsWith('https://doi.org/') ? DOI.replace('https://doi.org/', '') : DOI;
 
     let completeDoi = finalDoi ? `https://doi.org/${DOI}` : '';
+
+    let externalUrl = rest?.url || '';
 
     let refMarkup = null;
 
@@ -56,6 +59,22 @@ const ItemMarkup = (props) => {
                                 href={completeDoi}
                             >
                                 <DOILogo className={`w-7 h-7`}></DOILogo>
+                            </a>
+                        </div>
+                    ) : null}
+                    {externalUrl ? (
+                        <div
+                            className={`w-8 h-8 flex items-center`}
+                            data-tooltip-content={externalUrl}
+                            data-tooltip-id={tooltipId}
+                        >
+                            <a
+                                target="_blank"
+                                className={`w-8 h-8 rounded-full cursor-pointer text-gray-400 hover:text-gray-600`}
+                                href={externalUrl}
+                            >
+                                <img src={UrlLogo} className={`block w-full h-full rounded-full`} />
+                                {/* <UrlLogo className={`w-8 h-8 text-gray-600`}></UrlLogo> */}
                             </a>
                         </div>
                     ) : null}
