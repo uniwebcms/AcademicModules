@@ -29,10 +29,10 @@ const ItemMarkup = (props) => {
     if (isStandard) {
         refMarkup = (
             <div className={`flex flex-col space-y-2 ${banner ? 'mr-4' : ''}`}>
-                <Link href={url} className={`text-text-color font-medium hover:underline`}>
+                <Link href={url} className={`text-text-color font-semibold hover:underline`}>
                     {title}
                 </Link>
-                <p className="text-sm text-text-color-90">
+                <p className="text-sm text-text-color-80">
                     {author && author.length
                         ? author
                               .map((author) => {
@@ -42,7 +42,7 @@ const ItemMarkup = (props) => {
                               .join(', ')
                         : null}
                 </p>
-                <span className={`text-text-color-80 text-sm`}>
+                <span className={`text-text-color-60 text-sm`}>
                     {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}${
                         pageNum ? `, ${pageNum}` : ''
                     }`}
