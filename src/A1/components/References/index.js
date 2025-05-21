@@ -66,11 +66,11 @@ const ItemMarkup = (props) => {
                         <div className={`w-8 h-8 flex items-center`}>
                             <a
                                 target="_blank"
-                                className={`w-8 h-8 rounded-full cursor-pointer text-gray-400 hover:text-gray-600`}
+                                className={`w-8 h-8 rounded-full cursor-pointer text-text-color-60 hover:text-text-color-80`}
                                 href={externalUrl}
                             >
                                 <img src={UrlLogo} className={`block w-full h-full rounded-full`} />
-                                {/* <UrlLogo className={`w-8 h-8 text-gray-600`}></UrlLogo> */}
+                                {/* <UrlLogo className={`w-8 h-8`}></UrlLogo> */}
                             </a>
                         </div>
                     ) : null}
@@ -82,7 +82,7 @@ const ItemMarkup = (props) => {
         let sectionPath = (parsedMeta?.['_section'] || []).join('/');
         let parsed = parseProfileData({ sections: [parsedData] });
         refMarkup = (
-            <Link href={href}>
+            <Link href={href} className={'text-text-color font-semibold hover:underline'}>
                 <CVRefRender value={parsed?.[0]?.value || []} sectionPath={sectionPath} />
             </Link>
         );
