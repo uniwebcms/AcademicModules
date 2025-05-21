@@ -51,6 +51,18 @@ const Branding = ({ logo, title, subtitle, links }) => {
                         {regularLinks.map((link, index) => {
                             const { label, href } = link;
 
+                            if (href.startsWith('topic:')) {
+                                return (
+                                    <Link
+                                        key={index}
+                                        to={website.makeHref(href)}
+                                        className="hover:underline"
+                                    >
+                                        {label}
+                                    </Link>
+                                );
+                            }
+
                             return (
                                 <a
                                     key={index}
@@ -58,7 +70,7 @@ const Branding = ({ logo, title, subtitle, links }) => {
                                     target="_blank"
                                     className="hover:underline"
                                 >
-                                    {stripTags(label)}
+                                    {label}
                                 </a>
                             );
                         })}
