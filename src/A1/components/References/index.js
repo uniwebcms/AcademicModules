@@ -86,17 +86,17 @@ const ItemMarkup = (props) => {
         let sectionPath = (parsedMeta?.['_section'] || []).join('/');
         let parsed = parseProfileData({ sections: [parsedData] });
         refMarkup = (
-            <Link href={url}>
+            <Link href={href}>
                 <CVRefRender value={parsed?.[0]?.value || []} sectionPath={sectionPath} />
             </Link>
         );
     }
     return (
-        <div className={`flex`} key={url}>
+        <div className={`flex`} key={href}>
             {refMarkup}
             {banner ? (
                 <Link
-                    href={url}
+                    href={href}
                     className={
                         'cursor-pointer w-[111px] h-[142px] flex-shrink-0 overflow-hidden ml-auto !shadow-[0_1px_2px_rgba(0,0,0,0.15)] border border-[rgba(0,0,0,0.15)] bg-white'
                     }
