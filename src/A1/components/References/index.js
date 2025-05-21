@@ -9,7 +9,7 @@ import DOILogo from './doi.svg';
 import UrlLogo from './external.png';
 
 const ItemMarkup = (props) => {
-    const { profile, url, ...rest } = props;
+    const { profile, href, ...rest } = props;
 
     const { title, issued, author, DOI = '', isStandard, pages, page_range, page } = rest;
 
@@ -32,7 +32,7 @@ const ItemMarkup = (props) => {
     if (isStandard) {
         refMarkup = (
             <div className={`flex flex-col space-y-2 ${banner ? 'mr-4' : ''}`}>
-                <Link href={url} className={`text-text-color font-semibold hover:underline`}>
+                <Link href={href} className={`text-text-color font-semibold hover:underline`}>
                     {title}
                 </Link>
                 <p className="text-sm text-text-color-80">
@@ -142,11 +142,11 @@ export default function ProfileReferences({ block, input }) {
         const category = metaData['_category'] || 'others'; //'journal article';
         let categoryLabel = category.replace('_', ' ');
 
-        let url = input.makeHref(profile);
+        let href = input.makeHref(profile);
 
         let item = {
             ...parsedData,
-            url,
+            href,
             profile,
             category,
             _type: categoryLabel,
