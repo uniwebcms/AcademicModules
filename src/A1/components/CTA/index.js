@@ -42,7 +42,7 @@ export default function CTA({ block, website }) {
                     ) : null}
                 </div>
             )}
-            <div className="flex flex-col justify-center w-full px-24 py-24 lg:w-1/2">
+            <div className="flex flex-col justify-center w-full px-6 sm:px-8 md:px-16 lg:px-20 xl:px-24 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 lg:w-1/2">
                 <div className="2xl:px-24">
                     <SafeHtml
                         as="div"
@@ -54,7 +54,11 @@ export default function CTA({ block, website }) {
                         value={title}
                         className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl"
                     />
-                    <SafeHtml as="h3" value={subtitle} className="mt-6 text-base leading-7" />
+                    <SafeHtml
+                        as="h3"
+                        value={subtitle}
+                        className="mt-6 text-sm sm:text-base leading-7"
+                    />
 
                     <div className="mt-8">
                         {link && (

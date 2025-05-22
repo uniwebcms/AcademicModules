@@ -44,7 +44,7 @@ export default function Details({ block }) {
                             ) : null}
                         </div>
                     )}
-                    <div className="mt-10 lg:col-span-7 lg:mt-0">
+                    <div className={'lg:col-span-7'}>
                         <dl className="space-y-10">
                             {items.map((item, index) => (
                                 <div key={index}>
@@ -59,7 +59,7 @@ export default function Details({ block }) {
                         </dl>
                     </div>
                     {alignment === 'left' && (
-                        <div className="lg:col-span-5">
+                        <div className="lg:col-span-5 lg:pl-8">
                             <h2 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
                                 {stripTags(title)}
                             </h2>

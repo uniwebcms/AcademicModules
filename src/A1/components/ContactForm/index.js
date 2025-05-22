@@ -55,7 +55,7 @@ export default function ContactForm({ block, website }) {
                         !right_align ? 'mb-12 lg:mb-0' : ''
                     )}
                 >
-                    <div className="max-w-full mx-auto lg:mx-0 lg:max-w-lg px-6 lg:px-0">
+                    <div className="max-w-full mx-auto lg:mx-0 lg:max-w-lg lg:px-0">
                         {!!title && (
                             <h2 className="text-3xl font-bold tracking-tight  md:text-4xl ld:text-5xl">
                                 {stripTags(title)}
@@ -231,7 +231,7 @@ const Form = (props) => {
             className="px-6 lg:px-8"
             onSubmit={mailto ? (e) => e.preventDefault() : handleSubmit}
         >
-            <div className="max-w-full mx-auto lg:mr-0 lg:max-w-lg px-6 lg:px-0">
+            <div className="max-w-full mx-auto lg:mr-0 lg:max-w-lg">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                     <div>
                         <label
