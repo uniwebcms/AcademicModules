@@ -5,16 +5,41 @@ label:
   en: Feature
   fr: Fonctionnalité
 description: 
-  en: Displays section content in different styles, showing title, description and links. Best used to showcase product features or services. Can receive subsections to display sub-feature content.
-  fr: Affiche le contenu de la section dans différents styles, montrant le titre, la description et les liens. Idéal pour mettre en valeur les fonctionnalités des produits ou services. Peut recevoir des sous-sections pour afficher le contenu des sous-fonctionnalités.
+  en: Displays section content in various styles, including title, description, and links. Ideal for showcasing product features or services. Supports subsections to highlight individual sub-features.
+  fr: Affiche le contenu de la section dans divers styles, y compris le titre, la description et les liens. Idéal pour mettre en valeur les caractéristiques ou services d'un produit. Prend en charge les sous-sections pour mettre en avant des sous-fonctionnalités individuelles.
 
 category: feature
 export: true
 
 elements:
+  banner:
+    description:
+      en: The background image of the feature section. (Only visible in detailed mode)
+      fr: L'image de fond de la section des fonctionnalités. (Visible uniquement en mode détaillé)
+  pretitle:
+    label:
+      en: Eyebrow Text
+      fr: Texte de l'eyebrow
+    description:
+      en: The eyebrow text displayed at the top of the feature section. (Only visible in detailed mode)
+      fr: Le texte de l'eyebrow affiché en haut de la section des fonctionnalités. (Visible uniquement en mode détaillé)
   title:
   subtitle:
+  text:
+    label:
+      en: Endnote Text
+      fr: Texte de la note de bas de page
+    description:
+      en: A closing note or caption shown at the bottom of the feature section. (Only visible in detailed mode)
+      fr: Une note de clôture ou une légende affichée en bas de la section des fonctionnalités. (Visible uniquement en mode détaillé)
   link:
+    description:
+      en: One or two links to display within the feature section. (Refer to example images)
+      fr: Un ou deux liens à afficher dans la section des fonctionnalités. (Se référer aux images d'exemple)
+  icon:
+    description:
+      en: In iconic mode, the first icon appears next to the title. In detailed mode, each icon is displayed beside its respective link, in the same order.
+      fr: En mode iconique, la première icône apparaît à côté du titre. En mode détaillé, chaque icône est affichée à côté de son lien respectif, dans le même ordre.
 
 items:
   separator: section
@@ -40,9 +65,13 @@ properties:
           en: Iconic
           fr: Iconique
         value: iconic
+      - label:
+          en: Detailed
+          fr: Detaillé
+        value: detailed
     description:
-      en: The appearance of the features section.
-      fr: L'apparence de la section des fonctionnalités.
+      en: Defines the visual style of the feature section.
+      fr: Définit le style visuel de la section des fonctionnalités.
   sub_content_layout:
     label:
       en: Sub-content Style
@@ -55,20 +84,20 @@ properties:
           fr: Grille avec contenu de petite taille
         value: grid_sm
       - label:
-          en: Grid with large size content
-          fr: Grille avec contenu de grande taille
-        value: grid_lg
-      - label:
           en: Grid with medium size content
           fr: Grille avec contenu de taille moyenne
         value: grid_md
+      - label:
+          en: Grid with large size content
+          fr: Grille avec contenu de grande taille
+        value: grid_lg
       - label:
           en: Full width content
           fr: Contenu pleine largeur
         value: full
     description:
-      en: The layout of the sub-content.
-      fr: La mise en page du sous-contenu.
+      en: Specifies how the sub-feature content is arranged within the section.
+      fr: Précise comment le contenu de la sous-fonctionnalité est agencé dans la section.
 
 presets:
   standard:
@@ -80,8 +109,8 @@ presets:
     image: standard.png
   loose:
     label:
-      en: Loose Feature with rich sub-features
-      fr: Fonctionnalité lâche avec des sous-fonctionnalités riches
+      en: Loose Feature with centered sub-features
+      fr: Fonctionnalité lâche avec des sous-fonctionnalités centrées
     properties:
       appearance: loose
     image: loose.png
@@ -100,3 +129,11 @@ presets:
       appearance: standard
       sub_content_layout: full
     image: standard_full.png
+  detailed_lg:
+    label:
+      en: Detailed Feature with large sub-features
+      fr: Fonctionnalité détaillée avec des sous-fonctionnalités de grande taille
+    properties:
+      appearance: detailed
+      sub_content_layout: grid_lg
+    image: detailed_lg.png

@@ -64,7 +64,7 @@ export default function FeatureItem(props) {
                 <MotionWrapper>
                     <div
                         className={twJoin(
-                            'backdrop-blur-sm flex items-center gap-3',
+                            'backdrop-blur-sm flex items-center gap-3 h-full',
                             with_border && 'rounded-lg border border-text-color/20 p-4'
                         )}
                     >
@@ -83,7 +83,7 @@ export default function FeatureItem(props) {
                 <MotionWrapper>
                     <div
                         className={twJoin(
-                            'backdrop-blur-sm flex items-start gap-4',
+                            'backdrop-blur-sm flex items-start gap-4 h-full',
                             with_border && 'rounded-lg border border-text-color/20 p-6'
                         )}
                     >
@@ -129,46 +129,6 @@ export default function FeatureItem(props) {
                 </MotionWrapper>
             );
         }
-    }
-
-    if (mode === 'rich') {
-        const { icons, title, paragraphs, links } = block.getBlockContent();
-
-        const icon = icons[0];
-
-        const [firstLink, secondLink] = links;
-
-        return (
-            <div className="flex-1 flex flex-col max-w-md mx-auto w-full">
-                {icon && <Icon icon={icon} className="w-16 h-16 mx-auto" />}
-                {title && <h3 className="mt-4 text-lg font-bold truncate">{title}</h3>}
-                {paragraphs && (
-                    <SafeHtml
-                        value={paragraphs}
-                        className="mt-1 text-base !leading-snug line-clamp-2 h-12"
-                    />
-                )}
-                <div className="flex items-center justify-between mt-4">
-                    {firstLink && (
-                        <Link
-                            to={firstLink.href}
-                            className="bg-btn-color text-btn-text-color flex items-center justify-center py-1 px-3 rounded-3xl max-w-[48%]"
-                        >
-                            <span className="truncate text-sm">{firstLink.label}</span>
-                        </Link>
-                    )}
-                    {secondLink && (
-                        <Link
-                            to={secondLink.href}
-                            className="text-btn-alt-text-color flex items-center justify-center max-w-[48%] hover:underline"
-                        >
-                            <span className="truncate text-sm">{secondLink.label}</span>
-                            &nbsp;&rarr;
-                        </Link>
-                    )}
-                </div>
-            </div>
-        );
     }
 
     if (mode === 'catching_card') {
@@ -254,7 +214,7 @@ export default function FeatureItem(props) {
         const icon = icons[0];
 
         return (
-            <div className="flex-1 flex flex-col items-center max-w-md mx-auto w-full text-center">
+            <div className="flex-1 flex flex-col items-center max-w-md mx-auto w-full text-center h-full">
                 {icon && (
                     <div className="w-12 h-12 rounded-full bg-icon-color/10 flex items-center justify-center">
                         <Icon icon={icon} className="w-8 h-8"></Icon>
@@ -264,7 +224,7 @@ export default function FeatureItem(props) {
                 {paragraphs && (
                     <SafeHtml value={paragraphs} className="mt-2 text-base !leading-snug" />
                 )}
-                <div className="flex flex-col items-center mt-4 space-y-3">
+                <div className="flex flex-col justify-end items-center mt-4 space-y-3 flex-grow">
                     {links.map((link, index) => (
                         <Link
                             key={index}

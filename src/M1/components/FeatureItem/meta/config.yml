@@ -57,10 +57,6 @@ properties:
           fr: Icône principale (icône, titre, texte et liens)
         value: leading_icon
       - label:
-          en: Rich (icon, title, text and links)
-          fr: Riche (icône, titre, texte et liens)
-        value: rich
-      - label:
           en: Catching Card (icon, title, text and link)
           fr: Carte attrayante (icône, titre, texte et lien)
         value: catching_card
@@ -84,13 +80,6 @@ presets:
     properties:
       mode: basic
     image: basic.png
-  rich:
-    label:
-      en: Rich Feature Item
-      fr: Élément de fonctionnalité riche
-    properties:
-      mode: rich
-    image: rich.png
   catching_card:
     label:
       en: Catching Card Feature Item
