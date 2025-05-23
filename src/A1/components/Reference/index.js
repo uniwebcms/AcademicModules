@@ -17,9 +17,38 @@ export default function Reference({ website, input }) {
 
     let parsedData = parseReference(profile);
 
+    let defaultCategory = website.localize({
+        en: 'Others',
+        fr: 'Autres',
+    });
+
+    const { data: info, error } = uniweb.useCompleteQuery('getPubInfo', () => {
+        return postRequest('reference.php', {
+            action: 'getPubInfo',
+            contentType: 'reference',
+        }).then((res) => res.data || {});
+    });
+
+    const pubTypeOptions = [];
+
+    if (!info || error) return null;
+
+    let typeOptions = info?.typeOptionsDisplay || [];
+
+    typeOptions.forEach((option) => {
+        pubTypeOptions.push({
+            label: option[1],
+            value: option[0],
+        });
+    });
+
     const metaData = profile.rawHead?.meta_data || {};
-    const originalCategory = metaData['_category'];
-    const category = originalCategory || 'Journal Article';
+    // const originalCategory = metaData['_category'];
+    // const category = originalCategory || defaultCategory;
+    let category = pubTypeOptions.find((option) => option.value == metaData?.['belongs-to'] || '');
+
+    category = category ? category.value : defaultCategory;
+
     const year = parsedData?.issued?.['date-parts']?.[0]?.[0] || '';
 
     let categoryLabel = category.replace('_', ' ');
@@ -71,7 +100,7 @@ export default function Reference({ website, input }) {
         refMarkup = (
             <>
                 <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
-                    {originalCategory ? (
+                    {category ? (
                         <Link
                             to={input.makeHrefToIndex(`?type=${categoryLabel}`)}
                             className="text-text-color-80 hover:underline cursor-pointer"
@@ -81,7 +110,7 @@ export default function Reference({ website, input }) {
                     ) : (
                         <span>{categoryLabel}</span>
                     )}
-                    {categoryLabel && year ? <span className="mx-2">|</span> : null}
+                    {category && year ? <span className="mx-2">|</span> : null}
                     {year ? (
                         <Link
                             to={input.makeHrefToIndex(`?year=${year}`)}
@@ -132,7 +161,7 @@ export default function Reference({ website, input }) {
         refMarkup = (
             <>
                 <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
-                    {originalCategory ? (
+                    {category ? (
                         <Link
                             to={input.makeHrefToIndex(`?type=${categoryLabel}`)}
                             className="text-text-color-80 hover:underline cursor-pointer"

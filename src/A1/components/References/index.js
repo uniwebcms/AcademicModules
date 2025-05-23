@@ -129,13 +129,43 @@ export default function ProfileReferences({ block, input }) {
 
     let groups = {};
 
+    let defaultCategory = website.localize({
+        en: 'Others',
+        fr: 'Autres',
+    });
+
+    const { data: info, error } = uniweb.useCompleteQuery('getPubInfo', () => {
+        return postRequest('reference.php', {
+            action: 'getPubInfo',
+            contentType: 'reference',
+        }).then((res) => res.data || {});
+    });
+
+    const pubTypeOptions = [];
+
+    if (!info || error) return null;
+
+    let typeOptions = info?.typeOptionsDisplay || [];
+
+    typeOptions.forEach((option) => {
+        pubTypeOptions.push({
+            label: option[1],
+            value: option[0],
+        });
+    });
+
     let parsedReferences = input.profiles.map((profile) => {
         let parsedData = parseReference(profile);
 
         const topics = profile.at('topics');
 
         const metaData = profile.rawHead?.meta_data || {};
-        const category = metaData['_category'] || 'others'; //'journal article';
+        // const category = metaData['_category'] || defaultCategory; //'journal article';
+        let category = pubTypeOptions.find(
+            (option) => option.value == metaData?.['belongs-to'] || ''
+        );
+
+        category = category ? category.value : defaultCategory;
         let categoryLabel = category.replace('_', ' ');
 
         let href = input.makeHref(profile);
