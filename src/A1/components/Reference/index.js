@@ -23,10 +23,26 @@ export default function Reference({ website, input }) {
     });
 
     const { data: info, error } = uniweb.useCompleteQuery('getPubInfo', () => {
-        return postRequest('reference.php', {
-            action: 'getPubInfo',
-            contentType: 'reference',
-        }).then((res) => res.data || {});
+        const params = new URLSearchParams();
+        params.append('action', 'getPubInfo');
+        params.append('contentType', 'reference');
+        return fetch(`reference.php`, {
+            method: 'POST',
+            // headers: {
+            //     'Content-Type': 'application/json', // Specify content type
+            // },
+            body: params,
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                return response.json(); // Parse the JSON response
+            })
+            .then((res) => {
+                return res;
+            });
     });
 
     const pubTypeOptions = [];
@@ -47,7 +63,7 @@ export default function Reference({ website, input }) {
     // const category = originalCategory || defaultCategory;
     let category = pubTypeOptions.find((option) => option.value == metaData?.['belongs-to'] || '');
 
-    category = category ? category.value : defaultCategory;
+    category = category ? category.label : defaultCategory;
 
     const year = parsedData?.issued?.['date-parts']?.[0]?.[0] || '';
 

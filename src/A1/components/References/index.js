@@ -134,11 +134,29 @@ export default function ProfileReferences({ block, input }) {
         fr: 'Autres',
     });
 
+    const containerRef = useRef(null);
+
     const { data: info, error } = uniweb.useCompleteQuery('getPubInfo', () => {
-        return postRequest('reference.php', {
-            action: 'getPubInfo',
-            contentType: 'reference',
-        }).then((res) => res.data || {});
+        const params = new URLSearchParams();
+        params.append('action', 'getPubInfo');
+        params.append('contentType', 'reference');
+        return fetch(`reference.php`, {
+            method: 'POST',
+            // headers: {
+            //     'Content-Type': 'application/json', // Specify content type
+            // },
+            body: params,
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                return response.json(); // Parse the JSON response
+            })
+            .then((res) => {
+                return res;
+            });
     });
 
     const pubTypeOptions = [];
@@ -165,7 +183,7 @@ export default function ProfileReferences({ block, input }) {
             (option) => option.value == metaData?.['belongs-to'] || ''
         );
 
-        category = category ? category.value : defaultCategory;
+        category = category ? category.label : defaultCategory;
         let categoryLabel = category.replace('_', ' ');
 
         let href = input.makeHref(profile);
@@ -277,8 +295,6 @@ export default function ProfileReferences({ block, input }) {
     } else {
         args.cards = filteredReferences;
     }
-
-    const containerRef = useRef(null);
 
     return (
         <Container
