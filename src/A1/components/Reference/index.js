@@ -26,6 +26,7 @@ export default function Reference({ website, input }) {
         const params = new URLSearchParams();
         params.append('action', 'getPubInfo');
         params.append('contentType', 'reference');
+        params.append('activeLang', website.getLanguage());
         return fetch(`reference.php`, {
             method: 'POST',
             // headers: {

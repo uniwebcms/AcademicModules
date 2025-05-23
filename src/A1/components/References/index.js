@@ -140,6 +140,7 @@ export default function ProfileReferences({ block, input }) {
         const params = new URLSearchParams();
         params.append('action', 'getPubInfo');
         params.append('contentType', 'reference');
+        params.append('activeLang', website.getLanguage());
         return fetch(`reference.php`, {
             method: 'POST',
             // headers: {
