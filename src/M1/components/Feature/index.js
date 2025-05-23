@@ -153,14 +153,10 @@ export default function Feature(props) {
     }
 
     if (appearance === 'detailed') {
-        console.log('block', block);
         const hasExtraContent = paragraphs.length > 0 || links.length > 0;
 
         return (
-            <Container
-                py="lg"
-                className={'max-w-8xl mx-auto space-y-8 sm:space-y-12 lg:space-y-16'}
-            >
+            <Container py="none" px="none" className="relative">
                 {/* Background */}
                 {banner && (
                     <div className="absolute inset-0">
@@ -172,73 +168,79 @@ export default function Feature(props) {
                     </div>
                 )}
                 {/* Content */}
-                <div className="max-w-2xl mx-auto text-center relative z-10">
-                    {pretitle && (
-                        <p className="text-xs md:text-sm lg:text-base font-semibold uppercase mb-1.5 text-heading-color-80">
-                            {pretitle}
-                        </p>
-                    )}
-                    {title && (
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-                            {title}
-                        </h2>
-                    )}
-                    {subtitle && (
-                        <p className="mt-3 text-sm md:text-base lg:text-lg text-balance text-heading-color-90">
-                            {subtitle}
-                        </p>
+                <div
+                    className={
+                        'max-w-8xl mx-auto space-y-8 sm:space-y-12 lg:space-y-16 py-12 lg:py-24 px-6 md:px-8 lg:px-16 xl:px-24'
+                    }
+                >
+                    <div className="max-w-2xl mx-auto text-center relative z-10">
+                        {pretitle && (
+                            <p className="text-xs md:text-sm lg:text-base font-semibold uppercase mb-1.5 text-heading-color-80">
+                                {pretitle}
+                            </p>
+                        )}
+                        {title && (
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
+                                {title}
+                            </h2>
+                        )}
+                        {subtitle && (
+                            <p className="mt-3 text-sm md:text-base lg:text-lg text-balance text-heading-color-90">
+                                {subtitle}
+                            </p>
+                        )}
+                    </div>
+                    {hasChildBlocks ? (
+                        <div className={twJoin('relative z-10', gridClassName)}>
+                            <ChildBlockRenderer
+                                block={block}
+                                childBlocks={childBlocks}
+                            ></ChildBlockRenderer>
+                        </div>
+                    ) : null}
+                    {hasExtraContent && (
+                        <div className="flex flex-col items-center space-y-5 relative z-10">
+                            {paragraphs.length > 0 && (
+                                <SafeHtml
+                                    value={paragraphs}
+                                    className="text-sm md:text-base lg:text-lg italic"
+                                />
+                            )}
+                            {links.length > 0 && (
+                                <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-x-5 gap-y-3">
+                                    {links.map((link, index) => {
+                                        const { href, label } = link;
+                                        const icon = icons[index];
+
+                                        return (
+                                            <div
+                                                className={twJoin(
+                                                    'flex items-center gap-2',
+                                                    index % 2 === 0 ? '' : 'md:flex-row-reverse'
+                                                )}
+                                                key={index}
+                                            >
+                                                <Link
+                                                    to={href}
+                                                    target="_blank"
+                                                    className="text-sm md:text-base hover:underline"
+                                                >
+                                                    {label}
+                                                </Link>
+                                                {icon && (
+                                                    <Icon
+                                                        icon={icon}
+                                                        className="w-4 h-4 md:w-5 md:h-5"
+                                                    />
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </div>
                     )}
                 </div>
-                {hasChildBlocks ? (
-                    <div className={twJoin('relative z-10', gridClassName)}>
-                        <ChildBlockRenderer
-                            block={block}
-                            childBlocks={childBlocks}
-                        ></ChildBlockRenderer>
-                    </div>
-                ) : null}
-                {hasExtraContent && (
-                    <div className="flex flex-col items-center space-y-5 relative z-10">
-                        {paragraphs.length > 0 && (
-                            <SafeHtml
-                                value={paragraphs}
-                                className="text-sm md:text-base lg:text-lg italic"
-                            />
-                        )}
-                        {links.length > 0 && (
-                            <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-x-5 gap-y-3">
-                                {links.map((link, index) => {
-                                    const { href, label } = link;
-                                    const icon = icons[index];
-
-                                    return (
-                                        <div
-                                            className={twJoin(
-                                                'flex items-center gap-2',
-                                                index % 2 === 0 ? '' : 'md:flex-row-reverse'
-                                            )}
-                                            key={index}
-                                        >
-                                            <Link
-                                                to={href}
-                                                target="_blank"
-                                                className="text-sm md:text-base hover:underline"
-                                            >
-                                                {label}
-                                            </Link>
-                                            {icon && (
-                                                <Icon
-                                                    icon={icon}
-                                                    className="w-4 h-4 md:w-5 md:h-5"
-                                                />
-                                            )}
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        )}
-                    </div>
-                )}
             </Container>
         );
     }
