@@ -10,6 +10,7 @@ module.exports = {
         require('@uniwebcms/uniweb-tailwind-plugin'),
         makeEntryPath('@uniwebcms/module-sdk', 'plugin'),
         require('@tailwindcss/typography'),
+        require('@headlessui/tailwindcss'),
     ],
     theme: {
         extend: {
