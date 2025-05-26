@@ -100,8 +100,8 @@ export default function (props) {
                                 pages,
                                 page_range,
                                 page,
-                                journal_issue,
-                                journal_volume,
+                                issue,
+                                volume,
                             } = rest;
 
                             let year = issued?.['date-parts']?.[0]?.[0] || '';
@@ -131,11 +131,9 @@ export default function (props) {
                                                 {`${journal}${
                                                     year ? `${journal ? ', ' : ''}${year}` : ''
                                                 }${
-                                                    journal_volume || journal_issue
-                                                        ? `, ${journal_volume || ''}${
-                                                              journal_issue
-                                                                  ? `(${journal_issue})`
-                                                                  : ''
+                                                    volume || issue
+                                                        ? `, ${volume || ''}${
+                                                              issue ? `(${issue})` : ''
                                                           }`
                                                         : ''
                                                 }${pageNum ? `, ${pageNum}` : ''}`}

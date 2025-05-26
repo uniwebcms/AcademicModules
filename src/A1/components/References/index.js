@@ -20,8 +20,8 @@ const ItemMarkup = (props) => {
         pages,
         page_range,
         page,
-        journal_issue,
-        journal_volume,
+        issue,
+        volume,
     } = rest;
 
     let year = issued?.['date-parts']?.[0]?.[0] || '';
@@ -58,11 +58,7 @@ const ItemMarkup = (props) => {
                 </p>
                 <span className={`text-text-color-60 text-sm`}>
                     {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}${
-                        journal_volume || journal_issue
-                            ? `, ${journal_volume || ''}${
-                                  journal_issue ? `(${journal_issue})` : ''
-                              }`
-                            : ''
+                        volume || issue ? `, ${volume || ''}${issue ? `(${issue})` : ''}` : ''
                     }${pageNum ? `, ${pageNum}` : ''}`}
                 </span>
                 <div className={`flex items-center space-x-1`}>
