@@ -32,9 +32,9 @@ export default function ProfileReferences({ website, block, input }) {
         fr: 'Autres',
     });
 
-    const { data: info, error } = uniweb.useCompleteQuery('getPubInfo', () => {
+    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
         return postRequest('reference.php', {
-            action: 'getPubInfo',
+            action: 'getPubTypeOptions',
             contentType: 'reference',
         }).then((res) => res.data || {});
     });

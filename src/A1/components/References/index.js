@@ -136,9 +136,9 @@ export default function ProfileReferences({ block, input }) {
 
     const containerRef = useRef(null);
 
-    const { data: info, error } = uniweb.useCompleteQuery('getPubInfo', () => {
+    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
         const params = new URLSearchParams();
-        params.append('action', 'getPubInfo');
+        params.append('action', 'getPubTypeOptions');
         params.append('contentType', 'reference');
         params.append('activeLang', website.getLanguage());
         return fetch(`reference.php`, {
