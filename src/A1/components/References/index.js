@@ -11,7 +11,18 @@ import UrlLogo from './external.png';
 const ItemMarkup = (props) => {
     const { profile, href, ...rest } = props;
 
-    const { title, issued, author, DOI = '', isStandard, pages, page_range, page } = rest;
+    const {
+        title,
+        issued,
+        author,
+        DOI = '',
+        isStandard,
+        pages,
+        page_range,
+        page,
+        journal_issue,
+        journal_volume,
+    } = rest;
 
     let year = issued?.['date-parts']?.[0]?.[0] || '';
     const journal = rest['container-title'] || '';
@@ -47,8 +58,12 @@ const ItemMarkup = (props) => {
                 </p>
                 <span className={`text-text-color-60 text-sm`}>
                     {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}${
-                        pageNum ? `, ${pageNum}` : ''
-                    }`}
+                        journal_volume || journal_issue
+                            ? `, ${journal_volume || ''}${
+                                  journal_issue ? `(${journal_issue})` : ''
+                              }`
+                            : ''
+                    }${pageNum ? `, ${pageNum}` : ''}`}
                 </span>
                 <div className={`flex items-center space-x-1`}>
                     {completeDoi ? (

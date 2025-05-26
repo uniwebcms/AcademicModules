@@ -70,7 +70,8 @@ export default function Reference({ website, input }) {
 
     let categoryLabel = category.replace('_', ' ');
 
-    const { title, author, isStandard, page, pages, page_range } = parsedData;
+    const { title, author, isStandard, page, pages, page_range, journal_issue, journal_volume } =
+        parsedData;
     const journal = parsedData?.['container-title'] || '';
 
     const topics = profile.at('topics');
