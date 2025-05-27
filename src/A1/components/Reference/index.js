@@ -17,14 +17,61 @@ export default function Reference({ website, input }) {
 
     let parsedData = parseReference(profile);
 
+    let defaultCategory = website.localize({
+        en: 'Others',
+        fr: 'Autres',
+    });
+
+    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
+        const params = new URLSearchParams();
+        params.append('action', 'getPubTypeOptions');
+        params.append('contentType', 'reference');
+        params.append('activeLang', website.getLanguage());
+        return fetch(`reference.php`, {
+            method: 'POST',
+            // headers: {
+            //     'Content-Type': 'application/json', // Specify content type
+            // },
+            body: params,
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                return response.json(); // Parse the JSON response
+            })
+            .then((res) => {
+                return res;
+            });
+    });
+
+    const pubTypeOptions = [];
+
+    if (!info || error) return null;
+
+    let typeOptions = info?.typeOptionsDisplay || [];
+
+    typeOptions.forEach((option) => {
+        pubTypeOptions.push({
+            label: option[1],
+            value: option[0],
+        });
+    });
+
     const metaData = profile.rawHead?.meta_data || {};
-    const originalCategory = metaData['_category'];
-    const category = originalCategory || 'Journal Article';
+    // const originalCategory = metaData['_category'];
+    // const category = originalCategory || defaultCategory;
+    let category = pubTypeOptions.find((option) => option.value == metaData?.['belongs-to'] || '');
+
+    category = category ? category.label : defaultCategory;
+
     const year = parsedData?.issued?.['date-parts']?.[0]?.[0] || '';
 
     let categoryLabel = category.replace('_', ' ');
 
-    const { title, author, isStandard, page, pages, page_range } = parsedData;
+    const { title, author, isStandard, page, pages, page_range, journal_issue, journal_volume } =
+        parsedData;
     const journal = parsedData?.['container-title'] || '';
 
     const topics = profile.at('topics');
@@ -71,7 +118,7 @@ export default function Reference({ website, input }) {
         refMarkup = (
             <>
                 <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
-                    {originalCategory ? (
+                    {category ? (
                         <Link
                             to={input.makeHrefToIndex(`?type=${categoryLabel}`)}
                             className="text-text-color-80 hover:underline cursor-pointer"
@@ -81,7 +128,7 @@ export default function Reference({ website, input }) {
                     ) : (
                         <span>{categoryLabel}</span>
                     )}
-                    {categoryLabel && year ? <span className="mx-2">|</span> : null}
+                    {category && year ? <span className="mx-2">|</span> : null}
                     {year ? (
                         <Link
                             to={input.makeHrefToIndex(`?year=${year}`)}
@@ -132,7 +179,7 @@ export default function Reference({ website, input }) {
         refMarkup = (
             <>
                 <h2 className={'mb-2 text-text-color-80 text-lg capitalize'}>
-                    {originalCategory ? (
+                    {category ? (
                         <Link
                             to={input.makeHrefToIndex(`?type=${categoryLabel}`)}
                             className="text-text-color-80 hover:underline cursor-pointer"

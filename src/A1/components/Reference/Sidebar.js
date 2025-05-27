@@ -93,7 +93,16 @@ export default function (props) {
                         {parsedReferences.map((reference) => {
                             const { profile, url, ...rest } = reference;
 
-                            const { title, issued, isStandard, pages, page_range, page } = rest;
+                            const {
+                                title,
+                                issued,
+                                isStandard,
+                                pages,
+                                page_range,
+                                page,
+                                issue,
+                                volume,
+                            } = rest;
 
                             let year = issued?.['date-parts']?.[0]?.[0] || '';
                             const journal = rest['container-title'] || '';
@@ -121,6 +130,12 @@ export default function (props) {
                                             <span className={`text-text-color-80 text-xs`}>
                                                 {`${journal}${
                                                     year ? `${journal ? ', ' : ''}${year}` : ''
+                                                }${
+                                                    volume || issue
+                                                        ? `, ${volume || ''}${
+                                                              issue ? `(${issue})` : ''
+                                                          }`
+                                                        : ''
                                                 }${pageNum ? `, ${pageNum}` : ''}`}
                                             </span>
                                         </div>

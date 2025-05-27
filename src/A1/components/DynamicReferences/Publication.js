@@ -355,12 +355,21 @@ export default function Publication(props) {
         published,
         volume,
         issue,
+        journal_issue,
+        journal_volume,
         page_range,
         journal,
         url,
     } = parsedData;
 
-    let finalData = { title, DOI: finalDoi, type: 'article-journal', volume, issue, journal };
+    let finalData = {
+        title,
+        DOI: finalDoi,
+        type: 'article-journal',
+        volume: journal_volume || volume,
+        issue: journal_issue || issue,
+        journal,
+    };
 
     if (authors) {
         const { parsedAuthorArray } = init(authors);

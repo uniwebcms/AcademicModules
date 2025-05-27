@@ -4,7 +4,7 @@ import Container from '../_utils/Container';
 import { parseReference, getDateFromIssued } from '../_utils/reference';
 import Sidebar from './Sidebar';
 
-export default function ProfileReferences({ block, input }) {
+export default function ProfileReferences({ website, block, input }) {
     const title = block.mainTitle || '';
 
     const { useLocation } = website.getRoutingComponents();
@@ -27,13 +27,38 @@ export default function ProfileReferences({ block, input }) {
 
     let groups = {};
 
+    let defaultCategory = website.localize({
+        en: 'Others',
+        fr: 'Autres',
+    });
+
+    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
+        return postRequest('reference.php', {
+            action: 'getPubTypeOptions',
+            contentType: 'reference',
+        }).then((res) => res.data || {});
+    });
+
+    const pubTypeOptions = [];
+
+    if (!info || error) return null;
+
+    let typeOptions = info?.typeOptionsDisplay || [];
+
+    typeOptions.forEach((option) => {
+        pubTypeOptions.push({
+            label: option[1],
+            value: option[0],
+        });
+    });
+
     let parsedReferences = input.profiles.map((profile) => {
         let parsedData = parseReference(profile);
 
         const topics = profile.at('topics');
 
         const metaData = profile.rawHead?.meta_data || {};
-        const category = metaData['_category'] || 'others'; //'journal article';
+        const category = metaData['_category'] || defaultCategory;
         let categoryLabel = category.replace('_', ' ');
 
         let url = input.makeHref(profile);

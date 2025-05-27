@@ -11,7 +11,18 @@ import UrlLogo from './external.png';
 const ItemMarkup = (props) => {
     const { profile, href, ...rest } = props;
 
-    const { title, issued, author, DOI = '', isStandard, pages, page_range, page } = rest;
+    const {
+        title,
+        issued,
+        author,
+        DOI = '',
+        isStandard,
+        pages,
+        page_range,
+        page,
+        issue,
+        volume,
+    } = rest;
 
     let year = issued?.['date-parts']?.[0]?.[0] || '';
     const journal = rest['container-title'] || '';
@@ -47,8 +58,8 @@ const ItemMarkup = (props) => {
                 </p>
                 <span className={`text-text-color-60 text-sm`}>
                     {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}${
-                        pageNum ? `, ${pageNum}` : ''
-                    }`}
+                        volume || issue ? `, ${volume || ''}${issue ? `(${issue})` : ''}` : ''
+                    }${pageNum ? `, ${pageNum}` : ''}`}
                 </span>
                 <div className={`flex items-center space-x-1`}>
                     {completeDoi ? (
@@ -129,13 +140,62 @@ export default function ProfileReferences({ block, input }) {
 
     let groups = {};
 
+    let defaultCategory = website.localize({
+        en: 'Others',
+        fr: 'Autres',
+    });
+
+    const containerRef = useRef(null);
+
+    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
+        const params = new URLSearchParams();
+        params.append('action', 'getPubTypeOptions');
+        params.append('contentType', 'reference');
+        params.append('activeLang', website.getLanguage());
+        return fetch(`reference.php`, {
+            method: 'POST',
+            // headers: {
+            //     'Content-Type': 'application/json', // Specify content type
+            // },
+            body: params,
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                return response.json(); // Parse the JSON response
+            })
+            .then((res) => {
+                return res;
+            });
+    });
+
+    const pubTypeOptions = [];
+
+    if (!info || error) return null;
+
+    let typeOptions = info?.typeOptionsDisplay || [];
+
+    typeOptions.forEach((option) => {
+        pubTypeOptions.push({
+            label: option[1],
+            value: option[0],
+        });
+    });
+
     let parsedReferences = input.profiles.map((profile) => {
         let parsedData = parseReference(profile);
 
         const topics = profile.at('topics');
 
         const metaData = profile.rawHead?.meta_data || {};
-        const category = metaData['_category'] || 'others'; //'journal article';
+        // const category = metaData['_category'] || defaultCategory; //'journal article';
+        let category = pubTypeOptions.find(
+            (option) => option.value == metaData?.['belongs-to'] || ''
+        );
+
+        category = category ? category.label : defaultCategory;
         let categoryLabel = category.replace('_', ' ');
 
         let href = input.makeHref(profile);
@@ -247,8 +307,6 @@ export default function ProfileReferences({ block, input }) {
     } else {
         args.cards = filteredReferences;
     }
-
-    const containerRef = useRef(null);
 
     return (
         <Container

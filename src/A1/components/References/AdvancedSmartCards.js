@@ -57,7 +57,13 @@ export default function SmartCards(props) {
 
     useEffect(() => {
         let result = [];
-        let topGroups = ['journal_articles', 'Professor', 'Professeur'];
+        let topGroups = [
+            'journal_articles',
+            'Professor',
+            'Professeur',
+            'Journal Articles',
+            'Articles de revue',
+        ];
 
         if (groups) {
             Object.keys(groups)
