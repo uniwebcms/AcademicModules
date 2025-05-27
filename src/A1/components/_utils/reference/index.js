@@ -120,8 +120,9 @@ export const parseReference = (profile) => {
         };
     }
 
-    if (parsedData['periodical-title'] || journal) {
-        finalData['container-title'] = parsedData['periodical-title'] || journal;
+    if (parsedData['journal_title'] || parsedData['periodical-title'] || journal) {
+        finalData['container-title'] =
+            parsedData['journal_title'] || parsedData['periodical-title'] || journal;
     }
 
     return finalData;
