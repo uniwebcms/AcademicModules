@@ -1,0 +1,70 @@
+title: 
+  en: Pricing Tiers
+  fr: Tarifs
+label:
+  en: Pricing Tier
+  fr: Tarif
+description:
+  en: A pricing tiers component that can be used to showcase pricing options.
+  fr: Un composant de niveaux de tarification qui peut être utilisé pour présenter des options de tarification.
+
+category: pricing
+export: true
+
+elements:
+  title:
+  text:
+    description:
+      en: The promtional text displayed in the pricing tier when the month/annual toggle is enabled.
+      fr: Le texte promotionnel affiché dans le niveau de tarification lorsque le basculement mois/annuel est activé.
+  link:
+    description:
+      en: A link put below the pricing tiers.
+      fr: Un lien placé en dessous des niveaux de tarification.
+
+items:
+  separator: divider
+  elements:
+    pretitle:
+      description:
+        en: The name of the pricing tier.
+        fr: Le nom du tarif.
+    title:
+      description:
+        en: The price of the pricing tier.
+        fr: Le prix du tarif.
+    subtitle:
+      description:
+        en: Text put under the price of the pricing tier, normally used to display the billing cycle.
+        fr: Texte placé sous le prix du tarif, généralement utilisé pour afficher le cycle de facturation.
+    description:
+      type: 'H3'
+      description:
+        en: The description of the pricing tier.
+        fr: La description du tarif.
+    link:
+      description:
+        en: The action button of the pricing tier.
+        fr: Le bouton d'action du tarif.
+    list:
+      description:
+        en: The list of features of the pricing tier, each can have an icon and a text.
+        fr: La liste des fonctionnalités du tarif, chacune pouvant avoir une icône et un texte.
+    button:
+      description:
+        en: The badge of the pricing tier.
+        fr: Le badge du tarif.
+
+properties:
+  month_annual_toggle:
+    label:
+      en: Month / Annual Toggle
+      fr: Basculement Mois / Annuel
+    type: boolean
+    default: false
+    description:
+      en: Whether to display a toggle for switching between monthly and annual pricing.
+      fr: Indique si un basculement doit être affiché pour passer entre les prix mensuels et annuels.
+
+images:
+  - example.png

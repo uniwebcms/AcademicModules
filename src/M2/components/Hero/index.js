@@ -11,7 +11,7 @@ export default function Hero(props) {
         <div className="relative px-6 pt-[80px] xl:pt-[180px] pb-[80px] min-h-[100px] max-w-[1200px] mx-auto">
             <div className="flex flex-col max-w-[965px] mx-auto">
                 <div className="max-w-[800px] mx-auto">
-                    <h1 className="text-5xl lg:text-7xl xl:text-8xl leading-[110%] text-center">
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-center">
                         <SafeHtml value={title} />
                     </h1>
                 </div>

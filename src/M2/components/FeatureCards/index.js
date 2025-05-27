@@ -10,7 +10,7 @@ export default function FeatureCard(props) {
 
     return (
         <div className="px-6 py-12">
-            <div className="max-w-[1600px] mx-auto">
+            <div className="max-w-[1400px] mx-auto">
                 <div className="text-center">
                     <h2 className="text-[42px] md:text-[48px] xl:text-[72px] leading-[118%] md:leading-[112%]">
                         {title}

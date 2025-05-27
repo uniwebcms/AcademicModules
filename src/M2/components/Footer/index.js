@@ -13,8 +13,8 @@ export default function Footer(props) {
     const languages = website.getLanguages().filter((lang) => lang.value !== language);
 
     return (
-        <footer className="w-full px-0 lg:px-6">
-            <div className="relative lg:rounded-t-2xl py-[100px] px-10 overflow-hidden">
+        <footer>
+            <div className="relative min-[1400px]:rounded-t-2xl py-[100px] px-10 overflow-hidden max-w-[1400px] mx-auto">
                 {banner && (
                     <div className="absolute inset-0 -z-10">
                         <Image

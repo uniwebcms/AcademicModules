@@ -131,7 +131,7 @@ export default function ShowcaseCarousel(props) {
         <section className="pt-[60px] pb-10 px-5">
             <div
                 className={twJoin(
-                    'flex flex-col lg:flex-row lg:items-center mb-12 space-y-6 lg:space-x-12 xl:px-8',
+                    'flex flex-col lg:flex-row lg:items-center mb-12 gap-y-6 gap-x-12 max-w-[1400px] mx-auto',
                     link ? 'justify-between' : 'justify-center text-center'
                 )}
             >
@@ -156,7 +156,7 @@ export default function ShowcaseCarousel(props) {
             </div>
 
             {/* Wrapper with known padding */}
-            <div className="relative overflow-hidden" ref={wrapperRef}>
+            <div className="relative overflow-hidden max-w-[1400px] mx-auto" ref={wrapperRef}>
                 {/* Sliding container */}
                 <div
                     className="flex transition-transform duration-500 ease-in-out"

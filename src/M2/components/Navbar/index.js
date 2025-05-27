@@ -130,7 +130,7 @@ export default function navbar(props) {
                 </div>
             </nav>
             {/* Mobile Navbar */}
-            <nav className="block w-full xl:hidden relative z-10">
+            <nav className="block w-full xl:hidden relative z-20">
                 {/* Top bar: fixed logo, signup, menu button */}
                 <div className="flex gap-6 items-center w-full justify-between fixed left-0 top-0 right-0 px-4 sm:px-6 py-4 bg-white z-50 h-[64px]">
                     {/* Logo */}
@@ -171,17 +171,17 @@ export default function navbar(props) {
                 {/* Overlay menu */}
                 {mobileOpen && (
                     <div className="fixed inset-0 z-40 bg-white pt-[64px] p-6 overflow-y-auto">
-                        <ul className="flex flex-col gap-4">
+                        <ul className="flex flex-col gap-6">
                             {linkGroups.map((links, gIndex) =>
                                 links.map((link, lIndex) => {
-                                    const { label, route, child_items } = link;
+                                    const { label, route, child_items, hasData } = link;
                                     const groupKey = `${gIndex}-${lIndex}`;
                                     const isExpanded = expandedGroups[groupKey];
 
                                     return (
                                         <li key={groupKey}>
                                             <div
-                                                className="flex justify-between items-center font-medium cursor-pointer"
+                                                className="flex justify-between items-center text-lg font-medium cursor-pointer"
                                                 onClick={() => {
                                                     if (child_items.length) {
                                                         setExpandedGroups((prev) => ({
@@ -191,24 +191,39 @@ export default function navbar(props) {
                                                     }
                                                 }}
                                             >
-                                                <Link to={route}>{label}</Link>
+                                                {hasData ? (
+                                                    <Link to={route}>{label}</Link>
+                                                ) : (
+                                                    <p>{label}</p>
+                                                )}
                                                 {child_items.length > 0 && (
                                                     <LuChevronDown
-                                                        className={`transform transition-transform ${
+                                                        className={`transform transition-transform w-5 h-5 ${
                                                             isExpanded ? 'rotate-180' : ''
                                                         }`}
                                                     />
                                                 )}
                                             </div>
                                             {isExpanded && child_items.length > 0 && (
-                                                <ul className="mt-2 ml-4 flex flex-col gap-2 text-sm text-text-color-70">
-                                                    {child_items.map((child, i) => (
-                                                        <li key={i}>
-                                                            <Link to={child.route}>
-                                                                {child.label}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
+                                                <ul className="mt-2 ml-4 flex flex-col gap-3 text-sm">
+                                                    {child_items.map((child, i) => {
+                                                        const { label, route, icon } = child;
+
+                                                        return (
+                                                            <li
+                                                                key={i}
+                                                                className="flex items-center gap-2 text-base"
+                                                            >
+                                                                {icon && (
+                                                                    <Icon
+                                                                        icon={icon}
+                                                                        className="w-4 h-4 text-text-color"
+                                                                    />
+                                                                )}
+                                                                <Link to={route}>{label}</Link>
+                                                            </li>
+                                                        );
+                                                    })}
                                                 </ul>
                                             )}
                                         </li>

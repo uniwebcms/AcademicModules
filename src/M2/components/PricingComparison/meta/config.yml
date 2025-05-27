@@ -1,0 +1,13 @@
+title: 
+  en: Pricing Comparison
+  fr: Comparaison des Tarifs
+label:
+  en: Pricing Comparison
+  fr: Comparaison des Tarifs
+description:
+  en: Compare different pricing tiers' features in a table format.
+  fr: Comparez les fonctionnalités de différents niveaux de tarification dans un format de tableau.
+
+category: pricing
+export: true
+
