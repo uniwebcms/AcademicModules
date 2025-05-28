@@ -17,7 +17,7 @@ const LibrarySection = ({ info, website }) => {
     const stylerId = Array.isArray(templateInfo?.styler)
         ? templateInfo.styler[0]
         : templateInfo.styler;
-
+    console.log('stylerId', stylerId);
     const { profile: webstylerProfile } = useGetProfile('webstyler', stylerId);
 
     if (stylerId && !webstylerProfile) return null;
