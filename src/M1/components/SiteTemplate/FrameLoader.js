@@ -40,7 +40,7 @@ const FrameLoader = (props) => {
         onReady,
         className = '',
         style = {},
-        sandbox = 'allow-scripts allow-same-origin allow-downloads allow-modals',
+        sandbox = 'allow-scripts allow-downloads allow-modals',
     } = props;
 
     const [iframeLoaded, setIframeLoaded] = useState(false);
