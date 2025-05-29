@@ -30,7 +30,7 @@ export default function Motion(props) {
                         />
 
                         <motion.h2
-                            className="max-w-2xl mb-6 text-5xl font-semibold"
+                            className="max-w-2xl mb-6 text-4xl lg:text-5xl font-semibold"
                             initial={{ opacity: 0 }}
                             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                             transition={{ duration: 1, delay: 0.5 }}
@@ -39,7 +39,7 @@ export default function Motion(props) {
                         </motion.h2>
 
                         <motion.p
-                            className="mb-12 max-w-2xl text-lg text-text-color"
+                            className="mb-16 max-w-2xl text-lg text-text-color"
                             initial={{ opacity: 0 }}
                             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                             transition={{ duration: 1, delay: 1.1 }}
@@ -48,7 +48,7 @@ export default function Motion(props) {
                         </motion.p>
 
                         <motion.div
-                            className="flex gap-10 mt-16"
+                            className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center"
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                             transition={{ duration: 1, delay: 1.3 }}
@@ -56,8 +56,8 @@ export default function Motion(props) {
                             {firstLink && (
                                 <div className="group">
                                     <Link to={firstLink.href}>
-                                        <button className="px-8 py-4 rounded-full font-semibold border-2 border-primary-500 flex items-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-200">
-                                            {firstLink.label}
+                                        <button className="px-6 py-3 lg:px-8 lg:py-4 rounded-full font-semibold border-2 border-primary-500 flex items-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-200">
+                                            <span className="truncate">{firstLink.label}</span>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="24"
@@ -68,7 +68,7 @@ export default function Motion(props) {
                                                 strokeWidth="2"
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                className="w-5 h-5 group-hover:translate-x-1 transition-transform text-inherit"
+                                                className="w-5 h-5 group-hover:translate-x-1 transition-transform text-inherit flex-shrink-0"
                                             >
                                                 <path d="M5 12h14"></path>
                                                 <path d="m12 5 7 7-7 7"></path>
