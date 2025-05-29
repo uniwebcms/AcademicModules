@@ -60,18 +60,25 @@ export default function Features({ block, website }) {
                     {alignment == 'right' && (
                         <div className="flex flex-col">
                             {pretitle && (
-                                <h3 className="mb-2 lg:mb-3 font-light  text-lg sm:text-xl lg:text-2xl">
-                                    {stripTags(pretitle)}
-                                </h3>
+                                <SafeHtml
+                                    as="p"
+                                    value={pretitle}
+                                    className="mb-2 lg:mb-3 font-light  text-lg sm:text-xl lg:text-2xl rich-text"
+                                />
                             )}
-                            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
-                                {stripTags(title)}
-                            </h2>
-                            {subtitle && (
-                                <p className="mt-3 lg:mt-4 font-medium text-text-color-80 text-base sm:text-lg lg:text-xl">
-                                    {stripTags(subtitle)}
-                                </p>
-                            )}
+                            <SafeHtml
+                                as="h2"
+                                value={title}
+                                className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl rich-text"
+                            />
+                            {subtitle ? (
+                                <SafeHtml
+                                    as="p"
+                                    value={subtitle}
+                                    className="mt-3 lg:mt-4 font-medium text-text-color-80 text-base sm:text-lg lg:text-xl rich-text"
+                                />
+                            ) : null}
+
                             {link ? (
                                 <Link
                                     to={website.makeHref(link.href)}
@@ -98,13 +105,19 @@ export default function Features({ block, website }) {
                                                 <Icon icon={icon} className="w-full h-full" />
                                             </div>
                                         ) : null}
-                                        <h3 className="text-lg font-semibold lg:text-xl">
-                                            {stripTags(title)}
-                                        </h3>
+
+                                        <SafeHtml
+                                            as="h3"
+                                            value={title}
+                                            className="text-lg font-semibold lg:text-xl rich-text"
+                                        />
+
                                         {subtitle ? (
-                                            <p className="mt-1 text-base font-medium lg:text-lg text-text-color-80">
-                                                {stripTags(subtitle)}
-                                            </p>
+                                            <SafeHtml
+                                                as="h3"
+                                                value={subtitle}
+                                                className="mt-1 text-base font-medium lg:text-lg text-text-color-80 rich-text"
+                                            />
                                         ) : null}
                                     </dt>
                                     <SafeHtml
@@ -126,18 +139,25 @@ export default function Features({ block, website }) {
                     {alignment == 'left' && (
                         <div className="flex flex-col">
                             {pretitle && (
-                                <h3 className="mb-2 lg:mb-3 font-light  text-lg sm:text-xl lg:text-2xl">
-                                    {stripTags(pretitle)}
-                                </h3>
+                                <SafeHtml
+                                    as="p"
+                                    value={pretitle}
+                                    className="mb-2 lg:mb-3 font-light  text-lg sm:text-xl lg:text-2xl rich-text"
+                                />
                             )}
-                            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
-                                {stripTags(title)}
-                            </h2>
-                            {subtitle && (
-                                <p className="mt-3 lg:mt-4 font-medium text-text-color-80 text-base sm:text-lg lg:text-xl">
-                                    {stripTags(subtitle)}
-                                </p>
-                            )}
+                            <SafeHtml
+                                as="h2"
+                                value={title}
+                                className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl rich-text"
+                            />
+                            {subtitle ? (
+                                <SafeHtml
+                                    as="p"
+                                    value={subtitle}
+                                    className="mt-3 lg:mt-4 font-medium text-text-color-80 text-base sm:text-lg lg:text-xl rich-text"
+                                />
+                            ) : null}
+
                             {link ? (
                                 <Link
                                     to={website.makeHref(link.href)}
@@ -172,18 +192,24 @@ const centerAlign = (pretitle, title, subtitle, link, banner, items, website, py
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="max-w-4xl mx-auto lg:text-center">
                     {pretitle && (
-                        <h3 className="mb-2 lg:mb-3 font-light  text-lg sm:text-xl lg:text-2xl">
-                            {stripTags(pretitle)}
-                        </h3>
+                        <SafeHtml
+                            as="p"
+                            value={pretitle}
+                            className="mb-2 lg:mb-3 font-light  text-lg sm:text-xl lg:text-2xl rich-text"
+                        />
                     )}
-                    <h2 className="text-2xl font-bold tracking-tight  sm:text-3xl lg:text-4xl">
-                        {stripTags(title)}
-                    </h2>
-                    {subtitle && (
-                        <p className="mt-3 lg:mt-4 font-medium text-neutral-700 text-base sm:text-lg lg:text-xl">
-                            {stripTags(subtitle)}
-                        </p>
-                    )}
+                    <SafeHtml
+                        as="h2"
+                        value={title}
+                        className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl rich-text"
+                    />
+                    {subtitle ? (
+                        <SafeHtml
+                            as="p"
+                            value={subtitle}
+                            className="mt-3 lg:mt-4 font-medium text-text-color-80 text-base sm:text-lg lg:text-xl rich-text"
+                        />
+                    ) : null}
                     {link ? (
                         <Link
                             to={website.makeHref(link.href)}
@@ -203,21 +229,29 @@ const centerAlign = (pretitle, title, subtitle, link, banner, items, website, py
 
                             return (
                                 <div key={index} className="relative px-8">
-                                    <dt className="text-base font-semibold leading-7 text-gray-900">
+                                    <dt className="text-base font-semibold leading-7">
                                         <div className="absolute top-0 left-0 flex items-center justify-center w-12 h-12 rounded-lg">
                                             <Icon icon={icon} className="w-full h-full" />
                                         </div>
-                                        <h3
-                                            className={`text-lg lg:text-xl font-semibold  ${
+
+                                        <SafeHtml
+                                            as="h3"
+                                            value={title}
+                                            className={twJoin(
+                                                'text-lg lg:text-xl font-semibold rich-text',
                                                 icon ? 'pl-10' : ''
-                                            }`}
-                                        >
-                                            {stripTags(title)}
-                                        </h3>
+                                            )}
+                                        />
+
                                         {subtitle ? (
-                                            <p className="mt-1 text-base font-medium lg:text-lg">
-                                                {stripTags(subtitle)}
-                                            </p>
+                                            <SafeHtml
+                                                as="p"
+                                                value={subtitle}
+                                                className={twJoin(
+                                                    'mt-1 text-base font-medium lg:text-lg text-text-color-80 rich-text',
+                                                    icon ? 'pl-10' : ''
+                                                )}
+                                            />
                                         ) : null}
                                     </dt>
                                     <SafeHtml

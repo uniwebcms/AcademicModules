@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { SafeHtml, stripTags } from '@uniwebcms/module-sdk';
 import { Disclosure } from '@headlessui/react';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
@@ -34,13 +34,17 @@ export default function Details({ block }) {
                 <div className="lg:grid lg:grid-cols-12 lg:gap-8">
                     {alignment === 'right' && (
                         <div className="lg:col-span-5">
-                            <h2 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
-                                {stripTags(title)}
-                            </h2>
+                            <SafeHtml
+                                as="h2"
+                                value={title}
+                                className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl rich-text"
+                            />
                             {subtitle ? (
-                                <p className="mt-4 text-base leading-8 md:text-lg lg:text-xl text-text-color-80">
-                                    {stripTags(subtitle)}
-                                </p>
+                                <SafeHtml
+                                    as="p"
+                                    value={subtitle}
+                                    className="mt-4 text-base leading-8 md:text-lg lg:text-xl text-text-color-80 rich-text"
+                                />
                             ) : null}
                         </div>
                     )}
@@ -49,10 +53,14 @@ export default function Details({ block }) {
                             {items.map((item, index) => (
                                 <div key={index}>
                                     <dt className="text-lg font-semibold leading-7 md:text-xl">
-                                        <SafeHtml value={item.title} />
+                                        <SafeHtml
+                                            as="h3"
+                                            value={item.title}
+                                            className="rich-text"
+                                        />
                                     </dt>
                                     <dd className="mt-2 text-base md:text-lg leading-7 text-text-color-90">
-                                        <SafeHtml value={item.paragraphs} />
+                                        <SafeHtml value={item.paragraphs} className="rich-text" />
                                     </dd>
                                 </div>
                             ))}
@@ -60,13 +68,17 @@ export default function Details({ block }) {
                     </div>
                     {alignment === 'left' && (
                         <div className="lg:col-span-5 lg:pl-8">
-                            <h2 className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
-                                {stripTags(title)}
-                            </h2>
+                            <SafeHtml
+                                as="h2"
+                                value={title}
+                                className="text-xl font-bold tracking-tight md:text-2xl lg:text-3xl rich-text"
+                            />
                             {subtitle ? (
-                                <p className="mt-4 text-base leading-8 md:text-lg lg:text-xl text-text-color-80">
-                                    {stripTags(subtitle)}
-                                </p>
+                                <SafeHtml
+                                    as="p"
+                                    value={subtitle}
+                                    className="mt-4 text-base leading-8 md:text-lg lg:text-xl text-text-color-8 rich-text"
+                                />
                             ) : null}
                         </div>
                     )}
@@ -102,15 +114,15 @@ function centerAligned(title, subtitle, items, py) {
                                     <>
                                         <dt>
                                             <Disclosure.Button className="flex items-start justify-between w-full text-left  focus:outline-none group">
-                                                <h3
-                                                    className={`text-base font-semibold leading-7 md:text-lg ${
+                                                <SafeHtml
+                                                    as="h3"
+                                                    value={item.title}
+                                                    className={`text-base font-semibold leading-7 md:text-lg rich-text ${
                                                         open
                                                             ? 'opacity-100'
                                                             : 'opacity-80 group-hover:opacity-100'
                                                     }`}
-                                                >
-                                                    {stripTags(item.title)}
-                                                </h3>
+                                                />
                                                 <span className="flex items-center ml-6 h-7">
                                                     {open ? (
                                                         <HiMinusSm
@@ -132,7 +144,7 @@ function centerAligned(title, subtitle, items, py) {
                                         >
                                             <SafeHtml
                                                 value={item.paragraphs}
-                                                className="text-base leading-7 text-neutral-800"
+                                                className="text-base leading-7 text-neutral-800 rich-text"
                                             />
                                         </Disclosure.Panel>
                                     </>

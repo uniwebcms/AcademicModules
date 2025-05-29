@@ -73,13 +73,17 @@ export default function Spotlight({ block, website }) {
                                                 className="w-12 h-12 p-1 rounded-md bg-primary-200 fill-primary-800"
                                             />
                                         )}
-                                        <h3 className="mt-1 text-xl font-bold tracking-tight md:text-2xl lg:text-3xl">
-                                            {stripTags(title)}
-                                        </h3>
+                                        <SafeHtml
+                                            as="h3"
+                                            value={title}
+                                            className="mt-1 text-xl font-bold tracking-tight md:text-2xl lg:text-3xl rich-text"
+                                        />
                                         {subtitle && (
-                                            <p className="mt-1 font-medium lg:text-xl md:text-lg text-base text-text-color-80">
-                                                {stripTags(subtitle)}
-                                            </p>
+                                            <SafeHtml
+                                                as="p"
+                                                value={subtitle}
+                                                className="mt-1 font-medium lg:text-xl md:text-lg text-base text-text-color-80 rich-text"
+                                            />
                                         )}
                                         <SafeHtml
                                             value={paragraphs}

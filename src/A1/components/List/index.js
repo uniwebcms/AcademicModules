@@ -25,15 +25,19 @@ export default function List({ block, website }) {
         <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="max-w-2xl mx-auto lg:max-w-4xl">
-                    {!!title && (
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-                            {stripTags(title)}
-                        </h2>
+                    {title && (
+                        <SafeHtml
+                            as="h2"
+                            value={title}
+                            className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl rich-text"
+                        />
                     )}
                     {subtitle ? (
-                        <h3 className="mt-3 leading-8 text-lg md:text-xl lg:text-2xl text-text-color-90">
-                            {stripTags(subtitle)}
-                        </h3>
+                        <SafeHtml
+                            as="p"
+                            value={subtitle}
+                            className="mt-3 leading-8 text-lg md:text-xl lg:text-2xl text-text-color-90 rich-text"
+                        />
                     ) : null}
                     <div
                         className={`${
@@ -75,19 +79,23 @@ export default function List({ block, website }) {
                                     <div>
                                         <div className="relative max-w-xl group">
                                             <div className="mt-2">
-                                                <h3 className="text-xl lg:text-2xl font-semibold leading-8">
-                                                    {stripTags(title)}
-                                                </h3>
+                                                <SafeHtml
+                                                    as="h3"
+                                                    value={title}
+                                                    className="text-xl lg:text-2xl font-semibold leading-8 rich-text"
+                                                />
                                                 {subtitle ? (
-                                                    <p className="mt-1 text-lg lg:text-xl leading-6 text-text-color-80">
-                                                        {stripTags(subtitle)}
-                                                    </p>
+                                                    <SafeHtml
+                                                        as="p"
+                                                        value={subtitle}
+                                                        className="mt-1 text-lg lg:text-xl leading-6 text-text-color-80 rich-text"
+                                                    />
                                                 ) : null}
                                             </div>
                                             {paragraphs ? (
                                                 <SafeHtml
                                                     value={paragraphs}
-                                                    className="mt-5 text-base lg:text-lg leading-6 text-text-color-90"
+                                                    className="mt-5 text-base lg:text-lg leading-6 text-text-color-90 rich-text"
                                                 />
                                             ) : null}
                                             {link ? (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, SafeHtml, Link, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, SafeHtml, Link, getPageProfile } from '@uniwebcms/module-sdk';
 import { HiArrowUpRight } from 'react-icons/hi2';
 import Container from '../_utils/Container';
 
@@ -27,18 +27,24 @@ export default function Solutions({ block, website }) {
         <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <div className={`lg:text-${alignment} px-6`}>
-                    {pretitle ? (
-                        <h3 className="mb-1 font-medium  text-lg md:text-xl lg:text-2xl">
-                            {stripTags(pretitle)}
-                        </h3>
-                    ) : null}
-                    <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-                        {stripTags(title)}
-                    </h2>
+                    {pretitle && (
+                        <SafeHtml
+                            as="p"
+                            value={pretitle}
+                            className="mb-1 font-medium  text-lg md:text-xl lg:text-2xl rich-text"
+                        />
+                    )}
+                    <SafeHtml
+                        as="h2"
+                        value={title}
+                        className="mt-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl rich-text"
+                    />
                     {subtitle ? (
-                        <h3 className="mt-4 text-xl text-text-color-80 md:text-2xl">
-                            {stripTags(subtitle)}
-                        </h3>
+                        <SafeHtml
+                            as="p"
+                            value={subtitle}
+                            className="mt-4 text-xl text-text-color-80 md:text-2xl rich-text"
+                        />
                     ) : null}
                 </div>
                 <div className="mt-12">
@@ -88,11 +94,13 @@ const FeatureCard = ({ feature, isLink = false }) => {
                     </div>
                 )}
             </dt>
-            <h3 className="font-semibold ">{stripTags(title)}</h3>
+
+            <SafeHtml as="h3" value={title} className="font-semibold rich-text" />
+
             <SafeHtml
                 value={paragraphs}
                 as="dd"
-                className="mt-2 text-base leading-7 text-text-color-80"
+                className="mt-2 text-base leading-7 text-text-color-80 rich-text"
             />
         </div>
     );
