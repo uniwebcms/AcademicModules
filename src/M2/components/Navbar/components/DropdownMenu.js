@@ -58,10 +58,12 @@ export default function PopoverMenu(props) {
                                     >
                                         <Link
                                             to={item.route}
-                                            className="p-4 text-sm flex items-center gap-x-2 hover:bg-neutral-100 cursor-pointer"
+                                            className="p-4 text-base flex items-center gap-x-2.5 hover:bg-neutral-100 cursor-pointer min-w-52 min-h-16"
                                         >
                                             {item.icon && (
-                                                <Icon icon={item.icon} className="w-4 h-4" />
+                                                <div className="p-1 rounded-md bg-neutral-950 text-neutral-50">
+                                                    <Icon icon={item.icon} className="w-4 h-4" />
+                                                </div>
                                             )}
                                             <span>{item.label}</span>
                                         </Link>

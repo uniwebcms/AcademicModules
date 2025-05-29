@@ -16,7 +16,7 @@ const parseNavbarContent = (block) => {
     const logo = icon ? (
         <Icon icon={icon} className="w-full h-full" />
     ) : logoImg ? (
-        <Image profile={getPageProfile()} {...logoImg} className="w-full h-full object-contain" />
+        <Image profile={getPageProfile()} {...logoImg} className="w-full h-auto object-contain" />
     ) : null;
 
     return {
@@ -52,7 +52,7 @@ export default function navbar(props) {
             <nav className="p-6 w-full hidden xl:flex fixed z-[1000] left-[50%] transform -translate-x-[50%] h-20 rounded-xl backdrop-blur-sm mt-[10px] max-w-[1400px] bg-neutral-50/75">
                 <div className="flex gap-6 items-center w-full">
                     {/* Logo */}
-                    <div className="flex-shrink-0 w-24 mr-6">
+                    <div className="flex-shrink-0 w-28 mr-6">
                         <Link to="">{logo}</Link>
                     </div>
                     {/* Links */}

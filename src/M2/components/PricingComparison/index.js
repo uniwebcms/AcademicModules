@@ -150,7 +150,7 @@ export default function PricingComparison(props) {
                                     className={twJoin(
                                         'grid gap-4 grid-cols-5',
                                         !isHeaderRow && !isTailRow && 'border-b border-dashed',
-                                        rowIndex === 0 && 'sticky top-[64px] z-10'
+                                        rowIndex === 0 && 'sticky top-[64px] xl:top-[84px] z-10'
                                     )}
                                 >
                                     {row.map((cell, colIndex) => (

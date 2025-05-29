@@ -1,0 +1,15 @@
+title: 
+  en: Frequently Asked Questions
+  fr: Questions Fréquemment Posées
+label:
+  en: FAQ
+  fr: FAQ
+description:
+  en: A component to display frequently asked questions in a collapsible format.
+  fr: Un composant pour afficher les questions fréquemment posées dans un format collapsible.
+
+category: content
+export: true
+
+# images:
+#   - example.png

@@ -1,0 +1,38 @@
+title:
+  en: Newsletter
+  fr: Bulletin d'information
+label:
+  en: Newsletter
+  fr: Bulletin d'information
+description:
+  en: A component to display a newsletter subscription form with a conditional testimonial box.
+  fr: Un composant pour afficher un formulaire d'abonnement à la newsletter avec une boîte de témoignage conditionnelle.
+
+category: action
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  limit: 1
+  elements:
+    title:
+      description:
+        en: The name of person who is giving the testimonial.
+        fr: Le nom de la personne qui donne le témoignage.
+    subtitle:
+      description:
+        en: The title or role of the person who is giving the testimonial.
+        fr: Le titre ou le rôle de la personne qui donne le témoignage.
+    media:
+      type: image
+      description:
+        en: The picture of the person who is giving the testimonial.
+        fr: La photo de la personne qui donne le témoignage.
+    text:
+      description:
+        en: The testimonial text.
+        fr: Le texte du témoignage.

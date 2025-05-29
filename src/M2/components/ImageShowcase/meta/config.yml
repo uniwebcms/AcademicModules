@@ -1,0 +1,22 @@
+title: 
+  en: Image Showcase
+  fr: Présentation d'images
+label:  
+  en: Image Showcase
+  fr: Présentation d'images
+description:
+  en: Showcase a large image in a visually appealing format.
+  fr: Présentez une grande image dans un format visuellement attrayant.
+
+category: content
+export: true
+
+elements:
+  title:
+  media:
+    type: image
+    description: 
+      en: The showcase image.
+      fr: L'image de présentation.
+# images:
+#   - example.png

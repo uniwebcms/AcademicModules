@@ -1,0 +1,97 @@
+title: 
+  en: Spotlight
+  fr: Projecteur
+label:  
+  en: Spotlight
+  fr: Projecteur
+description:
+  en: Showcase image along with a title and description to highlight a specific feature or project.
+  fr: Présentez une image accompagnée d'un titre et d'une description pour mettre en avant une fonctionnalité ou un projet spécifique.
+
+category: content
+export: true
+
+elements:
+  title:
+  text:
+  media:
+    type: image
+    description: 
+      en: The showcase image.
+      fr: L'image de présentation.
+  link:
+
+properties:
+  text_position:
+    label:
+      en: Text Position
+      fr: Position du texte
+    type: string
+    default: left
+    enum:
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Right
+          fr: Droite
+        value: right
+    description:
+      en: Position of the text relative to the image.
+      fr: Position du texte par rapport à l'image.
+  vertical_alignment:
+    label:
+      en: Text Vertical Alignment
+      fr: Alignement vertical du texte
+    type: string
+    default: center
+    enum:
+      - label:
+          en: Top
+          fr: Haut
+        value: top
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+      - label:
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description:
+      en: Vertical alignment of the text within the spotlight.
+      fr: Alignement vertical du texte dans le projecteur.
+  aspect_ratio:
+    label:
+      en: Aspect Ratio
+      fr: Ratio d'aspect
+    type: string
+    default: '16 / 9'
+    enum:
+      - label:
+          en: 16:9
+          fr: 16:9
+        value: '16 / 9'
+      - label:
+          en: 4:3
+          fr: 4:3
+        value: '4 / 3'
+      - label:
+          en: 1:1
+          fr: 1:1
+        value: '1 / 1'
+    description:
+      en: The aspect ratio of the spotlight image.
+      fr: Le ratio d'aspect de l'image du projecteur.
+
+presets:
+  left_center_4_3:
+    label:
+      en: Left and Centered Aligned Text With 4:3 Aspect Ratio Image
+      fr: Texte aligné à gauche et centré avec une image au ratio d'aspect 4:3
+    properties:
+      text_position: left
+      vertical_alignment: center
+      aspect_ratio: '4 / 3'
+    image: left_center_4_3.png
