@@ -57,21 +57,46 @@ const FrameLoader = (props) => {
         </div>
     );
 
+    // Check if iframe src is cross-origin
+    const isCrossOrigin = (src) => {
+        try {
+            const iframeUrl = new URL(src);
+            const currentUrl = new URL(window.location.href);
+            return iframeUrl.origin !== currentUrl.origin;
+        } catch {
+            return false;
+        }
+    };
+
     useEffect(() => {
         /**
          * Handles the 'load' event of the iframe.
          */
         const handleIframeLoad = () => {
             const iframeWindow = iframeRef.current.contentWindow;
-            // Two ways of getting the document that work with older conventions
-            // Most modern browsers support the first condition (DOM element).
-            const iframeDocument = iframeRef.current.contentDocument || iframeWindow?.document;
-            const isRestricted = iframeWindow && !iframeDocument;
 
-            // uniweb.log('Has document', !!iframeDocument);
+            const isActuallyCrossOrigin = isCrossOrigin(src);
 
-            // If the iframe's document is ready, mark it as loaded
-            if (isRestricted || iframeDocument?.readyState === 'complete') {
+            if (isActuallyCrossOrigin) {
+                // For cross-origin iframes, just rely on load event
+                setIframeLoaded(true);
+                if (onReady) onReady(iframeWindow);
+                return;
+            }
+
+            try {
+                const iframeDocument = iframeRef.current.contentDocument || iframeWindow?.document;
+
+                if (iframeDocument?.readyState === 'complete') {
+                    setIframeLoaded(true);
+                    if (onReady) onReady(iframeWindow);
+                } else if (iframeWindow && !iframeDocument) {
+                    // Document exists but restricted - treat as loaded
+                    setIframeLoaded(true);
+                    if (onReady) onReady(iframeWindow);
+                }
+            } catch (error) {
+                // Security error means cross-origin - treat as loaded
                 setIframeLoaded(true);
                 if (onReady) onReady(iframeWindow);
             }

@@ -15,8 +15,8 @@ export default function ProductCatalog(props) {
     const profile = input.profile;
     let handle = profile ? profile.getHandle() || profile.getId() : '';
     // const appDomain = uniweb.getAppDomain();
-    // let src = `${appDomain}websites/${handle}?preview=true`;
-    let src = `/websites/${handle}?preview=true`;
+    let src = `${appDomain}websites/${handle}?preview=true`;
+    // let src = `/websites/${handle}?preview=true`;
 
     const boxStyle =
         'w-[20rem] flex-shrink-0 rounded-md h-full bg-white pointer-events-none overflow-hidden transform transition ease-in-out duration-500 shadow border hidden lg:flex';
