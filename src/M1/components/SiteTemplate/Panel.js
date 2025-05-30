@@ -43,7 +43,7 @@ export default function (props) {
                                 if (screen === 'mobile') setScreen('desktop');
                                 else setScreen('mobile');
                             }}
-                            className={`w-5 h-5 cursor-pointer ${
+                            className={`w-[22px] h-[22px] cursor-pointer ${
                                 screen === 'mobile' ? 'text-secondary-500' : 'text-neutral-700'
                             } hover:${
                                 screen === 'mobile' ? 'text-secondary-700' : 'text-neutral-900'
