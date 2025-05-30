@@ -48,7 +48,7 @@ export default function CTA({ block, website }) {
                     <SafeHtml
                         as="div"
                         value={pretitle}
-                        className="text-base font-semibold leading-7 rich-text"
+                        className="text-base sm:text-lg font-semibold leading-7 rich-text"
                     />
                     <SafeHtml
                         as="h2"
@@ -58,7 +58,7 @@ export default function CTA({ block, website }) {
                     <SafeHtml
                         as="h3"
                         value={subtitle}
-                        className="mt-6 text-sm sm:text-base leading-7 rich-text"
+                        className="mt-6 text-lg sm:text-xl rich-text"
                     />
 
                     <div className="mt-8">
