@@ -7,3 +7,7 @@
     color: inherit;
     cursor: pointer;
 }
+
+.rich-text p + p {
+    margin-top: 1.3em;
+}

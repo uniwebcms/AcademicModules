@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
 import { SafeHtml, Media, Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
@@ -58,7 +58,7 @@ export default function InformationMedia(props) {
                     ) : null}
                     {paragraphs?.length ? (
                         <SafeHtml
-                            className="mt-6 text-sm md:text-base lg:text-lg"
+                            className="mt-6 text-sm md:text-base lg:text-lg rich-text"
                             value={paragraphs}
                         />
                     ) : null}
@@ -91,23 +91,8 @@ export default function InformationMedia(props) {
     );
 }
 
-const rgbToHex = (rgb) => {
-    const rgbArray = rgb.match(/\d+/g);
-
-    if (!rgbArray) {
-        return null;
-    }
-
-    const hex = rgbArray.map((value) => {
-        const hexValue = Number(value).toString(16);
-        return hexValue.length === 1 ? `0${hexValue}` : hexValue;
-    });
-
-    return `#${hex.join('')}`;
-};
-
 const Centered = (props) => {
-    const { block, website } = props;
+    const { block } = props;
     const { main } = block;
 
     const { title = '', pretitle = '', subtitle = '' } = main.header || {};
@@ -117,25 +102,6 @@ const Centered = (props) => {
     const video = main.body?.videos[0];
 
     const containerRef = useRef(null);
-    const [gradient, setGradient] = useState({});
-
-    useEffect(() => {
-        if (containerRef.current) {
-            const computedStyle = window.getComputedStyle(containerRef.current);
-            const backgroundColor = computedStyle.backgroundColor;
-
-            const bgHex = rgbToHex(backgroundColor);
-            if (bgHex) {
-                const bgRgb = backgroundColor.replace(')', ' / 0)').replaceAll(',', '');
-
-                setGradient({
-                    '--tw-gradient-from': `${bgHex} var(--tw-gradient-from-position)`,
-                    '--tw-gradient-to': `${bgRgb} var(--tw-gradient-to-position)`,
-                    '--tw-gradient-stops': 'var(--tw-gradient-from), var(--tw-gradient-to)',
-                });
-            }
-        }
-    }, []);
 
     return (
         <section ref={containerRef} className={twJoin('py-24 sm:py-32 relative')}>
@@ -155,7 +121,7 @@ const Centered = (props) => {
                 ) : null}
                 {paragraphs?.length ? (
                     <SafeHtml
-                        className="lg:columns-2 columns-1 gap-x-[60px] mt-12 text-base md:text-lg text-left text-text-color-90"
+                        className="lg:columns-2 columns-1 gap-x-[60px] mt-12 text-base md:text-lg text-left text-text-color-90 rich-text"
                         value={paragraphs}
                     />
                 ) : null}
@@ -172,9 +138,9 @@ const Centered = (props) => {
                         />
                         <div className="relative" aria-hidden="true">
                             <div
-                                style={gradient}
+                                // style={gradient}
                                 className={twJoin(
-                                    'absolute -inset-x-20 bottom-0 bg-gradient-to-t pt-[7%]'
+                                    'absolute -inset-x-20 bottom-0 bg-gradient-to-t pt-[7%] from-bg-color to-transparent'
                                 )}
                             />
                         </div>
