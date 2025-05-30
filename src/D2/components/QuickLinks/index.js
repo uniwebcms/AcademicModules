@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, SafeHtml, Link } from '@uniwebcms/module-sdk';
+import { Icon, SafeHtml, Link } from '@uniwebcms/core-components';
 
 function QuickLink(props) {
     const { title, paragraphs, icons, links } = props;

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { Link, twJoin, website, Asset, FileLogo } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Link, Asset, FileLogo } from '@uniwebcms/core-components';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { IoDownload } from 'react-icons/io5';
 

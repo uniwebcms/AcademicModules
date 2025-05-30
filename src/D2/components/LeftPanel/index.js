@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 
 export default function LeftPanel(props) {
     const {

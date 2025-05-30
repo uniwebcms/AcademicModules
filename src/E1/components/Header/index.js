@@ -1,6 +1,6 @@
 import React from 'react';
 import Searchbar from '../_utils/Searchbar';
-import { Link } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import LangSwitch from '../_utils/LangSwitch';
 
 export default function (props) {

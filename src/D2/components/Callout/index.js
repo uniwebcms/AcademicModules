@@ -1,5 +1,6 @@
 import React from 'react';
-import { twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 import { LuInfo } from 'react-icons/lu';
 import { IoWarningOutline } from 'react-icons/io5';
 

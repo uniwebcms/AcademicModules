@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaCompress, FaExpand } from 'react-icons/fa';
-import { twJoin, Media, Image, website } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Media, Image } from '@uniwebcms/core-components';
 
 const youtubeRegex =
     /\b(?:https?:\/\/)?(?:(?:www|m)\.)?youtu(?:\.be\/|be\.com\/(?:watch(?:\?(?:(?:feature=player_embedded|app=desktop)&)?v=|\/)|v\/|oembed\?url=http%3A\/\/www\.youtube\.com\/watch\?v%3D|attribution_link\?a=[0-9A-Za-z\-_]{10,20}&u=(?:%2F|\/)watch%3Fv%3D|e(?:mbed)?\/|shorts\/)|be-nocookie\.com\/embed\/)([0-9A-Za-z\-_]{10,20})/;

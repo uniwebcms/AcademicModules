@@ -1,12 +1,15 @@
-import { Link } from '@uniwebcms/module-sdk';
-import { HiChevronRight, HiChevronDown } from 'react-icons/hi';
 import React, { useState } from 'react';
+import { Link } from '@uniwebcms/core-components';
+import { HiChevronRight, HiChevronDown } from 'react-icons/hi';
 
 const hasActiveFolder = (folder, activeId) => {
     let subFolders = (folder.sortedProfiles || []).filter((profile) => profile.folder);
 
     for (let i = 0; i < subFolders.length; i++) {
-        if (subFolders[i].folder.fileId.toString() === activeId || hasActiveFolder(subFolders[i].folder, activeId)) {
+        if (
+            subFolders[i].folder.fileId.toString() === activeId ||
+            hasActiveFolder(subFolders[i].folder, activeId)
+        ) {
             return true;
         }
     }
@@ -44,9 +47,9 @@ const Menus = ({ files, level = 1, opens, setOpens, activeId }) => {
 
         let iconMarkup = subFolders.length ? (
             opened ? (
-                <HiChevronDown className='h-5 w-5 text-gray-400 hover:text-gray-600'></HiChevronDown>
+                <HiChevronDown className="h-5 w-5 text-gray-400 hover:text-gray-600"></HiChevronDown>
             ) : (
-                <HiChevronRight className='h-5 w-5 text-gray-400 hover:text-gray-600'></HiChevronRight>
+                <HiChevronRight className="h-5 w-5 text-gray-400 hover:text-gray-600"></HiChevronRight>
             )
         ) : null;
 
@@ -61,20 +64,22 @@ const Menus = ({ files, level = 1, opens, setOpens, activeId }) => {
                     <div
                         className={`items-center pr-3 py-2 transition-colors duration-100 relative flex ${liTextClass} cursor-pointer hover:underline `}
                         style={{
-                            paddingLeft
-                        }}>
-                        <span className='rounded-md absolute inset-0 opacity-0 z-[-10]'></span>
-                        <span className='relative font-medium'>{name}</span>
+                            paddingLeft,
+                        }}
+                    >
+                        <span className="rounded-md absolute inset-0 opacity-0 z-[-10]"></span>
+                        <span className="relative font-medium">{name}</span>
                         {subFolders.length ? (
                             <div
-                                className='flex-shrink-0 ml-auto'
+                                className="flex-shrink-0 ml-auto"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setOpens({
                                         ...opens,
-                                        [fileId]: !opens?.[fileId]
+                                        [fileId]: !opens?.[fileId],
                                     });
-                                }}>
+                                }}
+                            >
                                 {iconMarkup}
                             </div>
                         ) : null}
@@ -86,7 +91,11 @@ const Menus = ({ files, level = 1, opens, setOpens, activeId }) => {
         if (subFolders.length && opened) {
             body.push(
                 <li key={`${fileId}_files`}>
-                    <Menus level={level + 1} files={subFolders} {...{ opens, setOpens, activeId }}></Menus>
+                    <Menus
+                        level={level + 1}
+                        files={subFolders}
+                        {...{ opens, setOpens, activeId }}
+                    ></Menus>
                 </li>
             );
         }
@@ -99,7 +108,7 @@ export default function (props) {
     const {
         website,
         input,
-        block: { title }
+        block: { title },
     } = props;
 
     const { useParams } = website.getRoutingComponents();
@@ -118,15 +127,18 @@ export default function (props) {
 
     return (
         <div className={`w-[320px] lg:w-80 bg-white overflow-hidden ml-[-1px]`}>
-            <div className='pt-6 h-full pb-0 flex flex-col'>
-                <h2 className='text-sm font-semibold px-8 flex justify-between'>
-                    <span className='uppercase text-gray-600'>{title}</span>
-                    <Link to={``} className='font-normal cursor-pointer hover:underline text-gray-600'>
+            <div className="pt-6 h-full pb-0 flex flex-col">
+                <h2 className="text-sm font-semibold px-8 flex justify-between">
+                    <span className="uppercase text-gray-600">{title}</span>
+                    <Link
+                        to={``}
+                        className="font-normal cursor-pointer hover:underline text-gray-600"
+                    >
                         {website.localize({ en: 'All', fr: 'Tout' })}
                     </Link>
                 </h2>
-                <div className='sticky flex-1'>
-                    <div className='flow-root overflow-y-auto px-8 py-6'>
+                <div className="sticky flex-1">
+                    <div className="flow-root overflow-y-auto px-8 py-6">
                         <Menus files={folder.sortedProfiles} {...{ opens, setOpens, activeId }} />
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, twJoin, website } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { LuArrowRight } from 'react-icons/lu';
 
 function PageLink({ label, route, dir = 'next', id, className }) {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Image, Link } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/core-components';
 import Expert from '../Expert';
 import Breadcrumb from '../_utils/Breadcrumb';
 import Navigation from '../_utils/Navigation';

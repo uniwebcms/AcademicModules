@@ -15,7 +15,7 @@
         "@react-google-maps/api": "^2.19.3",
         "@tailwindcss/typography": "^0.5.15",
         "@uniwebcms/core-components": "^1.6.10",
-        "@uniwebcms/module-sdk": "^1.23.19",
+        "@uniwebcms/module-sdk": "^2.0.0",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.0.1",
         "citation-js": "^0.7.14",
         "clone": "^2.1.2",

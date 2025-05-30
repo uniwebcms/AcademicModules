@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi';
 
 const ProfileBtn = (props) => {
@@ -9,8 +9,7 @@ const ProfileBtn = (props) => {
 
     let search = '';
 
-    for (let i in params)
-        search += search ? `&${i}=${params[i]}` : `?${i}=${params[i]}`;
+    for (let i in params) search += search ? `&${i}=${params[i]}` : `?${i}=${params[i]}`;
 
     const name = profile.getBasicInfo().title;
 
@@ -45,9 +44,7 @@ export default function ExpertNavigation(props) {
     let next = null;
 
     if (experts.length > 1) {
-        const index = experts.findIndex(
-            (item) => item.options?.fileId === activeExpert
-        );
+        const index = experts.findIndex((item) => item.options?.fileId === activeExpert);
 
         if (index > 0) {
             pre = experts[index - 1];
@@ -68,9 +65,7 @@ export default function ExpertNavigation(props) {
                     searchParams={searchParams}
                 ></ProfileBtn>
             ) : null}
-            {pre && next ? (
-                <div className={`w-px self-stretch bg-gray-400 mx-4`}></div>
-            ) : null}
+            {pre && next ? <div className={`w-px self-stretch bg-gray-400 mx-4`}></div> : null}
             {next ? (
                 <ProfileBtn
                     key="next"

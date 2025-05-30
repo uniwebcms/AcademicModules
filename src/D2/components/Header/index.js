@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Icon, Link, twJoin, MediaIcon } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { MediaIcon, Icon, Link } from '@uniwebcms/core-components';
 import { ThemeSelector } from './ThemeSelector';
 import { getMediaLinkType } from '../_utils/media';
 import LangSwitch from './LangSwitch';

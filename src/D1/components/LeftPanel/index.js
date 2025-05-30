@@ -1,6 +1,6 @@
-import { Link } from '@uniwebcms/module-sdk';
-import { HiChevronRight, HiChevronDown } from 'react-icons/hi';
 import React, { useEffect, useState, useCallback } from 'react';
+import { Link } from '@uniwebcms/core-components';
+import { HiChevronRight, HiChevronDown } from 'react-icons/hi';
 
 const includeActivePage = (child_items, activeRoute) => {
     if (!child_items) return false;

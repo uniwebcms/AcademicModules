@@ -5,7 +5,7 @@ function makeEntryPath(libraryName, subpath = '**/*.{js,jsx,ts,tsx}') {
 }
 
 module.exports = {
-    content: ['../src/**/*.{js,jsx}', makeEntryPath('@uniwebcms/module-sdk')],
+    content: ['../src/**/*.{js,jsx}', makeEntryPath('@uniwebcms/core-components')],
     theme: {},
-    plugins: [makeEntryPath('@uniwebcms/module-sdk', 'plugin')],
+    plugins: [],
 };

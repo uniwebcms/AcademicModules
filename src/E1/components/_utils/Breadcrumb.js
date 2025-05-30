@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { HiChevronRight, HiHome, HiDotsHorizontal } from 'react-icons/hi';
 import { Popover } from '@headlessui/react';
 
@@ -31,11 +31,7 @@ export default function Breadcrumb(props) {
                     </Popover.Button>
 
                     <Popover.Panel className="absolute -left-2 top-8 z-10 bg-white rounded-md !shadow-2xl ring-1 ring-black ring-opacity-20 divide-y divide-gray-200 flex flex-col overflow-hidden">
-                        <Popover.Button
-                            as="div"
-                            key={'all'}
-                            className={menuStyle}
-                        >
+                        <Popover.Button as="div" key={'all'} className={menuStyle}>
                             <Link className={`w-full block text-sm`} to={''}>
                                 {website.localize({
                                     en: 'All experts',
@@ -48,15 +44,8 @@ export default function Breadcrumb(props) {
                             const { name, fileId } = innerFolder;
 
                             return (
-                                <Popover.Button
-                                    as="div"
-                                    key={i}
-                                    className={menuStyle}
-                                >
-                                    <Link
-                                        className={`w-full block text-sm`}
-                                        to={fileId}
-                                    >
+                                <Popover.Button as="div" key={i} className={menuStyle}>
+                                    <Link className={`w-full block text-sm`} to={fileId}>
                                         {name}
                                     </Link>
                                 </Popover.Button>
@@ -98,13 +87,8 @@ export default function Breadcrumb(props) {
                 <li>
                     <div className={`flex items-center`}>
                         <Link to="">
-                            <div
-                                className={`text-gray-400 hover:text-gray-500`}
-                            >
-                                <HiHome
-                                    className={`flex-shrink-0 h-5 w-5`}
-                                    aria-hidden="true"
-                                />
+                            <div className={`text-gray-400 hover:text-gray-500`}>
+                                <HiHome className={`flex-shrink-0 h-5 w-5`} aria-hidden="true" />
                                 <span className={`sr-only`}>Home</span>
                             </div>
                         </Link>
@@ -117,10 +101,7 @@ export default function Breadcrumb(props) {
                                 className={`flex-shrink-0 h-5 w-5 text-gray-400 mr-2`}
                                 aria-hidden="true"
                             />
-                            <Link
-                                to={`?query=${queryText}`}
-                                className="text-gray-500 text-sm"
-                            >
+                            <Link to={`?query=${queryText}`} className="text-gray-500 text-sm">
                                 {website.localize({
                                     en: 'Search result for',
                                     fr: 'Résultat de recherche pour',
@@ -162,10 +143,7 @@ export default function Breadcrumb(props) {
     }
 
     return (
-        <nav
-            className={`flex bg-white absolute sm:static left-[3.25rem]`}
-            aria-label="Breadcrumb"
-        >
+        <nav className={`flex bg-white absolute sm:static left-[3.25rem]`} aria-label="Breadcrumb">
             <ol className={`flex items-center space-x-2`}>{markup}</ol>
         </nav>
     );

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, stripTags, twJoin } from '@uniwebcms/module-sdk';
+import { stripTags, twJoin } from '@uniwebcms/module-sdk';
 
 function normalizeId(string) {
     return stripTags(string).replace(/\s/g, '-').toLowerCase();

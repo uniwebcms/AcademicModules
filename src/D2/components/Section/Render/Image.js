@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../Section.module.scss';
-import { Image } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 
 const imageCaptionStyle = `block outline-none border-none text-slate-500 dark:text-slate-400 text-sm text-center ${styles.ImageCaption}}`;
 

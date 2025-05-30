@@ -1,5 +1,5 @@
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi';
-import { Link } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import * as React from 'react';
 
 export default function (props) {
@@ -18,16 +18,13 @@ export default function (props) {
     });
 
     let pre = activeIndex === 0 ? null : flatDocs[activeIndex - 1];
-    let next =
-        activeIndex === flatDocs.length - 1 ? null : flatDocs[activeIndex + 1];
+    let next = activeIndex === flatDocs.length - 1 ? null : flatDocs[activeIndex + 1];
 
     const btn =
         'flex-1 cursor-pointer flex items-center p-4 border rounded text-sm hover:shadow-lg group';
 
     return (
-        <div
-            className={`flex flex-col md:flex-row w-full pt-16 pb-16 px-4 md:px-0`}
-        >
+        <div className={`flex flex-col md:flex-row w-full pt-16 pb-16 px-4 md:px-0`}>
             {pre ? (
                 <Link className={`mb-4 md:mr-2 md:mb-0 ${btn}`} to={pre.route}>
                     <HiArrowNarrowLeft
@@ -40,9 +37,7 @@ export default function (props) {
                                 fr: 'Précédente',
                             })}
                         </span>
-                        <span
-                            className={`truncate font-medium group-hover:text-blue-500`}
-                        >
+                        <span className={`truncate font-medium group-hover:text-blue-500`}>
                             {pre.label}
                         </span>
                     </div>
@@ -54,9 +49,7 @@ export default function (props) {
                         <span className={`text-gray-400`}>
                             {website.localize({ en: 'Next', fr: 'Suivant' })}
                         </span>
-                        <span
-                            className={`truncate font-medium group-hover:text-blue-500}`}
-                        >
+                        <span className={`truncate font-medium group-hover:text-blue-500}`}>
                             {next.label}
                         </span>
                     </div>
