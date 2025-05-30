@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, Link, MediaIcon, useLoadProfileBody, getPageProfile } from '@uniwebcms/module-sdk';
+import { useLoadProfileBody, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, Link, MediaIcon } from '@uniwebcms/core-components';
 import { getMediaLinkType } from '../_utils/media';
 import Container from '../_utils/Container';
 

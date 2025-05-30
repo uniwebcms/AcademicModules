@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-    Icon,
-    SafeHtml,
-    Link,
-    stripTags,
-    getPageProfile,
-    Media,
-    twJoin,
-} from '@uniwebcms/module-sdk';
+import { stripTags, getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Icon, SafeHtml, Link, Media } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function Spotlight({ block, website }) {

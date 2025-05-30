@@ -1,5 +1,6 @@
 import React from 'react';
-import { Asset, FileLogo, stripTags, Profile } from '@uniwebcms/module-sdk';
+import { stripTags, Profile } from '@uniwebcms/module-sdk';
+import { Asset, FileLogo } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { convertToProfileData } from '../_utils/document';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { stripTags } from '@uniwebcms/module-sdk';
 
 export default function (props) {
     const { block } = props;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, MediaIcon, SafeHtml, Disclaimer } from '@uniwebcms/module-sdk';
+import { Link, MediaIcon, SafeHtml, Disclaimer } from '@uniwebcms/core-components';
 import { getMediaLinkType } from '../_utils/media';
 import Container from '../_utils/Container';
 import './style.css';

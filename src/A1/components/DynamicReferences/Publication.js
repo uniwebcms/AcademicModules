@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeHtml } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 import Cite from '../_utils/cite/Render';
 
 const isInitial = (name) => {

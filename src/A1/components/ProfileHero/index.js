@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, twJoin, twMerge } from '@uniwebcms/module-sdk';
+import { twJoin, twMerge } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 const backdropStyle = {

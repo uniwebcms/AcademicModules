@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
-import { MediaIcon } from '@uniwebcms/module-sdk';
+import { MediaIcon } from '@uniwebcms/core-components';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import MoonLoader from 'react-spinners/MoonLoader';
 

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Container from '../_utils/Container';
-import { twJoin, Image, website } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import { AiFillCaretRight, AiFillCaretLeft } from 'react-icons/ai';
 import { MdOutlineFormatListBulleted } from 'react-icons/md';
 import { BiSearch, BiX } from 'react-icons/bi';

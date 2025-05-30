@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeHtml, stripTags } from '@uniwebcms/module-sdk';
+import { stripTags } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 import { Disclosure } from '@headlessui/react';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
 import Container from '../_utils/Container';

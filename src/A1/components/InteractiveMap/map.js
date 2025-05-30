@@ -6,7 +6,8 @@ import {
     InfoWindow,
     MarkerClusterer,
 } from '@react-google-maps/api';
-import { Image, twMerge } from '@uniwebcms/module-sdk';
+import { twMerge } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import { GrMapLocation } from 'react-icons/gr';
 import { getDateRange } from '../_utils/date';
 import './style.css';

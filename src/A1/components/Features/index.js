@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-    SafeHtml,
-    Icon,
-    Link,
-    stripTags,
-    Image,
-    getPageProfile,
-    twJoin,
-} from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Icon, Link, Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function Features({ block, website }) {

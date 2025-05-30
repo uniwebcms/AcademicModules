@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, Link, stripTags, getPageProfile, SafeHtml, twJoin } from '@uniwebcms/module-sdk';
+import { stripTags, getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Image, Link, SafeHtml } from '@uniwebcms/core-components';
 
 export default function Cards({ website, block }) {
     const { main } = block;

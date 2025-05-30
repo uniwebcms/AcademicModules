@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Image, twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, SafeHtml, Link, getPageProfile } from '@uniwebcms/module-sdk';
+import { getPageProfile } from '@uniwebcms/module-sdk';
+import { SafeHtml, Image, Link } from '@uniwebcms/core-components';
 import { HiArrowUpRight } from 'react-icons/hi2';
 import Container from '../_utils/Container';
 

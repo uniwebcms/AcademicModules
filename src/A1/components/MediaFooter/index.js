@@ -1,16 +1,6 @@
 import React, { useRef } from 'react';
-import {
-    Link,
-    Icon,
-    stripTags,
-    website,
-    MediaIcon,
-    SafeHtml,
-    twJoin,
-    getPageProfile,
-    Image,
-    Disclaimer,
-} from '@uniwebcms/module-sdk';
+import { stripTags, website, twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Link, Icon, Image, MediaIcon, Disclaimer, SafeHtml } from '@uniwebcms/core-components';
 import { getMediaLinkType } from '../_utils/media';
 import { MdEmail } from 'react-icons/md';
 import { BiSolidChevronUp } from 'react-icons/bi';

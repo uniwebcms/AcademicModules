@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { website, stripTags, Link, Image } from '@uniwebcms/module-sdk';
+import { website, stripTags } from '@uniwebcms/module-sdk';
+import { Link, Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { parseReference, getDateFromIssued, parseProfileData } from '../_utils/reference';
 import CVRefRender from '../_utils/reference/CVRefRender';

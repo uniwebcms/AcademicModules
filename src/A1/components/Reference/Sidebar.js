@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Cite from '../_utils/cite/Render';
-import { SafeHtml, Link, Image } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link, Image } from '@uniwebcms/core-components';
 import CitationStyle from './CitationStyles';
 import { MdFileCopy } from 'react-icons/md';
 import { parseReference, getDateFromIssued, parseProfileData } from '../_utils/reference';

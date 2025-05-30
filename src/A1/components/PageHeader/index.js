@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { HiBars3, HiXMark } from 'react-icons/hi2';
-import { Link, twMerge, Image, twJoin, getPageProfile, Icon } from '@uniwebcms/module-sdk';
+import { twMerge, twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Link, Image, Icon } from '@uniwebcms/core-components';
 import { CgChevronDown } from 'react-icons/cg';
 import PopoverMenu from '../_utils/PopoverMenu';
 import LanguageToggle from './LanguageToggle';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, Link, twMerge, stripTags, twJoin } from '@uniwebcms/module-sdk';
+import { stripTags, twJoin } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/core-components';
 import { MdPlayArrow } from 'react-icons/md';
 import './style.css';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { SafeHtml, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 
 export default function ProfileSection({ input, block }) {
     if (!input) return null;
@@ -21,8 +22,13 @@ export default function ProfileSection({ input, block }) {
                 width === 'lg' && 'max-w-3xl',
                 width === 'xl' && 'max-w-5xl',
                 width === '2xl' && 'max-w-7xl'
-            )}>
-            <h2 className={twJoin('text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl mx-auto')}>
+            )}
+        >
+            <h2
+                className={twJoin(
+                    'text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl mx-auto'
+                )}
+            >
                 {mainHeader?.title}
             </h2>
             <SafeHtml
@@ -32,7 +38,8 @@ export default function ProfileSection({ input, block }) {
                     columns == '1' && 'columns-1',
                     columns == '2' && 'columns-1 lg:columns-2',
                     columns == '3' && 'columns-1 lg:columns-2 xl:columns-3'
-                )}></SafeHtml>
+                )}
+            ></SafeHtml>
         </Container>
     );
 }

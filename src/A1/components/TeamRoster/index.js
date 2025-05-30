@@ -1,13 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import {
-    Image,
-    Link,
-    MediaIcon,
-    useLoadProfileBody,
-    stripTags,
-    getPageProfile,
-} from '@uniwebcms/module-sdk';
+import { useLoadProfileBody, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, Link, MediaIcon } from '@uniwebcms/core-components';
 import { getMediaLinkType } from '../_utils/media';
 
 const ItemsRenderer = ({ items, aspectRatio, website }) => {

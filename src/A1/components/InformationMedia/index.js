@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Image, twJoin, SafeHtml, Media, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { SafeHtml, Media, Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function InformationMedia(props) {

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, Suspense, lazy, memo } from 'react';
-import { stripTags, twJoin, twMerge, Image, website } from '@uniwebcms/module-sdk';
+import { stripTags, twJoin, twMerge } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import ClickAwayListener from 'react-click-away-listener';
 import {
     AiFillCaretRight,

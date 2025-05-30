@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, SafeHtml, Asset, FileLogo, Link } from '@uniwebcms/module-sdk';
+import { Image, SafeHtml, Asset, FileLogo, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { parseReference, parseProfileData } from '../_utils/reference';
 import CVRefRender from '../_utils/reference/CVRefRender';

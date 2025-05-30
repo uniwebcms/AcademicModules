@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, stripTags, getPageProfile, Link, twJoin } from '@uniwebcms/module-sdk';
+import { stripTags, getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function LogoCloud({ block }) {

@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeHtml, twMerge, Image, Link, twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { twMerge, twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, SafeHtml, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function Hero(props) {

@@ -4,7 +4,7 @@
  */
 
 import React, { Fragment } from 'react';
-import { website, twMerge, localize } from '@uniwebcms/module-sdk';
+import { website, twMerge } from '@uniwebcms/module-sdk';
 import { MdLanguage } from 'react-icons/md';
 import { Transition, Popover } from '@headlessui/react';
 import { ImRadioChecked } from 'react-icons/im';

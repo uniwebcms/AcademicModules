@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, twJoin, SafeHtml, Link, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { SafeHtml, Image, Link } from '@uniwebcms/core-components';
 
 export default function (props) {
     const { block, website } = props;

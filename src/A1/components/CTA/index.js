@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, Image, SafeHtml, getPageProfile } from '@uniwebcms/module-sdk';
+import { getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, Link, SafeHtml } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function CTA({ block, website }) {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Carousel } from 'flowbite-react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
-import { SafeHtml, Link, Image, twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link, Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import './style.css';
 

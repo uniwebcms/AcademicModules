@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Image, SafeHtml, twMerge, stripTags } from '@uniwebcms/module-sdk';
-import Container from '../_utils/Container';
+import { twMerge, stripTags } from '@uniwebcms/module-sdk';
+import { Image, SafeHtml } from '@uniwebcms/core-components';
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi';
+import Container from '../_utils/Container';
 
 const islandHeight = 33;
 

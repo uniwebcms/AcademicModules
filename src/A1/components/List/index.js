@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeHtml, Image, Link, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { SafeHtml, Image, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function List({ block, website }) {

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
 import { IoReturnUpBackOutline } from 'react-icons/io5';
 import Container from '../_utils/Container';
-// import Render from '../_utils/articles/Render';
-// import { buildArticleBlocks } from '../_utils/articles';
-import { ArticleRender as Render, buildArticleBlocks } from '@uniwebcms/core-components';
+import { ArticleRender as Render, buildArticleBlocks, Link } from '@uniwebcms/core-components';
 
 export default function Article(props) {
     const { website, input, block } = props;
