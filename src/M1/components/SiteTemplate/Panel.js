@@ -1,12 +1,13 @@
 import React from 'react';
 import { HiArrowLeft } from 'react-icons/hi';
 import { Link, SafeHtml } from '@uniwebcms/core-components';
+import { LiaExternalLinkSquareAltSolid } from 'react-icons/lia';
+import { TbDeviceMobile } from 'react-icons/tb';
 import Styles from './sidebar.module.scss';
-import { ImMobile2 } from 'react-icons/im';
 import LibrarySection from './LibrarySection';
 
 export default function (props) {
-    const { profile, website, input, screen, setScreen } = props;
+    const { profile, website, input, screen, setScreen, iframeSrc } = props;
     const info = profile.getBasicInfo();
     const { title: name, subtitle: description } = info;
 
@@ -30,15 +31,25 @@ export default function (props) {
                             })}
                         </span>
                     </Link>
-                    <ImMobile2
-                        onClick={() => {
-                            if (screen === 'mobile') setScreen('desktop');
-                            else setScreen('mobile');
-                        }}
-                        className={`w-5 h-5 cursor-pointer ${
-                            screen === 'mobile' ? 'text-secondary-500' : 'text-neutral-700'
-                        } hover:${screen === 'mobile' ? 'text-secondary-700' : 'text-neutral-900'}`}
-                    />
+                    <div className="flex items-center space-x-2">
+                        <LiaExternalLinkSquareAltSolid
+                            onClick={() => {
+                                window.open(iframeSrc, '_blank');
+                            }}
+                            className={`w-6 h-6 text-neutral-700 hover:text-neutral-900 cursor-pointer`}
+                        />
+                        <TbDeviceMobile
+                            onClick={() => {
+                                if (screen === 'mobile') setScreen('desktop');
+                                else setScreen('mobile');
+                            }}
+                            className={`w-5 h-5 cursor-pointer ${
+                                screen === 'mobile' ? 'text-secondary-500' : 'text-neutral-700'
+                            } hover:${
+                                screen === 'mobile' ? 'text-secondary-700' : 'text-neutral-900'
+                            }`}
+                        />
+                    </div>
                 </div>
             </div>
             <div className={`flex flex-col px-4 py-3 flex-1`}>

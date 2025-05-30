@@ -2,9 +2,11 @@ import React, { useState, Fragment } from 'react';
 import Preview from './Preview';
 import Panel from './Panel';
 import { Popover, Transition } from '@headlessui/react';
+import { LuInfo } from 'react-icons/lu';
 import Styles from './sidebar.module.scss';
 import LibrarySection from './LibrarySection';
-import { SafeHtml } from '@uniwebcms/core-components';
+import { BsArrowLeft } from 'react-icons/bs';
+import { SafeHtml, Link } from '@uniwebcms/core-components';
 
 export default function ProductCatalog(props) {
     const { input, website } = props;
@@ -28,26 +30,32 @@ export default function ProductCatalog(props) {
         <div className="relative w-full max-w-screen flex bg-neutral-950/90 max-w-full flex-grow lg:flex-row flex-col py-6 h-screen gap-5 px-5 sm:px-6 md:px-8">
             <div className={`${boxStyle}`}>
                 <div className="pointer-events-auto w-full transition flex-shrink-0">
-                    <Panel {...{ profile, website, input, screen, setScreen }}></Panel>
+                    <Panel
+                        {...{ profile, website, input, screen, setScreen, iframeSrc: src }}
+                    ></Panel>
                 </div>
             </div>
             <div
                 className={`py-2 px-4 bg-neutral-50 w-full flex items-center justify-between lg:hidden rounded`}
             >
-                <div className={`flex items-center gap-3`}>
+                <div className={`flex items-center gap-2`}>
+                    <Link
+                        to={input.makeHrefToIndex()}
+                        className={`w-6 h-6 cursor-pointer text-neutral-700 mr-1`}
+                    >
+                        <BsArrowLeft className={`w-full h-full`} />
+                    </Link>
                     <h2 className={`text-sm font-bold`}>{name}</h2>
-                    <Popover className="relative">
+                    <Popover className="relative flex items-center justify-center">
                         {({ open }) => (
                             <>
                                 <Popover.Button
                                     as="div"
                                     className={`
-                                ${open ? 'text-secondary-800' : 'text-secondary-500'}
+                                ${open ? 'text-secondary-500' : 'text-neutral-500'}
                                 group inline-flex items-center rounded-md text-sm cursor-pointer `}
                                 >
-                                    <span className={`text-sm text-secondary-500 cursor-pointer`}>
-                                        {website.localize({ en: 'Info', fr: 'Info' })}
-                                    </span>
+                                    <LuInfo className="w-5 h-5" />
                                 </Popover.Button>
                                 <Transition
                                     as={Fragment}
@@ -58,14 +66,16 @@ export default function ProductCatalog(props) {
                                     leaveFrom="opacity-100 translate-y-0"
                                     leaveTo="opacity-0 translate-y-1"
                                 >
-                                    <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-full max-w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+                                    <Popover.Panel className="absolute left-1/2 top-4 z-10 mt-3 w-64 max-w-screen max-w-sm -translate-x-1/2 transform sm:px-0 lg:max-w-3xl shadow-lg">
                                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-neutral-950/5">
-                                            <div className="relative grid gap-2 bg-neutral-50 p-7 lg:grid-cols-2">
-                                                <h2 className={`text-lg font-bold`}>{name}</h2>
+                                            <div className="relative grid gap-2 bg-neutral-950 p-4 lg:grid-cols-2">
+                                                <h2 className={`text-lg font-bold text-neutral-50`}>
+                                                    {name}
+                                                </h2>
                                                 {description ? (
                                                     <div
                                                         className={
-                                                            `text-neutral-600 mt-2 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
+                                                            `text-neutral-300 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
                                                             ` ${Styles.Scrollbar}`
                                                         }
                                                     >
@@ -78,6 +88,7 @@ export default function ProductCatalog(props) {
                                                 <LibrarySection
                                                     {...props}
                                                     info={info}
+                                                    darkMode
                                                 ></LibrarySection>
                                             </div>
                                         </div>
@@ -115,7 +126,7 @@ export default function ProductCatalog(props) {
                                 console.error('Error:', error); // Handle any errors
                             });
                     }}
-                    className={`flex items-center rounded-full h-8 text-sm text-blue-500 hover:text-blue-700 hover:underline cursor-pointer`}
+                    className={`flex items-center rounded-full h-8 px-4 text-xs bg-blue-100/75 text-blue-600 border border-blue-400`}
                     style={{ width: 'fit-content' }}
                 >
                     <p className={`font-medium tracking-wide`}>
