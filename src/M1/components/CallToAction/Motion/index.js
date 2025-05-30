@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
-import { Link, stripTags } from '@uniwebcms/module-sdk';
+import { stripTags } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { motion, useInView } from 'framer-motion';
 
 export default function Motion(props) {

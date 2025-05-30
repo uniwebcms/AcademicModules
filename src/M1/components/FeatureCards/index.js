@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Image, getPageProfile, SafeHtml, Link, twJoin } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Link, SafeHtml, Image } from '@uniwebcms/core-components';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { GoArrowRight } from 'react-icons/go';
 import { TbSlash } from 'react-icons/tb';

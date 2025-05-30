@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Icon, Image, Link, getPageProfile, SafeHtml } from '@uniwebcms/module-sdk';
+import { getPageProfile } from '@uniwebcms/module-sdk';
+import { Icon, Image, Link, SafeHtml } from '@uniwebcms/core-components';
 import { getMediaLinkType, getMediaIcon } from '../_utils/media';
 import { GoGlobe } from 'react-icons/go';
 import { IoIosSend } from 'react-icons/io';

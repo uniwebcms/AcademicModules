@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../_utils/Container';
-import { twJoin, Icon, Image, getPageProfile, Media, Link } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Icon, Image, Media, Link } from '@uniwebcms/core-components';
 import { LuArrowRight } from 'react-icons/lu';
 
 const containerBgGradientToColors = ['to-primary-50', 'to-accent-50', 'to-secondary-50'];

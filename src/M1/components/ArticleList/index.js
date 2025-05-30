@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { twJoin, Image, Link, Profile } from '@uniwebcms/module-sdk';
+import { twJoin, Profile } from '@uniwebcms/module-sdk';
+import { Link, Image } from '@uniwebcms/core-components';
 import { normalizeDate } from '../_utils/date';
 
 const ArticleAuthor = ({ info, in_side_panel }) => {

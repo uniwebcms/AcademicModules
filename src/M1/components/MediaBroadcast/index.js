@@ -3,7 +3,7 @@ import Container from '../_utils/Container';
 import { getMediaLinkType, getMediaIcon } from '../_utils/media';
 import { SiYoutube, SiVimeo } from 'react-icons/si';
 import { HiX } from 'react-icons/hi';
-import { Link, Image } from '@uniwebcms/module-sdk';
+import { Link, Image } from '@uniwebcms/core-components';
 
 const VideoThumbnail = (props) => {
     const { src, caption: defaultTitle } = props;

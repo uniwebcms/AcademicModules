@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Icon, Link, twJoin, SafeHtml, Image, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Icon, Link, SafeHtml, Image } from '@uniwebcms/core-components';
 import { motion } from 'framer-motion';
 
 export default function Feature(props) {

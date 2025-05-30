@@ -1,51 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { twJoin, Image, Link, Profile } from '@uniwebcms/module-sdk';
-
-// const ArticleAuthor = ({ info, in_side_panel }) => {
-//     if (!info.author) return null;
-
-//     let [authorId, authorInfo] = info.author;
-//     authorInfo = typeof authorInfo === 'string' ? JSON.parse(authorInfo) : authorInfo;
-
-//     const authorProfile = Profile.newProfile('members', authorId, { head: authorInfo });
-
-//     const { title } = authorProfile.getBasicInfo();
-
-//     return (
-//         <div className={twJoin(in_side_panel ? 'h-8 gap-2' : 'h-12 gap-4', 'flex items-center')}>
-//             <Image
-//                 profile={authorProfile}
-//                 type="avatar"
-//                 className={twJoin(in_side_panel ? 'w-7 h-7' : 'w-10 h-10', 'rounded-full')}
-//             />
-//             <div>
-//                 <p
-//                     className={twJoin(
-//                         in_side_panel ? 'text-sm' : 'text-sm lg:text-base',
-//                         'text-text-color-70'
-//                     )}
-//                 >
-//                     {title}
-//                 </p>
-//                 {info.date && (
-//                     <p
-//                         className={twJoin(
-//                             in_side_panel ? 'text-xs' : 'text-xs lg:text-sm',
-//                             'text-text-color-40'
-//                         )}
-//                     >
-//                         {new Date(info.date).toLocaleDateString('en-US', {
-//                             year: 'numeric',
-//                             month: 'long',
-//                             day: 'numeric',
-//                         })}
-//                     </p>
-//                 )}
-//             </div>
-//         </div>
-//     );
-// };
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/core-components';
 
 export default function VideoList(props) {
     const { block, input } = props;

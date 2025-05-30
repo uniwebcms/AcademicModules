@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Link, Image, useBlockInputFilterState } from '@uniwebcms/module-sdk';
+import { useBlockInputFilterState } from '@uniwebcms/module-sdk';
+import { Link, Image } from '@uniwebcms/core-components';
 import { HiX } from 'react-icons/hi';
 
 export default function VideoHub(props) {

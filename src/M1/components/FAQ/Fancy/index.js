@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, Icon, SafeHtml } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Icon } from '@uniwebcms/core-components';
 import { HiChevronRight } from 'react-icons/hi';
 
 const faqItemIconColors = ['text-secondary-500', 'text-primary-500', 'text-accent-500'];

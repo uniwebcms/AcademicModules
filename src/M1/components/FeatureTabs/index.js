@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
-import { Icon, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Icon } from '@uniwebcms/core-components';
 
 export default function FeatureTabs(props) {
     const { block } = props;

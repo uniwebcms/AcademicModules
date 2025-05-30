@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, stripTags, Link } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 
 // declare const variables
 const primaryCardHalationStartPosition = { x: 1, y: 0.35 };

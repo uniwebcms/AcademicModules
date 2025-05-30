@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { twJoin, Media, Link, SafeHtml, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Media, Link, SafeHtml } from '@uniwebcms/core-components';
 import { FaPlay } from 'react-icons/fa';
 
 export default function FeatureSpotlight(props) {

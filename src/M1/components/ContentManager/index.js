@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../_utils/Container';
 import PopoverMenu from '../_utils/PopoverMenu';
-import { website, twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { website, twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 import { HiSearch, HiFilter, HiOutlineBookOpen, HiArrowRight, HiX, HiCheck } from 'react-icons/hi';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { Switch, Dialog } from '@headlessui/react';

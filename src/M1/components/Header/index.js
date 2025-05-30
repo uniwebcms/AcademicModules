@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getNextBlockContext } from '../_utils/context';
-import { Image, Icon, getPageProfile, twJoin, Link, website } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin, website } from '@uniwebcms/module-sdk';
+import { Image, Icon, Link } from '@uniwebcms/core-components';
 import { languages } from '../_utils/translate';
 import { HiOutlineGlobeAlt, HiSearch, HiX, HiOutlineMenu, HiChevronDown } from 'react-icons/hi';
 import { GrRadialSelected } from 'react-icons/gr';

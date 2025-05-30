@@ -1,6 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import Container from '../_utils/Container';
-import { SafeHtml, Link, twJoin, Icon, website } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { SafeHtml, Icon, Link } from '@uniwebcms/core-components';
 import { LuDownload, LuExternalLink, LuArrowRight } from 'react-icons/lu';
 
 const SimpleCard = ({ block }) => {

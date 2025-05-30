@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon, Image, SafeHtml, getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Icon, Image, SafeHtml } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function ContentHighlight(props) {

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
 import { formatToCAD } from '../_utils/pricing';
-import { twJoin, website, Icon } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Icon } from '@uniwebcms/core-components';
 import { LuLayers2, LuCrown, LuGem, LuBlocks } from 'react-icons/lu';
 import { Switch } from '@headlessui/react';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { SafeHtml, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 
 export default function ContentWrapper(props) {
     const { block } = props;

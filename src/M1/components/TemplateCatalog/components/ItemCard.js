@@ -2,7 +2,8 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { useInView } from 'react-intersection-observer';
 import VideoPreview from './VideoPreview';
 import IframePreview from './IframePreview';
-import { Link, twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 
 const ItemCard = React.memo(({ item }) => {
     const [isHovering, setIsHovering] = useState(false);

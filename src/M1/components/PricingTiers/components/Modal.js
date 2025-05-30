@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
 import { HiX } from 'react-icons/hi';
-import { twJoin, Link } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import {
     LuLayers2,
     LuCrown,

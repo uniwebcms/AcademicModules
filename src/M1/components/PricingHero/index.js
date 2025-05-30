@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
 import { HiCheck } from 'react-icons/hi';
-import { SafeHtml, Icon, Link } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link } from '@uniwebcms/core-components';
 import Fancy from './Fancy';
 
 const PlanBox = (props) => {

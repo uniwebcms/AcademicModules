@@ -1,5 +1,6 @@
 import React from 'react';
-import { twJoin, Image, getPageProfile, Link } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { LuChevronRight } from 'react-icons/lu';
 

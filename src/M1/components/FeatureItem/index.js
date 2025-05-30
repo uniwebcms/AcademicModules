@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon, SafeHtml, Link, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Link, SafeHtml, Icon } from '@uniwebcms/core-components';
 import { motion } from 'framer-motion';
 import { MdArrowForward } from 'react-icons/md';
 

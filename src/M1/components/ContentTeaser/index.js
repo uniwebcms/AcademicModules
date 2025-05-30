@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, getPageProfile, Link, twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Image, Link } from '@uniwebcms/core-components';
 import { MdArrowForward } from 'react-icons/md';
 
 const Card = (props) => {

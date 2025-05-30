@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, getPageProfile, Media, SafeHtml, twJoin, Link } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Image, Media, SafeHtml, Link } from '@uniwebcms/core-components';
 import { LuChevronRight } from 'react-icons/lu';
 
 const parseButtonContent = (content) => {

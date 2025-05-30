@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Link, twJoin } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { motion } from 'framer-motion';
 import { RiArrowRightLine, RiCodeSSlashFill } from 'react-icons/ri';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiArrowLeft } from 'react-icons/hi';
-import { Link, SafeHtml } from '@uniwebcms/module-sdk';
+import { Link, SafeHtml } from '@uniwebcms/core-components';
 import Styles from './sidebar.module.scss';
 import { ImMobile2 } from 'react-icons/im';
 import LibrarySection from './LibrarySection';

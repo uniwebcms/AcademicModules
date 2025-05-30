@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
-import { Icon, twJoin, website, SafeHtml } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { SafeHtml, Icon } from '@uniwebcms/core-components';
 import { LuInfo } from 'react-icons/lu';
 import { HiX } from 'react-icons/hi';
 import {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, twJoin } from '@uniwebcms/module-sdk';
-import { HiArrowLeft, HiArrowNarrowLeft } from 'react-icons/hi';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { CgArrowLeft } from 'react-icons/cg';
 import Container from '../_utils/Container';
 import { buildArticleBlocks } from './Render/helper';

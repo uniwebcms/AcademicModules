@@ -1,7 +1,8 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import Container from '../_utils/Container';
 import { formatToCAD } from '../_utils/pricing';
-import { Link, twJoin, SafeHtml, Icon, website } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Link, Icon, SafeHtml } from '@uniwebcms/core-components';
 import { AiOutlineQuestion } from 'react-icons/ai';
 import { HiCheck } from 'react-icons/hi';
 import { Switch } from '@headlessui/react';

@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, SafeHtml, Link } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link } from '@uniwebcms/core-components';
 
 const FloatingParticle = ({ className = '' }) => (
     <div

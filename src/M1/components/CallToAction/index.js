@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { Image, getPageProfile, Link, twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Link, Image, SafeHtml } from '@uniwebcms/core-components';
 import Fancy from './Fancy';
 import Motion from './Motion';
 

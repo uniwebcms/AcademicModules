@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, Icon, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { Icon } from '@uniwebcms/core-components';
 
 const featureItemAccentColors = ['text-secondary-500', 'text-primary-500', 'text-accent-500'];
 const featureItemFeatureBulletStyles = [

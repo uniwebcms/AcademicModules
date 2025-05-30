@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 
 export default function Timeline(props) {
     const { block } = props;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, Icon } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Icon } from '@uniwebcms/core-components';
 import { formatToCAD } from '../../_utils/pricing';
 
 const addonIconColors = ['text-blue-500', 'text-orange-500', 'text-green-500', 'text-blue-500'];

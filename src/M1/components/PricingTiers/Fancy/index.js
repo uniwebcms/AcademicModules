@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, stripTags, website, Icon, Link } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, website } from '@uniwebcms/module-sdk';
+import { Icon, Link } from '@uniwebcms/core-components';
 import { AiOutlineQuestion } from 'react-icons/ai';
 
 const tierItemIconColors = ['text-secondary-500', 'text-primary-500', 'text-accent-500'];

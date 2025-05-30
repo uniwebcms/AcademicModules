@@ -1,11 +1,10 @@
 import React, { useState, Fragment } from 'react';
-
 import Preview from './Preview';
 import Panel from './Panel';
 import { Popover, Transition } from '@headlessui/react';
 import Styles from './sidebar.module.scss';
 import LibrarySection from './LibrarySection';
-import { SafeHtml } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 
 export default function ProductCatalog(props) {
     const { input, website } = props;

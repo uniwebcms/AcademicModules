@@ -4,7 +4,7 @@
  */
 
 import React, { Fragment } from 'react';
-import { website, twMerge, localize } from '@uniwebcms/module-sdk';
+import { website, twMerge } from '@uniwebcms/module-sdk';
 import { MdLanguage } from 'react-icons/md';
 import { Transition, Popover } from '@headlessui/react';
 import { ImRadioChecked } from 'react-icons/im';
@@ -28,7 +28,7 @@ export default function (props) {
 
     const labels = {
         en: 'English',
-        fr: 'Français'
+        fr: 'Français',
     };
 
     if (langOptions && Array.isArray(langOptions) && langOptions.length) {
@@ -43,31 +43,38 @@ export default function (props) {
                 )}
                 onClick={() => {
                     if (opt.value !== currentLang) website.changeLanguage(opt.value);
-                }}>
-                <span className='!text-inherit hover:!text-inherit'>{labels[opt.value] || opt.label}</span>
-                {opt.value === currentLang ? <ImRadioChecked className='w-4 h-4 text-primary-700' /> : null}
+                }}
+            >
+                <span className="!text-inherit hover:!text-inherit">
+                    {labels[opt.value] || opt.label}
+                </span>
+                {opt.value === currentLang ? (
+                    <ImRadioChecked className="w-4 h-4 text-primary-700" />
+                ) : null}
             </div>
         ));
 
         return (
-            <Popover className='relative'>
+            <Popover className="relative">
                 {({ open }) => (
                     <div>
-                        <Popover.Button className='w-6 h-6 flex items-center justify-center hover:scale-125 transition-all duration-300'>
-                            <MdLanguage className='w-full h-full text-text-color-70 hover:text-text-color-90' />
+                        <Popover.Button className="w-6 h-6 flex items-center justify-center hover:scale-125 transition-all duration-300">
+                            <MdLanguage className="w-full h-full text-text-color-70 hover:text-text-color-90" />
                         </Popover.Button>
                         <Transition
                             as={Fragment}
                             show={open}
-                            enter='transition ease-out duration-100'
-                            enterFrom='transform opacity-0 scale-95'
-                            enterTo='transform opacity-100 scale-100'
-                            leave='transition ease-in duration-75'
-                            leaveFrom='transform opacity-100 scale-100'
-                            leaveTo='transform opacity-0 scale-95'>
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                        >
                             <Popover.Panel
                                 static
-                                className={`absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md shadow-lg ring-1 ring-text-color-20 ring-opacity-5 focus:outline-none overflow-hidden divide-y divide-text-color-20 shadow-text-color-40`}>
+                                className={`absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md shadow-lg ring-1 ring-text-color-20 ring-opacity-5 focus:outline-none overflow-hidden divide-y divide-text-color-20 shadow-text-color-40`}
+                            >
                                 {menu.map((opt, i) => (
                                     <div key={i}>{opt}</div>
                                 ))}

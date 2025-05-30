@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../_utils/Container';
 import { useHorizontalOverflowIndicator } from './useHorizontalOverflowIndicator';
-import { Link, Image, Profile, twJoin, website, twMerge } from '@uniwebcms/module-sdk';
+import { Profile, twJoin, website, twMerge } from '@uniwebcms/module-sdk';
+import { Link, Image } from '@uniwebcms/core-components';
 import { normalizeDate } from '../_utils/date';
 import { Listbox } from '@headlessui/react';
 import { BiFilter } from 'react-icons/bi';

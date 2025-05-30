@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../../_utils/Container';
-import { twJoin, Icon, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { Icon } from '@uniwebcms/core-components';
 
 export default function Fancy(props) {
     const { title, subtitle, items } = props;
