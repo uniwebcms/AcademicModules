@@ -125,14 +125,22 @@ export default function Cards({ website, block }) {
                                                 href.startsWith('mailto:')
                                             ) {
                                                 return (
-                                                    <a key={index} href={href}>
+                                                    <a
+                                                        key={index}
+                                                        href={href}
+                                                        className="break-words"
+                                                    >
                                                         {label}
                                                     </a>
                                                 );
                                             }
 
                                             return (
-                                                <Link key={index} to={website.makeHref(href)}>
+                                                <Link
+                                                    key={index}
+                                                    to={website.makeHref(href)}
+                                                    className="break-words"
+                                                >
                                                     {label}
                                                 </Link>
                                             );
