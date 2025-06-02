@@ -34,7 +34,12 @@ const isActiveRoute = (activeRoute, current) => {
 
 export default function PageHeader({ block, website, page }) {
     const { themeName: theme, main } = block;
-    const { mode = 'auto', sticky = false, alignment = 'left' } = block.getBlockProperties();
+    const {
+        mode = 'auto',
+        sticky = false,
+        alignment = 'left',
+        logo_position = 'left',
+    } = block.getBlockProperties();
 
     const nextBlockContext = getNextBlockContext(block);
 
@@ -118,9 +123,19 @@ export default function PageHeader({ block, website, page }) {
     }
 
     let logo = null;
+    const logoAriaLabel = website.localize({
+        en: 'Go to homepage',
+        fr: 'Aller à la page d’accueil',
+    });
 
     if (firstIcon) {
-        logo = <Icon icon={firstIcon} className="w-full h-full" />;
+        logo = (
+            <Link to="" ariaLabel={logoAriaLabel}>
+                {/* <div className="h-[32px] md:h-[36px] lg:h-[44px] w-auto max-w-full"> */}
+                <Icon icon={firstIcon} className="h-10 w-auto max-w-full" />
+                {/* </div> */}
+            </Link>
+        );
     } else {
         if (images.length) {
             let logoImg = images.find((img) => {
@@ -134,13 +149,18 @@ export default function PageHeader({ block, website, page }) {
             }
 
             logo = (
-                <Image
-                    profile={getPageProfile()}
-                    url={logoImg.url}
-                    value={logoImg.value}
-                    alt={logoImg.alt}
-                    className="w-full h-full object-contain"
-                />
+                <Link to="" ariaLabel={logoAriaLabel}>
+                    <Image
+                        profile={getPageProfile()}
+                        url={logoImg.url}
+                        value={logoImg.value}
+                        alt={logoImg.alt}
+                        className={twJoin(
+                            'w-auto max-w-full object-contain',
+                            logo_position === 'center' ? 'h-10 lg:h-14' : 'h-10'
+                        )}
+                    />
+                </Link>
             );
         }
     }
@@ -149,24 +169,24 @@ export default function PageHeader({ block, website, page }) {
         <div className={twMerge(wrapperClass, !initialPosition && sticky && '!shadow-2xl')}>
             <div
                 className={twMerge(
-                    'transition-transform duration-300 flex items-center w-full lg:px-12 px-6 py-3 justify-between lg:justify-normal max-w-10xl mx-auto'
+                    'relative transition-transform duration-300 flex items-center w-full lg:px-12 px-6 py-3 justify-between lg:justify-normal max-w-10xl mx-auto',
+                    logo_position === 'center' && 'pt-3 lg:pt-[70px]'
                 )}
             >
-                {logo ? (
-                    <Link
-                        to=""
-                        title="A link back to the site's homepage"
-                        className="w-fit max-w-[8rem] flex-shrink-0"
-                    >
-                        <div className="h-[32px] md:h-[36px] lg:h-[44px] w-auto max-w-full">
-                            {logo}
-                        </div>
-                    </Link>
-                ) : null}
+                <div
+                    className={twJoin(
+                        'w-32 lg:w-28 flex-shrink-0',
+                        logo_position === 'center' &&
+                            'lg:block lg:w-auto lg:absolute lg:top-2.5 lg:left-1/2 lg:-translate-x-1/2'
+                    )}
+                >
+                    {logo}
+                </div>
                 <nav
                     className={twJoin(
-                        'hidden lg:flex 2xl:space-x-10 xl:space-x-8 lg:space-x-6 items-center w-full sm:h-10',
-                        left_aligned ? 'justify-start xl:ml-16 lg:ml-10' : 'justify-center'
+                        'hidden lg:flex items-center w-full sm:h-10 [&>*]:lg:mx-2 [&>*]:xl:mx-3 [&>*]:2xl:mx-4',
+                        left_aligned ? 'justify-start' : 'justify-center',
+                        !left_aligned && logo_position === 'center' ? 'ml-0 lg:ml-32' : ''
                     )}
                 >
                     {navigation.map((page, index) => {
@@ -188,7 +208,7 @@ export default function PageHeader({ block, website, page }) {
                                     key={index}
                                     to={route}
                                     className={twJoin(
-                                        'inline-block text-base md:text-lg font-semibold px-3 py-2 truncate',
+                                        'inline-block lg:text-base xl:text-lg font-semibold px-2 py-2 truncate',
                                         active
                                             ? 'text-link-color'
                                             : 'text-text-color hover:scale-125 transition-transform duration-300'
@@ -200,12 +220,12 @@ export default function PageHeader({ block, website, page }) {
                         }
                     })}
                 </nav>
-                <div className="flex items-center space-x-6 w-44 lg:w-32 justify-end">
+                <div className="flex-shrink-0 flex items-center gap-x-4 w-32 lg:w-28 justify-end">
                     <SiteSearch />
                     <LanguageToggle />
                     <button
                         type="button"
-                        className="rounded-md p-2.5 lg:hidden"
+                        className="rounded-md py-2 lg:hidden"
                         onClick={() => setMobileMenuOpen(true)}
                     >
                         <span className="sr-only">Open main menu</span>
@@ -225,7 +245,7 @@ export default function PageHeader({ block, website, page }) {
                         <div className="flex flex-row-reverse items-center justify-between">
                             <button
                                 type="button"
-                                className="inline-flex items-center justify-center rounded-md p-2.5"
+                                className="inline-flex items-center justify-center rounded-md py-2"
                                 onClick={() => setMobileMenuOpen(false)}
                             >
                                 <span className="sr-only">Close menu</span>
@@ -234,14 +254,9 @@ export default function PageHeader({ block, website, page }) {
                                     aria-hidden="true"
                                 />
                             </button>
-                            <a href="#" className="p-1.5 -ml-1.5">
-                                <span className="sr-only">Your Company</span>
-                                <div className="h-8 w-auto max-w-full">
-                                    {logo && <div className="w-full h-full">{logo}</div>}
-                                </div>
-                            </a>
+                            {logo}
                         </div>
-                        <div className="mt-6 space-y-5">
+                        <div className="mt-6 space-y-3">
                             {navigation.map((page, index) => {
                                 if (page.child_items?.length) {
                                     return (
@@ -260,7 +275,7 @@ export default function PageHeader({ block, website, page }) {
                                             key={index}
                                             to={route}
                                             className={twMerge(
-                                                'mr-2 inline-block px-3 py-2 text-xl font-semibold leading-7 text-text-color-90 hover:text-text-color',
+                                                'mr-5 inline-block py-2 text-lg font-medium text-text-color',
                                                 active && 'text-link-color'
                                             )}
                                         >
@@ -286,22 +301,16 @@ const MobileNavbarMenu = ({ label, route, child_items, hasData, activeRoute }) =
                 <Link
                     to={route}
                     className={twMerge(
-                        'block px-3 py-2 text-xl font-semibold leading-7 text-text-color-90 hover:text-text-color w-fit',
+                        'block py-2 text-lg font-medium leading-7 text-text-color-90',
                         active && 'text-link-color'
                     )}
                 >
                     {label}
                 </Link>
             ) : (
-                <p
-                    className={twMerge(
-                        'px-3 py-2 text-xl font-semibold leading-7 text-text-color-70'
-                    )}
-                >
-                    {label}
-                </p>
+                <p className="py-2 text-lg font-medium text-text-color-70">{label}</p>
             )}
-            <div className="px-3 mt-1 grid grid-cols-2 md:grid-cols-2 gap-2">
+            <div className="px-3 mt-1 mb-2 flex flex-col space-y-2 border-l-2">
                 {child_items.map((item, index) => {
                     const { route, label, child_items, hasData } = item;
                     const active = isActiveRoute(activeRoute, route);
@@ -313,19 +322,19 @@ const MobileNavbarMenu = ({ label, route, child_items, hasData, activeRoute }) =
                                     key={index}
                                     to={route}
                                     className={twMerge(
-                                        'block text-lg font-medium leading-7 text-text-color-90 hover:text-text-color w-fit',
+                                        'block text-base text-text-color',
                                         active && 'text-link-color'
                                     )}
                                 >
                                     {label}
                                 </Link>
                             ) : (
-                                <p className="block text-lg font-medium leading-7 text-text-color-70">
+                                <p className="block text-lg font-medium text-text-color-70">
                                     {label}
                                 </p>
                             )}
                             {child_items?.length ? (
-                                <ul className="list-disc list-inside">
+                                <ul className="list-disc list-inside mb-1 marker:text-text-color-50">
                                     {child_items.map((item, index) => {
                                         const { route, label } = item;
                                         const active = isActiveRoute(activeRoute, route);
@@ -335,7 +344,7 @@ const MobileNavbarMenu = ({ label, route, child_items, hasData, activeRoute }) =
                                                 key={index}
                                                 to={route}
                                                 className={twMerge(
-                                                    'list-item px-3 text-base font-semibold leading-7 text-text-color-90 hover:text-text-color w-fit',
+                                                    'list-item px-3 text-base font-medium text-text-color',
                                                     active && 'text-link-color'
                                                 )}
                                             >
@@ -367,7 +376,7 @@ const buildNavigationMenu = (items, level, activeRoute) => {
             <div
                 key={index}
                 className={twJoin(
-                    'bg-text-color-0 hover:bg-text-color-10 relative group w-60 lg:w-72 xl:w-80',
+                    'relative bg-text-color-0 hover:bg-text-color-10 group w-60 lg:w-72 xl:w-80',
                     isFirst && 'rounded-t-md',
                     isLast && 'rounded-b-md'
                 )}
@@ -377,7 +386,7 @@ const buildNavigationMenu = (items, level, activeRoute) => {
                         key={index}
                         to={route}
                         className={twMerge(
-                            'block w-full h-full px-6 py-4 text-base font-medium lg:text-[17px] text-text-color-90 hover:text-text-color',
+                            'block w-full h-full px-5 py-4 font-medium lg:text-base xl:text-lg text-text-color-90 hover:text-text-color',
                             active ? 'text-link-color' : '',
                             isParentRoute && 'underline decoration-link-color'
                         )}
@@ -386,7 +395,7 @@ const buildNavigationMenu = (items, level, activeRoute) => {
                     </Link>
                 ) : (
                     <p
-                        className="w-full h-full px-6 py-4 text-base font-medium lg:text-[17px] text-text-color-70"
+                        className="w-full h-full px-5 py-4 font-medium lg:text-base xl:text-lg text-text-color-70"
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -444,7 +453,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, activeRoute, theme }) 
     return (
         <PopoverMenu
             trigger={trigger}
-            triggerClassName={`inline-flex items-center text-base md:text-lg font-semibold focus:outline-none px-3 py-2 z-50${
+            triggerClassName={`inline-flex items-center lg:text-base xl:text-lg font-semibold px-2 py-2 z-50 focus:outline-none ${
                 !hasData && 'cursor-default'
             }`}
             options={buildNavigationMenu(child_items, 10, activeRoute)}

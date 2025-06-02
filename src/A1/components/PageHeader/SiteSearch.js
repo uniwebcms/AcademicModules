@@ -6,7 +6,7 @@
 import React, { Suspense } from 'react';
 import { website, getComponent } from '@uniwebcms/module-sdk';
 
-const Search = getComponent('widgets', 'SiteSearch');
+const Search = getComponent('widgets', 'SiteSearch'); // TODO: Create a local version
 
 /**
  * Create a SiteSearch widget.
@@ -29,7 +29,7 @@ export default function (props) {
                 iconClassName={
                     'text-text-color-90 hover:text-text-color w-5 h-5 hover:scale-125 transition-all duration-300'
                 }
-                iconPosition='end'
+                iconPosition="end"
             />
         </Suspense>
     );

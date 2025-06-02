@@ -65,9 +65,6 @@ properties:
     label: 
       en: Navigation Alignment
       fr: Alignement de la navigation
-    description: 
-      en: The alignment of the navigation links in the header.
-      fr: L'alignement des liens de navigation dans l'en-tête.
     enum:
       - label:
           en: Left
@@ -78,6 +75,27 @@ properties:
           fr: Centre
         value: center
     default: left
+    description: 
+      en: The alignment of the navigation links in the header.
+      fr: L'alignement des liens de navigation dans l'en-tête.
+  logo_position:
+    type: string
+    label: 
+      en: Logo Position
+      fr: Position du logo
+    enum:
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+    default: left
+    description: 
+      en: The position of the logo in the header. Centered logo will be displayed above the navigation links.
+      fr: La position du logo dans l'en-tête. Le logo centré sera affiché au-dessus des liens de navigation.
 
 presets:
   left:
