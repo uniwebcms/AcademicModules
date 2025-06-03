@@ -373,7 +373,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
                     {label}
                 </TitleWrapper>
                 {child_items.length ? (
-                    <ul className="flex flex-col mt-2 gap-y-1">
+                    <ul className="flex flex-col mt-2 gap-y-1.5">
                         {child_items.map((childItem, childIndex) => {
                             const {
                                 route: childRoute,
@@ -408,9 +408,11 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
     }, 0);
 
     let columnSize = 'sm';
-    if (maxMenuTitleLength > 50) {
+    if (maxMenuTitleLength > 60) {
+        columnSize = 'xl';
+    } else if (maxMenuTitleLength > 40) {
         columnSize = 'lg';
-    } else if (maxMenuTitleLength > 30) {
+    } else if (maxMenuTitleLength > 20) {
         columnSize = 'md';
     }
 

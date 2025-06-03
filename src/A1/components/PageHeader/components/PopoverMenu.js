@@ -54,9 +54,11 @@ export default function PopoverMenu(props) {
                                     columnSize === 'sm' &&
                                         'grid-cols-[repeat(auto-fit,minmax(160px,1fr))]',
                                     columnSize === 'md' &&
-                                        'grid-cols-[repeat(auto-fit,minmax(240px,1fr))]',
+                                        'grid-cols-[repeat(auto-fit,minmax(280px,1fr))]',
                                     columnSize === 'lg' &&
-                                        'grid-cols-[repeat(auto-fit,minmax(320px,1fr))]'
+                                        'grid-cols-[repeat(auto-fit,minmax(320px,1fr))]',
+                                    columnSize === 'xl' &&
+                                        'grid-cols-[repeat(auto-fit,minmax(360px,1fr))]'
                                 )}
                             >
                                 {options}
