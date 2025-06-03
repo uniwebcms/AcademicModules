@@ -362,10 +362,10 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
         const titleWrapperProps = hasData ? { to: route } : {};
 
         return (
-            <div className="w-40" key={index}>
+            <div className="w-full" key={index}>
                 <TitleWrapper
                     className={twJoin(
-                        'font-semibold text-lg text-text-color',
+                        'font-semibold text-base text-text-color',
                         hasData && 'hover:text-link-color'
                     )}
                     {...titleWrapperProps}
@@ -373,7 +373,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
                     {label}
                 </TitleWrapper>
                 {child_items.length ? (
-                    <ul className="flex flex-col mt-3 gap-y-1">
+                    <ul className="flex flex-col mt-2 gap-y-1">
                         {child_items.map((childItem, childIndex) => {
                             const {
                                 route: childRoute,
@@ -388,7 +388,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
                                 <ChildWrapper
                                     key={childIndex}
                                     className={twJoin(
-                                        'text-base font-medium text-text-color-60 hover:text-link-color'
+                                        'text-sm font-medium text-text-color-60 hover:text-link-color'
                                     )}
                                     {...childWrapperProps}
                                 >
@@ -402,11 +402,24 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
         );
     });
 
+    const maxMenuTitleLength = child_items.reduce((max, item) => {
+        const itemLength = item.label.length;
+        return itemLength > max ? itemLength : max;
+    }, 0);
+
+    let columnSize = 'sm';
+    if (maxMenuTitleLength > 50) {
+        columnSize = 'lg';
+    } else if (maxMenuTitleLength > 30) {
+        columnSize = 'md';
+    }
+
     return (
         <PopoverMenu
             renderTrigger={renderTrigger}
             options={options}
             openTo={leftAligned ? 'right' : 'justify'}
+            columnSize={columnSize}
         />
     );
 };
