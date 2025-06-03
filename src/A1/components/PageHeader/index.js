@@ -199,7 +199,7 @@ export default function PageHeader({ block, website, page }) {
                                     <Link
                                         key={index}
                                         to={route}
-                                        className="inline-block lg:text-base xl:text-lg font-semibold px-3.5 py-1.5 text-text-color-80 hover:text-text-color hover:bg-text-color/10 rounded-lg"
+                                        className="inline-block lg:text-base xl:text-lg font-semibold px-3.5 py-1.5 text-text-color-90 hover:text-text-color hover:bg-text-color/10 rounded-lg"
                                     >
                                         {label}
                                     </Link>
@@ -339,7 +339,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned, activeRou
                         'inline-flex items-center lg:text-base xl:text-lg font-semibold pl-3.5 pr-2 py-1.5 focus:outline-none rounded-lg gap-x-1',
                         menuOpened
                             ? 'bg-text-color/10 text-text-color'
-                            : 'text-text-color-80 hover:text-text-color'
+                            : 'text-text-color-90 hover:text-text-color'
                     )}
                     {...wrapperProps}
                 >
