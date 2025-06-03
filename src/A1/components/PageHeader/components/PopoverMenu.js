@@ -10,7 +10,7 @@ import { twJoin } from '@uniwebcms/module-sdk';
 export default function PopoverMenu(props) {
     const { renderTrigger, options, openTo = 'right', columnSize } = props;
 
-    const [openState, setOpenState] = useState(true);
+    const [openState, setOpenState] = useState(false);
 
     const toggleMenu = () => {
         setOpenState((openState) => !openState);
