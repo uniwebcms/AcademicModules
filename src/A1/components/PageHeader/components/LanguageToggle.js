@@ -73,7 +73,7 @@ export default function (props) {
                         >
                             <Popover.Panel
                                 static
-                                className={`absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md shadow-lg ring-1 ring-text-color-20 ring-opacity-5 focus:outline-none overflow-hidden divide-y divide-text-color-20 shadow-text-color-40`}
+                                className={`absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md shadow-lg ring-1 ring-text-color-20 ring-opacity-5 focus:outline-none overflow-hidden divide-y divide-text-color-20 shadow-text-color-40`}
                             >
                                 {menu.map((opt, i) => (
                                     <div key={i}>{opt}</div>
