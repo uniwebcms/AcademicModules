@@ -3,12 +3,12 @@
  * @module PopoverMenu
  */
 
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { Transition, Popover } from '@headlessui/react';
 import { twJoin } from '@uniwebcms/module-sdk';
 
 export default function PopoverMenu(props) {
-    const { renderTrigger, options, openTo = 'right', columnSize } = props;
+    const { renderTrigger, options, openTo = 'right', columnSize, activeRoute } = props;
 
     const [openState, setOpenState] = useState(false);
 
@@ -21,6 +21,10 @@ export default function PopoverMenu(props) {
             toggleMenu();
         }
     };
+
+    useEffect(() => {
+        setOpenState(false);
+    }, [activeRoute]);
 
     return (
         <Popover className={'relative'}>
@@ -36,7 +40,7 @@ export default function PopoverMenu(props) {
                         enter="transition ease-out duration-200"
                         enterFrom="opacity-0 translate-y-1"
                         enterTo="opacity-100 translate-y-0"
-                        leave="transition ease-in duration-150"
+                        leave="transition ease-in"
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                     >

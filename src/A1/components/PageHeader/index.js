@@ -189,6 +189,7 @@ export default function PageHeader({ block, website, page }) {
                                         key={index}
                                         {...page}
                                         leftAligned={navLeftAligned}
+                                        activeRoute={activeRoute}
                                     />
                                 );
                             } else {
@@ -198,7 +199,7 @@ export default function PageHeader({ block, website, page }) {
                                     <Link
                                         key={index}
                                         to={route}
-                                        className="inline-block lg:text-base xl:text-lg font-semibold px-3.5 py-1.5 text-text-color-80 hover:text-text-color hover:bg-text-color-10 rounded-lg"
+                                        className="inline-block lg:text-base xl:text-lg font-semibold px-3.5 py-1.5 text-text-color-80 hover:text-text-color hover:bg-text-color/10 rounded-lg"
                                     >
                                         {label}
                                     </Link>
@@ -326,7 +327,7 @@ const MobileNavbarMenu = ({ label, route, child_items, hasData }) => {
     );
 };
 
-const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
+const NavbarMenu = ({ label, route, child_items, hasData, leftAligned, activeRoute }) => {
     const renderTrigger = useCallback(
         (menuOpened) => {
             const Wrapper = hasData ? Link : 'div';
@@ -337,7 +338,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
                     className={twJoin(
                         'inline-flex items-center lg:text-base xl:text-lg font-semibold pl-3.5 pr-2 py-1.5 focus:outline-none rounded-lg gap-x-1',
                         menuOpened
-                            ? 'bg-text-color-10 text-text-color'
+                            ? 'bg-text-color/10 text-text-color'
                             : 'text-text-color-80 hover:text-text-color'
                     )}
                     {...wrapperProps}
@@ -373,7 +374,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
                     {label}
                 </TitleWrapper>
                 {child_items.length ? (
-                    <ul className="flex flex-col mt-2 gap-y-1.5">
+                    <ul className="flex flex-col mt-2.5 gap-y-2">
                         {child_items.map((childItem, childIndex) => {
                             const {
                                 route: childRoute,
@@ -422,6 +423,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned }) => {
             options={options}
             openTo={leftAligned ? 'right' : 'justify'}
             columnSize={columnSize}
+            activeRoute={activeRoute}
         />
     );
 };
