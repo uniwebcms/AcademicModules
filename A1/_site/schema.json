@@ -4482,6 +4482,34 @@
           "en": "The position of the logo in the header. Centered logo will be displayed above the navigation links.",
           "fr": "La position du logo dans l'en-tête. Le logo centré sera affiché au-dessus des liens de navigation."
         }
+      },
+      "nav_menu_style": {
+        "type": "string",
+        "label": {
+          "en": "Navigation Menu Style",
+          "fr": "Style du menu de navigation"
+        },
+        "enum": [
+          {
+            "label": {
+              "en": "Traditional Menu with Hierarchy",
+              "fr": "Menu traditionnel avec hiérarchie"
+            },
+            "value": "traditional"
+          },
+          {
+            "label": {
+              "en": "Flat Modern Dropdown Menu",
+              "fr": "Menu déroulant moderne plat"
+            },
+            "value": "modern"
+          }
+        ],
+        "default": "traditional",
+        "description": {
+          "en": "The style of the navigation menu, traditional will display a hierarchical list of links, modern will display a flat dropdown menu.",
+          "fr": "Le style du menu de navigation, traditionnel affichera une liste hiérarchique de liens, moderne affichera un menu déroulant plat."
+        }
       }
     },
     "presets": [
