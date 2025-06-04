@@ -8,7 +8,14 @@ import { Transition, Popover } from '@headlessui/react';
 import { twJoin } from '@uniwebcms/module-sdk';
 
 export default function PopoverMenu(props) {
-    const { renderTrigger, options, openTo = 'right', columnSize, activeRoute } = props;
+    const {
+        renderTrigger,
+        options,
+        openTo = 'right',
+        columnSize,
+        activeRoute,
+        navMenuStyle,
+    } = props;
 
     const [openState, setOpenState] = useState(false);
 
@@ -52,21 +59,27 @@ export default function PopoverMenu(props) {
                                 openTo === 'justify' && 'left-1/2 -translate-x-1/2'
                             )}
                         >
-                            <div
-                                className={twJoin(
-                                    'grid gap-y-6 gap-x-4 px-5 py-4 shadow-lg ring-1 ring-text-color-10 bg-bg-color rounded-md max-w-2xl xl:max-w-4xl',
-                                    columnSize === 'sm' &&
-                                        'grid-cols-[repeat(auto-fit,minmax(160px,1fr))]',
-                                    columnSize === 'md' &&
-                                        'grid-cols-[repeat(auto-fit,minmax(240px,1fr))]',
-                                    columnSize === 'lg' &&
-                                        'grid-cols-[repeat(auto-fit,minmax(320px,1fr))]',
-                                    columnSize === 'xl' &&
-                                        'grid-cols-[repeat(auto-fit,minmax(360px,1fr))]'
-                                )}
-                            >
-                                {options}
-                            </div>
+                            {navMenuStyle === 'traditional' ? (
+                                <ul className="p-1 flex flex-col shadow-lg ring-1 ring-text-color-10 bg-bg-color rounded-md">
+                                    {options}
+                                </ul>
+                            ) : (
+                                <div
+                                    className={twJoin(
+                                        'grid gap-6 px-5 py-4 shadow-lg ring-1 ring-text-color-10 bg-bg-color rounded-md max-w-2xl xl:max-w-4xl',
+                                        columnSize === 'sm' &&
+                                            'grid-cols-[repeat(auto-fit,minmax(160px,1fr))]',
+                                        columnSize === 'md' &&
+                                            'grid-cols-[repeat(auto-fit,minmax(240px,1fr))]',
+                                        columnSize === 'lg' &&
+                                            'grid-cols-[repeat(auto-fit,minmax(320px,1fr))]',
+                                        columnSize === 'xl' &&
+                                            'grid-cols-[repeat(auto-fit,minmax(360px,1fr))]'
+                                    )}
+                                >
+                                    {options}
+                                </div>
+                            )}
                         </Popover.Panel>
                     </Transition>
                 </div>

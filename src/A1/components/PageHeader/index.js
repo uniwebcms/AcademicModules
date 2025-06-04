@@ -6,6 +6,7 @@ import { Link, Image, Icon } from '@uniwebcms/core-components';
 import { CgChevronDown } from 'react-icons/cg';
 import PopoverMenu from './components/PopoverMenu';
 import LanguageToggle from './components/LanguageToggle';
+import { FaCaretRight } from 'react-icons/fa';
 import SiteSearch from './components/SiteSearch';
 import { getNextBlockContext } from '../_utils/context';
 import './style.css';
@@ -17,6 +18,7 @@ export default function PageHeader({ block, website, page }) {
         sticky = false,
         alignment = 'left',
         logo_position = 'left',
+        nav_menu_style = 'traditional',
     } = block.getBlockProperties();
 
     const nextBlockContext = getNextBlockContext(block);
@@ -190,6 +192,7 @@ export default function PageHeader({ block, website, page }) {
                                         {...page}
                                         leftAligned={navLeftAligned}
                                         activeRoute={activeRoute}
+                                        navMenuStyle={nav_menu_style}
                                     />
                                 );
                             } else {
@@ -327,7 +330,15 @@ const MobileNavbarMenu = ({ label, route, child_items, hasData }) => {
     );
 };
 
-const NavbarMenu = ({ label, route, child_items, hasData, leftAligned, activeRoute }) => {
+const NavbarMenu = ({
+    label,
+    route,
+    child_items,
+    hasData,
+    leftAligned,
+    activeRoute,
+    navMenuStyle,
+}) => {
     const renderTrigger = useCallback(
         (menuOpened) => {
             const Wrapper = hasData ? Link : 'div';
@@ -356,52 +367,128 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned, activeRou
         [label, route, hasData]
     );
 
-    const options = child_items.map((item, index) => {
-        const { route, label, child_items, hasData } = item;
+    let options;
 
-        const TitleWrapper = hasData ? Link : 'div';
-        const titleWrapperProps = hasData ? { to: route } : {};
+    if (navMenuStyle === 'traditional') {
+        options = child_items.map((item, index) => {
+            const { route, label, child_items, hasData } = item;
 
-        return (
-            <div className="w-full" key={index}>
-                <TitleWrapper
+            const TitleWrapper = hasData ? Link : 'div';
+            const titleWrapperProps = hasData ? { to: route } : {};
+            const hasChildItems = child_items && child_items.length > 0;
+
+            return (
+                <li
                     className={twJoin(
-                        'font-semibold text-base text-text-color',
-                        hasData && 'hover:text-link-color'
+                        'relative w-64 pl-3 group hover:bg-text-color/10',
+                        hasChildItems
+                            ? 'py-2 flex items-center justify-between space-x-2 pr-1'
+                            : 'pr-3'
                     )}
-                    {...titleWrapperProps}
+                    key={index}
                 >
-                    {label}
-                </TitleWrapper>
-                {child_items.length ? (
-                    <ul className="flex flex-col mt-2.5 gap-y-2">
-                        {child_items.map((childItem, childIndex) => {
-                            const {
-                                route: childRoute,
-                                label: childLabel,
-                                hasData: childHasData,
-                            } = childItem;
+                    <TitleWrapper
+                        className={twJoin(
+                            'text-base text-text-color',
+                            hasData && hasChildItems && 'hover:text-link-color',
+                            hasData && !hasChildItems && 'block group-hover:text-link-color py-2'
+                        )}
+                        {...titleWrapperProps}
+                    >
+                        {label}
+                    </TitleWrapper>
 
-                            const ChildWrapper = childHasData ? Link : 'div';
-                            const childWrapperProps = childHasData ? { to: childRoute } : {};
+                    {hasChildItems && (
+                        <>
+                            <FaCaretRight
+                                className={twJoin(
+                                    'w-5 h-5 text-text-color-60 group-hover:text-text-color-80'
+                                )}
+                            />
+                            <ul className="p-1 hidden group-hover:flex absolute top-0 -right-[252px] w-64 flex-col shadow-lg ring-1 ring-text-color-10 bg-bg-color rounded-md">
+                                {child_items.map((childItem, childIndex) => {
+                                    const {
+                                        route: childRoute,
+                                        label: childLabel,
+                                        hasData: childHasData,
+                                    } = childItem;
 
-                            return (
-                                <ChildWrapper
-                                    key={childIndex}
-                                    className={twJoin(
-                                        'text-sm font-medium text-text-color-60 hover:text-link-color'
-                                    )}
-                                    {...childWrapperProps}
-                                >
-                                    {childLabel}
-                                </ChildWrapper>
-                            );
-                        })}
-                    </ul>
-                ) : null}
-            </div>
-        );
-    });
+                                    const ChildWrapper = childHasData ? Link : 'div';
+                                    const childWrapperProps = childHasData
+                                        ? { to: childRoute }
+                                        : {};
+
+                                    return (
+                                        <li
+                                            className="px-3 hover:bg-text-color/10"
+                                            key={childIndex}
+                                        >
+                                            <ChildWrapper
+                                                className={twJoin(
+                                                    'py-2 block text-base text-text-color hover:text-link-color'
+                                                )}
+                                                {...childWrapperProps}
+                                            >
+                                                {childLabel}
+                                            </ChildWrapper>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </>
+                    )}
+                </li>
+            );
+        });
+    } else {
+        options = child_items.map((item, index) => {
+            const { route, label, child_items, hasData } = item;
+
+            const TitleWrapper = hasData ? Link : 'div';
+            const titleWrapperProps = hasData ? { to: route } : {};
+
+            return (
+                <div className="w-full" key={index}>
+                    <TitleWrapper
+                        className={twJoin(
+                            'font-semibold text-base text-text-color',
+                            hasData && 'hover:text-link-color'
+                        )}
+                        {...titleWrapperProps}
+                    >
+                        {label}
+                    </TitleWrapper>
+                    {child_items.length ? (
+                        <ul className="flex flex-col mt-2.5 gap-y-2">
+                            {child_items.map((childItem, childIndex) => {
+                                const {
+                                    route: childRoute,
+                                    label: childLabel,
+                                    hasData: childHasData,
+                                } = childItem;
+
+                                const ChildWrapper = childHasData ? Link : 'div';
+                                const childWrapperProps = childHasData ? { to: childRoute } : {};
+
+                                return (
+                                    <li key={childIndex}>
+                                        <ChildWrapper
+                                            className={twJoin(
+                                                'inline-block text-sm font-medium text-text-color-70 hover:text-link-color'
+                                            )}
+                                            {...childWrapperProps}
+                                        >
+                                            {childLabel}
+                                        </ChildWrapper>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    ) : null}
+                </div>
+            );
+        });
+    }
 
     const maxMenuTitleLength = child_items.reduce((max, item) => {
         const itemLength = item.label.length;
@@ -424,6 +511,7 @@ const NavbarMenu = ({ label, route, child_items, hasData, leftAligned, activeRou
             openTo={leftAligned ? 'right' : 'justify'}
             columnSize={columnSize}
             activeRoute={activeRoute}
+            navMenuStyle={navMenuStyle}
         />
     );
 };
