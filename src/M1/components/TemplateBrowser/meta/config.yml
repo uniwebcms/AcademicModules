@@ -1,9 +1,9 @@
 title:
-  en: Template Catalog
-  fr: Catalogue de modèles
+  en: Template Browser
+  fr: Navigateur de modèles
 label:
-  en: Template Catalog
-  fr: Catalogue de modèles
+  en: Template Browser
+  fr: Navigateur de modèles
 description:
   en: A versatile component that displays a collection of website templates with search, filter, and sort functionality. Each template includes the title, a cover image and a preview video for an engaging browsing experience.
   fr: Un composant polyvalent qui affiche une collection de modèles de site Web avec des fonctionnalités de recherche, de filtrage et de tri. Chaque modèle comprend le titre, une image de couverture et une vidéo de prévisualisation pour une expérience de navigation engageante.

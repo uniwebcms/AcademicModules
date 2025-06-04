@@ -341,7 +341,7 @@ const initFilters = (config) => {
     return filterObj;
 };
 
-export default function TemplateCatalog(props) {
+export default function TemplateBrowser(props) {
     const { block, input } = props;
     const { title, properties } = block.getBlockContent();
     const { search_box, filters: filterInfo = [], sort } = properties;
