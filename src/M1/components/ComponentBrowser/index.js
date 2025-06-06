@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Container from '../_utils/Container';
 import { twJoin, website } from '@uniwebcms/module-sdk';
-import { HiSearch, HiArrowRight } from 'react-icons/hi';
+import { HiArrowRight } from 'react-icons/hi';
 import { TbSortDescending } from 'react-icons/tb';
 import { LuChevronDown, LuLayers2, LuCrown, LuGem } from 'react-icons/lu';
 import { IoPricetagsOutline } from 'react-icons/io5';
 import VirtualGrid from './components/VirtualGrid';
-import { normalizeData } from './helper';
+import { fetchWebstylers } from './helper';
 import Modal from './components/Modal';
 
 const icons = {
@@ -21,7 +21,7 @@ const FilterBar = ({ name, options, filters, onChange }) => {
         <div className="max-w-full w-fit">
             <div
                 className={twJoin(
-                    'flex border rounded-full p-1 gap-1 w-full overflow-x-auto no-scrollbar hover:shadow-sm border-neutral-300'
+                    'flex border rounded-full p-1 gap-1 xl:gap-2 w-full overflow-x-auto no-scrollbar hover:shadow-sm border-neutral-300'
                 )}
             >
                 {options.map((option, index) => {
@@ -240,7 +240,7 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
         );
     });
 
-    const { searchText, sort, ...actualFilters } = filters;
+    const { sort, ...actualFilters } = filters;
 
     const activeValue = actualFilters[data.name];
     const activeOption = data.options.find((opt) => opt.value === activeValue);
@@ -322,7 +322,7 @@ const FilterMenu = ({ data, filters, onChange, modalProps }) => {
 const initFilters = (config) => {
     const { filters, sort } = config;
 
-    const filterObj = { searchText: '' };
+    const filterObj = {};
 
     if (filters) {
         filters.forEach((filter) => {
@@ -341,20 +341,15 @@ const initFilters = (config) => {
     return filterObj;
 };
 
-export default function TemplateBrowser(props) {
+export default function ComponentBrowser(props) {
     const { block, input } = props;
-    const { title, properties } = block.getBlockContent();
-    const { search_box, filters: filterInfo = [], sort } = properties;
+    const { title, subtitle, properties } = block.getBlockContent();
+    const { filters: filterInfo = [], sort } = properties;
     const inlineFilter = filterInfo.find((filter) => filter.type === 'inline');
     const menuFilter = filterInfo.find((filter) => filter.type === 'menu');
-    const templates = normalizeData(input, properties);
 
     const { useLocation } = website.getRoutingComponents();
     const location = useLocation();
-
-    const updateSearchText = (text) => {
-        setFilters((prevFilters) => ({ ...prevFilters, searchText: text }));
-    };
 
     const updateFilters = (key, newValue) => {
         setFilters((prevFilters) => ({ ...prevFilters, [key]: newValue }));
@@ -364,16 +359,23 @@ export default function TemplateBrowser(props) {
         setFilters((prevFilters) => ({ ...prevFilters, sort: newSort }));
     };
 
+    const [webstylers, setWebstylers] = useState([]);
     const [filters, setFilters] = useState(initFilters(properties));
     const [sectionStyle, setSectionStyle] = useState({});
 
-    // get the category and libraryType from the URL if they exist, set them to the filters
+    useEffect(() => {
+        fetchWebstylers().then((webstylers) => {
+            setWebstylers(webstylers);
+        });
+    }, []);
+
+    // get the category and type from the URL if they exist, set them to the filters
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         const category = searchParams.get('category');
-        const libraryType = searchParams.get('libraryType');
+        const type = searchParams.get('type');
 
-        if (category || libraryType) {
+        if (category || type) {
             setFilters((prevFilters) => {
                 const updatedFilters = { ...prevFilters };
 
@@ -381,16 +383,16 @@ export default function TemplateBrowser(props) {
                     updatedFilters.category = category;
                 }
 
-                if (libraryType && prevFilters.libraryType !== libraryType) {
-                    updatedFilters.libraryType = libraryType;
+                if (type && prevFilters.type !== type) {
+                    updatedFilters.type = type;
                 }
 
                 return updatedFilters;
             });
 
-            // Clean up the URL to remove 'category' and 'libraryType' params (without causing a page reload)
+            // Clean up the URL to remove 'category' and 'type' params (without causing a page reload)
             searchParams.delete('category');
-            searchParams.delete('libraryType');
+            searchParams.delete('type');
 
             const newUrl =
                 window.location.pathname +
@@ -429,19 +431,6 @@ export default function TemplateBrowser(props) {
         </h2>
     );
 
-    const searchBox = search_box ? (
-        <div className="relative border border-neutral-300 rounded-full text-xs lg:text-sm xl:text-base px-2.5 lg:px-3 py-[9px] xl:px-5 xl:py-2.5 w-56 lg:w-60 xl:w-72 flex-shrink-0 hover:shadow-sm">
-            <HiSearch className="absolute top-1/2 left-3 lg:left-4 transform -translate-y-1/2 text-neutral-400 w-5 h-5 xl:w-6 xl:h-6" />
-            <input
-                type="text"
-                placeholder={search_box.placeholder}
-                className="pl-7 lg:pl-8 w-full focus:outline-none placeholder:text-neutral-500"
-                value={filters.searchText}
-                onChange={(e) => updateSearchText(e.target.value)}
-            ></input>
-        </div>
-    ) : null;
-
     const filterBar = inlineFilter ? (
         <FilterBar {...inlineFilter} filters={filters} onChange={updateFilters} />
     ) : null;
@@ -457,43 +446,17 @@ export default function TemplateBrowser(props) {
 
     const sortMenu = sort ? <SortMenu data={sort} filters={filters} onChange={updateSort} /> : null;
 
-    const skipLink = (
+    const developOwn = (
         <div
             className="flex items-center space-x-1 text-base lg:text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer ml-6 lg:ml-auto w-44 lg:w-fit justify-end lg:justify-normal"
-            onClick={() => {
-                const appDomain = uniweb.getAppDomain();
-                fetch(`${appDomain}/temp_resource.php`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json', // Specify content type
-                    },
-                    body: JSON.stringify({
-                        action: 'store',
-                        data: {
-                            templateSite: '_blank',
-                        },
-                    }), // Convert data object to JSON string
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json(); // Parse the JSON response
-                    })
-                    .then((data) => {
-                        window.location.replace(data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error); // Handle any errors
-                    });
-            }}
+            onClick={() => {}}
         >
             <span className="text-nowrap">
                 {website.localize({
-                    en: 'Skip template',
-                    fr: 'Passer le modèle',
-                    es: 'Saltar plantilla',
-                    zh: '跳过模板',
+                    en: 'Develop your own',
+                    fr: 'Développez le vôtre',
+                    es: 'Desarrolla el tuyo',
+                    zh: '开发自己的模板',
                 })}
             </span>
             <HiArrowRight className="w-5 h-5 text-inherit group-hover:translate-x-1 transition-transform flex-shrink-0" />
@@ -502,12 +465,16 @@ export default function TemplateBrowser(props) {
 
     return (
         <Container className="max-w-9xl mx-auto">
-            {/* title, search and link in a bar */}
-            <div className="flex justify-between lg:justify-normal items-center mb-8">
+            {/* title and link in a bar */}
+            <div className="flex justify-between items-start mb-2">
                 {mainTitle}
-                <div className="hidden md:block">{searchBox}</div>
-                {skipLink}
+                {developOwn}
             </div>
+
+            {/* subtitle */}
+            <p className="text-sm md:text-base text-neutral-600 max-w-full md:max-w-xl xl:max-w-2xl mb-8">
+                {subtitle}
+            </p>
 
             {/* filters and sorts */}
             <>
@@ -519,15 +486,13 @@ export default function TemplateBrowser(props) {
                 <div className="block md:hidden mb-6">
                     <div>{filterBar}</div>
                     <div className="flex items-center mt-4">
-                        {searchBox}
                         {filterMenu}
                         {sortMenu}
                     </div>
                 </div>
             </>
-
             {/* grid */}
-            <VirtualGrid data={templates} filters={filters} />
+            <VirtualGrid data={webstylers} filters={filters} />
         </Container>
     );
 }

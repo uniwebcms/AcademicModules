@@ -17,6 +17,7 @@
         "@uniwebcms/core-components": "^1.6.12",
         "@uniwebcms/module-sdk": "^2.0.1",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.1.0",
+        "axios": "^1.9.0",
         "flexsearch": "^0.7.31",
         "flowbite": "^1.8.1",
         "flowbite-react": "^0.6.4",

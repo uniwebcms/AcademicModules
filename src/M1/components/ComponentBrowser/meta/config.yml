@@ -1,0 +1,24 @@
+title:
+  en: Component Browser
+  fr: Navigateur de composants
+label:
+  en: Component Browser
+  fr: Navigateur de composants
+description:
+  en: A versatile component that displays a collection of component systems with filter and sort functionality. Each component system includes a cover image, title, description and a category badge for an engaging browsing experience.
+  fr: Un composant polyvalent qui affiche une collection de systèmes de composants avec des fonctionnalités de filtrage et de tri. Chaque système de composants comprend une image de couverture, un titre, une description et une étiquette de catégorie pour une expérience de navigation engageante.
+
+# category: template
+export: true
+
+elements:
+  code:
+    label:
+      en: JSON Properties
+      fr: Propriétés JSON
+    description:
+      en: The JSON properties as configuration for the component browser, required properties are 'info', 'filters' and 'sort'.
+      fr: Les propriétés JSON comme configuration pour le navigateur de composants, les propriétés requises sont 'info', 'filters' et 'sort'.
+
+# images:
+#   - example.png

@@ -5035,6 +5035,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["asynckit", [\
+      ["npm:0.4.0", {\
+        "packageLocation": "./.yarn/cache/asynckit-npm-0.4.0-c718858525-3ce727cbc7.zip/node_modules/asynckit/",\
+        "packageDependencies": [\
+          ["asynckit", "npm:0.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["autoprefixer", [\
       ["npm:10.4.21", {\
         "packageLocation": "./.yarn/cache/autoprefixer-npm-10.4.21-0dd6f0f60c-5d7aeee78e.zip/node_modules/autoprefixer/",\
@@ -5069,6 +5078,18 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["available-typed-arrays", "npm:1.0.7"],\
           ["possible-typed-array-names", "npm:1.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["axios", [\
+      ["npm:1.9.0", {\
+        "packageLocation": "./.yarn/cache/axios-npm-1.9.0-007b36cf56-a2f90bba56.zip/node_modules/axios/",\
+        "packageDependencies": [\
+          ["axios", "npm:1.9.0"],\
+          ["follow-redirects", "virtual:a313c479c5c7e54d9ec8fbeeea69ff640f56b8989ea2dff42351a3fa5c4061fb80a52d8ede0f0826a181a216820c2d2c3f15da881e7fdf31cef1c446e42f0c45#npm:1.15.9"],\
+          ["form-data", "npm:4.0.2"],\
+          ["proxy-from-env", "npm:1.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5730,6 +5751,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["combined-stream", [\
+      ["npm:1.0.8", {\
+        "packageLocation": "./.yarn/cache/combined-stream-npm-1.0.8-dc14d4a63a-2e969e637d.zip/node_modules/combined-stream/",\
+        "packageDependencies": [\
+          ["combined-stream", "npm:1.0.8"],\
+          ["delayed-stream", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["comma-separated-tokens", [\
       ["npm:2.0.3", {\
         "packageLocation": "./.yarn/cache/comma-separated-tokens-npm-2.0.3-a4a34086b3-e3bf9e0332.zip/node_modules/comma-separated-tokens/",\
@@ -6328,6 +6359,15 @@ const RAW_RUNTIME_STATE =
           ["define-data-property", "npm:1.1.4"],\
           ["has-property-descriptors", "npm:1.0.2"],\
           ["object-keys", "npm:1.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["delayed-stream", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "./.yarn/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-46fe6e83e2.zip/node_modules/delayed-stream/",\
+        "packageDependencies": [\
+          ["delayed-stream", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7255,6 +7295,19 @@ const RAW_RUNTIME_STATE =
           ["foreground-child", "npm:3.3.1"],\
           ["cross-spawn", "npm:7.0.6"],\
           ["signal-exit", "npm:4.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["form-data", [\
+      ["npm:4.0.2", {\
+        "packageLocation": "./.yarn/cache/form-data-npm-4.0.2-d2e89057d5-82c65b426a.zip/node_modules/form-data/",\
+        "packageDependencies": [\
+          ["form-data", "npm:4.0.2"],\
+          ["asynckit", "npm:0.4.0"],\
+          ["combined-stream", "npm:1.0.8"],\
+          ["es-set-tostringtag", "npm:2.1.0"],\
+          ["mime-types", "npm:2.1.35"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8635,6 +8688,7 @@ const RAW_RUNTIME_STATE =
           ["@uniwebcms/core-components", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.6.12"],\
           ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.0.1"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
+          ["axios", "npm:1.9.0"],\
           ["flexsearch", "npm:0.7.43"],\
           ["flowbite", "npm:1.8.1"],\
           ["flowbite-react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.6.4"],\
@@ -10983,6 +11037,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/property-information-npm-7.0.0-bc950e6375-55f4430884.zip/node_modules/property-information/",\
         "packageDependencies": [\
           ["property-information", "npm:7.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["proxy-from-env", [\
+      ["npm:1.1.0", {\
+        "packageLocation": "./.yarn/cache/proxy-from-env-npm-1.1.0-c13d07f26b-f0bb4a87cf.zip/node_modules/proxy-from-env/",\
+        "packageDependencies": [\
+          ["proxy-from-env", "npm:1.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\

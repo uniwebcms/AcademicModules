@@ -1,15 +1,56 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { VirtuosoGrid } from 'react-virtuoso';
 import ItemCard from './ItemCard';
 import { website } from '@uniwebcms/module-sdk';
 
 // Main Virtual Grid Component
 const VirtualGrid = ({ data, filters }) => {
+    const [schemaMap, setSchemaMap] = useState({});
     const virtuosoRef = useRef(null);
+    const schemaCache = useRef(new Map());
+
+    const getSchema = async (url) => {
+        if (!url || schemaCache.current.has(url)) return schemaCache.current.get(url);
+
+        const fetchPromise = (async () => {
+            try {
+                const versionText = await fetch(`${url}/latest_version.txt`).then((res) =>
+                    res.text()
+                );
+                const version = versionText.split('\n')[0].trim();
+                const schema = await fetch(`${url}/${version}/schema.json`).then((res) =>
+                    res.json()
+                );
+
+                Object.keys(schema).forEach((key) => {
+                    if (key === '_self') return;
+
+                    let imageSrc;
+                    if (schema[key].images?.length > 0) {
+                        imageSrc = `${url}/${version}/${schema[key].images[0].path}`;
+                    } else if (schema[key].presets?.length > 0) {
+                        imageSrc = `${url}/${version}/${schema[key].presets[0].image.path}`;
+                    }
+                    schema[key].image = imageSrc ? { src: imageSrc } : null;
+                });
+
+                setSchemaMap((prev) => ({ ...prev, [url]: schema }));
+                return schema;
+            } catch (error) {
+                // console.error(`Failed to fetch schema for ${url}:`, error);
+                return null;
+            }
+        })();
+
+        schemaCache.current.set(url, fetchPromise);
+        return fetchPromise;
+    };
 
     // Memoized filtered and sorted data
     const filteredData = useMemo(() => {
-        const { sort, searchText, ...actualFilters } = filters;
+        const { sort, ...actualFilters } = filters;
+
+        console.log('actualFilters', actualFilters, data);
 
         // Step 1: Apply actual filters
         const filteredData = data.filter((item) => {
@@ -19,16 +60,8 @@ const VirtualGrid = ({ data, filters }) => {
             );
         });
 
-        // Step 2: Apply searchText filter
-        const searchFilteredData = filteredData.filter((item) => {
-            if (searchText) {
-                return item.searchText.toLowerCase().includes(searchText.toLowerCase());
-            }
-            return true; // Pass if no searchText is specified
-        });
-
-        // Step 3: Apply sorting
-        const sortedData = searchFilteredData.sort((a, b) => {
+        // Step 2: Apply sorting
+        const sortedData = filteredData.sort((a, b) => {
             switch (sort) {
                 case 'newest':
                     if (!a.lastEdit || !b.lastEdit) return 0;
@@ -67,10 +100,15 @@ const VirtualGrid = ({ data, filters }) => {
             ref={virtuosoRef}
             useWindowScroll
             data={filteredData}
-            overscan={900}
-            itemContent={(index, item) => <ItemCard item={item} index={index} />}
-            listClassName="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 lg:gap-12"
-            // listClassName="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-6 md:gap-8 lg:gap-12"
+            itemContent={(index, item) => (
+                <ItemCard
+                    item={item}
+                    index={index}
+                    schema={schemaMap[item.url]}
+                    getSchema={getSchema}
+                />
+            )}
+            listClassName="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-12"
             itemClassName="h-full"
         />
     );

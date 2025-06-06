@@ -8,7 +8,7 @@ import LibrarySection from './LibrarySection';
 import { BsArrowLeft } from 'react-icons/bs';
 import { SafeHtml, Link } from '@uniwebcms/core-components';
 
-export default function ProductCatalog(props) {
+export default function SiteTemplate(props) {
     const { input, website } = props;
 
     const [screen, setScreen] = useState('desktop');
