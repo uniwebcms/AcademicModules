@@ -135,6 +135,7 @@ export default function Video({ page, videoControl, ...video }) {
                     <span className="text-sm md:text-base">
                         {website.localize({
                             en: 'Mini Player',
+                            fr: 'Mini Lecteur',
                             es: 'Reproductor Mini',
                         })}
                     </span>
@@ -144,6 +145,7 @@ export default function Video({ page, videoControl, ...video }) {
                     <span className="text-sm md:text-base">
                         {website.localize({
                             en: 'Overlay',
+                            fr: 'Superposition',
                             es: 'Superposición',
                         })}
                     </span>

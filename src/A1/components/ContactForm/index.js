@@ -180,6 +180,7 @@ const Form = (props) => {
             website.localize({
                 en: `Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
                 es: `Envío de formulario de contacto de ${formData.firstName} ${formData.lastName}`,
+                fr: `Soumission du formulaire de contact de ${formData.firstName} ${formData.lastName}`,
             })
         );
 
@@ -188,6 +189,7 @@ const Form = (props) => {
             website.localize({
                 en: `Name: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nPhone: ${formData.phoneNumber}\n\nMessage:\n${formData.message}`,
                 es: `Nombre: ${formData.firstName} ${formData.lastName}\nCorreo electrónico: ${formData.email}\nTeléfono: ${formData.phoneNumber}\n\nMensaje:\n${formData.message}`,
+                fr: `Nom: ${formData.firstName} ${formData.lastName}\nE-mail: ${formData.email}\nTéléphone: ${formData.phoneNumber}\n\nMessage:\n${formData.message}`,
             })
         );
 
@@ -210,6 +212,7 @@ const Form = (props) => {
                     website.localize({
                         en: 'Thank you for contacting us.',
                         es: 'Gracias por contactarnos.',
+                        fr: 'Merci de nous avoir contactés.',
                     })
                 );
 
@@ -238,7 +241,7 @@ const Form = (props) => {
                             htmlFor="first-name"
                             className="block text-sm font-semibold leading-6 "
                         >
-                            {website.localize({ en: 'First name', es: 'Nombre' })}
+                            {website.localize({ en: 'First name', es: 'Nombre', fr: 'Prénom' })}
                         </label>
                         <div className="mt-2.5">
                             <input
@@ -257,7 +260,7 @@ const Form = (props) => {
                             htmlFor="last-name"
                             className="block text-sm font-semibold leading-6 "
                         >
-                            {website.localize({ en: 'Last name', es: 'Apellido' })}
+                            {website.localize({ en: 'Last name', es: 'Apellido', fr: 'Nom' })}
                         </label>
                         <div className="mt-2.5">
                             <input
@@ -273,7 +276,11 @@ const Form = (props) => {
                     </div>
                     <div className="sm:col-span-2">
                         <label htmlFor="email" className="block text-sm font-semibold leading-6 ">
-                            {website.localize({ en: 'Email', es: 'Correo electrónico' })}
+                            {website.localize({
+                                en: 'Email',
+                                es: 'Correo electrónico',
+                                fr: 'E-mail',
+                            })}
                         </label>
                         <div className="mt-2.5">
                             <input
@@ -292,7 +299,11 @@ const Form = (props) => {
                             htmlFor="phone-number"
                             className="block text-sm font-semibold leading-6 "
                         >
-                            {website.localize({ en: 'Phone number', es: 'Número de teléfono' })}
+                            {website.localize({
+                                en: 'Phone number',
+                                es: 'Número de teléfono',
+                                fr: 'Numéro de téléphone',
+                            })}
                         </label>
                         <div className="mt-2.5">
                             <input
@@ -308,7 +319,7 @@ const Form = (props) => {
                     </div>
                     <div className="sm:col-span-2">
                         <label htmlFor="message" className="block text-sm font-semibold leading-6 ">
-                            {website.localize({ en: 'Message', es: 'Mensaje' })}
+                            {website.localize({ en: 'Message', es: 'Mensaje', fr: 'Message' })}
                         </label>
                         <div className="mt-2.5">
                             <textarea
@@ -332,14 +343,22 @@ const Form = (props) => {
                             }}
                             className="rounded-md bg-primary-200 px-3.5 py-2.5 text-center text-sm font-semibold text-primary-900 shadow-sm hover:bg-primary-900 hover:text-primary-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            {website.localize({ en: 'Send message', es: 'Enviar mensaje' })}
+                            {website.localize({
+                                en: 'Send message',
+                                es: 'Enviar mensaje',
+                                fr: 'Envoyer le message',
+                            })}
                         </a>
                     ) : (
                         <button
                             type="submit"
                             className="rounded-md bg-primary-200 px-3.5 py-2.5 text-center text-sm font-semibold text-primary-900 shadow-sm hover:bg-primary-900 hover:text-primary-200 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            {website.localize({ en: 'Send message', es: 'Enviar mensaje' })}
+                            {website.localize({
+                                en: 'Send message',
+                                es: 'Enviar mensaje',
+                                fr: 'Envoyer le message',
+                            })}
                         </button>
                     )}
                 </div>

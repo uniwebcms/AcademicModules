@@ -98,7 +98,12 @@ const Profiles = ({ profiles, website, input, layout }) => {
                             target="_self"
                             className="inline-block w-fit rounded-md px-3 py-1.5 text-sm sm:text-base font-medium bg-link-color/20 text-link-color hover:bg-link-color/10 hover:underline"
                         >
-                            {website.localize({ en: 'Explore more', es: 'Explorar más' })} →
+                            {website.localize({
+                                en: 'Explore more',
+                                es: 'Explorar más',
+                                fr: 'Explorer plus',
+                            })}{' '}
+                            →
                         </Link>
                     </div>
                 </div>
