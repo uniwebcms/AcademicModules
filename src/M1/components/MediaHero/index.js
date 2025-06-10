@@ -30,14 +30,24 @@ export default function MediaHero(props) {
     const { banner, title, subtitle, paragraphs, videos, images, links, buttons } =
         block.getBlockContent();
 
-    const video = videos[0];
-    const image = images[0];
-    const button = buttons[0];
+    const { layout = 'center' } = block.getBlockProperties();
 
+    let video, image, videoThumbnail;
+
+    if (videos[0] && images[0]) {
+        video = videos[0];
+        videoThumbnail = images[0];
+    } else if (videos[0]) {
+        video = videos[0];
+    } else if (images[0]) {
+        image = images[0];
+    }
+
+    const button = buttons[0];
     const buttonLink = button ? parseButtonContent(button.content) : null;
 
     return (
-        <Container className="w-full max-w-screen min-h-96" py="lg">
+        <Container className={twJoin('min-h-96 w-full max-w-screen')} py="lg" px="none">
             {banner && (
                 <div className="absolute inset-0">
                     <Image
@@ -47,72 +57,105 @@ export default function MediaHero(props) {
                     />
                 </div>
             )}
-            <div className="relative flex flex-col items-center justify-center mx-auto max-w-4xl z-10">
-                {title && (
-                    <h1
-                        className="text-3xl font-semibold md:text-4xl lg:text-5xl text-center tracking-wide text-pretty"
-                        style={{
-                            lineHeight: '1.1',
-                        }}
-                    >
-                        {title}
-                    </h1>
+            <div
+                className={twJoin(
+                    'flex mx-auto px-6 md:px-8 lg:px-16 xl:px-24',
+                    layout === 'center' ? 'flex-col' : 'flex-col lg:flex-row items-center max-w-8xl'
                 )}
-                {subtitle && (
-                    <h2 className="mt-4 lg:mt-6 px-0 lg:px-8 text-lg md:text-xl lg:text-2xl font-light text-center tracking-wide text-pretty">
-                        {subtitle}
-                    </h2>
-                )}
-                {paragraphs.filter(Boolean).length ? (
-                    <SafeHtml
-                        value={paragraphs}
-                        className="mt-4 lg:mt-6 lg:px-8 text-lg lg:text-xl text-center tracking-wide text-pretty"
-                    >
-                        {subtitle}
-                    </SafeHtml>
-                ) : null}
-                {links.length ? (
-                    <div className="flex flex-wrap gap-6 mt-6 justify-center">
-                        {links.map((link, index) => (
-                            <Link
-                                key={index}
-                                href={link.href}
-                                className={twJoin(
-                                    'pl-5 pr-3 py-2 text-sm lg:text-base font-semibold rounded-lg flex items-center gap-2 transition-all',
-                                    index === 0 &&
-                                        'bg-text-color/80 text-bg-color hover:bg-text-color',
-                                    index === 1 &&
-                                        'border-2 border-text-color/80 bg-bg-color text-text-color/80 hover:bg-text-color/10 hover:text-text-color'
-                                )}
-                            >
-                                {link.label}
-                                <LuChevronRight className="w-4 h-4 text-inherit" />
-                            </Link>
-                        ))}
-                    </div>
-                ) : null}
-                {/* Gradient border styled button */}
-                {buttonLink ? (
-                    <div className="mt-6 relative inline-flex rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 ease-in-out">
-                        <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-500" />
-                        <Link
-                            href={buttonLink.href}
-                            className="relative py-2 px-8 lg:px-12 bg-bg-color m-0.5 rounded-3xl"
+            >
+                <div
+                    className={twJoin(
+                        'relative flex flex-col z-10',
+                        layout === 'center'
+                            ? 'mx-auto max-w-4xl text-center'
+                            : 'w-full lg:w-1/2 text-center lg:text-left'
+                    )}
+                >
+                    {title && (
+                        <h1
+                            className="text-3xl font-semibold md:text-4xl lg:text-5xl tracking-wide text-pretty"
+                            style={{
+                                lineHeight: '1.1',
+                            }}
                         >
-                            <span className="font-bold">{buttonLink.label}</span>
-                        </Link>
-                    </div>
-                ) : null}
+                            {title}
+                        </h1>
+                    )}
+                    {subtitle && (
+                        <h2
+                            className={twJoin(
+                                'mt-4 lg:mt-6 px-0 text-lg md:text-xl lg:text-2xl font-light tracking-wide text-pretty',
+                                layout === 'center' ? 'lg:px-8' : ''
+                            )}
+                        >
+                            {subtitle}
+                        </h2>
+                    )}
+                    {paragraphs.filter(Boolean).length ? (
+                        <SafeHtml
+                            value={paragraphs}
+                            className={twJoin(
+                                'mt-4 lg:mt-6 text-lg lg:text-xl tracking-wide text-pretty',
+                                layout === 'center' ? 'lg:px-8' : ''
+                            )}
+                        >
+                            {subtitle}
+                        </SafeHtml>
+                    ) : null}
+                    {links.length ? (
+                        <div
+                            className={twJoin(
+                                'flex flex-wrap gap-6 mt-6',
+                                layout === 'center'
+                                    ? 'justify-center'
+                                    : 'justify-center lg:justify-start'
+                            )}
+                        >
+                            {links.map((link, index) => (
+                                <Link
+                                    key={index}
+                                    href={link.href}
+                                    className={twJoin(
+                                        'pl-5 pr-3 py-2 text-sm lg:text-base font-semibold rounded-lg flex items-center gap-2 transition-all',
+                                        index === 0 &&
+                                            'bg-text-color/80 text-bg-color hover:bg-text-color',
+                                        index === 1 &&
+                                            'border-2 border-text-color/80 bg-bg-color text-text-color/80 hover:bg-text-color/10 hover:text-text-color'
+                                    )}
+                                >
+                                    {link.label}
+                                    <LuChevronRight className="w-4 h-4 text-inherit" />
+                                </Link>
+                            ))}
+                        </div>
+                    ) : null}
+                    {/* Gradient border styled button */}
+                    {buttonLink ? (
+                        <div className="mt-6 relative inline-flex rounded-3xl overflow-hidden hover:scale-105 transition-transform duration-500 ease-in-out">
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-500" />
+                            <Link
+                                href={buttonLink.href}
+                                className="relative py-2 px-8 lg:px-12 bg-bg-color m-0.5 rounded-3xl"
+                            >
+                                <span className="font-bold">{buttonLink.label}</span>
+                            </Link>
+                        </div>
+                    ) : null}
+                </div>
                 {video || image ? (
                     <div
                         className={twJoin(
-                            'w-full mx-auto mt-8',
-                            video ? 'lg:mt-12 max-w-[44rem]' : 'lg:mt-10 max-w-2xl'
+                            'mx-auto',
+                            video ? 'max-w-[44rem]' : 'max-w-2xl',
+                            layout === 'center'
+                                ? 'mt-10 w-full'
+                                : 'w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12'
                         )}
                     >
                         <Media
                             profile={getPageProfile()}
                             media={video || image}
+                            thumbnail={videoThumbnail}
                             className={twJoin('shadow-xl', video ? 'rounded-3xl' : '')}
                         />
                     </div>

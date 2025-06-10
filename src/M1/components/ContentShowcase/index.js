@@ -28,7 +28,7 @@ const contentItemFeatureItemIconColors = [
     'text-secondary-500',
 ];
 
-const VideoItem = ({ activeItem, activeIndex }) => {
+const VideoItem = ({ activeItem, activeIndex, thumbnail }) => {
     const activeItemFeatures = activeItem.lists?.[0]?.map((item) => {
         const { icons, paragraphs } = item;
 
@@ -95,11 +95,13 @@ const VideoItem = ({ activeItem, activeIndex }) => {
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 opacity-5"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
                         <Media
+                            profile={getPageProfile()}
                             media={video}
                             style={{
                                 paddingBottom: '56.25%',
                                 width: '100%',
                             }}
+                            thumbnail={thumbnail}
                         />
                     </div>
                 </div>
@@ -236,8 +238,20 @@ export default function ContentShowcase(props) {
 
     const activeIndex = parseInt(activeCase.slice(-1));
     const activeItem = items[activeIndex];
-    const activeItemImage = activeItem.images[0];
-    const activeItemVideo = activeItem.videos[0];
+
+    let activeItemVideo, activeItemImage, activeItemVideoThumbnail;
+
+    if (activeItem.videos[0] && activeItem.images[0]) {
+        activeItemVideo = activeItem.videos[0];
+        activeItemVideoThumbnail = activeItem.images[0];
+    } else if (activeItem.videos[0]) {
+        activeItemVideo = activeItem.videos[0];
+    } else if (activeItem.images[0]) {
+        activeItemImage = activeItem.images[0];
+    }
+
+    // const activeItemImage = activeItem.images[0];
+    // const activeItemVideo = activeItem.videos[0];
 
     return (
         <Container
@@ -368,7 +382,11 @@ export default function ContentShowcase(props) {
                         <ImageItem activeItem={activeItem} activeIndex={activeIndex} />
                     )}
                     {activeItemVideo && (
-                        <VideoItem activeItem={activeItem} activeIndex={activeIndex} />
+                        <VideoItem
+                            activeItem={activeItem}
+                            activeIndex={activeIndex}
+                            thumbnail={activeItemVideoThumbnail}
+                        />
                     )}
                 </div>
             </div>
