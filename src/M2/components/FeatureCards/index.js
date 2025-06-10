@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Link, SafeHtml } from '@uniwebcms/module-sdk';
+import { Image, Link, SafeHtml } from '@uniwebcms/core-components';
 
 export default function FeatureCard(props) {
     const { block, page } = props;

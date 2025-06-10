@@ -1,0 +1,14 @@
+title: 
+  en: Article Viewer
+  fr: Visionneuse d'articles
+label: 
+  en: Article
+  fr: Article
+description: 
+  en: Display the content of a article.
+  fr: Afficher le contenu d'un article.
+
+category: article
+export: true
+
+

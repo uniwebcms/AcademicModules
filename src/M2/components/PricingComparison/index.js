@@ -1,5 +1,6 @@
 import React from 'react';
-import { twJoin, Icon, Link, website } from '@uniwebcms/module-sdk';
+import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Icon, Link } from '@uniwebcms/core-components';
 import { BsArrowRightShort } from 'react-icons/bs';
 
 const parseTableData = (firstCol, items) => {

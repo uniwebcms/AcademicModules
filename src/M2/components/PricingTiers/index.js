@@ -1,5 +1,6 @@
 import React from 'react';
-import { twJoin, Link, Icon, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { Icon, Link } from '@uniwebcms/core-components';
 
 export default function PricingTier(props) {
     const { block, website } = props;

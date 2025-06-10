@@ -1,6 +1,7 @@
 import React from 'react';
-import { getMediaLinkLabel, getMediaLinkType } from '../_utils/media';
-import { Link, SafeHtml, getPageProfile, Image, MediaIcon } from '@uniwebcms/module-sdk';
+import { getMediaLinkType } from '../_utils/media';
+import { getPageProfile } from '@uniwebcms/module-sdk';
+import { Link, SafeHtml, Image, MediaIcon } from '@uniwebcms/core-components';
 
 export default function Footer(props) {
     const { block, website } = props;

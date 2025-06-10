@@ -1,0 +1,36 @@
+title: 
+  en: Articles
+  fr: Articles
+label:
+  en: Articles
+  fr: Articles
+description:
+  en: A component to display a collection of articles either in a grid or list format. Each article includes a title, cover image, and a short description for an engaging browsing experience.
+  fr: Un composant pour afficher une collection d'articles soit sous forme de grille, soit sous forme de liste. Chaque article comprend un titre, une image de couverture et une courte description pour une expérience de navigation engageante.
+
+category: article
+export: true
+
+properties:
+  layout:
+    label: 
+      en: Layout
+      fr: Mise en page
+    type: string
+    enum:
+      - label:
+          en: Grid
+          fr: Grille
+        value: grid
+      - label:
+          en: List
+          fr: Liste
+        value: list
+    default: grid
+    description: 
+      en: The layout to display the articles, either in a grid or list format.
+      fr: La mise en page pour afficher les articles, soit sous forme de grille, soit sous forme de liste.
+
+
+# images:
+#   - example.png

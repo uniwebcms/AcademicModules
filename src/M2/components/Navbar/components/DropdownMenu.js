@@ -1,6 +1,6 @@
 import React, { Fragment, useRef } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import { twJoin, Icon, Link } from '@uniwebcms/module-sdk';
+import { Icon, Link } from '@uniwebcms/core-components';
 
 export default function PopoverMenu(props) {
     const { trigger, menuItems = [], openFrom = 'left', positionOffset = 1 } = props;

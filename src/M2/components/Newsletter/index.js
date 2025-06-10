@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { twJoin, Image, getPageProfile, SafeHtml } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, SafeHtml } from '@uniwebcms/core-components';
 import { FaQuoteLeft } from 'react-icons/fa';
 
 const Testimonial = (info) => {

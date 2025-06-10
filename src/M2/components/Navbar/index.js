@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Icon, Image, getPageProfile, Link, twJoin } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Icon, Image, Link } from '@uniwebcms/core-components';
 import { LuMenu, LuChevronDown, LuX } from 'react-icons/lu';
 import DropdownMenu from './components/DropdownMenu';
 
@@ -140,21 +141,6 @@ export default function navbar(props) {
                         </Link>
                     </div>
                     <div className="flex items-center gap-4">
-                        {/* {sign_up_link && (
-                            <Link
-                                to={sign_up_link}
-                                target="_blank"
-                                className="bg-black text-white py-2 px-5 h-[44px] max-w-[105px] rounded-xl grid place-content-center font-medium"
-                                onClick={() => setMobileOpen(false)}
-                            >
-                                {website.localize({
-                                    en: 'Sign up',
-                                    fr: "S'inscrire",
-                                    es: 'Regístrate',
-                                    zh: '注册',
-                                })}
-                            </Link>
-                        )} */}
                         <button
                             className="relative"
                             aria-label="Toggle Menu"

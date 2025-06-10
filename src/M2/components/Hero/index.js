@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeHtml, Link, twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml, Link } from '@uniwebcms/core-components';
+import { twJoin } from '@uniwebcms/module-sdk';
 import { LuArrowRight } from 'react-icons/lu';
 
 export default function Hero(props) {

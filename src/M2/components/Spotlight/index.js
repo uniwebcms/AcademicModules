@@ -1,5 +1,6 @@
 import React from 'react';
-import { twJoin, Image, Link, SafeHtml, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image, Link, SafeHtml } from '@uniwebcms/core-components';
 
 export default function Spotlight(props) {
     const { block } = props;

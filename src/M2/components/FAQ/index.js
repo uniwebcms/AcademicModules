@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { twJoin, SafeHtml } from '@uniwebcms/module-sdk';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
 import { HiChevronDown } from 'react-icons/hi';
 
 export default function FAQ(props) {

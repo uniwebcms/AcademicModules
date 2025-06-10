@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import { Link, Image, getPageProfile, twJoin, Media } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
+import { Image, Link } from '@uniwebcms/core-components';
 import { RiArrowLeftLine, RiArrowRightLine } from 'react-icons/ri';
 
 const ImageCard = ({ width, background, title, subtitle }) => {

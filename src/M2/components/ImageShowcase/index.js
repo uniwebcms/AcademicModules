@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, getPageProfile } from '@uniwebcms/module-sdk';
+import { getPageProfile } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 
 export default function ImageShowcase(props) {
     const { block } = props;

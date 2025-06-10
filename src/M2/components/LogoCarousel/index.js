@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 
 export default function LogoCarousel(props) {
     const { block, page } = props;
