@@ -2207,7 +2207,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-google-maps/api@npm:^2.17.1, @react-google-maps/api@npm:^2.19.1, @react-google-maps/api@npm:^2.19.3":
+"@react-google-maps/api@npm:^2.19.1, @react-google-maps/api@npm:^2.19.3":
   version: 2.20.6
   resolution: "@react-google-maps/api@npm:2.20.6"
   dependencies:
@@ -2629,13 +2629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/trusted-types@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "@types/trusted-types@npm:2.0.7"
-  checksum: 10/8e4202766a65877efcf5d5a41b7dd458480b36195e580a3b1085ad21e948bc417d55d6f8af1fd2a7ad008015d4117d5fdfe432731157da3c68678487174e4ba3
-  languageName: node
-  linkType: hard
-
 "@types/unist@npm:*, @types/unist@npm:^3.0.0":
   version: 3.0.3
   resolution: "@types/unist@npm:3.0.3"
@@ -2733,24 +2726,6 @@ __metadata:
     cloudflared:
       optional: true
   checksum: 10/15bee951d69c43b6d46cf40da4c42418005f9cba24cecba3c21fe0cdd930317bc61a926da1ff6381553c611c9a6dc8f3c30b0dae15f4002dccfba6bbc4982a78
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/module-sdk@npm:^1.23.18":
-  version: 1.23.18
-  resolution: "@uniwebcms/module-sdk@npm:1.23.18"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.17.1"
-    dompurify: "npm:^3.0.4"
-    react-icons: "npm:^5.4.0"
-    react-inlinesvg: "npm:^3.0.2"
-    tailwind-merge: "npm:^1.13.2"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/e5805a70cfcb79eea1931de729a33f8c66ada273ae89ab4d8c62e2924efeedb1bcd254a659a0f0f7deef343fff3d83e2dce0a240b6bdc6018a397f576ee7d558
   languageName: node
   linkType: hard
 
@@ -4461,18 +4436,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.0.4":
-  version: 3.2.4
-  resolution: "dompurify@npm:3.2.4"
-  dependencies:
-    "@types/trusted-types": "npm:^2.0.7"
-  dependenciesMeta:
-    "@types/trusted-types":
-      optional: true
-  checksum: 10/98570c53385518a2f9b617f796926338856acfdd3369c88b5905bddf96bd7d391bf8a5433127155e0046e6faa2bfb767185fcd571b865dfabe624c099e2537f5
-  languageName: node
-  linkType: hard
-
 "domutils@npm:^1.7.0":
   version: 1.7.0
   resolution: "domutils@npm:1.7.0"
@@ -4894,13 +4857,6 @@ __metadata:
   version: 3.3.0
   resolution: "events@npm:3.3.0"
   checksum: 10/a3d47e285e28d324d7180f1e493961a2bbb4cad6412090e4dec114f4db1f5b560c7696ee8e758f55e23913ede856e3689cd3aa9ae13c56b5d8314cd3b3ddd1be
-  languageName: node
-  linkType: hard
-
-"exenv@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "exenv@npm:1.2.2"
-  checksum: 10/6840185e421394bcb143debb866d31d19c3e4a4bca87d2f319d68d61afff353b3c678f2eb389e3b98ab9aecbec19f6bebbdc4193984378af0a3366c498a7efc8
   languageName: node
   linkType: hard
 
@@ -6389,7 +6345,8 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@headlessui/tailwindcss": "npm:^0.2.2"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/module-sdk": "npm:^1.23.18"
+    "@uniwebcms/core-components": "npm:^1.6.12"
+    "@uniwebcms/module-sdk": "npm:^2.0.1"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
@@ -8174,15 +8131,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-from-dom@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "react-from-dom@npm:0.6.2"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/f3954737c2677e82f72ecedcdcf5f187d2a1b86a6c5b915f7300796ac153437581ee0111c9f524e7c18124d25d0d31391d54cdee318ea390722ca57e66813ed7
-  languageName: node
-  linkType: hard
-
 "react-highlight-words@npm:^0.20.0":
   version: 0.20.0
   resolution: "react-highlight-words@npm:0.20.0"
@@ -8225,18 +8173,6 @@ __metadata:
     react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
   checksum: 10/91b1ab628c3ad22a668e6b348623df42e8d1f0679ed5acbf98060c6b13fbc80739923cb90a2f18b63c738b88e5e7294eb7ae3453bc3462a15a791cf748bb68ad
-  languageName: node
-  linkType: hard
-
-"react-inlinesvg@npm:^3.0.2":
-  version: 3.0.3
-  resolution: "react-inlinesvg@npm:3.0.3"
-  dependencies:
-    exenv: "npm:^1.2.2"
-    react-from-dom: "npm:^0.6.2"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10/e2b6ec1c0ce04e8d6d8e22e3173234486a65ad7e2ed5e3ae7d69d856e77f1cb3349946f109fa8fe4bf8dd175ad8c252f979d8f00c3eabf9b4b3c8b7e053ea50e
   languageName: node
   linkType: hard
 

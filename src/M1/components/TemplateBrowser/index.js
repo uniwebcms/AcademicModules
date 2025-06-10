@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Container from '../_utils/Container';
 import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { HiSearch, HiArrowRight } from 'react-icons/hi';
 import { TbSortDescending } from 'react-icons/tb';
 import { LuChevronDown, LuLayers2, LuCrown, LuGem } from 'react-icons/lu';
@@ -343,7 +344,7 @@ const initFilters = (config) => {
 
 export default function TemplateBrowser(props) {
     const { block, input } = props;
-    const { title, properties } = block.getBlockContent();
+    const { title, properties, links } = block.getBlockContent();
     const { search_box, filters: filterInfo = [], sort } = properties;
     const inlineFilter = filterInfo.find((filter) => filter.type === 'inline');
     const menuFilter = filterInfo.find((filter) => filter.type === 'menu');
@@ -457,48 +458,58 @@ export default function TemplateBrowser(props) {
 
     const sortMenu = sort ? <SortMenu data={sort} filters={filters} onChange={updateSort} /> : null;
 
-    const skipLink = (
-        <div
+    const titleLink = links[0] ? (
+        <Link
+            to={links[0].href}
             className="flex items-center space-x-1 text-base lg:text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer ml-6 lg:ml-auto w-44 lg:w-fit justify-end lg:justify-normal"
-            onClick={() => {
-                const appDomain = uniweb.getAppDomain();
-                fetch(`${appDomain}/temp_resource.php`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json', // Specify content type
-                    },
-                    body: JSON.stringify({
-                        action: 'store',
-                        data: {
-                            templateSite: '_blank',
-                        },
-                    }), // Convert data object to JSON string
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.json(); // Parse the JSON response
-                    })
-                    .then((data) => {
-                        window.location.replace(data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error); // Handle any errors
-                    });
-            }}
         >
-            <span className="text-nowrap">
-                {website.localize({
-                    en: 'Skip template',
-                    fr: 'Passer le modèle',
-                    es: 'Saltar plantilla',
-                    zh: '跳过模板',
-                })}
-            </span>
+            <span className="text-nowrap">{links[0].label}</span>
             <HiArrowRight className="w-5 h-5 text-inherit group-hover:translate-x-1 transition-transform flex-shrink-0" />
-        </div>
-    );
+        </Link>
+    ) : null;
+
+    // const skipLink = (
+    //     <div
+    //         className="flex items-center space-x-1 text-base lg:text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer ml-6 lg:ml-auto w-44 lg:w-fit justify-end lg:justify-normal"
+    //         onClick={() => {
+    //             const appDomain = uniweb.getAppDomain();
+    //             fetch(`${appDomain}/temp_resource.php`, {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json', // Specify content type
+    //                 },
+    //                 body: JSON.stringify({
+    //                     action: 'store',
+    //                     data: {
+    //                         templateSite: '_blank',
+    //                     },
+    //                 }), // Convert data object to JSON string
+    //             })
+    //                 .then((response) => {
+    //                     if (!response.ok) {
+    //                         throw new Error(`HTTP error! status: ${response.status}`);
+    //                     }
+    //                     return response.json(); // Parse the JSON response
+    //                 })
+    //                 .then((data) => {
+    //                     window.location.replace(data);
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Error:', error); // Handle any errors
+    //                 });
+    //         }}
+    //     >
+    //         <span className="text-nowrap">
+    //             {website.localize({
+    //                 en: 'Skip template',
+    //                 fr: 'Passer le modèle',
+    //                 es: 'Saltar plantilla',
+    //                 zh: '跳过模板',
+    //             })}
+    //         </span>
+    //         <HiArrowRight className="w-5 h-5 text-inherit group-hover:translate-x-1 transition-transform flex-shrink-0" />
+    //     </div>
+    // );
 
     return (
         <Container className="max-w-9xl mx-auto">
@@ -506,7 +517,8 @@ export default function TemplateBrowser(props) {
             <div className="flex justify-between lg:justify-normal items-center mb-8">
                 {mainTitle}
                 <div className="hidden md:block">{searchBox}</div>
-                {skipLink}
+                {/* {skipLink} */}
+                {titleLink}
             </div>
 
             {/* filters and sorts */}

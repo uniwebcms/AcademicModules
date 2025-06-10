@@ -5,11 +5,19 @@ const normalizeData = (profiles) => {
     return profiles.map((profile) => {
         const { title, subtitle, head, lastEditStamp } = profile.getBasicInfo();
 
-        const metadata = head.metadata
+        let metadata = head.metadata
             ? typeof head.metadata === 'string'
                 ? JSON.parse(head.metadata)
                 : head.metadata
             : {};
+
+        if (metadata && typeof metadata === 'string') {
+            try {
+                metadata = JSON.parse(metadata);
+            } catch (e) {
+                metadata = {};
+            }
+        }
 
         const { category = [], type = '' } = metadata;
 
@@ -20,11 +28,12 @@ const normalizeData = (profiles) => {
             description: subtitle,
             image: { src, alt },
             searchText: `${title} ${subtitle}`,
-            category: category.filter((item) => item).join(', '),
+            category,
             type,
             lastEdit: lastEditStamp,
             url: head.url,
             popularity: Math.floor(Math.random() * 1000),
+            profile,
         };
 
         return item;

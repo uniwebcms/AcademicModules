@@ -50,13 +50,13 @@ const VirtualGrid = ({ data, filters }) => {
     const filteredData = useMemo(() => {
         const { sort, ...actualFilters } = filters;
 
-        console.log('actualFilters', actualFilters, data);
-
         // Step 1: Apply actual filters
         const filteredData = data.filter((item) => {
             // Check each actual filter key, Pass if filter value is 'all'
             return Object.entries(actualFilters).every(
-                ([key, value]) => value === 'all' || item[key] === value
+                ([key, value]) =>
+                    value === 'all' ||
+                    (Array.isArray(item[key]) ? item[key].includes(value) : item[key] === value)
             );
         });
 

@@ -449,7 +449,33 @@ export default function ComponentBrowser(props) {
     const developOwn = (
         <div
             className="flex items-center space-x-1 text-base lg:text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer ml-6 lg:ml-auto w-44 lg:w-fit justify-end lg:justify-normal"
-            onClick={() => {}}
+            onClick={() => {
+                const appDomain = uniweb.getAppDomain();
+                fetch(`${appDomain}/temp_resource.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Specify content type
+                    },
+                    body: JSON.stringify({
+                        action: 'store',
+                        data: {
+                            templateSite: '_blank',
+                        },
+                    }), // Convert data object to JSON string
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json(); // Parse the JSON response
+                    })
+                    .then((data) => {
+                        window.location.replace(data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error); // Handle any errors
+                    });
+            }}
         >
             <span className="text-nowrap">
                 {website.localize({
