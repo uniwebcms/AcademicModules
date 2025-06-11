@@ -365,8 +365,8 @@ export default function MediaFooter(props) {
                         className={twJoin(
                             'absolute',
                             with_newsletter
-                                ? 'top-0 lg:top-56 right-0 lg:right-[105px] xl:right-0 xl:top-0'
-                                : 'top-0 right-0'
+                                ? 'top-2 lg:top-56 right-0 lg:right-[105px] xl:right-0 xl:top-0'
+                                : 'top-2 right-0'
                         )}
                     >
                         <BackToTop />

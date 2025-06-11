@@ -151,7 +151,7 @@ export default function PageFooter(props) {
                             })}
                         </div>
                     ) : null}
-                    <div className="text-sm text-text-color-70 flex justify-between">
+                    <div className="text-sm text-text-color-70 flex flex-col lg:flex-row justify-between gap-3">
                         {copyright ? (
                             <SafeHtml value={copyright} className="text-sm text-text-color-70" />
                         ) : (
