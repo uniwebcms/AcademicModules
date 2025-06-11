@@ -65,7 +65,7 @@ export default function PageFooter(props) {
 
     return (
         <Container as={as} className="pt-9 pb-12 divide-y divide-text-color-60 px-4 bg-bg-color-90">
-            <div className="flex flex-wrap px-6 max-w-10xl mx-auto">
+            <div className="flex flex-wrap px-6 max-w-10xl mx-auto gap-y-4">
                 {navigation.map((page, index) => {
                     let { label, route, hasData, child_items } = page;
 
@@ -87,7 +87,7 @@ export default function PageFooter(props) {
                                 const { label, route, hasData } = child;
 
                                 return (
-                                    <div key={index} className={index === 0 ? 'mt-2' : 'mt-1'}>
+                                    <div key={index} className={index === 0 ? 'mt-2' : 'mt-0'}>
                                         {hasData ? (
                                             <Link
                                                 className="text-sm hover:underline text-text-color-90 hover:text-text-color"

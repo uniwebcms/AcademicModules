@@ -13,7 +13,7 @@
         "@headlessui/react": "^1.7.13",
         "@headlessui/tailwindcss": "^0.2.2",
         "@tailwindcss/typography": "^0.5.15",
-        "@uniwebcms/core-components": "^1.6.12",
+        "@uniwebcms/core-components": "^1.6.14",
         "@uniwebcms/module-sdk": "^2.0.1",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.1.0",
         "prop-types": "^15.8.1",
