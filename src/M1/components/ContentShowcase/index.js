@@ -27,6 +27,11 @@ const contentItemFeatureItemIconColors = [
     'text-accent-500',
     'text-secondary-500',
 ];
+const contentItemFeatureVideoThumbnailSvgColors = [
+    '[&_svg]:!text-primary-500',
+    '[&_svg]:!text-accent-500',
+    '[&_svg]:!text-secondary-500',
+];
 
 const VideoItem = ({ activeItem, activeIndex, thumbnail }) => {
     const activeItemFeatures = activeItem.lists?.[0]?.map((item) => {
@@ -93,7 +98,12 @@ const VideoItem = ({ activeItem, activeIndex, thumbnail }) => {
                 </div>
                 <div className="relative aspect-video">
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 opacity-5"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                        className={twJoin(
+                            'absolute inset-0 flex items-center justify-center',
+                            contentItemFeatureVideoThumbnailSvgColors[activeIndex % 3]
+                        )}
+                    >
                         <Media
                             profile={getPageProfile()}
                             media={video}
