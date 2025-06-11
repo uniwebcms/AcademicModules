@@ -96,7 +96,7 @@ const Branding = ({ logo, title, subtitle, links }) => {
     );
 };
 
-const Navigation = ({ groupedLinks }) => {
+const Navigation = ({ groupedLinks, size = 'sm' }) => {
     const pages = website.getPageHierarchy({
         nested: true,
         filterEmpty: true,
@@ -143,7 +143,11 @@ const Navigation = ({ groupedLinks }) => {
     return (
         <div
             className="w-full grid gap-x-6 gap-y-8 lg:gap-x-10 lg:gap-y-12 xl:gap-x-14 xl:gap-y-16"
-            style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))' }}
+            style={
+                size === 'sm'
+                    ? { gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))' }
+                    : { gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))' }
+            }
         >
             {linkGroups.map((group, index) => {
                 const { label, links } = group;
@@ -284,8 +288,6 @@ export default function MediaFooter(props) {
 
     const { with_newsletter = true, with_back_to_top = false } = block.getBlockProperties();
 
-    const smallScreen = window.innerWidth < 1024;
-
     if (main?.body?.imgs?.length) {
         images.push(...main?.body?.imgs);
     }
@@ -350,7 +352,7 @@ export default function MediaFooter(props) {
                     <div className={twJoin('w-full lg:w-auto lg:flex-grow')}>
                         <Navigation
                             groupedLinks={groupedLinks}
-                            colSpan={smallScreen ? 3 : with_newsletter ? 2 : 4}
+                            size={with_newsletter ? 'sm' : 'lg'}
                         />
                     </div>
                     {/* Newsletter */}
