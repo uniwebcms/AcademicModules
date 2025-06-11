@@ -54,10 +54,10 @@ export default function Cards({ website, block }) {
     }
 
     if (image_aspect_ratio === 'landscape') {
-        imageAspectRatio = 'aspect-video';
+        imageAspectRatio = 'aspect-[16/9]';
     }
     if (image_aspect_ratio === 'portrait') {
-        imageAspectRatio = 'aspect-[2/3]';
+        imageAspectRatio = 'aspect-[3/4]';
     }
     if (image_aspect_ratio === 'square') {
         imageAspectRatio = 'aspect-square';

@@ -22,5 +22,48 @@ elements:
       en: Add a card elements, choose type 'Document' and upload the file.
       fr: Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier.
 
+properties:
+  size:
+    label:
+      en: Asset Card Size
+      fr: Taille de la carte d'actif
+    type: string
+    default: medium
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: medium
+      - label:
+          en: Large
+          fr: Grand
+        value: large
+  image_aspect_ratio:
+    label:
+      en: Image Aspect Ratio
+      fr: Ratio d'aspect de l'image
+    type: string
+    default: landscape
+    enum:
+      - label:
+          en: Landscape
+          fr: Paysage
+        value: landscape
+      - label:
+          en: Portrait
+          fr: Portrait
+        value: portrait
+      - label:
+          en: Square
+          fr: Carré
+        value: square
+    description:
+        en: The aspect ratio of the asset image.
+        fr: Le ratio d'aspect de l'image de l'actif.
+
 images:
   - example.png

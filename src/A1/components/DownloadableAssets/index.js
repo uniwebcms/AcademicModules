@@ -1,11 +1,23 @@
 import React from 'react';
-import { stripTags, Profile } from '@uniwebcms/module-sdk';
+import { stripTags, Profile, twJoin } from '@uniwebcms/module-sdk';
 import { Asset, FileLogo } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { convertToProfileData } from '../_utils/document';
 
 function Layout(props) {
-    const { profiles } = props;
+    const { profiles, image_aspect_ratio } = props;
+
+    let imageAspectRatio;
+
+    if (image_aspect_ratio === 'landscape') {
+        imageAspectRatio = 'aspect-[16/9]';
+    }
+    if (image_aspect_ratio === 'portrait') {
+        imageAspectRatio = 'aspect-[3/4]';
+    }
+    if (image_aspect_ratio === 'square') {
+        imageAspectRatio = 'aspect-square';
+    }
 
     const getValueRenderer = (profile) => {
         const data = profile.at('info');
@@ -17,7 +29,7 @@ function Layout(props) {
             <div
                 className={`relative w-full h-full rounded-lg border border-text-color-20 flex flex-col overflow-hidden group shadow-md`}
             >
-                <div className={`h-44`}>
+                <div className={twJoin('w-full overflow-hidden', imageAspectRatio)}>
                     <Asset
                         {...{
                             value: url,
@@ -26,9 +38,11 @@ function Layout(props) {
                     />
                 </div>
                 <div
-                    className={`flex items-center space-x-1 px-4 py-3 border-t border-text-color-30 bg-heading-color-10`}
+                    className={`flex items-center space-x-1 px-4 py-3 border-t border-text-color-20 bg-text-color/10`}
                 >
-                    <div className="w-8">{<FileLogo filename={filename}></FileLogo>}</div>
+                    <div className="w-8">
+                        {<FileLogo filename={/\.\S+$/.test(filename) ? filename : url}></FileLogo>}
+                    </div>
                     <div className={`flex flex-col space-y-0.5 max-w-[calc(100%-40px)]`}>
                         <h3 className="text-[16px] font-medium line-clamp-1" title={displayName}>
                             {displayName}
@@ -54,6 +68,8 @@ function Layout(props) {
 
 export default function DownloadableAssets({ input, block }) {
     const { main } = block;
+
+    const { size = 'medium', image_aspect_ratio = 'landscape' } = block.getBlockProperties();
 
     const { header, body } = main;
 
@@ -100,7 +116,7 @@ export default function DownloadableAssets({ input, block }) {
 
     return (
         <Container className="px-6 mx-auto max-w-7xl lg:px-8">
-            {!!title && (
+            {title && (
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-center">
                     {stripTags(title)}
                 </h2>
@@ -112,11 +128,17 @@ export default function DownloadableAssets({ input, block }) {
             ) : null}
             <div>
                 <div
-                    className={`grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-20 ${
-                        title || subtitle ? 'mt-12' : ''
-                    }`}
+                    className={twJoin(
+                        title || subtitle ? 'mt-12' : '',
+                        'grid gap-6 md:gap-8 lg:gap-10',
+                        size === 'small' &&
+                            'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5',
+                        size === 'medium' &&
+                            'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+                        size === 'large' && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                    )}
                 >
-                    <Layout profiles={combined} />
+                    <Layout profiles={combined} image_aspect_ratio={image_aspect_ratio} />
                 </div>
             </div>
         </Container>
