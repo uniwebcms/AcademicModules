@@ -96,11 +96,10 @@ const Branding = ({ logo, title, subtitle, links }) => {
     );
 };
 
-const Navigation = ({ groupedLinks, colSpan }) => {
+const Navigation = ({ groupedLinks }) => {
     const pages = website.getPageHierarchy({
         nested: true,
         filterEmpty: true,
-        // pageOnly: true
     });
 
     const groupedPages = [];
@@ -142,18 +141,15 @@ const Navigation = ({ groupedLinks, colSpan }) => {
     });
 
     return (
-        <div className="w-full flex flex-wrap gap-y-6">
+        <div
+            className="w-full grid gap-x-6 gap-y-8 lg:gap-x-10 lg:gap-y-12 xl:gap-x-14 xl:gap-y-16"
+            style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))' }}
+        >
             {linkGroups.map((group, index) => {
                 const { label, links } = group;
 
                 return (
-                    <div
-                        key={index}
-                        className="pr-2"
-                        style={{
-                            width: `${100 / colSpan}%`,
-                        }}
-                    >
+                    <div key={index} className="w-full">
                         <p className="text-base font-semibold uppercase text-text-color-70">
                             {stripTags(label)}
                         </p>
@@ -214,7 +210,7 @@ const Newsletter = (props) => {
                     <label htmlFor="email-address" className="sr-only">
                         Email address
                     </label>
-                    <div className="border-b border-text-color-90 py-2 px-1">
+                    <div className="border-b border-text-color-50 py-2 px-1">
                         <input
                             ref={inputRef}
                             id="email-address"
@@ -222,7 +218,7 @@ const Newsletter = (props) => {
                             type="email"
                             autoComplete="email"
                             required
-                            className="bg-inherit block w-full text-base text-text-color placeholder:text-text-color-60 focus:outline-none"
+                            className="bg-inherit block w-full text-base text-text-color placeholder:text-text-color-40 focus:outline-none"
                             placeholder={website.localize({
                                 en: 'Enter your email',
                                 fr: 'Entrez votre adresse e-mail',
@@ -233,7 +229,7 @@ const Newsletter = (props) => {
                 <div className="mt-4">
                     <input
                         type="submit"
-                        className="px-4 py-2 text-base font-medium text-center text-primary-800 bg-primary-300 border border-primary-300 cursor-pointer hover:bg-primary-200 focus:outline-none"
+                        className="px-4 py-2 text-base font-medium text-center cursor-pointer bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color"
                         value={website.localize({
                             en: 'Subscribe',
                             fr: 'Souscrire',
@@ -245,25 +241,23 @@ const Newsletter = (props) => {
     );
 };
 
-const BackToTop = ({ size }) => {
+const BackToTop = () => {
     return (
-        <button
-            className="focus:outline-none flex flex-col items-center group"
+        <div
+            className="flex flex-col items-center group cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
             <span className="sr-only">Back to top</span>
             <BiSolidChevronUp
                 className={twJoin(
-                    size === 'sm' && 'w-6 h-6 p-0.5',
-                    size === 'md' && 'w-6 h-6 p-0.5 sm:w-8 sm:h-8 sm:p-1',
+                    'w-6 h-6 p-0.5 lg:w-8 lg:h-8 lg:p-1',
                     'bg-primary-200 text-primary-800 rounded-full group-hover:bg-primary-100'
                 )}
             />
             <span
                 className={twJoin(
-                    size === 'sm' && 'text-xs lg:text-sm',
-                    size === 'md' && 'text-xs sm:text-md lg:text-base',
-                    'mt-1.5 text-text-color-80 group-hover:text-text-color uppercase'
+                    'text-xs lg:text-md xl:text-base',
+                    'mt-1.5 text-text-color-60 group-hover:text-text-color uppercase'
                 )}
             >
                 {website.localize({
@@ -271,7 +265,7 @@ const BackToTop = ({ size }) => {
                     fr: 'Retour en haut',
                 })}
             </span>
-        </button>
+        </div>
     );
 };
 
@@ -329,60 +323,62 @@ export default function MediaFooter(props) {
     }
 
     return (
-        <footer className="pt-16 pb-8 lg:pt-24 lg:pb-10 bg-bg-color-90">
-            <div className="px-6 md:px-8">
-                <div className="relative mx-auto max-w-10xl grid gap-12 lg:grid-cols-6 lg:gap-18">
-                    <div className="col-span-2">
-                        <Branding title={title} subtitle={subtitle} logo={logo} links={links} />
-                    </div>
+        <footer className="pt-16 pb-8 lg:pt-24 lg:pb-10 px-6 md:px-8">
+            <div className="relative mx-auto max-w-9xl">
+                <div
+                    className={twJoin(
+                        'flex flex-col lg:flex-row gap-12 xl:gap-16 2xl:gap-20',
+                        with_back_to_top
+                            ? 'w-full xl:w-[calc(100%-200px)] 2xl:w-[calc(100%-260px)]'
+                            : 'w-full',
+                        with_newsletter && 'min-h-[450px]',
+                        with_back_to_top && with_newsletter
+                            ? 'lg:w-full'
+                            : 'lg:w-[calc(100%-160px)]'
+                    )}
+                >
+                    {/* Branding */}
                     <div
                         className={twJoin(
-                            with_newsletter ? 'col-span-2' : 'col-span-4',
-                            !with_newsletter && with_back_to_top && 'pr-[90px] sm:pr-[100px]'
+                            'lg:w-[360px] lg:flex-shrink-0',
+                            with_back_to_top ? 'w-[calc(100%-120px)]' : 'w-full'
                         )}
                     >
+                        <Branding title={title} subtitle={subtitle} logo={logo} links={links} />
+                    </div>
+                    {/* Navigation */}
+                    <div className={twJoin('w-full lg:w-auto lg:flex-grow')}>
                         <Navigation
-                            {...props}
                             groupedLinks={groupedLinks}
                             colSpan={smallScreen ? 3 : with_newsletter ? 2 : 4}
                         />
                     </div>
-                    {with_newsletter ? (
-                        <div
-                            className={twJoin(
-                                'relative col-span-2',
-                                with_back_to_top && 'pr-[100px]'
-                            )}
-                        >
+                    {/* Newsletter */}
+                    {with_newsletter && (
+                        <div className="w-full lg:w-[300px] lg:flex-shrink-0">
                             <Newsletter />
                         </div>
-                    ) : null}
-                    {with_back_to_top ? (
-                        <>
-                            <div
-                                className={twJoin(
-                                    'absolute top-0 lg:row-start-1',
-                                    with_newsletter || groupedLinks.length > 2
-                                        ? 'right-0'
-                                        : 'right-0 lg:right-[15%]',
-                                    with_newsletter ? 'row-start-3' : 'row-start-2'
-                                )}
-                            >
-                                <BackToTop
-                                    size={with_newsletter || groupedLinks.length > 3 ? 'sm' : 'md'}
-                                />
-                            </div>
-                        </>
-                    ) : null}
+                    )}
                 </div>
-                <hr className="my-8 border-text-color-70" />
-                <SafeHtml
-                    value={copyright}
-                    className="font-normal text-center text-text-color-60"
-                />
-                <div className="flex justify-center pt-4 pb-1 text-text-color-70 text-sm">
-                    <Disclaimer {...props} />
-                </div>
+                {with_back_to_top && (
+                    <div
+                        className={twJoin(
+                            'absolute',
+                            with_newsletter
+                                ? 'top-0 lg:top-56 right-0 lg:right-[105px] xl:right-0 xl:top-0'
+                                : 'top-0 right-0'
+                        )}
+                    >
+                        <BackToTop />
+                    </div>
+                )}
+            </div>
+
+            {/* disclaimer and copyright */}
+            <hr className="my-8 border-text-color-70" />
+            <SafeHtml value={copyright} className="font-normal text-center text-text-color-60" />
+            <div className="flex justify-center pt-4 pb-1 text-text-color-70 text-sm">
+                <Disclaimer {...props} />
             </div>
         </footer>
     );
