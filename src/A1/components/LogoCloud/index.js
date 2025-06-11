@@ -43,7 +43,7 @@ export default function LogoCloud({ block }) {
                                 key={index}
                                 {...wrapperProps}
                                 className={twJoin(
-                                    'w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 h-20 flex items-center justify-center p-6 transition-all ease-in-out bg-text-color-10',
+                                    'w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6 h-20 flex items-center justify-center p-6 transition-all ease-in-out bg-text-color-10',
                                     link ? 'hover:bg-text-color-70 cursor-pointer' : ''
                                 )}
                             >

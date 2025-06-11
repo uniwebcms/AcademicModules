@@ -87,7 +87,7 @@ export default function PageFooter(props) {
                                 const { label, route, hasData } = child;
 
                                 return (
-                                    <div key={index} className="">
+                                    <div key={index} className={index === 0 ? 'mt-2' : 'mt-1'}>
                                         {hasData ? (
                                             <Link
                                                 className="text-sm hover:underline text-text-color-90 hover:text-text-color"
