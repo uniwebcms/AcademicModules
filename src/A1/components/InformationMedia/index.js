@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
 import { SafeHtml, Media, Image } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
@@ -43,19 +43,28 @@ export default function InformationMedia(props) {
                         alignment === 'right' ? 'lg:ml-4 xl:ml-6' : 'lg:mr-4 xl:mr-6'
                     )}
                 >
-                    {pretitle ? (
-                        <h3 className="mb-3 font-medium  text-lg md:text-xl lg:text-2xl">
-                            {stripTags(pretitle)}
-                        </h3>
-                    ) : null}
-                    <h2 className="text-2xl font-bold tracking-tight  md:text-3xl lg:text-4xl">
-                        {stripTags(title)}
-                    </h2>
-                    {subtitle ? (
-                        <h3 className="mt-4 leading-8 text-base md:text-lg lg:text-xl !text-neutral-900">
-                            {stripTags(subtitle)}
-                        </h3>
-                    ) : null}
+                    {pretitle && (
+                        <SafeHtml
+                            as="div"
+                            value={pretitle}
+                            className="mb-3 font-medium text-base md:text-lg lg:text-xl rich-text"
+                        />
+                    )}
+                    {title && (
+                        <SafeHtml
+                            as="h2"
+                            value={title}
+                            className="text-2xl font-bold tracking-tight  md:text-3xl lg:text-4xl rich-text"
+                        />
+                    )}
+                    {subtitle && (
+                        <SafeHtml
+                            as="h3"
+                            value={subtitle}
+                            className="mt-4 leading-8 text-base md:text-lg lg:text-xl text-text-color-80 rich-text"
+                        />
+                    )}
+
                     {paragraphs?.length ? (
                         <SafeHtml
                             className="mt-6 text-sm md:text-base lg:text-lg rich-text"
@@ -77,9 +86,7 @@ export default function InformationMedia(props) {
                         />
                         {image && image.caption ? (
                             <figcaption>
-                                <div
-                                    className={`text-center mt-1.5 tracking-normal text-sm outline-none text-text-color/70`}
-                                >
+                                <div className="text-center mt-1.5 tracking-normal text-sm outline-none text-text-color/70">
                                     {image.caption}
                                 </div>
                             </figcaption>
@@ -106,19 +113,28 @@ const Centered = (props) => {
     return (
         <section ref={containerRef} className={twJoin('py-24 sm:py-32 relative')}>
             <div className="mx-auto lg:max-w-7xl px-6 lg:px-8 text-center">
-                {pretitle ? (
-                    <h3 className="mb-3 font-medium  text-xl md:text-2xl lg:text-3xl">
-                        {stripTags(pretitle)}
-                    </h3>
-                ) : null}
-                <h2 className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
-                    {stripTags(title)}
-                </h2>
-                {subtitle ? (
-                    <h3 className="mt-4 leading-8 text-lg md:text-xl lg:text-2xl text-text-color-80">
-                        {stripTags(subtitle)}
-                    </h3>
-                ) : null}
+                {pretitle && (
+                    <SafeHtml
+                        as="div"
+                        value={pretitle}
+                        className="mb-3 font-medium text-base md:text-lg lg:text-xl rich-text"
+                    />
+                )}
+                {title && (
+                    <SafeHtml
+                        as="h2"
+                        value={title}
+                        className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl rich-text"
+                    />
+                )}
+                {subtitle && (
+                    <SafeHtml
+                        as="h3"
+                        value={subtitle}
+                        className="mt-4 leading-8 text-lg md:text-xl lg:text-2xl text-text-color-80 rich-text"
+                    />
+                )}
+
                 {paragraphs?.length ? (
                     <SafeHtml
                         className="lg:columns-2 columns-1 gap-x-[60px] mt-12 text-base md:text-lg text-left text-text-color-90 rich-text"
@@ -138,7 +154,6 @@ const Centered = (props) => {
                         />
                         <div className="relative" aria-hidden="true">
                             <div
-                                // style={gradient}
                                 className={twJoin(
                                     'absolute -inset-x-20 bottom-0 bg-gradient-to-t pt-[7%] from-bg-color to-transparent'
                                 )}
