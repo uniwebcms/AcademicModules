@@ -147,9 +147,7 @@ const Centered = (props) => {
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <Image
                             profile={getPageProfile()}
-                            value={image.value}
-                            alt={image.alt}
-                            url={image.url}
+                            {...image}
                             className="object-cover mb-[-12%] rounded-xl shadow-2xl ring-1 ring-text-color-10"
                         />
                         <div className="relative" aria-hidden="true">
@@ -176,8 +174,8 @@ const Centered = (props) => {
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <Media
                             profile={getPageProfile()}
-                            media={image && video ? video : video || image}
-                            thumbnail={image && video ? image : undefined}
+                            media={video}
+                            thumbnail={image || undefined}
                         />
                     </div>
                 </div>
