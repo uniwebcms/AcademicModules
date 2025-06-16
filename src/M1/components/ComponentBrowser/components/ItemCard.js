@@ -76,6 +76,7 @@ const ItemCard = React.memo(({ item, schema, getSchema }) => {
         <>
             <div
                 onClick={() => {
+                    if (!schema) return;
                     setViewerOpen(true);
                 }}
                 className="flex flex-col w-full h-full relative group rounded-lg overflow-hidden hover:shadow-md ring-1 ring-neutral-300"
@@ -98,19 +99,9 @@ const ItemCard = React.memo(({ item, schema, getSchema }) => {
 
                 {/* Card Info */}
                 {cardInfo}
-
-                {/* Overlay for link click */}
-                {/* {schema && (
-                    <div
-                        onClick={() => {
-                            setViewerOpen(true);
-                        }}
-                        className="absolute inset-0 z-[1]"
-                    />
-                )} */}
             </div>
             {viewerOpen && schema && (
-                <div className="fixed inset-0 z-[100] bg-black/75 flex items-center justify-center">
+                <div className="fixed inset-0 z-[100] bg-black/85 flex items-center justify-center">
                     <StylerViewer
                         styler={item}
                         schema={schema}

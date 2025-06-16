@@ -211,19 +211,27 @@ const getArticleTags = (article, noTagText) => {
         }) || [];
 
     const sorted = [...new Set(allTags)].sort((a, b) => {
+        if (a === noTagText) return 1; // noTagText should be last
+        if (b === noTagText) return -1; // noTagText should be last
+        if (a === b) return 0; // same tag, no change
         return a.localeCompare(b);
     });
 
-    if (sorted.length > 0) {
-        sorted.unshift('');
-    }
+    // if (sorted.length > 0) {
+    //     sorted.unshift('');
+    // }
 
     return sorted;
 };
 
 export default function ArticleHub(props) {
     const { block, input, website } = props;
-    const noTagText = website.localize({ en: 'No Tag', fr: 'Pas de tag' });
+    const noTagText = website.localize({
+        en: 'Uncategorized',
+        fr: 'Non catégorisé',
+        es: 'Sin categorizar',
+        zh: '未分类',
+    });
     const tags = getArticleTags(input.profiles, noTagText);
 
     const { useLocation } = website.getRoutingComponents();

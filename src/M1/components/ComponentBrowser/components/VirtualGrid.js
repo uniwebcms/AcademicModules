@@ -25,12 +25,31 @@ const VirtualGrid = ({ data, filters }) => {
                 Object.keys(schema).forEach((key) => {
                     if (key === '_self') return;
 
-                    let imageSrc;
+                    let imageSrc = null;
                     if (schema[key].images?.length > 0) {
-                        imageSrc = `${url}/${version}/${schema[key].images[0].path}`;
-                    } else if (schema[key].presets?.length > 0) {
-                        imageSrc = `${url}/${version}/${schema[key].presets[0].image.path}`;
+                        schema[key].images.forEach((image) => {
+                            image.src = `${url}/${version}/${image.path}`;
+                        });
+
+                        imageSrc = schema[key].images[0].src;
                     }
+
+                    if (schema[key].presets?.length > 0) {
+                        schema[key].presets.forEach((preset) => {
+                            preset.image.src = `${url}/${version}/${preset.image.path}`;
+                        });
+
+                        if (!imageSrc) {
+                            imageSrc = schema[key].presets[0].image.src;
+                        }
+                    }
+
+                    // let imageSrc;
+                    // if (schema[key].images?.length > 0) {
+                    //     imageSrc = `${url}/${version}/${schema[key].images[0].path}`;
+                    // } else if (schema[key].presets?.length > 0) {
+                    //     imageSrc = `${url}/${version}/${schema[key].presets[0].image.path}`;
+                    // }
                     schema[key].image = imageSrc ? { src: imageSrc } : null;
                 });
 

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { HiSearch, HiX } from 'react-icons/hi';
-import { website } from '@uniwebcms/module-sdk';
+import { website, twJoin } from '@uniwebcms/module-sdk';
 import { HiChevronRight } from 'react-icons/hi2';
 
 const CategoryBar = ({ categories, activeCategory, setActiveCategory }) => {
@@ -124,7 +124,10 @@ const CategoryBar = ({ categories, activeCategory, setActiveCategory }) => {
 };
 
 const ComponentItem = (props) => {
-    let { title, image } = props;
+    let {
+        info: { title, image, presets },
+        setActiveComponent,
+    } = props;
     title = website.localize(title);
 
     let preview = null;
@@ -139,7 +142,16 @@ const ComponentItem = (props) => {
 
     return (
         <div
-            className={`w-full h-[221px] overflow-hidden rounded-lg border border-neutral-300 flex flex-col shadow`}
+            className={`w-full h-[221px] overflow-hidden rounded-lg border border-neutral-300 flex flex-col shadow ${
+                presets?.length > 0
+                    ? 'transition-transform duration-75 hover:scale-105 cursor-pointer hover:shadow-lg'
+                    : ''
+            }`}
+            onClick={() => {
+                if (presets && presets.length > 0) {
+                    setActiveComponent(props.info);
+                }
+            }}
         >
             <div
                 className={`flex items-center justify-center w-full h-44 relative flex-shrink-0 overflow-hidden bg-neutral-200`}
@@ -156,8 +168,62 @@ const ComponentItem = (props) => {
     );
 };
 
+const PresetViewer = (props) => {
+    const { component } = props;
+
+    const { title, description, presets } = component;
+
+    return (
+        <div className="flex flex-col w-full">
+            <p className="text-lg lg:text-xl font-bold text-neutral-950">
+                {website.localize(title)}
+            </p>
+            <p className="mt-2 text-sm lg:text-base text-neutral-700">
+                {website.localize(description)}
+            </p>
+            <div className="mt-6 space-y-8">
+                {presets.map((preset, index) => {
+                    const label = website.localize(preset.label);
+
+                    const parsedProperties = findProperties(component, preset);
+
+                    return (
+                        <div key={index} className="flex flex-col-reverse xl:flex-row gap-y-4">
+                            <img
+                                src={preset.image.src}
+                                alt={label}
+                                className="flex-shrink-0 xl:max-w-[768px] w-full xl:w-2/3 aspect-[16/9] object-contain rounded-lg border border-neutral-300"
+                            />
+                            <div className="flex-grow w-full xl:w-1/3 pl-0 xl:pl-8 2xl:pl-12">
+                                <p className="font-medium text-lg">{label}</p>
+                                <ul className="gap-2 mt-2 flex flex-wrap flex-row xl:flex-col">
+                                    {Object.entries(parsedProperties).map(
+                                        ([property, value], idx) => (
+                                            <li
+                                                key={idx}
+                                                className="border border-neutral-300 bg-neutral-100 rounded-lg px-2 py-1.5 text-sm w-fit"
+                                            >
+                                                <span className="text-xs uppercase text-neutral-500">
+                                                    {property}:
+                                                </span>{' '}
+                                                <span className="text-neutral-800">{value}</span>
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
 export default function Grid(props) {
     const { schema } = props;
+
+    const [activeComponent, setActiveComponent] = useState(null);
 
     let components = Object.keys(schema)
         .filter((k) => k !== '_self')
@@ -174,7 +240,7 @@ export default function Grid(props) {
     const [activeCategory, setActiveCategory] = useState('all');
 
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-full relative overflow-hidden">
             <div className={`w-full flex items-center px-4 lg:px-6 pt-6`}>
                 <div
                     className={`w-60 flex items-center justify-between border border-neutral-300 rounded-md pl-3 pr-2 py-1 text-xs`}
@@ -217,9 +283,85 @@ export default function Grid(props) {
                             : flag;
                     })
                     .map((key, i) => {
-                        return <ComponentItem key={i} {...schema[key]} />;
+                        return (
+                            <ComponentItem
+                                key={i}
+                                info={schema[key]}
+                                setActiveComponent={setActiveComponent}
+                            />
+                        );
                     })}
             </div>
+            {/* presets viewer */}
+            <>
+                <div
+                    className={twJoin(
+                        'absolute inset-0 bg-black/50 z-10',
+                        activeComponent ? 'block' : 'hidden'
+                    )}
+                    onClick={() => {
+                        if (activeComponent) setActiveComponent(null);
+                    }}
+                />
+                <div
+                    className={twJoin(
+                        'absolute right-4 z-30 cursor-pointer transition-all duration-300 ease-in-out',
+                        activeComponent ? 'top-[calc(30%+16px)]' : 'top-full'
+                    )}
+                    onClick={() => setActiveComponent(null)}
+                >
+                    <HiX className="w-6 h-6 text-neutral-500 hover:text-neutral-800" />
+                </div>
+                <div
+                    className={twJoin(
+                        'absolute inset-x-0 bg-neutral-50 z-20 px-6 pt-4 pb-5 overflow-auto transition-all duration-300 ease-in-out',
+                        activeComponent ? 'top-[30%] h-[70%]' : 'top-full h-0'
+                    )}
+                >
+                    {activeComponent && <PresetViewer component={activeComponent} />}
+                </div>
+            </>
         </div>
     );
 }
+
+const findProperties = (component, preset) => {
+    return Object.keys(preset.properties).reduce((acc, key) => {
+        const targetProperty = component.properties?.[key];
+        if (!targetProperty) return acc;
+
+        const localizedLabel = website.localize(targetProperty.label);
+
+        let propertyValue = preset.properties[key];
+
+        switch (targetProperty.type) {
+            case 'boolean':
+                propertyValue = website.localize({
+                    en: propertyValue ? 'Yes' : 'No',
+                    fr: propertyValue ? 'Oui' : 'Non',
+                    es: propertyValue ? 'Sí' : 'No',
+                    zh: propertyValue ? '是' : '否',
+                });
+                break;
+            case 'string':
+                if (targetProperty.enum?.length) {
+                    // If the property has an enum, find the label for the value
+                    const enumItem = targetProperty.enum.find(
+                        (item) => item.value === propertyValue
+                    );
+                    if (enumItem) {
+                        propertyValue = website.localize(enumItem.label);
+                    } else {
+                        propertyValue = website.localize(propertyValue);
+                    }
+                }
+                break;
+            default:
+                // For other types, we can keep the original value
+                break;
+        }
+
+        acc[localizedLabel] = propertyValue;
+        return acc;
+    }, {});
+};
