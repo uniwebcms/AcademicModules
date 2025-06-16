@@ -35,9 +35,7 @@ export default function PowerFeatures({ block }) {
                             {banner ? (
                                 <Image
                                     profile={getPageProfile()}
-                                    value={banner.value}
-                                    alt={banner.alt}
-                                    url={banner.url}
+                                    {...banner}
                                     className="object-contain w-24 h-24 p-2 border-4 shadow-md border-primary-100 rounded-3xl bg-primary-200 text-primary-800"
                                 />
                             ) : null}

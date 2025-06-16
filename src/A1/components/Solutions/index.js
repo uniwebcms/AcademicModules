@@ -79,9 +79,7 @@ const FeatureCard = ({ feature, isLink = false }) => {
                     <div className="flex items-center justify-center w-10 h-10 mb-6">
                         <Image
                             profile={getPageProfile()}
-                            value={banner.value}
-                            url={banner.url}
-                            alt={banner.alt}
+                            {...banner}
                             className="w-10 h-10 rounded-lg"
                         />
                     </div>

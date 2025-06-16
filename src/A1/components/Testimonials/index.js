@@ -72,9 +72,7 @@ export default function Testimonials({ website, block }) {
                                             {currentItem.banner ? (
                                                 <Image
                                                     profile={siteProfile}
-                                                    value={currentItem.banner.value}
-                                                    alt={currentItem.banner.alt}
-                                                    url={currentItem.banner.url}
+                                                    {...currentItem.banner}
                                                     className="object-contain h-16"
                                                 />
                                             ) : null}
@@ -105,9 +103,7 @@ export default function Testimonials({ website, block }) {
                                         {currentItem.images[0] && (
                                             <Image
                                                 profile={siteProfile}
-                                                value={currentItem.images[0].value}
-                                                alt={currentItem.images[0].alt}
-                                                url={currentItem.images[0].url}
+                                                {...currentItem.images[0]}
                                                 className="w-16 h-16 rounded-full"
                                             />
                                         )}
@@ -186,9 +182,7 @@ export default function Testimonials({ website, block }) {
                                     <div>
                                         <Image
                                             profile={siteProfile}
-                                            value={item.banner.value}
-                                            url={item.banner.url}
-                                            alt={item.banner.alt}
+                                            {...item.banner}
                                             className="object-contain h-12"
                                         />
                                     </div>
@@ -203,9 +197,7 @@ export default function Testimonials({ website, block }) {
                                     {item.images[0] && (
                                         <Image
                                             profile={siteProfile}
-                                            value={item.images[0].value}
-                                            url={item.images[0].url}
-                                            alt={item.images[0].alt}
+                                            {...item.images[0]}
                                             className="w-12 h-12 rounded-full"
                                         />
                                     )}

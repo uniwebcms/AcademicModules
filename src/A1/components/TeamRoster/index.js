@@ -14,9 +14,7 @@ const ItemsRenderer = ({ items, aspectRatio, website }) => {
                     <div className="relative rounded-2xl overflow-hidden">
                         <Image
                             profile={getPageProfile()}
-                            value={banner.value}
-                            alt={banner.alt}
-                            url={banner.url}
+                            {...banner}
                             className="h-auto w-full rounded-2xl object-cover"
                             style={{ aspectRatio }}
                         />

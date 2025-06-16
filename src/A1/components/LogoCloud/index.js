@@ -50,9 +50,7 @@ export default function LogoCloud({ block }) {
                                 {banner ? (
                                     <Image
                                         profile={getPageProfile()}
-                                        value={banner.value}
-                                        url={banner.url}
-                                        alt={banner.alt}
+                                        {...banner}
                                         className={`object-contain max-h-16 w-full`}
                                     ></Image>
                                 ) : null}

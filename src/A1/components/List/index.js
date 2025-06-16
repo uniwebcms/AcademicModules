@@ -59,9 +59,7 @@ export default function List({ block, website }) {
                                             {banner && (
                                                 <Image
                                                     profile={getPageProfile()}
-                                                    value={banner.value}
-                                                    alt={banner.alt}
-                                                    url={banner.url}
+                                                    {...banner}
                                                     className="absolute inset-0 object-cover w-full h-full rounded-2xl bg-text-color-10"
                                                 />
                                             )}

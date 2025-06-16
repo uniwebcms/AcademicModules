@@ -87,9 +87,7 @@ function Masonry({
                                 >
                                     <Image
                                         profile={getPageProfile()}
-                                        value={image.value}
-                                        url={image.url}
-                                        alt={image.alt}
+                                        {...image}
                                         rounded={
                                             imageBorderRadius === 'small'
                                                 ? 'rounded-sm'
@@ -159,9 +157,7 @@ function Thumbnail({
                     >
                         <Image
                             profile={getPageProfile()}
-                            value={image.value}
-                            url={image.url}
-                            alt={image.alt}
+                            {...image}
                             rounded={
                                 imageBorderRadius === 'small'
                                     ? 'rounded-sm'
@@ -304,9 +300,7 @@ export default function Gallery({ block }) {
                     <div className="flex flex-col items-center gap-2">
                         <Image
                             profile={getPageProfile()}
-                            value={images[activeIndex].value}
-                            url={images[activeIndex].url}
-                            alt={images[activeIndex].alt}
+                            {...images[activeIndex]}
                             className="h-[90vh] w-auto max-w-[95vw] max-h-[700px]"
                         />
                         <div className="h-10">

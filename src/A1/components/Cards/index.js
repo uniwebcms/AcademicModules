@@ -92,12 +92,7 @@ export default function Cards({ website, block }) {
                                 <div className={twJoin('w-full', imageAspectRatio)}>
                                     {banner ? (
                                         <div className="relative w-full h-full">
-                                            <Image
-                                                profile={getPageProfile()}
-                                                value={banner.value}
-                                                url={banner.url}
-                                                alt={banner.alt}
-                                            ></Image>
+                                            <Image profile={getPageProfile()} {...banner}></Image>
                                             {banner.caption ? (
                                                 <figcaption className="absolute bottom-0 w-full">
                                                     <div

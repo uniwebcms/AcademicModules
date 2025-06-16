@@ -143,7 +143,7 @@ const Items = ({ items, layout }) => {
                 <div key={index} className="w-full flex justify-between items-start space-x-12">
                     {banner?.url ? (
                         <div className="w-64 h-44 flex-shrink-0">
-                            <Image url={banner.url} alt={banner.alt} rounded="rounded-xl" />
+                            <Image {...banner} rounded="rounded-xl" />
                         </div>
                     ) : null}
                     <div className="flex-grow h-44 flex flex-col">
@@ -167,7 +167,7 @@ const Items = ({ items, layout }) => {
                 >
                     {banner?.url ? (
                         <div className="w-full h-32">
-                            <Image url={banner.url} alt={banner.alt} />
+                            <Image {...banner} />
                         </div>
                     ) : null}
                     <div className="w-full h-20 px-3 py-2 relative group">
