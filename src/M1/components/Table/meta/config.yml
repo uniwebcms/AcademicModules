@@ -14,5 +14,29 @@ export: true
 elements:
   list:
 
+properties:
+  content_align:
+    label:
+      en: Content Alignment
+      fr: Alignement du contenu
+    type: string
+    enum:
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+      - label:
+          en: Right
+          fr: Droite
+        value: right
+    default: left
+    description:
+      en: The alignment of the content within the table.
+      fr: L'alignement du contenu dans le tableau.
+
 images:
   - example.png

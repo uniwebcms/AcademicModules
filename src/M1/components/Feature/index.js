@@ -21,7 +21,7 @@ export default function Feature(props) {
             : sub_content_layout === 'grid_lg'
             ? 'grid lg:grid-cols-2 gap-8 lg:gap-12'
             : sub_content_layout === 'full'
-            ? 'grid grid-cols-1'
+            ? 'grid grid-cols-1 gap-4'
             : null;
 
     const { childBlocks } = block;

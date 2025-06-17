@@ -125,7 +125,7 @@ const CategoryBar = ({ categories, activeCategory, setActiveCategory }) => {
 
 const ComponentItem = (props) => {
     let {
-        info: { title, image, presets },
+        info: { title, image },
         setActiveComponent,
     } = props;
     title = website.localize(title);
@@ -142,15 +142,12 @@ const ComponentItem = (props) => {
 
     return (
         <div
-            className={`w-full h-[221px] overflow-hidden rounded-lg border border-neutral-300 flex flex-col shadow ${
-                presets?.length > 0
-                    ? 'transition-transform duration-75 hover:scale-105 cursor-pointer hover:shadow-lg'
-                    : ''
-            }`}
+            className={twJoin(
+                'w-full h-[221px] overflow-hidden rounded-lg border border-neutral-300 flex flex-col shadow',
+                'transition-transform duration-75 hover:scale-105 cursor-pointer hover:shadow-lg'
+            )}
             onClick={() => {
-                if (presets && presets.length > 0) {
-                    setActiveComponent(props.info);
-                }
+                setActiveComponent(props.info);
             }}
         >
             <div
@@ -171,7 +168,7 @@ const ComponentItem = (props) => {
 const PresetViewer = (props) => {
     const { component } = props;
 
-    const { title, description, presets } = component;
+    const { title, description, images, presets } = component;
 
     return (
         <div className="flex flex-col w-full">
@@ -181,8 +178,8 @@ const PresetViewer = (props) => {
             <p className="mt-2 text-sm lg:text-base text-neutral-700">
                 {website.localize(description)}
             </p>
-            <div className="mt-6 space-y-8">
-                {presets.map((preset, index) => {
+            <div className="mt-8 space-y-8">
+                {presets?.map((preset, index) => {
                     const label = website.localize(preset.label);
 
                     const parsedProperties = findProperties(component, preset);
@@ -212,6 +209,16 @@ const PresetViewer = (props) => {
                                     )}
                                 </ul>
                             </div>
+                        </div>
+                    );
+                })}
+                {images?.map((image, index) => {
+                    return (
+                        <div key={index}>
+                            <img
+                                src={image.src}
+                                className="mx-auto w-full max-w-[768px] aspect-[16/9] object-contain rounded-lg border border-neutral-300"
+                            />
                         </div>
                     );
                 })}
