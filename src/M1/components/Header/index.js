@@ -71,6 +71,7 @@ const NavBar = ({
     logoOnLight,
     login_url,
     navIcons,
+    block, // Add block prop for tracking
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -94,8 +95,25 @@ const NavBar = ({
     const searchInputRef = useRef(null);
     const navButtonRefs = useRef([]);
 
+    // Search tracking ref to store search term for result clicks
+    const searchTrackingRef = useRef({
+        lastSearchTerm: '',
+    });
+
     let lastScrollY = 0;
     let ticking = false;
+
+    // Track search events
+    const trackSearchEvent = (eventType, extraData = {}) => {
+        if (!block || !block.trackEvent || !window.uniweb?.analytics?.initialized) return;
+
+        const searchData = {
+            ...extraData,
+        };
+
+        console.log('🔍 Search Event Tracked:', searchData);
+        block.trackEvent(eventType, searchData);
+    };
 
     // Reset state when need refresh
     useEffect(() => {
@@ -343,6 +361,17 @@ const NavBar = ({
         }
     }, [activeDropdown]);
 
+    // Track when search results are received
+    useEffect(() => {
+        // Only track if we have a search term and results have been set
+        if (searchTrackingRef.current.lastSearchTerm && searchResults !== null) {
+            trackSearchEvent('search_executed', {
+                search_term: searchTrackingRef.current.lastSearchTerm,
+                search_results_count: searchResults.length,
+            });
+        }
+    }, [searchResults]);
+
     // Handle dropdown hover for desktop
     const handleMouseEnter = (index) => {
         if (window.innerWidth >= 1024) {
@@ -385,13 +414,42 @@ const NavBar = ({
     // Handle search input change
     const handleSearchChange = (e) => {
         setSearchValue(e.target.value);
+        // Removed tracking for input typing
     };
 
     // Handle search submit
     const handleSearch = async (e) => {
         if (e.key === 'Enter') {
-            await searchManagerRef.current.search(e.target.value);
+            const searchTerm = e.target.value.trim();
+
+            if (searchTerm) {
+                // Store search term for result tracking
+                searchTrackingRef.current.lastSearchTerm = searchTerm;
+
+                // Execute the search (tracking happens in useEffect when results arrive)
+                await searchManagerRef.current.search(searchTerm);
+            }
         }
+    };
+
+    // Handle search clear
+    const handleSearchClear = () => {
+        setSearchValue('');
+        setSearchResults(null);
+        // Removed tracking for search clear
+
+        if (searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
+    };
+
+    // Handle search result click
+    const handleSearchResultClick = (result) => {
+        trackSearchEvent('search_result_clicked', {
+            search_term: searchTrackingRef.current.lastSearchTerm,
+            result_title: result.title,
+            result_url: result.href,
+        });
     };
 
     const renderDropdownContent = () => {
@@ -420,13 +478,7 @@ const NavBar = ({
                                 />
                                 <HiX
                                     className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 hover:text-gray-600 cursor-pointer"
-                                    onClick={() => {
-                                        setSearchValue('');
-                                        setSearchResults(null);
-                                        if (searchInputRef.current) {
-                                            searchInputRef.current.focus();
-                                        }
-                                    }}
+                                    onClick={handleSearchClear}
                                 />
                             </div>
                             <div className="hidden lg:flex flex-col gap-1 text-sm">
@@ -467,20 +519,24 @@ const NavBar = ({
 
                         {/* Display search results */}
                         <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-auto">
-                            {searchResults?.map((result) => (
+                            {searchResults?.map((result, index) => (
                                 <Link
                                     key={result.id}
                                     to={result.href}
                                     target="_self"
-                                    className="flex flex-col gap-1 px-2 py-1 hover:underline"
                                     style={{ textShadow: '1px 1px 2px var(--bg-color)' }}
                                 >
-                                    <span className="text-base lg:text-lg">{result.title}</span>
-                                    {result.description && (
-                                        <span className="text-sm lg:text-base text-text-color-80">
-                                            {result.description}
-                                        </span>
-                                    )}
+                                    <div
+                                        className="flex flex-col gap-1 px-2 py-1 hover:underline"
+                                        onClick={() => handleSearchResultClick(result)}
+                                    >
+                                        <span className="text-base lg:text-lg">{result.title}</span>
+                                        {result.description && (
+                                            <span className="text-sm lg:text-base text-text-color-80">
+                                                {result.description}
+                                            </span>
+                                        )}
+                                    </div>
                                 </Link>
                             ))}
                             {searchValue && searchResults?.length === 0 && (
@@ -607,33 +663,28 @@ const NavBar = ({
                                 />
                                 <HiX
                                     className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 hover:text-gray-600 cursor-pointer"
-                                    onClick={() => {
-                                        setSearchValue('');
-                                        setSearchResults(null);
-                                        if (searchInputRef.current) {
-                                            searchInputRef.current.focus();
-                                        }
-                                    }}
+                                    onClick={handleSearchClear}
                                 />
                             </div>
                         </div>
 
                         {/* Display search results */}
                         <div className="flex flex-col gap-4 mt-6 max-h-[60vh] overflow-auto">
-                            {searchResults?.map((result) => (
-                                <Link
-                                    key={result.id}
-                                    to={result.href}
-                                    className="flex flex-col gap-1 px-2 py-1 hover:underline"
-                                >
-                                    <span className="text-base lg:text-lg text-gray-900">
-                                        {result.title}
-                                    </span>
-                                    {result.description && (
-                                        <span className="text-sm lg:text-base text-gray-700">
-                                            {result.description}
+                            {searchResults?.map((result, index) => (
+                                <Link key={result.id} to={result.href}>
+                                    <div
+                                        className="flex flex-col gap-1 px-2 py-1 hover:underline"
+                                        onClick={() => handleSearchResultClick(result)}
+                                    >
+                                        <span className="text-base lg:text-lg text-gray-900">
+                                            {result.title}
                                         </span>
-                                    )}
+                                        {result.description && (
+                                            <span className="text-sm lg:text-base text-gray-700">
+                                                {result.description}
+                                            </span>
+                                        )}
+                                    </div>
                                 </Link>
                             ))}
                             {searchValue && searchResults?.length === 0 && (
@@ -872,7 +923,6 @@ const NavBar = ({
                                 href={login_url}
                                 className="relative !bg-transparent text-lg px-3 py-2 group !text-text-color"
                                 onMouseEnter={() => handleActionMouseEnter('login')}
-                                // onClick={() => setIsSignInOpen(true)}
                             >
                                 {website.localize({
                                     en: 'Login',
@@ -908,15 +958,11 @@ const NavBar = ({
                             <div onClick={() => handleMobileAction('language')}>
                                 <HiOutlineGlobeAlt className="h-6 w-6" />
                             </div>
-                            <div
-                                onClick={() => handleMobileAction('user')}
-                                // onClick={() => setIsSignInOpen(true)}
-                            >
+                            <div onClick={() => handleMobileAction('user')}>
                                 <AiOutlineUser className="h-6 w-6" />
                             </div>
                             <div onClick={() => handleMobileAction('menu')}>
                                 <HiOutlineMenu className="h-6 w-6" />
-                                {/* {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />} */}
                             </div>
                         </div>
                     </div>
@@ -1005,7 +1051,7 @@ export default function Header(props) {
     const linkIcons = main?.body?.properties?.linkIcons;
 
     const logo = icon ? (
-        <Icon icon={firstIcon} className="w-full h-full" />
+        <Icon icon={icon} className="w-full h-full" />
     ) : logoImg ? (
         <Image profile={getPageProfile()} {...logoImg} className="w-full h-full object-contain" />
     ) : null;
@@ -1042,6 +1088,7 @@ export default function Header(props) {
             theme={theme}
             languages={languageMap}
             refresh={activeRoute}
+            block={block} // Pass block for tracking
         />
     );
 }
