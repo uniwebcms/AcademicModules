@@ -33,7 +33,7 @@ const contentItemFeatureVideoThumbnailSvgColors = [
     '[&_svg]:!text-secondary-500',
 ];
 
-const VideoItem = ({ activeItem, activeIndex, thumbnail }) => {
+const VideoItem = ({ activeItem, activeIndex, thumbnail, block }) => {
     const activeItemFeatures = activeItem.lists?.[0]?.map((item) => {
         const { icons, paragraphs } = item;
 
@@ -112,6 +112,7 @@ const VideoItem = ({ activeItem, activeIndex, thumbnail }) => {
                                 width: '100%',
                             }}
                             thumbnail={thumbnail}
+                            block={block}
                         />
                     </div>
                 </div>
@@ -396,6 +397,7 @@ export default function ContentShowcase(props) {
                             activeItem={activeItem}
                             activeIndex={activeIndex}
                             thumbnail={activeItemVideoThumbnail}
+                            block={block}
                         />
                     )}
                 </div>

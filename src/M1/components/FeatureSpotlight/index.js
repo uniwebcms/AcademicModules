@@ -139,6 +139,7 @@ export default function FeatureSpotlight(props) {
                         </div>
                     ) : (
                         <Media
+                            block={block}
                             profile={getPageProfile()}
                             media={currentMedia}
                             className="rounded-xl shadow-lg"

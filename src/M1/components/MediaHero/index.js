@@ -153,6 +153,7 @@ export default function MediaHero(props) {
                         )}
                     >
                         <Media
+                            block={block}
                             profile={getPageProfile()}
                             media={video || image}
                             thumbnail={videoThumbnail}
