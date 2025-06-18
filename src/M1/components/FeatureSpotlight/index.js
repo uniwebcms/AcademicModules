@@ -126,18 +126,26 @@ export default function FeatureSpotlight(props) {
             >
                 {currentMedia ? (
                     autoplayVideo ? (
-                        <div className={'relative'} style={{ paddingBottom: '56.25%' }}>
-                            <video
-                                src={currentMedia.src}
-                                className="absolute inset-0 w-full h-full object-cover"
-                                muted
-                                loop
-                                playsInline
-                                autoPlay
-                                controls
-                            ></video>
-                        </div>
+                        <Media
+                            block={block}
+                            profile={getPageProfile()}
+                            media={currentMedia}
+                            className="object-cover"
+                            style={{ paddingBottom: '56.25%' }}
+                            autoplay={true}
+                        />
                     ) : (
+                        // <div className={'relative'} style={{ paddingBottom: '56.25%' }}>
+                        //     <video
+                        //         src={currentMedia.src}
+                        //         className="absolute inset-0 w-full h-full object-cover"
+                        //         muted
+                        //         loop
+                        //         playsInline
+                        //         autoPlay
+                        //         controls
+                        //     ></video>
+                        // </div>
                         <Media
                             block={block}
                             profile={getPageProfile()}

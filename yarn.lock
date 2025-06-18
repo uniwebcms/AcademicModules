@@ -2650,6 +2650,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uniwebcms/core-components@npm:^1.6.11":
+  version: 1.6.19
+  resolution: "@uniwebcms/core-components@npm:1.6.19"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.3"
+    "@popperjs/core": "npm:^2.10.1"
+    "@react-google-maps/api": "npm:^2.19.1"
+    katex: "npm:^0.16.11"
+    prismjs: "npm:^1.29.0"
+    react-icons: "npm:^4.11.0"
+    react-katex: "npm:^3.0.1"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/115c52ab03fbe1e6bd931a38bbe6a90529644622f981747c4ac0a694df309e2c201f225954b2e8472cbdad109f1910a26dbcadff84c61c4fac6ec87956d37eb6
+  languageName: node
+  linkType: hard
+
 "@uniwebcms/core-components@npm:^1.6.15":
   version: 1.6.15
   resolution: "@uniwebcms/core-components@npm:1.6.15"
@@ -2683,24 +2701,6 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
   checksum: 10/b349366df4c58e30f218e5a2ddb4f62a9092bbbbbac777182e8f93c70c341b7c924c68eadd610db691d4ef2e5cf4abfe13e3d326fdd916b65f6302ff436f6169
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/core-components@npm:^1.6.18":
-  version: 1.6.18
-  resolution: "@uniwebcms/core-components@npm:1.6.18"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/efaacf0ae7729cf6fe0436eb87acbdfb5af32ef57ffacb86b88253065d6ef406979f4ed1dffa25595fb1849b8c813eee3690957aaf9eadaac4ce56c8de37f3f4
   languageName: node
   linkType: hard
 
@@ -6326,7 +6326,7 @@ __metadata:
   dependencies:
     "@headlessui/react": "npm:^1.7.13"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.18"
+    "@uniwebcms/core-components": "npm:^1.6.11"
     "@uniwebcms/module-sdk": "npm:^2.0.1"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     axios: "npm:^1.9.0"
