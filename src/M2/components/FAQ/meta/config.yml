@@ -5,11 +5,11 @@ label:
   en: FAQ
   fr: FAQ
 description:
-  en: A component to display frequently asked questions in a collapsible format.
-  fr: Un composant pour afficher les questions fréquemment posées dans un format collapsible.
+  en: A component to display frequently asked questions in a collapsible format. The first question is expanded initially.
+  fr: Un composant pour afficher les questions fréquemment posées dans un format collapsible. La première question est développée par défaut.
 
 category: content
 export: true
 
-# images:
-#   - example.png
+images:
+  - example.png

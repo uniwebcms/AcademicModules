@@ -11,5 +11,5 @@ description:
 category: article
 export: true
 
-# images:
-#   - example.png
+images:
+  - example.png

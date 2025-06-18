@@ -5,9 +5,10 @@ label:
   en: Video Carousel
   fr: Carrousel de Videos
 description:
-  en: A video carousel component that can be used to showcase videos.
-  fr: Un composant de carrousel de vidéos qui peut être utilisé pour mettre en valeur des vidéos.
+  en: A video carousel component that can be used to showcase videos. Only local uploaded videos are supported.
+  fr: Un composant de carrousel de vidéos qui peut être utilisé pour mettre en valeur des vidéos. Seules les vidéos téléchargées localement sont prises en charge.
 
+category: media
 export: true
 
 elements:
@@ -17,5 +18,6 @@ elements:
     description: 
       en: The showcase videos.
       fr: Les vidéos de présentation.
-# images:
-#   - example.png
+      
+images:
+  - example.png

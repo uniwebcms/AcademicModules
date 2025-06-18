@@ -51,7 +51,7 @@ export default function FAQ(props) {
                                 </div>
                                 <div
                                     className={twJoin(
-                                        'prose max-w-none overflow-hidden transition-all duration-300 text-text-color prose-a:text-blue-600',
+                                        'prose max-w-none overflow-hidden transition-all duration-300 text-text-color prose-a:text-blue-600 prose-p:mb-0',
                                         isOpen ? 'max-h-[800px]' : 'max-h-0'
                                     )}
                                 >

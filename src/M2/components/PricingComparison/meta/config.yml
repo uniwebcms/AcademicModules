@@ -11,3 +11,5 @@ description:
 category: pricing
 export: true
 
+images:
+  - example.png

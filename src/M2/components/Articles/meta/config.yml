@@ -31,6 +31,5 @@ properties:
       en: The layout to display the articles, either in a grid or list format.
       fr: La mise en page pour afficher les articles, soit sous forme de grille, soit sous forme de liste.
 
-
-# images:
-#   - example.png
+images:
+  - example.png

@@ -5,10 +5,11 @@ label:
   en: Article
   fr: Article
 description: 
-  en: Display the content of a article.
-  fr: Afficher le contenu d'un article.
+  en: Display the content of a article along with a side panel for in page navigation.
+  fr: Afficher le contenu d'un article avec un panneau latéral pour la navigation dans la page.
 
 category: article
 export: true
 
-
+images:
+  - example.png

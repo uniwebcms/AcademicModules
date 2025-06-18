@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Infinite scroll animation */
-@keyframes infinite-scroll {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
 body {
     overflow-x: hidden;
 }

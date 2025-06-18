@@ -36,3 +36,6 @@ items:
       description:
         en: The testimonial text.
         fr: Le texte du témoignage.
+
+images:
+  - example.png

@@ -16,11 +16,7 @@ export default function ArticleHead(props) {
 
     if (!article) return null;
 
-    console.log('article', article);
-
     const { title, subtitle, head } = article.getBasicInfo();
-
-    console.log('head', head);
 
     const author = article.at('article_information')?.author || null;
 

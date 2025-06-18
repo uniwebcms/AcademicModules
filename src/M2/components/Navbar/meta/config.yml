@@ -39,5 +39,5 @@ properties:
       en: The link to the sign-up page.
       fr: Le lien vers la page d'inscription.
 
-# images:
-#   - example.png
+images:
+  - example.png
