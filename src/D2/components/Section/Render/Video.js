@@ -43,7 +43,7 @@ async function getVideoThumbnail(url) {
     return null;
 }
 
-export default function Video({ page, videoControl, ...video }) {
+export default function Video({ block, page, videoControl, ...video }) {
     const profile = page.getPageProfile();
     const sections = page.blockGroups.body;
     const videos = getVideos(sections);
@@ -210,6 +210,7 @@ export default function Video({ page, videoControl, ...video }) {
                             <Media
                                 className="mt-0"
                                 media={currentVideo}
+                                block={block}
                                 {...(thumbnail && { thumbnail: { url: thumbnail } })}
                             />
                         </div>

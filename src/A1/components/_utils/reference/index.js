@@ -8,7 +8,12 @@ export const parseReference = (profile) => {
     let parsedData = data;
 
     if (parsedData?.section_id) {
-        if (parsedData?.['standardData']) {
+        let cvRenderSections = ['books', 'book_chapters'];
+        let sectionName = parsedData?.name;
+
+        if (cvRenderSections.includes(sectionName)) {
+            isStandard = false;
+        } else if (parsedData?.['standardData']) {
             parsedData = {
                 ...parsedData?.['standardData'],
                 title,

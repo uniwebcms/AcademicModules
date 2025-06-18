@@ -45,6 +45,7 @@ export default function HeroMedia({ block, website }) {
                 video={video}
                 properties={properties}
                 website={website}
+                block={block}
             />
             <Content
                 title={title}
@@ -78,7 +79,17 @@ const ContentWrapper = ({ children, hasTextContent, hasMediaContent, alignmentH 
     }
 };
 
-const Content = ({ title, pretitle, subtitle, paragraphs, links, image, video, properties }) => {
+const Content = ({
+    title,
+    pretitle,
+    subtitle,
+    paragraphs,
+    links,
+    image,
+    video,
+    properties,
+    block,
+}) => {
     const {
         horizontal_alignment: alignmentH = 'center',
         vertical_alignment: alignmentV = 'center',
@@ -214,6 +225,7 @@ const Content = ({ title, pretitle, subtitle, paragraphs, links, image, video, p
                         media={image && video ? video : video || image}
                         thumbnail={image && video ? image : undefined}
                         className={'rounded-2xl overflow-hidden'}
+                        block={block}
                     />
                 </div>
             </ContentWrapper>
@@ -221,7 +233,7 @@ const Content = ({ title, pretitle, subtitle, paragraphs, links, image, video, p
     );
 };
 
-const Background = ({ banner, image, video, properties }) => {
+const Background = ({ banner, image, video, properties, block }) => {
     const { media_as_bg = false } = properties;
 
     let source;
@@ -237,7 +249,7 @@ const Background = ({ banner, image, video, properties }) => {
 
     return (
         <div className="absolute inset-0 z-0 w-full">
-            <Media profile={getPageProfile()} media={source} asBg={true} />
+            <Media profile={getPageProfile()} media={source} asBg={true} block={block} />
         </div>
     );
 };

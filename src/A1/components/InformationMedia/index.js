@@ -83,6 +83,7 @@ export default function InformationMedia(props) {
                             profile={getPageProfile()}
                             media={image && video ? video : video || image}
                             thumbnail={image && video ? image : undefined}
+                            block={block}
                         />
                         {image && image.caption ? (
                             <figcaption>
@@ -176,6 +177,7 @@ const Centered = (props) => {
                             profile={getPageProfile()}
                             media={video}
                             thumbnail={image || undefined}
+                            block={block}
                         />
                     </div>
                 </div>
