@@ -16,10 +16,10 @@ elements:
   subtitle:
 
 properties:
-  width:  
+  max_width:  
     label:
-      en: Content Width
-      fr: Largeur du contenu
+      en: List Max Width
+      fr: Largeur maximale de la liste
     type: string
     default: lg
     enum:
@@ -40,61 +40,17 @@ properties:
           fr: Pleine largeur
         value: full
     description:
-      en: The width of the section.
-      fr: La largeur de la section.
-  vertical_padding:
+      en: The maximum width of the list section.
+      fr: La largeur maximale de la section de la liste.
+  is_side_panel:
     label:
-      en: Vertical Spacing
-      fr: Espacement vertical
-    type: string
-    default: lg
-    enum:
-      - label:
-          en: Large
-          fr: Large
-        value: lg
-      - label:
-          en: Small
-          fr: Petit
-        value: sm
-      - label:
-          en: None
-          fr: Aucun
-        value: none
-    description:
-      en: The space on top and bottom of the layout.
-      fr: L'espace en haut et en bas de la mise en page.
-  horizontal_padding:
-    label:
-      en: Horizontal Spacing
-      fr: Espacement horizontal
-    type: string
-    default: sm
-    enum:
-      - label:
-          en: Large
-          fr: Large
-        value: lg
-      - label:
-          en: Small
-          fr: Petit
-        value: sm
-      - label:
-          en: None
-          fr: Aucun
-        value: none
-    description:
-      en: The space on the left and right of the layout.
-      fr: L'espace à gauche et à droite de la mise en page.
-  in_side_panel:
-    label:
-      en: In Side Panel
-      fr: Dans le panneau latéral
+      en: Is Side Panel
+      fr: Est-ce un panneau latéral
     type: boolean
     default: false
     description:
-      en: Indicates if the list is displayed in a side panel, if so, the gap in between content and text size will be adjusted accordingly.
-      fr: Indique si la liste est affichée dans un panneau latéral, si c'est le cas, l'écart entre le contenu et la taille du texte sera ajusté en conséquence.
+      en: Indicates if the list is displayed as a side panel of main article content, if so, the gap around and in between content and text size will be adjusted accordingly.
+      fr: Indique si la liste est affichée comme un panneau latéral du contenu principal de l'article, auquel cas l'écart autour et entre le contenu et la taille du texte sera ajusté en conséquence.
   max_display:
     label:
       en: Max Displayed Articles
@@ -111,8 +67,8 @@ properties:
     type: boolean
     default: false
     description:
-      en: If true, only articles related to the current main article will be displayed in the list. Only works if this is the side panel of a dynamic page.
-      fr: Si vrai, seuls les articles liés à l'article principal actuel seront affichés dans la liste. Ne fonctionne que si c'est le panneau latéral d'une page dynamique.
+      en: If true, only articles related to the current main article will be displayed in the list. Only works if this is inside a dynamic page.
+      fr: Si vrai, seuls les articles liés à l'article principal actuel seront affichés dans la liste. Ne fonctionne que si cela se trouve dans une page dynamique.
 
 presets:
   side_list:
@@ -120,8 +76,13 @@ presets:
       en: List layout in side panel
       fr: Mise en page en liste dans un panneau latéral
     properties:
-      width: full
-      vertical_padding: lg
-      horizontal_padding: sm
-      in_side_panel: true
+      max_width: full
+      is_side_panel: true
     image: side_list.png
+  md_width:
+    label:
+      en: List layout with medium width
+      fr: Mise en page en liste avec une largeur moyenne
+    properties:
+      max_width: md
+    image: md_width.png

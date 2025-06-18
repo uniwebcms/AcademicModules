@@ -82,17 +82,13 @@ export default function ArticleList(props) {
     const { title, subtitle } = block.getBlockContent();
 
     const {
-        width = 'md',
-        vertical_padding = 'lg',
-        horizontal_padding = 'sm',
-        in_side_panel = false,
+        max_width = 'full',
+        is_side_panel = false,
         max_display,
         related_only = false,
     } = block.getBlockProperties();
 
     let articles = input?.profiles || [];
-
-    if (!articles.length) return null;
 
     if (related_only) {
         articles = findRelatedArticles(articles, page, block.id);
@@ -107,25 +103,21 @@ export default function ArticleList(props) {
 
     return (
         <Container
-            px="none"
-            py="none"
-            as="aside"
+            px={is_side_panel ? 'none' : undefined}
+            py={is_side_panel ? 'py-12 lg:py-[70px]' : undefined}
+            as={is_side_panel ? 'aside' : undefined}
             className={twJoin(
-                width === 'sm' && 'max-w-3xl',
-                width === 'md' && 'max-w-5xl',
-                width === 'lg' && 'max-w-7xl',
-                width === 'full' && 'max-w-full',
-                vertical_padding === 'sm' && 'py-6 lg:py-12',
-                vertical_padding === 'lg' && 'py-12 lg:py-20',
-                horizontal_padding === 'sm' && 'px-6 lg:px-8',
-                horizontal_padding === 'lg' && 'px-8 lg:px-12',
+                max_width === 'sm' && 'max-w-3xl',
+                max_width === 'md' && 'max-w-5xl',
+                max_width === 'lg' && 'max-w-7xl',
+                max_width === 'full' && 'max-w-full',
                 'w-full mx-auto'
             )}
         >
             {title && (
                 <h2
                     className={twJoin(
-                        in_side_panel
+                        is_side_panel
                             ? 'text-lg md:text-xl lg:text-2xl font-medium'
                             : 'text-2xl md:text-3xl lg:text-4xl font-bold'
                     )}
@@ -136,7 +128,7 @@ export default function ArticleList(props) {
             {subtitle && (
                 <p
                     className={twJoin(
-                        in_side_panel
+                        is_side_panel
                             ? 'mt-2 lg:mt-3 text-sm md:text-base lg:text-lg'
                             : 'mt-4 lg:mt-6 text-base md:text-lg lg:text-xl'
                     )}
@@ -146,10 +138,15 @@ export default function ArticleList(props) {
             )}
             <div
                 className={
-                    title || subtitle ? (in_side_panel ? 'mt-4 lg:mt-6' : 'mt-8 lg:mt-12') : ''
+                    title || subtitle ? (is_side_panel ? 'mt-4 lg:mt-6' : 'mt-8 lg:mt-12') : ''
                 }
             >
-                <ul className={twJoin('flex flex-col', in_side_panel ? 'gap-y-6' : 'gap-y-8')}>
+                <ul
+                    className={twJoin(
+                        'flex flex-col',
+                        is_side_panel ? 'gap-y-6' : 'gap-y-8 lg:gap-y-10'
+                    )}
+                >
                     {articles.map((article, index) => {
                         const { title, subtitle } = article.getBasicInfo();
 
@@ -160,14 +157,24 @@ export default function ArticleList(props) {
                                 key={index}
                                 to={input.makeHref(article)}
                                 className={twJoin(
-                                    in_side_panel ? 'space-x-4' : 'space-x-8',
+                                    is_side_panel ? 'space-x-4' : 'space-x-8',
                                     'flex items-start group'
                                 )}
                             >
                                 <div
                                     className={twJoin(
-                                        in_side_panel ? 'w-40 h-32' : 'w-44 h-36',
-                                        'rounded-lg overflow-hidden flex-shrink-0'
+                                        is_side_panel && 'w-40',
+                                        !is_side_panel && max_width === 'sm' && 'w-48 md:w-56',
+                                        !is_side_panel &&
+                                            max_width === 'md' &&
+                                            'w-48 md:w-56 lg:w-64',
+                                        !is_side_panel &&
+                                            max_width === 'lg' &&
+                                            'w-48 md:w-56 lg:w-64 xl:w-72',
+                                        !is_side_panel &&
+                                            max_width === 'full' &&
+                                            'w-48 md:w-56 lg:w-64 xl:w-72 2xl:w-80',
+                                        'aspect-[4/3] rounded-lg overflow-hidden flex-shrink-0'
                                     )}
                                 >
                                     <Image
@@ -176,14 +183,14 @@ export default function ArticleList(props) {
                                         className="object-cover w-full h-full"
                                     />
                                 </div>
-                                <div className="flex flex-col">
+                                <div className={twJoin('flex flex-col')}>
                                     {title && (
                                         <h3
                                             className={twJoin(
-                                                in_side_panel
+                                                is_side_panel
                                                     ? 'text-base lg:text-lg font-medium !leading-snug'
                                                     : 'text-xl lg:text-2xl font-medium',
-                                                'line-clamp-2 group-hover:underline'
+                                                'line-clamp-2 group-hover:underline text-pretty'
                                             )}
                                             title={title}
                                         >
@@ -193,20 +200,20 @@ export default function ArticleList(props) {
                                     {subtitle && (
                                         <p
                                             className={twJoin(
-                                                in_side_panel
-                                                    ? 'text-xs lg:text-sm mt-1'
-                                                    : 'text-base lg:text-lg mt-2',
-                                                'line-clamp-2 text-text-color-50'
+                                                is_side_panel
+                                                    ? 'text-xs lg:text-sm mt-1 line-clamp-1'
+                                                    : 'text-base lg:text-lg mt-2 line-clamp-2',
+                                                'text-text-color-50'
                                             )}
                                             title={subtitle}
                                         >
                                             {subtitle}
                                         </p>
                                     )}
-                                    <div className={twJoin(in_side_panel ? 'mt-2' : 'mt-3')}>
+                                    <div className={twJoin(is_side_panel ? 'mt-2' : 'mt-3')}>
                                         <ArticleAuthor
                                             info={articleInformation}
-                                            in_side_panel={in_side_panel}
+                                            in_side_panel={is_side_panel}
                                         />
                                     </div>
                                 </div>

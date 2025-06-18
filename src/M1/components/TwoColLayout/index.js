@@ -68,7 +68,7 @@ export default function TwoColLayout(props) {
                     <ChildBlocks
                         block={block}
                         childBlocks={childBlocks}
-                        extra={{ as: 'div', noPadding: true }}
+                        extra={{ size: 'full' }}
                     ></ChildBlocks>
                 </div>
             ) : (
@@ -103,7 +103,7 @@ export default function TwoColLayout(props) {
                         <ChildBlocks
                             block={block}
                             childBlocks={[child]}
-                            extra={{ as: 'div', noPadding: true }}
+                            extra={{ size: 'half' }}
                         ></ChildBlocks>
                     </div>
                 ))

@@ -3,17 +3,18 @@ import { twJoin } from '@uniwebcms/module-sdk';
 import { Link } from '@uniwebcms/core-components';
 import { CgArrowLeft } from 'react-icons/cg';
 import Container from '../_utils/Container';
-import { buildArticleBlocks } from './Render/helper';
-import Render from './Render';
+import { ArticleRender as Render, buildArticleBlocks } from '@uniwebcms/core-components';
 
 export default function Article(props) {
-    const { website, input, block } = props;
+    const { website, input, block, extra } = props;
 
     const {
         width = 'md',
         vertical_padding = 'lg',
         horizontal_padding = 'sm',
     } = block.getBlockProperties();
+
+    const size = extra?.size || 'full';
 
     const article = input?.profile || null;
 
@@ -60,7 +61,7 @@ export default function Article(props) {
         >
             {isDynamicPage && (
                 <Link to={input.makeHrefToIndex()} className="inline-flex items-center gap-2 group">
-                    <CgArrowLeft className="w-6 h-6 text-text-color-50 group-hover:text-link-hover-color" />
+                    <CgArrowLeft className="w-6 h-6 lg:w-7 lg:h-7 text-text-color-50 group-hover:text-link-hover-color group-hover:-translate-x-1 transition-transform duration-150" />
                     <span className="text-base lg:text-lg text-text-color-50 group-hover:text-link-hover-color group-hover:underline">
                         {website.localize({
                             en: 'Back to list',
@@ -69,7 +70,13 @@ export default function Article(props) {
                     </span>
                 </Link>
             )}
-            <div className={'prose prose-sm md:prose-lg lg:prose-xl'}>
+            <div
+                className={twJoin(
+                    'prose',
+                    size === 'full' && 'prose-sm md:prose-base lg:prose-lg xl:prose-xl',
+                    size === 'half' && 'prose-sm md:prose-base lg:prose-lg'
+                )}
+            >
                 <Render {...props} content={parsedContent}></Render>
             </div>
         </Container>
