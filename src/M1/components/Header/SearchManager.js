@@ -2,6 +2,19 @@ import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { website } from '@uniwebcms/module-sdk';
 import FlexSearch from 'flexsearch';
 
+function getRelativePathIfSameDomain(href) {
+    try {
+        const currentOrigin = window.location.origin;
+        const url = new URL(href, currentOrigin); // Supports relative URLs too
+        if (url.origin === currentOrigin) {
+            return url.pathname + url.search + url.hash; // Preserves query and hash
+        }
+        return href; // Return as-is if different domain
+    } catch (e) {
+        return href; // Invalid URL, return as-is
+    }
+}
+
 const getWebsiteData = async () => {
     const data = await website.getSearchData();
 
@@ -73,6 +86,10 @@ const SearchManager = forwardRef(({ onResultsChange }, ref) => {
 
                 results.forEach((fieldResult) => {
                     fieldResult.result.forEach((result) => {
+                        let href = result.doc.href;
+
+                        href = getRelativePathIfSameDomain(href);
+
                         const existingResult = processedResults.get(result.id);
                         if (!existingResult || existingResult.score < result.score) {
                             // Use the stored document data directly from the search result
@@ -81,7 +98,7 @@ const SearchManager = forwardRef(({ onResultsChange }, ref) => {
                                 title: result.doc.title,
                                 content: result.doc.content,
                                 description: result.doc.description,
-                                href: result.doc.href,
+                                href,
                                 score: result.score,
                             });
                         }
