@@ -45,16 +45,7 @@ const Profile = ({ profile, website }) => {
             <h3 className="mt-1 leading-8 text-base md:text-lg text-text-color-80">{subtitle}</h3>
             <div className="mt-2 flex flex-wrap justify-center gap-x-4 gpy-y-2">
                 {mediaLinks.map((link, index) => (
-                    <Link
-                        key={index}
-                        href={link.href}
-                        className="hover:scale-105"
-                        target="_blank"
-                        title={website.localize({
-                            en: `${link.type} link of the ${title}`,
-                            fr: `Lien ${link.type} du site ${title}`,
-                        })}
-                    >
+                    <Link key={index} href={link.href} className="hover:scale-105" target="_blank">
                         <span className="sr-only">{link.type}</span>
                         <MediaIcon type={link.type} size="7" />
                     </Link>
@@ -131,10 +122,6 @@ const Content = ({ main, website }) => {
                             href={link.href}
                             className="hover:scale-105"
                             target="_blank"
-                            title={website.localize({
-                                en: `${link.type} link of the ${title}`,
-                                fr: `Lien ${link.type} du site ${title}`,
-                            })}
                         >
                             <span className="sr-only">{link.type}</span>
                             <MediaIcon type={link.type} size="7" />

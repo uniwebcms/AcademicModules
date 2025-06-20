@@ -115,21 +115,6 @@ export default function Cards({ website, block }) {
                                         {links.map((link, index) => {
                                             const { href, label } = link;
 
-                                            if (
-                                                href.startsWith('tel:') ||
-                                                href.startsWith('mailto:')
-                                            ) {
-                                                return (
-                                                    <a
-                                                        key={index}
-                                                        href={href}
-                                                        className="break-words"
-                                                    >
-                                                        {label}
-                                                    </a>
-                                                );
-                                            }
-
                                             return (
                                                 <Link
                                                     key={index}

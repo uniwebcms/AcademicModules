@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, MediaIcon, SafeHtml, Disclaimer } from '@uniwebcms/core-components';
 import { getMediaLinkType } from '../_utils/media';
 import Container from '../_utils/Container';
-import './style.css';
 
 const getLanguageLabel = (lang) => {
     return (
@@ -110,18 +109,12 @@ export default function PageFooter(props) {
                     {socialLinks.length ? (
                         <div className="flex flex-wrap">
                             {socialLinks.map((link, index) => {
-                                const linkTitle = {
-                                    en: `${link.type} link of the main website`,
-                                    fr: `Lien ${link.type} du site principal`,
-                                };
-
                                 return (
                                     <Link
                                         key={index}
-                                        className="mr-4 media-icon"
-                                        to={website.makeHref(link.route)}
+                                        className="mr-4"
+                                        to={link.route}
                                         target="_blank"
-                                        title={website.localize(linkTitle)}
                                     >
                                         <span className="sr-only">{link.type}</span>
                                         <MediaIcon type={link.type} size="6" />
@@ -133,16 +126,11 @@ export default function PageFooter(props) {
                     {plainLinks.length ? (
                         <div className="flex flex-wrap">
                             {plainLinks.map((link, index) => {
-                                const linkTitle = {
-                                    en: `${link.label} link of the main website`,
-                                    fr: `Lien ${link.label} du site principal`,
-                                };
                                 return (
                                     <Link
                                         key={index}
                                         className="text-sm mr-4 hover:underline"
                                         to={website.makeHref(link.route)}
-                                        title={website.localize(linkTitle)}
                                         target="_blank"
                                     >
                                         {link.label}

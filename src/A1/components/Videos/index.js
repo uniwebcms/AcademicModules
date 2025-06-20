@@ -51,7 +51,10 @@ const VideoItem = ({ profile, input, layout, isPanel }) => {
                     </div>
                 </div>
                 <div className="flex-grow h-40 flex flex-col">
-                    <h3 className="text-lg font-medium md:text-xl mb-2 truncate group-hover:underline">
+                    <h3
+                        className="text-lg font-medium md:text-xl mb-2 truncate group-hover:underline"
+                        title={title}
+                    >
                         {title}
                     </h3>
                     <p className="md:text-lg mb-5 text-text-color-80">{subtitle}</p>
@@ -72,8 +75,12 @@ const VideoItem = ({ profile, input, layout, isPanel }) => {
                 </div>
             </div>
             <div className="h-16 bg-inherit pt-3">
-                <h3 className="truncate font-medium text-lg group-hover:underline">{title}</h3>
-                <p className="truncate text-base text-text-color-80">{subtitle}</p>
+                <h3 className="truncate font-medium text-lg group-hover:underline" title={title}>
+                    {title}
+                </h3>
+                <p className="truncate text-base text-text-color-80" title={subtitle}>
+                    {subtitle}
+                </p>
             </div>
         </Link>
     );

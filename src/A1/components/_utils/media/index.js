@@ -16,6 +16,13 @@ export const getMediaLinkType = (link) => {
 
     const url = route || href || '';
 
+    if (url.startsWith('mailto:')) {
+        return 'email';
+    }
+    if (url.startsWith('tel:')) {
+        return 'phone';
+    }
+
     if (pattern.hasOwnProperty(label.toLowerCase())) {
         return label.toLowerCase();
     }
@@ -23,21 +30,4 @@ export const getMediaLinkType = (link) => {
     if (Object.values(pattern).some((value) => url.toLowerCase().startsWith(value))) {
         return Object.keys(pattern).find((key) => url.toLowerCase().startsWith(pattern[key]));
     }
-};
-
-export const getMediaLinkLabel = (type) => {
-    const map = {
-        twitter: 'Twitter',
-        facebook: 'Facebook',
-        linkedin: 'LinkedIn',
-        medium: 'Medium',
-        quora: 'Quora',
-        tumblr: 'Tumblr',
-        youtube: 'YouTube',
-        github: 'GitHub',
-        x: 'X',
-        instagram: 'Instagram',
-    };
-
-    return map[type] || type;
 };

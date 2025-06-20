@@ -35,29 +35,10 @@ const ItemsRenderer = ({ items, aspectRatio, website }) => {
                     {links.map((link, index) => {
                         const type = getMediaLinkType(link);
 
-                        let linkTitle;
-
-                        if (!type) {
-                            linkTitle = {
-                                en: `${stripTags(title)}'s website link`,
-                                fr: `Lien vers le site web de ${stripTags(title)}`,
-                            };
-                        } else {
-                            linkTitle = {
-                                en: `${stripTags(title)}'s ${type} link`,
-                                fr: `Lien vers le ${type} de ${stripTags(title)}`,
-                            };
-                        }
-
                         return (
-                            <Link
-                                key={index}
-                                to={link.href}
-                                target="_blank"
-                                title={website.localize(linkTitle)}
-                            >
-                                <span className="sr-only">{type || 'website link'}</span>
-                                <MediaIcon type={type} size="5" />
+                            <Link key={index} to={link.href} target="_blank">
+                                <span className="sr-only">{'website link'}</span>
+                                <MediaIcon type={type} size="5" className="hover:scale-105" />
                             </Link>
                         );
                     })}
@@ -89,23 +70,10 @@ const ProfilesRenderer = ({ profiles, aspectRatio, website }) => {
                 <p className="text-text-color-80">{subtitle}</p>
                 <ul role="list" className="mt-3 flex gap-x-3">
                     {mediaLinks.map((link, index) => {
-                        const { url } = link;
-
-                        const type =
-                            link.type || website.localize({ en: 'website', fr: 'site web' });
-
-                        let linkTitle = {
-                            en: `${title}'s ${type} link`,
-                            fr: `Lien vers le ${type} de ${title}`,
-                        };
+                        const { url, type } = link;
 
                         return (
-                            <Link
-                                key={index}
-                                to={url}
-                                target="_blank"
-                                title={website.localize(linkTitle)}
-                            >
+                            <Link key={index} to={url} target="_blank">
                                 <MediaIcon type={type} size="5" />
                             </Link>
                         );

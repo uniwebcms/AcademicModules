@@ -41,27 +41,14 @@ const Branding = ({ logo, title, subtitle, links }) => {
                         {regularLinks.map((link, index) => {
                             const { label, href } = link;
 
-                            if (href.startsWith('topic:')) {
-                                return (
-                                    <Link
-                                        key={index}
-                                        to={website.makeHref(href)}
-                                        className="hover:underline"
-                                    >
-                                        {label}
-                                    </Link>
-                                );
-                            }
-
                             return (
-                                <a
+                                <Link
                                     key={index}
-                                    href={href}
-                                    target="_blank"
+                                    to={website.makeHref(href)}
                                     className="hover:underline"
                                 >
                                     {label}
-                                </a>
+                                </Link>
                             );
                         })}
                     </div>
@@ -69,24 +56,11 @@ const Branding = ({ logo, title, subtitle, links }) => {
                 {mediaLinks.length > 0 && (
                     <div className="flex flex-wrap mt-4">
                         {mediaLinks.map((link, index) => {
-                            const { label, href, type } = link;
-
-                            const linkTitle = {
-                                en: `${label || type} link of the main website`,
-                                fr: `Lien ${label || type} du site principal`,
-                            };
-
                             return (
-                                <a
-                                    key={index}
-                                    className="mr-4"
-                                    href={href}
-                                    target="_blank"
-                                    title={website.localize(linkTitle)}
-                                >
-                                    <span className="sr-only">{type}</span>
-                                    <MediaIcon type={type} className="w-6 h-6 hover:scale-105" />
-                                </a>
+                                <Link key={index} className="mr-4" to={link.href} target="_blank">
+                                    <span className="sr-only">{link.type}</span>
+                                    <MediaIcon type={link.type} size="6" />
+                                </Link>
                             );
                         })}
                     </div>
