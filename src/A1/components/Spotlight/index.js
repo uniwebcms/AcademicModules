@@ -1,8 +1,7 @@
 import React from 'react';
 import { stripTags, getPageProfile, twJoin } from '@uniwebcms/module-sdk';
-import { Icon, SafeHtml, Link } from '@uniwebcms/core-components';
+import { Icon, SafeHtml, Link, Media } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
-import Media from '../../../../../core-components/src/components/Media';
 
 export default function Spotlight({ block, website }) {
     const items = block.getBlockItems();
