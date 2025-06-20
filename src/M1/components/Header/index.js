@@ -899,18 +899,22 @@ const NavBar = ({
 
                         {/* Desktop Right Side Actions */}
                         <div className="hidden lg:flex lg:items-center space-x-0 xl:space-x-1">
-                            <button
-                                className="relative !bg-transparent text-text-color group px-3 py-2"
-                                onMouseEnter={() => handleActionMouseEnter('search')}
-                            >
-                                <HiSearch className="h-6 w-6" />
-                                <span
-                                    className={twJoin(
-                                        'absolute bottom-[3px] left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
-                                        activeDropdown === 'search' ? 'w-[calc(100%-24px)]' : 'w-0'
-                                    )}
-                                />
-                            </button>
+                            {website.isSearchEnabled() && (
+                                <button
+                                    className="relative !bg-transparent text-text-color group px-3 py-2"
+                                    onMouseEnter={() => handleActionMouseEnter('search')}
+                                >
+                                    <HiSearch className="h-6 w-6" />
+                                    <span
+                                        className={twJoin(
+                                            'absolute bottom-[3px] left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
+                                            activeDropdown === 'search'
+                                                ? 'w-[calc(100%-24px)]'
+                                                : 'w-0'
+                                        )}
+                                    />
+                                </button>
+                            )}
                             <button
                                 ref={languageBtnRef}
                                 className="relative !bg-transparent text-text-color group px-3 py-2"
@@ -959,9 +963,11 @@ const NavBar = ({
 
                         {/* Mobile Actions */}
                         <div className="lg:hidden flex items-center space-x-3.5">
-                            <div onClick={() => handleMobileAction('search')}>
-                                <HiSearch className="h-6 w-6" />
-                            </div>
+                            {website.isSearchEnabled() && (
+                                <div onClick={() => handleMobileAction('search')}>
+                                    <HiSearch className="h-6 w-6" />
+                                </div>
+                            )}
                             <div onClick={() => handleMobileAction('language')}>
                                 <HiOutlineGlobeAlt className="h-6 w-6" />
                             </div>

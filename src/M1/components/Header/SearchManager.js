@@ -57,9 +57,11 @@ const SearchManager = forwardRef(({ onResultsChange }, ref) => {
             try {
                 const data = await getWebsiteData();
 
-                data.forEach((page) => {
-                    searchIndex.current.add(page);
-                });
+                if (data) {
+                    data.forEach((page) => {
+                        searchIndex.current.add(page);
+                    });
+                }
             } catch (error) {
                 console.error('Failed to initialize search:', error);
             }
