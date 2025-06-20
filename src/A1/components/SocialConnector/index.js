@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
-import { MediaIcon } from '@uniwebcms/core-components';
+import { MediaIcon, Link } from '@uniwebcms/core-components';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import MoonLoader from 'react-spinners/MoonLoader';
+import { getMediaLinkType } from '../_utils/media';
 
 function Newsletter({ website, title }) {
     const siteId = website.getSiteId();
@@ -42,7 +43,7 @@ function Newsletter({ website, title }) {
                     })}
                     aria-label="Email address"
                     required
-                    className="min-w-0 w-64 appearance-none rounded-md bg-text-color-20 focus-within:bg-text-color-0 px-3 py-2 shadow-md placeholder:text-text-color-80 ring-0 focus:outline-none sm:text-sm text-text-color border border-text-color-50"
+                    className="min-w-0 w-64 appearance-none rounded-md bg-transparent focus-within:border-text-color-50 px-3 py-2 shadow-md placeholder:text-text-color-50 ring-0 focus:outline-none sm:text-sm text-text-color border border-text-color-20"
                     value={email}
                     onChange={(e) => {
                         setEmail(e.target.value || '');
@@ -50,9 +51,9 @@ function Newsletter({ website, title }) {
                 />
                 <button
                     type="submit"
-                    className="flex-none ml-4 flex items-center justify-center h-full w-28 rounded-md text-[15px] shadow-md bg-text-color-20 hover:bg-text-color-10"
+                    className="flex-none ml-4 flex items-center justify-center h-full w-28 rounded-md text-[15px] shadow-md border border-text-color-20 bg-text-color-10 hover:bg-text-color hover:text-text-color-0"
                 >
-                    <span className="flex text-text-color">
+                    <span className="flex">
                         {buttonIcon || website.localize({ en: 'Subscribe', fr: "S'abonner" })}
                     </span>
                 </button>
@@ -61,23 +62,21 @@ function Newsletter({ website, title }) {
     );
 }
 
-const MediaLinks = ({ profile, title }) => {
-    const links = profile.getSocialMediaLinks('social_media_links');
-
+const MediaLinks = ({ links, title }) => {
     return (
         <div className="space-y-2.5 md:space-y-4 lg:space-y-6 flex-grow">
             <h3 className="text-lg font-medium md:text-xl lg:text-2xl">{title}</h3>
             <div className="flex items-center space-x-4">
                 {links.map((link, index) => {
-                    const { type, url, name, label } = link;
+                    const type = getMediaLinkType(link);
 
                     return (
-                        <a key={index} href={url} target="_blank" title={label || name}>
+                        <Link key={index} to={link.href} target="_blank">
                             <MediaIcon
                                 type={type}
-                                className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8"
+                                className="w-6 h-6 md:w-7 md:h-7 hover:scale-105 transition-transform duration-150"
                             />
-                        </a>
+                        </Link>
                     );
                 })}
             </div>
@@ -86,14 +85,9 @@ const MediaLinks = ({ profile, title }) => {
 };
 
 export default function SocialConnector(props) {
-    const { block, website, input } = props;
+    const { block, website } = props;
 
-    const { mainHeader } = block;
-    const { title, subtitle } = mainHeader;
-
-    const profile = input?.profile;
-
-    if (!profile) return null;
+    const { title, subtitle, links } = block.getBlockContent();
 
     const newsletterTitle =
         title ||
@@ -122,7 +116,7 @@ export default function SocialConnector(props) {
         <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8 flex flex-col md:flex-row items-start justify-between md:space-x-6 space-y-8 md:space-y-0">
                 <Newsletter title={newsletterTitle} website={website} />
-                <MediaLinks title={mediaLinksTitle} profile={profile} />
+                <MediaLinks title={mediaLinksTitle} links={links} />
             </div>
         </Container>
     );
