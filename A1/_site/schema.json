@@ -5331,10 +5331,6 @@
       "en": "A component renders a newseltter subscription form and a list of social media links.",
       "fr": "Un composant qui affiche un formulaire d'abonnement à la newsletter et une liste de liens vers les médias sociaux."
     },
-    "input": {
-      "type": "any",
-      "limit": "one"
-    },
     "category": "form",
     "export": true,
     "elements": {
@@ -5362,6 +5358,17 @@
           "fr": "Le titre des liens vers les réseaux sociaux."
         },
         "type": "H2"
+      },
+      "link": {
+        "label": {
+          "en": "Social media links",
+          "fr": "Liens vers les réseaux sociaux"
+        },
+        "type": "list",
+        "description": {
+          "en": "The social media links to display, each link can have a title and a URL.",
+          "fr": "Les liens vers les réseaux sociaux à afficher, chaque lien peut avoir un titre et une URL."
+        }
       }
     },
     "properties": {
