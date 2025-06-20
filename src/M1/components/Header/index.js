@@ -429,6 +429,9 @@ const NavBar = ({
                 // Execute the search (tracking happens in useEffect when results arrive)
                 await searchManagerRef.current.search(searchTerm);
             }
+        } else if (e.key === 'Escape') {
+            // Clear search on Escape key
+            handleSearchClear();
         }
     };
 
@@ -450,6 +453,10 @@ const NavBar = ({
             result_title: result.title,
             result_url: result.href,
         });
+
+        // Reset search value and results after clicking a result
+        setSearchValue('');
+        // setSearchResults(null);
     };
 
     const renderDropdownContent = () => {
