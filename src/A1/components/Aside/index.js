@@ -45,7 +45,7 @@ const Profile = ({ profile, website }) => {
             <h3 className="mt-1 leading-8 text-base md:text-lg text-text-color-80">{subtitle}</h3>
             <div className="mt-2 flex flex-wrap justify-center gap-x-4 gpy-y-2">
                 {mediaLinks.map((link, index) => (
-                    <Link key={index} href={link.href} className="hover:scale-105" target="_blank">
+                    <Link key={index} href={link.href} className="hover:scale-105">
                         <span className="sr-only">{link.type}</span>
                         <MediaIcon type={link.type} size="7" />
                     </Link>
@@ -107,7 +107,6 @@ const Content = ({ main, website }) => {
                             key={index}
                             className="text-sm font-medium md:text-base lg:text-lg hover:underline truncate max-w-full"
                             href={link.href}
-                            target="_blank"
                         >
                             {link.label}
                         </Link>
@@ -117,12 +116,7 @@ const Content = ({ main, website }) => {
             {mediaLinks.length ? (
                 <div className="mt-6 flex flex-wrap justify-center gap-x-4 gpy-y-2">
                     {mediaLinks.map((link, index) => (
-                        <Link
-                            key={index}
-                            href={link.href}
-                            className="hover:scale-105"
-                            target="_blank"
-                        >
+                        <Link key={index} href={link.href} className="hover:scale-105">
                             <span className="sr-only">{link.type}</span>
                             <MediaIcon type={link.type} size="7" />
                         </Link>

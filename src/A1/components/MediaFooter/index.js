@@ -57,7 +57,7 @@ const Branding = ({ logo, title, subtitle, links }) => {
                     <div className="flex flex-wrap mt-4">
                         {mediaLinks.map((link, index) => {
                             return (
-                                <Link key={index} className="mr-4" to={link.href} target="_blank">
+                                <Link key={index} className="mr-2 hover:scale-105" to={link.href}>
                                     <span className="sr-only">{link.type}</span>
                                     <MediaIcon type={link.type} size="6" />
                                 </Link>

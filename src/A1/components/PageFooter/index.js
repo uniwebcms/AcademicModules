@@ -110,12 +110,7 @@ export default function PageFooter(props) {
                         <div className="flex flex-wrap">
                             {socialLinks.map((link, index) => {
                                 return (
-                                    <Link
-                                        key={index}
-                                        className="mr-4"
-                                        to={link.route}
-                                        target="_blank"
-                                    >
+                                    <Link key={index} className="mr-4" to={link.route}>
                                         <span className="sr-only">{link.type}</span>
                                         <MediaIcon type={link.type} size="6" />
                                     </Link>
@@ -131,7 +126,6 @@ export default function PageFooter(props) {
                                         key={index}
                                         className="text-sm mr-4 hover:underline"
                                         to={website.makeHref(link.route)}
-                                        target="_blank"
                                     >
                                         {link.label}
                                     </Link>

@@ -71,7 +71,7 @@ const MediaLinks = ({ links, title }) => {
                     const type = getMediaLinkType(link);
 
                     return (
-                        <Link key={index} to={link.href} target="_blank">
+                        <Link key={index} to={link.href}>
                             <MediaIcon
                                 type={type}
                                 className="w-6 h-6 md:w-7 md:h-7 hover:scale-105 transition-transform duration-150"

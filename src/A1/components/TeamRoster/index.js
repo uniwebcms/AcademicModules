@@ -36,7 +36,7 @@ const ItemsRenderer = ({ items, aspectRatio, website }) => {
                         const type = getMediaLinkType(link);
 
                         return (
-                            <Link key={index} to={link.href} target="_blank">
+                            <Link key={index} to={link.href}>
                                 <span className="sr-only">{'website link'}</span>
                                 <MediaIcon type={type} size="5" className="hover:scale-105" />
                             </Link>
@@ -73,7 +73,7 @@ const ProfilesRenderer = ({ profiles, aspectRatio, website }) => {
                         const { url, type } = link;
 
                         return (
-                            <Link key={index} to={url} target="_blank">
+                            <Link key={index} to={url}>
                                 <MediaIcon type={type} size="5" />
                             </Link>
                         );
