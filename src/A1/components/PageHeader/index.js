@@ -85,9 +85,9 @@ export default function PageHeader({ block, website, page }) {
         } else {
             adaptiveTheme = `${nextTheme}`;
         }
-    }
 
-    wrapperClass.push(adaptiveTheme);
+        wrapperClass.push(adaptiveTheme);
+    }
 
     if (sticky && !initialPosition) {
         wrapperClass.push('fixed top-0 left-0 z-50 bg-bg-color');
@@ -159,7 +159,7 @@ export default function PageHeader({ block, website, page }) {
 
             <div
                 ref={navRef}
-                className={twMerge(wrapperClass, !initialPosition && sticky && '!shadow-2xl')}
+                className={twMerge(wrapperClass, !initialPosition && sticky && 'shadow-2xl')}
             >
                 <div
                     className={twMerge(
