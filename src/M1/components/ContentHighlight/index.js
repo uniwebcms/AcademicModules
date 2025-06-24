@@ -1,12 +1,12 @@
 import React from 'react';
 import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
-import { Icon, Image, SafeHtml } from '@uniwebcms/core-components';
+import { Icon, Image, SafeHtml, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function ContentHighlight(props) {
     const { block } = props;
 
-    const { title, subtitle, lists, images, paragraphs, icons } = block.getBlockContent();
+    const { title, subtitle, lists, links, images, paragraphs, icons } = block.getBlockContent();
 
     const { image_position = 'right' } = block.getBlockProperties();
 
@@ -14,8 +14,22 @@ export default function ContentHighlight(props) {
         lists[0]?.map((item) => ({ icon: item.icons?.[0], text: item.paragraphs?.[0] })) || [];
     const image = images[0];
 
+    const calloutLink = links[0];
     const calloutText = paragraphs[0];
     const calloutIcon = icons[0];
+
+    const hasCallout = calloutLink || calloutText || calloutIcon;
+    const CalloutWrapper = calloutLink ? Link : 'div';
+    const calloutWrapperProps = calloutLink
+        ? {
+              to: calloutLink.href,
+              className:
+                  'mt-8 w-full bg-accent-50 text-accent-700 px-5 py-4 rounded-lg inline-flex items-center hover:scale-105 hover:shadow-lg transition-transform duration-200',
+          }
+        : {
+              className:
+                  'mt-8 w-full bg-accent-50 text-accent-700 px-5 py-4 rounded-lg inline-flex items-center',
+          };
 
     return (
         <Container
@@ -41,12 +55,17 @@ export default function ContentHighlight(props) {
                 </ul>
 
                 {/* Callout */}
-                <div className="mt-8 w-full bg-accent-50 text-accent-700 px-5 py-4 rounded-lg inline-flex items-center">
-                    <Icon icon={calloutIcon} className="w-5 h-5 text-accent-500 flex-shrink-0" />
-                    <span className="ml-2">
-                        <SafeHtml value={calloutText} />
-                    </span>
-                </div>
+                {hasCallout && (
+                    <CalloutWrapper {...calloutWrapperProps}>
+                        <Icon
+                            icon={calloutIcon}
+                            className="w-5 h-5 text-accent-500 flex-shrink-0"
+                        />
+                        <span className="ml-2">
+                            {calloutText ? <SafeHtml value={calloutText} /> : calloutLink.label}
+                        </span>
+                    </CalloutWrapper>
+                )}
             </div>
 
             {/* Image */}

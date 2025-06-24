@@ -80,6 +80,7 @@ export default function FeatureItem(props) {
             );
         } else {
             const [, firstLinkIcon, secondLinkIcon] = icons;
+            const hasLink = firstLink || secondLink;
             return (
                 <MotionWrapper>
                     <div
@@ -94,8 +95,17 @@ export default function FeatureItem(props) {
                             </div>
                         </div>
                         <div className="flex-1">
-                            <h3 className="font-medium text-lg mb-2">{title}</h3>
-                            {paragraphs.length && <SafeHtml value={paragraphs} className="mb-4" />}
+                            <h3
+                                className={twJoin(
+                                    'font-medium text-lg',
+                                    paragraphs.length ? 'mb-2' : hasLink ? 'mb-4' : ''
+                                )}
+                            >
+                                {title}
+                            </h3>
+                            {paragraphs.length && (
+                                <SafeHtml value={paragraphs} className={hasLink ? 'mb-4' : ''} />
+                            )}
                             <div className="flex items-center justify-between">
                                 {firstLink && (
                                     <Link to={firstLink.href} className="group">

@@ -27,6 +27,16 @@ elements:
     description:
       en: The call out text that placed at the bottom of the content.
       fr: Le texte d'appel placé au bas du contenu.
+  link:
+    type: link
+    description:
+      en: Turn the call out text into a link that can be used to direct users to more information or related content.
+      fr: Transformez le texte d'appel en lien qui peut être utilisé pour diriger les utilisateurs vers plus d'informations ou du contenu connexe.
+  icon:
+    type: icon
+    description:
+      en: An icon that places beside the callout text to visually represent the content.
+      fr: Une icône placée à côté du texte d'appel pour représenter visuellement le contenu.
 
 properties:
   image_position:
