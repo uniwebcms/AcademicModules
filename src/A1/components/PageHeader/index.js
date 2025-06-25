@@ -83,7 +83,8 @@ export default function PageHeader({ block, website, page }) {
     const wrapperClass = ['flex max-w-full w-screen'];
 
     let adaptiveTheme = theme;
-    let adaptiveStyle = {};
+    let adaptiveStyle = {},
+        defaultStyle = {};
 
     if (allowTranslucentTop) {
         if (initialPosition || !sticky) {
@@ -98,6 +99,8 @@ export default function PageHeader({ block, website, page }) {
 
         wrapperClass.push(adaptiveTheme);
         setWrapperStyle(adaptiveTheme, block, adaptiveStyle);
+    } else {
+        setWrapperStyle(theme, block, defaultStyle);
     }
 
     if (sticky && !initialPosition) {
@@ -242,6 +245,7 @@ export default function PageHeader({ block, website, page }) {
                         open={mobileMenuOpen}
                         onClose={setMobileMenuOpen}
                         className={adaptiveTheme}
+                        style={allowTranslucentTop ? adaptiveStyle : defaultStyle}
                     >
                         <Dialog.Panel className="fixed inset-0 z-50 px-6 py-3 overflow-y-auto lg:hidden bg-bg-color">
                             <div className="flex flex-row-reverse items-center justify-between">
