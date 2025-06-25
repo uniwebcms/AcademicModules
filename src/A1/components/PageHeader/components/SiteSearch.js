@@ -27,7 +27,7 @@ export default function (props) {
             <Search
                 website={website}
                 iconClassName={
-                    'text-text-color-90 hover:text-text-color w-5 h-5 hover:scale-125 transition-all duration-300'
+                    'text-text-color-80 hover:text-text-color w-5 h-5 hover:scale-125 transition-all duration-300'
                 }
                 iconPosition="end"
             />

@@ -36,20 +36,18 @@ export default function (props) {
             <div
                 key={opt.value}
                 className={twMerge(
-                    'flex items-center space-x-3.5 bg-text-color-10 text-text-color-90 px-4 py-2 text-base',
+                    'flex items-center justify-between space-x-2 px-4 py-2 text-base bg-bg-color',
                     opt.value === currentLang
-                        ? 'bg-primary-200 cursor-not-allowed text-primary-900'
-                        : 'hover:bg-text-color-0 cursor-pointer'
+                        ? 'cursor-not-allowed text-link-color'
+                        : 'hover:bg-bg-color-80 hover:text-link-color cursor-pointer'
                 )}
                 onClick={() => {
                     if (opt.value !== currentLang) website.changeLanguage(opt.value);
                 }}
             >
-                <span className="!text-inherit hover:!text-inherit">
-                    {labels[opt.value] || opt.label}
-                </span>
+                <span className="truncate">{labels[opt.value] || opt.label}</span>
                 {opt.value === currentLang ? (
-                    <ImRadioChecked className="w-4 h-4 text-primary-700" />
+                    <ImRadioChecked className="w-4 h-4 text-link-color" />
                 ) : null}
             </div>
         ));
@@ -58,8 +56,13 @@ export default function (props) {
             <Popover className="relative">
                 {({ open }) => (
                     <div>
-                        <Popover.Button className="w-6 h-6 flex items-center justify-center hover:scale-125 transition-all duration-300">
-                            <MdLanguage className="w-full h-full text-text-color-80 hover:text-text-color" />
+                        <Popover.Button className="w-6 h-6 flex items-center justify-center hover:scale-125 transition-all duration-300 focus:outline-none">
+                            <MdLanguage
+                                className={twMerge(
+                                    'w-full h-full text-text-color-80 hover:text-text-color',
+                                    open && 'text-text-color'
+                                )}
+                            />
                         </Popover.Button>
                         <Transition
                             as={Fragment}
@@ -73,7 +76,7 @@ export default function (props) {
                         >
                             <Popover.Panel
                                 static
-                                className={`absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md shadow-lg ring-1 ring-text-color-20 ring-opacity-5 focus:outline-none overflow-hidden divide-y divide-text-color-20 shadow-text-color-40`}
+                                className={`absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md shadow-lg focus:outline-none overflow-hidden border border-text-color/10 divide-y divide-text-color/10`}
                             >
                                 {menu.map((opt, i) => (
                                     <div key={i}>{opt}</div>

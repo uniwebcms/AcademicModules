@@ -11,6 +11,15 @@ import SiteSearch from './components/SiteSearch';
 import { getNextBlockContext } from '../_utils/context';
 import './style.css';
 
+const setWrapperStyle = (theme, block, style) => {
+    const context = theme?.split('__')?.[1];
+    const colors = block.standardOptions?.colors?.elements?.[context] || {};
+
+    Object.keys(colors).forEach((key) => {
+        style[`--${key}`] = colors[key];
+    });
+};
+
 export default function PageHeader({ block, website, page }) {
     const { themeName: theme, main } = block;
     const {
@@ -74,6 +83,7 @@ export default function PageHeader({ block, website, page }) {
     const wrapperClass = ['flex max-w-full w-screen'];
 
     let adaptiveTheme = theme;
+    let adaptiveStyle = {};
 
     if (allowTranslucentTop) {
         if (initialPosition || !sticky) {
@@ -87,6 +97,7 @@ export default function PageHeader({ block, website, page }) {
         }
 
         wrapperClass.push(adaptiveTheme);
+        setWrapperStyle(adaptiveTheme, block, adaptiveStyle);
     }
 
     if (sticky && !initialPosition) {
@@ -160,6 +171,7 @@ export default function PageHeader({ block, website, page }) {
             <div
                 ref={navRef}
                 className={twMerge(wrapperClass, !initialPosition && sticky && 'shadow-2xl')}
+                style={adaptiveStyle}
             >
                 <div
                     className={twMerge(
@@ -202,7 +214,7 @@ export default function PageHeader({ block, website, page }) {
                                     <Link
                                         key={index}
                                         to={route}
-                                        className="inline-block lg:text-base xl:text-lg font-semibold px-3.5 py-1.5 text-text-color-90 hover:text-text-color hover:bg-text-color/10 rounded-lg"
+                                        className="inline-block lg:text-base xl:text-lg font-semibold px-3.5 py-1.5 text-text-color hover:text-link-color hover:bg-link-color/10 rounded-lg"
                                     >
                                         {label}
                                     </Link>
@@ -348,9 +360,9 @@ const NavbarMenu = ({
                 <Wrapper
                     className={twJoin(
                         'inline-flex items-center lg:text-base xl:text-lg font-semibold pl-3.5 pr-2 py-1.5 focus:outline-none rounded-lg gap-x-1',
-                        menuOpened
-                            ? 'bg-text-color/10 text-text-color'
-                            : 'text-text-color-90 hover:text-text-color'
+                        hasData && 'text-text-color hover:text-link-color',
+                        'hover:bg-link-color/10',
+                        menuOpened && 'bg-link-color/10'
                     )}
                     {...wrapperProps}
                 >
@@ -380,7 +392,7 @@ const NavbarMenu = ({
             return (
                 <li
                     className={twJoin(
-                        'relative w-64 pl-3 group hover:bg-text-color/10',
+                        'relative w-64 pl-3 group hover:bg-link-color/10',
                         hasChildItems
                             ? 'py-2 flex items-center justify-between space-x-2 pr-1'
                             : 'pr-3'
@@ -402,7 +414,7 @@ const NavbarMenu = ({
                         <>
                             <FaCaretRight
                                 className={twJoin(
-                                    'w-5 h-5 text-text-color-60 group-hover:text-text-color-80'
+                                    'w-5 h-5 text-text-color-60 group-hover:text-link-color-80'
                                 )}
                             />
                             <ul className="p-1 hidden group-hover:flex absolute top-0 -right-[252px] w-64 flex-col shadow-lg ring-1 ring-text-color-10 bg-bg-color rounded-md">
@@ -420,7 +432,7 @@ const NavbarMenu = ({
 
                                     return (
                                         <li
-                                            className="px-3 hover:bg-text-color/10"
+                                            className="px-3 hover:bg-link-color/10"
                                             key={childIndex}
                                         >
                                             <ChildWrapper
