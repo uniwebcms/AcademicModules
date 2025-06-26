@@ -263,4 +263,50 @@ export default function FeatureItem(props) {
             </div>
         );
     }
+
+    if (mode === 'vertical_grouped') {
+        const { icons, title } = block.getBlockContent();
+        const items = block.getBlockItems();
+
+        const icon = icons[0];
+
+        return (
+            <div className="flex flex-col space-y-4">
+                <div className="flex items-center gap-3">
+                    {icon && (
+                        <div className="w-[30px] h-[30px] rounded-lg border border-icon-color/20 bg-icon-color/10 flex items-center justify-center">
+                            <Icon icon={icon} className="w-5 h-5" />
+                        </div>
+                    )}
+                    <h3 className="text-lg font-semibold">{title}</h3>
+                </div>
+                <div className="flex flex-col space-y-3">
+                    {items.map((item, index) => {
+                        const { title, subtitle, paragraphs } = item;
+
+                        return (
+                            <div
+                                key={index}
+                                className="p-4 border border-text-color/20 bg-text-color-0 rounded-lg"
+                            >
+                                <div className="flex items-start gap-3 justify-between overflow-hidden">
+                                    <h4 className="flex-1 text-sm font-bold">{title}</h4>
+                                    <p
+                                        className="truncate text-sm text-accent-600 font-medium"
+                                        title={subtitle}
+                                    >
+                                        {subtitle}
+                                    </p>
+                                </div>
+                                <SafeHtml
+                                    value={paragraphs}
+                                    className="mt-1.5 text-sm text-text-color-60"
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        );
+    }
 }
