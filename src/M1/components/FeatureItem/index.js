@@ -249,4 +249,18 @@ export default function FeatureItem(props) {
             </div>
         );
     }
+
+    if (mode === 'icon_and_text') {
+        const { icons, paragraphs } = block.getBlockContent();
+
+        const icon = icons[0];
+        const text = paragraphs[0];
+
+        return (
+            <div className="flex items-center gap-2 sm:justify-center md:justify-start">
+                {icon && <Icon icon={icon} className="w-6 h-6" />}
+                {text && <SafeHtml value={text} className="text-base" />}
+            </div>
+        );
+    }
 }

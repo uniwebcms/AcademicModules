@@ -68,6 +68,10 @@ properties:
           en: Centered (icon, title, text and links)
           fr: Centré (icône, titre, texte et liens)
         value: centered
+      - label:
+          en: Icon and Text (icon and text)
+          fr: Icône et texte (icône et texte)
+        value: icon_and_text
     description:
       en: The mode of the feature item.
       fr: Le mode de l'élément de fonctionnalité.
@@ -110,3 +114,10 @@ presets:
     properties:
       mode: centered
     image: centered.png
+  icon_and_text:
+    label:
+      en: Icon and Text Feature Item
+      fr: Élément de fonctionnalité icône et texte
+    properties:
+      mode: icon_and_text
+    image: icon_and_text.png

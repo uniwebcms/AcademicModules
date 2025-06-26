@@ -245,4 +245,51 @@ export default function Feature(props) {
             </Container>
         );
     }
+
+    if (appearance === 'island') {
+        return (
+            <Container py="none" px="none" className="relative">
+                {/* Content */}
+                <div className={'max-w-8xl mx-auto py-8 lg:py-12 px-0 lg:px-16 xl:px-24'}>
+                    <div
+                        className={
+                            'w-full space-y-8 lg:space-y-10 py-8 lg:py-12 px-4 md:px-6 lg:px-8 bg-primary-50 lg:rounded-lg'
+                        }
+                    >
+                        <div className="max-w-2xl mx-auto text-center relative z-10">
+                            {/* {pretitle && (
+                                <p className="text-xs md:text-sm lg:text-base font-semibold uppercase mb-1.5 text-heading-color-80">
+                                    {pretitle}
+                                </p>
+                            )} */}
+                            {title && (
+                                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+                                    {title}
+                                </h2>
+                            )}
+                            {subtitle && (
+                                <p className="mt-1 md:mt-2 lg:mt-3 text-sm md:text-base lg:text-lg text-balance text-heading-color-70">
+                                    {subtitle}
+                                </p>
+                            )}
+                        </div>
+                        {hasChildBlocks ? (
+                            <div className={twJoin('relative z-10', gridClassName)}>
+                                <ChildBlockRenderer
+                                    block={block}
+                                    childBlocks={childBlocks}
+                                ></ChildBlockRenderer>
+                            </div>
+                        ) : null}
+                        {paragraphs.length > 0 && (
+                            <SafeHtml
+                                value={paragraphs}
+                                className="text-sm md:text-base lg:text-lg text-center text-text-color-70"
+                            />
+                        )}
+                    </div>
+                </div>
+            </Container>
+        );
+    }
 }

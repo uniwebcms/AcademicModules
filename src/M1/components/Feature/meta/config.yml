@@ -69,6 +69,10 @@ properties:
           en: Detailed
           fr: Detaillé
         value: detailed
+      - label:
+          en: Island
+          fr: Île
+        value: island
     description:
       en: Defines the visual style of the feature section.
       fr: Définit le style visuel de la section des fonctionnalités.
@@ -137,3 +141,11 @@ presets:
       appearance: detailed
       sub_content_layout: grid_lg
     image: detailed_lg.png
+  island_sm:
+    label:
+      en: Island Feature with small sub-features
+      fr: Fonctionnalité île avec des sous-fonctionnalités de petite taille
+    properties:
+      appearance: island
+      sub_content_layout: grid_sm
+    image: island_sm.png
