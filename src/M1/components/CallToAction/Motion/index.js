@@ -40,7 +40,7 @@ export default function Motion(props) {
                         </motion.h2>
 
                         <motion.p
-                            className="mb-16 max-w-2xl text-lg text-text-color"
+                            className="mb-12 max-w-2xl text-lg text-text-color"
                             initial={{ opacity: 0 }}
                             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                             transition={{ duration: 1, delay: 1.1 }}
