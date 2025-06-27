@@ -18,6 +18,9 @@ elements:
   subtitle:
   link:
     type: link
+    description:
+      en: One or more links to provide more information or direct users to a related page.
+      fr: Un ou plusieurs liens pour fournir plus d'informations ou diriger les utilisateurs vers une
 
 images:
   - example.png

@@ -119,7 +119,7 @@ export default function Cards({ website, block }) {
                                                 <Link
                                                     key={index}
                                                     to={website.makeHref(href)}
-                                                    className="break-words"
+                                                    className="block break-words hover:underline leading-tight"
                                                 >
                                                     {label}
                                                 </Link>

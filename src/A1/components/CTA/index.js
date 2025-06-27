@@ -6,19 +6,16 @@ import Container from '../_utils/Container';
 export default function CTA({ block, website }) {
     const { main } = block;
 
-    const { header, banner, body } = main;
-
     const [width, setWidth] = useState(window.innerWidth);
 
+    // update state triggers re-render to update image position
     window.onresize = () => {
         setWidth(window.innerWidth);
     };
 
-    const { pretitle = '', title = '', subtitle = '' } = header || {};
+    const { banner, pretitle, title, subtitle, images, links } = block.getBlockContent();
 
-    const image = banner || body?.imgs[0];
-
-    const link = body?.links[0];
+    const image = banner || images[0];
 
     return (
         <Container py="0" className="flex flex-col lg:flex-row">
@@ -61,14 +58,19 @@ export default function CTA({ block, website }) {
                         className="mt-6 text-lg sm:text-xl rich-text"
                     />
 
-                    <div className="mt-8">
-                        {link && (
-                            <Link to={website.makeHref(link.href)}>
-                                <span className="inline-flex rounded-md !bg-primary-200 px-3.5 py-2.5 text-sm font-semibold !text-primary-800 shadow-sm hover:scale-105 transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-                                    {link.label}
-                                </span>
-                            </Link>
-                        )}
+                    <div className="mt-8 flex flex-wrap gap-x-4 gay-y-3">
+                        {links.map((link, index) => {
+                            const { href, label } = link;
+                            return (
+                                <Link
+                                    key={index}
+                                    to={href}
+                                    className="inline-flex rounded-md bg-link-color/20 hover:bg-link-color/10 px-4 py-2.5 text-sm font-semibold shadow-sm hover:scale-105 transition-all duration-150"
+                                >
+                                    {label}
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

@@ -140,7 +140,7 @@ export default function Hero(props) {
                                                         className="text-sm sm:text-base lg:text-lg font-semibold leading-6 text-primary-200 hover:underline hover:text-primary-300"
                                                     >
                                                         {link.label}{' '}
-                                                        <span className="text-primary-200">→</span>
+                                                        <span className="!text-inherit">→</span>
                                                     </Link>
                                                 );
                                         })}

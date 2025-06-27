@@ -93,7 +93,7 @@ const Item = ({ item, properties, block }) => {
                                                     className="text-sm md:text-base font-semibold leading-6 text-primary-200 hover:underline hover:text-primary-300"
                                                 >
                                                     {link.label}{' '}
-                                                    <span className="text-primary-200">→</span>
+                                                    <span className="!text-inherit">→</span>
                                                 </Link>
                                             );
                                     })}

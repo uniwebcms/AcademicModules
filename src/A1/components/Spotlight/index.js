@@ -4,10 +4,8 @@ import { Icon, SafeHtml, Link, Media } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
 export default function Spotlight({ block, website }) {
+    const { title } = block.getBlockContent();
     const items = block.getBlockItems();
-
-    const { main } = block;
-    const { title = '' } = main.header || {};
 
     const { vertical_padding = 'lg', vertical_alignment = 'top' } = block.getBlockProperties();
 
@@ -82,14 +80,17 @@ export default function Spotlight({ block, website }) {
                                             value={paragraphs}
                                             className="mt-4 prose prose-sm md:prose-base lg:prose-lg"
                                         />
-                                        {link && (
-                                            <div className="mt-6">
-                                                <Link
-                                                    to={website.makeHref(link.href)}
-                                                    className="inline-flex rounded-md bg-primary-200 px-3.5 py-1.5 text-base font-medium group leading-7 text-primary-800 shadow-sm hover:bg-primary-800 hover:text-primary-100 hover:underline border border-primary-100 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-100"
-                                                >
-                                                    {stripTags(link.label)}
-                                                </Link>
+                                        {links.length > 0 && (
+                                            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3">
+                                                {links.map((link, idx) => (
+                                                    <Link
+                                                        key={idx}
+                                                        to={link.href}
+                                                        className="inline-flex rounded-md px-4 py-2.5 text-sm font-semibold shadow-sm bg-link-color/20 hover:bg-link-color/10 transition-all"
+                                                    >
+                                                        {link.label}
+                                                    </Link>
+                                                ))}
                                             </div>
                                         )}
                                     </div>

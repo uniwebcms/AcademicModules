@@ -1,5 +1,5 @@
 import React from 'react';
-import { stripTags, getPageProfile } from '@uniwebcms/module-sdk';
+import { stripTags, getPageProfile, twJoin } from '@uniwebcms/module-sdk';
 import { SafeHtml, Image, Link } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 
@@ -97,14 +97,26 @@ export default function List({ block, website }) {
                                                     className="mt-5 text-base lg:text-lg leading-6 text-text-color-90 rich-text"
                                                 />
                                             ) : null}
-                                            {link ? (
-                                                <Link
-                                                    to={website.makeHref(link.href)}
-                                                    className="inline-block mt-5 hover:underline"
-                                                >
-                                                    {stripTags(link.label)} <span>→</span>
-                                                </Link>
-                                            ) : null}
+                                            <div className="mt-5 flex flex-wrap gap-x-4 gap-y-3">
+                                                {links.map((link, idx) => {
+                                                    const singleLink = links.length === 1;
+
+                                                    return (
+                                                        <Link
+                                                            key={idx}
+                                                            to={link.href}
+                                                            className={twJoin(
+                                                                singleLink
+                                                                    ? 'group inline-block hover:underline'
+                                                                    : 'px-4 py-2 text-sm font-medium text-link-color bg-link-color/20 hover:bg-link-color/10 rounded-lg transition-colors'
+                                                            )}
+                                                        >
+                                                            {link.label}
+                                                            {singleLink ? <span> →</span> : null}
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
