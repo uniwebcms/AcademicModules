@@ -18,5 +18,6 @@ elements:
     description: 
       en: The showcase image.
       fr: L'image de présentation.
-# images:
-#   - example.png
+      
+images:
+  - example.png

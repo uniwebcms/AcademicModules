@@ -9,3 +9,26 @@ description:
   fr: Le carrousel de présentation est une section de contenu dynamique conçue pour mettre en valeur des offres, services, fonctionnalités ou histoires clés de manière visuellement attrayante. Il affiche une rangée de cartes élégantes, chacune présentant une image de fond, un titre et un texte supplémentaire qui apparaît au survol. Cette interaction donne vie au contenu et encourage l'exploration sans submerger le spectateur.
 
 export: true
+
+elements:
+  title:
+  subtitle:
+  link:
+
+items:
+  separator: divider
+  elements:
+    banner:
+      description:
+        en: If given, the image will be used as the background of the showcase carousel item and cover the subtitle text, show on hover. The media video will be ignored.
+        fr: Si fourni, l'image sera utilisée comme arrière-plan de l'élément du carrousel de présentation et couvrira le texte du sous-titre, affiché au survol. La vidéo média sera ignorée.
+    title:
+    subtitle:
+    media:
+      type: video
+      description:
+        en: If given, the video will be display above the title and subtitle text, play on hover.
+        fr: Si fourni, la vidéo sera affichée au-dessus du titre et du texte du sous-titre, lue au survol.
+
+images:
+  - example.png

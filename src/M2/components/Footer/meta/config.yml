@@ -32,3 +32,6 @@ elements:
     description: 
         en: Social links to display in the footer.
         fr: Liens sociaux à afficher dans le pied de page.
+
+images:
+  - example.png

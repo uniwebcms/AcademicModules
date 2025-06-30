@@ -34,7 +34,7 @@ export default function FeatureCard(props) {
                                     <Image
                                         profile={page.getPageProfile()}
                                         {...banner}
-                                        className="object-cover rounded-lg w-full h-auto"
+                                        className="object-cover rounded-lg w-full h-auto aspect-square"
                                     />
                                     <h3 className="mt-6 sm:mt-8 text-2xl leading-[130%] -tracking-[0.48px]">
                                         {title}

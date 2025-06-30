@@ -55,7 +55,7 @@ const VideoCard = ({ width, video, title, subtitle }) => {
                 />
             </div>
             <div className="relative">
-                <h3 className="text-xl mb-1">{title}</h3>
+                <h3 className="text-2xl font-semibold mb-2">{title}</h3>
                 <p className="text-lg font-light line-clamp-4" title={subtitle}>
                     {subtitle}
                 </p>
