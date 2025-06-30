@@ -4130,8 +4130,8 @@
       "fr": "Pied de page - Média"
     },
     "description": {
-      "en": "This special section is designed exclusively for use in the footer section of the editor. It displays a logo, media links, links to internal pages, external links, copyright information, and a newsletter subscription form.",
-      "fr": "Cette section spéciale est conçue exclusivement pour être utilisée dans la section pied de page de l'éditeur. Elle affiche un logo, des liens médias, des liens vers des pages internes, des liens externes, des informations de droits d'auteur et un formulaire d'abonnement à la newsletter."
+      "en": "Use this footer when you want to include more content and branding. It supports a logo, grouped navigation links, media/social links, copyright text, a newsletter form, and an optional back-to-top button.",
+      "fr": "Utilisez ce pied de page lorsque vous souhaitez inclure plus de contenu et de marque. Il prend en charge un logo, des liens de navigation regroupés, des liens médias/sociaux, du texte de droits d'auteur, un formulaire d'abonnement à la newsletter et un bouton facultatif de retour en haut de page."
     },
     "category": "footer",
     "export": true,
@@ -4161,8 +4161,8 @@
       "icon": {
         "type": "icon",
         "description": {
-          "en": "Website logo.",
-          "fr": "Logo du site Web."
+          "en": "The logo displayed in the footer, typically representing your site or department.",
+          "fr": "Le logo affiché dans le pied de page, représentant généralement votre site ou votre département."
         }
       },
       "list": {
@@ -4172,15 +4172,15 @@
           "fr": "Liens de navigation"
         },
         "description": {
-          "en": "The navigation links are organized into groups in the footer, created as a list with a 2-level hierarchy. The first level consists of the group label, while the second level contains the links within the group",
-          "fr": "Les liens de navigation sont organisés en groupes dans le pied de page, créés sous forme de liste avec une hiérarchie à 2 niveaux. Le premier niveau est composé de l'étiquette du groupe, tandis que le deuxième niveau contient les liens du groupe."
+          "en": "Display grouped external links in the footer to help users access related resources. To create groups, enter a top-level item as the group title (e.g., “Resources”), then nest external link items under it (e.g., “Blog”, “Videos”, “Media Hub”). To add multiple groups, continue in the same list without leaving empty lines. After finishing a group's links, go back to the top level and enter a new group title followed by its nested links.",
+          "fr": "Affichez des liens externes regroupés dans le pied de page pour aider les utilisateurs à accéder aux ressources connexes. Pour créer des groupes, entrez un élément de niveau supérieur comme titre de groupe (par exemple, \"Ressources\"), puis imbriquez les éléments de lien externe en dessous (par exemple, \"Blog\", \"Vidéos\", \"Centre multimédia\"). Pour ajouter plusieurs groupes, continuez dans la même liste sans laisser de lignes vides. Après avoir terminé les liens d'un groupe, revenez au niveau supérieur et entrez un nouveau titre de groupe suivi de ses liens imbriqués."
         }
       },
       "link": {
         "type": "link",
         "description": {
-          "en": "One or more external links, usually to social media.",
-          "fr": "Un ou plusieurs liens externes, généralement vers les médias sociaux."
+          "en": "One or more external links, usually to social media. These will appear in the branding area, below the logo, title, and subtitle. Media links will be displayed as icons.",
+          "fr": "Un ou plusieurs liens externes, généralement vers les réseaux sociaux. Ceux-ci apparaîtront dans la zone de marque, sous le logo, le titre et le sous-titre. Les liens médias seront affichés sous forme d'icônes."
         }
       }
     },
@@ -4308,8 +4308,8 @@
       "fr": "Pied de page"
     },
     "description": {
-      "en": "Special section to only be used in the footer section of the editor. Creates lists of links mirroring those of the navigation bar.",
-      "fr": "Section spéciale à utiliser uniquement dans le pied de page de l'éditeur. Crée des listes de liens reflétant celles de la barre de navigation."
+      "en": "Use this footer when you want a simple and automatic layout. It can mirror your site's navigation structure and optionally show a language toggle.",
+      "fr": "Utilisez ce pied de page lorsque vous souhaitez une mise en page simple et automatique. Il peut refléter la structure de navigation de votre site et afficher en option un basculement de langue."
     },
     "category": "footer",
     "export": true,
@@ -4329,15 +4329,8 @@
           "fr": "Liens de navigation"
         },
         "description": {
-          "en": "The navigation links to display in the footer, it is created as a list of links with hierarchy.",
-          "fr": "Les liens de navigation à afficher dans le pied de page, il est créé sous forme de liste de liens avec hiérarchie."
-        }
-      },
-      "link": {
-        "type": "link",
-        "description": {
-          "en": "One or more external or social links.",
-          "fr": "Un ou plusieurs liens externes ou sociaux."
+          "en": "Display grouped external links in the footer to help users access related resources. To create groups, enter a top-level item as the group title (e.g., “Resources”), then nest external link items under it (e.g., “Blog”, “Videos”, “Media Hub”). To add multiple groups, continue in the same list without leaving empty lines. After finishing a group's links, go back to the top level and enter a new group title followed by its nested links.",
+          "fr": "Affichez des liens externes regroupés dans le pied de page pour aider les utilisateurs à accéder aux ressources connexes. Pour créer des groupes, entrez un élément de niveau supérieur comme titre de groupe (par exemple, \"Ressources\"), puis imbriquez les éléments de lien externe en dessous (par exemple, \"Blog\", \"Vidéos\", \"Centre multimédia\"). Pour ajouter plusieurs groupes, continuez dans la même liste sans laisser de lignes vides. Après avoir terminé les liens d'un groupe, revenez au niveau supérieur et entrez un nouveau titre de groupe suivi de ses liens imbriqués."
         }
       }
     },
@@ -4373,8 +4366,8 @@
         ],
         "default": "auto",
         "description": {
-          "en": "The mode used to generate the navigation links, auto will use the manual links if available, otherwise it will use the page hierarchy.",
-          "fr": "Le mode utilisé pour générer les liens de navigation, auto utilisera les liens manuels s'ils sont disponibles, sinon il utilisera la hiérarchie des pages."
+          "en": "Choose how the navigation links are generated. Automatic -> Uses manual links if added, otherwise falls back to site structure; Always Page Hierarchy -> Only shows links based on your site's structure; Always Manual Links -> Only shows links you add manually.",
+          "fr": "Choisissez comment les liens de navigation sont générés. Automatique -> Utilise des liens manuels s'ils sont ajoutés, sinon revient à la structure du site ; Toujours la hiérarchie des pages -> Affiche uniquement les liens basés sur la structure de votre site ; Toujours des liens manuels -> Affiche uniquement les liens"
         }
       },
       "with_lang_toggle": {
