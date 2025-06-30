@@ -26,20 +26,8 @@ export default function PageFooter(props) {
 
     const blockLinks = block.getBlockLinks({ nested: true });
 
-    const externalLinks = block.getBlockLinks({ nested: false });
     const socialLinks = [],
         plainLinks = [];
-
-    externalLinks.map((link) => {
-        const type = getMediaLinkType(link);
-
-        if (type) {
-            link.type = type;
-            socialLinks.push(link);
-        } else {
-            plainLinks.push(link);
-        }
-    });
 
     let navigation = [];
 
