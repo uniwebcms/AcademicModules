@@ -14,6 +14,11 @@ import './style.css';
 const setWrapperStyle = (theme, block, style) => {
     const context = theme?.split('__')?.[1];
     const colors = block.standardOptions?.colors?.elements?.[context] || {};
+    const vars = block.standardOptions?.colors?.vars?.[context] || {};
+
+    Object.keys(vars).forEach((key) => {
+        style[`${key}`] = vars[key];
+    });
 
     Object.keys(colors).forEach((key) => {
         style[`--${key}`] = colors[key];
