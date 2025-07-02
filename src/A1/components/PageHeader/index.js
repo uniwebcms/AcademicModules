@@ -368,8 +368,8 @@ const NavbarMenu = ({
             return (
                 <Wrapper
                     className={twJoin(
-                        'inline-flex items-center lg:text-base xl:text-lg font-semibold pl-3.5 pr-2 py-1.5 focus:outline-none rounded-lg gap-x-1',
-                        hasData && 'text-text-color hover:text-link-color',
+                        'inline-flex items-center lg:text-base xl:text-lg font-semibold pl-3.5 pr-2 py-1.5 focus:outline-none rounded-lg gap-x-1 text-text-color',
+                        hasData && 'hover:text-link-color',
                         'hover:bg-link-color/10',
                         menuOpened && 'bg-link-color/10'
                     )}
