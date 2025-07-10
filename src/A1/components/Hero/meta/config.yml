@@ -13,10 +13,8 @@ export: true
 
 elements:
   background:
-    layout: center, wide
   pretitle:
   title:
-    alignment: 'left,right,center'
   subtitle:
   text:
   link:
@@ -93,7 +91,7 @@ properties:
       en: Horizontal Alignment
       fr: Alignement horizontal
     type: string
-    default: ""
+    default: center
     enum:
       - label: 
           en: Left
