@@ -2539,8 +2539,8 @@
     "export": true,
     "elements": {
       "background": {
-        "layout": "center, wide",
         "type": "image",
+        "layout": "",
         "description": {
           "en": "The background image.",
           "fr": "L'image d'arrière-plan."
@@ -2554,8 +2554,8 @@
         }
       },
       "title": {
-        "alignment": "left,right,center",
         "type": "H1",
+        "alignment": "",
         "description": {
           "en": "The main headline.",
           "fr": "Le titre principal."
@@ -2684,7 +2684,7 @@
           "fr": "Alignement horizontal"
         },
         "type": "string",
-        "default": "",
+        "default": "center",
         "enum": [
           {
             "label": {
