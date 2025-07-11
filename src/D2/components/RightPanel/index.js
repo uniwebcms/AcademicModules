@@ -18,22 +18,24 @@ const getPageContent = (page) => {
 
             section.content?.content
                 ?.filter((part) => part.type === 'heading' && part.attrs?.level > 1)
-                .forEach((header) => {
-                    const text = header.content.map((obj) => obj.text).join('');
-                    if (header.attrs.level === 2) {
-                        currentParent = {
-                            id: `Section${section.id}-${normalizeId(text)}`,
-                            level: 2,
-                            title: text,
-                            children: [],
-                        };
-                        result.push(currentParent);
-                    } else if (header.attrs.level === 3 && currentParent) {
-                        currentParent.children.push({
-                            id: `Section${section.id}-${normalizeId(text)}`,
-                            level: 3,
-                            title: text,
-                        });
+                ?.forEach((header) => {
+                    if (header) {
+                        const text = header.content.map((obj) => obj.text).join('');
+                        if (header.attrs.level === 2) {
+                            currentParent = {
+                                id: `Section${section.id}-${normalizeId(text)}`,
+                                level: 2,
+                                title: text,
+                                children: [],
+                            };
+                            result.push(currentParent);
+                        } else if (header.attrs.level === 3 && currentParent) {
+                            currentParent.children.push({
+                                id: `Section${section.id}-${normalizeId(text)}`,
+                                level: 3,
+                                title: text,
+                            });
+                        }
                     }
                 });
 
