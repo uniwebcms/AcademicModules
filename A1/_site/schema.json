@@ -4902,20 +4902,21 @@
           "fr": "Format de l'auteur"
         },
         "type": "string",
+        "default": "inverted",
         "enum": [
           {
             "label": {
               "en": "Inverted Name Format (Last First)",
-              "fr": "Format de nom inversé (Nom Prénom)",
-              "value": "inverted"
-            }
+              "fr": "Format de nom inversé (Nom Prénom)"
+            },
+            "value": "inverted"
           },
           {
             "label": {
               "en": "Natural Name Format (First Last)",
-              "fr": "Format de nom naturel (Prénom Nom)",
-              "value": "natural"
-            }
+              "fr": "Format de nom naturel (Prénom Nom)"
+            },
+            "value": "natural"
           }
         ]
       }
@@ -4970,20 +4971,21 @@
           "fr": "Format de l'auteur"
         },
         "type": "string",
+        "default": "inverted",
         "enum": [
           {
             "label": {
               "en": "Inverted Name Format (Last First)",
-              "fr": "Format de nom inversé (Nom Prénom)",
-              "value": "inverted"
-            }
+              "fr": "Format de nom inversé (Nom Prénom)"
+            },
+            "value": "inverted"
           },
           {
             "label": {
               "en": "Natural Name Format (First Last)",
-              "fr": "Format de nom naturel (Prénom Nom)",
-              "value": "natural"
-            }
+              "fr": "Format de nom naturel (Prénom Nom)"
+            },
+            "value": "natural"
           }
         ]
       }
