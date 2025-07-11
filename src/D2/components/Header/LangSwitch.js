@@ -41,7 +41,7 @@ export default function ({ website }) {
                                         <Popover.Button key={value} as={Fragment}>
                                             <span
                                                 className={twJoin(
-                                                    'cursor-pointer select-none px-2 py-1.5',
+                                                    'cursor-pointer select-none px-2.5 py-1.5',
                                                     selected
                                                         ? 'text-sky-500'
                                                         : 'text-slate-900 dark:text-slate-200 hover:bg-slate-100 hover:dark:bg-slate-700/40'

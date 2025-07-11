@@ -51,8 +51,10 @@ export default function Layout(props) {
 
     return (
         <div className="flex flex-col min-h-screen bg-white dark:bg-slate-900/95">
-            {/* Top Sticky Header */}
-            <header className="sticky top-0 z-50 h-16">{header}</header>
+            {/* Top Fixed Header */}
+            <header className="fixed top-0 z-50 h-16 w-screen">{header}</header>
+            {/* Header placeholder */}
+            <div className="h-16 w-full opacity-0" />
 
             {/* Main Content Area */}
             <div className="relative w-full max-w-[88rem] mx-auto flex flex-1 md:px-8 lg:px-12 xl:px-16">

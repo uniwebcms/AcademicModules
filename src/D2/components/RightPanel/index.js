@@ -141,6 +141,7 @@ export default function RightPanel(props) {
                             <li key={content.id}>
                                 <button
                                     className={twJoin(
+                                        'text-left',
                                         isActive(content)
                                             ? 'text-sky-500 font-semibold'
                                             : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 hover:font-semibold'
