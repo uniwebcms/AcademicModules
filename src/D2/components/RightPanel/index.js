@@ -159,11 +159,12 @@ export default function RightPanel(props) {
                                         {content.children.map((subContent) => (
                                             <li key={subContent.id}>
                                                 <button
-                                                    className={
+                                                    className={twJoin(
+                                                        'text-left',
                                                         isActive(subContent)
                                                             ? 'text-sky-500 font-semibold'
                                                             : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 hover:font-semibold'
-                                                    }
+                                                    )}
                                                     onClick={() => {
                                                         scrollTo(subContent.id);
                                                     }}
