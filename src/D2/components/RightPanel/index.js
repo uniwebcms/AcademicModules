@@ -8,7 +8,7 @@ function normalizeId(string) {
 const getPageContent = (page) => {
     // get body's all "Section" block
     const sections =
-        page.blockGroups.body?.filter((element) => element.Component.name === 'Section') || [];
+        page.blockGroups.body?.filter((block) => block.widget?.widgetName === 'Section') || [];
 
     // get flat array of "Section" blocks info
     return sections
