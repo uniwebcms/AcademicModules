@@ -18,8 +18,8 @@ const getPageContent = (page) => {
 
             section.content?.content
                 ?.filter((part) => part.type === 'heading' && part.attrs?.level > 1)
-                ?.forEach((header) => {
-                    if (header) {
+                .forEach((header) => {
+                    if (header.content) {
                         const text = header.content.map((obj) => obj.text).join('');
                         if (header.attrs.level === 2) {
                             currentParent = {
