@@ -9,20 +9,33 @@ export default function LeftPanel(props) {
     } = props;
     const pages = website.getPageHierarchy();
 
-    const className = '';
     return (
-        <div className="relative hidden md:block">
+        <div className="relative hidden lg:block">
             <div className="ml-auto h-[calc(100vh-64px)] w-64 overflow-y-auto overflow-x-hidden py-8 pr-8 pl-1">
-                <nav className={twJoin('text-base lg:text-sm', className)}>
+                <nav className="text-sm xl:text-base">
                     <ul role="list" className="space-y-9">
                         {pages.map((section) => (
                             <li key={section.id}>
-                                <h2 className="font-display font-medium text-slate-900 dark:text-white">
-                                    {section.label}
-                                </h2>
+                                {section.hasData ? (
+                                    <Link
+                                        to={section.route}
+                                        className={twJoin(
+                                            'font-display',
+                                            section.route === activeRoute
+                                                ? 'font-semibold text-sky-500 before:bg-sky-500'
+                                                : 'font-medium text-slate-900 hover:text-slate-700 dark:text-white dark:hover:text-slate-200'
+                                        )}
+                                    >
+                                        {section.label}
+                                    </Link>
+                                ) : (
+                                    <h2 className="font-display font-medium text-slate-900 dark:text-white">
+                                        {section.label}
+                                    </h2>
+                                )}
                                 <ul
                                     role="list"
-                                    className="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800"
+                                    className="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-700"
                                 >
                                     {section.child_items.map((link) => (
                                         <li key={link.id} className="relative">
