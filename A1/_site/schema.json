@@ -4895,6 +4895,31 @@
         "path": "assets/Reference/example.png"
       }
     ],
+    "properties": {
+      "authorFormat": {
+        "label": {
+          "en": "Author format",
+          "fr": "Format de l'auteur"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Inverted Name Format (Last First)",
+              "fr": "Format de nom inversé (Nom Prénom)",
+              "value": "inverted"
+            }
+          },
+          {
+            "label": {
+              "en": "Natural Name Format (First Last)",
+              "fr": "Format de nom naturel (Prénom Nom)",
+              "value": "natural"
+            }
+          }
+        ]
+      }
+    },
     "name": "Reference"
   },
   "References": {
@@ -4938,6 +4963,29 @@
           "en": "Group references by the reference type.",
           "fr": "Grouper les références par type de référence."
         }
+      },
+      "authorFormat": {
+        "label": {
+          "en": "Author format",
+          "fr": "Format de l'auteur"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Inverted Name Format (Last First)",
+              "fr": "Format de nom inversé (Nom Prénom)",
+              "value": "inverted"
+            }
+          },
+          {
+            "label": {
+              "en": "Natural Name Format (First Last)",
+              "fr": "Format de nom naturel (Prénom Nom)",
+              "value": "natural"
+            }
+          }
+        ]
       }
     },
     "images": [
