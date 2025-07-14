@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Profile } from '@uniwebcms/module-sdk';
+import { Profile, twJoin } from '@uniwebcms/module-sdk';
+import { Icon } from '@uniwebcms/core-components';
 import { InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 
-const buildTextNode = (content) => {
+const buildTextNode = (content, headingLevel = 0) => {
     let data = '';
 
     let linkStart = '';
@@ -124,6 +125,17 @@ const buildTextNode = (content) => {
             if (item.attrs?.emoji) {
                 data += item.attrs.emoji;
             }
+        } else if (type === 'UniwebIcon') {
+            const className = [
+                headingLevel === 1 && 'w-7 h-7',
+                headingLevel === 2 && 'w-[26px] h-[26px] pt-1',
+                headingLevel === 3 && 'w-5 h-5 pt-1',
+                headingLevel === 0 && 'w-5 h-5 pt-1',
+            ].filter(Boolean);
+
+            const icon = <Icon icon={item.attrs} className={twJoin('inline-block', className)} />;
+            const iconHtml = ReactDOMServer.renderToStaticMarkup(icon);
+            data += iconHtml;
         }
     });
 
@@ -277,7 +289,7 @@ export const buildArticleBlocks = (articleContent) => {
                     const { level, id, textAlign } = attrs;
                     return {
                         type: 'heading',
-                        content: buildTextNode(content),
+                        content: buildTextNode(content, level),
                         level,
                         id,
                         alignment: textAlign,
