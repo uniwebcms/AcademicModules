@@ -61,6 +61,8 @@ export default function Card(props) {
             return <Address {...{ title, caption, href, address, date, contact }}></Address>;
         case 'document':
             return <Document {...{ title, caption, document, displayMode }}></Document>;
+        default:
+            return <Basic {...{ title, caption, href }}></Basic>;
     }
 }
 
@@ -81,21 +83,43 @@ const Event = (props) => {
         <Wrapper
             {...wrapperProps}
             className={twJoin(
-                'block not-prose border rounded-lg p-6 text-center w-full sm:max-w-64 lg:max-w-[312px] shadow-lg bg-bg-color',
+                'block not-prose border rounded-lg p-6 text-center w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
                 href ? 'hover:shadow-xl' : ''
             )}
         >
-            {title ? <h3 className={'text-xl lg:text-2xl font-semibold mb-2'}>{title}</h3> : null}
+            {title ? (
+                <h3
+                    className={
+                        'text-xl lg:text-2xl font-semibold text-slate-800 dark:text-slate-200'
+                    }
+                >
+                    {title}
+                </h3>
+            ) : null}
             {caption ? (
-                <p className={'mt-2 text-base lg:text-lg text-accent-700 font-medium'}>{caption}</p>
+                <p
+                    className={
+                        'mt-2 text-base lg:text-lg text-slate-700 dark:text-slate-300 font-medium'
+                    }
+                >
+                    {caption}
+                </p>
             ) : null}
             {datetime ? (
-                <p className={'mt-4 text-base lg:text-lg font-medium text-text-color-90'}>
+                <p
+                    className={
+                        'mt-4 text-base lg:text-lg font-medium text-slate-500 dark:text-slate-400'
+                    }
+                >
                     {datetime}
                 </p>
             ) : null}
             {address ? (
-                <p className={'mt-4 text-sm lg:text-base text-text-color-80 !leading-relaxed'}>
+                <p
+                    className={
+                        'mt-4 text-sm lg:text-base text-slate-700 dark:text-slate-300 !leading-relaxed'
+                    }
+                >
                     {address.formatted_address}
                 </p>
             ) : null}
@@ -106,7 +130,7 @@ const Event = (props) => {
                     ) : (
                         <a
                             href={`tel:${cleanedPhoneNum}`}
-                            className="text-inherit hover:text-link-color"
+                            className="text-inherit hover:text-sky-500"
                         >
                             {phoneNumber}
                         </a>
@@ -135,18 +159,20 @@ const Address = (props) => {
         <Wrapper
             {...wrapperProps}
             className={twJoin(
-                'not-prose flex flex-col md:flex-row xl:flex-col 2xl:flex-row gap-4 border rounded-lg p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] md:max-w-full xl:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
+                'not-prose flex flex-col gap-4 border rounded-lg p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
                 href ? 'hover:shadow-xl' : ''
             )}
         >
             <div className="flex-1 text-left">
                 {title ? (
-                    <h3 className="text-xl lg:text-2xl font-semibold mb-2 text-slate-800 dark:text-slate-200">
+                    <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 dark:text-slate-200">
                         {title}
                     </h3>
                 ) : null}
                 {caption ? (
-                    <p className="text-base lg:text-lg text-accent-700 font-medium">{caption}</p>
+                    <p className="text-base lg:text-lg text-slate-700 dark:text-slate-300 font-medium">
+                        {caption}
+                    </p>
                 ) : null}
                 {date ? (
                     <p className="mt-2 text-sm lg:text-base font-medium text-slate-500 dark:text-slate-400">
@@ -165,7 +191,7 @@ const Address = (props) => {
                         ) : (
                             <a
                                 href={`tel:${cleanedPhoneNum}`}
-                                className="text-inherit hover:text-link-color"
+                                className="text-inherit hover:text-sky-500"
                             >
                                 {phoneNumber}
                             </a>
@@ -196,7 +222,7 @@ const Document = (props) => {
     const { url } = data.metadata;
 
     return (
-        <div className="not-prose border rounded-lg w-full sm:max-w-64 lg:max-w-[312px] shadow-lg bg-bg-color overflow-hidden">
+        <div className="not-prose border rounded-lg w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg overflow-hidden bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
             <div
                 className={twJoin(
                     'h-48',
@@ -219,18 +245,18 @@ const Document = (props) => {
             <div
                 className={twJoin(
                     'px-6 py-3 flex items-center justify-between gap-x-2 text-left',
-                    displayMode !== 'link' && 'border-t'
+                    displayMode !== 'link' && 'border-t border-slate-200 dark:border-slate-700'
                 )}
             >
                 <div className="max-w-[calc(100%-40px)]">
                     <h3
-                        className="text-base lg:text-lg font-semibold line-clamp-1"
+                        className="text-base lg:text-lg font-semibold line-clamp-1 text-slate-800 dark:text-slate-200"
                         title={displayName}
                     >
                         {displayName}
                     </h3>
                     {caption ? (
-                        <p className="text-sm lg:text-base text-accent-700 font-medium">
+                        <p className="text-sm lg:text-base text-slate-700 dark:text-slate-300 font-medium">
                             {caption}
                         </p>
                     ) : null}
@@ -243,9 +269,36 @@ const Document = (props) => {
                         }
                     }}
                 >
-                    <IoDownload className="w-7 h-7 text-text-color-80 hover:text-link-color" />
+                    <IoDownload className="w-7 h-7 text-slate-600 dark:text-slate-400 hover:text-sky-500" />
                 </div>
             </div>
+        </div>
+    );
+};
+
+const Basic = (props) => {
+    const { title, caption, href } = props;
+
+    return (
+        <div className="not-prose border rounded-lg p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+            {title ? (
+                <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 dark:text-slate-200">
+                    {title}
+                </h3>
+            ) : null}
+            {caption ? (
+                <p className="mt-2 text-base lg:text-lg text-slate-700 dark:text-slate-300 font-medium">
+                    {caption}
+                </p>
+            ) : null}
+            {href && (
+                <Link
+                    to={href}
+                    className="mt-4 inline-block text-sm lg:text-base text-sky-500 hover:underline"
+                >
+                    {href}
+                </Link>
+            )}
         </div>
     );
 };

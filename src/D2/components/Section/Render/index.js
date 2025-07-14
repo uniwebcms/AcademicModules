@@ -89,12 +89,13 @@ const Render = function (props) {
                 return <Code key={index} {...block} />;
             }
             case 'card-group': {
+                // use figure tag to wrap cards is for typographic purposes
                 return (
-                    <div key={index} className={'flex flex-wrap gap-6'}>
+                    <figure key={index} className={'flex flex-wrap gap-6'}>
                         {content.map((c, i) => (
                             <Card key={`c_${i}`} {...c.attrs}></Card>
                         ))}
-                    </div>
+                    </figure>
                 );
             }
             case 'math_display':
