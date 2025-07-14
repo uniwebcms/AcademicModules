@@ -135,27 +135,31 @@ const Address = (props) => {
         <Wrapper
             {...wrapperProps}
             className={twJoin(
-                'not-prose flex flex-col md:flex-row border rounded-lg p-6 w-full sm:max-w-[512px] lg:max-w-[39rem] shadow-lg bg-bg-color',
+                'not-prose flex flex-col md:flex-row xl:flex-col 2xl:flex-row gap-4 border rounded-lg p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] md:max-w-full xl:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
                 href ? 'hover:shadow-xl' : ''
             )}
         >
-            <div className="flex-1 text-left md:pr-6 mb-4 md:mb-0">
-                {title ? <h3 className="text-xl lg:text-2xl font-semibold mb-2">{title}</h3> : null}
+            <div className="flex-1 text-left">
+                {title ? (
+                    <h3 className="text-xl lg:text-2xl font-semibold mb-2 text-slate-800 dark:text-slate-200">
+                        {title}
+                    </h3>
+                ) : null}
                 {caption ? (
                     <p className="text-base lg:text-lg text-accent-700 font-medium">{caption}</p>
                 ) : null}
                 {date ? (
-                    <p className="mt-2 text-base lg:text-lg font-medium text-text-color-90">
+                    <p className="mt-2 text-sm lg:text-base font-medium text-slate-500 dark:text-slate-400">
                         {date}
                     </p>
                 ) : null}
                 {address ? (
-                    <p className="mt-2 text-sm lg:text-base text-text-color-80 !leading-relaxed">
+                    <p className="mt-2 text-sm lg:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
                         {address.formatted_address}
                     </p>
                 ) : null}
                 {contact && (
-                    <span className="block mt-2 text-sm lg:text-base text-text-color-80">
+                    <span className="block mt-2 text-sm lg:text-base text-slate-600 dark:text-slate-300">
                         {href ? (
                             <span>{phoneNumber}</span>
                         ) : (
