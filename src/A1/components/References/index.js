@@ -23,6 +23,7 @@ const ItemMarkup = (props) => {
         page,
         issue,
         volume,
+        authorFormat,
     } = rest;
 
     let year = issued?.['date-parts']?.[0]?.[0] || '';
@@ -52,7 +53,10 @@ const ItemMarkup = (props) => {
                         ? author
                               .map((author) => {
                                   const { given, family } = author;
-                                  return `${family} ${given}${given.length === 1 ? '.' : ''}`;
+
+                                  if (authorFormat && authorFormat === 'natural')
+                                      return `${given}${given.length === 1 ? '.' : ''} ${family}`;
+                                  else return `${family} ${given}${given.length === 1 ? '.' : ''}`;
                               })
                               .join(', ')
                         : null}
@@ -137,7 +141,11 @@ export default function ProfileReferences({ block, input }) {
         selection: initSelection,
     });
 
-    const { groupReferences = false, noLink = false } = block.getBlockProperties();
+    const {
+        groupReferences = false,
+        noLink = false,
+        authorFormat = 'inverted',
+    } = block.getBlockProperties();
 
     let groups = {};
 
@@ -301,6 +309,7 @@ export default function ProfileReferences({ block, input }) {
     let args = {
         ItemMarkup,
         columnCount: 1,
+        cardArgs: { authorFormat },
     };
 
     if (groupReferences) {
@@ -379,57 +388,6 @@ export default function ProfileReferences({ block, input }) {
                 <div className="block w-full lg:pb-12 lg:border-l lg:pl-12 pt-3.5">
                     <AdvancedSmartCards {...args} containerRef={containerRef} />
                 </div>
-                {/* <ul
-                    className={`flex flex-col space-y-6 lg:space-y-10 lg:pb-12 lg:border-l lg:pl-12 pt-3.5`}
-                >
-                    {filteredReferences.map((reference) => {
-                        const { profile, url, ...rest } = reference;
-
-                        const { title, issued, author } = rest;
-
-                        let year = issued?.['date-parts']?.[0]?.[0] || '';
-                        const journal = rest['container-title'] || '';
-
-                        const banner = profile.getBanner();
-                        return (
-                            <div className={`flex`} key={url}>
-                                <div className={`flex flex-col space-y-2 ${banner ? 'mr-4' : ''}`}>
-                                    <Link
-                                        href={url}
-                                        className={`text-text-color font-medium text-lg hover:underline`}
-                                    >
-                                        {title}
-                                    </Link>
-                                    <p className="text-sm text-text-color-90">
-                                        {author && author.length
-                                            ? author
-                                                  .map((author) => {
-                                                      const { given, family } = author;
-                                                      return `${family} ${given}${
-                                                          given.length === 1 ? '.' : ''
-                                                      }`;
-                                                  })
-                                                  .join(', ')
-                                            : null}
-                                    </p>
-                                    <span className={`text-text-color-80 text-sm`}>
-                                        {`${journal}${year ? `${journal ? ', ' : ''}${year}` : ''}`}
-                                    </span>
-                                </div>
-                                {banner ? (
-                                    <Link
-                                        href={url}
-                                        className={
-                                            'cursor-pointer w-[111px] h-[142px] flex-shrink-0 overflow-hidden ml-auto !shadow-[0_1px_2px_rgba(0,0,0,0.15)] border border-[rgba(0,0,0,0.15)] bg-white'
-                                        }
-                                    >
-                                        <Image profile={profile} type="banner"></Image>
-                                    </Link>
-                                ) : null}
-                            </div>
-                        );
-                    })}
-                </ul> */}
             </div>
         </Container>
     );

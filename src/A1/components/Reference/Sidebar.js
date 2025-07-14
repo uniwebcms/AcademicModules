@@ -18,11 +18,6 @@ export default function (props) {
 
     const sidebarStyle = props.sidebarStyle ? `${props.sidebarStyle}` : `flex flex-col`;
 
-    // const initStyle = sticky
-    //     ? 'md:sticky md:top-2 h-full'
-    //     : mode === 'static'
-    //     ? 'h-full md:sticky md:top-3 md:self-start md:h-auto'
-    //     : 'h-full';
     const initStyle = 'md:sticky md:top-2 h-full';
 
     const cite = new Cite([parsedData]);

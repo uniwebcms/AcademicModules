@@ -5,7 +5,7 @@ import { parseReference, parseProfileData } from '../_utils/reference';
 import CVRefRender from '../_utils/reference/CVRefRender';
 import Sidebar from './Sidebar';
 
-export default function Reference({ website, input }) {
+export default function Reference({ website, block, input }) {
     const profile = input.profile;
 
     if (!profile) return null;
@@ -21,6 +21,8 @@ export default function Reference({ website, input }) {
         en: 'Others',
         fr: 'Autres',
     });
+
+    const { authorFormat = 'inverted' } = block.getBlockProperties();
 
     const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
         const params = new URLSearchParams();
@@ -159,7 +161,10 @@ export default function Reference({ website, input }) {
                         ? author
                               .map((author) => {
                                   const { given, family } = author;
-                                  return `${family} ${given}${given.length === 1 ? '.' : ''}`;
+
+                                  if (authorFormat && authorFormat === 'natural')
+                                      return `${given}${given.length === 1 ? '.' : ''} ${family}`;
+                                  else return `${family} ${given}${given.length === 1 ? '.' : ''}`;
                               })
                               .join(', ')
                         : null}

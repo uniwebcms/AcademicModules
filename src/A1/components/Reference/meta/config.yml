@@ -1,16 +1,16 @@
 title:
-  en: Reference Viewer
-  fr: Visualiseur de référence
+    en: Reference Viewer
+    fr: Visualiseur de référence
 label:
-  en: Reference - Item
-  fr: Référence
+    en: Reference - Item
+    fr: Référence
 description:
-  en: Showing the detail of a reference profile.
-  fr: Affichage du détail d'un profil de référence.
+    en: Showing the detail of a reference profile.
+    fr: Affichage du détail d'un profil de référence.
 input:
-  type: reference
-  limit: false
-  
+    type: reference
+    limit: false
+
 category: reference
 export: true
 
@@ -18,4 +18,21 @@ elements:
     title:
 
 images:
-  - example.png
+    - example.png
+
+properties:
+    authorFormat:
+        label:
+            en: Author format
+            fr: Format de l'auteur
+        type: string
+        default: inverted
+        enum:
+            - label:
+                  en: Inverted Name Format (Last First)
+                  fr: Format de nom inversé (Nom Prénom)
+              value: inverted
+            - label:
+                  en: Natural Name Format (First Last)
+                  fr: Format de nom naturel (Prénom Nom)
+              value: natural
