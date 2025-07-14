@@ -28,16 +28,16 @@ export default function (props) {
             {pre ? (
                 <Link className={`mb-4 md:mr-2 md:mb-0 ${btn}`} to={pre.route}>
                     <HiArrowNarrowLeft
-                        className={`w-5 h-5 mr-4 flex-shrink-0 text-gray-400 group-hover:text-blue-500`}
+                        className={`w-5 h-5 mr-4 flex-shrink-0 text-neutral-400 group-hover:text-primary-500`}
                     ></HiArrowNarrowLeft>
                     <div className={`flex flex-col items-start flex-grow`}>
-                        <span className={`text-gray-400`}>
+                        <span className={`text-neutral-400`}>
                             {website.localize({
                                 en: 'Previous',
                                 fr: 'Précédente',
                             })}
                         </span>
-                        <span className={`truncate font-medium group-hover:text-blue-500`}>
+                        <span className={`truncate font-medium group-hover:text-primary-500`}>
                             {pre.label}
                         </span>
                     </div>
@@ -46,15 +46,15 @@ export default function (props) {
             {next ? (
                 <Link className={`md:ml-2 ${btn}`} to={next.route}>
                     <div className={`flex flex-col items-start flex-grow`}>
-                        <span className={`text-gray-400`}>
+                        <span className={`text-neutral-400`}>
                             {website.localize({ en: 'Next', fr: 'Suivant' })}
                         </span>
-                        <span className={`truncate font-medium group-hover:text-blue-500}`}>
+                        <span className={`truncate font-medium group-hover:text-primary-500`}>
                             {next.label}
                         </span>
                     </div>
                     <HiArrowNarrowRight
-                        className={`w-5 h-5 ml-4 flex-shrink-0 text-gray-400 group-hover:text-blue-500}`}
+                        className={`w-5 h-5 ml-4 flex-shrink-0 text-neutral-400 group-hover:text-primary-500`}
                     ></HiArrowNarrowRight>
                 </Link>
             ) : null}

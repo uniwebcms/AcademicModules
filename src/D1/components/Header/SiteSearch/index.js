@@ -5,6 +5,20 @@ import { MdClose } from 'react-icons/md';
 import { HiSearch } from 'react-icons/hi';
 import FlexSearch from 'flexsearch';
 
+const setDialogStyle = (theme, block, style) => {
+    const context = theme?.split('__')?.[1];
+    const colors = block.standardOptions?.colors?.elements?.[context] || {};
+    const vars = block.standardOptions?.colors?.vars?.[context] || {};
+
+    Object.keys(vars).forEach((key) => {
+        style[`${key}`] = vars[key];
+    });
+
+    Object.keys(colors).forEach((key) => {
+        style[`--${key}`] = colors[key];
+    });
+};
+
 const SearchBox = (props) => {
     const { setResult, input, setInput, searchFn, website } = props;
 
@@ -35,13 +49,13 @@ const SearchBox = (props) => {
 
     return (
         <div
-            className={`relative mx-auto text-gray-600 w-full flex items-center max-w-3xl md:px-4`}
+            className={`relative mx-auto text-neutral-600 w-full flex items-center max-w-3xl md:px-4`}
         >
             <div
                 className={`bg-white rounded-lg !shadow-md overflow-hidden flex-auto flex items-center`}
             >
                 <input
-                    className={`w-full flex-auto appearance-none bg-transparent pl-4 pr-8 py-4 text-gray-600 text-base sm:text-sm placeholder-gray-500 focus:outline-none`}
+                    className={`w-full flex-auto appearance-none bg-transparent pl-4 pr-8 py-4 text-neutral-600 text-base sm:text-sm placeholder-neutral-500 focus:outline-none`}
                     placeholder={placeholder}
                     value={input}
                     ref={box}
@@ -61,7 +75,7 @@ const SearchBox = (props) => {
                     }}
                 >
                     <HiSearch
-                        className={`cursor-pointer w-5 h-5 text-gray-600 group-hover:text-gray-900`}
+                        className={`cursor-pointer w-5 h-5 text-neutral-600 group-hover:text-primary-600`}
                     />
                 </div>
             </div>
@@ -125,7 +139,7 @@ const SearchKit = (props) => {
 
     return (
         <main className={`w-full max-w-screen h-screen p-5`}>
-            <div className={`pt-11 mx-auto max-w-6xl`}>
+            <div className={`pt-20 mx-auto w-[42rem] max-w-[calc(100vw-2rem)]`}>
                 <SearchBox
                     {...props}
                     result={result}
@@ -140,9 +154,12 @@ const SearchKit = (props) => {
 };
 
 const Search = (props) => {
-    const { website, iconPosition = 'center' } = props;
+    const { block, website, iconPosition = 'center' } = props;
 
-    // const searchData = website.getSearchData();
+    const dialogStyle = {};
+    const { themeName } = block;
+
+    setDialogStyle(themeName, block, dialogStyle);
 
     let [isOpen, setIsOpen] = useState(false);
 
@@ -160,23 +177,6 @@ const Search = (props) => {
     const path = location.pathname;
 
     const [searcher, setSearcher] = useState(null);
-
-    // const query = useCallback(
-    //     (text) => {
-    //         if (!searcher) return null;
-
-    //         if (website) {
-    //             website.submitEvent('search', {
-    //                 search_term: text,
-    //             });
-    //         }
-
-    //         return searcher.search(text, {
-    //             enrich: true,
-    //         });
-    //     },
-    //     [searcher]
-    // );
 
     const query = useCallback(
         (text) => {
@@ -242,45 +242,6 @@ const Search = (props) => {
         [searcher]
     );
 
-    // useEffect(() => {
-    //     if (searchData) {
-    //         const index = new FlexSearch.Document({
-    //             document: {
-    //                 id: 'href',
-    //                 index: ['content'],
-    //                 store: [
-    //                     'href',
-    //                     'title',
-    //                     'description',
-    //                     'route',
-    //                     'contentType',
-    //                     'viewType',
-    //                     'contentId',
-    //                     'banner',
-    //                     'avatar',
-    //                 ],
-    //             },
-    //             cache: true,
-    //             tokenize: 'forward',
-    //         });
-
-    //         const add = (sequential_data) => {
-    //             for (let x = 0, data; x < sequential_data.length; x++) {
-    //                 data = sequential_data[x];
-
-    //                 index.add({
-    //                     ...data,
-    //                     content: `${data.title} ${data.description} ${data.content}`,
-    //                 });
-    //             }
-    //         };
-
-    //         add(searchData);
-
-    //         setSearcher(index);
-    //     }
-    // }, [searchData]);
-
     useEffect(() => {
         if (isOpen) {
             closeModal();
@@ -294,12 +255,17 @@ const Search = (props) => {
                 onClick={openModal}
             >
                 <HiSearch
-                    className={`cursor-pointer w-6 h-6 text-gray-600 hover:text-gray-800 ${props.iconClassName}`}
+                    className={`cursor-pointer w-6 h-6 text-neutral-600 hover:text-primary-600 ${props.iconClassName}`}
                     style={props.iconStyle}
                 />
             </div>
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className={`relative inset-0 z-50`} onClose={closeModal}>
+                <Dialog
+                    as="div"
+                    className={`relative inset-0 z-50 ${themeName}`}
+                    style={dialogStyle}
+                    onClose={closeModal}
+                >
                     <Transition.Child
                         as={Fragment}
                         enter={`ease-out duration-300`}
@@ -311,14 +277,14 @@ const Search = (props) => {
                     >
                         <div
                             onClick={closeModal}
-                            className={`fixed inset-0 bg-gray-900 bg-opacity-60 transition-opacity`}
+                            className={`fixed inset-0 bg-neutral-900 bg-opacity-60 transition-opacity`}
                             aria-hidden="true"
                         ></div>
                     </Transition.Child>
                     <div className="fixed inset-0 overflow-y-auto">
                         <div className={`min-h-screen px-4 flex justify-center`}>
                             <MdClose
-                                className={`w-10 h-10 text-gray-200 hover:text-white cursor-pointer absolute top-4 right-6 z-[51]`}
+                                className={`w-10 h-10 text-neutral-800 hover:text-neutral-200 cursor-pointer absolute top-4 right-4 z-[51]`}
                                 onClick={closeModal}
                             ></MdClose>
                             <Transition.Child

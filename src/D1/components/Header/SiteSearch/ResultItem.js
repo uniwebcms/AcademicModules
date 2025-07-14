@@ -18,7 +18,10 @@ const ResultItem = (props) => {
     });
 
     return (
-        <Link to={route} className={`px-9 py-5 flex h-[150px] border-b group`}>
+        <Link
+            to={route}
+            className={`px-6 py-5 flex min-h-[80px] border-b border-neutral-300 group bg-neutral-100 hover:bg-neutral-50 transition-colors`}
+        >
             <div className={`flex flex-col overflow-hidden`}>
                 <span className={`text-lg truncate text-[#1a0dab] group-hover:underline`}>
                     {title}

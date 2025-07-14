@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from './SiteSearch';
-// import LangSwitch from './LangSwitch';
+import LangSwitch from './LangSwitch';
 
 export default function (props) {
     const {
@@ -18,17 +18,7 @@ export default function (props) {
                 <h1 className={`text-base md:text-2xl font-bold`}>{title}</h1>
             </div>
             <div className={`flex items-center ml-auto`}>
-                <a
-                    className={`block cursor-pointer hover:text-[#0056b3] text-sm md:text-base mr-4`}
-                    href="#"
-                    onClick={(e) => {
-                        e.preventDefault();
-
-                        website.changeLanguage(activeLang === 'en' ? 'fr' : 'en');
-                    }}
-                >
-                    {activeLang === 'en' ? 'FR' : 'EN'}
-                </a>
+                <LangSwitch website={website} activeLang={activeLang} />
             </div>
             <div className="w-[220px] xl:w-[280px] border-l pl-6 flex items-center">
                 <Search {...props} />

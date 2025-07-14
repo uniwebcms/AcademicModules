@@ -52,16 +52,18 @@ const MenuItem = (props) => {
         }
     }, [activeRoute, isActive]);
 
-    const iconClasses = `w-6 h-6 cursor-pointer absolute right-4 hover:text-blue-600`;
+    const iconClasses = `w-6 h-6 cursor-pointer absolute right-4 text-neutral-600 group-hover:text-primary-600`;
 
-    const borderStyle = 'bg-[rgba(211,220,228,1)]';
+    const borderStyle = 'bg-neutral-200';
 
     return (
         <>
             <div className={`${docStyle}`}>
                 <Link
-                    className={`py-2 pl-4 pr-8 w-full text-sm lg:text-base ${
-                        isActive ? 'text-blue-500 font-bold' : 'text-gray-500'
+                    className={`group py-2 pl-4 pr-8 w-full text-sm lg:text-base ${
+                        isActive
+                            ? 'font-bold hover:text-primary-600'
+                            : 'text-neutral-600 hover:text-primary-600'
                     } flex items-center relative`}
                     to={route}
                 >
@@ -125,6 +127,8 @@ export default function (props) {
         });
     };
 
+    console.log('123', pages);
+
     return (
         <div className={`pb-12 pt-4 overflow-auto w-[275px]`}>
             {pages.map((item, i) => {
@@ -134,7 +138,7 @@ export default function (props) {
                     return (
                         <div className={`my-4 flex flex-col`} key={i}>
                             <span
-                                className={`px-4 py-2 text-sm lg:text-base uppercase font-semibold text-[rgba(136,153,168,1)]`}
+                                className={`px-4 py-2 text-sm lg:text-base uppercase font-semibold text-neutral-600`}
                             >
                                 {label}
                             </span>

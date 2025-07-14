@@ -46,7 +46,7 @@ export default (props) => {
             >
                 {ids.length ? (
                     <div className={`px-6 ${borderStyle} my-6`}>
-                        <div className={`flex items-center mb-4 text-sm text-gray-500`}>
+                        <div className={`flex items-center mb-4 text-sm text-neutral-500`}>
                             <CgMenuLeftAlt className={`w-5 h-5 mr-2`}></CgMenuLeftAlt>
                             <h3 className={`uppercase`}>
                                 {website.localize({
@@ -71,7 +71,7 @@ export default (props) => {
                                         <ul className={`mb-4 capitalize`} key={i}>
                                             <li>
                                                 <a
-                                                    className={`text-base font-medium text-gray-600 hover:text-gray-800 ${liStyle}`}
+                                                    className={`text-base font-medium text-neutral-600 hover:text-neutral-800 ${liStyle}`}
                                                     href={`#Section${id}`}
                                                 >
                                                     {mainTitle}
@@ -82,7 +82,7 @@ export default (props) => {
                                                             return (
                                                                 <li key={hi}>
                                                                     <a
-                                                                        className={`text-sm text-gray-500 hover:text-gray-700 ${liStyle}`}
+                                                                        className={`text-sm text-neutral-500 hover:text-neutral-700 ${liStyle}`}
                                                                         href={`#Section${id}-${stripTags(
                                                                             heading
                                                                         ).replace(/\s/g, '-')}`}
