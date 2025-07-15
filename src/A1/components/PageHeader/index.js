@@ -33,11 +33,16 @@ export default function PageHeader({ block, website, page }) {
         alignment = 'left',
         logo_position = 'left',
         nav_menu_style = 'traditional',
+        translucent_top = true,
     } = block.getBlockProperties();
 
     const nextBlockContext = getNextBlockContext(block);
 
-    const { theme: nextTheme = '', allowTranslucentTop = false } = nextBlockContext;
+    let { theme: nextTheme = '', allowTranslucentTop = false } = nextBlockContext;
+
+    if (!translucent_top) {
+        allowTranslucentTop = false;
+    }
 
     const pages = website.getPageHierarchy({
         nested: true,
