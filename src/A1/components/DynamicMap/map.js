@@ -1,6 +1,13 @@
 import React, { useEffect, useState, forwardRef, useImperativeHandle, useCallback } from 'react';
-import { useJsApiLoader, GoogleMap, Marker, InfoWindow, MarkerClusterer } from '@react-google-maps/api';
-import { Image, twMerge } from '@uniwebcms/module-sdk';
+import {
+    useJsApiLoader,
+    GoogleMap,
+    Marker,
+    InfoWindow,
+    MarkerClusterer,
+} from '@react-google-maps/api';
+import { twMerge } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import './style.css';
 
 function getLatLngWithXOffset(map, point, xOffset, zoom = 15) {
@@ -24,12 +31,12 @@ const Map = forwardRef((props, ref) => {
                   const { lat, lng } = initialCenter;
                   return {
                       lat: typeof lat === 'string' ? Number(lat) : lat,
-                      lng: typeof lng === 'string' ? Number(lng) : lng
+                      lng: typeof lng === 'string' ? Number(lng) : lng,
                   };
               }
             : {
                   lat: 45.424721,
-                  lng: -75.695
+                  lng: -75.695,
               }
     );
 
@@ -37,7 +44,7 @@ const Map = forwardRef((props, ref) => {
 
     const { isLoaded, loadError } = useJsApiLoader({
         googleMapsApiKey: apiKey,
-        language
+        language,
     });
 
     useEffect(() => {
@@ -48,7 +55,7 @@ const Map = forwardRef((props, ref) => {
 
                 return {
                     lat: Number(lat),
-                    lng: Number(lng)
+                    lng: Number(lng),
                 };
             });
 
@@ -67,7 +74,9 @@ const Map = forwardRef((props, ref) => {
                 lat = typeof lat === 'string' ? Number(lat) : lat;
                 lng = typeof lng === 'string' ? Number(lng) : lng;
 
-                const centerPoint = map.getProjection().fromLatLngToPoint(new google.maps.LatLng(lat, lng));
+                const centerPoint = map
+                    .getProjection()
+                    .fromLatLngToPoint(new google.maps.LatLng(lat, lng));
                 const newCenterLatLng = getLatLngWithXOffset(map, centerPoint, offset);
 
                 setCenter(newCenterLatLng);
@@ -83,7 +92,7 @@ const Map = forwardRef((props, ref) => {
                         setOpenPositions([markerIndex]);
                     }
                 }
-            }
+            },
         }),
         [map]
     );
@@ -104,7 +113,8 @@ const Map = forwardRef((props, ref) => {
                 mapContainerStyle={style}
                 center={center}
                 zoom={Number(zoom)}
-                options={{ fullscreenControl: false, mapTypeControl: false }}>
+                options={{ fullscreenControl: false, mapTypeControl: false }}
+            >
                 <MarkerClusterer averageCenter={true} enableRetinaIcons={true}>
                     {(clusterer) => {
                         return markerPositions.map((position, index) => {
@@ -121,24 +131,30 @@ const Map = forwardRef((props, ref) => {
                                         if (!openPositions.includes(index)) {
                                             setOpenPositions([...openPositions, index]);
                                         }
-                                    }}>
+                                    }}
+                                >
                                     {openPositions.includes(index) && items.length ? (
                                         <InfoWindow
                                             position={{ lat, lng }}
                                             options={{
                                                 maxWidth: 360,
-                                                minWidth: 200
+                                                minWidth: 200,
                                                 // pixelOffset: new window.google.maps.Size(0, -38)
                                             }}
                                             onCloseClick={() => {
-                                                const newOpenPositions = openPositions.filter((n) => n !== index);
+                                                const newOpenPositions = openPositions.filter(
+                                                    (n) => n !== index
+                                                );
                                                 setOpenPositions(newOpenPositions);
-                                            }}>
-                                            <ul className='divide-y divide-neutral-300 max-h-64 overflow-auto'>
+                                            }}
+                                        >
+                                            <ul className="divide-y divide-neutral-300 max-h-64 overflow-auto">
                                                 {items.map(({ location, profile }, index) => {
                                                     const { contentType, contentId } = profile;
-                                                    const { title: profileTitle, subtitle: profileSubtitle } =
-                                                        profile.getBasicInfo();
+                                                    const {
+                                                        title: profileTitle,
+                                                        subtitle: profileSubtitle,
+                                                    } = profile.getBasicInfo();
 
                                                     return (
                                                         <li
@@ -147,34 +163,45 @@ const Map = forwardRef((props, ref) => {
                                                                 'flex items-start space-x-3 group',
                                                                 items.length > 1 ? 'py-2' : '',
                                                                 index === 0 ? 'pt-0' : '',
-                                                                index === items.length - 1 ? 'pb-0' : '',
-                                                                onItemClicked ? 'cursor-pointer' : ''
+                                                                index === items.length - 1
+                                                                    ? 'pb-0'
+                                                                    : '',
+                                                                onItemClicked
+                                                                    ? 'cursor-pointer'
+                                                                    : ''
                                                             )}
                                                             onClick={() => {
                                                                 if (onItemClicked) {
-                                                                    onItemClicked(contentType, contentId, profileTitle);
+                                                                    onItemClicked(
+                                                                        contentType,
+                                                                        contentId,
+                                                                        profileTitle
+                                                                    );
                                                                 }
-                                                            }}>
-                                                            <div className='w-12 h-12 flex-shrink-0 mt-1'>
+                                                            }}
+                                                        >
+                                                            <div className="w-12 h-12 flex-shrink-0 mt-1">
                                                                 <Image
                                                                     profile={profile}
                                                                     type={
-                                                                        contentType === 'members' ? 'avatar' : 'banner'
+                                                                        contentType === 'members'
+                                                                            ? 'avatar'
+                                                                            : 'banner'
                                                                     }
-                                                                    rounded='rounded-md'
+                                                                    rounded="rounded-md"
                                                                 />
                                                             </div>
-                                                            <div className='space-y-1'>
-                                                                <p className='text-sm md:text-[15px] lg:text-[16px] text-secondary-800'>
+                                                            <div className="space-y-1">
+                                                                <p className="text-sm md:text-[15px] lg:text-[16px] text-secondary-800">
                                                                     {profileSubtitle}
                                                                 </p>
-                                                                <p className='text-sm font-medium md:text-[15px] lg:text-[16px] text-neutral-800 group-hover:text-neutral-950'>
+                                                                <p className="text-sm font-medium md:text-[15px] lg:text-[16px] text-neutral-800 group-hover:text-neutral-950">
                                                                     {profileTitle}
                                                                 </p>
-                                                                <p className='text-[13px] font-medium md:text-[15px] text-secondary-600'>
+                                                                <p className="text-[13px] font-medium md:text-[15px] text-secondary-600">
                                                                     {location.title}
                                                                 </p>
-                                                                <p className='mt-1.5 text-[13px] md:text-[15px] text-neutral-700 group-hover:text-neutral-800'>
+                                                                <p className="mt-1.5 text-[13px] md:text-[15px] text-neutral-700 group-hover:text-neutral-800">
                                                                     {location.address}
                                                                 </p>
                                                             </div>

@@ -10,6 +10,7 @@
         "react-dom": "*"
     },
     "dependencies": {
+        "@googlemaps/markerclusterer": "^2.6.2",
         "@headlessui/react": "^1.7.13",
         "@popperjs/core": "^2.11.6",
         "@react-google-maps/api": "^2.19.3",
@@ -17,6 +18,7 @@
         "@uniwebcms/core-components": "^1.6.25",
         "@uniwebcms/module-sdk": "^2.0.1",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.0.1",
+        "@vis.gl/react-google-maps": "^1.5.4",
         "citation-js": "^0.7.14",
         "clone": "^2.1.2",
         "flowbite": "^1.8.1",

@@ -382,12 +382,13 @@ const ProfileViewer = memo(
                             sectionProps={{
                                 width: '100%',
                                 rounded: false,
-                                noBorder: true,
-                                paddingTop: '4',
-                                paddingBottom: '4',
-                                paddingLeft: '4',
-                                paddingRight: '4',
-                                headerMarginBottom: '3',
+                                stickyTop: '60px',
+                                // noBorder: true,
+                                // paddingTop: '4',
+                                // paddingBottom: '4',
+                                // paddingLeft: '4',
+                                // paddingRight: '4',
+                                // headerMarginBottom: '3',
                             }}
                             tabToPrefix={`?type=${type}&id=${id}&tab=`}
                             contentRenderSettings={{
