@@ -4571,6 +4571,18 @@
           "en": "The style of the navigation menu, traditional will display a hierarchical list of links, modern will display a flat dropdown menu.",
           "fr": "Le style du menu de navigation, traditionnel affichera une liste hiérarchique de liens, moderne affichera un menu déroulant plat."
         }
+      },
+      "translucent_top": {
+        "type": "boolean",
+        "label": {
+          "en": "Translucent Top",
+          "fr": "Haut translucide"
+        },
+        "description": {
+          "en": "Whether or not the header will have a translucent top, allowing the background to show through. Translucent top is only available when the next component is one of: Introduction, Introduction with Media, Introduction with Slider and Introduction - Dynamic.",
+          "fr": "Si l'en-tête aura ou non un haut translucide, permettant à l'arrière-plan de transparaître. Le haut translucide n'est disponible que lorsque le composant suivant est l'un des suivants: Introduction, Introduction avec média, Introduction avec curseur et Introduction - Dynamique."
+        },
+        "default": true
       }
     },
     "presets": [
