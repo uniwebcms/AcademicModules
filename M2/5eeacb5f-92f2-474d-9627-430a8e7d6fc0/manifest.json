@@ -1,0 +1,216 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2025-07-15T14:22:44.434Z",
+  "files": [
+    {
+      "name": "main.919a252a7886312ce44d.js",
+      "size": 1332998,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "remoteEntry.js",
+      "size": 6591,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.5c69daed4f58c15da0a2.js",
+      "size": 6607,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.fc9f4a28346ed323238c.js",
+      "size": 132723,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.4a0aa390a96a551c7bfc.js",
+      "size": 508821,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.a55e996b3a8e63145e38.js",
+      "size": 927998,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Article/example.png",
+      "size": 121274,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/ArticleHead/example.png",
+      "size": 36268,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Articles/example.png",
+      "size": 140390,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/FAQ/example.png",
+      "size": 55040,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/FeatureCards/example.png",
+      "size": 83830,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Footer/example.png",
+      "size": 31542,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Hero/example.png",
+      "size": 29086,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/ImageShowcase/example.png",
+      "size": 41114,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/LogoCarousel/example.png",
+      "size": 7254,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Navbar/example.png",
+      "size": 4438,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Newsletter/example.png",
+      "size": 26752,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/PricingComparison/example.png",
+      "size": 39254,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/PricingTiers/example.png",
+      "size": 107338,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/ShowcaseCarousel/example.png",
+      "size": 57646,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Spotlight/left_center_4_3.webp",
+      "size": 46936,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/VideoCarousel/example.png",
+      "size": 21954,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "schema.json",
+      "size": 28015,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Article/example.webp",
+      "size": 121274,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/ArticleHead/example.webp",
+      "size": 36268,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Articles/example.webp",
+      "size": 140390,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/FAQ/example.webp",
+      "size": 55040,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/FeatureCards/example.webp",
+      "size": 83830,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Footer/example.webp",
+      "size": 31542,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Hero/example.webp",
+      "size": 29086,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/ImageShowcase/example.webp",
+      "size": 41114,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/LogoCarousel/example.webp",
+      "size": 7254,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Navbar/example.webp",
+      "size": 4438,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/Newsletter/example.webp",
+      "size": 26752,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/PricingComparison/example.webp",
+      "size": 39254,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/PricingTiers/example.webp",
+      "size": 107338,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/ShowcaseCarousel/example.webp",
+      "size": 57646,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "assets/VideoCarousel/example.webp",
+      "size": 21954,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.a55e996b3a8e63145e38.js.LICENSE.txt",
+      "size": 249,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.fc9f4a28346ed323238c.js.LICENSE.txt",
+      "size": 483,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.919a252a7886312ce44d.js.LICENSE.txt",
+      "size": 249,
+      "hash": "471a8260ce908860ac4e"
+    },
+    {
+      "name": "main.5c69daed4f58c15da0a2.js.LICENSE.txt",
+      "size": 237,
+      "hash": "471a8260ce908860ac4e"
+    }
+  ]
+}

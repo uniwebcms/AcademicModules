@@ -1,0 +1,501 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2025-07-15T14:23:27.167Z",
+  "files": [
+    {
+      "name": "main.66f8aab3a8dd293ade85.js",
+      "size": 1365789,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "remoteEntry.js",
+      "size": 6853,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.425d06b79d6f68cfa0de.js",
+      "size": 6610,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.02e190a9c77539e4d247.js",
+      "size": 132731,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.a6c33a4b8bcf806878ae.js",
+      "size": 830619,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.4a568e79f1a7966c3f36.js",
+      "size": 1624033,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ArticleHub/example.png",
+      "size": 159618,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ArticleList/side_list.webp",
+      "size": 126214,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ArticleList/md_width.webp",
+      "size": 183212,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ArticleViewer/example.png",
+      "size": 111602,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/CallToAction/fancy.webp",
+      "size": 12856,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/CallToAction/subtle_right.webp",
+      "size": 14472,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/CallToAction/motion.webp",
+      "size": 16908,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/CodeHero/example.png",
+      "size": 95602,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentHighlight/img_right.webp",
+      "size": 147592,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentManager/example.png",
+      "size": 99970,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentShowcase/fancy.webp",
+      "size": 41254,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentTeaser/example.png",
+      "size": 60096,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentWrapper/example.png",
+      "size": 22794,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/DataVizCompare/example.png",
+      "size": 32390,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FAQ/subtle.webp",
+      "size": 52924,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FAQ/fancy.webp",
+      "size": 28686,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Feature/iconic.webp",
+      "size": 19662,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Feature/loose.webp",
+      "size": 72420,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Feature/standard_full.webp",
+      "size": 64504,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Feature/standard.webp",
+      "size": 81794,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Feature/island_sm.webp",
+      "size": 41636,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Feature/detailed_lg.webp",
+      "size": 117842,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureCards/scroll_list.webp",
+      "size": 89382,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureCards/gird.webp",
+      "size": 43310,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureCards/floating_gallery.webp",
+      "size": 96394,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/basic.webp",
+      "size": 16924,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/bullet_list_border.webp",
+      "size": 13546,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/icon_and_text.webp",
+      "size": 2374,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/catching_card.webp",
+      "size": 23696,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/leading_icon_border.webp",
+      "size": 11050,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/centered.webp",
+      "size": 8248,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureItem/vertical_grouped.webp",
+      "size": 21856,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureSpotlight/content_left.webp",
+      "size": 62370,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureSpotlight/content_right.webp",
+      "size": 53774,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureTabs/example.png",
+      "size": 63370,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Footer/example.png",
+      "size": 37050,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Form/example.png",
+      "size": 28688,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Header/example.png",
+      "size": 15234,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Hero/full_center.webp",
+      "size": 61564,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Hero/full_left.webp",
+      "size": 61174,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Hero/full_right.webp",
+      "size": 57542,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ImageCarousel/example.png",
+      "size": 21628,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/MediaBroadcast/example.png",
+      "size": 49310,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/MediaHero/example.png",
+      "size": 76290,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingAddons/fancy.webp",
+      "size": 42406,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingDetails/example.png",
+      "size": 43122,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingEstimator/example.png",
+      "size": 38516,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingFeatures/fancy_box.webp",
+      "size": 37238,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingFeatures/fancy_grid.webp",
+      "size": 49984,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingHero/subtle.webp",
+      "size": 38334,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingHero/fancy.webp",
+      "size": 37306,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingTiers/subtle.webp",
+      "size": 81768,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingTiers/fancy.webp",
+      "size": 90044,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/SideNavPage/example.png",
+      "size": 65190,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/SiteTemplate/example.png",
+      "size": 297200,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Table/example.png",
+      "size": 26032,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/TemplateBrowser/example.png",
+      "size": 154850,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Timeline/example.png",
+      "size": 26234,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/TwoColLayout/article.webp",
+      "size": 156016,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/VideoHub/example.png",
+      "size": 70456,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/VideoList/side_list.webp",
+      "size": 35590,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/VideoPlayer/example.png",
+      "size": 77554,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "schema.json",
+      "size": 136583,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ArticleHub/example.webp",
+      "size": 159618,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ArticleViewer/example.webp",
+      "size": 111602,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/CodeHero/example.webp",
+      "size": 95602,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentManager/example.webp",
+      "size": 99970,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentTeaser/example.webp",
+      "size": 60096,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ContentWrapper/example.webp",
+      "size": 22794,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/DataVizCompare/example.webp",
+      "size": 32390,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureCards/grid.webp",
+      "size": 43310,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/FeatureTabs/example.webp",
+      "size": 63370,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Footer/example.webp",
+      "size": 37050,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Form/example.webp",
+      "size": 28688,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Header/example.webp",
+      "size": 15234,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/ImageCarousel/example.webp",
+      "size": 21628,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/MediaBroadcast/example.webp",
+      "size": 49310,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/MediaHero/example.webp",
+      "size": 76290,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingDetails/example.webp",
+      "size": 43122,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/PricingEstimator/example.webp",
+      "size": 38516,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Section/example.webp",
+      "size": 46386,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/SideNavPage/example.webp",
+      "size": 65190,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/SiteTemplate/example.webp",
+      "size": 297200,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Table/example.webp",
+      "size": 26032,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/TemplateBrowser/example.webp",
+      "size": 154850,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/Timeline/example.webp",
+      "size": 26234,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/VideoHub/example.webp",
+      "size": 70456,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "assets/VideoPlayer/example.webp",
+      "size": 77554,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.66f8aab3a8dd293ade85.js.LICENSE.txt",
+      "size": 438,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.a6c33a4b8bcf806878ae.js.LICENSE.txt",
+      "size": 149,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.425d06b79d6f68cfa0de.js.LICENSE.txt",
+      "size": 237,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.02e190a9c77539e4d247.js.LICENSE.txt",
+      "size": 483,
+      "hash": "6b123edcd7dcb2421c24"
+    },
+    {
+      "name": "main.4a568e79f1a7966c3f36.js.LICENSE.txt",
+      "size": 574,
+      "hash": "6b123edcd7dcb2421c24"
+    }
+  ]
+}

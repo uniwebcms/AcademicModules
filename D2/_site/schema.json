@@ -1,7 +1,7 @@
 {
   "_self": {
     "name": "Documentation Series 2",
-    "description": "A collection of components for building documentation websites, offering a modern design, light and dark mode and user-friendly navigation."
+    "description": "A collection of components for building documentation websites, offering a modern design, light and dark mode and user-friendly navigation. This collection does not require any custom colors set in the docufolio or website studio."
   },
   "Callout": {
     "title": {
