@@ -43,14 +43,10 @@ export default function Header(props) {
             )}
         >
             <div className="h-full flex items-center justify-between max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 xl:px-0 xl:mx-[max(48px,calc((100vw-88rem)/2))] py-3">
-                <div className="w-64 flex-shrink-0">
+                <div className="w-64 flex-shrink-0 flex items-center justify-start">
                     {logo ? (
-                        <Link
-                            to=""
-                            title="A link back to the site's homepage"
-                            className="block w-fit"
-                        >
-                            <Icon icon={logo} className="w-48" />
+                        <Link to="/">
+                            <Icon icon={logo} className="h-8 [&>svg]:h-full" />
                         </Link>
                     ) : null}
                 </div>
