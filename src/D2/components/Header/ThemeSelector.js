@@ -80,14 +80,7 @@ function toggleMode(theme) {
     window.localStorage.setItem('theme', theme);
 }
 
-export function ThemeSelector(props) {
-    const [theme, setTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return window.localStorage.getItem('theme') || 'system';
-        }
-        return 'system';
-    });
-
+export function ThemeSelector({ theme, setTheme, ...props }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
