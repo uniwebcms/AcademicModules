@@ -19,12 +19,7 @@ export default function (props) {
     return (
         <Container py="0">
             {banner ? (
-                <div
-                    className={twJoin(
-                        'absolute inset-0',
-                        banner.direction !== 'background' && 'max-w-7xl mx-auto'
-                    )}
-                >
+                <div className="absolute inset-0">
                     <Image
                         profile={getPageProfile()}
                         value={banner.value}
@@ -63,7 +58,14 @@ export default function (props) {
                             value={paragraphs}
                         />
                         {link ? (
-                            <div className="mt-5 flex items-center justify-center">
+                            <div
+                                className={twJoin(
+                                    'mt-5 flex items-center',
+                                    alignment === 'left' && 'justify-start',
+                                    alignment === 'center' && 'justify-center',
+                                    alignment === 'right' && 'justify-end'
+                                )}
+                            >
                                 <Link
                                     to={website.makeHref(link.href)}
                                     className="text-base font-semibold leading-6"

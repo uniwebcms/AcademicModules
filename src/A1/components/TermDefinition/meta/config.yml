@@ -18,20 +18,19 @@ elements:
 items:
   separator: divider
   elements:
-    background:
     title:
+      description:
+        en: The term to be defined.
+        fr: Le terme à définir.
     text:
-    pretitle:
+      description:
+        en: The definition of the term.
+        fr: La définition du terme.
     icon:
       type: icon
       description: 
-        en: Icons attached to the feature.
-        fr: Icônes attachées à la fonctionnalité.
-    media:
-      type: video
-      description: 
-        en: A video attached to the feature.
-        fr: Une vidéo attachée à la fonctionnalité.
-
+        en: An icon to visually represent the term.
+        fr: Une icône pour représenter visuellement le terme.
+   
 images:
   - example.png

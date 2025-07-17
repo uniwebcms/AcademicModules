@@ -1,213 +1,164 @@
 import React, { useState } from 'react';
-import { twMerge, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, getPageProfile } from '@uniwebcms/module-sdk';
 import { Image, SafeHtml } from '@uniwebcms/core-components';
+import { ImQuotesLeft } from 'react-icons/im';
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from 'react-icons/hi';
 import Container from '../_utils/Container';
 
 const islandHeight = 33;
 
-export default function Testimonials({ website, block }) {
-    const { main } = block;
-    const { banner, header } = main;
-
+export default function Testimonials(props) {
+    const { block } = props;
+    const { banner, title, subtitle } = block.getBlockContent();
     const items = block.getBlockItems();
 
     const [current, setCurrent] = useState(0);
 
     const currentItem = items[current];
 
-    const siteProfile = website.getSiteProfile();
-
     return (
-        <Container className="!py-0">
-            <div className={`relative hidden lg:block min-h-[45rem]`}>
-                {banner ? (
-                    <div className="absolute inset-0">
-                        <Image
-                            profile={siteProfile}
-                            value={banner.value}
-                            alt={banner.alt}
-                            url={banner.url}
-                            className="object-cover w-full h-full saturate-[70%]"
-                        />
-                    </div>
-                ) : null}
-                <div className="flex flex-row justify-center align-centre min-h-[45rem] items-center">
-                    <div className="relative z-40 p-8 2xl:ml-16 2xl:mr-32 max-w-1/2 rounded-xl lg:mx-16 bg-text-color-20 backdrop-saturate-200 backdrop-blur-lg">
-                        {header?.title ? (
-                            <h2 className="px-4 2xl:text-4xl font-bold lg:text-2xl">
-                                {stripTags(header.title)}
-                            </h2>
-                        ) : null}
-                        {header?.subtitle ? (
-                            <h3 className="mt-4 px-4 2xl:text-2xl lg:text-lg text-text-color-80">
-                                {stripTags(header.subtitle)}
-                            </h3>
-                        ) : null}
-                    </div>
-                    <div
-                        className={twMerge(
-                            `z-40 flex mr-16 max-h-[${islandHeight}rem] min-h-[${islandHeight}rem] max-w-1/2`
-                        )}
-                    >
-                        {items.length > 1 && (
-                            <div
-                                className={`h-[${islandHeight}rem] w-[4rem] rounded-l-[4rem] bg-text-color/20 flex items-center justify-center group`}
-                                onClick={() => {
-                                    setCurrent(current === 0 ? items.length - 1 : current - 1);
-                                }}
-                            >
-                                <HiOutlineArrowLeft className="w-6 h-6 text-text-color-80 transition-all group-hover:scale-125" />
-                            </div>
-                        )}
-                        <div
-                            className={`w-[44rem] min-h-[${islandHeight}rem] bg-text-color-10 flex flex-row ${
-                                items.length === 1 ? 'rounded-3xl' : ''
-                            }`}
-                        >
-                            <div className="flex flex-col justify-between px-8 pt-16 pb-6 mx-4 lg:mx-8 w-full">
-                                <div className="flex flex-col justify-between h-[87%]">
-                                    <div>
-                                        <div>
-                                            {currentItem.banner ? (
-                                                <Image
-                                                    profile={siteProfile}
-                                                    {...currentItem.banner}
-                                                    className="object-contain h-16"
-                                                />
-                                            ) : null}
-                                        </div>
-
-                                        <div className="mb-8">
-                                            <svg
-                                                width="30"
-                                                height="24"
-                                                viewBox="0 0 30 24"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className=" translate-x-[-2rem] translate-y-6 opacity-70 text-primary-200"
-                                            >
-                                                <path
-                                                    d="M8.352 0C3.456 3.456 0 9.12 0 15.36C0 20.448 3.072 23.424 6.624 23.424C9.984 23.424 12.48 20.736 12.48 17.568C12.48 14.4 10.272 12.096 7.392 12.096C6.816 12.096 6.048 12.192 5.856 12.288C6.336 9.024 9.408 5.184 12.48 3.264L8.352 0ZM24.864 0C20.064 3.456 16.608 9.12 16.608 15.36C16.608 20.448 19.68 23.424 23.232 23.424C26.496 23.424 29.088 20.736 29.088 17.568C29.088 14.4 26.784 12.096 23.904 12.096C23.328 12.096 22.656 12.192 22.464 12.288C22.944 9.024 25.92 5.184 28.992 3.264L24.864 0Z"
-                                                    fill="#4F46E5"
-                                                />
-                                            </svg>
-                                            <SafeHtml
-                                                value={currentItem.paragraphs}
-                                                className="ml-4 z-10 text-xl leading-10 font-inter"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-row items-center">
-                                        {currentItem.images[0] && (
-                                            <Image
-                                                profile={siteProfile}
-                                                {...currentItem.images[0]}
-                                                className="w-16 h-16 rounded-full"
-                                            />
-                                        )}
-                                        <div className="mx-6">
-                                            <SafeHtml
-                                                value={currentItem.title}
-                                                className="text-xl font-bold font-inter"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                {items.length > 1 && (
-                                    <div id="dots" className="flex flex-row justify-center mt-8">
-                                        {items.map((_, index) => {
-                                            if (index === current) {
-                                                return (
-                                                    <div
-                                                        key={index}
-                                                        className="w-3 h-3 mx-2 transition-all bg-text-color-80 rounded-full"
-                                                    ></div>
-                                                );
-                                            }
-                                            return (
-                                                <div
-                                                    key={index}
-                                                    className="w-3 h-3 mx-2 transition-all bg-text-color-40 rounded-full hover:bg-text-color-60 hover:cursor-pointer"
-                                                    onClick={() => {
-                                                        setCurrent(index);
-                                                    }}
-                                                ></div>
-                                            );
-                                        })}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        {items.length > 1 && (
-                            <div
-                                className={`h-[${islandHeight}rem] w-[4rem] rounded-r-[4rem] bg-text-color/20 flex items-center justify-center group`}
-                                onClick={() =>
-                                    setCurrent(current === items.length - 1 ? 0 : current + 1)
-                                }
-                            >
-                                <HiOutlineArrowRight className="w-6 h-6 text-text-color-80 transition-all group-hover:scale-125" />
-                            </div>
-                        )}
-                    </div>
+        <Container>
+            {banner ? (
+                <div className="absolute inset-0">
+                    <Image
+                        profile={getPageProfile()}
+                        {...banner}
+                        className="object-cover w-full h-full saturate-[70%]"
+                    />
                 </div>
-            </div>
-
-            {/* Mobile UI */}
-            <div className="block lg:hidden h-fit">
-                {/* Title and subtitle */}
-                <div className="flex flex-col items-center justify-center my-4">
-                    {header?.title ? (
-                        <SafeHtml
-                            as="h2"
-                            value={header.title}
-                            className="px-4 text-3xl font-bold"
-                        />
+            ) : null}
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row justify-center items-center z-10 gap-12">
+                <div className="hidden lg:block relative p-8 rounded-xl bg-bg-color/50 backdrop-saturate-200 backdrop-blur-lg">
+                    {title ? (
+                        <h2 className="text-xl lg:text-2xl 2xl:text-3xl font-bold">{title}</h2>
                     ) : null}
-                    {header?.subtitle ? (
-                        <SafeHtml as="h3" value={header.subtitle} className="px-4 text-xl" />
+                    {subtitle ? (
+                        <h3 className="mt-4 text-base lg:text-lg 2xl:text-xl text-text-color-80 text-auto">
+                            {subtitle}
+                        </h3>
                     ) : null}
                 </div>
                 <div
-                    id="scrollable"
-                    className="grid grid-flow-col overflow-y-auto overscroll-x-contain snap-mandatory snap-always snap-x"
+                    className={twJoin(
+                        'relative max-w-3xl mx-auto lg:ml-auto lg:mr-0 w-full rounded-3xl bg-bg-color/60 backdrop-saturate-200 backdrop-blur-lg',
+                        items.length > 1 ? 'px-24 pt-8 pb-14' : 'px-20 py-8'
+                    )}
                 >
-                    {items.map((item, index) => (
-                        <React.Fragment key={index}>
-                            <div
-                                className={`w-[90vw] h-[23rem] snap-center p-8 mx-2 bg-text-color-10 rounded-3xl shadow-2xl border flex snap-always flex-col justify-between`}
-                            >
-                                {item.banner ? (
-                                    <div>
-                                        <Image
-                                            profile={siteProfile}
-                                            {...item.banner}
-                                            className="object-contain h-12"
-                                        />
-                                    </div>
-                                ) : null}
-                                <div>
-                                    <SafeHtml
-                                        value={item.paragraphs}
-                                        className="text-text-color-90 text-lg"
-                                    />
-                                </div>
-                                <div className="flex flex-row items-center">
-                                    {item.images[0] && (
-                                        <Image
-                                            profile={siteProfile}
-                                            {...item.images[0]}
-                                            className="w-12 h-12 rounded-full"
-                                        />
-                                    )}
-                                    <div className="px-2">
-                                        <SafeHtml value={item.title} className="text-sm" />
-                                    </div>
-                                </div>
+                    {/* arrow to the left */}
+                    {items.length > 1 && (
+                        <button
+                            className="absolute left-4 top-1/2 -translate-y-1/2 focus:outline-none"
+                            disabled={current === 0}
+                            onClick={() =>
+                                setCurrent(current === 0 ? items.length - 1 : current - 1)
+                            }
+                        >
+                            <HiOutlineArrowLeft
+                                className={twJoin(
+                                    'w-6 h-6',
+                                    current === 0
+                                        ? 'cursor-not-allowed text-text-color-40'
+                                        : 'text-text-color-60 transition-all hover:text-text-color-80 hover:scale-125 duration-300'
+                                )}
+                            />
+                        </button>
+                    )}
+
+                    <div className="flex flex-col">
+                        <div
+                            className={twJoin(
+                                'block lg:hidden border-b border-text-color/40 pb-8 mb-8 text-center',
+                                items.length > 1 ? '-mx-24 px-24' : '-mx-20 px-20'
+                            )}
+                        >
+                            {title ? (
+                                <h2 className="text-2xl md:text-3xl font-bold">{title}</h2>
+                            ) : null}
+                            {subtitle ? (
+                                <h3 className="mt-2 text-lg md:text-xl text-text-color-80">
+                                    {subtitle}
+                                </h3>
+                            ) : null}
+                        </div>
+
+                        {/* leading image */}
+                        {currentItem.banner ? (
+                            <div className="mb-4">
+                                <Image
+                                    profile={getPageProfile()}
+                                    {...currentItem.banner}
+                                    className="object-contain h-12 md:h-14 lg:h-16"
+                                />
                             </div>
-                        </React.Fragment>
-                    ))}
+                        ) : null}
+
+                        {/* quote */}
+                        <div className="relative mb-8">
+                            <ImQuotesLeft className="absolute -top-7 -left-2 w-7 h-7 -translate-x-10 translate-y-6 opacity-70 text-accent-600" />
+                            <SafeHtml
+                                value={currentItem.paragraphs}
+                                className="text-lg md:text-xl leading-8 [&>p+p]:mt-4 text-center lg:text-left"
+                            />
+                        </div>
+
+                        {/* author */}
+                        <div className="flex items-center justify-center lg:justify-start">
+                            {currentItem.images[0] && (
+                                <Image
+                                    profile={getPageProfile()}
+                                    {...currentItem.images[0]}
+                                    className="w-16 h-16 rounded-full"
+                                />
+                            )}
+                            <div className="mx-6 text-lg md:text-xl font-bold font-inter">
+                                <p>{stripTags(currentItem.title)}</p>
+                                <p>{stripTags(currentItem.subtitle)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* {items.length > 1 && (
+                        <div id="dots" className="flex flex-row justify-center mt-8">
+                            {items.map((_, index) => {
+                                if (index === current) {
+                                    return (
+                                        <div
+                                            key={index}
+                                            className="w-3 h-3 mx-2 transition-all bg-text-color-80 rounded-full"
+                                        ></div>
+                                    );
+                                }
+                                return (
+                                    <div
+                                        key={index}
+                                        className="w-3 h-3 mx-2 transition-all bg-text-color-40 rounded-full hover:bg-text-color-60 hover:cursor-pointer"
+                                        onClick={() => {
+                                            setCurrent(index);
+                                        }}
+                                    ></div>
+                                );
+                            })}
+                        </div>
+                    )} */}
+
+                    {/* arrow to the right */}
+                    {items.length > 1 && (
+                        <button
+                            className="absolute right-4 top-1/2 -translate-y-1/2 focus:outline-none"
+                            disabled={current === items.length - 1}
+                            onClick={() =>
+                                setCurrent(current === items.length - 1 ? 0 : current + 1)
+                            }
+                        >
+                            <HiOutlineArrowRight
+                                className={twJoin(
+                                    'w-6 h-6',
+                                    current === items.length - 1
+                                        ? 'cursor-not-allowed text-text-color-40'
+                                        : 'text-text-color-60 transition-all hover:text-text-color-80 hover:scale-125 duration-300'
+                                )}
+                            />
+                        </button>
+                    )}
                 </div>
             </div>
         </Container>

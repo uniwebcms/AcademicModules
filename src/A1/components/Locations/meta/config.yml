@@ -1,9 +1,9 @@
 title: 
-  en: Map - Locations
-  fr: Carte - Emplacements
+  en: Single Map
+  fr: Carte unique
 label:
-  en: Map - Locations
-  fr: Carte - Emplacements
+  en: Map - Single
+  fr: Carte - Unique
 description: 
   en: Display points of interest on an interactive map, addresses are from the selected input or manual input cards.
   fr: Affichez des points d'intérêt sur une carte interactive, les adresses proviennent de l'entrée sélectionnée ou des cartes d'entrée manuelles.

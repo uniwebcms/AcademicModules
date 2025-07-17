@@ -87,14 +87,13 @@ export default function Features({ block, website }) {
                             const { title, subtitle, paragraphs, icons, links } = item;
 
                             const icon = icons[0];
-
                             const link = links[0];
 
                             return (
                                 <div key={index}>
                                     <dt className="text-base font-semibold leading-7">
                                         {icon ? (
-                                            <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg">
+                                            <div className="flex items-center justify-center w-8 h-8 mb-4 rounded-lg">
                                                 <Icon icon={icon} className="w-full h-full" />
                                             </div>
                                         ) : null}
@@ -154,7 +153,7 @@ export default function Features({ block, website }) {
                             {link ? (
                                 <Link
                                     to={website.makeHref(link.href)}
-                                    className="inline-block w-fit mt-5 rounded-md px-3 py-1.5 text-sm sm:text-base lg:text-lg font-medium"
+                                    className="inline-block w-fit mt-5 rounded-md px-3 py-1.5 text-sm sm:text-base lg:text-lg font-medium bg-link-color/10"
                                 >
                                     {link.label}
                                 </Link>

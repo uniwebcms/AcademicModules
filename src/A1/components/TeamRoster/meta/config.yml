@@ -98,6 +98,28 @@ properties:
         description:
             en: The space on top and bottom of the layout.
             fr: L'espace en haut et en bas de la mise en page.
+    card_size:
+        label:
+            en: Card Size
+            fr: Taille de la carte
+        type: string
+        default: lg
+        enum:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Large
+                  fr: Grand
+              value: lg
+        description:
+            en: The size of the team member card. Smaller sizes means fit more cards in a row.
+            fr: La taille de la carte du membre de l'équipe. Des tailles plus petites signifient plus de cartes dans une ligne.
 
 presets:
     1_1:

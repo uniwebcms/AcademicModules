@@ -27,7 +27,7 @@ function Layout(props) {
 
         return (
             <div
-                className={`relative w-full h-full rounded-lg border border-text-color-20 flex flex-col overflow-hidden group shadow-md`}
+                className={`relative w-full h-full rounded-lg border border-text-color-20 flex flex-col overflow-hidden group shadow-md hover:shadow-lg transition-all duration-300`}
             >
                 <div className={twJoin('w-full overflow-hidden', imageAspectRatio)}>
                     <Asset
@@ -38,7 +38,7 @@ function Layout(props) {
                     />
                 </div>
                 <div
-                    className={`flex items-center space-x-1 px-4 py-3 border-t border-text-color-20 bg-text-color/10`}
+                    className={`flex items-center space-x-1 px-4 py-3 border-t border-text-color-20`}
                 >
                     <div className="w-8">
                         {<FileLogo filename={/\.\S+$/.test(filename) ? filename : url}></FileLogo>}

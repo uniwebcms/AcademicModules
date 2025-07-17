@@ -18,7 +18,7 @@ export default function TermDefinition(props) {
                     <h3 className="text-lg leading-8 text-text-color-80">{stripTags(subtitle)}</h3>
                 ) : null}
             </div>
-            <div className="max-w-7xl mx-auto divide-y divide-text-color-30 overflow-hidden rounded-lg bg-text-color-10 shadow-lg sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+            <div className="max-w-7xl mx-auto divide-y divide-text-color-30 overflow-hidden rounded-lg shadow-lg sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
                 {items.map((item, index) => {
                     const { title, paragraphs, icons } = item;
 
@@ -27,22 +27,19 @@ export default function TermDefinition(props) {
                     return (
                         <div
                             key={index}
-                            className={twJoin(
-                                'space-y-8',
-                                'group relative bg-text-color-20 p-6 hover:bg-text-color-10'
-                            )}
+                            className={twJoin('space-y-8', 'group relative p-6 bg-text-color/10')}
                         >
                             {icon && (
-                                <div className="inline-flex rounded-lg p-3 ring-4 ring-text-color-30 bg-text-color-10">
+                                <div className="inline-flex rounded-lg p-2 ring-4 ring-text-color/20">
                                     <Icon icon={icon} className="w-6 h-6" />
                                 </div>
                             )}
                             <div>
-                                <h3 className="text-base font-semibold leading-6">
+                                <h3 className="text-base lg:text-lg font-semibold leading-6">
                                     {stripTags(title)}
                                 </h3>
                                 <SafeHtml
-                                    className="mt-2 text-sm text-text-color-80"
+                                    className="mt-2 text-sm lg:text-base text-text-color-80"
                                     value={paragraphs}
                                 />
                             </div>

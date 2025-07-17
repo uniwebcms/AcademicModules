@@ -19,8 +19,8 @@ elements:
   title:
   card:
     description:
-      en: Add a card elements, choose type 'Document' and upload the file.
-      fr: Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier.
+      en: Add one or more card elements, choose type 'Document' and upload the file.
+      fr: Ajoutez un ou plusieurs éléments de carte, choisissez le type 'Document' et téléchargez le fichier.
 
 properties:
   size:

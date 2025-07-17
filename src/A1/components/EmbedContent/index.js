@@ -11,7 +11,8 @@ export default function (props) {
     const links = main.body?.links;
     const link = links?.[0];
 
-    const { vertical_padding = 'lg', iframe_height: rawHeight = '' } = block.getBlockProperties();
+    const { vertical_padding = 'lg', iframe_height: rawHeight = '56.25%' } =
+        block.getBlockProperties();
 
     let py = '';
 
@@ -25,14 +26,22 @@ export default function (props) {
         py = 'py-12 lg:py-24';
     }
 
-    const validHeight =
+    const normalizedHeight =
         typeof rawHeight === 'string' && /^\d+(\.\d+)?(px|%|vh)$/.test(rawHeight.trim())
             ? rawHeight.trim()
             : '56.25%';
 
+    const size = normalizedHeight.endsWith('%')
+        ? {
+              paddingBottom: normalizedHeight,
+          }
+        : {
+              height: normalizedHeight,
+          };
+
     return (
         <Container py={py}>
-            <div className="relative max-w-7xl mx-auto">
+            <div className="relative px-6 mx-auto max-w-7xl lg:px-8">
                 <div className="relative z-10 flex flex-col w-full">
                     {pretitle ? (
                         <h3 className="mb-2 font-medium text-xl md:text-2xl lg:text-3xl">
@@ -53,8 +62,8 @@ export default function (props) {
                                 width: '100%',
                                 position: 'relative',
                                 marginTop: '2rem',
-                                height: validHeight,
-                                minHeight: '600px',
+                                // minHeight: '200px',
+                                ...size,
                             }}
                         >
                             <iframe

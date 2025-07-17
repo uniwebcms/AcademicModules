@@ -50,10 +50,10 @@ properties:
             en: iFrame Height (see description)
             fr: Hauteur de l'iFrame (voir description)
         type: string
-        default: ""
+        default: 56.25%
         description:
-            en: Controls the vertical space of the embedded content. You can set a fixed height using values like 800px, a responsive aspect ratio using a percentage like 56.25% (for 16:9), or use viewport height such as 100vh to make it fill the screen. If left blank, it defaults to 56.25%.
-            fr: Contrôle l'espace vertical du contenu intégré. Vous pouvez définir une hauteur fixe en utilisant des valeurs comme 800px, un rapport d'aspect réactif en utilisant un pourcentage comme 56,25 % (pour 16:9), ou utiliser la hauteur de la fenêtre d'affichage telle que 100vh pour le faire remplir l'écran. Si laissé vide, il par défaut à 56,25 %.
+            en: Controls the vertical space of the embedded content. You can set a fixed height using values like 800px, a responsive aspect ratio using a percentage like 56.25% (for 16:9), or use viewport height such as 100vh to make it fill the screen. If left blank, it defaults to 56.25%. Minimum height is 200px.
+            fr: Contrôle l'espace vertical du contenu intégré. Vous pouvez définir une hauteur fixe en utilisant des valeurs comme 800px, un rapport d'aspect réactif en utilisant un pourcentage comme 56,25 % (pour 16:9), ou utiliser la hauteur de la fenêtre d'affichage telle que 100vh pour le faire remplir l'écran. Si laissé vide, il par défaut à 56,25 %. La hauteur minimale est de 200px.
 
 images:
     - example.png

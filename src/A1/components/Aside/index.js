@@ -105,8 +105,8 @@ const Content = ({ main, website }) => {
                     {plainLinks.map((link, index) => (
                         <Link
                             key={index}
+                            to={link.href}
                             className="text-sm font-medium md:text-base lg:text-lg hover:underline truncate max-w-full"
-                            href={link.href}
                         >
                             {link.label}
                         </Link>

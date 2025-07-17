@@ -90,7 +90,11 @@ export default function TeamRoster(props) {
 
     const items = block.getBlockItems();
 
-    const { aspect_ratio = '3/2', vertical_padding = 'lg' } = block.getBlockProperties();
+    const {
+        aspect_ratio = '3/2',
+        vertical_padding = 'lg',
+        card_size = 'lg',
+    } = block.getBlockProperties();
 
     const { title = '', subtitle = '' } = main.header || {};
 
@@ -110,6 +114,17 @@ export default function TeamRoster(props) {
         py = 'py-12 lg:py-24';
     }
 
+    let gridClass = '';
+
+    if (card_size === 'sm') {
+        gridClass =
+            'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-8';
+    } else if (card_size === 'md') {
+        gridClass = 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8';
+    } else if (card_size === 'lg') {
+        gridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12';
+    }
+
     return (
         <Container py={py}>
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -125,9 +140,7 @@ export default function TeamRoster(props) {
                 </div>
                 <ul
                     role="list"
-                    className={`mx-auto ${
-                        title || subtitle ? 'mt-8' : ''
-                    } grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3`}
+                    className={`mx-auto ${title || subtitle ? 'mt-8' : ''} grid ${gridClass}`}
                 >
                     {members.length ? (
                         <ProfilesRenderer
