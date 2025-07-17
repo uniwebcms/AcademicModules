@@ -1351,8 +1351,8 @@
       },
       "card": {
         "description": {
-          "en": "Add a card elements, choose type 'Document' and upload the file.",
-          "fr": "Ajoutez des éléments de carte, choisissez le type 'Document' et téléchargez le fichier."
+          "en": "Add one or more card elements, choose type 'Document' and upload the file.",
+          "fr": "Ajoutez un ou plusieurs éléments de carte, choisissez le type 'Document' et téléchargez le fichier."
         },
         "type": "card"
       }
@@ -1892,10 +1892,10 @@
           "fr": "Hauteur de l'iFrame (voir description)"
         },
         "type": "string",
-        "default": "",
+        "default": "56.25%",
         "description": {
-          "en": "Controls the vertical space of the embedded content. You can set a fixed height using values like 800px, a responsive aspect ratio using a percentage like 56.25% (for 16:9), or use viewport height such as 100vh to make it fill the screen. If left blank, it defaults to 56.25%.",
-          "fr": "Contrôle l'espace vertical du contenu intégré. Vous pouvez définir une hauteur fixe en utilisant des valeurs comme 800px, un rapport d'aspect réactif en utilisant un pourcentage comme 56,25 % (pour 16:9), ou utiliser la hauteur de la fenêtre d'affichage telle que 100vh pour le faire remplir l'écran. Si laissé vide, il par défaut à 56,25 %."
+          "en": "Controls the vertical space of the embedded content. You can set a fixed height using values like 800px, a responsive aspect ratio using a percentage like 56.25% (for 16:9), or use viewport height such as 100vh to make it fill the screen. If left blank, it defaults to 56.25%. Minimum height is 200px.",
+          "fr": "Contrôle l'espace vertical du contenu intégré. Vous pouvez définir une hauteur fixe en utilisant des valeurs comme 800px, un rapport d'aspect réactif en utilisant un pourcentage comme 56,25 % (pour 16:9), ou utiliser la hauteur de la fenêtre d'affichage telle que 100vh pour le faire remplir l'écran. Si laissé vide, il par défaut à 56,25 %. La hauteur minimale est de 200px."
         }
       }
     },
@@ -3856,12 +3856,12 @@
   },
   "Locations": {
     "title": {
-      "en": "Map - Locations",
-      "fr": "Carte - Emplacements"
+      "en": "Single Map",
+      "fr": "Carte unique"
     },
     "label": {
-      "en": "Map - Locations",
-      "fr": "Carte - Emplacements"
+      "en": "Map - Single",
+      "fr": "Carte - Unique"
     },
     "description": {
       "en": "Display points of interest on an interactive map, addresses are from the selected input or manual input cards.",
@@ -5865,6 +5865,41 @@
           "en": "The space on top and bottom of the layout.",
           "fr": "L'espace en haut et en bas de la mise en page."
         }
+      },
+      "card_size": {
+        "label": {
+          "en": "Card Size",
+          "fr": "Taille de la carte"
+        },
+        "type": "string",
+        "default": "lg",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "lg"
+          }
+        ],
+        "description": {
+          "en": "The size of the team member card. Smaller sizes means fit more cards in a row.",
+          "fr": "La taille de la carte du membre de l'équipe. Des tailles plus petites signifient plus de cartes dans une ligne."
+        }
       }
     },
     "presets": [
@@ -5921,48 +5956,26 @@
     "items": {
       "separator": "divider",
       "elements": {
-        "background": {
-          "type": "image",
-          "layout": "",
-          "description": {
-            "en": "The background image.",
-            "fr": "L'image d'arrière-plan."
-          }
-        },
         "title": {
-          "type": "H1",
-          "alignment": "",
           "description": {
-            "en": "The main headline.",
-            "fr": "Le titre principal."
-          }
+            "en": "The term to be defined.",
+            "fr": "Le terme à définir."
+          },
+          "type": "H1",
+          "alignment": ""
         },
         "text": {
-          "type": "paragraph",
           "description": {
-            "en": "The body text.",
-            "fr": "Le texte du corps."
-          }
-        },
-        "pretitle": {
-          "type": "H2",
-          "description": {
-            "en": "A phrase that precedes the main headline.",
-            "fr": "Une phrase qui précède le titre principal."
-          }
+            "en": "The definition of the term.",
+            "fr": "La définition du terme."
+          },
+          "type": "paragraph"
         },
         "icon": {
           "type": "icon",
           "description": {
-            "en": "Icons attached to the feature.",
-            "fr": "Icônes attachées à la fonctionnalité."
-          }
-        },
-        "media": {
-          "type": "video",
-          "description": {
-            "en": "A video attached to the feature.",
-            "fr": "Une vidéo attachée à la fonctionnalité."
+            "en": "An icon to visually represent the term.",
+            "fr": "Une icône pour représenter visuellement le terme."
           }
         }
       }
