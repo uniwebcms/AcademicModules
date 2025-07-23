@@ -127,8 +127,6 @@ export default function (props) {
         });
     };
 
-    console.log('123', pages);
-
     return (
         <div className={`pb-12 pt-4 overflow-auto w-[275px]`}>
             {pages.map((item, i) => {
