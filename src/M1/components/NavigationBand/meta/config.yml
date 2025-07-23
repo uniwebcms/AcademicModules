@@ -1,0 +1,25 @@
+title:
+  en: Navigation Band
+  fr: Bande de navigation
+label:
+  en: Navigation Band
+  fr: Bande de navigation
+description:
+  en: A navigation band that provides quick access to three links, typically used for navigation purposes.
+  fr: Une bande de navigation qui fournit un accès rapide à trois liens, généralement utilisée à des fins de navigation.
+
+category: navigation
+export: true
+
+elements:
+  links:
+    description:
+      en: Three links that provide quick access to different sections or pages.
+      fr: Trois liens qui fournissent un accès rapide à différentes sections ou pages.
+  icon:
+    description:
+      en: An optional icon that can be displayed alongside the links.
+      fr: Une icône facultative qui peut être affichée à côté des liens.
+
+images:
+  - example.png

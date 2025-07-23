@@ -23,5 +23,29 @@ items:
   separator: section
   category: Any section type
 
+properties:
+  padding_vertical:
+    label:
+      en: Vertical Padding
+      fr: Rembourrage vertical
+    type: string
+    default: regular
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Regular
+          fr: Régulier
+        value: regular
+    description:
+      en: The vertical padding of the content wrapper.
+      fr: Le rembourrage vertical de l'enveloppe de contenu.
+  
 images:
   - example.png
