@@ -5,11 +5,11 @@ function ProseWrapper({ children }) {
     return (
         <div
             className={twJoin(
-                'prose prose-slate max-w-none dark:prose-invert dark:text-slate-400',
+                'prose prose-slate max-w-none dark:prose-invert dark:text-slate-300',
                 // headings
                 'prose-headings:font-normal',
                 // lead
-                'prose-lead:text-slate-500 dark:prose-lead:text-slate-400 prose-lead:mt-0',
+                'prose-lead:text-slate-500 dark:prose-lead:text-slate-300 prose-lead:mt-0',
                 // links
                 'prose-a:font-semibold dark:prose-a:text-sky-400',
                 // link underline

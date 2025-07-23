@@ -19,7 +19,7 @@ function QuickLink(props) {
                 ) : (
                     <div className="h-8 w-8" />
                 )}
-                <h2 className="mt-4 font-display text-base text-slate-900 dark:text-white">
+                <h2 className="mt-4 font-display text-base md:text-lg text-slate-900 dark:text-white">
                     <Element {...elementProps}>
                         <span className="absolute -inset-px rounded-xl" />
                         {title}
@@ -27,7 +27,7 @@ function QuickLink(props) {
                 </h2>
                 <SafeHtml
                     value={paragraphs}
-                    className="mt-1 text-sm text-slate-700 dark:text-slate-400"
+                    className="mt-2 text-sm md:text-base text-slate-700 dark:text-slate-300"
                 />
             </div>
         </div>
