@@ -123,9 +123,68 @@ const CategoryBar = ({ categories, activeCategory, setActiveCategory }) => {
     );
 };
 
+const PresetImageSlideshow = ({ isHovered, images, alt }) => {
+    const [currentImage, setCurrentImage] = useState(images[0] || '');
+    const [activeIndex, setActiveIndex] = useState(0);
+    const intervalRef = useRef(null);
+    const indexRef = useRef(1);
+    const imageCount = images.length;
+
+    useEffect(() => {
+        if (imageCount === 0) return;
+
+        if (isHovered && imageCount > 1) {
+            intervalRef.current = setInterval(() => {
+                setCurrentImage(images[indexRef.current]);
+                setActiveIndex(indexRef.current);
+                indexRef.current = (indexRef.current + 1) % imageCount;
+            }, 1000);
+        } else {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+            indexRef.current = 1;
+            setCurrentImage(images[0]);
+            setActiveIndex(0);
+        }
+
+        return () => clearInterval(intervalRef.current);
+    }, [isHovered, images]);
+
+    const progressPercentage = imageCount > 0 ? ((activeIndex + 1) / imageCount) * 100 : 0;
+
+    return (
+        <>
+            <img src={currentImage} alt={alt} className={`w-full h-full object-contain`} />;
+            {isHovered && imageCount > 1 && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        height: 4,
+                        width: '100%',
+                        background: 'rgb(31 41 55 / 0.3)',
+                    }}
+                >
+                    <div
+                        style={{
+                            height: '100%',
+                            width: `${progressPercentage}%`,
+                            background: 'rgba(255, 255, 255, 0.9)',
+                            transition: 'width 0.3s ease-in-out',
+                        }}
+                    />
+                </div>
+            )}
+        </>
+    );
+};
+
 const ComponentItem = (props) => {
+    const [hovered, setHovered] = useState(false);
+
     let {
-        info: { title, image },
+        info: { title, image, presets },
         setActiveComponent,
     } = props;
     title = website.localize(title);
@@ -135,7 +194,17 @@ const ComponentItem = (props) => {
     if (image) {
         const { src } = image || {};
 
-        preview = <img src={src} alt={title} className={`w-full h-full object-contain`} />;
+        if (presets && presets.length > 0) {
+            preview = (
+                <PresetImageSlideshow
+                    alt={title}
+                    isHovered={hovered}
+                    images={presets.map((p) => p.image.src)}
+                />
+            );
+        } else {
+            preview = <img src={src} alt={title} className={`w-full h-full object-contain`} />;
+        }
     } else {
         preview = <p className={`font-bold text-neutral-900 px-4`}>{title}</p>;
     }
@@ -144,11 +213,13 @@ const ComponentItem = (props) => {
         <div
             className={twJoin(
                 'w-full h-[221px] overflow-hidden rounded-lg border border-neutral-300 flex flex-col shadow',
-                'transition-transform duration-75 hover:scale-105 cursor-pointer hover:shadow-lg'
+                'transition-transform duration-150 hover:scale-105 cursor-pointer hover:shadow-lg'
             )}
             onClick={() => {
                 setActiveComponent(props.info);
             }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
         >
             <div
                 className={`flex items-center justify-center w-full h-44 relative flex-shrink-0 overflow-hidden bg-neutral-200`}
