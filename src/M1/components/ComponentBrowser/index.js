@@ -8,6 +8,8 @@ import { IoPricetagsOutline } from 'react-icons/io5';
 import VirtualGrid from './components/VirtualGrid';
 import { fetchWebstylers } from './helper';
 import Modal from './components/Modal';
+import BeatLoader from 'react-spinners/BeatLoader';
+import { motion } from 'framer-motion';
 
 const icons = {
     layer: LuLayers2,
@@ -522,3 +524,29 @@ export default function ComponentBrowser(props) {
         </Container>
     );
 }
+
+ComponentBrowser.Loader = () => {
+    return (
+        <motion.div
+            className="flex flex-col items-center justify-center min-h-[400px] text-center p-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+            <BeatLoader color="rgb(37 99 235)" size={12} margin={4} />
+            <motion.p
+                className="mt-4 text-neutral-700 text-sm sm:text-base"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+            >
+                {website.localize({
+                    en: 'Fetching standard foundations for your next website-hang tight!',
+                    fr: 'Récupération des fondations standard pour votre prochain site web - Patientez !',
+                    es: 'Obteniendo los fundamentos estándar para tu próximo sitio web - ¡Espera un momento!',
+                    zh: '正在获取您下一个网站的标准基础 - 请稍候！',
+                })}
+            </motion.p>
+        </motion.div>
+    );
+};

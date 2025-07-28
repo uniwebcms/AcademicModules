@@ -4742,7 +4742,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
           ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
           ["react-popper", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.3.0"],\
-          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.13.8"],\
+          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
           ["react-virtualized", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:9.22.6"],\
           ["tailwindcss", "npm:3.4.17"]\
         ],\
@@ -8726,6 +8726,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
           ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
           ["react-intersection-observer", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:9.16.0"],\
+          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
           ["react-virtuoso", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:4.12.5"],\
           ["recharts", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:2.15.1"],\
           ["tailwindcss", "npm:3.4.17"]\
@@ -11492,17 +11493,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["react-spinners", [\
-      ["npm:0.13.8", {\
-        "packageLocation": "./.yarn/cache/react-spinners-npm-0.13.8-bf54f5b324-8564af7bf5.zip/node_modules/react-spinners/",\
+      ["npm:0.17.0", {\
+        "packageLocation": "./.yarn/cache/react-spinners-npm-0.17.0-5a20d5c359-ea7d3af013.zip/node_modules/react-spinners/",\
         "packageDependencies": [\
-          ["react-spinners", "npm:0.13.8"]\
+          ["react-spinners", "npm:0.17.0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.13.8", {\
-        "packageLocation": "./.yarn/__virtual__/react-spinners-virtual-e8c7a52299/0/cache/react-spinners-npm-0.13.8-bf54f5b324-8564af7bf5.zip/node_modules/react-spinners/",\
+      ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-spinners-virtual-2626619ce2/0/cache/react-spinners-npm-0.17.0-5a20d5c359-ea7d3af013.zip/node_modules/react-spinners/",\
         "packageDependencies": [\
-          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.13.8"],\
+          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
           ["@types/react", null],\
           ["@types/react-dom", null],\
           ["react", "npm:18.3.1"],\

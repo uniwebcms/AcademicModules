@@ -9,6 +9,8 @@ import { IoPricetagsOutline } from 'react-icons/io5';
 import VirtualGrid from './components/VirtualGrid';
 import { normalizeData } from './helper';
 import Modal from './components/Modal';
+import BeatLoader from 'react-spinners/BeatLoader';
+import { motion } from 'framer-motion';
 
 const icons = {
     layer: LuLayers2,
@@ -468,49 +470,6 @@ export default function TemplateBrowser(props) {
         </Link>
     ) : null;
 
-    // const skipLink = (
-    //     <div
-    //         className="flex items-center space-x-1 text-base lg:text-lg font-medium group text-neutral-600/95 hover:text-neutral-700 cursor-pointer ml-6 lg:ml-auto w-44 lg:w-fit justify-end lg:justify-normal"
-    //         onClick={() => {
-    //             const appDomain = uniweb.getAppDomain();
-    //             fetch(`${appDomain}/temp_resource.php`, {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json', // Specify content type
-    //                 },
-    //                 body: JSON.stringify({
-    //                     action: 'store',
-    //                     data: {
-    //                         templateSite: '_blank',
-    //                     },
-    //                 }), // Convert data object to JSON string
-    //             })
-    //                 .then((response) => {
-    //                     if (!response.ok) {
-    //                         throw new Error(`HTTP error! status: ${response.status}`);
-    //                     }
-    //                     return response.json(); // Parse the JSON response
-    //                 })
-    //                 .then((data) => {
-    //                     window.location.replace(data);
-    //                 })
-    //                 .catch((error) => {
-    //                     console.error('Error:', error); // Handle any errors
-    //                 });
-    //         }}
-    //     >
-    //         <span className="text-nowrap">
-    //             {website.localize({
-    //                 en: 'Skip template',
-    //                 fr: 'Passer le modèle',
-    //                 es: 'Saltar plantilla',
-    //                 zh: '跳过模板',
-    //             })}
-    //         </span>
-    //         <HiArrowRight className="w-5 h-5 text-inherit group-hover:translate-x-1 transition-transform flex-shrink-0" />
-    //     </div>
-    // );
-
     return (
         <Container className="max-w-9xl mx-auto">
             {/* title, search and link in a bar */}
@@ -543,3 +502,29 @@ export default function TemplateBrowser(props) {
         </Container>
     );
 }
+
+TemplateBrowser.Loader = () => {
+    return (
+        <motion.div
+            className="flex flex-col items-center justify-center min-h-[400px] text-center p-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+            <BeatLoader color="rgb(37 99 235)" size={12} margin={4} />
+            <motion.p
+                className="mt-4 text-neutral-700 text-sm sm:text-base"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+            >
+                {website.localize({
+                    en: 'Loading templates. This should only take a moment.',
+                    fr: 'Chargement des modèles. Cela ne devrait prendre qu’un instant.',
+                    es: 'Cargando plantillas. Esto debería tomar solo un momento.',
+                    zh: '正在加载模板。这应该只需要片刻。',
+                })}
+            </motion.p>
+        </motion.div>
+    );
+};
