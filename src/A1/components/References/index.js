@@ -11,7 +11,7 @@ import UrlLogo from './external.png';
 
 ProfileReferences.Loader = ({ block }) => {
     return (
-        <div className="flex flex-col items-center justify-center py-20 text-center">
+        <div className="flex flex-col items-center justify-center py-60 text-center">
             <div className="flex items-center justify-center space-x-2">
                 <div className="h-4 w-4 rounded-full bg-blue-400 animate-pulse [animation-delay:-0.3s]"></div>
                 <div className="h-4 w-4 rounded-full bg-blue-400 animate-pulse [animation-delay:-0.15s]"></div>
