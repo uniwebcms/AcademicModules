@@ -9,6 +9,30 @@ import AdvancedSmartCards from './AdvancedSmartCards';
 import DOILogo from './doi.svg';
 import UrlLogo from './external.png';
 
+ProfileReferences.Loader = ({ block }) => {
+    return (
+        <div className="flex flex-col items-center justify-center py-60 text-center">
+            <div className="flex items-center justify-center space-x-2">
+                <div className="h-4 w-4 rounded-full bg-blue-400 animate-pulse [animation-delay:-0.3s]"></div>
+                <div className="h-4 w-4 rounded-full bg-blue-400 animate-pulse [animation-delay:-0.15s]"></div>
+                <div className="h-4 w-4 rounded-full bg-blue-400 animate-pulse"></div>
+            </div>
+            <p className="mt-4 text-lg font-semibold text-text-color">
+                {website.localize({
+                    en: 'Loading publications...',
+                    fr: 'Chargement des publications...',
+                })}
+            </p>
+            <p className="mt-1 text-sm text-text-color-60">
+                {website.localize({
+                    en: 'Please wait while we fetch the content.',
+                    fr: 'Veuillez patienter pendant que nous récupérons le contenu.',
+                })}
+            </p>
+        </div>
+    );
+};
+
 const ItemMarkup = (props) => {
     const { profile, href, ...rest } = props;
 
