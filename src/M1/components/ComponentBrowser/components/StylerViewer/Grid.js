@@ -154,7 +154,7 @@ const PresetImageSlideshow = ({ isHovered, images, alt }) => {
 
     return (
         <>
-            <img src={currentImage} alt={alt} className={`w-full h-full object-contain`} />;
+            <img src={currentImage} alt={alt} className={`w-full h-full object-contain`} />
             {isHovered && imageCount > 1 && (
                 <div
                     style={{
