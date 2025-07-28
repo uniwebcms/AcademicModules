@@ -138,7 +138,7 @@ const PresetImageSlideshow = ({ isHovered, images, alt }) => {
                 setCurrentImage(images[indexRef.current]);
                 setActiveIndex(indexRef.current);
                 indexRef.current = (indexRef.current + 1) % imageCount;
-            }, 1000);
+            }, 800);
         } else {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
@@ -155,7 +155,7 @@ const PresetImageSlideshow = ({ isHovered, images, alt }) => {
     return (
         <>
             <img src={currentImage} alt={alt} className={`w-full h-full object-contain`} />
-            {isHovered && imageCount > 1 && (
+            {/* {isHovered && imageCount > 1 && (
                 <div
                     style={{
                         position: 'absolute',
@@ -175,7 +175,7 @@ const PresetImageSlideshow = ({ isHovered, images, alt }) => {
                         }}
                     />
                 </div>
-            )}
+            )} */}
         </>
     );
 };

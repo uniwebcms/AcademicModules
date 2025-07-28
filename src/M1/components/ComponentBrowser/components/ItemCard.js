@@ -79,7 +79,7 @@ const ItemCard = React.memo(({ item, schema, getSchema }) => {
                     if (!schema) return;
                     setViewerOpen(true);
                 }}
-                className="flex flex-col w-full h-full relative group rounded-lg overflow-hidden hover:shadow-md ring-1 ring-neutral-300"
+                className="flex flex-col w-full h-full relative group rounded-lg overflow-hidden hover:shadow-md ring-1 ring-neutral-300 cursor-pointer"
             >
                 {/* Static Image & badge */}
                 <div className="relative w-full aspect-square border-b border-neutral-300">
