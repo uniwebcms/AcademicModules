@@ -14,51 +14,103 @@ export: true
 elements:
   title:
   subtitle:
+  icon:
+    description:
+      en: Icon that appears above the FAQ section title.
+      fr: Icône qui apparaît au-dessus du titre de la section FAQ.
 
 items:
   separator: divider
   elements:
     title:
       description:
-        en: The title of the FAQ section.
-        fr: Le titre de la section FAQ.
+        en: The question text.
+        fr: Le texte de la question.
     text:
       description:
-        en: The answer to the question.
-        fr: La réponse à la question.
+        en: The answer text.
+        fr: Le texte de la réponse.
 
 properties:
-  appearance:
+  layout:
     label:
-      en: Appearance
-      fr: Apparence
+      en: Layout
+      fr: Mise en page
     type: string
-    default: subtle
+    default: q_left_a_right
     enum:
       - label:
-          en: Subtle
-          fr: Subtil
-        value: subtle
+          en: Question on the left, answer on the right
+          fr: Question à gauche, réponse à droite
+        value: q_left_a_right
       - label:
-          en: Fancy
-          fr: Fantaisie
-        value: fancy
+          en: Question on top, answer below
+          fr: Question en haut, réponse en dessous
+        value: q_top_a_bottom
+      - label:
+          en: Question on the right, answer on the left
+          fr: Question à droite, réponse à gauche
+        value: q_right_a_left
     description:
-      en: The appearance of the FAQ.
-      fr: L'apparence de la FAQ.
+      en: The layout of the FAQ items.
+      fr: La mise en page des éléments de la FAQ.
+  initial_state:
+    label:
+      en: Initial Answer State
+      fr: État initial des réponses
+    type: string
+    default: all_closed
+    enum:
+      - label:
+          en: All answers collapsed
+          fr: Toutes les réponses repliées
+        value: all_closed
+      - label:
+          en: All answers expanded
+          fr: Toutes les réponses développées
+        value: all_open
+      - label:
+          en: First answer expanded
+          fr: Première réponse développée
+        value: open_first
+    description:
+      en: Controls whether FAQ answers are initially collapsed or expanded. Applies only when using a centralized layout.
+      fr: Contrôle si les réponses de la FAQ sont repliées ou développées au départ. S’applique uniquement à la mise en page centralisée.
+  with_border:
+    label:
+      en: Show Border
+      fr: Afficher la bordure
+    type: boolean
+    default: false
+    description:
+      en: Adds a border around each question and answer block. Applies only in centralized layout mode.
+      fr: Ajoute une bordure autour de chaque bloc question-réponse. S’applique uniquement à la mise en page centralisée.
   
 presets:
-  subtle:
+  center_boxed_first_open:
     label:
-      en: Subtle appearance
-      fr: Apparence subtile
+      en: Centered layout with first answer open, bordered
+      fr: Mise en page centrée avec la première réponse ouverte, bordée
     properties:
-      appearance: subtle
-    image: subtle.png
-  fancy:
+      layout: q_top_a_bottom
+      initial_state: open_first
+      with_border: true
+    image: center_boxed_first_open.png
+  q_l_a_r:
     label:
-      en: Fancy appearance with no preset
-      fr: Apparence fantaisie sans préréglage
+      en: Question on left, answer on right
+      fr: Question à gauche, réponse à droite
     properties:
-      appearance: fancy
-    image: fancy.png
+      layout: q_left_a_right
+      initial_state: all_closed
+      with_border: false
+    image: q_l_a_r.png
+  q_r_a_l:
+    label:
+      en: Question on right, answer on left
+      fr: Question à droite, réponse à gauche
+    properties:
+      layout: q_right_a_left
+      initial_state: all_closed
+      with_border: false
+    image: q_r_a_l.png
