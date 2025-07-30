@@ -49,7 +49,7 @@ export default function FAQ(props) {
                         </p>
                     )}
                 </div>
-                <dl className="mt-10 lg:mt-14 space-y-8 divide-y divide-neutral-900/10">
+                <dl className="mt-10 lg:mt-14 space-y-8 divide-y divide-text-color/10">
                     {items.map((item, index) => (
                         <div
                             key={index}
