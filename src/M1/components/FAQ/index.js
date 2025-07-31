@@ -20,9 +20,7 @@ export default function FAQ(props) {
     } = block.getBlockProperties();
 
     const [openState, setOpenState] = useState(() => {
-        if (initial_state === 'all_open') {
-            return items.map(() => true);
-        } else if (initial_state === 'all_closed') {
+        if (initial_state === 'all_closed') {
             return items.map(() => false);
         } else {
             return items.map((item, index) => index === 0);
@@ -119,8 +117,9 @@ export default function FAQ(props) {
                                     'border border-neutral-200 p-6 rounded-xl bg-text-color-0'
                             )}
                             onClick={() => {
+                                // open open a new one, auto close others
                                 setOpenState((prev) =>
-                                    prev.map((state, i) => (i === index ? !state : state))
+                                    prev.map((state, i) => (i === index ? !state : false))
                                 );
                             }}
                             role="button"
@@ -141,7 +140,7 @@ export default function FAQ(props) {
                             </dt>
                             <dd
                                 className={twJoin(
-                                    'overflow-hidden transition-all duration-300 ease-in-out',
+                                    'overflow-hidden',
                                     openState[index] ? 'max-h-screen' : 'max-h-0'
                                 )}
                             >

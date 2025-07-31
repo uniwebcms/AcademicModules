@@ -66,10 +66,6 @@ properties:
           fr: Toutes les réponses repliées
         value: all_closed
       - label:
-          en: All answers expanded
-          fr: Toutes les réponses développées
-        value: all_open
-      - label:
           en: First answer expanded
           fr: Première réponse développée
         value: open_first
