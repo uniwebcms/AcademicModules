@@ -4,6 +4,8 @@ import Container from '../_utils/Container';
 import { parseReference, parseProfileData } from '../_utils/reference';
 import CVRefRender from '../_utils/reference/CVRefRender';
 import Sidebar from './Sidebar';
+import DOILogo from './doi.svg';
+import UrlLogo from './external.png';
 
 export default function Reference({ website, block, input }) {
     const profile = input.profile;
@@ -72,9 +74,21 @@ export default function Reference({ website, block, input }) {
 
     let categoryLabel = category.replace('_', ' ');
 
-    const { title, author, isStandard, page, pages, page_range, journal_issue, journal_volume } =
-        parsedData;
+    const {
+        title,
+        author,
+        isStandard,
+        page,
+        pages,
+        page_range,
+        journal_issue,
+        journal_volume,
+        DOI = '',
+        url,
+    } = parsedData;
     const journal = parsedData?.['container-title'] || '';
+
+    let externalUrl = url || '';
 
     const topics = profile.at('topics');
 
@@ -85,6 +99,11 @@ export default function Reference({ website, block, input }) {
     let pageNum = page || pages || page_range || '';
 
     const { href, src } = assetInfo;
+
+    let finalDoi =
+        DOI && DOI.startsWith('https://doi.org/') ? DOI.replace('https://doi.org/', '') : DOI;
+
+    let completeDoi = finalDoi ? `https://doi.org/${DOI}` : '';
 
     let topicsMarkup =
         topics && topics.length ? (
@@ -106,10 +125,6 @@ export default function Reference({ website, block, input }) {
                             )}
                         </React.Fragment>
                     );
-                    // return {
-                    //     value: topicId,
-                    //     label: parsedInfo.name
-                    // };
                 })}
             </p>
         ) : null;
@@ -174,6 +189,31 @@ export default function Reference({ website, block, input }) {
                     {year ? <span>{`(${year})`}</span> : null}
                     {pageNum ? <span>{`${pageNum}`}</span> : null}
                 </p>
+                <div className={`flex items-center space-x-1 mb-4`}>
+                    {completeDoi ? (
+                        <div className={`w-7 h-7 flex`}>
+                            <a
+                                target="_blank"
+                                className={`w-7 h-7 rounded-full cursor-pointer`}
+                                href={completeDoi}
+                            >
+                                <DOILogo className={`w-7 h-7`}></DOILogo>
+                            </a>
+                        </div>
+                    ) : null}
+                    {externalUrl ? (
+                        <div className={`w-8 h-8 flex items-center`}>
+                            <a
+                                target="_blank"
+                                className={`w-8 h-8 rounded-full cursor-pointer text-text-color-60 hover:text-text-color-80`}
+                                href={externalUrl}
+                            >
+                                <img src={UrlLogo} className={`block w-full h-full rounded-full`} />
+                                {/* <UrlLogo className={`w-8 h-8`}></UrlLogo> */}
+                            </a>
+                        </div>
+                    ) : null}
+                </div>
             </>
         );
     } else {
