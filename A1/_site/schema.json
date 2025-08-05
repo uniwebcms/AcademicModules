@@ -3800,6 +3800,41 @@
           "en": "The space on top and bottom of the layout.",
           "fr": "L'espace en haut et en bas de la mise en page."
         }
+      },
+      "image_fit": {
+        "label": {
+          "en": "Image Fit",
+          "fr": "Ajustement de l'image"
+        },
+        "type": "string",
+        "default": "cover",
+        "enum": [
+          {
+            "label": {
+              "en": "Cover (Crop to Fill)",
+              "fr": "Couverture (Recadrer pour remplir)"
+            },
+            "value": "cover"
+          },
+          {
+            "label": {
+              "en": "Contain (Fit Inside)",
+              "fr": "Contenir (S'adapter à l'intérieur)"
+            },
+            "value": "contain"
+          },
+          {
+            "label": {
+              "en": "Fill (Stretch)",
+              "fr": "Remplir (Étendre)"
+            },
+            "value": "fill"
+          }
+        ],
+        "description": {
+          "en": "How the image should fit within its container.",
+          "fr": "Comment l'image doit s'adapter à son conteneur."
+        }
       }
     },
     "items": {
