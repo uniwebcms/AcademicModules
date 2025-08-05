@@ -9,7 +9,7 @@ export default function List({ block, website }) {
 
     const items = block.getBlockItems();
 
-    const { vertical_padding = 'lg' } = block.getBlockProperties();
+    const { vertical_padding = 'lg', image_fit = 'cover' } = block.getBlockProperties();
 
     let py = '';
 
@@ -22,6 +22,17 @@ export default function List({ block, website }) {
     } else if (vertical_padding === 'lg') {
         py = 'py-12 lg:py-24';
     }
+
+    let imageFit;
+
+    if (image_fit === 'cover') {
+        imageFit = 'object-cover';
+    } else if (image_fit === 'contain') {
+        imageFit = 'object-contain';
+    } else if (image_fit === 'fill') {
+        imageFit = 'object-fill';
+    }
+
     return (
         <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
@@ -47,7 +58,6 @@ export default function List({ block, website }) {
                     >
                         {items.map((item, index) => {
                             const { banner, title, subtitle, links, paragraphs } = item;
-                            const link = links[0];
 
                             return (
                                 <div
@@ -60,7 +70,10 @@ export default function List({ block, website }) {
                                                 <Image
                                                     profile={getPageProfile()}
                                                     {...banner}
-                                                    className="absolute inset-0 object-cover w-full h-full rounded-2xl bg-text-color-10"
+                                                    className={twJoin(
+                                                        'absolute inset-0 w-full h-full rounded-2xl bg-text-color-10',
+                                                        imageFit
+                                                    )}
                                                 />
                                             )}
                                             <div className="absolute inset-0 rounded-2xl" />
