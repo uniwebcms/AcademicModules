@@ -41,11 +41,11 @@ export default function (props) {
 
     if (!metadata) return null;
 
-    const { type, embedSrc, url } = metadata;
+    const { embedSrc, url } = metadata;
 
     let body = null;
 
-    if (type === 'video') {
+    if (embedSrc) {
         body = <Video url={embedSrc}></Video>;
     } else {
         body = <LocalVideo url={url} profile={profile}></LocalVideo>;

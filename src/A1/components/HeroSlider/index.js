@@ -51,7 +51,7 @@ const Item = ({ item, properties, block }) => {
                                 <SafeHtml
                                     value={pretitle}
                                     as="h2"
-                                    className="mb-1 lg:mb-3 text-xl sm:text-2xl"
+                                    className="mb-1 lg:mb-3 text-lg sm:text-xl lg:text-2xl"
                                 />
                             ) : null}
                             <SafeHtml
@@ -63,13 +63,13 @@ const Item = ({ item, properties, block }) => {
                                 <SafeHtml
                                     value={subtitle}
                                     as="h2"
-                                    className="mt-2 lg:mt-4 leading-8 text-lg sm:text-xl"
+                                    className="mt-2 lg:mt-4 leading-8 text-xl sm:text-2xl lg:tex-3xl"
                                 />
                             ) : null}
                             {paragraphs?.length ? (
                                 <SafeHtml
                                     value={paragraphs}
-                                    className="text-base mb-2 mt-4 lg:mt-6 lg:text-[17px]"
+                                    className="text-base mb-2 mt-4 lg:mt-6 sm:text-lg lg:text-xl"
                                 />
                             ) : null}
                             {links?.length ? (
