@@ -63,13 +63,13 @@ const Item = ({ item, properties, block }) => {
                                 <SafeHtml
                                     value={subtitle}
                                     as="h2"
-                                    className="mt-2 lg:mt-4 leading-8 text-xl sm:text-2xl lg:tex-3xl"
+                                    className="mt-2 lg:mt-4 leading-8 text-xl sm:text-2xl lg:text-3xl"
                                 />
                             ) : null}
                             {paragraphs?.length ? (
                                 <SafeHtml
                                     value={paragraphs}
-                                    className="text-base mb-2 mt-4 lg:mt-6 sm:text-lg lg:text-xl"
+                                    className="text-lg mb-2 mt-4 lg:mt-6 sm:text-xl lg:text-2xl"
                                 />
                             ) : null}
                             {links?.length ? (
@@ -80,7 +80,7 @@ const Item = ({ item, properties, block }) => {
                                                 <Link
                                                     key={index}
                                                     to={link.href}
-                                                    className="rounded-md bg-primary-200 px-4 py-2.5 text-sm md:text-base !text-primary-800 font-semibold shadow-sm hover:bg-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                                    className="rounded-md bg-primary-200 px-4 py-2.5 text-sm sm:text-base md:text-lg !text-primary-800 font-semibold shadow-sm hover:bg-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                                 >
                                                     {link.label}
                                                 </Link>
@@ -90,7 +90,7 @@ const Item = ({ item, properties, block }) => {
                                                 <Link
                                                     key={index}
                                                     to={link.href}
-                                                    className="text-sm md:text-base font-semibold leading-6 text-primary-200 hover:underline hover:text-primary-300"
+                                                    className="text-sm sm:text-base md:text-lg font-semibold leading-6 text-primary-200 hover:underline hover:text-primary-300"
                                                 >
                                                     {link.label}{' '}
                                                     <span className="!text-inherit">→</span>
