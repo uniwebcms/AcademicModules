@@ -129,11 +129,11 @@ export default function navbar(props) {
                             );
                         })}
                         {sign_up_link && (
-                            <li>
+                            <li className={linkGroups.length < 2 ? 'ml-auto' : ''}>
                                 <Link
                                     to={sign_up_link}
                                     target="_blank"
-                                    className="block bg-black hover:bg-[#3C3C3C] text-white py-2 px-5 h-[44px] max-w-[105px] rounded-xl font-medium leading-[1.8]"
+                                    className="block bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color py-2 px-5 h-[44px] max-w-[105px] rounded-xl font-medium leading-[1.8]"
                                 >
                                     {website.localize({
                                         en: 'Sign up',
@@ -158,7 +158,7 @@ export default function navbar(props) {
                         </Link>
                     </div>
                     <div className="flex items-center gap-4">
-                        <button
+                        <div
                             className="relative"
                             aria-label="Toggle Menu"
                             onClick={() => setMobileOpen((v) => !v)}
@@ -168,12 +168,12 @@ export default function navbar(props) {
                             ) : (
                                 <LuMenu className="h-[26px] w-[26px] text-text-color" />
                             )}
-                        </button>
+                        </div>
                     </div>
                 </div>
                 {/* Overlay menu */}
                 {mobileOpen && (
-                    <div className="fixed inset-0 z-40 bg-white pt-[64px] p-6 overflow-y-auto">
+                    <div className="fixed inset-0 z-40 bg-text-color-0 pt-[64px] p-6 overflow-y-auto">
                         <ul className="flex flex-col gap-6">
                             {linkGroups.map((links, gIndex) =>
                                 links.map((link, lIndex) => {
@@ -238,7 +238,7 @@ export default function navbar(props) {
                                     <Link
                                         to={sign_up_link}
                                         target="_blank"
-                                        className="block bg-black text-white py-2 px-5 rounded-xl font-medium text-center"
+                                        className="block bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color py-2 px-5 rounded-xl font-medium text-center"
                                     >
                                         {website.localize({
                                             en: 'Sign up',

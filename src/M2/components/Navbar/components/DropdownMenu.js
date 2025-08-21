@@ -25,7 +25,7 @@ export default function PopoverMenu(props) {
                         close();
                     }}
                 >
-                    <Popover.Button ref={triggerRef} className="focus:outline-none">
+                    <Popover.Button as="div" ref={triggerRef}>
                         {trigger}
                     </Popover.Button>
                     <Transition
@@ -47,7 +47,7 @@ export default function PopoverMenu(props) {
                             <ul
                                 className={`grid ${getColumnClass(
                                     menuItems.length
-                                )} gap-1 p-2 min-w-max bg-neutral-50 rounded-md shadow-lg shadow-text-color-40 ring-1 ring-text-color-20 ring-opacity-10`}
+                                )} gap-1 p-2 min-w-max bg-neutral-50 rounded-md shadow-lg shadow-text-color/20`}
                             >
                                 {menuItems.map((item, i) => (
                                     <li

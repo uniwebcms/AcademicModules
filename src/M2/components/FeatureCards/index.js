@@ -15,7 +15,9 @@ export default function FeatureCard(props) {
                     <h2 className="text-[42px] md:text-[48px] xl:text-[72px] leading-[118%] md:leading-[112%]">
                         {title}
                     </h2>
-                    <p className="text-lg text-heading-color-70 mt-4">{subtitle}</p>
+                    <p className="text-lg md:text-xl lg:text-2xl text-heading-color/70 mt-4">
+                        {subtitle}
+                    </p>
                 </div>
                 <ul className="grid lg:grid-cols-3 mt-8 sm:mt-14 gap-4 sm:gap-6">
                     {items.map((item, index) => {
@@ -29,7 +31,7 @@ export default function FeatureCard(props) {
                             <li key={index}>
                                 <Wrapper
                                     {...wrapperProps}
-                                    className="relative block h-full bg-text-color-10 p-6 sm:p-8 rounded-[12px] text-left hover:bg-text-color-20"
+                                    className="relative block h-full bg-text-color/10 p-6 sm:p-8 rounded-[12px] text-left hover:bg-text-color/20"
                                 >
                                     <Image
                                         profile={page.getPageProfile()}
@@ -41,7 +43,7 @@ export default function FeatureCard(props) {
                                     </h3>
                                     <SafeHtml
                                         value={paragraphs}
-                                        className="mt-2 sm:mt-4 text-lg text-text-color-70 leading-[150%] -tracking-[0.36px]"
+                                        className="mt-2 sm:mt-4 text-lg text-text-color/90 leading-[150%] -tracking-[0.36px]"
                                     />
                                 </Wrapper>
                             </li>

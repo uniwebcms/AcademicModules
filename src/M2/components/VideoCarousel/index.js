@@ -158,7 +158,7 @@ export default function VideoCarousel(props) {
             </div>
             <div
                 ref={containerRef}
-                className="mt-8 sm:mt-14 flex items-center gap-4 md:gap-6 lg:gap-8 overflow-x-auto scroll-smooth"
+                className="mt-8 sm:mt-14 flex items-center gap-4 md:gap-6 lg:gap-8 overflow-x-auto scroll-smooth py-8"
                 style={{
                     scrollBehavior: 'smooth',
                     paddingLeft: '50%',
@@ -190,7 +190,7 @@ export default function VideoCarousel(props) {
                             <video
                                 ref={(el) => (videoRefs.current[index] = el)}
                                 src={video.src}
-                                className="w-full h-full object-cover rounded-lg shadow-2xl"
+                                className="w-full h-full object-cover rounded-lg shadow-lg"
                                 muted
                                 loop
                                 playsInline
