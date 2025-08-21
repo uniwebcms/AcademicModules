@@ -80,18 +80,18 @@ export default function LogoCarousel(props) {
                 {...image}
                 // Use object-contain for logos to ensure they are fully visible within their bounds.
                 // Adjust height and max-width as needed.
-                className="h-12 w-auto object-contain max-w-[120px] lg:max-w-[200px]"
+                className="h-16 w-auto object-contain max-w-[120px] lg:max-w-[200px]"
             />
         </li>
     ));
 
     return (
-        <div className="overflow-hidden py-8">
-            <h2 className="text-base sm:text-lg lg:text-2xl mt-4 md:mt-12 mb-4 sm:mb-6 md:mb-10 text-center px-5">
-                {title}
-            </h2>
+        <div className="px-6 py-12 overflow-hidden">
+            <div className="text-center">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl">{title}</h2>
+            </div>
 
-            <div className="relative overflow-hidden">
+            <div className="mt-12 relative overflow-hidden">
                 {/*
                   The main animated container.
                   - flex: to arrange children (<ul>s) in a row.

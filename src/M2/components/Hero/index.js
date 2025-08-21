@@ -18,8 +18,11 @@ export default function Hero(props) {
                         className="text-[2rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] leading-none text-center"
                     />
                 </div>
-                <div className="max-w-[500px] xl:max-w-[965px] mx-auto mt-6 xl:mt-8">
-                    <SafeHtml value={paragraphs} className="text-center text-xl leading-[150%]" />
+                <div className="max-w-[500px] xl:max-w-[768px] mx-auto mt-6 xl:mt-8">
+                    <SafeHtml
+                        value={paragraphs}
+                        className="text-center text-xl xl:text-2xl leading-[150%]"
+                    />
                 </div>
                 {links.length ? (
                     <div className="flex flex-col md:flex-row gap-x-8 gap-y-6 md:justify-center mt-6 xl:mt-8">

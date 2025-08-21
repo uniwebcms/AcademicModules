@@ -12,9 +12,7 @@ export default function FeatureCard(props) {
         <div className="px-6 py-12">
             <div className="max-w-[1400px] mx-auto">
                 <div className="text-center">
-                    <h2 className="text-[42px] md:text-[48px] xl:text-[72px] leading-[118%] md:leading-[112%]">
-                        {title}
-                    </h2>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{title}</h2>
                     <p className="text-lg md:text-xl lg:text-2xl text-heading-color/70 mt-4">
                         {subtitle}
                     </p>

@@ -17,7 +17,7 @@ export default function FAQ(props) {
     );
 
     return (
-        <div className="py-[60px] px-5">
+        <div className="px-6 py-12">
             <div className="text-center">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{title}</h2>
             </div>

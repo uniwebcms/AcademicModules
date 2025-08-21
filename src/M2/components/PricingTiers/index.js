@@ -23,9 +23,7 @@ export default function PricingTier(props) {
     return (
         <div className="pt-[60px] pb-10 px-5">
             <div className="text-center">
-                <h2 className="text-[42px] md:text-[48px] xl:text-[72px] leading-[118%] md:leading-[112%]">
-                    {title}
-                </h2>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{title}</h2>
                 {month_annual_toggle && (
                     <div className="flex items-center justify-center gap-4 mt-6 mb-4">
                         <span

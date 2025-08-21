@@ -152,9 +152,7 @@ export default function VideoCarousel(props) {
     return (
         <div className="relative w-full overflow-hidden px-6 py-12">
             <div className="text-center">
-                <h2 className="text-[42px] md:text-[48px] xl:text-[72px] leading-[118%] md:leading-[112%]">
-                    {title}
-                </h2>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{title}</h2>
             </div>
             <div
                 ref={containerRef}
