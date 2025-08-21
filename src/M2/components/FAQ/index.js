@@ -30,7 +30,7 @@ export default function FAQ(props) {
                     return (
                         <button
                             key={index}
-                            className="w-full rounded-xl p-6 shadow-lg shadow-neutral-300 border border-neutral-100"
+                            className="w-full rounded-xl p-6 shadow-lg shadow-neutral-300 border border-neutral-100 focus:outline-none"
                             onClick={() =>
                                 setOpenState((prev) => {
                                     const newState = { ...prev };

@@ -11,6 +11,13 @@ description:
 category: article
 export: true
 
+input:
+  type: article
+  limit: false
+
+elements:
+  title:
+
 properties:
   layout:
     label: 

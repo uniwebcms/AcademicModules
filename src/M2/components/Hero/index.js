@@ -30,11 +30,11 @@ export default function Hero(props) {
                                     key={index}
                                     href={href}
                                     className={twJoin(
-                                        'pl-6 pr-5 py-3 text-base flex items-center justify-center rounded-lg gap-2 text-neutral-50 bg-neutral-950 group'
+                                        'pl-6 pr-5 py-3 text-base flex items-center justify-center rounded-lg gap-2 bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color group'
                                     )}
                                 >
                                     {label}
-                                    <LuArrowRight className="w-4 h-4 text-inherit group-hover:translate-x-1 transition-transform duration-150" />
+                                    <LuArrowRight className="w-4 h-4 text-inherit group-hover:text-inherit group-hover:translate-x-1 transition-transform duration-150" />
                                 </Link>
                             );
                         })}

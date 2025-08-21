@@ -11,5 +11,16 @@ description:
 category: content
 export: true
 
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    title:
+    text:
+
+
 images:
   - example.png

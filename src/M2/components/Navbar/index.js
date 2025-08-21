@@ -26,6 +26,20 @@ const parseNavbarContent = (block) => {
     };
 };
 
+const setWrapperStyle = (theme, block, style) => {
+    const context = theme?.split('__')?.[1];
+    const colors = block.standardOptions?.colors?.elements?.[context] || {};
+    const vars = block.standardOptions?.colors?.vars?.[context] || {};
+
+    Object.keys(vars).forEach((key) => {
+        style[`${key}`] = vars[key];
+    });
+
+    Object.keys(colors).forEach((key) => {
+        style[`--${key}`] = colors[key];
+    });
+};
+
 export default function navbar(props) {
     const { block, website, page } = props;
 
@@ -46,6 +60,9 @@ export default function navbar(props) {
     useEffect(() => {
         setMobileOpen(false);
     }, [page.activeRoute]);
+
+    const popoverStyle = {};
+    setWrapperStyle(website.themeName, block, popoverStyle);
 
     return (
         <>

@@ -116,7 +116,7 @@ export default function PricingTier(props) {
                         >
                             {badge && (
                                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                                    <span className="h-7 bg-accent-600 text-bg-color px-4 rounded-full text-sm flex items-center justify-center">
+                                    <span className="h-7 bg-accent-600 text-accent-50 px-4 rounded-full text-sm flex items-center justify-center">
                                         {badge.content}
                                     </span>
                                 </div>
@@ -185,7 +185,7 @@ export default function PricingTier(props) {
                 <div className="mt-8 text-center">
                     <Link
                         to={website.makeHref(link.href)}
-                        className="inline-flex items-center justify-center px-8 py-3 text-lg bg-btn-hover-color text-btn-hover-text-color hover:bg-btn-color hover:text-btn-text-color rounded-lg hover:bg-primary-700 transition-colors duration-300"
+                        className="inline-flex items-center justify-center px-8 py-3 text-lg bg-btn-hover-color text-btn-hover-text-color hover:bg-btn-color hover:text-btn-text-color rounded-lg transition-colors duration-300"
                     >
                         {link.label}
                     </Link>

@@ -11,5 +11,22 @@ description:
 category: pricing
 export: true
 
+elements:
+  title:
+  list:
+    description:
+      en: Use a list to define major feature categories and their corresponding features.
+      fr: Utilisez une liste pour définir les principales catégories de fonctionnalités et leurs fonctionnalités correspondantes.
+
+items:
+  separator: divider
+  elements:
+    title:
+    link:
+    list:
+      description:
+        en: Use a list to define features available in each pricing tier. Text and inline icons are supported.
+        fr: Utilisez une liste pour définir les fonctionnalités disponibles dans chaque niveau de tarification. Le texte et les icônes en ligne sont pris en charge.
+
 images:
   - example.png
