@@ -29,7 +29,7 @@ const VideoCard = ({ width, video, title, subtitle }) => {
 
     return (
         <div
-            className="p-6 space-y-6 relative rounded-xl overflow-hidden aspect-[9/16] shadow-md group flex-shrink-0 bg-text-color-30"
+            className="p-6 space-y-6 relative rounded-xl overflow-hidden aspect-[9/16] shadow-md group flex-shrink-0 bg-text-color/10"
             style={{ width }}
             onMouseEnter={() => {
                 if (ref.current) {
@@ -141,7 +141,7 @@ export default function ShowcaseCarousel(props) {
                         {title}
                     </h2>
                     {subtitle && (
-                        <p className="text-base md:text-lg xl:text-xl text-heading-color font-light">
+                        <p className="text-base md:text-lg xl:text-xl text-heading-color/70 font-light">
                             {subtitle}
                         </p>
                     )}
@@ -149,7 +149,7 @@ export default function ShowcaseCarousel(props) {
                 {link && (
                     <Link
                         to={link.href}
-                        className="flex px-8 py-3 sm:py-4 rounded-xl gap-2 items-center justify-center text-bg-color bg-text-color hover:bg-text-color-90 border shadow-md whitespace-nowrap"
+                        className="flex px-8 py-3 sm:py-4 rounded-xl gap-2 items-center justify-center bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color border shadow-md whitespace-nowrap"
                     >
                         {link.label}
                     </Link>
