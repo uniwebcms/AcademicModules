@@ -29,7 +29,7 @@ const VideoCard = ({ width, video, title, subtitle }) => {
 
     return (
         <div
-            className="p-6 space-y-6 relative rounded-xl overflow-hidden aspect-[9/16] shadow-md group flex-shrink-0 bg-text-color/10"
+            className="p-6 space-y-6 relative rounded-xl overflow-hidden shadow-md group flex-shrink-0 bg-text-color/10"
             style={{ width }}
             onMouseEnter={() => {
                 if (ref.current) {
@@ -160,7 +160,7 @@ export default function ShowcaseCarousel(props) {
             <div className="relative overflow-hidden max-w-[1400px] mx-auto" ref={wrapperRef}>
                 {/* Sliding container */}
                 <div
-                    className="flex transition-transform duration-500 ease-in-out"
+                    className="flex transition-transform duration-500 ease-in-out pb-2"
                     style={{
                         width: containerWidth,
                         transform: `translateX(-${translateX}px)`,
@@ -220,7 +220,7 @@ export default function ShowcaseCarousel(props) {
 
                 {/* Navigation */}
                 {maxOffset > 0 && (
-                    <div className="flex justify-end gap-4 mt-6">
+                    <div className="flex justify-end gap-4 mt-4">
                         <button
                             onClick={handlePrev}
                             disabled={currentOffset === 0}
