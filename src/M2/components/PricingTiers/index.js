@@ -148,10 +148,10 @@ export default function PricingTier(props) {
                                 <Link
                                     to={link.href}
                                     className={twJoin(
-                                        'my-5 block text-center p-4 text-lg hover:bg-btn-hover-color hover:text-btn-hover-text-color shadow-md rounded-lg hover:shadow-lg transition duration-300 ease-in-out',
+                                        'my-5 block text-center p-4 text-lg shadow-md rounded-lg hover:shadow-lg transition duration-300 ease-in-out',
                                         badge
-                                            ? 'bg-btn-alt-color text-bg-color'
-                                            : 'bg-btn-color text-btn-text-color'
+                                            ? 'bg-btn-alt-color text-btn-alt-text-color hover:bg-btn-alt-hover-color hover:text-btn-alt-hover-text-color'
+                                            : 'bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color'
                                     )}
                                 >
                                     <span>{link.label}</span>

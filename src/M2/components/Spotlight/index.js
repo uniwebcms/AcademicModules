@@ -37,7 +37,7 @@ export default function Spotlight(props) {
                         <div className="mt-6">
                             <Link
                                 to={link.href}
-                                className="inline-block px-6 py-3 rounded-lg bg-neutral-900 text-neutral-50 hover:bg-neutral-800"
+                                className="inline-block px-6 py-3 rounded-lg bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color"
                             >
                                 {link.label}
                             </Link>
