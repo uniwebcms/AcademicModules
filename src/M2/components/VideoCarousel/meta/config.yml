@@ -18,6 +18,17 @@ elements:
     description: 
       en: The showcase videos.
       fr: Les vidéos de présentation.
+
+properties:
+  muted:
+    label: 
+      en: Muted
+      fr: Muet
+    type: boolean
+    default: false
+    description: 
+      en: Whether the videos should be muted or not.
+      fr: Si les vidéos doivent être muettes ou non.
       
 images:
   - example.png

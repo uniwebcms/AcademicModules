@@ -51,6 +51,7 @@ export default function VideoCarousel(props) {
     const { block } = props;
 
     const { title, videos } = block.getBlockContent();
+    const { muted = false } = block.getBlockProperties();
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -189,7 +190,7 @@ export default function VideoCarousel(props) {
                                 ref={(el) => (videoRefs.current[index] = el)}
                                 src={video.src}
                                 className="w-full h-full object-cover rounded-lg shadow-lg"
-                                muted
+                                muted={muted}
                                 loop
                                 playsInline
                             />
