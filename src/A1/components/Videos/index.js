@@ -42,22 +42,24 @@ const VideoItem = ({ profile, input, layout, isPanel }) => {
         return (
             <Link
                 to={input.makeHref(profile)}
-                className="w-full flex justify-between items-start space-x-12 group"
+                className="w-full flex flex-col md:flex-row justify-between items-start gap-x-12 gap-y-6 group"
             >
-                <div className="w-64 h-40 flex-shrink-0 relative">
+                <div className="w-full md:w-64 lg:w-72 aspect-video flex-shrink-0 relative">
                     <Image profile={profile} type="banner" rounded="rounded-xl" />
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full p-2 bg-primary-200 group-hover:bg-primary-800 text-primary-800 group-hover:text-primary-200">
                         <MdPlayArrow className="w-6 h-6 pl-px playIcon text-inherit"></MdPlayArrow>
                     </div>
                 </div>
-                <div className="flex-grow h-40 flex flex-col">
+                <div className="w-full md:w-[calc(100%-304px)] lg:w-[calc(100%-336px)] flex flex-col">
                     <h3
-                        className="text-lg font-medium md:text-xl mb-2 truncate group-hover:underline"
+                        className="text-lg font-medium lg:text-xl mb-2 truncate group-hover:underline"
                         title={title}
                     >
                         {title}
                     </h3>
-                    <p className="md:text-lg mb-5 text-text-color-80">{subtitle}</p>
+                    <p className="text-base lg:text-lg text-text-color-80 line-clamp-4">
+                        {subtitle}
+                    </p>
                 </div>
             </Link>
         );
