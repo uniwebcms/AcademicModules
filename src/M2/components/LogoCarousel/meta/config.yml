@@ -18,5 +18,29 @@ elements:
       en: The showcase images.
       fr: Les images de présentation.
 
+properties:
+  logo_size:
+    label: 
+      en: Logo Size
+      fr: Taille du logo
+    type: string
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: medium
+      - label:
+          en: Large
+          fr: Grand
+        value: large
+    default: medium
+    description: 
+      en: The size of the logos in the carousel.
+      fr: La taille des logos dans le carrousel.
+
 images:
   - example.png

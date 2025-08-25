@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from '@uniwebcms/core-components';
+import { twJoin } from '@uniwebcms/module-sdk';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -7,6 +8,7 @@ import 'slick-carousel/slick/slick-theme.css';
 export default function LogoCarousel(props) {
     const { block, page } = props;
     const { title, images } = block.getBlockContent();
+    const { logo_size = 'medium' } = block.getBlockProperties();
 
     const [sliderToShow, setSliderToShow] = useState(5);
 
@@ -15,15 +17,46 @@ export default function LogoCarousel(props) {
         const updateSliderToShow = () => {
             const width = window.innerWidth;
             if (width >= 1280) {
-                setSliderToShow(5);
+                if (logo_size === 'large') {
+                    setSliderToShow(5);
+                } else if (logo_size === 'medium') {
+                    setSliderToShow(6);
+                } else if (logo_size === 'small') {
+                    setSliderToShow(7);
+                }
             } else if (width >= 1024) {
-                setSliderToShow(4);
+                if (logo_size === 'large') {
+                    setSliderToShow(4);
+                } else if (logo_size === 'medium') {
+                    setSliderToShow(5);
+                } else if (logo_size === 'small') {
+                    setSliderToShow(6);
+                }
             } else if (width >= 768) {
-                setSliderToShow(3);
+                if (logo_size === 'large') {
+                    setSliderToShow(3);
+                } else if (logo_size === 'medium') {
+                    setSliderToShow(4);
+                } else if (logo_size === 'small') {
+                    setSliderToShow(5);
+                }
             } else if (width >= 640) {
                 setSliderToShow(2);
+                if (logo_size === 'large') {
+                    setSliderToShow(2);
+                } else if (logo_size === 'medium') {
+                    setSliderToShow(3);
+                } else if (logo_size === 'small') {
+                    setSliderToShow(4);
+                }
             } else {
-                setSliderToShow(1);
+                if (logo_size === 'large') {
+                    setSliderToShow(1);
+                } else if (logo_size === 'medium') {
+                    setSliderToShow(2);
+                } else if (logo_size === 'small') {
+                    setSliderToShow(3);
+                }
             }
         };
 
@@ -33,14 +66,19 @@ export default function LogoCarousel(props) {
         return () => {
             window.removeEventListener('resize', updateSliderToShow);
         };
-    }, [images.length]);
+    }, [logo_size, images.length]);
 
     const carouselItems = images.map((image, index) => (
         <div key={index} className="w-full">
             <Image
                 profile={page.getPageProfile()}
                 {...image}
-                className="mx-auto h-16 w-44 object-contain"
+                className={twJoin(
+                    'mx-auto object-contain',
+                    logo_size === 'large' ? 'h-24 w-48' : '',
+                    logo_size === 'medium' ? 'h-[72px] w-36' : '',
+                    logo_size === 'small' ? 'h-12 w-24' : ''
+                )}
             />
         </div>
     ));
