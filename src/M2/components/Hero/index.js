@@ -9,7 +9,7 @@ export default function Hero(props) {
     const { title, paragraphs, links } = block.getBlockContent();
 
     return (
-        <div className="relative px-6 pt-[140px] xl:pt-[180px] pb-[80px] min-h-[100px] max-w-[1200px] mx-auto">
+        <div className="relative px-6 xl:py-[120px] py-[80px] min-h-[100px] max-w-[1200px] mx-auto">
             <div className="flex flex-col max-w-[965px] mx-auto">
                 <div className="max-w-[800px] mx-auto">
                     <SafeHtml

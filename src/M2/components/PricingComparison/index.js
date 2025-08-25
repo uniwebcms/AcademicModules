@@ -119,70 +119,92 @@ export default function PricingComparison(props) {
     const columnCount = items.length + 1; // +1 for the first column
 
     return (
-        <div className="pt-[60px] pb-10 px-5">
-            <div className="text-center">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{title}</h2>
-            </div>
-            <div className="relative mt-12 max-w-[1400px] mx-auto">
-                {/* Background Column Layout */}
-                <div
-                    className="absolute inset-0 z-0 grid gap-4"
-                    style={{ gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))` }}
-                >
-                    {Array.from({ length: columnCount }).map((_, colIndex) => (
-                        <div
-                            key={colIndex}
-                            className={
-                                colIndex === 0 ? '' : 'bg-neutral-100 shadow border rounded-md'
-                            }
-                        />
-                    ))}
+        <div className="pt-[60px] pb-10 px-6">
+            <div className="max-w-[1400px] mx-auto">
+                <div className="text-center">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{title}</h2>
                 </div>
-                <div className="relative z-10">
-                    {/* Table Rows */}
-                    <div className="">
-                        {tableData.map((row, rowIndex) => {
-                            const isHeaderRow = rowIndex === 0 || row[0].type === 'section';
-                            const isTailRow = rowIndex === tableData.length - 1;
-
-                            return (
+                <div
+                    id="pricing-comparison-table"
+                    className="relative mt-12 overflow-x-auto"
+                    style={{ WebkitOverflowScrolling: 'touch' }}
+                >
+                    <div className="relative" style={{ minWidth: `${columnCount * 200}px` }}>
+                        {/* Background Column Layout */}
+                        <div
+                            className="absolute inset-0 z-0 grid gap-4"
+                            style={{
+                                gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+                            }}
+                        >
+                            {Array.from({ length: columnCount }).map((_, colIndex) => (
                                 <div
-                                    key={rowIndex}
-                                    className={twJoin(
-                                        'grid gap-4 grid-cols-5',
-                                        !isHeaderRow && !isTailRow && 'border-b border-dashed',
-                                        rowIndex === 0 && 'sticky top-[64px] xl:top-[84px] z-10'
-                                    )}
-                                >
-                                    {row.map((cell, colIndex) => (
+                                    key={colIndex}
+                                    className={
+                                        colIndex === 0
+                                            ? ''
+                                            : 'bg-neutral-100 shadow border rounded-md'
+                                    }
+                                />
+                            ))}
+                        </div>
+                        <div className="relative z-10">
+                            {/* Table Rows */}
+                            <div className="">
+                                {tableData.map((row, rowIndex) => {
+                                    const isHeaderRow = rowIndex === 0 || row[0].type === 'section';
+                                    const isTailRow = rowIndex === tableData.length - 1;
+
+                                    return (
                                         <div
-                                            key={colIndex}
-                                            className={
-                                                twJoin()
-                                                // 'p-4',
-                                                // rowIndex === 0 ? 'm-px rounded-t-md pt-4' : '',
-                                                // rowIndex === tableData.length - 1 ? 'pb-12' : ''
-                                                // rowIndex === 0 && colIndex !== 0 && 'bg-neutral-100'
-                                            }
+                                            key={rowIndex}
+                                            className={twJoin(
+                                                'grid gap-4',
+                                                !isHeaderRow &&
+                                                    !isTailRow &&
+                                                    'border-b border-dashed',
+                                                rowIndex === 0 &&
+                                                    'sticky top-[64px] xl:top-[84px] z-10'
+                                            )}
+                                            style={{
+                                                gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+                                            }}
                                         >
-                                            {cell.type === 'header' && (
-                                                <HeaderCell text={cell.text} link={cell.link} />
-                                            )}
-                                            {cell.type === 'section' && (
-                                                <SectionCell text={cell.text} />
-                                            )}
-                                            {cell.type === 'section-item' && (
-                                                <ItemCell
-                                                    text={cell.text}
-                                                    icon={cell.icon}
-                                                    isFirstCol={colIndex === 0}
-                                                />
-                                            )}
+                                            {row.map((cell, colIndex) => {
+                                                const isFirstCol = colIndex === 0;
+                                                const stickyClass = isFirstCol
+                                                    ? twJoin(
+                                                          'sticky left-0 bg-bg-color',
+                                                          isHeaderRow ? 'z-30' : 'z-20'
+                                                      )
+                                                    : '';
+
+                                                return (
+                                                    <div key={colIndex} className={stickyClass}>
+                                                        {cell.type === 'header' && (
+                                                            <HeaderCell
+                                                                text={cell.text}
+                                                                link={cell.link}
+                                                            />
+                                                        )}
+                                                        {cell.type === 'section' && (
+                                                            <SectionCell text={cell.text} />
+                                                        )}
+                                                        {cell.type === 'section-item' && (
+                                                            <ItemCell
+                                                                text={cell.text}
+                                                                icon={cell.icon}
+                                                                isFirstCol={isFirstCol}
+                                                            />
+                                                        )}
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
-                                    ))}
-                                </div>
-                            );
-                        })}
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

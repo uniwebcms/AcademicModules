@@ -46,8 +46,21 @@ export default function navbar(props) {
     const { sign_up_link = '' } = block.getBlockProperties();
     const { logo, linkGroups } = parseNavbarContent(block);
 
+    const firstBodyBlock = page.blockGroups.body?.[0];
+
     const [mobileOpen, setMobileOpen] = useState(false);
     const [expandedGroups, setExpandedGroups] = useState({});
+
+    useEffect(() => {
+        if (firstBodyBlock?.id) {
+            const blockElement = document.getElementById(`Section${firstBodyBlock.id}`);
+            if (blockElement) {
+                // programmatically add some padding top to the first body block
+                const extraPadding = window.innerWidth < 1280 ? 64 : 80;
+                blockElement.style.paddingTop = `${extraPadding}px`;
+            }
+        }
+    }, [firstBodyBlock]);
 
     useEffect(() => {
         if (mobileOpen) {

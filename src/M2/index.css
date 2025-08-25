@@ -5,3 +5,9 @@
 body {
     overflow-x: hidden;
 }
+
+/* Allow horizontal scrolling only on the #pricing-comparison-table */
+#pricing-comparison-table {
+    overflow-x: auto; /* enables scrolling when content is wider */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}

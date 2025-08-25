@@ -18,29 +18,5 @@ elements:
       en: The showcase images.
       fr: Les images de présentation.
 
-properties:
-  speed:
-    label:
-      en: Speed
-      fr: Vitesse
-    type: string
-    default: normal
-    enum:
-      - label:
-          en: Slow
-          fr: Lent
-        value: slow
-      - label:
-          en: Normal
-          fr: Normal
-        value: normal
-      - label:
-          en: Fast
-          fr: Rapide
-        value: fast
-    description:
-      en: The speed of the carousel animation.
-      fr: La vitesse de l'animation du carrousel.
-
 images:
   - example.png
