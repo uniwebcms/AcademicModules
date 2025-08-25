@@ -59,26 +59,28 @@ export default function Footer(props) {
                             })}
                         </div>
                         <SafeHtml value={copyright} className="text-xs text-[var(--callout)]" />
-                        <div className="flex items-center gap-x-3">
-                            {languages.map((lang, index) => {
-                                return (
-                                    <React.Fragment key={index}>
-                                        <button
-                                            key={index}
-                                            onClick={() => {
-                                                website.changeLanguage(lang.value);
-                                            }}
-                                            className="text-sm text-text-color/70 hover:text-text-color"
-                                        >
-                                            {lang.label}
-                                        </button>
-                                        {index < languages.length - 1 && (
-                                            <span className="h-4 w-px bg-gradient-to-b from-transparent via-text-color to-transparent" />
-                                        )}
-                                    </React.Fragment>
-                                );
-                            })}
-                        </div>
+                        {languages.length > 1 ? (
+                            <div className="flex items-center gap-x-3">
+                                {languages.map((lang, index) => {
+                                    return (
+                                        <React.Fragment key={index}>
+                                            <button
+                                                key={index}
+                                                onClick={() => {
+                                                    website.changeLanguage(lang.value);
+                                                }}
+                                                className="text-sm text-text-color/70 hover:text-text-color"
+                                            >
+                                                {lang.label}
+                                            </button>
+                                            {index < languages.length - 1 && (
+                                                <span className="h-4 w-px bg-gradient-to-b from-transparent via-text-color to-transparent" />
+                                            )}
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </div>
+                        ) : null}
                     </div>
                     <div className="block lg:hidden w-full h-px bg-gradient-to-r from-transparent via-text-color to-transparent opacity-75"></div>
                     <div className="w-full lg:w-2/3">
