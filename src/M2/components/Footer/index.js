@@ -99,11 +99,16 @@ export default function Footer(props) {
                                     <div key={index}>
                                         <p className="mb-4">
                                             {hasData ? (
-                                                <Link className="hover:underline" to={route}>
+                                                <Link
+                                                    className="text-base md:text-lg font-medium hover:underline"
+                                                    to={route}
+                                                >
                                                     {label}
                                                 </Link>
                                             ) : (
-                                                <span>{label}</span>
+                                                <span className="text-base md:text-lg font-medium">
+                                                    {label}
+                                                </span>
                                             )}
                                         </p>
                                         <ul className="space-y-2 font-light">

@@ -157,7 +157,7 @@ export default function VideoCarousel(props) {
             </div>
             <div
                 ref={containerRef}
-                className="mt-8 sm:mt-14 flex items-center gap-4 md:gap-6 lg:gap-8 overflow-x-auto scroll-smooth py-8"
+                className="mt-0 sm:mt-6 flex items-center gap-4 md:gap-6 lg:gap-8 overflow-x-auto scroll-smooth py-8"
                 style={{
                     scrollBehavior: 'smooth',
                     paddingLeft: '50%',

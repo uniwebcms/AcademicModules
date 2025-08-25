@@ -43,7 +43,7 @@ function TocList({ items, level = 1 }) {
             {items.map((item) => (
                 <li key={item.id} style={{ marginLeft: `${(level - 1) * 20}px` }}>
                     <div
-                        className="cursor-pointer text-text-color-70 hover:text-text-color hover:underline mb-1"
+                        className="cursor-pointer text-text-color hover:underline mb-1"
                         onClick={() => {
                             scrollTo(item.id);
                         }}
