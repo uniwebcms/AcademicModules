@@ -91,7 +91,7 @@ export default function (props) {
 
     const { title } = block;
 
-    const { layout = 'list', is_panel = false } = block.getBlockProperties();
+    const { layout = 'list', is_panel = false, is_embedded = false } = block.getBlockProperties();
 
     const wrapperClassName =
         layout === 'list'
@@ -104,11 +104,12 @@ export default function (props) {
 
     return (
         <div
-            className={
+            className={twJoin(
                 !is_panel
                     ? 'h-screen py-6 lg:py-8 xl:py-12 2xl:py-16 3xl:py-20 overflow-y-auto'
-                    : ''
-            }
+                    : '',
+                is_embedded ? 'h-screen overflow-y-auto' : ''
+            )}
         >
             {title ? (
                 <div
