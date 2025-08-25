@@ -6607,6 +6607,18 @@
           "en": "Click yes in case the list is to be displayed in a side panel.",
           "fr": "Cliquez sur oui si la liste doit être affichée dans un panneau latéral."
         }
+      },
+      "is_embedded": {
+        "label": {
+          "en": "Embedded Mode",
+          "fr": "Mode intégré"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Click yes if the component is to be embedded in another page.",
+          "fr": "Cliquez sur oui si le composant doit être intégré dans une autre page."
+        }
       }
     },
     "presets": [
