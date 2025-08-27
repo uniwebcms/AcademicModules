@@ -31,7 +31,7 @@ export default function (props) {
         fr: 'Français',
     };
 
-    if (langOptions && Array.isArray(langOptions) && langOptions.length) {
+    if (langOptions && Array.isArray(langOptions) && langOptions.length > 1) {
         const menu = langOptions.map((opt) => (
             <div
                 key={opt.value}
