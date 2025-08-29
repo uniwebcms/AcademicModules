@@ -1,0 +1,1117 @@
+{
+  "_self": {
+    "name": "Marketing Series 2",
+    "description": "A collection of components for building marketing websites."
+  },
+  "Article": {
+    "title": {
+      "en": "Article Viewer",
+      "fr": "Visionneuse d'articles"
+    },
+    "label": {
+      "en": "Article",
+      "fr": "Article"
+    },
+    "description": {
+      "en": "Display the content of a article along with a side panel for in page navigation.",
+      "fr": "Afficher le contenu d'un article avec un panneau latéral pour la navigation dans la page."
+    },
+    "category": "article",
+    "export": true,
+    "images": [
+      {
+        "height": 1268,
+        "width": 1322,
+        "type": "webp",
+        "path": "assets/Article/example.png"
+      }
+    ],
+    "name": "Article"
+  },
+  "ArticleHead": {
+    "title": {
+      "en": "Article Head",
+      "fr": "En-tête d'article"
+    },
+    "label": {
+      "en": "Article Head",
+      "fr": "En-tête d'article"
+    },
+    "description": {
+      "en": "A component showing the title, cover image, description, author and tag of an article. It is designed to provide a concise overview of the article's content. Ideal for use as a header for individual articles.",
+      "fr": "Un composant affichant le titre, l'image de couverture, la description, l'auteur et la balise d'un article. Il est conçu pour fournir un aperçu concis du contenu de l'article. Idéal pour une utilisation en tant qu'en-tête d'articles individuels."
+    },
+    "category": "article",
+    "export": true,
+    "images": [
+      {
+        "height": 404,
+        "width": 1302,
+        "type": "webp",
+        "path": "assets/ArticleHead/example.png"
+      }
+    ],
+    "name": "ArticleHead"
+  },
+  "Articles": {
+    "title": {
+      "en": "Articles",
+      "fr": "Articles"
+    },
+    "label": {
+      "en": "Articles",
+      "fr": "Articles"
+    },
+    "description": {
+      "en": "A component to display a collection of articles either in a grid or list format. Each article includes a title, cover image, and a short description for an engaging browsing experience.",
+      "fr": "Un composant pour afficher une collection d'articles soit sous forme de grille, soit sous forme de liste. Chaque article comprend un titre, une image de couverture et une courte description pour une expérience de navigation engageante."
+    },
+    "category": "article",
+    "export": true,
+    "input": {
+      "type": "article",
+      "limit": false
+    },
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      }
+    },
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Grid",
+              "fr": "Grille"
+            },
+            "value": "grid"
+          },
+          {
+            "label": {
+              "en": "List",
+              "fr": "Liste"
+            },
+            "value": "list"
+          }
+        ],
+        "default": "grid",
+        "description": {
+          "en": "The layout to display the articles, either in a grid or list format.",
+          "fr": "La mise en page pour afficher les articles, soit sous forme de grille, soit sous forme de liste."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1376,
+        "width": 1430,
+        "type": "webp",
+        "path": "assets/Articles/example.png"
+      }
+    ],
+    "name": "Articles"
+  },
+  "FAQ": {
+    "title": {
+      "en": "Frequently Asked Questions",
+      "fr": "Questions Fréquemment Posées"
+    },
+    "label": {
+      "en": "FAQ",
+      "fr": "FAQ"
+    },
+    "description": {
+      "en": "A component to display frequently asked questions in a collapsible format. The first question is expanded initially.",
+      "fr": "Un composant pour afficher les questions fréquemment posées dans un format collapsible. La première question est développée par défaut."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1248,
+        "width": 2836,
+        "type": "webp",
+        "path": "assets/FAQ/example.png"
+      }
+    ],
+    "name": "FAQ"
+  },
+  "FeatureCards": {
+    "title": {
+      "en": "Feature Cards",
+      "fr": "Cartes de fonctionnalités"
+    },
+    "label": {
+      "en": "Feature Cards",
+      "fr": "Cartes de fonctionnalités"
+    },
+    "description": {
+      "en": "A feature cards component that can be used to showcase features.",
+      "fr": "Un composant de cartes de fonctionnalités qui peut être utilisé pour mettre en valeur des fonctionnalités."
+    },
+    "category": "feature",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "banner": {},
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "text": {
+          "type": "paragraph",
+          "description": {
+            "en": "The body text.",
+            "fr": "Le texte du corps."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link",
+            "fr": "Un lien"
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 893,
+        "width": 1579,
+        "type": "webp",
+        "path": "assets/FeatureCards/example.png"
+      }
+    ],
+    "name": "FeatureCards"
+  },
+  "Footer": {
+    "title": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "label": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "description": {
+      "en": "Section for the footer of the page. It includes copyright text, navigation links, and social links.",
+      "fr": "Section pour le pied de page de la page. Il comprend le texte des droits d'auteur, les liens de navigation et les liens sociaux."
+    },
+    "category": "footer",
+    "export": true,
+    "elements": {
+      "text": {
+        "description": {
+          "en": "The copyright text.",
+          "fr": "Le texte des droits d'auteur."
+        },
+        "type": "paragraph"
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The logo image to display in the footer.",
+          "fr": "L'image du logo à afficher dans le pied de page."
+        }
+      },
+      "list": {
+        "title": {
+          "en": "Navigation Links",
+          "fr": "Liens de navigation"
+        },
+        "description": {
+          "en": "The navigation links to display in the footer, it is created as a list of links with hierarchy.",
+          "fr": "Les liens de navigation à afficher dans le pied de page, il est créé sous forme de liste de liens avec hiérarchie."
+        }
+      },
+      "link": {
+        "description": {
+          "en": "Social links to display in the footer.",
+          "fr": "Liens sociaux à afficher dans le pied de page."
+        },
+        "type": "link"
+      }
+    },
+    "images": [
+      {
+        "height": 534,
+        "width": 1550,
+        "type": "webp",
+        "path": "assets/Footer/example.png"
+      }
+    ],
+    "name": "Footer"
+  },
+  "Hero": {
+    "title": {
+      "en": "Hero",
+      "fr": "Héros"
+    },
+    "label": {
+      "en": "Hero",
+      "fr": "Héros"
+    },
+    "description": {
+      "en": "A hero component that can be used to showcase title, subtitle, and links.",
+      "fr": "Un composant héros qui peut être utilisé pour mettre en valeur le titre, le sous-titre et les liens."
+    },
+    "category": "hero",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 577,
+        "width": 1340,
+        "type": "webp",
+        "path": "assets/Hero/example.png"
+      }
+    ],
+    "name": "Hero"
+  },
+  "ImageShowcase": {
+    "title": {
+      "en": "Image Showcase",
+      "fr": "Présentation d'images"
+    },
+    "label": {
+      "en": "Image Showcase",
+      "fr": "Présentation d'images"
+    },
+    "description": {
+      "en": "Showcase a large image in a visually appealing format.",
+      "fr": "Présentez une grande image dans un format visuellement attrayant."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The showcase image.",
+          "fr": "L'image de présentation."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 867,
+        "width": 1577,
+        "type": "webp",
+        "path": "assets/ImageShowcase/example.png"
+      }
+    ],
+    "name": "ImageShowcase"
+  },
+  "LogoCarousel": {
+    "title": {
+      "en": "Logo Carousel",
+      "fr": "Carrousel de logos"
+    },
+    "label": {
+      "en": "Logo Carousel",
+      "fr": "Carrousel de logos"
+    },
+    "description": {
+      "en": "A logo carousel component that can be used to showcase logos.",
+      "fr": "Un composant de carrousel de logos qui peut être utilisé pour mettre en valeur des logos."
+    },
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The showcase images.",
+          "fr": "Les images de présentation."
+        }
+      }
+    },
+    "properties": {
+      "logo_size": {
+        "label": {
+          "en": "Logo Size",
+          "fr": "Taille du logo"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "medium"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "large"
+          }
+        ],
+        "default": "medium",
+        "description": {
+          "en": "The size of the logos in the carousel.",
+          "fr": "La taille des logos dans le carrousel."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 202,
+        "width": 1481,
+        "type": "webp",
+        "path": "assets/LogoCarousel/example.png"
+      }
+    ],
+    "name": "LogoCarousel"
+  },
+  "Navbar": {
+    "title": {
+      "en": "Navbar",
+      "fr": "Barre de navigation"
+    },
+    "label": {
+      "en": "Navbar",
+      "fr": "Barre de navigation"
+    },
+    "description": {
+      "en": "A navigation bar component that can be used to display a logo and navigation links.",
+      "fr": "Un composant de barre de navigation qui peut être utilisé pour afficher un logo et des liens de navigation."
+    },
+    "category": "navigation",
+    "export": true,
+    "elements": {
+      "icon": {
+        "title": {
+          "en": "Logo",
+          "fr": "Logo"
+        },
+        "description": {
+          "en": "The logo image to display in the header.",
+          "fr": "L'image du logo à afficher dans l'en-tête."
+        }
+      },
+      "list": {
+        "type": "list",
+        "title": {
+          "en": "Navigation Links",
+          "fr": "Liens de navigation"
+        },
+        "description": {
+          "en": "The navigation links to display in the header, it is created as a list of links, each link can have children links.",
+          "fr": "Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants."
+        }
+      }
+    },
+    "properties": {
+      "sign_up_link": {
+        "label": {
+          "en": "Sign Up Link",
+          "fr": "Lien d'inscription"
+        },
+        "type": "string",
+        "default": "",
+        "description": {
+          "en": "The link to the sign-up page.",
+          "fr": "Le lien vers la page d'inscription."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 83,
+        "width": 1474,
+        "type": "webp",
+        "path": "assets/Navbar/example.png"
+      }
+    ],
+    "name": "Navbar"
+  },
+  "Newsletter": {
+    "title": {
+      "en": "Newsletter",
+      "fr": "Bulletin d'information"
+    },
+    "label": {
+      "en": "Newsletter",
+      "fr": "Bulletin d'information"
+    },
+    "description": {
+      "en": "A component to display a newsletter subscription form with a conditional testimonial box.",
+      "fr": "Un composant pour afficher un formulaire d'abonnement à la newsletter avec une boîte de témoignage conditionnelle."
+    },
+    "category": "action",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "limit": 1,
+      "elements": {
+        "title": {
+          "description": {
+            "en": "The name of person who is giving the testimonial.",
+            "fr": "Le nom de la personne qui donne le témoignage."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "description": {
+            "en": "The title or role of the person who is giving the testimonial.",
+            "fr": "Le titre ou le rôle de la personne qui donne le témoignage."
+          },
+          "type": "H2"
+        },
+        "media": {
+          "type": "image",
+          "description": {
+            "en": "The picture of the person who is giving the testimonial.",
+            "fr": "La photo de la personne qui donne le témoignage."
+          }
+        },
+        "text": {
+          "description": {
+            "en": "The testimonial text.",
+            "fr": "Le texte du témoignage."
+          },
+          "type": "paragraph"
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 453,
+        "width": 1510,
+        "type": "webp",
+        "path": "assets/Newsletter/example.png"
+      }
+    ],
+    "name": "Newsletter"
+  },
+  "PricingComparison": {
+    "title": {
+      "en": "Pricing Comparison",
+      "fr": "Comparaison des Tarifs"
+    },
+    "label": {
+      "en": "Pricing Comparison",
+      "fr": "Comparaison des Tarifs"
+    },
+    "description": {
+      "en": "Compare different pricing tiers' features in a table format.",
+      "fr": "Comparez les fonctionnalités de différents niveaux de tarification dans un format de tableau."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "list": {
+        "description": {
+          "en": "Use a list to define major feature categories and their corresponding features.",
+          "fr": "Utilisez une liste pour définir les principales catégories de fonctionnalités et leurs fonctionnalités correspondantes."
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "link": {
+          "type": "link",
+          "description": {
+            "en": "A link",
+            "fr": "Un lien"
+          }
+        },
+        "list": {
+          "description": {
+            "en": "Use a list to define features available in each pricing tier. Text and inline icons are supported.",
+            "fr": "Utilisez une liste pour définir les fonctionnalités disponibles dans chaque niveau de tarification. Le texte et les icônes en ligne sont pris en charge."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 899,
+        "width": 1626,
+        "type": "webp",
+        "path": "assets/PricingComparison/example.png"
+      }
+    ],
+    "name": "PricingComparison"
+  },
+  "PricingTiers": {
+    "title": {
+      "en": "Pricing Tiers",
+      "fr": "Tarifs"
+    },
+    "label": {
+      "en": "Pricing Tier",
+      "fr": "Tarif"
+    },
+    "description": {
+      "en": "A pricing tiers component that can be used to showcase pricing options.",
+      "fr": "Un composant de niveaux de tarification qui peut être utilisé pour présenter des options de tarification."
+    },
+    "category": "pricing",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "text": {
+        "description": {
+          "en": "The promtional text displayed in the pricing tier when the month/annual toggle is enabled.",
+          "fr": "Le texte promotionnel affiché dans le niveau de tarification lorsque le basculement mois/annuel est activé."
+        },
+        "type": "paragraph"
+      },
+      "link": {
+        "description": {
+          "en": "A link put below the pricing tiers.",
+          "fr": "Un lien placé en dessous des niveaux de tarification."
+        },
+        "type": "link"
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "pretitle": {
+          "description": {
+            "en": "The name of the pricing tier.",
+            "fr": "Le nom du tarif."
+          },
+          "type": "H2"
+        },
+        "title": {
+          "description": {
+            "en": "The price of the pricing tier.",
+            "fr": "Le prix du tarif."
+          },
+          "type": "H1",
+          "alignment": ""
+        },
+        "subtitle": {
+          "description": {
+            "en": "Text put under the price of the pricing tier, normally used to display the billing cycle.",
+            "fr": "Texte placé sous le prix du tarif, généralement utilisé pour afficher le cycle de facturation."
+          },
+          "type": "H2"
+        },
+        "description": {
+          "type": "H3",
+          "description": {
+            "en": "The description of the pricing tier.",
+            "fr": "La description du tarif."
+          }
+        },
+        "link": {
+          "description": {
+            "en": "The action button of the pricing tier.",
+            "fr": "Le bouton d'action du tarif."
+          },
+          "type": "link"
+        },
+        "list": {
+          "description": {
+            "en": "The list of features of the pricing tier, each can have an icon and a text.",
+            "fr": "La liste des fonctionnalités du tarif, chacune pouvant avoir une icône et un texte."
+          }
+        },
+        "button": {
+          "description": {
+            "en": "The badge of the pricing tier.",
+            "fr": "Le badge du tarif."
+          }
+        }
+      }
+    },
+    "properties": {
+      "month_annual_toggle": {
+        "label": {
+          "en": "Month / Annual Toggle",
+          "fr": "Basculement Mois / Annuel"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether to display a toggle for switching between monthly and annual pricing.",
+          "fr": "Indique si un basculement doit être affiché pour passer entre les prix mensuels et annuels."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1333,
+        "width": 2171,
+        "type": "webp",
+        "path": "assets/PricingTiers/example.png"
+      }
+    ],
+    "name": "PricingTiers"
+  },
+  "ShowcaseCarousel": {
+    "title": {
+      "en": "Showcase Carousel",
+      "fr": "Carrousel de Présentation"
+    },
+    "label": {
+      "en": "Showcase Carousel",
+      "fr": "Carrousel de Présentation"
+    },
+    "description": {
+      "en": "The Showcase Carousel is a dynamic content section designed to highlight key offerings, services, features, or stories in a visually engaging way. It displays a row of stylish cards, each featuring a background image, a title, and additional text that appears on hover. This interaction brings the content to life and encourages exploration without overwhelming the viewer.",
+      "fr": "Le carrousel de présentation est une section de contenu dynamique conçue pour mettre en valeur des offres, services, fonctionnalités ou histoires clés de manière visuellement attrayante. Il affiche une rangée de cartes élégantes, chacune présentant une image de fond, un titre et un texte supplémentaire qui apparaît au survol. Cette interaction donne vie au contenu et encourage l'exploration sans submerger le spectateur."
+    },
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "elements": {
+        "banner": {
+          "description": {
+            "en": "If given, the image will be used as the background of the showcase carousel item and cover the subtitle text, show on hover. The media video will be ignored.",
+            "fr": "Si fourni, l'image sera utilisée comme arrière-plan de l'élément du carrousel de présentation et couvrira le texte du sous-titre, affiché au survol. La vidéo média sera ignorée."
+          }
+        },
+        "title": {
+          "type": "H1",
+          "alignment": "",
+          "description": {
+            "en": "The main headline.",
+            "fr": "Le titre principal."
+          }
+        },
+        "subtitle": {
+          "type": "H2",
+          "description": {
+            "en": "A phrase that follows the main headline.",
+            "fr": "Une phrase qui suit le titre principal."
+          }
+        },
+        "media": {
+          "type": "video",
+          "description": {
+            "en": "If given, the video will be display above the title and subtitle text, play on hover.",
+            "fr": "Si fourni, la vidéo sera affichée au-dessus du titre et du texte du sous-titre, lue au survol."
+          }
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 854,
+        "width": 1578,
+        "type": "webp",
+        "path": "assets/ShowcaseCarousel/example.png"
+      }
+    ],
+    "name": "ShowcaseCarousel"
+  },
+  "Spotlight": {
+    "title": {
+      "en": "Spotlight",
+      "fr": "Projecteur"
+    },
+    "label": {
+      "en": "Spotlight",
+      "fr": "Projecteur"
+    },
+    "description": {
+      "en": "Showcase image along with a title and description to highlight a specific feature or project.",
+      "fr": "Présentez une image accompagnée d'un titre et d'une description pour mettre en avant une fonctionnalité ou un projet spécifique."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "text": {
+        "type": "paragraph",
+        "description": {
+          "en": "The body text.",
+          "fr": "Le texte du corps."
+        }
+      },
+      "media": {
+        "type": "image",
+        "description": {
+          "en": "The showcase image.",
+          "fr": "L'image de présentation."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      }
+    },
+    "properties": {
+      "text_position": {
+        "label": {
+          "en": "Text Position",
+          "fr": "Position du texte"
+        },
+        "type": "string",
+        "default": "left",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "description": {
+          "en": "Position of the text relative to the image.",
+          "fr": "Position du texte par rapport à l'image."
+        }
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Text Vertical Alignment",
+          "fr": "Alignement vertical du texte"
+        },
+        "type": "string",
+        "default": "center",
+        "enum": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          }
+        ],
+        "description": {
+          "en": "Vertical alignment of the text within the spotlight.",
+          "fr": "Alignement vertical du texte dans le projecteur."
+        }
+      },
+      "aspect_ratio": {
+        "label": {
+          "en": "Aspect Ratio",
+          "fr": "Ratio d'aspect"
+        },
+        "type": "string",
+        "default": "16 / 9",
+        "enum": [
+          {
+            "label": {
+              "en": "16:9",
+              "fr": "16:9"
+            },
+            "value": "16 / 9"
+          },
+          {
+            "label": {
+              "en": "4:3",
+              "fr": "4:3"
+            },
+            "value": "4 / 3"
+          },
+          {
+            "label": {
+              "en": "1:1",
+              "fr": "1:1"
+            },
+            "value": "1 / 1"
+          }
+        ],
+        "description": {
+          "en": "The aspect ratio of the spotlight image.",
+          "fr": "Le ratio d'aspect de l'image du projecteur."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Left and Centered Aligned Text With 4:3 Aspect Ratio Image",
+          "fr": "Texte aligné à gauche et centré avec une image au ratio d'aspect 4:3"
+        },
+        "properties": {
+          "text_position": "left",
+          "vertical_alignment": "center",
+          "aspect_ratio": "4 / 3"
+        },
+        "image": {
+          "height": 920,
+          "width": 2332,
+          "type": "webp",
+          "path": "assets/Spotlight/left_center_4_3.webp"
+        }
+      }
+    ],
+    "name": "Spotlight"
+  },
+  "VideoCarousel": {
+    "title": {
+      "en": "Video Carousel",
+      "fr": "Carrousel de Videos"
+    },
+    "label": {
+      "en": "Video Carousel",
+      "fr": "Carrousel de Videos"
+    },
+    "description": {
+      "en": "A video carousel component that can be used to showcase videos. Only local uploaded videos are supported.",
+      "fr": "Un composant de carrousel de vidéos qui peut être utilisé pour mettre en valeur des vidéos. Seules les vidéos téléchargées localement sont prises en charge."
+    },
+    "category": "media",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "media": {
+        "type": "video",
+        "description": {
+          "en": "The showcase videos.",
+          "fr": "Les vidéos de présentation."
+        }
+      }
+    },
+    "properties": {
+      "muted": {
+        "label": {
+          "en": "Muted",
+          "fr": "Muet"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether the videos should be muted or not.",
+          "fr": "Si les vidéos doivent être muettes ou non."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 651,
+        "width": 1401,
+        "type": "webp",
+        "path": "assets/VideoCarousel/example.png"
+      }
+    ],
+    "name": "VideoCarousel"
+  }
+}
