@@ -17,7 +17,7 @@ export default function Footer(props) {
         <footer>
             <div className="relative min-[1400px]:rounded-t-2xl py-[100px] px-10 overflow-hidden max-w-[1400px] mx-auto">
                 {banner && (
-                    <div className="absolute inset-0 -z-10">
+                    <div className="absolute inset-0 z-0">
                         <Image
                             profile={getPageProfile()}
                             {...banner}
@@ -25,7 +25,7 @@ export default function Footer(props) {
                         />
                     </div>
                 )}
-                <div className="flex flex-col lg:flex-row gap-x-6 gap-y-8">
+                <div className="relative flex flex-col lg:flex-row gap-x-6 gap-y-8 z-10">
                     <div className="w-full lg:w-1/3 flex flex-col gap-10 flex-shrink-0">
                         <div className="h-8 max-w-[130px]">
                             <Image profile={getPageProfile()} {...logo} className="w-full h-auto" />
