@@ -19,11 +19,13 @@ export default function Timeline(props) {
     return (
         <Container py="lg" px="sm">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl font-bold mb-6 text-center text-heading-color">{title}</h2>
-                <p className="text-xl mb-16 text-center text-heading-color/70">{subtitle}</p>
+                <div className="text-center mb-10 lg:mb-16">
+                    <h2 className="text-4xl font-bold mb-6">{title}</h2>
+                    <p className="text-xl">{subtitle}</p>
+                </div>
                 <div className="relative">
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-900 via-primary-400 to-primary-900"></div>
-                    <div className="flex flex-col space-y-12 md:space-y-0">
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-700 via-primary-300 to-primary-700"></div>
+                    <div className="flex flex-col space-y-6 md:space-y-0">
                         {items.map((item, index) => {
                             const { title, paragraphs } = item;
                             return (
@@ -36,19 +38,19 @@ export default function Timeline(props) {
                                 >
                                     <div
                                         className={twJoin(
-                                            'w-full md:w-1/2',
-                                            index % 2 === 1 ? 'md:text-left' : 'md:text-right'
+                                            'w-full md:w-1/2'
+                                            // index % 2 === 1 ? 'md:text-left' : 'md:text-right'
                                         )}
                                     >
-                                        <div className="bg-bg-color-80 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-bg-color-60">
-                                            <h3 className="text-xl font-medium mb-3 text-text-color">
+                                        <div className="bg-text-color-0 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-text-color/20">
+                                            <h3 className="text-xl font-medium mb-3 text-heading-color/90">
                                                 {title}
                                             </h3>
-                                            <p className="text-text-color/80">{paragraphs}</p>
+                                            <SafeHtml value={paragraphs} />
                                         </div>
                                     </div>
-                                    <div className="hidden md:flex min-w-12 min-h-12 z-10 rounded-full bg-gradient-to-r from-primary-700 to-primary-300 items-center justify-center shadow-lg">
-                                        <span className="text-lg font-medium text-primary-100">
+                                    <div className="hidden md:flex min-w-12 min-h-12 z-10 rounded-full bg-gradient-to-r from-primary-300 to-primary-700 items-center justify-center shadow-lg">
+                                        <span className="text-lg font-medium text-primary-50">
                                             {index + 1}
                                         </span>
                                     </div>
@@ -59,7 +61,7 @@ export default function Timeline(props) {
                     </div>
                 </div>
                 {endnotes.length > 0 && (
-                    <div className="mt-16 md:mt-4 relative">
+                    <div className="mt-4 relative">
                         <div className="relative pt-6 px-6 space-y-4">
                             {endnotes.map((endnote, index) => (
                                 <SafeHtml

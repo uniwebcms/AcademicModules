@@ -129,7 +129,15 @@ export default function FAQ(props) {
                                     'flex items-start justify-between text-base md:text-lg font-semibold'
                                 )}
                             >
-                                <h3 className="text-heading-color/90">{item.title}</h3>
+                                <h3
+                                    className={twJoin(
+                                        openState[index]
+                                            ? 'text-heading-color/90'
+                                            : 'text-heading-color/70 group-hover:text-heading-color/90'
+                                    )}
+                                >
+                                    {item.title}
+                                </h3>
                                 <span className="flex items-center">
                                     {openState[index] ? (
                                         <HiMinus className="h-5 w-5 text-text-color/50 group-hover:text-text-color/80" />

@@ -53,7 +53,7 @@ const Fancy = ({ title, subtitle, items }) => {
                 ></div>
             </div>
             <div className="max-w-7xl mx-auto px-8 relative">
-                <div className="max-w-xl mx-auto text-center mb-16">
+                <div className="max-w-xl mx-auto text-center mb-10 lg:mb-16">
                     <h2 className={twJoin('text-3xl font-bold mb-4')}>{title}</h2>
                     <p className={twJoin('text-lg')}>{subtitle}</p>
                 </div>
@@ -141,7 +141,7 @@ const Box = ({ title, subtitle, items }) => {
             </div>
             <div className="max-w-6xl mx-auto px-8 relative">
                 <div className="bg-neutral-900/60 rounded-2xl backdrop-blur-xl border border-neutral-700/50 p-8 shadow-2xl">
-                    <div className="max-w-3xl mb-16">
+                    <div className="max-w-3xl mb-10 lg:mb-16">
                         <h2 className="text-3xl font-bold mb-4">{title}</h2>
                         <p className="text-base">{subtitle}</p>
                     </div>
