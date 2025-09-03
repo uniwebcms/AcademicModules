@@ -1,11 +1,13 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { useBlockInputFilterState } from '@uniwebcms/module-sdk';
+import { useBlockInputFilterState, website } from '@uniwebcms/module-sdk';
 import { Link, Image } from '@uniwebcms/core-components';
 import { HiX } from 'react-icons/hi';
+import BeatLoader from 'react-spinners/BeatLoader';
+import { motion } from 'framer-motion';
 
 export default function VideoHub(props) {
-    const { block, input, website } = props;
+    const { block, input } = props;
 
     const { title, subtitle } = block.getBlockContent();
 
@@ -72,3 +74,29 @@ export default function VideoHub(props) {
         </Container>
     );
 }
+
+VideoHub.Loader = () => {
+    return (
+        <motion.div
+            className="flex flex-col items-center justify-center min-h-[400px] text-center p-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+            <BeatLoader color="rgb(37 99 235)" size={12} margin={4} />
+            <motion.p
+                className="mt-4 text-neutral-700 text-sm sm:text-base"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
+            >
+                {website.localize({
+                    en: 'Loading videos. This should only take a moment.',
+                    fr: 'Chargement des vidéos. Cela ne devrait prendre qu’un instant.',
+                    es: 'Cargando videos. Esto debería tomar solo un momento.',
+                    zh: '正在加载视频。这应该只需要片刻。',
+                })}
+            </motion.p>
+        </motion.div>
+    );
+};
