@@ -313,7 +313,7 @@ export default function SideNavPage(props) {
             <div className="lg:grid lg:grid-cols-[1fr,280px] lg:gap-12">
                 <article>
                     <div className="mb-12">
-                        <h1 className="text-4xl font-serif mb-4">{title}</h1>
+                        <h1 className="text-4xl mb-4">{title}</h1>
                         <p>{subtitle}</p>
                     </div>
                     {childBlocks.map((childBlock, index) => {
