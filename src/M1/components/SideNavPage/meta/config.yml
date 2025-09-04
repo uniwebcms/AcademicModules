@@ -5,8 +5,8 @@ label:
   en: Side Navigation Page
   fr: Page de navigation latérale
 description:
-  en: A versatile page component that combines layout and content rendering. It displays the main content on the left and a navigation list on the right, allowing users to easily explore different sections of the page.
-  fr: Un composant de page polyvalent qui combine la mise en page et le rendu du contenu. Il affiche le contenu principal à gauche et une liste de navigation à droite, permettant aux utilisateurs d'explorer facilement différentes sections de la page.
+  en: A page component arranges the layout with the main content (rendered from child components) on the left and a navigation list on the right, allowing users to easily move between different sections of the page.
+  fr: Un composant de page organise la mise en page avec le contenu principal (rendu à partir des composants enfants) à gauche et une liste de navigation à droite, permettant aux utilisateurs de se déplacer facilement entre les différentes sections de la page.
 
 category: page
 export: true
@@ -17,31 +17,7 @@ elements:
 
 items:
   separator: section
-  category: List Item
-  elements:
-    title:
-    code:
-      label:
-        en: JSON Properties
-        fr: Propriétés JSON
-      description:
-        en: JSON properties for each List Item subsection, required properties are 'component' (choose from 'simple_card', 'news', 'details', 'assets' and 'contact') and 'id' (unique identifier).
-        fr: Propriétés JSON pour chaque sous-section Élément de liste, les propriétés requises sont 'component' (choisir parmi 'simple_card', 'news', 'details', 'assets' et 'contact') et 'id' (identifiant unique).
-    text:
-      label:
-        en: Content
-        fr: Contenu
-      description:
-        en: The extra content to display, for 'contact' component only.
-        fr: Le contenu supplémentaire à afficher, pour le composant 'contact' uniquement.
-    _raw: 
-      en: |
-        <p><i style='color: #6b7280;margin-bottom: 5px;display: block;'>Each component will need different type of content</i></p>
-        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Simple Card</strong>: value 'simple_card'. Requires a collection of 'pretitle' and 'title' split by 'divider'. Data rendered in a grid layout, each item has a tag and main text.</p>
-        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>News</strong>: value 'news'. Optional configuration: 'reversed_layout'. Requires a collection of 'pretitle', 'title' and 'subtitle' split by 'divider'. Data rendered in a two column layout, left side is the pretitle, right side is the title and subtile. When 'reversed_layout' is true, pretitle will be placed on right side.</p>
-        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Details</strong>: value 'details'. Requires a collection of 'title' and 'text' split by 'divider'. Data rendered in a box, a title follow by the text.</p>
-        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Assets</strong>: value 'assets'. Requires a collection of 'title', 'properties' and 'list' split by 'divider'. Data rendered in a box, with downloadable link and features in detail.</p>
-        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Contact</strong>: value 'contact'. Requires one item with title and list and one item for clickable links.</p>
+  category: Side Navigation Page Content
 
 images:
   - example.png
