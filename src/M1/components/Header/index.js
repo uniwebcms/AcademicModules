@@ -759,8 +759,6 @@ const NavBar = ({
         }
     };
 
-    console.log('navigation', navigation);
-
     return (
         <>
             {/* Placeholder div to prevent content jump */}
