@@ -34,14 +34,24 @@ elements:
             fr: Les liens de navigation à afficher dans l'en-tête, ils sont créés sous forme de liste de liens, chaque lien peut avoir des liens enfants. Vous pouvez ajouter une deuxième liste facultative pour les liens de compte tels que la connexion, l'inscription, etc.
 
 properties:
-    login_url:
-        label:
-            en: Login URL
-            fr: URL de connexion
+    navigation_generation_mode:
         type: string
-        description:
-            en: The URL to the login page.
-            fr: L'URL de la page de connexion.
+        label: 
+        en: Navigation Links Generation Mode
+        fr: Mode de génération des liens de navigation
+        enum:
+        - label:
+            en: Automatic
+            fr: Automatique
+          value: auto
+        - label:
+            en: Manual Links
+            fr: Liens manuels
+          value: manual
+        default: auto
+        description: 
+            en: Choose how the navigation links are generated. Automatic -> Generate links based on your site's structure; Manual Links -> Generate links based on the list(s) provided in the docufolio.
+            fr: Choisissez comment les liens de navigation sont générés. Automatique -> Générer des liens basés sur la structure de votre site ; Liens manuels -> Générer des liens basés sur les listes fournies dans le docufolio.
 
 images:
     - example.png

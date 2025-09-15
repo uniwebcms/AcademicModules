@@ -17,7 +17,6 @@ const NavBar = ({
     languages,
     refresh,
     logoOnLight,
-    login_url,
     block, // Add block prop for tracking
 }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -993,14 +992,20 @@ export default function Header(props) {
 
     const { theme: nextTheme = '', allowTranslucentTop = false } = getNextBlockContext(block);
 
-    let { login_url = '' } = block.getBlockProperties();
+    const { navigation_generation_mode = 'auto' } = block.getBlockProperties();
 
-    const appDomain = uniweb.getAppDomain();
-    login_url = login_url || `${appDomain}login`;
+    let navigation = [],
+        accountLinks = [];
 
-    const linkGroups = block.getBlockLinks({ nested: true, grouped: true });
-
-    const [navigation = [], accountLinks = []] = linkGroups;
+    if (navigation_generation_mode === 'manual') {
+        const linkGroups = block.getBlockLinks({ nested: true, grouped: true });
+        [navigation = [], accountLinks = []] = linkGroups;
+    } else {
+        navigation = website.getPageHierarchy({
+            nested: true,
+            filterEmpty: false,
+        });
+    }
 
     const theme = allowTranslucentTop ? nextTheme : themeName;
     const themeVariant = theme.split('__')[1];
@@ -1039,7 +1044,6 @@ export default function Header(props) {
 
     return (
         <NavBar
-            login_url={login_url}
             navigation={navigation}
             accountLinks={accountLinks}
             logo={logo}
