@@ -63,7 +63,11 @@ const ResultItem = (props) => {
         ...rest
     } = props;
 
+    const activeRoute = website.activePage.activeRoute;
+
     const hierarchy = findPath(website.getPageHierarchy(), route, content);
+
+    if (!hierarchy) return null;
 
     return (
         <li
@@ -75,21 +79,33 @@ const ResultItem = (props) => {
             <div className="text-sm text-slate-700 group-aria-selected:text-sky-600 dark:text-slate-300 dark:group-aria-selected:text-sky-400">
                 <HighlightQuery text={content} query={query} />
             </div>
-            <div className="mt-0.5 truncate whitespace-nowrap text-xs text-slate-500 dark:text-slate-400 group-aria-selected:text-slate-600 dark:group-aria-selected:text-slate-300">
-                {hierarchy.map((item, index, items) => (
-                    <Fragment key={index}>
-                        <HighlightQuery text={item} query={query} />
-                        <span
-                            className={
-                                index === items.length - 1
-                                    ? 'sr-only'
-                                    : 'mx-2 text-slate-300 dark:text-slate-700'
-                            }
-                        >
-                            /
-                        </span>
-                    </Fragment>
-                ))}
+            <div className="mt-0.5 flex items-center gap-2 text-xs">
+                <div className="truncate whitespace-nowrap text-slate-500 dark:text-slate-400 group-aria-selected:text-slate-600 dark:group-aria-selected:text-slate-300">
+                    {hierarchy.map((item, index, items) => (
+                        <Fragment key={index}>
+                            <HighlightQuery text={item} query={query} />
+                            <span
+                                className={
+                                    index === items.length - 1
+                                        ? 'sr-only'
+                                        : 'mx-2 text-slate-300 dark:text-slate-600'
+                                }
+                            >
+                                /
+                            </span>
+                        </Fragment>
+                    ))}
+                </div>
+                {activeRoute === route && (
+                    <div className="ml-auto inline-block px-1.5 py-0.5 rounded bg-sky-100 text-sky-600 dark:bg-sky-800 dark:text-sky-400">
+                        {website.localize({
+                            en: 'Current',
+                            fr: 'Actuel',
+                            es: 'Actual',
+                            zh: '当前',
+                        })}
+                    </div>
+                )}
             </div>
         </li>
     );
