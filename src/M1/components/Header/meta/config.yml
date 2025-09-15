@@ -30,8 +30,8 @@ elements:
             en: Navigation Links
             fr: Liens de navigation
         description:
-            en: The navigation links to display in the header, it is created as a list of links, each link can have children links.
-            fr: Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants.
+            en: The navigation links to display in the header, it is created as a list of links, each link can have children links. You can add a optional second list for account links such as login, signup, etc.
+            fr: Les liens de navigation à afficher dans l'en-tête, ils sont créés sous forme de liste de liens, chaque lien peut avoir des liens enfants. Vous pouvez ajouter une deuxième liste facultative pour les liens de compte tels que la connexion, l'inscription, etc.
 
 properties:
     login_url:

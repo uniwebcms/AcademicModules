@@ -7,70 +7,17 @@ import { HiOutlineGlobeAlt, HiSearch, HiX, HiOutlineMenu, HiChevronDown } from '
 import { GrRadialSelected } from 'react-icons/gr';
 import { AiOutlineUser } from 'react-icons/ai';
 import SearchManager from './SearchManager';
-import {
-    LuCodeXml,
-    LuPenLine,
-    LuFileText,
-    LuGraduationCap,
-    LuHotel,
-    LuLandmark,
-    LuSearch,
-    LuSquareLibrary,
-    LuFileInput,
-    LuLanguages,
-    LuRocket,
-    LuHardDrive,
-    LuChartLine,
-    LuFolderOpen,
-    LuNewspaper,
-    LuPlay,
-    LuCloudUpload,
-    LuChartScatter,
-    LuCircleHelp,
-    LuAlbum,
-    LuInfo,
-} from 'react-icons/lu';
-
-const LinkIcon = ({ icon }) => {
-    const map = {
-        'code-xml': LuCodeXml,
-        'pen-line': LuPenLine,
-        'file-text': LuFileText,
-        'graduation-cap': LuGraduationCap,
-        hotel: LuHotel,
-        landmark: LuLandmark,
-        search: LuSearch,
-        'square-library': LuSquareLibrary,
-        'file-input': LuFileInput,
-        languages: LuLanguages,
-        rocket: LuRocket,
-        'hard-drive': LuHardDrive,
-        'chart-line': LuChartLine,
-        'folder-open': LuFolderOpen,
-        newspaper: LuNewspaper,
-        play: LuPlay,
-        'cloud-upload': LuCloudUpload,
-        'chart-scatter': LuChartScatter,
-        'circle-help': LuCircleHelp,
-        album: LuAlbum,
-        info: LuInfo,
-    };
-
-    const IconComponent = map[icon] || 'div';
-
-    return <IconComponent className="h-4 w-4 mr-2 text-text-color-70" />;
-};
 
 const NavBar = ({
     logo,
     navigation,
+    accountLinks,
     floatingOnTop,
     theme,
     languages,
     refresh,
     logoOnLight,
     login_url,
-    navIcons,
     block, // Add block prop for tracking
 }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -111,7 +58,7 @@ const NavBar = ({
             ...extraData,
         };
 
-        console.log('🔍 Search Event Tracked:', searchData);
+        // console.log('🔍 Search Event Tracked:', searchData);
         block.trackEvent(eventType, searchData);
     };
 
@@ -616,19 +563,17 @@ const NavBar = ({
                                         to={child.route}
                                         className="flex items-center w-fit relative px-3 py-2 group"
                                     >
-                                        {navIcons?.length ? (
-                                            <LinkIcon
-                                                icon={
-                                                    navIcons.find((i) => i.link === child.label)
-                                                        ?.icon
-                                                }
+                                        {child.icon ? (
+                                            <Icon
+                                                icon={child.icon}
+                                                className="h-4 w-4 mr-2 text-text-color-90"
                                             />
                                         ) : null}
                                         <span className="text-base">{child.label}</span>
                                         <span
                                             className={twJoin(
                                                 'absolute bottom-1.5 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0',
-                                                navIcons?.length
+                                                child.icon
                                                     ? 'left-9 group-hover:w-[calc(100%-48px)]'
                                                     : 'left-3 group-hover:w-[calc(100%-24px)]'
                                             )}
@@ -730,32 +675,29 @@ const NavBar = ({
                 return (
                     <div className="px-6 md:px-8 pt-2 pb-6">
                         <div className="flex flex-col gap-5">
-                            <Link
-                                to={login_url}
-                                className="relative text-center px-4 py-3 bg-gray-50 rounded-lg"
-                            >
-                                <span className="font-medium text-black">
-                                    {website.localize({
-                                        en: 'Sign in',
-                                        fr: 'Se connecter',
-                                        es: 'Iniciar sesión',
-                                        ch: '登录',
-                                    })}
-                                </span>
-                            </Link>
-                            <Link
-                                to={login_url}
-                                className="relative text-center px-4 py-3 bg-primary-600 rounded-lg"
-                            >
-                                <span className="font-medium text-white">
-                                    {website.localize({
-                                        en: 'Not a member? Start for free',
-                                        fr: 'Pas encore membre? Commencer gratuitement',
-                                        es: '¿No eres miembro? Comience gratis',
-                                        ch: '还不是会员？免费开始',
-                                    })}
-                                </span>
-                            </Link>
+                            {accountLinks.map((link, index) => (
+                                <a
+                                    key={index}
+                                    href={link.route}
+                                    target="_self"
+                                    className={twJoin(
+                                        index === accountLinks.length - 1
+                                            ? 'relative text-center px-4 py-3 bg-primary-600 rounded-lg'
+                                            : 'relative text-center px-4 py-3 bg-gray-50 rounded-lg'
+                                    )}
+                                >
+                                    <span
+                                        className={twJoin(
+                                            'font-medium',
+                                            index === accountLinks.length - 1
+                                                ? 'text-white'
+                                                : 'text-black'
+                                        )}
+                                    >
+                                        {link.label}
+                                    </span>
+                                </a>
+                            ))}
                         </div>
                     </div>
                 );
@@ -915,50 +857,50 @@ const NavBar = ({
                                     />
                                 </button>
                             )}
-                            <button
-                                ref={languageBtnRef}
-                                className="relative !bg-transparent text-text-color group px-3 py-2"
-                                onMouseEnter={() => handleActionMouseEnter('language')}
-                            >
-                                <HiOutlineGlobeAlt className="h-6 w-6" />
-                                <span
-                                    className={twJoin(
-                                        'absolute bottom-[3px] left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
-                                        activeDropdown === 'language'
-                                            ? 'w-[calc(100%-24px)]'
-                                            : 'w-0'
-                                    )}
-                                />
-                            </button>
-                            <a
-                                href={login_url}
-                                className="relative !bg-transparent text-lg px-3 py-2 group !text-text-color"
-                                onMouseEnter={() => handleActionMouseEnter('login')}
-                            >
-                                {website.localize({
-                                    en: 'Login',
-                                    fr: 'Connexion',
-                                    es: 'Iniciar sesión',
-                                    ch: '登录',
-                                })}
-                                <span
-                                    className={twJoin(
-                                        'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-24px)]'
-                                    )}
-                                />
-                            </a>
-                            <a
-                                href={login_url}
-                                className="!ml-3 xl:!ml-4 !bg-transparent text-lg !text-text-color whitespace-nowrap px-5 py-2 border-2 rounded-3xl border-text-color transition-[border-color] duration-200 ease-out hover:border-primary-600"
-                                onMouseEnter={() => handleActionMouseEnter('signup')}
-                            >
-                                {website.localize({
-                                    en: 'Start for free',
-                                    fr: 'Commencer gratuitement',
-                                    es: 'Comience gratis',
-                                    ch: '免费开始',
-                                })}
-                            </a>
+                            {languages.length > 1 && (
+                                <button
+                                    ref={languageBtnRef}
+                                    className="relative !bg-transparent text-text-color group px-3 py-2"
+                                    onMouseEnter={() => handleActionMouseEnter('language')}
+                                >
+                                    <HiOutlineGlobeAlt className="h-6 w-6" />
+                                    <span
+                                        className={twJoin(
+                                            'absolute bottom-[3px] left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out group-hover:w-[calc(100%-24px)]',
+                                            activeDropdown === 'language'
+                                                ? 'w-[calc(100%-24px)]'
+                                                : 'w-0'
+                                        )}
+                                    />
+                                </button>
+                            )}
+                            <div className="flex items-center space-x-2.5 xl:space-x-3.5">
+                                {accountLinks.map((link, index) => (
+                                    <a
+                                        key={index}
+                                        href={link.route}
+                                        target="_self"
+                                        className={twJoin(
+                                            'cursor-pointer',
+                                            index === accountLinks.length - 1
+                                                ? '!bg-transparent text-lg !text-text-color whitespace-nowrap px-5 py-2 border-2 rounded-3xl border-text-color transition-[border-color] duration-200 ease-out hover:border-primary-600'
+                                                : 'relative !bg-transparent text-lg px-3 py-2 group !text-text-color'
+                                        )}
+                                        onMouseEnter={() =>
+                                            handleActionMouseEnter(`account-${index}`)
+                                        }
+                                    >
+                                        {link.label}
+                                        {index !== accountLinks.length - 1 && (
+                                            <span
+                                                className={twJoin(
+                                                    'absolute bottom-1.5 left-3 h-0.5 bg-primary-600 transition-[width] duration-500 ease-out w-0 group-hover:w-[calc(100%-24px)]'
+                                                )}
+                                            />
+                                        )}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Mobile Actions */}
@@ -968,12 +910,16 @@ const NavBar = ({
                                     <HiSearch className="h-6 w-6" />
                                 </div>
                             )}
-                            <div onClick={() => handleMobileAction('language')}>
-                                <HiOutlineGlobeAlt className="h-6 w-6" />
-                            </div>
-                            <div onClick={() => handleMobileAction('user')}>
-                                <AiOutlineUser className="h-6 w-6" />
-                            </div>
+                            {languages.length > 1 && (
+                                <div onClick={() => handleMobileAction('language')}>
+                                    <HiOutlineGlobeAlt className="h-6 w-6" />
+                                </div>
+                            )}
+                            {accountLinks.length > 0 && (
+                                <div onClick={() => handleMobileAction('user')}>
+                                    <AiOutlineUser className="h-6 w-6" />
+                                </div>
+                            )}
                             <div onClick={() => handleMobileAction('menu')}>
                                 <HiOutlineMenu className="h-6 w-6" />
                             </div>
@@ -1052,7 +998,9 @@ export default function Header(props) {
     const appDomain = uniweb.getAppDomain();
     login_url = login_url || `${appDomain}login`;
 
-    const navigation = block.getBlockLinks({ nested: true });
+    const linkGroups = block.getBlockLinks({ nested: true, grouped: true });
+
+    const [navigation = [], accountLinks = []] = linkGroups;
 
     const theme = allowTranslucentTop ? nextTheme : themeName;
     const themeVariant = theme.split('__')[1];
@@ -1061,7 +1009,6 @@ export default function Header(props) {
     const icon = main?.body?.icons?.[0];
     const images = [banner, ...main?.body?.imgs].filter((img) => img);
     const logoImg = images.find((img) => img.caption === `logo-${themeVariant}`);
-    const linkIcons = main?.body?.properties?.linkIcons;
 
     const logo = icon ? (
         <Icon icon={icon} className="w-full h-full" />
@@ -1094,7 +1041,7 @@ export default function Header(props) {
         <NavBar
             login_url={login_url}
             navigation={navigation}
-            navIcons={linkIcons}
+            accountLinks={accountLinks}
             logo={logo}
             logoOnLight={logoOnLight}
             floatingOnTop={allowTranslucentTop}

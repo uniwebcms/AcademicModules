@@ -104,6 +104,8 @@ const LanguageSelector = ({ website }) => {
         };
     }, []);
 
+    if (languages.length <= 1) return null;
+
     return (
         <div className="relative" ref={dropdownRef}>
             {/* Dropdown Menu - Positioned Above */}
