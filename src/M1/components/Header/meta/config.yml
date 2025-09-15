@@ -37,8 +37,8 @@ properties:
     navigation_generation_mode:
         type: string
         label: 
-        en: Navigation Links Generation Mode
-        fr: Mode de génération des liens de navigation
+            en: Navigation Links Generation Mode
+            fr: Mode de génération des liens de navigation
         enum:
         - label:
             en: Automatic
