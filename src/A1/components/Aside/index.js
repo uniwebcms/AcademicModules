@@ -22,7 +22,7 @@ export default function Aside(props) {
     );
 }
 
-const Profile = ({ profile, website }) => {
+const Profile = ({ profile }) => {
     const { title, subtitle } = profile.getBasicInfo();
 
     let mediaLinks = [];

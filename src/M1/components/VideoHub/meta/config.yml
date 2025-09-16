@@ -11,6 +11,10 @@ description:
 category: video
 export: true
 
+input:
+  type: video
+  limit: false
+
 elements:
   title:
   subtitle:

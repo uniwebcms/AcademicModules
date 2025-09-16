@@ -11,5 +11,9 @@ description:
 category: article
 export: true
 
+input:
+  type: articles
+  limit: one
+
 images:
   - example.png
