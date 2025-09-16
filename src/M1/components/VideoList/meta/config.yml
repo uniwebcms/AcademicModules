@@ -8,7 +8,7 @@ description:
   en: A component designed to display a collection of videos in a vertical list. Date is from the linked source.
   fr: Un composant conçu pour afficher une collection de vidéos dans une liste verticale. La date provient de la source liée.
 
-category: video
+category: video,dynamic_content
 export: true
 
 input:

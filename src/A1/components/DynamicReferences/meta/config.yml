@@ -8,7 +8,7 @@ description:
   en: Show references (APA) in table view with search, source configured in input widget.
   fr: Afficher les références (APA) en vue de tableau avec recherche, source configurée dans le widget d'entrée.
 
-category: reference
+category: reference,dynamic_content
 export: true
 
 input:

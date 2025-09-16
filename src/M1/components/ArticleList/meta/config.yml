@@ -8,7 +8,7 @@ description:
   en: A component designed to display a collection of articles in a vertical list.
   fr: Un composant conçu pour afficher une collection d'articles dans une liste verticale.
 
-category: article
+category: article,dynamic_content
 export: true
 
 input:

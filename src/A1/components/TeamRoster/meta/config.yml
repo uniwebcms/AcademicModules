@@ -8,7 +8,7 @@ description:
     en: Display a grid of team members with large pictures and social media links, source is coming from the editor or input.
     fr: Affiche une grille de membres de l'équipe avec de grandes images et des liens vers les médias sociaux, la source provient de l'éditeur ou de l'entrée.
 
-category: content
+category: content,dynamic_content
 export: true
 
 input:

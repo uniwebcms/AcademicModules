@@ -8,7 +8,7 @@ description:
   en: Show locations as Pins on a Google Map, data is coming from the Research Places section of one or more selected profiles.
   fr: Affichez les emplacements sous forme d'épingles sur une carte Google, les données proviennent de la section Lieux de recherche d'un ou de plusieurs profils sélectionnés.
 
-category: map
+category: map,dynamic_content
 export: true
 
 input:

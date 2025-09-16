@@ -8,7 +8,7 @@ description:
   en: Display the content of a article.
   fr: Affiche le contenu d'un article.
 
-category: article
+category: article,dynamic_content
 export: true
 
 input:

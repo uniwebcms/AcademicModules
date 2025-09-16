@@ -8,7 +8,7 @@ description:
   en: A versatile and interactive component designed to display and manage a collection of articles. Each article includes key details such as the author, title, description, publication date, and a cover image.
   fr: Un composant polyvalent et interactif conçu pour afficher et gérer une collection d'articles. Chaque article inclut des détails clés tels que l'auteur, le titre, la description, la date de publication et une image de couverture.
 
-category: article
+category: article,dynamic_content
 export: true
 
 input:

@@ -8,6 +8,9 @@ description:
     en: A section to display an overview of multiple related points, to convey an overall message about the items.
     fr: Une section permettant d'afficher une vue d'ensemble de plusieurs points liés, afin de transmettre un message global sur les éléments.
 
+category: content
+export: true
+
 elements:
     pretitle:
     title:

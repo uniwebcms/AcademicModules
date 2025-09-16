@@ -8,7 +8,7 @@ description:
   en: Display content aside from the main content, usually on one side of a two column layout. 
   fr: Afficher du contenu à côté du contenu principal, généralement sur un côté d'une mise en page à deux colonnes.
 
-category: content
+category: dynamic_content
 export: true
 
 input:

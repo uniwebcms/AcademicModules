@@ -8,7 +8,7 @@ description:
   en: A component takes input of content profile and displays it in a hero layout.
   fr: Un composant prend en entrée un profil de contenu et l'affiche dans une mise en page hero.
 
-category: hero
+category: dynamic_content,hero
 export: true
 
 input:

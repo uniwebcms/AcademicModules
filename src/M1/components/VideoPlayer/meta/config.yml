@@ -8,7 +8,7 @@ description:
   en: A component designed to display a video from a linked source.
   fr: Un composant conçu pour afficher une vidéo à partir d'une source liée.
 
-category: video
+category: video,dynamic_content
 export: true
 
 input:

@@ -8,7 +8,7 @@ description:
   en: A versatile and interactive component designed to display a collection of videos.
   fr: Un composant polyvalent et interactif conçu pour afficher une collection de vidéos
 
-category: video
+category: video,dynamic_content
 export: true
 
 input:

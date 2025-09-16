@@ -27,7 +27,7 @@ properties:
             en: Wheather or not the component will fit the video size.
             fr: Si le composant adaptera ou non la taille de la vidéo.
 
-category: media
+category: media,dynamic_content
 export: true
 
 input:

@@ -7,11 +7,12 @@ label:
 description:
     en: Showing the detail of a reference profile.
     fr: Affichage du détail d'un profil de référence.
+
 input:
     type: reference
     limit: false
 
-category: reference
+category: reference,dynamic_content
 export: true
 
 elements:

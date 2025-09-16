@@ -8,7 +8,7 @@ description:
   en: Display points of interest on an interactive map, addresses are from the selected input or manual input cards.
   fr: Affichez des points d'intérêt sur une carte interactive, les adresses proviennent de l'entrée sélectionnée ou des cartes d'entrée manuelles.
 
-category: map
+category: map,dynamic_content
 export: true
 
 assets:
@@ -28,6 +28,7 @@ assets:
     title: 
       en: One map for both locations, zoomed in to the city level.
       fr: Une seule carte pour les deux sites, zoomée au niveau de la ville.
+
 input:
   type: any
   limit: false

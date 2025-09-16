@@ -8,7 +8,7 @@ description:
   en: A component showing the title, cover image, description, author and tag of an article. It is designed to provide a concise overview of the article's content. Ideal for use as a header for individual articles.
   fr: Un composant affichant le titre, l'image de couverture, la description, l'auteur et la balise d'un article. Il est conçu pour fournir un aperçu concis du contenu de l'article. Idéal pour une utilisation en tant qu'en-tête d'articles individuels.
 
-category: article
+category: article,dynamic_content
 export: true
 
 input:

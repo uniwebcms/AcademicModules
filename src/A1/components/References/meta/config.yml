@@ -11,7 +11,7 @@ input:
     type: reference
     limit: false
 
-category: reference
+category: reference,dynamic_content
 export: true
 
 elements:

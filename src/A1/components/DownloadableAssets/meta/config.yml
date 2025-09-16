@@ -8,7 +8,7 @@ description:
   en: Renders web assets(files) for download, the source is from the current website's folder, or directly from the editor.
   fr: Rend les actifs web (fichiers) téléchargeables, la source provient du dossier actuel du site web, ou directement de l'éditeur.
 
-category: downloadable
+category: downloadable,dynamic_content
 export: true
 
 input:
