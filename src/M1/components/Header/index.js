@@ -11,6 +11,7 @@ import SearchManager from './SearchManager';
 const NavBar = ({
     logo,
     navigation,
+    navigationLinkAlignment,
     accountLinks,
     floatingOnTop,
     theme,
@@ -780,15 +781,22 @@ const NavBar = ({
                 onMouseLeave={handleMouseLeave}
             >
                 <div className="w-full max-w-9xl mx-auto px-6 md:px-8 lg:px-10 xl:px-16 2xl:px-24">
-                    <div className="flex justify-between h-20 items-center">
-                        <div className="flex items-center lg:space-x-8 xl:space-x-10 2xl:space-x-12">
+                    <div className="flex justify-between h-20 items-center space-x-2 xl:space-x-4 2xl:space-x-6">
+                        <div className="flex items-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 flex-grow">
                             {/* Logo */}
                             <div className="flex-shrink-0 w-24 md:w-28 lg:w-32 xl:w-36 2xl:w-40">
                                 <Link to="">{logo}</Link>
                             </div>
 
                             {/* Desktop Navigation */}
-                            <div className="hidden lg:flex lg:items-center lg:space-x-2 xl:space-x-4 2xl:space-x-6">
+                            <div
+                                className={twJoin(
+                                    'hidden lg:flex lg:items-center lg:space-x-2 xl:space-x-3 2xl:space-x-4 flex-grow',
+                                    navigationLinkAlignment === 'left' && 'justify-start',
+                                    navigationLinkAlignment === 'center' && 'justify-center',
+                                    navigationLinkAlignment === 'right' && 'justify-end'
+                                )}
+                            >
                                 {navigation.map((item, index) => {
                                     const { label, route, child_items } = item;
 
@@ -992,7 +1000,8 @@ export default function Header(props) {
 
     const { theme: nextTheme = '', allowTranslucentTop = false } = getNextBlockContext(block);
 
-    const { navigation_generation_mode = 'auto' } = block.getBlockProperties();
+    const { navigation_generation_mode = 'auto', navigation_link_alignment = 'left' } =
+        block.getBlockProperties();
 
     let navigation = [],
         accountLinks = [];
@@ -1045,6 +1054,7 @@ export default function Header(props) {
     return (
         <NavBar
             navigation={navigation}
+            navigationLinkAlignment={navigation_link_alignment}
             accountLinks={accountLinks}
             logo={logo}
             logoOnLight={logoOnLight}

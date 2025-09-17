@@ -219,7 +219,7 @@ const TooltipBlock = ({ block, triggerText }) => {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            className="absolute top-12 right-2 w-[640px] bg-neutral-50/95 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-neutral-200/50 z-40"
+                            className="absolute top-12 right-2 w-[640px] max-w-[calc(100%-16px)] max-h-[calc(100%-64px)] bg-neutral-50/95 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-neutral-200/50 z-40 overflow-y-auto"
                         >
                             {/* Header */}
                             <div className="mb-3">
@@ -228,7 +228,7 @@ const TooltipBlock = ({ block, triggerText }) => {
                             </div>
 
                             {/* Two-column layout */}
-                            <div className="flex gap-6">
+                            <div className="flex flex-col lg:flex-row gap-6">
                                 {xAxis && <TooltipFeatureItem item={xAxis} isAxisItem={true} />}
                                 {yAxis && <TooltipFeatureItem item={yAxis} isAxisItem={false} />}
                             </div>
@@ -296,7 +296,7 @@ const parseItems = (items) => {
 const allIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panels-top-left"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>`;
 
 export default function DataVizCompare(props) {
-    const { block } = props;
+    const { block, index } = props;
 
     const { properties: settings } = block.getBlockContent();
     const items = block.getBlockItems();
@@ -306,9 +306,9 @@ export default function DataVizCompare(props) {
     const data = parseItems(items, settings);
 
     const chartSwitcherBtnClassName =
-        'px-2.5 py-1.5 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-neutral-100/50 hover:bg-neutral-100/80 text-neutral-700 cursor-pointer hover:scale-105';
+        'p-3 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-neutral-100/50 hover:bg-neutral-100/80 text-neutral-700 cursor-pointer hover:scale-105';
     const chartSwitcherActiveBtnClassName =
-        'px-2.5 py-1.5 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-gradient-to-r from-secondary-600 to-secondary-500 text-neutral-50 shadow-secondary-500/50 cursor-pointer';
+        'p-3 lg:px-4 lg:py-2 xl:px-6 xl:py-3 rounded-full flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-lg bg-gradient-to-r from-secondary-600 to-secondary-500 text-neutral-50 shadow-secondary-500/50 cursor-pointer';
 
     const { childBlocks } = block;
 
@@ -317,11 +317,20 @@ export default function DataVizCompare(props) {
             ? childBlocks[0]
             : null;
 
+    const isChildSection = index !== undefined;
+
     return (
-        <Container px="none" py="none" className="relative max-w-8xl w-full mx-auto p-4">
-            <div className="w-full backdrop-blur-xl bg-neutral-100/70 rounded-xl shadow-2xl p-8 border border-neutral-100/20">
+        <Container
+            px="none"
+            py="none"
+            className={twJoin(
+                'relative max-w-8xl w-full mx-auto',
+                isChildSection ? 'py-4 px-0 lg:px-4' : 'p-4'
+            )}
+        >
+            <div className="w-full backdrop-blur-xl bg-neutral-100/70 rounded-xl shadow-2xl px-4 py-6 lg:p-8 border border-neutral-100/20">
                 {/* chart switcher btn group */}
-                <div className="flex gap-4 mb-8 pb-4 justify-center">
+                <div className="-mx-2 px-2 gap-4 mb-2 lg:mb-8 pb-4 flex items-center justify-center">
                     {data.map((item, index) => (
                         <div
                             key={index}
@@ -333,13 +342,17 @@ export default function DataVizCompare(props) {
                             onClick={() => setActiveChartIndex(index)}
                         >
                             <Icon icon={item.icon} className="w-[18px] h-[18px] text-inherit" />
-                            {item.title}
+                            <span className="hidden lg:block">{item.title}</span>
                         </div>
                     ))}
                 </div>
 
+                <p className="block lg:hidden mb-6 text-center text-base font-semibold">
+                    {data[activeChartIndex]?.title}
+                </p>
+
                 {/* chart */}
-                <div className="relative h-[500px] bg-neutral-50/40 rounded-lg p-4 backdrop-blur-sm border border-neutral-50/50">
+                <div className="relative h-[500px] bg-neutral-50/40 rounded-lg py-4 px-0 lg:px-4 backdrop-blur-sm border border-neutral-50/50">
                     {/* tooltip */}
                     {tooltipBlock && (
                         <TooltipBlock

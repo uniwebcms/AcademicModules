@@ -69,7 +69,7 @@ export default function Table(props) {
     const [head, ...body] = data;
 
     return (
-        <div className="border border-neutral-200 shadow-xl rounded-lg overflow-hidden">
+        <div className="border border-neutral-200 shadow-xl rounded-lg overflow-x-auto">
             <table className="w-full table-auto">
                 <thead className="bg-neutral-950">
                     <tr>

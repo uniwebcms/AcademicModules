@@ -52,6 +52,28 @@ properties:
         description: 
             en: Choose how the navigation links are generated. Automatic -> Generate links based on your site's structure; Manual Links -> Generate links based on the list(s) provided in the docufolio.
             fr: Choisissez comment les liens de navigation sont générés. Automatique -> Générer des liens basés sur la structure de votre site ; Liens manuels -> Générer des liens basés sur les listes fournies dans le docufolio.
+    navigation_link_alignment:
+        type: string
+        label: 
+            en: Navigation Links Alignment
+            fr: Alignement des liens de navigation
+        enum:
+        - label:
+            en: Left
+            fr: Gauche
+          value: left
+        - label:
+            en: Center
+            fr: Centre
+          value: center
+        - label:
+            en: Right
+            fr: Droite
+          value: right
+        default: left
+        description: 
+            en: The alignment of the navigation links in the header.
+            fr: L'alignement des liens de navigation dans l'en-tête.
 
 images:
     - example.png

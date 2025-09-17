@@ -214,14 +214,14 @@ export default function Footer(props) {
                                 return (
                                     <a
                                         key={index}
-                                        className="block w-10 h-10 2xl:w-12 2xl:h-12 rounded-full bg-icon-color/10 backdrop-blur-md p-2 lg:p-3"
+                                        className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-icon-color/10 backdrop-blur-md p-2"
                                         href={href}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         title={website.localize(linkTitle)}
                                     >
                                         <span className="sr-only">{type}</span>
-                                        <Icon className="w-6 h-6 hover:scale-105" />
+                                        <Icon className="w-full h-full hover:scale-105" />
                                     </a>
                                 );
                             })}

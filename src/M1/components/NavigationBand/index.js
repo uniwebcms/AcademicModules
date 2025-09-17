@@ -25,8 +25,8 @@ export default function NavigationBand(props) {
                         }}
                     >
                         <LuChevronLeft className="hidden lg:block w-5 h-5 text-text-color/60 group-hover:text-link-color transition-colors flex-shrink-0" />
-                        <div className="text-left flex-1">
-                            <div className="hidden lg:block text-xs text-text-color/70 mb-1">
+                        <div className="flex-1">
+                            <div className="text-center lg:text-left text-xs text-text-color/70 mb-1">
                                 {website.localize({
                                     en: 'Previous',
                                     fr: 'Précédent',
@@ -53,7 +53,7 @@ export default function NavigationBand(props) {
                 {currentLink && (
                     <Link
                         to={currentLink.href}
-                        className="flex items-center justify-center gap-2 px-4 py-4 sm:px-6 text-text-color/80 hover:text-link-color bg-text-color-0 lg:bg-transparent rounded-xl border border-text-color/10 lg:border-0 hover:border-text-color/20 lg:hover:border-transparent hover:shadow-lg lg:hover:shadow-none hover:scale-[1.02] lg:hover:scale-100 transition-all lg:transition-none duration-300 ease-out"
+                        className="flex items-center justify-center gap-2 px-4 py-4 sm:px-6 text-text-color lg:text-text-color/80 hover:text-link-color bg-text-color-0 lg:bg-transparent rounded-xl border border-text-color/10 lg:border-0 hover:border-text-color/20 lg:hover:border-transparent hover:shadow-lg lg:hover:shadow-none hover:scale-[1.02] lg:hover:scale-100 transition-all lg:transition-none duration-300 ease-out"
                     >
                         {currentIcon && <Icon icon={currentIcon} className="w-5 h-5" />}
                         <span className="font-medium">{currentLink.label}</span>
@@ -69,8 +69,8 @@ export default function NavigationBand(props) {
                             transitionTimingFunction: 'cubic-bezier(0, 0, 0.5, 1)',
                         }}
                     >
-                        <div className="text-right flex-1">
-                            <div className="hidden lg:block text-xs text-text-color/70 mb-1">
+                        <div className="flex-1">
+                            <div className="text-center lg:text-right text-xs text-text-color/70 mb-1">
                                 {website.localize({
                                     en: 'Next',
                                     fr: 'Suivant',
