@@ -100,11 +100,11 @@ const SelectWidget = ({ data, setData, options, placeholder }) => {
 };
 
 const Field = (props) => {
-    const { title, paragraphs, properties, icons, lists, data, setData } = props;
+    const { title, paragraphs, properties, icons, lists, data, setData, error } = props;
 
     const icon = icons?.[0];
 
-    const { widget = 'input' } = properties;
+    const { widget = 'input', required = false } = properties;
 
     const inputClassName =
         'flex h-10 w-full rounded-md border px-3 py-2 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm bg-neutral-900 border-neutral-600 text-neutral-200 placeholder:text-neutral-500';
@@ -116,9 +116,10 @@ const Field = (props) => {
 
     return (
         <div>
-            <label className="text-sm font-medium leading-none text-neutral-200 mb-2 flex items-center gap-2">
-                {icon && <Icon icon={icon} className="w-4 h-4 text-inherit" />}
+            <label className="text-sm font-medium leading-none text-neutral-200 mb-2 flex items-center">
+                {icon && <Icon icon={icon} className="w-4 h-4 text-inherit mr-2" />}
                 {title}
+                {required && <span className="ml-1 text-red-500">*</span>}
             </label>
             {widget === 'input' ? (
                 <input
@@ -163,18 +164,20 @@ const Field = (props) => {
                     ))}
                 </div>
             ) : null}
+            {error ? <p className="mt-1 text-sm text-red-500">{error}</p> : null}
         </div>
     );
 };
 
 export default function Form(props) {
-    const { block } = props;
+    const { block, website } = props;
 
     const { title, subtitle, buttons } = block.getBlockContent();
 
     const items = block.getBlockItems();
 
     const [data, setData] = useState({});
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         const initData = {};
@@ -192,6 +195,46 @@ export default function Form(props) {
         setData(initData);
     }, [items.length]);
 
+    const validate = () => {
+        const newErrors = {};
+        items.forEach((item) => {
+            const { title, properties } = item;
+
+            if (properties?.required && !data[title]) {
+                newErrors[title] = 'This field is required';
+            } else if (
+                properties?.validation &&
+                !new RegExp(properties.validation).test(data[title])
+            ) {
+                newErrors[title] = properties.errorMsg || 'Invalid input';
+            }
+        });
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if (!validate()) {
+            return;
+        }
+
+        website.submitWebsiteForm('contact', data).then((res) => {
+            alert(
+                website.localize({
+                    en: 'Successfully submitted!',
+                    fr: 'Soumis avec succès !',
+                    es: '¡Enviado con éxito!',
+                    zh: '提交成功！',
+                })
+            );
+
+            setData({});
+        });
+    };
+
     return (
         <Container
             px="none"
@@ -207,12 +250,19 @@ export default function Form(props) {
             {items.length ? (
                 <form className="p-6 space-y-6">
                     {items.map((item, index) => (
-                        <Field key={index} {...item} data={data} setData={setData} />
+                        <Field
+                            key={index}
+                            {...item}
+                            data={data}
+                            setData={setData}
+                            error={errors[item.title]}
+                        />
                     ))}
                     {buttons[0] && (
                         <button
                             type="button"
                             className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full"
+                            onClick={handleSubmit}
                         >
                             {buttons[0].content}
                         </button>
