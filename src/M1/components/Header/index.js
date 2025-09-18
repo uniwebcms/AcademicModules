@@ -549,11 +549,11 @@ const NavBar = ({
                     return (
                         <div className="max-w-9xl mx-auto px-6 md:px-8 lg:px-16 xl:px-24 pt-5 pb-12">
                             <div
-                                className="grid gap-x-4 gap-y-1 relative max-w-[500px]"
+                                className="grid gap-x-4 gap-y-1 relative lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[500px]"
                                 style={{
-                                    gridTemplateColumns:
-                                        navDropdownLayout.columns === 1 ? 'auto' : 'auto 1fr',
-                                    // gridTemplateColumns: `repeat(${navDropdownLayout.columns}, auto)`,
+                                    // gridTemplateColumns:
+                                    //     navDropdownLayout.columns === 1 ? 'auto' : 'auto 1fr',
+                                    gridTemplateColumns: `repeat(${navDropdownLayout.columns}, 1fr)`,
                                     marginLeft: navDropdownLayout.offset,
                                 }}
                             >
@@ -566,7 +566,7 @@ const NavBar = ({
                                         {child.icon ? (
                                             <Icon
                                                 icon={child.icon}
-                                                className="h-4 w-4 mr-2 text-text-color-90"
+                                                className="flex-shrink-0 h-4 w-4 mr-2 text-text-color-90"
                                             />
                                         ) : null}
                                         <span className="text-base">{child.label}</span>
