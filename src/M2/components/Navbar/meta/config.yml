@@ -5,8 +5,8 @@ label:
   en: Navbar
   fr: Barre de navigation
 description:
-  en: A navigation bar component that can be used to display a logo and navigation links.
-  fr: Un composant de barre de navigation qui peut être utilisé pour afficher un logo et des liens de navigation.
+  en: A navigation bar component that can be used to display a logo, navigation links and account links.
+  fr: Un composant de barre de navigation qui peut être utilisé pour afficher un logo, des liens de navigation et des liens de compte.
 
 category: navigation
 export: true
@@ -25,19 +25,50 @@ elements:
       en: Navigation Links
       fr: Liens de navigation
     description:
-      en: The navigation links to display in the header, it is created as a list of links, each link can have children links.
-      fr: Les liens de navigation à afficher dans l'en-tête, il est créé sous forme de liste de liens, chaque lien peut avoir des liens enfants.
+      en: The navigation links to display in the header, it is created as a list of links, each link can have children links. You can add a optional second list for account links such as login, signup, etc.
+      fr: Les liens de navigation à afficher dans l'en-tête, ils sont créés sous forme de liste de liens, chaque lien peut avoir des liens enfants. Vous pouvez ajouter une deuxième liste facultative pour les liens de compte tels que la connexion, l'inscription, etc.
 
 properties:
-  sign_up_link:
-    label:
-      en: Sign Up Link
-      fr: Lien d'inscription
-    type: string
-    default: ""
-    description:
-      en: The link to the sign-up page.
-      fr: Le lien vers la page d'inscription.
+    navigation_generation_mode:
+        type: string
+        label: 
+            en: Navigation Links Generation Mode
+            fr: Mode de génération des liens de navigation
+        enum:
+        - label:
+            en: Automatic
+            fr: Automatique
+          value: auto
+        - label:
+            en: Manual Links
+            fr: Liens manuels
+          value: manual
+        default: auto
+        description: 
+            en: Choose how the navigation links are generated. Automatic -> Generate links based on your site's structure; Manual Links -> Generate links based on the list(s) provided in the docufolio.
+            fr: Choisissez comment les liens de navigation sont générés. Automatique -> Générer des liens basés sur la structure de votre site ; Liens manuels -> Générer des liens basés sur les listes fournies dans le docufolio.
+    navigation_link_alignment:
+        type: string
+        label: 
+            en: Navigation Links Alignment
+            fr: Alignement des liens de navigation
+        enum:
+        - label:
+            en: Left
+            fr: Gauche
+          value: left
+        - label:
+            en: Center
+            fr: Centre
+          value: center
+        - label:
+            en: Right
+            fr: Droite
+          value: right
+        default: left
+        description: 
+            en: The alignment of the navigation links in the header.
+            fr: L'alignement des liens de navigation dans l'en-tête.
 
 images:
   - example.png

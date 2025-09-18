@@ -5,8 +5,8 @@ label:
   en: Article Head
   fr: En-tête d'article
 description:
-  en: A component showing the title, cover image, description, author and tag of an article. It is designed to provide a concise overview of the article's content. Ideal for use as a header for individual articles.
-  fr: Un composant affichant le titre, l'image de couverture, la description, l'auteur et la balise d'un article. Il est conçu pour fournir un aperçu concis du contenu de l'article. Idéal pour une utilisation en tant qu'en-tête d'articles individuels.
+  en: A component showing the title, cover image, description, author and tag of an article. It is designed to provide a concise overview of the article's content. Ideal for use as a header for individual articles. Data is from linked article or manually entered.
+  fr: Un composant affichant le titre, l'image de couverture, la description, l'auteur et la balise d'un article. Il est conçu pour fournir un aperçu concis du contenu de l'article. Idéal pour une utilisation en tant qu'en-tête d'articles individuels. Les données proviennent de l'article lié ou sont saisies manuellement.
 
 category: article,dynamic_content
 export: true
@@ -14,6 +14,44 @@ export: true
 input:
   type: articles
   limit: one
+  
+elements:
+  background:
+    label:
+      en: Banner
+      fr: Bannière
+  pretitle:
+    label:
+      en: Publish Date
+      fr: Date de publication
+  title:
+    label:
+      en: Article Title
+      fr: Titre de l'article
+  subtitle:
+    label:
+      en: Article Subtitle
+      fr: Sous-titre de l'article
+
+items:
+  separator: divider
+  limit: 1
+  elements:
+    background:
+      label:
+        en: Author Image
+        fr: Image de l'auteur
+    title:
+      label:
+        en: Author Name
+        fr: Nom de l'auteur
+    list:
+      label:
+        en: Tags
+        fr: Étiquettes
+      description:
+        en: Tags associated with the article.
+        fr: Étiquettes associées à l'article.
 
 images:
   - example.png

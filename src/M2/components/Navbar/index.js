@@ -43,8 +43,23 @@ const setWrapperStyle = (theme, block, style) => {
 export default function navbar(props) {
     const { block, website, page } = props;
 
-    const { sign_up_link = '' } = block.getBlockProperties();
-    const { logo, linkGroups } = parseNavbarContent(block);
+    const { navigation_generation_mode = 'auto', navigation_link_alignment = 'left' } =
+        block.getBlockProperties();
+
+    let navigationLinks = [],
+        accountLinks = [];
+
+    if (navigation_generation_mode === 'manual') {
+        const linkGroups = block.getBlockLinks({ nested: true, grouped: true });
+        [navigationLinks = [], accountLinks = []] = linkGroups;
+    } else {
+        navigationLinks = website.getPageHierarchy({
+            nested: true,
+            filterEmpty: false,
+        });
+    }
+
+    const { logo } = parseNavbarContent(block);
 
     const firstBodyBlock = page.blockGroups.body?.[0];
 
@@ -87,77 +102,77 @@ export default function navbar(props) {
                         <Link to="">{logo}</Link>
                     </div>
                     {/* Links */}
-                    <ul className="flex gap-6 items-center w-full">
-                        {linkGroups.map((links, gIndex) => {
-                            return (
-                                <React.Fragment key={gIndex}>
-                                    {links.map((link, lIndex) => {
-                                        const { label, route, child_items, hasData } = link;
+                    <div className="flex gap-6 items-center justify-between w-full">
+                        <ul
+                            className={twJoin(
+                                'flex items-center gap-6 flex-grow',
+                                navigation_link_alignment === 'left' && 'justify-start',
+                                navigation_link_alignment === 'center' && 'justify-center',
+                                navigation_link_alignment === 'right' && 'justify-end'
+                            )}
+                        >
+                            {navigationLinks.map((link, index) => {
+                                const { label, route, child_items, hasData } = link;
 
-                                        const element =
-                                            hasData && child_items.length ? (
-                                                <div className="flex items-center gap-1">
-                                                    <Link to={route} className="font-medium">
-                                                        {label}
-                                                    </Link>
-                                                    <LuChevronDown className="ui-open:rotate-180 ui-open:transform" />
-                                                </div>
-                                            ) : child_items.length > 0 ? (
-                                                <div className="flex items-center gap-1">
-                                                    <p className="font-medium">{label}</p>
-                                                    <LuChevronDown className="ui-open:rotate-180 ui-open:transform" />
-                                                </div>
-                                            ) : (
-                                                <Link to={route} className="font-medium">
-                                                    {label}
-                                                </Link>
-                                            );
+                                const element =
+                                    hasData && child_items.length ? (
+                                        <div className="flex items-center gap-1">
+                                            <Link to={route} className="font-medium">
+                                                {label}
+                                            </Link>
+                                            <LuChevronDown className="ui-open:rotate-180 ui-open:transform" />
+                                        </div>
+                                    ) : child_items.length > 0 ? (
+                                        <div className="flex items-center gap-1">
+                                            <p className="font-medium">{label}</p>
+                                            <LuChevronDown className="ui-open:rotate-180 ui-open:transform" />
+                                        </div>
+                                    ) : (
+                                        <Link to={route} className="font-medium">
+                                            {label}
+                                        </Link>
+                                    );
 
-                                        return (
-                                            <li
-                                                key={lIndex}
-                                                className={twJoin(
-                                                    'group relative flex items-center',
-                                                    lIndex === 0 && gIndex > 0 && 'ml-auto'
-                                                )}
-                                            >
-                                                {child_items.length > 0 ? (
-                                                    <DropdownMenu
-                                                        trigger={element}
-                                                        menuItems={child_items}
-                                                        openFrom={gIndex === 0 ? 'left' : 'right'}
-                                                        positionOffset={
-                                                            gIndex === 0
-                                                                ? lIndex + 1
-                                                                : links.length - lIndex - 1
-                                                        }
-                                                    />
-                                                ) : (
-                                                    element
-                                                )}
-                                            </li>
-                                        );
-                                    })}
-                                </React.Fragment>
-                            );
-                        })}
-                        {sign_up_link && (
-                            <li className={linkGroups.length < 2 ? 'ml-auto' : ''}>
-                                <Link
-                                    to={sign_up_link}
-                                    target="_blank"
-                                    className="block bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color py-2 px-5 h-[44px] max-w-[105px] rounded-xl font-medium leading-[1.8]"
-                                >
-                                    {website.localize({
-                                        en: 'Sign up',
-                                        fr: "S'inscrire",
-                                        es: 'Regístrate',
-                                        zh: '注册',
-                                    })}
-                                </Link>
-                            </li>
-                        )}
-                    </ul>
+                                return (
+                                    <li
+                                        key={index}
+                                        className={twJoin('group relative flex items-center')}
+                                    >
+                                        {child_items.length > 0 ? (
+                                            <DropdownMenu
+                                                trigger={element}
+                                                menuItems={child_items}
+                                                openFrom={'left'}
+                                                positionOffset={index + 1}
+                                            />
+                                        ) : (
+                                            element
+                                        )}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        {/* Account Links */}
+                        <ul className="flex items-center gap-6">
+                            {accountLinks.map((link, index) => {
+                                const { label, route } = link;
+
+                                return (
+                                    <Link
+                                        key={index}
+                                        to={route}
+                                        className={twJoin(
+                                            'font-medium',
+                                            index === accountLinks.length - 1 &&
+                                                'block bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color py-2 px-5 rounded-xl'
+                                        )}
+                                    >
+                                        {label}
+                                    </Link>
+                                );
+                            })}
+                        </ul>
+                    </div>
                 </div>
             </nav>
             {/* Mobile Navbar */}
@@ -188,7 +203,7 @@ export default function navbar(props) {
                 {mobileOpen && (
                     <div className="fixed inset-0 z-40 bg-text-color-0 pt-[64px] p-6 overflow-y-auto">
                         <ul className="flex flex-col gap-6">
-                            {linkGroups.map((links, gIndex) =>
+                            {[navigationLinks, accountLinks].map((links, gIndex) =>
                                 links.map((link, lIndex) => {
                                     const { label, route, child_items, hasData } = link;
                                     const groupKey = `${gIndex}-${lIndex}`;
@@ -245,22 +260,6 @@ export default function navbar(props) {
                                         </li>
                                     );
                                 })
-                            )}
-                            {sign_up_link && (
-                                <li onClick={() => setMobileOpen(false)}>
-                                    <Link
-                                        to={sign_up_link}
-                                        target="_blank"
-                                        className="block bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color py-2 px-5 rounded-xl font-medium text-center"
-                                    >
-                                        {website.localize({
-                                            en: 'Sign up',
-                                            fr: "S'inscrire",
-                                            es: 'Regístrate',
-                                            zh: '注册',
-                                        })}
-                                    </Link>
-                                </li>
                             )}
                         </ul>
                     </div>

@@ -40,9 +40,9 @@ export default function PopoverMenu(props) {
                     >
                         <Popover.Panel
                             className={'absolute z-50 pt-3'}
-                            style={{
-                                [openFrom]: `calc(${-positionOffset}*20px)`,
-                            }}
+                            // style={{
+                            //     [openFrom]: `calc(${-positionOffset}*20px)`,
+                            // }}
                         >
                             <ul
                                 className={`grid ${getColumnClass(
