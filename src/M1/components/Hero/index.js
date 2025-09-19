@@ -45,7 +45,8 @@ export default function Hero(props) {
                     <div
                         className={twJoin(
                             '-order-1 max-w-3xl mx-auto',
-                            alignment === 'right' && 'lg:order-2 text-right',
+                            alignment === 'left' && 'lg:text-left text-center',
+                            alignment === 'right' && 'lg:order-2 lg:text-right text-center',
                             alignment === 'center' && 'text-center'
                         )}
                     >
@@ -68,9 +69,9 @@ export default function Hero(props) {
                             <div
                                 className={twJoin(
                                     'flex flex-wrap gap-6 lg:gap-8',
-                                    alignment === 'left' ? 'justify-start' : '',
+                                    alignment === 'left' ? 'justify-center lg:justify-start' : '',
                                     alignment === 'center' ? 'justify-center' : '',
-                                    alignment === 'right' ? 'justify-end' : ''
+                                    alignment === 'right' ? 'justify-center lg:justify-end' : ''
                                 )}
                             >
                                 {links.map((link, index) => (

@@ -56,7 +56,7 @@ export default function CodeHero(props) {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="space-y-4"
+                            className="space-y-4 text-center lg:text-left"
                         >
                             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                                 {title}
