@@ -52,7 +52,7 @@ export default function CodeHero(props) {
             </div>
             <div className="relative max-w-7xl mx-auto">
                 <div className="flex flex-col lg:flex-row gap-12 items-center">
-                    <div className="flex-1 space-y-6">
+                    <div className="flex-1 space-y-6 w-full">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -62,12 +62,12 @@ export default function CodeHero(props) {
                                 {title}
                             </h1>
                             <p className="text-xl">{subtitle}</p>
-                            <div className="flex gap-4 pt-4">
+                            <div className="max-w-full flex flex-wrap gap-4 pt-4">
                                 {firstLink && (
-                                    <Link to={firstLink.href}>
+                                    <Link to={firstLink.href} className="flex-grow lg:flex-none">
                                         <button
                                             type="button"
-                                            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 rounded-md px-8 gap-2 border-none"
+                                            className="w-full lg:w-auto inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 rounded-md px-8 gap-2 border-none"
                                         >
                                             {firstLink.label}
                                             <RiArrowRightLine className="w-4 h-4 text-inherit" />
@@ -75,8 +75,8 @@ export default function CodeHero(props) {
                                     </Link>
                                 )}
                                 {secondLink && (
-                                    <Link to={secondLink.href}>
-                                        <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 rounded-md px-8 gap-2 border-none btn-secondary">
+                                    <Link to={secondLink.href} className="flex-grow lg:flex-none">
+                                        <button className="w-full lg:w-auto inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 rounded-md px-8 gap-2 border-none btn-secondary">
                                             <RiCodeSSlashFill className="w-4 h-4" />
                                             {secondLink.label}
                                         </button>

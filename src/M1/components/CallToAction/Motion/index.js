@@ -13,10 +13,10 @@ export default function Motion(props) {
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
     return (
-        <Container py="xl" className="relative">
+        <Container py="xl" className="relative overflow-hidden">
             <div ref={ref}>
                 <div className="absolute inset-0 bg-gradient-to-br from-bg-bg-color via-primary-50 to-secondary-50" />
-                <div className="relative mx-auto max-w-6xl px-4 py-24">
+                <div className="relative mx-auto max-w-6xl px-4 py-8 lg:py-24">
                     <motion.div
                         className="flex flex-col items-center text-center"
                         initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ export default function Motion(props) {
                             {secondLink && (
                                 <div className="group">
                                     <Link to={secondLink.href}>
-                                        <button className="px-8 py-4 rounded-full font-semibold border-2 border-secondary-500 flex items-center gap-2 transition-all duration-300 transform hover:scale-105 btn-secondary">
+                                        <button className="px-8 py-3 rounded-full font-semibold border-2 border-secondary-500 flex items-center gap-2 transition-all duration-300 transform hover:scale-105 btn-secondary">
                                             {secondLink.label}
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
