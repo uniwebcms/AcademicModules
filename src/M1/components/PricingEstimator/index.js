@@ -54,7 +54,7 @@ const CalculatorOptionButton = ({ title, price, priceText, icon, selected, onCli
 
 const CalculatorOptionNumber = ({ title, price, priceText, value, onChange }) => {
     return (
-        <div className="px-4 py-2 rounded-xl">
+        <div className="px-0 md:px-4 py-2 rounded-xl">
             <div className="flex items-center justify-between gap-3">
                 <div>
                     <span className="text-sm text-neutral-700">{title}</span>
@@ -79,7 +79,7 @@ const CalculatorOptionNumber = ({ title, price, priceText, value, onChange }) =>
 
 const CalculatorOptionSwitch = ({ title, priceText, selected, onChange }) => {
     return (
-        <div className="px-4 py-2 rounded-xl">
+        <div className="px-0 md:px-4 py-2 rounded-xl">
             <Switch.Group>
                 <div className="flex items-center justify-between gap-3">
                     <Switch.Label>
@@ -186,11 +186,11 @@ const CalculatorBox = ({ item, isAnnual }) => {
                 </div>
                 {steps.map((step, index) => {
                     return (
-                        <div key={index} className="mb-6">
-                            <label className="block mb-4 font-medium text-sm text-neutral-700">
+                        <div key={index} className="mb-8 md:mb-6">
+                            <p className="block mb-4 font-medium text-sm text-neutral-700">
                                 {step.title}
-                            </label>
-                            <div className="grid grid-cols-2 gap-4">
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-4">
                                 {step.options.map((option, index) => {
                                     if (option.type === 'button') {
                                         return (

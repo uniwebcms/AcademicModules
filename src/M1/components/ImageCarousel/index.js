@@ -177,7 +177,7 @@ export default function ImageCarousel(props) {
             layout={LAYOUTS.STACKED_3D}
             playMode={PLAY_MODES.HOVER}
             glassEffect={true}
-            className={in_hero ? 'max-w-xl scale-125 2xl:scale-150 mx-auto' : ''}
+            className={in_hero ? 'lg:max-w-xl lg:scale-125 2xl:scale-150 mx-auto' : ''}
         />
     );
 }

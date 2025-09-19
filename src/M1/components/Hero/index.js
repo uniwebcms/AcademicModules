@@ -35,7 +35,7 @@ export default function Hero(props) {
                     />
                 </div>
             )}
-            <div className={twJoin('max-w-8xl mx-auto px-6 py-12 relative')}>
+            <div className={twJoin('max-w-8xl mx-auto pt-12 lg:pt-0 relative')}>
                 <div
                     className={twJoin(
                         'grid gap-12 items-center',
@@ -98,9 +98,7 @@ export default function Hero(props) {
                             childBlocks={[childBlocks[0]]}
                             pure={true}
                         ></ChildBlockRenderer>
-                    ) : (
-                        <div></div>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </Container>

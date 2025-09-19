@@ -45,7 +45,7 @@ export default function CodeHero(props) {
     const code = childBlocks[0] ? childBlocks[0].getBlockContent().properties : '';
 
     return (
-        <Container className="relative">
+        <Container className="relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-secondary-500/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-accent-500/10 rounded-full blur-3xl"></div>
@@ -89,7 +89,7 @@ export default function CodeHero(props) {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="flex-1"
+                        className="flex-1 max-w-full"
                     >
                         <CodeExample code={code} {...properties} />
                     </motion.div>

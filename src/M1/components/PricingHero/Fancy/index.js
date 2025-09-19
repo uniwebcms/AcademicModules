@@ -40,7 +40,7 @@ export default function Fancy({ pretitle, title, subtitle, items }) {
 
     return (
         <Container
-            px="none"
+            // px="none"
             py="lg"
             className={twJoin(
                 'min-h-[70vh]',
@@ -66,7 +66,7 @@ export default function Fancy({ pretitle, title, subtitle, items }) {
                 </div>
                 <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     <div>
-                        <div className="p-12 flex items-center justify-center">
+                        <div className="p-0 md:p-12 flex items-center justify-center">
                             <div
                                 ref={cardRef}
                                 onMouseMove={handleMouseMove}
@@ -168,7 +168,7 @@ export default function Fancy({ pretitle, title, subtitle, items }) {
                         </div>
                     </div>
                     <div className="flex items-center">
-                        <div className="px-8 py-0">
+                        <div className="px-0 pt-4 md:px-8 md:py-0">
                             <h2
                                 className={twJoin(
                                     'text-2xl font-normal mb-2 pb-5',

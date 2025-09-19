@@ -182,7 +182,7 @@ const ArticleList = ({ title, articles, input }) => {
                 className="mt-3 flex items-start overflow-x-auto gap-6 xl:gap-8 no-scrollbar"
             >
                 {articles.map((article) => (
-                    <div key={article.key} className="w-72 flex-shrink-0">
+                    <div key={article.key} className="w-full sm:w-72 flex-shrink-0">
                         <ArticleCard article={article} input={input} size="sm" />
                     </div>
                 ))}
@@ -285,7 +285,7 @@ export default function ArticleHub(props) {
             {subtitle && <p className="mt-4 lg:mt-6 text-lg md:text-xl lg:text-2xl">{subtitle}</p>}
             <div className="relative mt-8 lg:mt-10">
                 {/* search */}
-                <div className="relative max-w-[calc(100%-60px)] md:max-w-xl ml-0 lg:mx-auto">
+                <div className="relative max-w-full sm:max-w-[calc(100%-60px)] md:max-w-xl ml-0 lg:mx-auto">
                     <input
                         type="text"
                         value={searchText}

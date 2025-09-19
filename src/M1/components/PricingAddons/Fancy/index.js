@@ -11,7 +11,7 @@ export default function Fancy(props) {
 
     return (
         <Container px="none" py="lg" className={twJoin('relative')}>
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 overflow-hidden">
                 <div
                     className={twJoin(
                         'absolute inset-0 bg-gradient-to-br',
@@ -40,14 +40,14 @@ export default function Fancy(props) {
                 ></div>
             </div>
             <div className="max-w-6xl mx-auto px-8 relative">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-12">
-                    <div className="max-w-3xl col-span-2">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 mb-12">
+                    <div className="max-w-3xl ld:col-span-2">
                         <h2 className={twJoin('text-3xl font-bold mb-4')}>{title}</h2>
                         <p className={twJoin('text-base')}>{subtitle}</p>
                     </div>
                     <div
                         className={twJoin(
-                            'border rounded-lg p-4 mx-8 gap-y-2',
+                            'border rounded-lg p-4 mx-0 lg:mx-8 gap-y-2',
                             'bg-secondary-500/10 border-secondary-500/20'
                         )}
                     >
@@ -112,32 +112,38 @@ export default function Fancy(props) {
                                         <div key={index} className="flex items-center">
                                             <div
                                                 className={twJoin(
-                                                    'w-10 h-10 rounded-lg flex items-center justify-center mr-4'
+                                                    'w-6 h-6 lg:w-10 lg:h-10 rounded-lg flex items-center justify-center mr-2 lg:mr-4'
                                                 )}
                                             >
                                                 <Icon
                                                     icon={icons[index]}
                                                     className={twJoin(
-                                                        'w-5 h-5',
+                                                        'w-4 h-4 lg:w-5 lg:h-5',
                                                         addonIconColors[index]
                                                     )}
                                                 />
                                             </div>
                                             <div className="flex-grow">
                                                 <div className="flex items-center justify-between">
-                                                    <h4 className={twJoin('text-lg font-medium')}>
+                                                    <h4
+                                                        className={twJoin(
+                                                            'text-base lg:text-lg font-medium'
+                                                        )}
+                                                    >
                                                         {feature.text}
                                                     </h4>
                                                     <div className="text-right">
                                                         <span
                                                             className={twJoin(
-                                                                'text-xl font-bold',
+                                                                'text-lg lg:text-xl font-bold',
                                                                 'text-heading-color'
                                                             )}
                                                         >
                                                             {feature.price}
                                                         </span>
-                                                        <span>/{feature.period}</span>
+                                                        <span className="text-sm lg:text-base">
+                                                            /{feature.period}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
