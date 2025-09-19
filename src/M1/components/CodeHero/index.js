@@ -64,7 +64,10 @@ export default function CodeHero(props) {
                             <p className="text-xl">{subtitle}</p>
                             <div className="max-w-full flex flex-wrap gap-4 pt-4">
                                 {firstLink && (
-                                    <Link to={firstLink.href} className="flex-grow lg:flex-none">
+                                    <Link
+                                        to={firstLink.href}
+                                        className="flex-grow lg:flex-none max-w-full"
+                                    >
                                         <button
                                             type="button"
                                             className="w-full lg:w-auto inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 rounded-md px-8 gap-2 border-none"
@@ -75,7 +78,10 @@ export default function CodeHero(props) {
                                     </Link>
                                 )}
                                 {secondLink && (
-                                    <Link to={secondLink.href} className="flex-grow lg:flex-none">
+                                    <Link
+                                        to={secondLink.href}
+                                        className="flex-grow lg:flex-none max-w-full"
+                                    >
                                         <button className="w-full lg:w-auto inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 rounded-md px-8 gap-2 border-none btn-secondary">
                                             <RiCodeSSlashFill className="w-4 h-4" />
                                             {secondLink.label}
