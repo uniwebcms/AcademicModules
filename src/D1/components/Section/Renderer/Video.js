@@ -158,8 +158,8 @@ export default function Video({ page, videoControl, block, ...video }) {
     );
 
     return (
-        <div className="not-prose mb-6 lg:my-8">
-            <div className="relative">
+        <div className="not-prose my-4 lg:my-8">
+            <div className="relative aspect-video">
                 <div
                     className={outerClasses}
                     onClick={(event) => {

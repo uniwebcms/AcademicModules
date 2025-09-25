@@ -8,7 +8,7 @@ import Code from './Code';
 import Math from './Math';
 import { stripTags } from '@uniwebcms/module-sdk';
 import { twJoin } from '@uniwebcms/module-sdk';
-import styles from './Section.module.scss';
+// import styles from './Section.module.scss';
 
 const Render = function (props) {
     const { block: pageBlock, content, page, website } = props;
@@ -23,7 +23,7 @@ const Render = function (props) {
                 return (
                     <p
                         key={index}
-                        className={styles.Block}
+                        // className={styles.Block}
                         dangerouslySetInnerHTML={{ __html: content }}
                         style={{ textAlign: alignment }}
                     ></p>
@@ -38,7 +38,7 @@ const Render = function (props) {
                     <Heading
                         key={index}
                         id={`Section${pageBlock.id}-${stripTags(content).replace(/\s/g, '-')}`}
-                        className={`${fontSize}` + ` ${styles.Heading}`}
+                        // className={`${fontSize}` + ` ${styles.Heading}`}
                         dangerouslySetInnerHTML={{ __html: content }}
                     ></Heading>
                 );

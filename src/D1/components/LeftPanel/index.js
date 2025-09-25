@@ -25,8 +25,7 @@ const includeActivePage = (child_items, activeRoute) => {
 };
 
 const MenuItem = (props) => {
-    const docStyle =
-        'w-full min-h-[32px] border-l border-t border-b flex items-center border-[transparent] text-[rgba(92,105,117,1)]';
+    const docStyle = 'w-full flex flex-col items-center';
 
     const { info, isFirst, website, opens, openCloseMenu } = props;
 
@@ -60,7 +59,7 @@ const MenuItem = (props) => {
         <>
             <div className={`${docStyle}`}>
                 <Link
-                    className={`group py-2 pl-4 pr-8 w-full text-sm lg:text-base ${
+                    className={`group py-2 pr-8 w-full text-sm lg:text-base ${
                         isActive
                             ? 'font-bold hover:text-primary-600'
                             : 'text-neutral-600 hover:text-primary-600'
@@ -90,7 +89,7 @@ const MenuItem = (props) => {
                 </Link>
             </div>
             {child_items && child_items.length && open ? (
-                <div className={`flex flex-col ml-5 relative`}>
+                <div className={`flex flex-col pl-4 relative`}>
                     {child_items.map((info) => {
                         return (
                             <MenuItem

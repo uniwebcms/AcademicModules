@@ -138,18 +138,16 @@ const SearchKit = (props) => {
     const [input, setInput] = useState('');
 
     return (
-        <main className={`w-full max-w-screen h-screen p-5`}>
-            <div className={`pt-20 mx-auto w-[42rem] max-w-[calc(100vw-2rem)]`}>
-                <SearchBox
-                    {...props}
-                    result={result}
-                    setResult={setResult}
-                    input={input}
-                    setInput={setInput}
-                />
-                <SearchResult {...{ result, ...props }} />
-            </div>
-        </main>
+        <div className={`flex flex-col w-full md:max-w-2xl lg:max-w-3xl mx-auto mt-12 md:mt-16`}>
+            <SearchBox
+                {...props}
+                result={result}
+                setResult={setResult}
+                input={input}
+                setInput={setInput}
+            />
+            <SearchResult {...{ result, ...props }} />
+        </div>
     );
 };
 
@@ -251,13 +249,10 @@ const Search = (props) => {
     return (
         <>
             <div
-                className={`rounded-lg flex items-center justify-${iconPosition}`}
+                className={`w-8 h-8 p-1 rounded-lg flex items-center justify-${iconPosition} cursor-pinter text-neutral-500 hover:bg-primary-100 hover:text-primary-500`}
                 onClick={openModal}
             >
-                <HiSearch
-                    className={`cursor-pointer w-6 h-6 text-neutral-600 hover:text-primary-600 ${props.iconClassName}`}
-                    style={props.iconStyle}
-                />
+                <HiSearch className={`cursor-pointer w-6 h-6`} style={props.iconStyle} />
             </div>
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog
@@ -277,30 +272,28 @@ const Search = (props) => {
                     >
                         <div
                             onClick={closeModal}
-                            className={`fixed inset-0 bg-neutral-900 bg-opacity-60 transition-opacity`}
+                            className={`fixed inset-0 bg-neutral-900/80 transition-opacity`}
                             aria-hidden="true"
                         ></div>
                     </Transition.Child>
-                    <div className="fixed inset-0 overflow-y-auto">
-                        <div className={`min-h-screen px-4 flex justify-center`}>
-                            <MdClose
-                                className={`w-10 h-10 text-neutral-800 hover:text-neutral-200 cursor-pointer absolute top-4 right-4 z-[51]`}
-                                onClick={closeModal}
-                            ></MdClose>
-                            <Transition.Child
-                                as="div"
-                                enter={`ease-out duration-300`}
-                                enterFrom={`opacity-0 scale-95`}
-                                enterTo={`opacity-100 scale-100`}
-                                leave={`ease-in duration-200`}
-                                leaveFrom={`opacity-100 scale-100`}
-                                leaveTo={`opacity-0 scale-95`}
-                            >
-                                <Dialog.Panel>
-                                    <SearchKit website={website} searchFn={query}></SearchKit>
-                                </Dialog.Panel>
-                            </Transition.Child>
-                        </div>
+                    <div className="fixed inset-0 max-w-8xl mx-auto overflow-y-auto">
+                        <MdClose
+                            className={`absolute top-6 right-8 md:right-12 w-8 h-8 text-neutral-300 hover:text-neutral-100 cursor-pointer z-[51]`}
+                            onClick={closeModal}
+                        ></MdClose>
+                        <Transition.Child
+                            as="div"
+                            enter={`ease-out duration-300`}
+                            enterFrom={`opacity-0 scale-95`}
+                            enterTo={`opacity-100 scale-100`}
+                            leave={`ease-in duration-200`}
+                            leaveFrom={`opacity-100 scale-100`}
+                            leaveTo={`opacity-0 scale-95`}
+                        >
+                            <Dialog.Panel>
+                                <SearchKit website={website} searchFn={query}></SearchKit>
+                            </Dialog.Panel>
+                        </Transition.Child>
                     </div>
                 </Dialog>
             </Transition>

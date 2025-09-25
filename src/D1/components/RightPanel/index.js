@@ -77,7 +77,7 @@ export default (props) => {
                                                     {mainTitle}
                                                 </a>
                                                 {headings.length ? (
-                                                    <ul className={`ml-2 space-y-1.5 mt-1`}>
+                                                    <ul className={`ml-2 pt-2 space-y-2 mt-1`}>
                                                         {headings.map((heading, hi) => {
                                                             return (
                                                                 <li key={hi}>

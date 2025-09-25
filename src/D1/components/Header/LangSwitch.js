@@ -5,14 +5,14 @@ import { HiGlobeAlt } from 'react-icons/hi';
 export default function ({ website, activeLang }) {
     const validLanguages = website.getLanguages();
 
-    let btnStyle = `mx-4 !outline-none cursor-pointer md:p-2.5 rounded-md flex items-center justify-center group rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-500`;
+    let btnStyle = `w-8 h-8 p-1 outline-none rounded-md flex items-center justify-center group rounded-md text-neutral-500 hover:bg-primary-100 hover:text-primary-500 cursor-pointer`;
 
     return (
         <Popover className={`relative`}>
             {({ open }) => (
                 <>
                     <Popover.Button as="div" className={btnStyle}>
-                        <HiGlobeAlt className={`w-5 h-5 lg:w-6 lg:h-6`} />
+                        <HiGlobeAlt className={`w-6 h-6`} />
                     </Popover.Button>
                     <Transition
                         as={Fragment}

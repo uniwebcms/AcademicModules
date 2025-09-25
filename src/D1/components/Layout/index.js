@@ -17,20 +17,20 @@ export default function (props) {
     }, [page.options.pathname]);
 
     return (
-        <div className={`bg-white`}>
-            <div className={`h-[80px]`}>{header}</div>
-            <div className={`relative flex h-[calc(100vh-80px)]`}>
+        <div className={`bg-white w-screen min-h-screen`}>
+            <div className={`h-[80px] bg-white sticky top-0 z-50`}>{header}</div>
+            <div className={`relative flex max-w-8xl mx-auto px-8 md:px-12`}>
                 <div
-                    className={`w-[300px] pl-6 border-r hidden md:!flex flex-col bg-white h-full overflow-y-auto`}
+                    className={`sticky top-20 w-[300px] border-r hidden lg:flex flex-col bg-white h-[calc(100vh-80px)] overflow-y-auto`}
                 >
                     {leftPanel}
                 </div>
-                <div className={`flex flex-1 overflow-auto`} ref={containerRef}>
-                    <div className={`flex h-full flex-grow flex-col md:px-16`}>
+                <div className={`flex flex-1`} ref={containerRef}>
+                    <div className={`flex h-full flex-grow flex-col px-8 md:px-12`}>
                         {body}
                         {footer}
                     </div>
-                    {rightPanel}
+                    <div className={`hidden md:block`}>{rightPanel}</div>
                 </div>
             </div>
         </div>
