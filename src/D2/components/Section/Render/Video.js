@@ -43,6 +43,23 @@ async function getVideoThumbnail(url) {
     return null;
 }
 
+function getCoverImgUrl(video) {
+    if (!video.coverImg) return null;
+
+    let coverUrl = '';
+    let coverImg = video.coverImg;
+
+    if (coverImg?.src) {
+        coverUrl = coverImg.src;
+    } else if (coverImg?.identifier) {
+        coverUrl =
+            new uniweb.Profile(`docufolio/profile`, '_template').getAssetInfo(coverImg.identifier)
+                ?.src || '';
+    }
+
+    return coverUrl;
+}
+
 export default function Video({ block, page, videoControl, ...video }) {
     const profile = page.getPageProfile();
     const sections = page.blockGroups.body;
@@ -51,7 +68,20 @@ export default function Video({ block, page, videoControl, ...video }) {
     let caption = video?.caption || '';
     caption = stripTags(caption);
 
-    // const [src, setSrc] = useState(video.src);
+    const { identifier } = video?.info || {};
+
+    let initSrc = '';
+
+    if (video.src) {
+        initSrc = video.src;
+    } else if (identifier) {
+        initSrc =
+            new uniweb.Profile(`docufolio/profile`, '_template').getAssetInfo(identifier)?.src ||
+            '';
+    }
+
+    video.src = initSrc;
+
     const [currentVideo, setCurrentVideo] = useState(video);
     const [miniPlayer, setMiniPlayer] = useState(false);
     const [overlay, setOverlay] = useState(false);
@@ -100,7 +130,10 @@ export default function Video({ block, page, videoControl, ...video }) {
 
     useEffect(() => {
         async function fetchThumbnail() {
-            const thumb = await getVideoThumbnail(video.src);
+            let thumb = getCoverImgUrl(video);
+
+            if (!thumb) thumb = await getVideoThumbnail(video.src);
+
             setOgThumbnail(thumb);
         }
         fetchThumbnail();
@@ -108,18 +141,24 @@ export default function Video({ block, page, videoControl, ...video }) {
 
     useEffect(() => {
         async function fetchThumbnail() {
-            const thumb = await getVideoThumbnail(currentVideo.src);
+            let thumb = getCoverImgUrl(currentVideo);
+
+            if (!thumb) thumb = await getVideoThumbnail(currentVideo.src);
+
             setThumbnail(thumb);
         }
-        // setSrc(currentVideo.src);
+
         fetchThumbnail();
     }, [currentVideo]);
 
     useEffect(() => {
         async function fetchThumbnails() {
             const array = await Promise.all(
-                videos.map(async ({ src }) => {
-                    const thumb = await getVideoThumbnail(src);
+                videos.map(async (video) => {
+                    let thumb = getCoverImgUrl(video);
+
+                    if (!thumb) thumb = await getVideoThumbnail(video.src);
+
                     return thumb;
                 })
             );
