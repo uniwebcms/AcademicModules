@@ -36,7 +36,10 @@ export default function MediaHero(props) {
 
     if (videos[0] && images[0]) {
         video = videos[0];
-        videoThumbnail = images[0];
+
+        let coverImg = video?.coverImg;
+
+        videoThumbnail = coverImg ? { url: coverImg } : images[0];
     } else if (videos[0]) {
         video = videos[0];
     } else if (images[0]) {
