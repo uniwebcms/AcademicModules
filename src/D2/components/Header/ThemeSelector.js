@@ -109,7 +109,7 @@ export function ThemeSelector({ theme, setTheme, ...props }) {
                     )}
                 />
             </Listbox.Button>
-            <Listbox.Options className="absolute z-50 top-full -right-5 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2">
+            <Listbox.Options className="absolute z-50 top-full -right-5 bg-white rounded-lg ring-1 ring-slate-900/10 dark:ring-slate-50/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-1 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2">
                 {themes.map((theme) => (
                     <Listbox.Option
                         key={theme.name}

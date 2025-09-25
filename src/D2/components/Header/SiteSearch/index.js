@@ -287,11 +287,11 @@ const Search = (props) => {
         <>
             <button
                 type="button"
-                className="flex p-1 hover:px-1.5 items-center w-8 h-8 rounded-lg hover:bg-white hover:w-64 transition-all duration-300 focus:outline-none group overflow-hidden gap-2 ring-0 hover:ring-1 ring-slate-900/10 shadow-none hover:shadow-sm hover:ring-slate-300 bg-transparent dark:highlight-white/5 dark:hover:bg-slate-700 dark:hover:ring-slate-600"
+                className="flex md:p-1 md:hover:px-1.5 items-center w-5 md:w-8 h-8 rounded-lg md:hover:bg-white md:hover:w-64 transition-all duration-300 focus:outline-none group overflow-hidden gap-2 ring-0 md:hover:ring-1 ring-slate-900/10 shadow-none md:hover:shadow-sm md:hover:ring-slate-300 bg-transparent dark:highlight-white/5 md:dark:hover:bg-slate-700 md:dark:hover:ring-slate-600"
                 onClick={openModal}
             >
-                <LuSearch className="h-6 w-6 text-slate-400 flex-shrink-0" />
-                <p className="text-sm w-0 group-hover:w-fit hidden group-hover:block transition-all duration-1000 text-nowrap text-slate-500 dark:text-slate-400">
+                <LuSearch className="h-5 w-5 md:h-6 md:w-6 text-slate-400 flex-shrink-0" />
+                <p className="text-sm w-0 group-hover:w-fit hidden md:group-hover:block transition-all duration-1000 text-nowrap text-slate-500 dark:text-slate-400">
                     {website.localize({
                         en: 'Quick Search',
                         fr: 'Recherche rapide',

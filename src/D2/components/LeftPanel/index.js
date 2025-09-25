@@ -10,9 +10,9 @@ export default function LeftPanel(props) {
     const pages = website.getPageHierarchy();
 
     return (
-        <div className="relative hidden lg:block">
-            <div className="ml-auto h-[calc(100vh-64px)] w-64 overflow-y-auto overflow-x-hidden py-8 pr-8 pl-1">
-                <nav className="text-sm xl:text-base">
+        <div className="relative">
+            <div className="md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-1">
+                <nav className="text-base md:text-sm lg:text-base xl:text-base">
                     <Navigation navigation={pages} activeRoute={activeRoute} />
                 </nav>
             </div>

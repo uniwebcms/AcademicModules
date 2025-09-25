@@ -30,7 +30,7 @@ export default function ({ website }) {
                     >
                         <Popover.Panel
                             static
-                            className="absolute z-50 top-full -right-5 bg-white rounded-lg ring-1 ring-slate-900/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-0 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2"
+                            className="absolute z-50 top-full right-0 md:-right-5 bg-white rounded-lg ring-1 ring-slate-900/10 dark:ring-slate-50/10 shadow-lg overflow-hidden w-32 py-1 text-sm text-slate-700 font-semibold dark:bg-slate-900 dark:ring-1 dark:highlight-white/5 dark:text-slate-300 mt-4 translate-x-2"
                         >
                             <div className="flex flex-col">
                                 {validLanguages.map((item) => {
