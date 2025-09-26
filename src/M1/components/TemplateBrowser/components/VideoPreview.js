@@ -98,7 +98,7 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
             <button
                 onClick={toggleMute}
                 aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-                className="absolute top-3 right-3 bg-neutral-800/70 text-neutral-100 rounded-full p-2 hover:bg-neutral-700/70 focus:outline-none"
+                className="absolute top-3 right-3 bg-neutral-800/70 text-neutral-100 rounded-full p-2 hover:bg-neutral-700/70 focus:outline-none z-10"
             >
                 {isMuted ? (
                     <MdVolumeOff className="w-6 h-6 text-inherit" />

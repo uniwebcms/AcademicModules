@@ -4,20 +4,22 @@ import VideoPreview from './VideoPreview';
 import IframePreview from './IframePreview';
 import { twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { Link } from '@uniwebcms/core-components';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 const ItemCard = React.memo(({ item }) => {
     const [isHovering, setIsHovering] = useState(false);
     const [previewReady, setPreviewReady] = useState(false);
+    const [coverImageLoaded, setCoverImageLoaded] = useState(false);
 
     // Use intersection observer to detect when card is visible
     const { ref: cardRef, inView } = useInView({
         threshold: 0,
     });
 
+    // Reset cover image loaded state when item image changes
     useEffect(() => {
-        setIsHovering(false);
-        setPreviewReady(false);
-    }, [item.title]);
+        setCoverImageLoaded(false);
+    }, [item.image?.src]);
 
     const showPreview = item.preview;
 
@@ -41,12 +43,21 @@ const ItemCard = React.memo(({ item }) => {
 
         return (
             <div className={twJoin('block mt-2 px-1 py-1 relative space-y-0.5')}>
-                <p
+                {/* <p
                     className={twJoin('text-base font-bold truncate group-hover:underline')}
                     title={title}
                 >
                     {title}
-                </p>
+                </p> */}
+                {item.href ? (
+                    <Link to={item.href} className="text-base font-bold truncate hover:underline">
+                        {title}
+                    </Link>
+                ) : (
+                    <p className="text-base font-bold truncate" title={title}>
+                        {title}
+                    </p>
+                )}
                 <p className="truncate text-sm text-text-color/70 h-5" title={description}>
                     {description}
                 </p>
@@ -67,10 +78,16 @@ const ItemCard = React.memo(({ item }) => {
                     isHovering && previewReady ? 'opacity-0 rounded-none' : 'opacity-100 rounded-lg'
                 }`}
             >
+                {!coverImageLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 rounded-lg z-10">
+                        <ClipLoader color="rgb(var(--primary-500))" size={24} />
+                    </div>
+                )}
                 <img
                     src={item.image.src}
                     alt={item.image.alt}
                     className="w-full h-full object-cover"
+                    onLoad={() => setCoverImageLoaded(true)}
                 />
             </div>
 
@@ -104,7 +121,7 @@ const ItemCard = React.memo(({ item }) => {
             {cardInfo}
 
             {/* Overlay for link click */}
-            {item.href && <Link to={item.href} className="absolute inset-0 z-[1]" />}
+            {/* {item.href && <Link to={item.href} className="absolute inset-0 z-[1]" />} */}
         </div>
     );
 });
