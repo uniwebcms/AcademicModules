@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
 import { Image, SafeHtml } from '@uniwebcms/core-components';
 import { FaQuoteLeft } from 'react-icons/fa';
+import toast from '../_utils/Toast';
 
 const Testimonial = (info) => {
     const { title: name, subtitle: role, paragraphs: statement, images } = info;
@@ -50,11 +51,16 @@ export default function Newsletter(props) {
         e.preventDefault();
 
         website.submitWebsiteForm('newsletter', { email }).then((res) => {
-            alert(
+            toast(
                 website.localize({
-                    en: 'Thank you for your interest.',
-                    fr: 'Merci pour votre intérêt.',
-                })
+                    en: 'Thank you for subscribing!',
+                    fr: 'Merci de vous être abonné !',
+                }),
+                {
+                    theme: 'success',
+                    position: 'top-center',
+                    duration: 2000,
+                }
             );
         });
     };

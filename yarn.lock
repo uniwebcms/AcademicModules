@@ -3053,6 +3053,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^5.3.0"
     react-popper: "npm:^2.3.0"
+    react-simple-toasts: "npm:^6.1.0"
     react-spinners: "npm:^0.17.0"
     react-virtualized: "npm:^9.22.3"
     tailwindcss: "npm:^3.4.13"
@@ -8314,6 +8315,16 @@ __metadata:
     react: ^16.8.0 || ^17 || ^18
     react-dom: ^16.8.0 || ^17 || ^18
   checksum: 10/2afc495479ae4b9e67f9a1642debd7121947fe71a00c5b326301adb8288a18dca53ebd836fe9c3b7a4e2feb838df0abe8e044eb278e89b1c5d50978b0b93d0ac
+  languageName: node
+  linkType: hard
+
+"react-simple-toasts@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "react-simple-toasts@npm:6.1.0"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 10/fd89f98f750d2bd8955c4c20a7f4952dfb0f21ef9ddcb4fee243835b7a41c76fbdc6812b02d2432cc64ec35ee4ee0747793810e54002e23112a4e4c92252b994
   languageName: node
   linkType: hard
 

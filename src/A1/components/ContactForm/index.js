@@ -4,6 +4,7 @@ import { HiPhone } from 'react-icons/hi';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { SlEnvolope } from 'react-icons/sl';
 import Container from '../_utils/Container';
+import toast from '../_utils/Toast';
 
 export default function ContactForm({ block, website }) {
     const { main } = block;
@@ -208,12 +209,17 @@ const Form = (props) => {
                 message: formData.message,
             })
             .then((res) => {
-                alert(
+                toast(
                     website.localize({
                         en: 'Thank you for contacting us.',
                         es: 'Gracias por contactarnos.',
                         fr: 'Merci de nous avoir contactés.',
-                    })
+                    }),
+                    {
+                        theme: 'success',
+                        position: 'top-center',
+                        duration: 2000,
+                    }
                 );
 
                 // Reset form after submission

@@ -3,6 +3,7 @@ import { stripTags } from '@uniwebcms/module-sdk';
 import { SafeHtml } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { MdEmail } from 'react-icons/md';
+import toast from '../_utils/Toast';
 
 export default function NewsletterForm({ block, website }) {
     const { title = '', subtitle = '' } = block.main?.header || {};
@@ -19,11 +20,16 @@ export default function NewsletterForm({ block, website }) {
 
         // Custom submission logic
         website.submitWebsiteForm('newsletter', { email }).then((res) => {
-            alert(
+            toast(
                 website.localize({
-                    en: 'Thank you for your interest.',
-                    fr: 'Merci pour votre intérêt.',
-                })
+                    en: 'Thank you for subscribing!',
+                    fr: 'Merci de vous être abonné !',
+                }),
+                {
+                    theme: 'success',
+                    position: 'top-center',
+                    duration: 2000,
+                }
             );
         });
     };
@@ -40,7 +46,10 @@ export default function NewsletterForm({ block, website }) {
                 <form className="flex max-w-xl md:mx-auto" onSubmit={handleSubmit}>
                     <div className="w-full">
                         <label htmlFor="email-address" className="sr-only">
-                            Email address
+                            {website.localize({
+                                en: 'Email address',
+                                fr: 'Adresse e-mail',
+                            })}
                         </label>
                         <div className="relative h-full">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">

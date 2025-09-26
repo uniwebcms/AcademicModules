@@ -3,6 +3,7 @@ import Container from '../_utils/Container';
 import { twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { Icon } from '@uniwebcms/core-components';
 import { HiCheck, HiChevronDown } from 'react-icons/hi';
+import toast from '../_utils/Toast';
 
 const SelectWidget = ({ data, setData, options, placeholder }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -222,13 +223,18 @@ export default function Form(props) {
         }
 
         website.submitWebsiteForm('contact', data).then((res) => {
-            alert(
+            toast(
                 website.localize({
                     en: 'Successfully submitted!',
                     fr: 'Soumis avec succès !',
                     es: '¡Enviado con éxito!',
                     zh: '提交成功！',
-                })
+                }),
+                {
+                    theme: 'success',
+                    position: 'top-center',
+                    duration: 2000,
+                }
             );
 
             setData({});

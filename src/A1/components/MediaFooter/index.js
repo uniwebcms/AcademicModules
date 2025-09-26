@@ -4,6 +4,7 @@ import { Link, Icon, Image, MediaIcon, Disclaimer, SafeHtml } from '@uniwebcms/c
 import { getMediaLinkType } from '../_utils/media';
 import { MdEmail } from 'react-icons/md';
 import { BiSolidChevronUp } from 'react-icons/bi';
+import toast from '../_utils/Toast';
 
 const Branding = ({ logo, title, subtitle, links }) => {
     const mediaLinks = [],
@@ -163,11 +164,16 @@ const Newsletter = (props) => {
         e.preventDefault();
 
         website.submitWebsiteForm('newsletter', { email }).then((res) => {
-            alert(
+            toast(
                 website.localize({
-                    en: 'Thank you for your interest.',
-                    fr: 'Merci pour votre intérêt.',
-                })
+                    en: 'Thank you for subscribing!',
+                    fr: 'Merci de vous être abonné !',
+                }),
+                {
+                    theme: 'success',
+                    position: 'top-center',
+                    duration: 2000,
+                }
             );
         });
     };
@@ -186,7 +192,10 @@ const Newsletter = (props) => {
             <form onSubmit={handleSubmit}>
                 <div className="w-full max-w-xs">
                     <label htmlFor="email-address" className="sr-only">
-                        Email address
+                        {website.localize({
+                            en: 'Email address',
+                            fr: 'Adresse e-mail',
+                        })}
                     </label>
                     <div className="border-b border-text-color-50 py-2 px-1">
                         <input

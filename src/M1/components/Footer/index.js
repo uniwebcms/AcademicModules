@@ -5,6 +5,7 @@ import { getMediaLinkType, getMediaIcon } from '../_utils/media';
 import { GoGlobe } from 'react-icons/go';
 import { IoIosSend } from 'react-icons/io';
 import { HiChevronDown, HiCheck } from 'react-icons/hi';
+import toast from '../_utils/Toast';
 
 const parseBlockData = (block) => {
     const { themeName, main } = block;
@@ -164,11 +165,16 @@ export default function Footer(props) {
         e.preventDefault();
 
         website.submitWebsiteForm('newsletter', { email }).then((res) => {
-            alert(
+            toast(
                 website.localize({
-                    en: 'Thank you for your interest.',
-                    fr: 'Merci pour votre intérêt.',
-                })
+                    en: 'Thank you for subscribing!',
+                    fr: 'Merci de vous être abonné !',
+                }),
+                {
+                    theme: 'success',
+                    position: 'top-center',
+                    duration: 2000,
+                }
             );
         });
     };
