@@ -141,14 +141,14 @@ export default function ContactForm({ block, website }) {
                         </dl>
                     </div>
                 </div>
-                {right_align && <Form website={website} mailto={mailto} />}
+                {right_align && <Form website={website} mailto={mailto} block={block} />}
             </div>
         </Container>
     );
 }
 
 const Form = (props) => {
-    const { website, mailto } = props;
+    const { website, block, mailto } = props;
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -200,7 +200,7 @@ const Form = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        website
+        block
             .submitWebsiteForm('contact', {
                 email: formData.email,
                 firstName: formData.firstName,

@@ -222,7 +222,7 @@ export default function Form(props) {
             return;
         }
 
-        website.submitWebsiteForm('contact', data).then((res) => {
+        block.submitWebsiteForm('contact', data).then((res) => {
             toast(
                 website.localize({
                     en: 'Successfully submitted!',

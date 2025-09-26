@@ -19,7 +19,7 @@ export default function NewsletterForm({ block, website }) {
         e.preventDefault();
 
         // Custom submission logic
-        website.submitWebsiteForm('newsletter', { email }).then((res) => {
+        block.submitWebsiteForm('newsletter', { email }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',

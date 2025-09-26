@@ -5,7 +5,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 import MoonLoader from 'react-spinners/MoonLoader';
 import { getMediaLinkType } from '../_utils/media';
 
-function Newsletter({ website, title }) {
+function Newsletter({ website, title, block }) {
     const siteId = website.getSiteId();
 
     const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ function Newsletter({ website, title }) {
         );
 
         setTimeout(() => {
-            website.submitWebsiteForm(siteId, 'newsletter', { email }).then((res) => {
+            block.submitWebsiteForm(siteId, 'newsletter', { email }).then((res) => {
                 setEmail('');
 
                 setButtonIcon(<AiOutlineCheckCircle className="h-5 w-5" />);
@@ -115,7 +115,7 @@ export default function SocialConnector(props) {
     return (
         <Container py={py}>
             <div className="px-6 mx-auto max-w-7xl lg:px-8 flex flex-col md:flex-row items-start justify-between md:space-x-6 space-y-8 md:space-y-0">
-                <Newsletter title={newsletterTitle} website={website} />
+                <Newsletter title={newsletterTitle} website={website} block={block} />
                 <MediaLinks title={mediaLinksTitle} links={links} />
             </div>
         </Container>

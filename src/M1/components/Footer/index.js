@@ -164,7 +164,7 @@ export default function Footer(props) {
 
         e.preventDefault();
 
-        website.submitWebsiteForm('newsletter', { email }).then((res) => {
+        block.submitWebsiteForm('newsletter', { email }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',

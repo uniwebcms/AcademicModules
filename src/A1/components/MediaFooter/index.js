@@ -155,7 +155,7 @@ const Navigation = ({ groupedLinks, size = 'sm' }) => {
     );
 };
 
-const Newsletter = (props) => {
+const Newsletter = ({ block }) => {
     const inputRef = useRef(null);
 
     const handleSubmit = (e) => {
@@ -163,7 +163,7 @@ const Newsletter = (props) => {
 
         e.preventDefault();
 
-        website.submitWebsiteForm('newsletter', { email }).then((res) => {
+        block.submitWebsiteForm('newsletter', { email }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',
@@ -341,7 +341,7 @@ export default function MediaFooter(props) {
                     {/* Newsletter */}
                     {with_newsletter && (
                         <div className="w-full lg:w-[300px] lg:flex-shrink-0">
-                            <Newsletter />
+                            <Newsletter block={block} />
                         </div>
                     )}
                 </div>

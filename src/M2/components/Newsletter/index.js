@@ -50,7 +50,7 @@ export default function Newsletter(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        website.submitWebsiteForm('newsletter', { email }).then((res) => {
+        block.submitWebsiteForm('newsletter', { email }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',
