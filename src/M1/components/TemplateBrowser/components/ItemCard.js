@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import VideoPreview from './VideoPreview';
 import IframePreview from './IframePreview';
@@ -13,6 +13,11 @@ const ItemCard = React.memo(({ item }) => {
     const { ref: cardRef, inView } = useInView({
         threshold: 0,
     });
+
+    useEffect(() => {
+        setIsHovering(false);
+        setPreviewReady(false);
+    }, [item.title]);
 
     const showPreview = item.preview;
 
