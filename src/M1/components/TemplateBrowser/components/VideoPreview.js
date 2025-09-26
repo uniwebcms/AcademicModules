@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { MdVolumeOff, MdVolumeUp } from 'react-icons/md';
+import { MdVolumeOff, MdVolumeUp, MdPlayArrow, MdPause } from 'react-icons/md';
 
 const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
     const videoRef = useRef(null);
     const [isReady, setIsReady] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
     const [progress, setProgress] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [showOverlay, setShowOverlay] = useState(false);
 
     // Load video when inView
     useEffect(() => {
@@ -17,6 +19,7 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
         } else {
             video.pause();
             setIsReady(false);
+            setIsPlaying(false);
         }
     }, [inView]);
 
@@ -33,11 +36,18 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
 
         if (isHovered && isReady) {
             video.currentTime = 0;
-            video.play().catch((error) => {
-                console.error('Video playback failed:', error);
-            });
+            video
+                .play()
+                .then(() => {
+                    setIsPlaying(true);
+                })
+                .catch((error) => {
+                    console.error('Video playback failed:', error);
+                    setIsPlaying(false);
+                });
         } else {
             video.pause();
+            setIsPlaying(false);
         }
     }, [isHovered, isReady]);
 
@@ -73,26 +83,63 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
         video.currentTime = Math.max(0, Math.min(newTime, video.duration));
     }, []);
 
+    // Toggle play/pause and show overlay briefly
+    const togglePlayPause = useCallback(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (isPlaying) {
+            video.pause();
+            setIsPlaying(false);
+        } else {
+            video
+                .play()
+                .then(() => {
+                    setIsPlaying(true);
+                })
+                .catch((error) => {
+                    console.error('Video playback failed:', error);
+                });
+        }
+        setShowOverlay(true);
+        setTimeout(() => {
+            setShowOverlay(false);
+        }, 800);
+    }, [isPlaying]);
+
     return (
         <div className="relative w-full aspect-video">
-            <video
-                ref={videoRef}
-                muted
-                loop
-                playsInline
-                preload={inView ? 'auto' : 'metadata'} // Preload dynamically based on visibility
-                onCanPlayThrough={handleLoadedData} // Handle when video is ready
-                onTimeUpdate={handleTimeUpdate}
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                    console.error('Video loading failed:', e);
-                    setIsReady(false);
-                }}
-            >
-                <source src={src} type="video/webm" />
-                <source src={src} type="video/mp4" />
-                Your browser does not support the video.
-            </video>
+            <div onClick={togglePlayPause} className="relative h-full w-full cursor-pointer">
+                <video
+                    ref={videoRef}
+                    muted
+                    loop
+                    playsInline
+                    preload={inView ? 'auto' : 'metadata'} // Preload dynamically based on visibility
+                    onCanPlayThrough={handleLoadedData} // Handle when video is ready
+                    onTimeUpdate={handleTimeUpdate}
+                    className="h-full w-full object-cover"
+                    onError={(e) => {
+                        console.error('Video loading failed:', e);
+                        setIsReady(false);
+                        setIsPlaying(false);
+                    }}
+                >
+                    <source src={src} type="video/webm" />
+                    <source src={src} type="video/mp4" />
+                    Your browser does not support the video.
+                </video>
+
+                {showOverlay && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        {isPlaying ? (
+                            <MdPause className="text-text-color-0 w-12 h-12" />
+                        ) : (
+                            <MdPlayArrow className="text-text-color-0 w-12 h-12" />
+                        )}
+                    </div>
+                )}
+            </div>
 
             {/* Sound Control */}
             <button
