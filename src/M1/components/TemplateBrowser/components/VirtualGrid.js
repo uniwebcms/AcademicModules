@@ -15,7 +15,11 @@ const VirtualGrid = ({ data, filters }) => {
         const filteredData = data.filter((item) => {
             // Check each actual filter key, Pass if filter value is 'all'
             return Object.entries(actualFilters).every(
-                ([key, value]) => value === 'all' || item[key] === value
+                ([key, value]) =>
+                    value === 'all' ||
+                    (Array.isArray(item[key])
+                        ? item[key].indexOf(value) !== -1
+                        : item[key] === value)
             );
         });
 

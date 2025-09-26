@@ -22,13 +22,15 @@ export const normalizeData = (input, config) => {
     return profiles.map((profile) => {
         const { title, subtitle, head } = profile.getBasicInfo();
 
+        const category = profile.options?.tags || [];
+
         const metadata = head.metadata
             ? typeof head.metadata === 'string'
                 ? JSON.parse(head.metadata)
                 : head.metadata
             : {};
 
-        const { category, previewVideo } = metadata;
+        const { previewVideo } = metadata;
 
         const { url: src, alt } = profile.getImageInfo('banner', 'lg');
 
