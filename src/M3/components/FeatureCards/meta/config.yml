@@ -1,0 +1,93 @@
+title: 
+  en: Feature Cards
+  fr: Fonctionnalités en carte
+label:
+  en: Features - Card
+  fr: Fonctionnalités - Carte
+description: 
+  en: Section showcasing a collection of features or services in a card format, layout can be horizontal scrollable list or grid.
+  fr: Section mettant en avant une collection de fonctionnalités ou de services sous forme de cartes, la mise en page peut être une liste horizontale défilante ou une grille.
+
+category: feature
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    background:
+    title:
+    subtitle:
+    text:
+    link:
+
+properties:
+  layout:
+    label: 
+      en: Layout
+      fr: Mise en page
+    type: string
+    default: scroll
+    enum:
+      - label: 
+          en: Horizontal Scroll List
+          fr: Liste de défilement horizontale
+        value: scroll
+      - label: 
+          en: Grid
+          fr: Grille
+        value: grid
+    description:
+      en: The layout of the feature cards.
+      fr: La mise en page des cartes de fonctionnalités.
+  card_style:
+    label: 
+      en: Card Style
+      fr: Style de carte
+    type: string
+    default: compact
+    enum:
+      - label:
+          en: Compact
+          fr: Compact
+        value: compact
+      - label:
+          en: Expanded
+          fr: Étendu
+        value: expanded
+      - label:
+          en: Overlay
+          fr: Superposition
+        value: overlay
+    description:
+      en: The style of the feature cards.
+      fr: Le style des cartes de fonctionnalités.
+  
+presets:
+  floating_gallery:
+    label:
+      en: Showcase of showing features like a floating gallery with compact card style.
+      fr: Présentation des fonctionnalités comme une galerie flottante avec un style de carte compact.
+    properties:
+      layout: scroll
+      card_style: compact
+    image: floating_gallery.png
+  scroll_list:
+    label:
+      en: Horizontal scroll list of features with expanded card style.
+      fr: Liste de défilement horizontale des fonctionnalités avec un style de carte étendu.
+    properties:
+      layout: scroll
+      card_style: expanded
+    image: scroll_list.png
+  gird:
+    label:
+      en: Grid layout of features with overlay card style.
+      fr: Mise en page en grille des fonctionnalités avec un style de carte superposé.
+    properties:
+      layout: grid
+      card_style: overlay
+    image: grid.png

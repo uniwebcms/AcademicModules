@@ -1,0 +1,19 @@
+title: 
+  en: Video Player
+  fr: Lecteur vidéo
+label:
+  en: Video Player
+  fr: Lecteur vidéo
+description: 
+  en: A component designed to display a video from a linked source.
+  fr: Un composant conçu pour afficher une vidéo à partir d'une source liée.
+
+category: video,dynamic_content
+export: true
+
+input:
+  type: video
+  limit: one
+
+images:
+  - example.png

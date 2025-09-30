@@ -1,0 +1,204 @@
+title: 
+  en: Two Column Layout
+  fr: Mise en page à deux colonnes
+label:
+  en: Layout - Two Column
+  fr: Mise en page - Deux colonnes
+description:
+  en: A section displaying content of it's child sections in a two column layout.
+  fr: Une section affichant le contenu de ses sections enfants dans une mise en page à deux colonnes.
+
+category: layout
+export: true
+
+# assets:
+#   Screenshot.png:
+#     title: 
+#       en: A basic usage of the Special Layout with two child sections.
+#       fr: Une utilisation de base de la mise en page spéciale avec deux sections enfants.
+
+items:
+  separator: section
+  category: Any category
+
+properties:
+  layout_configuration:
+    label:
+      en: Layout
+      fr: Mise en page
+    type: string
+    default: 50/50
+    enum:
+      - label:
+          en: 2 Columns - Even
+          fr: 2 Colonnes - Égal
+        value: 50/50
+      - label:
+          en: 2 Columns - Narrow right
+          fr: 2 Colonnes - Étroit à droite
+        value: 60/40
+      - label:
+          en: 2 Columns - Narrow left
+          fr: 2 Colonnes - Étroit à gauche
+        value: 40/60
+      - label:
+          en: 2 Columns - Narrower right
+          fr: 2 Colonnes - Encore plus étroit à droite
+        value: 70/30
+      - label:
+          en: 2 Columns - Narrower left
+          fr: 2 Colonnes - Encore plus étroit à gauche
+        value: 30/70
+    description: 
+      en: Choose the desired configuration for the layout of the website block.
+      fr: Choisissez la configuration souhaitée pour la mise en page du bloc de site Web.
+  max_width:
+    label:
+      en: Width
+      fr: Largeur
+    type: string
+    default: wide
+    enum:
+      - label:
+          en: Narrow
+          fr: Étroit
+        value: narrow
+      - label:
+          en: Wide
+          fr: Large
+        value: wide
+      - label:
+          en: Full
+          fr: Plein
+        value: full 
+    description:
+      en: Choose the desired width for your website block.
+      fr: Choisissez la largeur souhaitée pour votre bloc de site Web.
+  vertical_padding:
+    label:
+      en: Vertical Spacing
+      fr: Espacement vertical
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space on top and bottom of the layout.
+      fr: L'espace en haut et en bas de la mise en page.
+  horizontal_padding:
+    label:
+      en: Horizontal Spacing
+      fr: Espacement horizontal
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space on the left and right of the layout.
+      fr: L'espace à gauche et à droite de la mise en page.
+  column_padding:
+    label:
+      en: Column Spacing
+      fr: Espacement des colonnes
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space in between the two columns.
+      fr: L'espace entre les deux colonnes.
+  vertical_alignment:
+    label:
+      en: Vertical Alignment
+      fr: Alignement vertical
+    type: string
+    default: top
+    enum:
+      - label:
+          en: Top
+          fr: Haut
+        value: top
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+      - label:
+          en: Bottom
+          fr: Bas
+        value: bottom
+    description:
+      en: The vertical alignment of the content in the columns.
+      fr: L'alignement vertical du contenu dans les colonnes.
+  sticky_side:
+    label:
+      en: Sticky Side
+      fr: Côté collant
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Left
+          fr: Gauche
+        value: left
+      - label:
+          en: Right
+          fr: Droite
+        value: right
+    description:
+      en: The side of the layout that will be sticky.
+      fr: Le côté de la mise en page qui sera collant.
+
+presets:
+  article:
+    label:
+      en: Example of showing a single article and a list of articles side by side.
+      fr: Exemple montrant un seul article et une liste d'articles côte à côte.
+    properties:
+      layout_configuration: 60/40
+      max_width: wide
+      vertical_padding: sm
+      horizontal_padding: lg
+      column_padding: lg
+      vertical_alignment: top
+    image: article.png

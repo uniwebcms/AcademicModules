@@ -1,0 +1,96 @@
+title:
+  en: Side Navigation Page Content
+  fr: Contenu de la page de navigation latérale
+label:
+  en: Side Navigation Page Content
+  fr: Contenu de la page de navigation latérale
+description:
+  en: A versatile component that renders content differently under different mode. Best used as a child component of the Side Navigation Page component.
+  fr: Un composant polyvalent qui rend le contenu différemment selon le mode. Mieux utilisé comme composant enfant du composant de page de navigation latérale.
+
+category: sub-content
+export: true
+
+elements:
+  title:
+
+items:
+  separator: divider
+  elements:
+    _raw: 
+      en: |
+        <p><i style='color: #6b7280;margin-bottom: 5px;display: block;'>Data input instruction</i></p>
+        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Simple Card</strong>: Each item requires a 'pretitle' and 'title'; items are split by 'divider'.</p>
+        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Timeline Card</strong>: Each item requires a 'pretitle', 'title' and 'subtitle'; items are split by 'divider'.</p>
+        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Paragraphs</strong>: Each item requires a 'title' and 'text'; items are split by 'divider'.</p>
+        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Branding Showcase</strong>: First item requires a 'title', 'link' and 'list', second item requires a 'code' and 'list'; items are split by 'divider'.</p>
+        <p style='font-style: normal;text-align: left;margin-bottom: 3px;display: block;'><strong>Contact & Resources</strong>: First item requires a 'title' and 'list', second item requires a 'title', 'links' and 'icons'; items are split by 'divider'.</p>
+
+properties:
+  display:
+    label:
+      en: Display Mode
+      fr: Mode d'affichage
+    description:
+      en: Choose how the content should be displayed.
+      fr: Choisissez comment le contenu doit être affiché.
+    type: string
+    default: simple_card
+    enum:
+      - label:
+          en: Simple Card
+          fr: Carte simple
+        value: simple_card
+      - label:
+          en: Timeline Card
+          fr: Carte chronologique
+        value: timeline_card
+      - label:
+          en: Paragraphs
+          fr: Paragraphes
+        value: paragraphs
+      - label:
+          en: Branding Showcase
+          fr: Vitrine de marque
+        value: branding_showcase
+      - label:
+          en: Contact & Resources
+          fr: Contact et ressources
+        value: contact_resources
+
+presets:
+  simple_card:
+    label:
+      en: Simple Card Layout
+      fr: Disposition de carte simple
+    properties:
+      display: simple_card
+    image: simple_card.png
+  timeline_card:
+    label:
+      en: Timeline Card Layout
+      fr: Disposition de carte chronologique
+    properties:
+      display: timeline_card
+    image: timeline_card.png
+  paragraphs:
+    label:
+      en: Paragraphs Layout
+      fr: Disposition des paragraphes
+    properties:
+      display: paragraphs
+    image: paragraphs.png
+  branding_showcase:
+    label:
+      en: Branding Showcase Layout
+      fr: Disposition de la vitrine de marque
+    properties:
+      display: branding_showcase
+    image: branding_showcase.png
+  contact_resources:
+    label:
+      en: Contact & Resources Layout
+      fr: Disposition de contact et ressources
+    properties:
+      display: contact_resources
+    image: contact_resources.png

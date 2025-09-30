@@ -1,0 +1,94 @@
+title: 
+  en: Call to Action
+  fr: Appel à l'action
+label:
+  en: Call to Action
+  fr: Appel à l'action
+description: 
+  en: A section designed to encourage users to take a specific action such as signing up for a newsletter, downloading a resource, or contacting a sales representative. Perfect for driving conversions and generating leads.
+  fr: Une section conçue pour encourager les utilisateurs à effectuer une action spécifique telle que s'inscrire à une newsletter, télécharger une ressource ou contacter un représentant commercial. Parfait pour augmenter les conversions et générer des prospects.
+
+category: action
+export: true
+
+elements:
+  background:
+    description:
+      en: The background image for the call to action section, only visible in the subtle appearance.
+      fr: L'image d'arrière-plan de la section d'appel à l'action, visible uniquement dans l'apparence subtile.
+  title:
+  text:
+  link:
+    description:
+      en: One or two action links that direct users to a specific page or resource.
+      fr: Un ou deux liens d'action qui dirigent les utilisateurs vers une page ou une ressource spécifique.
+
+properties:
+  content_position:
+    label: 
+      en: Content Position (for subtle appearance only)
+      fr: Position du contenu (pour une apparence subtile uniquement)
+    type: string
+    default: left
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The alignment of the content within the call to action section.
+      fr: L'alignement du contenu dans la section d'appel à l'action.
+  appearance:
+    label:
+      en: Appearance
+      fr: Apparence
+    type: string
+    default: subtle
+    enum:
+      - label:
+          en: Subtle
+          fr: Subtil
+        value: subtle
+      - label:
+          en: Fancy
+          fr: Fantaisie
+        value: fancy
+      - label:
+          en: Motion
+          fr: Mouvement
+        value: motion
+    description:
+      en: The appearance of the Call to Action.
+      fr: L'apparence de l'appel à l'action.
+
+presets:
+  subtle_right:
+    label:
+      en: Subtle appearance with right content
+      fr: Apparence subtile avec contenu à droite
+    properties:
+      content_position: right
+      appearance: subtle
+    image: subtle_right.png
+  fancy:
+    label:
+      en: Fancy appearance with ocean preset
+      fr: Apparence fantaisie avec préréglage océan
+    properties:
+      appearance: fancy
+    image: fancy.png
+  motion:
+    label:
+      en: Fancy appearance with motion preset
+      fr: Apparence fantaisie avec préréglage de mouvement
+    properties:
+      appearance: motion
+    image: motion.png

@@ -1,0 +1,91 @@
+title: 
+  en: Article Viewer
+  fr: Visionneuse d'articles
+label: 
+  en: Article
+  fr: Article
+description: 
+  en: Display the content of a article.
+  fr: Affiche le contenu d'un article.
+
+category: article,dynamic_content
+export: true
+
+input:
+  type: articles
+  limit: one
+
+properties:
+  width:  
+    label:
+      en: Content Width
+      fr: Largeur du contenu
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Full Width
+          fr: Pleine largeur
+        value: full
+    description:
+      en: The width of the section.
+      fr: La largeur de la section.
+  vertical_padding:
+    label:
+      en: Vertical Spacing
+      fr: Espacement vertical
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space on top and bottom of the layout.
+      fr: L'espace en haut et en bas de la mise en page.
+  horizontal_padding:
+    label:
+      en: Horizontal Spacing
+      fr: Espacement horizontal
+    type: string
+    default: sm
+    enum:
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    description:
+      en: The space on the left and right of the layout.
+      fr: L'espace à gauche et à droite de la mise en page.
+
+images:
+  - example.png

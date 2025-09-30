@@ -1,0 +1,38 @@
+title: 
+  en: Footer
+  fr: Pied de page
+label:
+  en: Footer
+  fr: Pied de page
+description:
+  en: The footer section displays a footer with logo, social media links, legal links, subscription form, other links and a language switcher.
+  fr: La section pied de page affiche un pied de page avec un logo, des liens de médias sociaux, des liens légaux, un formulaire d'abonnement, d'autres liens et un sélecteur de langue.
+
+category: footer
+export: true
+
+elements:
+  icon:
+    description:
+      en: The logo put on the footer, usually the company logo.
+      fr: Le logo mis sur le pied de page, généralement le logo de l'entreprise.
+  media:
+    type: image
+    description:
+      en: The image put on the footer as the logo if the icon element is not available. Use the caption to define which image to use under different theme settings.
+      fr: L'image mise sur le pied de page en tant que logo si l'élément icône n'est pas disponible. Utilisez la légende pour définir quelle image utiliser sous différents paramètres de thème.
+  link:
+    description:
+      en: Social media links and legal links to put on the footer.
+      fr: Liens de médias sociaux et liens légaux à mettre sur le pied de page.
+  list:
+    description:
+      en: The links to put on the footer, it is created as a group of links, each with a title and a list of links.
+      fr: Les liens à mettre sur le pied de page, il est créé sous forme de groupe de liens, chacun avec un titre et une liste de liens.
+  text:
+    description:
+      en: The copyright text to put on the footer.
+      fr: Le texte de copyright à mettre sur le pied de page.
+  
+images:
+  - example.png

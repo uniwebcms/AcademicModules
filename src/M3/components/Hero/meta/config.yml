@@ -1,0 +1,98 @@
+title: 
+  en: Hero Banner
+  fr: Bannière d'en-tête
+label:
+  en: Hero
+  fr: En-tête
+description: 
+  en: Special section to be used as a hero banner. Creates a full-width section with a background image and text.
+  fr: Section spéciale à utiliser comme bannière d'en-tête. Crée une section pleine largeur avec une image d'arrière-plan et du texte.
+
+category: hero
+export: true
+
+elements:
+  banner:
+  title:
+  subtitle:
+  link:
+    description: 
+      en: One or two links that put under the text content.
+      fr: Un ou deux liens qui sont placés sous le contenu textuel.
+
+items:
+  separator: section
+  category: Any section type
+  limit: 1
+  elements:
+    _raw:
+      en: The first subsection will be displayed beside the content of the hero.
+      fr: La première sous-section sera affichée à côté du contenu de l'en-tête.
+
+properties:
+  height:
+    label: 
+      en: Height
+      fr: Hauteur
+    type: string
+    default: 100vh
+    enum:
+      - label: 
+          en: Full Height
+          fr: Pleine hauteur
+        value: 100vh
+      - label:
+          en: Dependent on Content
+          fr: Dépendant du contenu
+        value: auto
+    description: 
+      en: The height of the hero section.
+      fr: La hauteur de la section d'en-tête.
+  alignment:
+    label: 
+      en: Content Alignment
+      fr: Alignement du contenu
+    type: string
+    default: left
+    enum:
+      - label: 
+          en: Left
+          fr: Gauche
+        value: left
+      - label: 
+          en: Center
+          fr: Centre
+        value: center
+      - label: 
+          en: Right
+          fr: Droite
+        value: right
+    description: 
+      en: The alignment of the text content in the hero section, when showcase images are present, center alignment will be ignored. In smaller screens, text content will be show first, then the showcase images.
+      fr: L'alignement du contenu textuel dans la section d'en-tête, lorsque des images de présentation sont présentes, l'alignement central sera ignoré. Sur les écrans plus petits, le contenu textuel sera affiché en premier, puis les images de présentation.
+
+presets:
+  full_left:
+    label:
+      en: Full-height hero banner with content on the left.
+      fr: Bannière d'en-tête pleine hauteur avec contenu à gauche.
+    properties:
+      height: 100vh
+      alignment: left
+    image: full_left.png
+  full_center:
+    label:
+      en: Full-height hero banner with content in the center.
+      fr: Bannière d'en-tête pleine hauteur avec contenu au centre.
+    properties:
+      height: 100vh
+      alignment: center
+    image: full_center.png
+  full_right:
+    label:
+      en: Full-height hero banner with content on the right.
+      fr: Bannière d'en-tête pleine hauteur avec contenu à droite.
+    properties:
+      height: 100vh
+      alignment: right
+    image: full_right.png

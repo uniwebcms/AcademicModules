@@ -1,0 +1,92 @@
+title: 
+  en: Article List
+  fr: Liste d'articles
+label:
+  en: Article List
+  fr: Liste d'articles
+description: 
+  en: A component designed to display a collection of articles in a vertical list.
+  fr: Un composant conçu pour afficher une collection d'articles dans une liste verticale.
+
+category: article,dynamic_content
+export: true
+
+input:
+  type: articles
+  limit: false
+
+elements:
+  title:
+  subtitle:
+
+properties:
+  max_width:  
+    label:
+      en: List Max Width
+      fr: Largeur maximale de la liste
+    type: string
+    default: lg
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: sm
+      - label:
+          en: Medium
+          fr: Moyen
+        value: md
+      - label:
+          en: Large
+          fr: Large
+        value: lg
+      - label:
+          en: Full Width
+          fr: Pleine largeur
+        value: full
+    description:
+      en: The maximum width of the list section.
+      fr: La largeur maximale de la section de la liste.
+  is_side_panel:
+    label:
+      en: Is Side Panel
+      fr: Est-ce un panneau latéral
+    type: boolean
+    default: false
+    description:
+      en: Indicates if the list is displayed as a side panel of main article content, if so, the gap around and in between content and text size will be adjusted accordingly.
+      fr: Indique si la liste est affichée comme un panneau latéral du contenu principal de l'article, auquel cas l'écart autour et entre le contenu et la taille du texte sera ajusté en conséquence.
+  max_display:
+    label:
+      en: Max Displayed Articles
+      fr: Articles affichés max
+    type: number
+    default: ""
+    description:
+      en: The maximum number of articles to display in the list.
+      fr: Le nombre maximum d'articles à afficher dans la liste.
+  related_only:
+    label:
+      en: Related Articles Only
+      fr: Articles uniquement liés
+    type: boolean
+    default: false
+    description:
+      en: If true, only articles related to the current main article will be displayed in the list. Only works if this is inside a dynamic page.
+      fr: Si vrai, seuls les articles liés à l'article principal actuel seront affichés dans la liste. Ne fonctionne que si cela se trouve dans une page dynamique.
+
+presets:
+  side_list:
+    label:
+      en: List layout in side panel
+      fr: Mise en page en liste dans un panneau latéral
+    properties:
+      max_width: full
+      is_side_panel: true
+    image: side_list.png
+  md_width:
+    label:
+      en: List layout with medium width
+      fr: Mise en page en liste avec une largeur moyenne
+    properties:
+      max_width: md
+    image: md_width.png

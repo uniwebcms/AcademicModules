@@ -1,0 +1,54 @@
+title: 
+  en: Content Showcase
+  fr: Vitrine de contenu
+label:
+  en: Content Showcase
+  fr: Vitrine de contenu
+description: 
+  en: Section showcasing a collection of content with title and description. Each content can have an icon, title, description, image and details.
+  fr: Section mettant en avant une collection de contenu avec titre et description. Chaque contenu peut avoir une icône, un titre, une description, une image et des détails.
+
+category: content
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: divider
+  elements:
+    icon:
+      description:
+        en: The icon of the content.
+        fr: L'icône du contenu.
+    title:
+      description:
+        en: The title of the content.
+        fr: Le titre du contenu.
+    subtitle:
+      description:
+        en: The subtitle of the content.
+        fr: Le sous-titre du contenu.
+    list:
+      description:
+        en: The details of the content in list format. Each can have a icon and a text.
+        fr: Les détails du contenu au format liste. Chacun peut avoir une icône et un texte.
+    media:
+      type: image, video
+      description:
+        en: The image or video of the content.
+        fr: L'image ou la vidéo du contenu.
+    link:
+      description:
+        en: The link of the content.
+        fr: Le lien du contenu.
+
+presets:
+  fancy:
+    label:
+      en: Fancy appearance
+      fr: Apparence fantaisie
+    properties:
+      appearance: fancy
+    image: fancy.png

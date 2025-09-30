@@ -1,0 +1,134 @@
+title:
+  en: Feature Item
+  fr: Élément de fonctionnalité
+label:
+  en: Feature Item
+  fr: Élément de fonctionnalité
+description:
+  en: A specific component used to display a feature in different ways. Each mode expect different type of content to be displayed. Ideally used as the child of a feature section.
+  fr: Un composant spécifique utilisé pour afficher une fonctionnalité de différentes manières. Chaque mode attend un type de contenu différent à afficher. Idéalement utilisé comme enfant d'une section de fonctionnalités.
+
+category: sub-content
+export: true
+
+elements:
+  icon:
+  title:
+  subtitle:
+  text:
+  link:
+  list:
+    description:
+      en: A list of details or features that highlight the key aspects of the content. Only available in Bullet List mode.
+      fr: Une liste de détails ou de caractéristiques qui mettent en avant les aspects clés du contenu. Disponible uniquement en mode liste à puces.
+
+properties:
+  with_border:
+    label:
+      en: With Border
+      fr: Avec bordure
+    type: boolean
+    default: false
+    description:
+      en: Whether the feature item should have a border or not.
+      fr: Si l'élément de fonctionnalité doit avoir une bordure ou non.
+  with_motion:
+    label:
+      en: With Motion (work with basic and Leading icon mode only)
+      fr: Avec mouvement (fonctionne uniquement avec les modes de base et d'icône principale)
+    type: boolean
+    default: false
+    description:
+      en: Whether the feature item should have a motion effect or not.
+      fr: Si l'élément de fonctionnalité doit avoir un effet de mouvement ou non.
+  mode:
+    label:
+      en: Mode
+      fr: Mode
+    type: string
+    default: basic
+    enum:
+      - label:
+          en: Basic (title, text and a link)
+          fr: Basique (titre, texte et un lien)
+        value: basic
+      - label:
+          en: Leading icon (icon, title, text and links)
+          fr: Icône principale (icône, titre, texte et liens)
+        value: leading_icon
+      - label:
+          en: Catching Card (icon, title, text and link)
+          fr: Carte attrayante (icône, titre, texte et lien)
+        value: catching_card
+      - label:
+          en: Bullet List (icon, title and list)
+          fr: Liste à puces (icône, titre et liste)
+        value: bullet_list
+      - label:
+          en: Centered (icon, title, text and links)
+          fr: Centré (icône, titre, texte et liens)
+        value: centered
+      - label:
+          en: Icon and Text (icon and text)
+          fr: Icône et texte (icône et texte)
+        value: icon_and_text
+      - label:
+          en: Vertical Grouped (icon, title and items)
+          fr: Groupé verticalement (icône, titre et éléments)
+        value: vertical_grouped
+    description:
+      en: The mode of the feature item.
+      fr: Le mode de l'élément de fonctionnalité.
+
+presets:
+  basic:
+    label:
+      en: Basic Feature Item
+      fr: Élément de fonctionnalité basique
+    properties:
+      mode: basic
+    image: basic.png
+  catching_card:
+    label:
+      en: Catching Card Feature Item
+      fr: Élément de fonctionnalité carte attrayante
+    properties:
+      mode: catching_card
+    image: catching_card.png
+  leading_icon_border:
+    label:
+      en: Leading Icon Feature Item with Border
+      fr: Élément de fonctionnalité avec icône principale et bordure
+    properties:
+      mode: leading_icon
+      with_border: true
+    image: leading_icon_border.png
+  bullet_list_border:
+    label:
+      en: Bullet List Feature Item with Border
+      fr: Élément de fonctionnalité liste à puces avec bordure
+    properties:
+      mode: bullet_list
+      with_border: true
+    image: bullet_list_border.png
+  centered:
+    label:
+      en: Centered Feature Item
+      fr: Élément de fonctionnalité centré
+    properties:
+      mode: centered
+    image: centered.png
+  icon_and_text:
+    label:
+      en: Icon and Text Feature Item
+      fr: Élément de fonctionnalité icône et texte
+    properties:
+      mode: icon_and_text
+    image: icon_and_text.png
+  vertical_grouped:
+    label:
+      en: Vertical Grouped Feature Item
+      fr: Élément de fonctionnalité groupé verticalement
+    properties:
+      mode: vertical_grouped
+    image: vertical_grouped.png

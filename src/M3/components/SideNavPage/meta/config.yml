@@ -1,0 +1,23 @@
+title:
+  en: Side Navigation Page
+  fr: Page de navigation latérale
+label:
+  en: Side Navigation Page
+  fr: Page de navigation latérale
+description:
+  en: A page component arranges the layout with the main content (rendered from child components) on the left and a navigation list on the right, allowing users to easily move between different sections of the page.
+  fr: Un composant de page organise la mise en page avec le contenu principal (rendu à partir des composants enfants) à gauche et une liste de navigation à droite, permettant aux utilisateurs de se déplacer facilement entre les différentes sections de la page.
+
+category: page
+export: true
+
+elements:
+  title:
+  subtitle:
+
+items:
+  separator: section
+  category: Side Navigation Page Content
+
+images:
+  - example.png

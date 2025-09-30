@@ -41,6 +41,10 @@ const RAW_RUNTIME_STATE =
     {\
       "name": "marketing-series-2",\
       "reference": "workspace:src/M2"\
+    },\
+    {\
+      "name": "marketing-series-3",\
+      "reference": "workspace:src/M3"\
     }\
   ],\
   "enableTopLevelFallback": true,\
@@ -53,6 +57,7 @@ const RAW_RUNTIME_STATE =
     ["expert-series-1", ["workspace:src/E1"]],\
     ["marketing-series-1", ["workspace:src/M1"]],\
     ["marketing-series-2", ["workspace:src/M2"]],\
+    ["marketing-series-3", ["workspace:src/M3"]],\
     ["website-components-template", ["workspace:."]]\
   ],\
   "fallbackPool": [\
@@ -8795,6 +8800,34 @@ const RAW_RUNTIME_STATE =
           ["react-simple-toasts", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:6.1.0"],\
           ["react-slick", "virtual:c3e6bf1c0981424ba74581ed2a719b22f6763267ac947830e9f9d560a8951730f649cc9fc5f26f1424ca56efdc54dc2b51b6d7a1dd38e0382d1b8efd4e775e8d#npm:0.31.0"],\
           ["slick-carousel", "virtual:c3e6bf1c0981424ba74581ed2a719b22f6763267ac947830e9f9d560a8951730f649cc9fc5f26f1424ca56efdc54dc2b51b6d7a1dd38e0382d1b8efd4e775e8d#npm:1.8.1"],\
+          ["tailwindcss", "npm:3.4.17"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["marketing-series-3", [\
+      ["workspace:src/M3", {\
+        "packageLocation": "./src/M3/",\
+        "packageDependencies": [\
+          ["marketing-series-3", "workspace:src/M3"],\
+          ["@headlessui/react", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.7.19"],\
+          ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
+          ["@uniwebcms/core-components", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:1.6.20"],\
+          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.0.1"],\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
+          ["axios", "npm:1.9.0"],\
+          ["flexsearch", "npm:0.7.43"],\
+          ["framer-motion", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:11.18.2"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.3.1"],\
+          ["react-click-away-listener", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.3.0"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
+          ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
+          ["react-intersection-observer", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:9.16.0"],\
+          ["react-simple-toasts", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:6.1.0"],\
+          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
+          ["react-virtuoso", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:4.12.5"],\
+          ["recharts", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:2.15.1"],\
           ["tailwindcss", "npm:3.4.17"]\
         ],\
         "linkType": "SOFT"\

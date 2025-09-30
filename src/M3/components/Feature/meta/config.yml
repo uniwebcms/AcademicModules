@@ -1,0 +1,151 @@
+title: 
+  en: Feature
+  fr: Fonctionnalité
+label:
+  en: Feature
+  fr: Fonctionnalité
+description: 
+  en: Displays section content in various styles, including title, description, and links. Ideal for showcasing product features or services. Supports subsections to highlight individual sub-features.
+  fr: Affiche le contenu de la section dans divers styles, y compris le titre, la description et les liens. Idéal pour mettre en valeur les caractéristiques ou services d'un produit. Prend en charge les sous-sections pour mettre en avant des sous-fonctionnalités individuelles.
+
+category: feature
+export: true
+
+elements:
+  banner:
+    description:
+      en: The background image of the feature section. (Only visible in detailed mode)
+      fr: L'image de fond de la section des fonctionnalités. (Visible uniquement en mode détaillé)
+  pretitle:
+    label:
+      en: Eyebrow Text
+      fr: Texte de l'eyebrow
+    description:
+      en: The eyebrow text displayed at the top of the feature section. (Only visible in detailed mode)
+      fr: Le texte de l'eyebrow affiché en haut de la section des fonctionnalités. (Visible uniquement en mode détaillé)
+  title:
+  subtitle:
+  text:
+    label:
+      en: Endnote Text
+      fr: Texte de la note de bas de page
+    description:
+      en: A closing note or caption shown at the bottom of the feature section. (Only visible in detailed mode)
+      fr: Une note de clôture ou une légende affichée en bas de la section des fonctionnalités. (Visible uniquement en mode détaillé)
+  link:
+    description:
+      en: One or two links to display within the feature section. (Refer to example images)
+      fr: Un ou deux liens à afficher dans la section des fonctionnalités. (Se référer aux images d'exemple)
+  icon:
+    description:
+      en: In iconic mode, the first icon appears next to the title. In detailed mode, each icon is displayed beside its respective link, in the same order.
+      fr: En mode iconique, la première icône apparaît à côté du titre. En mode détaillé, chaque icône est affichée à côté de son lien respectif, dans le même ordre.
+
+items:
+  separator: section
+  category: Feature Item
+
+properties:
+  appearance:
+    label:
+      en: Appearance Style
+      fr: Style d'apparence
+    type: string
+    default: standard
+    enum:
+      - label:
+          en: Standard
+          fr: Standard
+        value: standard
+      - label:
+          en: Loose
+          fr: Lâche
+        value: loose
+      - label:
+          en: Iconic
+          fr: Iconique
+        value: iconic
+      - label:
+          en: Detailed
+          fr: Detaillé
+        value: detailed
+      - label:
+          en: Island
+          fr: Île
+        value: island
+    description:
+      en: Defines the visual style of the feature section.
+      fr: Définit le style visuel de la section des fonctionnalités.
+  sub_content_layout:
+    label:
+      en: Sub-content Style
+      fr: Style du sous-contenu
+    type: string
+    default: grid_sm
+    enum:
+      - label:
+          en: Grid with small size content
+          fr: Grille avec contenu de petite taille
+        value: grid_sm
+      - label:
+          en: Grid with medium size content
+          fr: Grille avec contenu de taille moyenne
+        value: grid_md
+      - label:
+          en: Grid with large size content
+          fr: Grille avec contenu de grande taille
+        value: grid_lg
+      - label:
+          en: Full width content
+          fr: Contenu pleine largeur
+        value: full
+    description:
+      en: Specifies how the sub-feature content is arranged within the section.
+      fr: Précise comment le contenu de la sous-fonctionnalité est agencé dans la section.
+
+presets:
+  standard:
+    label:
+      en: Standard Feature with Catching Card style sub-features
+      fr: Fonctionnalité standard avec des sous-fonctionnalités de style Carte attrayante
+    properties:
+      appearance: standard
+    image: standard.png
+  loose:
+    label:
+      en: Loose Feature with centered sub-features
+      fr: Fonctionnalité lâche avec des sous-fonctionnalités centrées
+    properties:
+      appearance: loose
+    image: loose.png
+  iconic:
+    label:
+      en: Iconic Feature with basic sub-features
+      fr: Fonctionnalité iconique avec des sous-fonctionnalités basiques
+    properties:
+      appearance: iconic
+    image: iconic.png
+  standard_full:
+    label:
+      en: Standard Feature with Full-width sub-features
+      fr: Fonctionnalité standard avec des sous-fonctionnalités pleine largeur
+    properties:
+      appearance: standard
+      sub_content_layout: full
+    image: standard_full.png
+  detailed_lg:
+    label:
+      en: Detailed Feature with large sub-features
+      fr: Fonctionnalité détaillée avec des sous-fonctionnalités de grande taille
+    properties:
+      appearance: detailed
+      sub_content_layout: grid_lg
+    image: detailed_lg.png
+  island_sm:
+    label:
+      en: Island Feature with small sub-features
+      fr: Fonctionnalité île avec des sous-fonctionnalités de petite taille
+    properties:
+      appearance: island
+      sub_content_layout: grid_sm
+    image: island_sm.png

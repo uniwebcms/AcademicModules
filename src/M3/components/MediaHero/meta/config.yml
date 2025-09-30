@@ -1,0 +1,50 @@
+title: 
+  en: Media Hero
+  fr: Hero - Média
+label:
+  en: Media Hero
+  fr: Hero - Média
+description: 
+  en: A prominent section designed to grab attention, featuring a bold title and visually engaging video. Perfect for highlighting key messages or showcasing impactful content at the top of a page.
+  fr: Une section importante conçue pour attirer l'attention, avec un titre audacieux et une vidéo visuellement attrayante. Parfait pour mettre en avant des messages clés ou présenter un contenu percutant en haut d'une page.
+
+category: hero
+export: true
+
+elements:
+  background:
+  title:
+  subtitle:
+  link:
+    description:
+      en: One or two links to a page or external URL
+      fr: Un ou deux liens vers une page ou une URL externe
+  button:
+    description:
+      en: Full rounded styled button stay below the links
+      fr: Un bouton arrondi plein reste en dessous des liens
+  media:
+    type: video
+
+properties:
+  layout:
+    label: 
+      en: Layout
+      fr: Mise en page
+    type: string
+    enum:
+      - label:
+          en: Content Centered
+          fr: Contenu centré
+        value: center
+      - label:
+          en: Content Side by Side
+          fr: Contenu côte à côte
+        value: side-by-side
+    default: center
+    description: 
+      en: The layout of the media hero, either with content centered or side by side.
+      fr: La mise en page du héros média, soit avec le contenu centré, soit côte à côte.
+
+images:
+  - example.png

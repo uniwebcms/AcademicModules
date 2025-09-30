@@ -1,0 +1,49 @@
+name: Marketing Series 3
+description: A collection of components for building marketing websites.
+
+page_templates:
+  - name:
+      en: Home Page
+      fr: Page d'accueil
+    page:
+      en: Home
+      fr: Accueil
+    components:
+      - name: Hero
+      - name: FeatureSpotlight
+      - name: FeatureCards
+  - name:
+      en: Feature Page
+      fr: Page de fonctionnalités
+    page:
+      en: Features
+      fr: Fonctionnalités
+    components:
+      - name: MediaHero
+      - name: FeatureSpotlight
+        preset: content_left
+      - name: FeatureSpotlight
+        preset: content_right
+      - name: Feature
+        preset: standard
+  - name: 
+      en: Blog Page
+      fr: Page de blog
+    page:
+      en: Blog
+      fr: Blog
+    components:
+      - name: Hero
+      - name: ArticleHub
+  - name:
+      en: Pricing Page
+      fr: Page de tarification
+    page:
+      en: Pricing
+      fr: Tarification
+    components:
+      - name: Hero
+      - name: PricingTiers
+        preset: fancy
+      - name: FAQ
+        preset: fancy

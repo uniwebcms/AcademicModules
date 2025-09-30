@@ -1,0 +1,142 @@
+title: 
+  en: Pricing Tiers
+  fr: Tarifs
+label:
+  en: Pricing Tiers
+  fr: Tarifs
+description:
+  en: The pricing tiers section displays a list of pricing tiers with their features and prices. A monthly or yearly switcher is put above the pricing tiers.
+  fr: La section des tarifs affiche une liste de tarifs avec leurs fonctionnalités et leurs prix. Un commutateur mensuel ou annuel est placé au-dessus des tarifs.
+
+category: pricing
+export: true
+
+elements:
+  title:
+  subtitle:
+  text:
+    description:
+      en: The promotion text put under billing cycle switcher.
+      fr: Le texte de promotion placé sous le commutateur de cycle de facturation.
+
+items:
+  separator: divider
+  elements:
+    icon:
+      description:
+        en: The icon put beside the pricing tier.
+        fr: L'icône placée à côté du tarif.
+    pretitle:
+      description:
+        en: The name of the pricing tier.
+        fr: Le nom du tarif.
+    title:
+      description:
+        en: The price and the billing cycle of the pricing tier.
+        fr: Le prix et le cycle de facturation du tarif.
+    subtitle:
+      description:
+        en: The description of the pricing tier.
+        fr: La description du tarif.
+    link:
+      description:
+        en: The action button of the pricing tier.
+        fr: Le bouton d'action du tarif.
+    list:
+      description:
+        en: The list of features of the pricing tier.
+        fr: La liste des fonctionnalités du tarif.
+    button:
+      description:
+        en: The badge of the pricing tier.
+        fr: Le badge du tarif.
+
+properties:
+  default_billing_cycle:
+    label:
+      en: Default Billing Cycle
+      fr: Cycle de facturation par défaut
+    type: string
+    default: monthly
+    enum:
+      - label:
+          en: Monthly
+          fr: Mensuel
+        value: monthly
+      - label:
+          en: Yearly
+          fr: Annuel
+        value: yearly
+    description:
+      en: The default billing cycle to display.
+      fr: Le cycle de facturation par défaut à afficher.
+  billing_cycle_switcher:
+    label:
+      en: Billing Cycle Switcher
+      fr: Commutateur de cycle de facturation
+    type: boolean
+    default: false
+    description:
+      en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
+      fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.
+  yearly_price_multiplier:
+    label:
+      en: Yearly Price Multiplier
+      fr: Multiplicateur de prix annuel
+    type: number
+    default: 12
+    description:
+      en: The multiplier to calculate the yearly price from the monthly price.
+      fr: Le multiplicateur pour calculer le prix annuel à partir du prix mensuel.
+  appearance:
+    label:
+      en: Appearance
+      fr: Apparence
+    type: string
+    default: subtle
+    enum:
+      - label:
+          en: Subtle
+          fr: Subtil
+        value: subtle
+      - label:
+          en: Fancy
+          fr: Fantaisie
+        value: fancy
+    description:
+      en: The appearance of the pricing tiers.
+      fr: L'apparence des niveaux de tarification.
+  card_size:
+    label:
+      en: Card Size
+      fr: Taille de la carte
+    type: string
+    default: medium
+    enum:
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: medium
+    description:
+      en: The size of the pricing tier cards.
+      fr: La taille des cartes de tarification.
+
+presets:
+  subtle:
+    label:
+      en: Subtle appearance
+      fr: Apparence subtile
+    properties:
+      appearance: subtle
+    image: subtle.png
+  fancy:
+    label:
+      en: Fancy appearance
+      fr: Apparence fantaisie
+    properties:
+      appearance: fancy
+    image: fancy.png
