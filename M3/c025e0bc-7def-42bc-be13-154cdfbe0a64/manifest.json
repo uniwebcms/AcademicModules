@@ -1,0 +1,411 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2025-09-30T19:21:38.061Z",
+  "files": [
+    {
+      "name": "main.cd10aaa6459849ea196e.js",
+      "size": 1498841,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "remoteEntry.js",
+      "size": 6615,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.425d06b79d6f68cfa0de.js",
+      "size": 6610,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.02e190a9c77539e4d247.js",
+      "size": 132731,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.de2a4efb3f5b5f756ed5.js",
+      "size": 652618,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.3560c3c5e335ca6ba565.js",
+      "size": 1119215,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ArticleHub/example.png",
+      "size": 159618,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ArticleList/side_list.webp",
+      "size": 126214,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ArticleList/md_width.webp",
+      "size": 183212,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ArticleViewer/example.png",
+      "size": 111602,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/CallToAction/subtle_right.webp",
+      "size": 14472,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/CallToAction/fancy.webp",
+      "size": 12856,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/CallToAction/motion.webp",
+      "size": 16908,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ContentHighlight/img_right.webp",
+      "size": 147592,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ContentShowcase/fancy.webp",
+      "size": 41254,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ContentWrapper/example.png",
+      "size": 22794,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FAQ/q_l_a_r.webp",
+      "size": 116480,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FAQ/q_r_a_l.webp",
+      "size": 117206,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FAQ/center_boxed_first_open.webp",
+      "size": 72024,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Feature/iconic.webp",
+      "size": 19662,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Feature/loose.webp",
+      "size": 72420,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Feature/standard_full.webp",
+      "size": 64504,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Feature/standard.webp",
+      "size": 81794,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Feature/island_sm.webp",
+      "size": 41636,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Feature/detailed_lg.webp",
+      "size": 117842,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureCards/gird.webp",
+      "size": 43310,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureCards/scroll_list.webp",
+      "size": 89382,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureCards/floating_gallery.webp",
+      "size": 96394,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/bullet_list_border.webp",
+      "size": 13546,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/leading_icon_border.webp",
+      "size": 11050,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/basic.webp",
+      "size": 16924,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/icon_and_text.webp",
+      "size": 2374,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/centered.webp",
+      "size": 8248,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/catching_card.webp",
+      "size": 23696,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureItem/vertical_grouped.webp",
+      "size": 21856,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureSpotlight/content_right.webp",
+      "size": 53774,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureSpotlight/content_left.webp",
+      "size": 62370,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureTabs/example.png",
+      "size": 63370,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Footer/example.png",
+      "size": 37050,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Form/example.png",
+      "size": 28688,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Header/example.png",
+      "size": 15234,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Hero/full_left.webp",
+      "size": 61174,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Hero/full_right.webp",
+      "size": 57542,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Hero/full_center.webp",
+      "size": 61564,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/MediaHero/example.png",
+      "size": 76290,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/NavigationBand/example.png",
+      "size": 3890,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/PricingTiers/subtle.webp",
+      "size": 81768,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/PricingTiers/fancy.webp",
+      "size": 90044,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPage/example.png",
+      "size": 65190,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPageContent/simple_card.webp",
+      "size": 18782,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPageContent/timeline_card.webp",
+      "size": 39008,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPageContent/branding_showcase.webp",
+      "size": 39812,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPageContent/paragraphs.webp",
+      "size": 136498,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPageContent/contact_resources.webp",
+      "size": 46104,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Timeline/example.png",
+      "size": 26234,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/TwoColLayout/article.webp",
+      "size": 156016,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/VideoHub/example.png",
+      "size": 70456,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/VideoList/side_list.webp",
+      "size": 35590,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/VideoPlayer/example.png",
+      "size": 77554,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "schema.json",
+      "size": 110352,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ArticleHub/example.webp",
+      "size": 159618,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ArticleViewer/example.webp",
+      "size": 111602,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/ContentWrapper/example.webp",
+      "size": 22794,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureCards/grid.webp",
+      "size": 43310,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/FeatureTabs/example.webp",
+      "size": 63370,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Footer/example.webp",
+      "size": 37050,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Form/example.webp",
+      "size": 28688,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Header/example.webp",
+      "size": 15234,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/MediaHero/example.webp",
+      "size": 76290,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/NavigationBand/example.webp",
+      "size": 3890,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Section/example.webp",
+      "size": 46386,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPage/example.webp",
+      "size": 65190,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/SideNavPageContent/example.webp",
+      "size": 65190,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/Timeline/example.webp",
+      "size": 26234,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/VideoHub/example.webp",
+      "size": 70456,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "assets/VideoPlayer/example.webp",
+      "size": 77554,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.cd10aaa6459849ea196e.js.LICENSE.txt",
+      "size": 438,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.425d06b79d6f68cfa0de.js.LICENSE.txt",
+      "size": 237,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.3560c3c5e335ca6ba565.js.LICENSE.txt",
+      "size": 249,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.02e190a9c77539e4d247.js.LICENSE.txt",
+      "size": 483,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    },
+    {
+      "name": "main.de2a4efb3f5b5f756ed5.js.LICENSE.txt",
+      "size": 149,
+      "hash": "5cbe5a9e3cd9b9d57739"
+    }
+  ]
+}
