@@ -181,7 +181,7 @@ export default function PageHeader({ block, website, page }) {
                 />
             )}
 
-            <div
+            <header
                 ref={navRef}
                 className={twMerge(wrapperClass, !initialPosition && sticky && 'shadow-2xl')}
                 style={adaptiveStyle}
@@ -294,7 +294,7 @@ export default function PageHeader({ block, website, page }) {
                         </Dialog.Panel>
                     </Dialog>
                 </div>
-            </div>
+            </header>
         </>
     );
 }
