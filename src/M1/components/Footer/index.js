@@ -5,6 +5,7 @@ import { getMediaLinkType, getMediaIcon } from '../_utils/media';
 import { GoGlobe } from 'react-icons/go';
 import { IoIosSend } from 'react-icons/io';
 import { HiChevronDown, HiCheck } from 'react-icons/hi';
+import MoonLoader from 'react-spinners/MoonLoader';
 import toast from '../_utils/Toast';
 
 const parseBlockData = (block) => {
@@ -150,6 +151,21 @@ const LanguageSelector = ({ website }) => {
     );
 };
 
+const useSecureSubmission = (block) => {
+    let formId = block.id;
+
+    const { isSubmitting, error } = uniweb.form.useSubmissionEffect(useState, useEffect, formId);
+
+    const secureSubmit = React.useCallback(
+        async (formData, preview, files = []) => {
+            await block.submitForm(formData, preview, files);
+        },
+        [formId]
+    );
+
+    return { secureSubmit, isSubmitting, error };
+};
+
 export default function Footer(props) {
     const { block, website } = props;
 
@@ -159,12 +175,16 @@ export default function Footer(props) {
     const emailInputRef = useRef(null);
     const [activeDropdown, setActiveDropdown] = useState(null);
 
-    const handleSubmit = (e) => {
-        const email = emailInputRef.current.value;
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
 
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        block.submitWebsiteForm('newsletter', { email }).then((res) => {
+        if (isSubmitting) return;
+
+        const email = emailInputRef.current.value;
+
+        secureSubmit({ email }, { tag: 'newsletter' }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',
@@ -177,6 +197,34 @@ export default function Footer(props) {
                 }
             );
         });
+
+        // block.submitForm({ email }, { tag: 'newsletter' }).then((res) => {
+        //     toast(
+        //         website.localize({
+        //             en: 'Thank you for subscribing!',
+        //             fr: 'Merci de vous être abonné !',
+        //         }),
+        //         {
+        //             theme: 'success',
+        //             position: 'top-center',
+        //             duration: 2000,
+        //         }
+        //     );
+        // });
+
+        // block.submitWebsiteForm('newsletter', { email }).then((res) => {
+        //     toast(
+        //         website.localize({
+        //             en: 'Thank you for subscribing!',
+        //             fr: 'Merci de vous être abonné !',
+        //         }),
+        //         {
+        //             theme: 'success',
+        //             position: 'top-center',
+        //             duration: 2000,
+        //         }
+        //     );
+        // });
     };
 
     return (
@@ -264,12 +312,24 @@ export default function Footer(props) {
                                         />
                                     </div>
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 !bg-inherit"
-                                >
-                                    <IoIosSend className="w-5 h-5" />
-                                </button>
+                                {isSubmitting ? (
+                                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                                        <MoonLoader
+                                            cssOverride={{
+                                                textAlign: 'left',
+                                            }}
+                                            color="var(--text-color)"
+                                            size="16px"
+                                        />
+                                    </div>
+                                ) : (
+                                    <button
+                                        type="submit"
+                                        className="absolute right-3 top-1/2 transform -translate-y-1/2 !bg-inherit"
+                                    >
+                                        <IoIosSend className="w-5 h-5" />
+                                    </button>
+                                )}
                             </form>
                         </div>
                     </div>

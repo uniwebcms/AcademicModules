@@ -4413,10 +4413,35 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["npm:2.0.2", {\
+        "packageLocation": "./.yarn/cache/@uniwebcms-module-sdk-npm-2.0.2-2cf575bb76-7dc9d1191a.zip/node_modules/@uniwebcms/module-sdk/",\
+        "packageDependencies": [\
+          ["@uniwebcms/module-sdk", "npm:2.0.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
       ["virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.0.1", {\
         "packageLocation": "./.yarn/__virtual__/@uniwebcms-module-sdk-virtual-ce5c4b1960/0/cache/@uniwebcms-module-sdk-npm-2.0.1-dd0ab931c2-f268174690.zip/node_modules/@uniwebcms/module-sdk/",\
         "packageDependencies": [\
           ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.0.1"],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
+          ["tailwind-merge", "npm:1.14.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:2.0.2", {\
+        "packageLocation": "./.yarn/__virtual__/@uniwebcms-module-sdk-virtual-f44d6aa6d8/0/cache/@uniwebcms-module-sdk-npm-2.0.2-2cf575bb76-7dc9d1191a.zip/node_modules/@uniwebcms/module-sdk/",\
+        "packageDependencies": [\
+          ["@uniwebcms/module-sdk", "virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:2.0.2"],\
           ["@types/react", null],\
           ["@types/react-dom", null],\
           ["react", "npm:18.3.1"],\
@@ -6546,7 +6571,7 @@ const RAW_RUNTIME_STATE =
           ["@react-google-maps/api", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.20.6"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
           ["@uniwebcms/core-components", "virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:1.6.27"],\
-          ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.0.1"],\
+          ["@uniwebcms/module-sdk", "virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:2.0.2"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.0"],\
           ["flexsearch", "npm:0.7.43"],\
           ["katex", "npm:0.16.21"],\
@@ -6557,6 +6582,7 @@ const RAW_RUNTIME_STATE =
           ["react-highlight-words", "virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:0.20.0"],\
           ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
           ["react-katex", "virtual:9b97b102b7a7d497d0460cf21b4a4f6016354c3e0e1e5d6a7655f8a377e6b458dfc0867bfc94a3f9a4ed41b4e87d1654ecb7d872612c06c75d86055ed8eb17bf#npm:3.0.1"],\
+          ["react-simple-toasts", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:6.1.0"],\
           ["tailwindcss", "npm:3.4.17"]\
         ],\
         "linkType": "SOFT"\
