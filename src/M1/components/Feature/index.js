@@ -43,17 +43,6 @@ export default function Feature(props) {
         gridClassName.push('[&>*]:rounded-2xl');
     }
 
-    // const gridClassName =
-    //     sub_content_layout === 'grid_sm'
-    //         ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-6 lg:gap-8'
-    //         : sub_content_layout === 'grid_md'
-    //         ? 'grid lg:grid-cols-3 gap-12 md:gap-6 lg:gap-8'
-    //         : sub_content_layout === 'grid_lg'
-    //         ? 'grid lg:grid-cols-2 gap-12 md:gap-8 lg:gap-12'
-    //         : sub_content_layout === 'full'
-    //         ? 'grid grid-cols-1 gap-12 md:gap-4'
-    //         : null;
-
     const { childBlocks } = block;
 
     const hasChildBlocks = childBlocks.length > 0;
@@ -89,7 +78,7 @@ export default function Feature(props) {
                     )}
                 </div>
                 {hasChildBlocks ? (
-                    <div className={gridClassName}>
+                    <div className={twJoin(gridClassName)}>
                         <ChildBlockRenderer
                             block={block}
                             childBlocks={childBlocks}
@@ -171,7 +160,7 @@ export default function Feature(props) {
                         <p className="max-w-2xl mx-auto">{subtitle}</p>
                     </motion.div>
                     {hasChildBlocks ? (
-                        <div className={gridClassName}>
+                        <div className={twJoin(gridClassName)}>
                             <ChildBlockRenderer
                                 block={block}
                                 childBlocks={childBlocks}
