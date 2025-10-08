@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { Image, SafeHtml } from '@uniwebcms/core-components';
 import { FaQuoteLeft } from 'react-icons/fa';
 import toast from '../_utils/Toast';
@@ -47,10 +47,14 @@ export default function Newsletter(props) {
 
     const [email, setEmail] = useState('');
 
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        block.submitWebsiteForm('newsletter', { email }).then((res) => {
+        if (isSubmitting) return;
+
+        secureSubmit({ email }, { tag: 'newsletter' }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',

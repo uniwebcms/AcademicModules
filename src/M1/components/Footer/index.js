@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { getPageProfile } from '@uniwebcms/module-sdk';
+import { getPageProfile, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { Icon, Image, Link, SafeHtml } from '@uniwebcms/core-components';
 import { getMediaLinkType, getMediaIcon } from '../_utils/media';
 import { GoGlobe } from 'react-icons/go';
@@ -151,21 +151,6 @@ const LanguageSelector = ({ website }) => {
     );
 };
 
-const useSecureSubmission = (block) => {
-    let formId = block.id;
-
-    const { isSubmitting, error } = uniweb.form.useSubmissionEffect(useState, useEffect, formId);
-
-    const secureSubmit = React.useCallback(
-        async (formData, preview, files = []) => {
-            await block.submitForm(formData, preview, files);
-        },
-        [formId]
-    );
-
-    return { secureSubmit, isSubmitting, error };
-};
-
 export default function Footer(props) {
     const { block, website } = props;
 
@@ -197,34 +182,6 @@ export default function Footer(props) {
                 }
             );
         });
-
-        // block.submitForm({ email }, { tag: 'newsletter' }).then((res) => {
-        //     toast(
-        //         website.localize({
-        //             en: 'Thank you for subscribing!',
-        //             fr: 'Merci de vous être abonné !',
-        //         }),
-        //         {
-        //             theme: 'success',
-        //             position: 'top-center',
-        //             duration: 2000,
-        //         }
-        //     );
-        // });
-
-        // block.submitWebsiteForm('newsletter', { email }).then((res) => {
-        //     toast(
-        //         website.localize({
-        //             en: 'Thank you for subscribing!',
-        //             fr: 'Merci de vous être abonné !',
-        //         }),
-        //         {
-        //             theme: 'success',
-        //             position: 'top-center',
-        //             duration: 2000,
-        //         }
-        //     );
-        // });
     };
 
     return (
