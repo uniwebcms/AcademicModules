@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { getPageProfile } from '@uniwebcms/module-sdk';
+import { getPageProfile, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { Icon, Image, Link, SafeHtml } from '@uniwebcms/core-components';
 import { getMediaLinkType, getMediaIcon } from '../_utils/media';
 import { GoGlobe } from 'react-icons/go';
@@ -159,12 +159,14 @@ export default function Footer(props) {
     const emailInputRef = useRef(null);
     const [activeDropdown, setActiveDropdown] = useState(null);
 
-    const handleSubmit = (e) => {
-        const email = emailInputRef.current.value;
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
 
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        block.submitWebsiteForm('newsletter', { email }).then((res) => {
+        if (isSubmitting) return;
+        const email = emailInputRef.current.value;
+        secureSubmit({ email }, { tag: 'newsletter' }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',

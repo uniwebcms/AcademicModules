@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Container from '../_utils/Container';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { Icon } from '@uniwebcms/core-components';
 import { HiCheck, HiChevronDown } from 'react-icons/hi';
 import toast from '../_utils/Toast';
@@ -215,14 +215,16 @@ export default function Form(props) {
         return Object.keys(newErrors).length === 0;
     };
 
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
+
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        if (isSubmitting) return;
         if (!validate()) {
             return;
         }
 
-        block.submitWebsiteForm('contact', data).then((res) => {
+        secureSubmit(data, { tag: 'contact' }).then((res) => {
             toast(
                 website.localize({
                     en: 'Successfully submitted!',

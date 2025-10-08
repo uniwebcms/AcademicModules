@@ -2804,15 +2804,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/module-sdk@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "@uniwebcms/module-sdk@npm:2.0.2"
+"@uniwebcms/module-sdk@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@uniwebcms/module-sdk@npm:2.0.3"
   dependencies:
     tailwind-merge: "npm:^1.13.2"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10/7dc9d1191a0f23e07a4e93d99836edc2eefc1f380e03f5a980a0e30aa7178e7189890f7f11e5d987e3355e8216cf8d460bcd892e68ba52aeea7b40534749c669
+  checksum: 10/1cfc41a86a791b4fce746e240f9590bab68a1cb6c35e89b6051934cb28ac7f8721395d2a274ba36bd261a2200a8c868619298047c53e454da27f114172239f19
   languageName: node
   linkType: hard
 
@@ -4475,7 +4475,7 @@ __metadata:
     "@react-google-maps/api": "npm:^2.19.1"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.27"
-    "@uniwebcms/module-sdk": "npm:^2.0.2"
+    "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     flexsearch: "npm:^0.7.31"
     katex: "npm:^0.16.11"
@@ -6410,7 +6410,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.20"
-    "@uniwebcms/module-sdk": "npm:^2.0.1"
+    "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     axios: "npm:^1.9.0"
     flexsearch: "npm:^0.7.31"
@@ -6440,7 +6440,7 @@ __metadata:
     "@headlessui/tailwindcss": "npm:^0.2.2"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.27"
-    "@uniwebcms/module-sdk": "npm:^2.0.1"
+    "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
@@ -6463,7 +6463,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.20"
-    "@uniwebcms/module-sdk": "npm:^2.0.1"
+    "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     axios: "npm:^1.9.0"
     flexsearch: "npm:^0.7.31"
