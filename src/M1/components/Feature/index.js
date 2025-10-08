@@ -11,18 +11,48 @@ export default function Feature(props) {
 
     const ChildBlockRenderer = block.getChildBlockRenderer();
 
-    const { appearance = 'standard', sub_content_layout = 'grid_sm' } = block.getBlockProperties(); // loose, iconic, standard
+    const {
+        appearance = 'standard',
+        sub_content_layout = 'grid_sm',
+        child_card_roundness = 'none',
+    } = block.getBlockProperties();
 
-    const gridClassName =
-        sub_content_layout === 'grid_sm'
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-6 lg:gap-8'
-            : sub_content_layout === 'grid_md'
-            ? 'grid lg:grid-cols-3 gap-12 md:gap-6 lg:gap-8'
-            : sub_content_layout === 'grid_lg'
-            ? 'grid lg:grid-cols-2 gap-12 md:gap-8 lg:gap-12'
-            : sub_content_layout === 'full'
-            ? 'grid grid-cols-1 gap-12 md:gap-4'
-            : null;
+    const gridClassName = [];
+
+    if (sub_content_layout === 'grid_sm') {
+        gridClassName.push(
+            'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-6 lg:gap-8'
+        );
+    } else if (sub_content_layout === 'grid_md') {
+        gridClassName.push('grid lg:grid-cols-3 gap-12 md:gap-6 lg:gap-8');
+    } else if (sub_content_layout === 'grid_lg') {
+        gridClassName.push('grid lg:grid-cols-2 gap-12 md:gap-8 lg:gap-12');
+    } else if (sub_content_layout === 'full') {
+        gridClassName.push('grid grid-cols-1 gap-12 md:gap-4');
+    }
+
+    if (child_card_roundness === 'small') {
+        gridClassName.push('[&>*]:rounded-sm');
+    } else if (child_card_roundness === 'medium') {
+        gridClassName.push('[&>*]:rounded-md');
+    } else if (child_card_roundness === 'large') {
+        gridClassName.push('[&>*]:rounded-lg');
+    } else if (child_card_roundness === 'extra_large') {
+        gridClassName.push('[&>*]:rounded-xl');
+    } else if (child_card_roundness === 'double_extra_large') {
+        gridClassName.push('[&>*]:rounded-2xl');
+    }
+
+    // const gridClassName =
+    //     sub_content_layout === 'grid_sm'
+    //         ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-6 lg:gap-8'
+    //         : sub_content_layout === 'grid_md'
+    //         ? 'grid lg:grid-cols-3 gap-12 md:gap-6 lg:gap-8'
+    //         : sub_content_layout === 'grid_lg'
+    //         ? 'grid lg:grid-cols-2 gap-12 md:gap-8 lg:gap-12'
+    //         : sub_content_layout === 'full'
+    //         ? 'grid grid-cols-1 gap-12 md:gap-4'
+    //         : null;
 
     const { childBlocks } = block;
 

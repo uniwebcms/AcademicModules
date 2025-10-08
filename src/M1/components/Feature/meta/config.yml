@@ -102,6 +102,40 @@ properties:
     description:
       en: Specifies how the sub-feature content is arranged within the section.
       fr: Précise comment le contenu de la sous-fonctionnalité est agencé dans la section.
+  child_card_roundness:
+    label:
+      en: Child Card Roundness
+      fr: Arrondi des cartes enfants
+    type: string
+    default: none
+    enum:
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+      - label:
+          en: Small
+          fr: Petit
+        value: small
+      - label:
+          en: Medium
+          fr: Moyen
+        value: medium
+      - label:
+          en: Large
+          fr: Grand
+        value: large
+      - label:
+          en: Extra Large
+          fr: Très grand
+        value: extra_large
+      - label:
+          en: Double Extra Large
+          fr: Double très grand
+        value: double_extra_large
+    description:
+      en: Sets the roundness of the child feature cards.
+      fr: Définit l'arrondi des cartes de fonctionnalités enfants
 
 presets:
   standard:
