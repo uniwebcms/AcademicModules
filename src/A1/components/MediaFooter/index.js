@@ -1,5 +1,11 @@
 import React, { useRef } from 'react';
-import { stripTags, website, twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import {
+    stripTags,
+    website,
+    twJoin,
+    getPageProfile,
+    useSecureSubmission,
+} from '@uniwebcms/module-sdk';
 import { Link, Icon, Image, MediaIcon, Disclaimer, SafeHtml } from '@uniwebcms/core-components';
 import { getMediaLinkType } from '../_utils/media';
 import { MdEmail } from 'react-icons/md';
@@ -158,12 +164,16 @@ const Navigation = ({ groupedLinks, size = 'sm' }) => {
 const Newsletter = ({ block }) => {
     const inputRef = useRef(null);
 
-    const handleSubmit = (e) => {
-        const email = inputRef.current.value;
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
 
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        block.submitWebsiteForm('newsletter', { email }).then((res) => {
+        if (isSubmitting) return;
+
+        const email = inputRef.current.value;
+
+        secureSubmit({ email }, { tag: 'newsletter' }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',

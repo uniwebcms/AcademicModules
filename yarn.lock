@@ -3053,7 +3053,7 @@ __metadata:
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.26"
-    "@uniwebcms/module-sdk": "npm:^2.0.1"
+    "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     "@vis.gl/react-google-maps": "npm:^1.5.4"
     citation-js: "npm:^0.7.14"
