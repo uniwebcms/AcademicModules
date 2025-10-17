@@ -68,7 +68,7 @@ export default function Hero(props) {
                         {links.length ? (
                             <div
                                 className={twJoin(
-                                    'flex flex-wrap gap-6 lg:gap-8',
+                                    'flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8',
                                     alignment === 'left' ? 'justify-center lg:justify-start' : '',
                                     alignment === 'center' ? 'justify-center' : '',
                                     alignment === 'right' ? 'justify-center lg:justify-end' : ''
@@ -79,14 +79,14 @@ export default function Hero(props) {
                                         key={index}
                                         href={link.href}
                                         className={twJoin(
-                                            'pl-4 pr-3 lg:pl-6 lg:pr-5 py-2 lg:py-3 text-base lg:text-lg font-semibold rounded-full flex items-center gap-2 transition-all',
+                                            'pl-4 pr-3 lg:pl-6 lg:pr-5 py-2.5 lg:py-3 text-base lg:text-lg font-semibold rounded-full flex items-center gap-2 transition-all justify-center',
                                             index === 0 &&
                                                 'bg-text-color/90 text-bg-color hover:bg-text-color',
                                             index === 1 &&
                                                 'border border-text-color bg-transparent text-text-color/90 hover:bg-text-color/20 hover:text-text-color'
                                         )}
                                     >
-                                        {link.label}
+                                        <span>{link.label}</span>
                                         <LuChevronRight className="w-4 h-4 text-inherit" />
                                     </Link>
                                 ))}

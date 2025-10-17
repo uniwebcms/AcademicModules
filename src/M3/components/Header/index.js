@@ -784,7 +784,7 @@ const NavBar = ({
                     <div className="flex justify-between h-20 items-center space-x-2 xl:space-x-4 2xl:space-x-6">
                         <div className="flex items-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 flex-grow">
                             {/* Logo */}
-                            <div className="flex-shrink-0 w-24 md:w-28 lg:w-32 xl:w-36 2xl:w-40">
+                            <div className="flex-shrink-0 w-32 xl:w-36 2xl:w-40">
                                 <Link to="">{logo}</Link>
                             </div>
 
