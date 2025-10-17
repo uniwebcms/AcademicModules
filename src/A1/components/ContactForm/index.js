@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { HiPhone } from 'react-icons/hi';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { SlEnvolope } from 'react-icons/sl';
@@ -197,41 +197,84 @@ const Form = (props) => {
         return `mailto:${recipient}?subject=${subject}&body=${body}`;
     };
 
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
+
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (isSubmitting) return;
 
-        block
-            .submitWebsiteForm('contact', {
+        secureSubmit(
+            {
                 email: formData.email,
                 firstName: formData.firstName,
                 lastName: formData.lastName,
                 phoneNumber: formData.phoneNumber,
                 message: formData.message,
-            })
-            .then((res) => {
-                toast(
-                    website.localize({
-                        en: 'Thank you for contacting us.',
-                        es: 'Gracias por contactarnos.',
-                        fr: 'Merci de nous avoir contactés.',
-                    }),
-                    {
-                        theme: 'success',
-                        position: 'top-center',
-                        duration: 2000,
-                    }
-                );
+            },
+            {
+                tag: 'contact',
+                title: `${formData.firstName} ${formData.lastName}`,
+                subtitle: formData.email,
+            }
+        ).then((res) => {
+            toast(
+                website.localize({
+                    en: 'Thank you for contacting us.',
+                    es: 'Gracias por contactarnos.',
+                    fr: 'Merci de nous avoir contactés.',
+                }),
+                {
+                    theme: 'success',
+                    position: 'top-center',
+                    duration: 2000,
+                }
+            );
 
-                // Reset form after submission
-                setFormData({
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    phoneNumber: '',
-                    message: '',
-                });
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phoneNumber: '',
+                message: '',
             });
+        });
     };
+
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+
+    //     block
+    //         .submitWebsiteForm('contact', {
+    //             email: formData.email,
+    //             firstName: formData.firstName,
+    //             lastName: formData.lastName,
+    //             phoneNumber: formData.phoneNumber,
+    //             message: formData.message,
+    //         })
+    //         .then((res) => {
+    //             toast(
+    //                 website.localize({
+    //                     en: 'Thank you for contacting us.',
+    //                     es: 'Gracias por contactarnos.',
+    //                     fr: 'Merci de nous avoir contactés.',
+    //                 }),
+    //                 {
+    //                     theme: 'success',
+    //                     position: 'top-center',
+    //                     duration: 2000,
+    //                 }
+    //             );
+
+    //             // Reset form after submission
+    //             setFormData({
+    //                 firstName: '',
+    //                 lastName: '',
+    //                 email: '',
+    //                 phoneNumber: '',
+    //                 message: '',
+    //             });
+    //         });
+    // };
 
     return (
         <form

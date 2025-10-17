@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
+import { useSecureSubmission } from '@uniwebcms/module-sdk';
 import { MediaIcon, Link } from '@uniwebcms/core-components';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import MoonLoader from 'react-spinners/MoonLoader';
@@ -11,25 +12,47 @@ function Newsletter({ website, title, block }) {
     const [email, setEmail] = useState('');
     const [buttonIcon, setButtonIcon] = useState(null);
 
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
+
     const handleOnSubmit = (e) => {
         e.preventDefault();
+
+        if (isSubmitting) return;
 
         setButtonIcon(
             <MoonLoader size="16px" color="var(--neutral-600)" aria-label="Updating"></MoonLoader>
         );
 
-        setTimeout(() => {
-            block.submitWebsiteForm(siteId, 'newsletter', { email }).then((res) => {
-                setEmail('');
+        secureSubmit({ email }, { tag: 'newsletter' }).then((res) => {
+            setEmail('');
 
-                setButtonIcon(<AiOutlineCheckCircle className="h-5 w-5" />);
+            setButtonIcon(<AiOutlineCheckCircle className="h-5 w-5" />);
 
-                setTimeout(() => {
-                    setButtonIcon(null);
-                }, 2000);
-            });
-        }, 500);
+            setTimeout(() => {
+                setButtonIcon(null);
+            }, 2000);
+        });
     };
+
+    // const handleOnSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     setButtonIcon(
+    //         <MoonLoader size="16px" color="var(--neutral-600)" aria-label="Updating"></MoonLoader>
+    //     );
+
+    //     setTimeout(() => {
+    //         block.submitWebsiteForm(siteId, 'newsletter', { email }).then((res) => {
+    //             setEmail('');
+
+    //             setButtonIcon(<AiOutlineCheckCircle className="h-5 w-5" />);
+
+    //             setTimeout(() => {
+    //                 setButtonIcon(null);
+    //             }, 2000);
+    //         });
+    //     }, 500);
+    // };
 
     return (
         <div className="space-y-2.5 md:space-y-4 lg:space-y-6 flex-grow">

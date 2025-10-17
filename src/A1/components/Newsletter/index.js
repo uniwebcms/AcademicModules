@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { stripTags } from '@uniwebcms/module-sdk';
+import { stripTags, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { SafeHtml } from '@uniwebcms/core-components';
 import Container from '../_utils/Container';
 import { MdEmail } from 'react-icons/md';
@@ -12,14 +12,16 @@ export default function NewsletterForm({ block, website }) {
 
     const inputRef = useRef(null);
 
-    const handleSubmit = (e) => {
-        const email = inputRef.current.value;
+    const { isSubmitting, secureSubmit } = useSecureSubmission(block);
 
-        // Prevent the default form submit action
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Custom submission logic
-        block.submitWebsiteForm('newsletter', { email }).then((res) => {
+        if (isSubmitting) return;
+
+        const email = inputRef.current.value;
+
+        secureSubmit({ email }, { tag: 'newsletter' }).then((res) => {
             toast(
                 website.localize({
                     en: 'Thank you for subscribing!',
