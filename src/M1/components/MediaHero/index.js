@@ -42,6 +42,9 @@ export default function MediaHero(props) {
         videoThumbnail = coverImg ? { url: coverImg } : images[0];
     } else if (videos[0]) {
         video = videos[0];
+
+        let coverImg = video?.coverImg;
+        videoThumbnail = coverImg ? { url: coverImg } : null;
     } else if (images[0]) {
         image = images[0];
     }
