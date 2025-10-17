@@ -24,6 +24,23 @@ const parseButtonContent = (content) => {
     return content;
 };
 
+function getCoverImgUrl(video) {
+    if (!video.coverImg) return null;
+
+    let coverUrl = '';
+    let coverImg = video.coverImg;
+
+    if (coverImg?.src) {
+        coverUrl = coverImg.src;
+    } else if (coverImg?.identifier) {
+        coverUrl =
+            new uniweb.Profile(`docufolio/profile`, '_template').getAssetInfo(coverImg.identifier)
+                ?.src || '';
+    }
+
+    return coverUrl;
+}
+
 export default function MediaHero(props) {
     const { block } = props;
 
@@ -39,12 +56,12 @@ export default function MediaHero(props) {
 
         let coverImg = video?.coverImg;
 
-        videoThumbnail = coverImg ? { url: coverImg } : images[0];
+        videoThumbnail = coverImg ? { url: getCoverImgUrl(video) } : images[0];
     } else if (videos[0]) {
         video = videos[0];
 
         let coverImg = video?.coverImg;
-        videoThumbnail = coverImg ? { url: coverImg } : null;
+        videoThumbnail = coverImg ? { url: getCoverImgUrl(video) } : null;
     } else if (images[0]) {
         image = images[0];
     }
