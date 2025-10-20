@@ -10,3 +10,65 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+/* Below are styles for the Scroll View Timeline feature */
+/* Base styles */
+.scroll-clip-container {
+    /* timeline-scope dynamically set via JS */
+}
+
+/* Scroll-driven wipe animation */
+@supports (animation-timeline: view()) {
+    @keyframes wipe-out-bottom {
+        0% {
+            clip-path: inset(0 0 0% 0);
+        }
+        100% {
+            clip-path: inset(0 0 100% 0);
+        }
+    }
+
+    @keyframes wipe-out-left {
+        0% {
+            clip-path: inset(0 0 0 0%);
+        }
+        100% {
+            clip-path: inset(0 100% 0 0%);
+        }
+    }
+
+    .video-layer {
+        animation: var(--wipe-animation, wipe-out-bottom) linear both;
+        animation-range: entry 0% contain 0%;
+        animation-duration: 1s;
+    }
+}
+
+/* Fallback for browsers without view-timeline */
+@supports not (animation-timeline: view()) {
+    .video-layer:not(:last-child) {
+        opacity: 0;
+    }
+}
+
+/* Video frame styling (glassmorphism) */
+.video-frame {
+    background-color: rgb(var(--neutral-900));
+    backdrop-filter: blur(10px);
+    border: 4px solid rgba(var(--neutral-900), 0.8);
+}
+
+/* Loading state for posters */
+.poster-loading {
+    filter: blur(4px);
+    transition: filter 0.3s ease;
+}
+.poster-loaded {
+    filter: none;
+}
+
+/* High contrast text */
+.experience-section h2,
+.experience-section p {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}

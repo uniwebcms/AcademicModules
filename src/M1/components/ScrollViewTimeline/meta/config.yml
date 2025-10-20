@@ -1,0 +1,12 @@
+title:
+  en: ScrollView Timeline
+  fr: Défilement de la chronologie
+labels:
+  en: ScrollView Timeline
+  fr: Défilement de la chronologie
+description:
+  en: A timeline component that allows users to scroll through events or items in a horizontal layout.
+  fr: Un composant de chronologie qui permet aux utilisateurs de faire défiler des événements ou des éléments dans une disposition horizontale.
+
+category: content
+export: true
