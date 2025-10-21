@@ -89,6 +89,7 @@ export default function ScrollViewTimeline(props) {
     const sections = parseBlockItems(items);
 
     const frameRef = useRef(null);
+    const firstSectionRef = useRef(null);
     const lastSectionRef = useRef(null);
     const [timelineInset, setTimelineInset] = useState('35% 35%');
     const [loaded, setLoaded] = useState(sections.map(() => false));
@@ -110,30 +111,65 @@ export default function ScrollViewTimeline(props) {
         return () => window.removeEventListener('resize', updateInset);
     }, []);
 
-    // Track last section position and adjust video frame
+    // Track first and last section positions and adjust video frame
     useEffect(() => {
         const handleScroll = () => {
-            if (!lastSectionRef.current) return;
-
-            const lastSection = lastSectionRef.current;
-            const rect = lastSection.getBoundingClientRect();
             const vh = window.innerHeight;
+            let offset = 0;
 
-            // When last section's top is below viewport, video stays centered (offset = 0)
-            if (rect.top >= vh) {
-                setVideoOffset(0);
-                return;
+            // Handle first section - video stays below viewport until section scrolls in
+            if (firstSectionRef.current) {
+                const firstRect = firstSectionRef.current.getBoundingClientRect();
+                const firstSectionHeight = firstRect.height;
+                const videoHeight = frameRef.current?.offsetHeight || 0;
+
+                const triggerPoint = firstSectionHeight / 2 - videoHeight / 2;
+                const scrolledIn = vh - firstRect.top;
+
+                // When first section is completely below viewport or moved in a bit (less than trigger point)
+                if (firstRect.top >= vh || scrolledIn < triggerPoint) {
+                    // Keep video below viewport
+                    setVideoOffset(-vh);
+                    return;
+                }
+
+                // When first section is entering viewport and past trigger point
+                if (scrolledIn >= triggerPoint) {
+                    const videoMovement = scrolledIn - triggerPoint;
+                    const offset = Math.min(0, -1 * (0.5 * vh - videoMovement + 0.5 * videoHeight));
+                    // const offset = -1 * (0.5 * vh - videoMovement + 0.5 * videoHeight);
+
+                    setVideoOffset(offset);
+
+                    if (offset < 0) {
+                        return;
+                    }
+                }
             }
 
-            // When last section is entering/in viewport
-            // Calculate how much the section has moved up past the viewport top
-            if (rect.top < vh) {
-                const scrolledAmount = vh - rect.top;
-                // Only start moving video when section has scrolled up a bit
-                // This creates a smooth transition
-                const offset = Math.max(0, scrolledAmount - vh);
-                setVideoOffset(offset);
+            // Handle last section - video moves up with it
+            if (lastSectionRef.current) {
+                const lastRect = lastSectionRef.current.getBoundingClientRect();
+
+                // When last section's top is below viewport, video stays centered (offset = 0)
+                if (lastRect.top >= vh) {
+                    setVideoOffset(0);
+                    return;
+                }
+
+                // When last section is entering/in viewport
+                // Calculate how much the section has moved up past the viewport top
+                if (lastRect.top < vh) {
+                    const scrolledAmount = vh - lastRect.top;
+                    // Only start moving video when section has scrolled up past viewport
+                    offset = Math.max(0, scrolledAmount - vh);
+                    setVideoOffset(offset);
+                    return;
+                }
             }
+
+            // Default centered position
+            setVideoOffset(0);
         };
 
         handleScroll(); // Initial calculation
@@ -260,7 +296,14 @@ export default function ScrollViewTimeline(props) {
                 <main className="relative z-10">
                     {sections.map((section, i) => (
                         <section
-                            ref={i === sections.length - 1 ? lastSectionRef : null}
+                            ref={
+                                i === 0
+                                    ? firstSectionRef
+                                    : i === sections.length - 1
+                                    ? lastSectionRef
+                                    : null
+                            }
+                            // ref={i === sections.length - 1 ? lastSectionRef : null}
                             key={section.src}
                             className={`experience-section flex flex-col justify-center p-8 lg:p-16 pr-8 md:pr-[35%] lg:pr-[45%] xl:pr-[55%] bg-gradient-to-b ${
                                 section.bgGradient
