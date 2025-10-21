@@ -76,7 +76,7 @@ const parseBlockItems = (items) => {
         }
 
         if (bgColorTone) {
-            result.bgGradient = gradientPresets[bgColorTone] || 'from-gray-500 to-gray-700';
+            result.bgGradient = gradientPresets[bgColorTone] || '';
         }
 
         return result;
