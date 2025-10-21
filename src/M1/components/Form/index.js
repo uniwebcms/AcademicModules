@@ -101,7 +101,9 @@ const SelectWidget = ({ data, setData, options, placeholder }) => {
 };
 
 const Field = (props) => {
-    const { title, paragraphs, properties, icons, lists, data, setData, error } = props;
+    let { title, paragraphs, properties, form, icons, lists, data, setData, error } = props;
+
+    properties = form || properties;
 
     const icon = icons?.[0];
 
@@ -184,7 +186,9 @@ export default function Form(props) {
         const initData = {};
 
         items.forEach((item) => {
-            const { title, properties } = item;
+            let { title, properties, form } = item;
+
+            properties = form || properties;
 
             if (properties?.['default']) {
                 initData[title] = properties['default'];
@@ -199,7 +203,9 @@ export default function Form(props) {
     const validate = () => {
         const newErrors = {};
         items.forEach((item) => {
-            const { title, properties } = item;
+            let { title, properties, form } = item;
+
+            properties = form || properties;
 
             if (properties?.required && !data[title]) {
                 newErrors[title] = 'This field is required';

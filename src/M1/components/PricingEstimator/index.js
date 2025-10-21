@@ -142,8 +142,10 @@ const calculateTotalCost = (totalCost, yearlyDiscountFactor) => {
 };
 
 const CalculatorBox = ({ item, isAnnual }) => {
-    const { title, subtitle, icons, properties } = item;
+    let { title, subtitle, icons, form: formProperties, properties } = item;
     const icon = icons[0];
+
+    properties = formProperties || properties;
 
     const { steps = [], total, yearlyPromotionText, yearlyDiscountFactor } = properties;
 
@@ -281,8 +283,10 @@ const CalculatorBox = ({ item, isAnnual }) => {
 };
 
 const DiscountBox = ({ item, isAnnual }) => {
-    const { title, subtitle, icons, lists, properties } = item;
+    let { title, subtitle, icons, lists, form: formProperties, properties } = item;
     const icon = icons[0];
+
+    properties = formProperties || properties;
 
     const feature =
         lists[0]?.map((item) => {

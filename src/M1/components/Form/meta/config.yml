@@ -1,50 +1,122 @@
 title:
-  en: Form
-  fr: Formulaire
+    en: Form
+    fr: Formulaire
 label:
-  en: Form
-  fr: Formulaire
+    en: Form
+    fr: Formulaire
 description:
-  en: A form component is used to collect user input.
-  fr: Un composant de formulaire est utilisé pour collecter les entrées de l'utilisateur.
+    en: A form component is used to collect user input.
+    fr: Un composant de formulaire est utilisé pour collecter les entrées de l'utilisateur.
 
 category: form
 export: true
 
 elements:
-  title:
-  subtitle:
-  button:
-    description:
-      en: The submit button text.
-      fr: Le texte du bouton de soumission.
+    title:
+    subtitle:
+    button:
+        description:
+            en: The submit button text.
+            fr: Le texte du bouton de soumission.
 
 items:
-  separator: divider
-  elements:
-    icon:
-      description:
-        en: The icon of the field.
-        fr: L'icône du champ.
-    title:
-      description:
-        en: The title of the field.
-        fr: Le titre du champ.
-    text:
-      description:
-        en: The placeholder text of the field.
-        fr: Le texte d'indication du champ.
-    list:
-      description:
-        en: The options of the field if field type is select, radio or checkbox.
-        fr: Les options du champ si le type de champ est select, radio ou checkbox.
-    code:
-      label:
-        en: Field information
-        fr: Informations sur le champ
-      description:
-        en: The additional properties for the field such as field type and default value.
-        fr: Les propriétés supplémentaires pour le champ telles que le type de champ et la valeur par défaut.
+    separator: divider
+    elements:
+        icon:
+            description:
+                en: The icon of the field.
+                fr: L'icône du champ.
+        title:
+            description:
+                en: The title of the field.
+                fr: Le titre du champ.
+        text:
+            description:
+                en: The placeholder text of the field.
+                fr: Le texte d'indication du champ.
+        list:
+            description:
+                en: The options of the field if field type is select, radio or checkbox.
+                fr: Les options du champ si le type de champ est select, radio ou checkbox.
+        code:
+            label:
+                en: Field information
+                fr: Informations sur le champ
+            description:
+                en: The additional properties for the field such as field type and default value.
+                fr: Les propriétés supplémentaires pour le champ telles que le type de champ et la valeur par défaut.
+        form:
+            description:
+                en: A form for user input. You can choose from predefined form layouts.
+                fr: Un formulaire pour la saisie de l'utilisateur. Vous pouvez choisir parmi des mises en page prédéfinies.
+            schemas:
+                - id: form
+                  name:
+                      en: Simple Form
+                      fr: Formulaire simple
+                  # isComposite: false means the form data will be a single object {}.
+                  isComposite: false
+                  # 'fields' defines the inputs for this specific form layout.
+                  fields:
+                      - id: widget
+                        type: select
+                        label:
+                            en: Widget
+                            fr: Widget
+                        description:
+                            en: Defines the input type.
+                            fr: Définit le type d'entrée.
+                        required: true
+                        options:
+                            - value: 'input'
+                              label:
+                                  en: Input
+                                  fr: Input
+                            - value: 'textarea'
+                              label:
+                                  en: Text Area
+                                  fr: Zone de texte
+                            - value: 'select'
+                              label:
+                                  en: Select
+                                  fr: Sélect
+                            - value: 'radio'
+                              label:
+                                  en: Radio
+                                  fr: Radio
+                      - id: required
+                        type: checkbox
+                        label:
+                            en: Required
+                            fr: Requis
+                        description:
+                            en: If true, the field is mandatory.
+                            fr: Si vrai, le champ est obligatoire.
+
+                      - id: validation
+                        type: text
+                        label:
+                            en: Validation (Regex)
+                            fr: Validation (Regex)
+                        description:
+                            en: A regular expression for validation.
+                            fr: Une expression régulière pour la validation.
+                      - id: errorMsg
+                        type: text
+                        label:
+                            en: Error Message
+                            fr: Message d'erreur
+                        description:
+                            en: Custom error message for failed validation.
+                            fr: Message d'erreur personnalisé pour une validation échouée.
+                      - id: default
+                        type: text
+                        label:
+                            en: Default Value
+                            fr: Valeur par défaut
+                        description:
+                            en: The initial value of the field.
+                            fr: La valeur initiale du champ.
 
 images:
-  - example.png
+    - example.png

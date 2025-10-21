@@ -1,45 +1,223 @@
 title:
-  en: Pricing Estimator
-  fr: Estimateur de tarification
+    en: Pricing Estimator
+    fr: Estimateur de tarification
 label:
-  en: Pricing Estimator
-  fr: Estimateur de tarification
+    en: Pricing Estimator
+    fr: Estimateur de tarification
 description:
-  en: The pricing estimator component can calculate cost dynamically based on user input and showcasing multi-product discounts.
-  fr: Le composant d'estimateur de tarification peut calculer le coût dynamiquement en fonction de l'entrée de l'utilisateur et en montrant des remises multi-produits.
+    en: The pricing estimator component can calculate cost dynamically based on user input and showcasing multi-product discounts.
+    fr: Le composant d'estimateur de tarification peut calculer le coût dynamiquement en fonction de l'entrée de l'utilisateur et en montrant des remises multi-produits.
 
 category: pricing
 export: true
 
 elements:
-  title:
-  subtitle:
-
-items:
-  separator: divider
-  elements:
     title:
     subtitle:
-    icon:
-    list:
-      description:
-        en: List of features.
-        fr: Liste des fonctionnalités.
-    code:
-      description:
-        en: JSON code defines the details of calculation such as price, discount, etc.
-        fr: Le code JSON définit les détails du calcul tels que le prix, la remise, etc.
+
+items:
+    separator: divider
+    elements:
+        title:
+        subtitle:
+        icon:
+        list:
+            description:
+                en: List of features.
+                fr: Liste des fonctionnalités.
+        code:
+            description:
+                en: JSON code defines the details of calculation such as price, discount, etc.
+                fr: Le code JSON définit les détails du calcul tels que le prix, la remise, etc.
+
+        form:
+            description:
+                en: UniwebForm is used to create a form for user input.
+                fr: UniwebForm est utilisé pour créer un formulaire pour la saisie de l'utilisateur.
+            schemas:
+                - id: pricingCalculator
+                  name:
+                      en: Pricing Calculator
+                      fr: Calculateur de prix
+                  isComposite: false
+                  fields:
+                      - id: steps
+                        label:
+                            en: Steps
+                            fr: Étapes
+                        type: form
+                        childSchema:
+                            name:
+                                en: Step
+                                fr: Étape
+                            fields:
+                                - id: title
+                                  type: text
+                                  label:
+                                      en: Title
+                                      fr: Titre
+                                  required: true
+                                - id: options
+                                  label:
+                                      en: Options
+                                      fr: Options
+                                  type: form
+                                  childSchema:
+                                      name:
+                                          en: Option
+                                          fr: Option
+                                      fields:
+                                          - id: title
+                                            type: text
+                                            label:
+                                                en: Title
+                                                fr: Titre
+                                            required: true
+                                          - id: price
+                                            type: text
+                                            label:
+                                                en: Price
+                                                fr: Prix
+                                          - id: priceText
+                                            type: text
+                                            label:
+                                                en: Price Text
+                                                fr: Texte du prix
+                                          - id: type
+                                            type: select
+                                            label:
+                                                en: Type
+                                                fr: Type
+                                            options:
+                                                - button
+                                                - number
+                                                - switch
+                                          - id: defaultSelected
+                                            type: checkbox
+                                            label:
+                                                en: Default Selected
+                                                fr: Sélectionné par défaut
+                                          - id: icon
+                                            type: text
+                                            label:
+                                                en: Icon
+                                                fr: Icône
+                                - id: unique
+                                  type: checkbox
+                                  label:
+                                      en: Unique Selection
+                                      fr: Sélection unique
+                      - id: total
+                        label:
+                            en: Total
+                            fr: Total
+                        type: nestedObject
+                        fields:
+                            - id: title
+                              type: text
+                              label:
+                                  en: Title
+                                  fr: Titre
+                            - id: description
+                              type: textarea
+                              label:
+                                  en: Description
+                                  fr: Description
+                            - id: basePrice
+                              type: text
+                              label:
+                                  en: Base Price
+                                  fr: Prix de base
+                      - id: yearlyPromotionText
+                        type: text
+                        label:
+                            en: Yearly Promotion Text
+                            fr: Texte de la promotion annuelle
+                      - id: yearlyDiscountFactor
+                        type: text
+                        label:
+                            en: Yearly Discount Factor
+                            fr: Facteur de remise annuelle
+                - id: volumeDiscount
+                  name:
+                      en: Volume Discount Calculator
+                      fr: Calculateur de remise sur volume
+                  isComposite: false
+                  fields:
+                      - id: discount
+                        label:
+                            en: Discount
+                            fr: Remise
+                        type: nestedObject
+                        fields:
+                            - id: title
+                              type: text
+                              label:
+                                  en: Title
+                                  fr: Titre
+                            - id: items
+                              label:
+                                  en: Discount Items
+                                  fr: Articles de remise
+                              type: form
+                              childSchema:
+                                  name:
+                                      en: Item
+                                      fr: Article
+                                  fields:
+                                      - id: title
+                                        type: text
+                                        label:
+                                            en: Title
+                                            fr: Titre
+                                        required: true
+                                      - id: discountValue
+                                        type: text
+                                        label:
+                                            en: Discount Value
+                                            fr: Valeur de la remise
+                      - id: example
+                        label:
+                            en: Example
+                            fr: Exemple
+                        type: nestedObject
+                        fields:
+                            - id: title
+                              type: text
+                              label:
+                                  en: Title
+                                  fr: Titre
+                            - id: description
+                              type: textarea
+                              label:
+                                  en: Description
+                                  fr: Description
+                            - id: cost
+                              type: text
+                              label:
+                                  en: Cost
+                                  fr: Coût
+                      - id: yearlyPromotionText
+                        type: text
+                        label:
+                            en: Yearly Promotion Text
+                            fr: Texte de la promotion annuelle
+                      - id: yearlyDiscountFactor
+                        type: text
+                        label:
+                            en: Yearly Discount Factor
+                            fr: Facteur de remise annuelle
 
 properties:
-  billing_cycle_switcher:
-    label:
-      en: Billing Cycle Switcher
-      fr: Commutateur de cycle de facturation
-    type: boolean
-    default: false
-    description:
-      en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
-      fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.
+    billing_cycle_switcher:
+        label:
+            en: Billing Cycle Switcher
+            fr: Commutateur de cycle de facturation
+        type: boolean
+        default: false
+        description:
+            en: If enabled, a switcher will be displayed above the pricing tiers to switch between monthly and yearly billing cycles.
+            fr: Si activé, un commutateur sera affiché au-dessus des tarifs pour passer entre les cycles de facturation mensuels et annuels.
 
 images:
-  - example.png
+    - example.png
