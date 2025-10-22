@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArticleRender, SafeHtml } from '@uniwebcms/core-components';
+import React, { useState } from 'react';
 import { twJoin } from '@uniwebcms/module-sdk';
 import { Tooltip } from 'react-tooltip';
 import Container from '../_utils/Container';
@@ -73,8 +72,10 @@ export default function TooltipTable(props) {
     const formContent = getFormContent(block.content);
     const { head, body } = parseTableData(formContent);
 
+    const [hoveredCell, setHoveredCell] = useState(null);
+
     return (
-        <Container className="max-w-6xl mx-auto">
+        <Container className="max-w-7xl mx-auto">
             {title || subtitle ? (
                 <div className="text-center mb-10 lg:mb-16">
                     <h2 className="text-4xl font-bold mb-6">{title}</h2>
@@ -82,14 +83,14 @@ export default function TooltipTable(props) {
                 </div>
             ) : null}
             <table className="w-full ring-1 ring-neutral-300 rounded-xl overflow-hidden divide-y table-auto">
-                <thead className="bg-heading-color/10">
+                <thead className="bg-neutral-100">
                     <tr>
                         {head.map((cell, i) => (
                             <th
                                 key={i}
                                 className={twJoin(
-                                    'px-6 py-4',
-                                    Number(featured_column) === i + 1 ? 'bg-primary-100' : ''
+                                    'px-6 py-5',
+                                    Number(featured_column) === i + 1 ? 'bg-primary-100/80' : ''
                                 )}
                             >
                                 <span
@@ -110,18 +111,28 @@ export default function TooltipTable(props) {
                 </thead>
                 <tbody className="divide-y">
                     {body.map((row, i) => (
-                        <tr key={i} className={'bg-neutral-50'}>
+                        <tr
+                            key={i}
+                            className={
+                                hoveredCell?.split('-')[0] === String(i) ? 'bg-neutral-50' : ''
+                            }
+                        >
                             {row.map((cell, j) => (
                                 <td
                                     key={j}
+                                    data-tooltip-id="table-tooltip"
+                                    data-tooltip-content={cell.tooltip}
                                     className={twJoin(
-                                        'px-6 py-4',
-                                        Number(featured_column) === j + 1 ? 'bg-primary-100' : ''
+                                        'px-6 py-5',
+                                        Number(featured_column) === j + 1
+                                            ? 'bg-primary-100/60'
+                                            : '',
+                                        cell.tooltip && 'cursor-help'
                                     )}
+                                    onMouseEnter={() => setHoveredCell(`${i}-${j}`)}
+                                    onMouseLeave={() => setHoveredCell(null)}
                                 >
                                     <span
-                                        data-tooltip-id="table-tooltip"
-                                        data-tooltip-content={cell.tooltip}
                                         className={twJoin(
                                             'flex items-center gap-2',
                                             j === 0 ? 'justify-start' : 'justify-center'
@@ -144,9 +155,6 @@ export default function TooltipTable(props) {
                 style={{
                     maxWidth: '240px',
                 }}
-                render={({ content, activeAnchor }) =>
-                    content ? <SafeHtml as="span" value={content} /> : null
-                }
             />
         </Container>
     );
