@@ -1,0 +1,29 @@
+title:
+  en: Tooltip Table
+  fr: Tableau d'info-bulle
+labels:
+  en: Tooltip Table
+  fr: Tableau d'info-bulle
+description:
+  en: A table component that displays data with tooltips for additional information on each cell.
+  fr: Un composant de tableau qui affiche des données avec des info-bulles pour des informations supplémentaires sur chaque cellule.
+
+category: table
+export: true
+
+elements:
+  table:
+
+properties:
+  featured_column:
+    label:
+      en: Featured Column
+      fr: Colonne en vedette
+    type: number
+    default: ""
+    description:
+      en: The number of the column that should be highlighted as featured.
+      fr: Le numéro de la colonne qui doit être mise en avant.
+
+images:
+  - example.png

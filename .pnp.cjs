@@ -2862,6 +2862,14 @@ const RAW_RUNTIME_STATE =
           ["@floating-ui/utils", "npm:0.2.9"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:1.7.3", {\
+        "packageLocation": "./.yarn/cache/@floating-ui-core-npm-1.7.3-2fe40b3781-a8952ff267.zip/node_modules/@floating-ui/core/",\
+        "packageDependencies": [\
+          ["@floating-ui/core", "npm:1.7.3"],\
+          ["@floating-ui/utils", "npm:0.2.10"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@floating-ui/dom", [\
@@ -2871,6 +2879,15 @@ const RAW_RUNTIME_STATE =
           ["@floating-ui/dom", "npm:1.6.13"],\
           ["@floating-ui/core", "npm:1.6.9"],\
           ["@floating-ui/utils", "npm:0.2.9"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:1.7.4", {\
+        "packageLocation": "./.yarn/cache/@floating-ui-dom-npm-1.7.4-e1f6d76b3d-d3d6a23e7b.zip/node_modules/@floating-ui/dom/",\
+        "packageDependencies": [\
+          ["@floating-ui/dom", "npm:1.7.4"],\
+          ["@floating-ui/core", "npm:1.7.3"],\
+          ["@floating-ui/utils", "npm:0.2.10"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2932,6 +2949,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@floating-ui/utils", [\
+      ["npm:0.2.10", {\
+        "packageLocation": "./.yarn/cache/@floating-ui-utils-npm-0.2.10-5e22e99242-b635ea865a.zip/node_modules/@floating-ui/utils/",\
+        "packageDependencies": [\
+          ["@floating-ui/utils", "npm:0.2.10"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:0.2.9", {\
         "packageLocation": "./.yarn/cache/@floating-ui-utils-npm-0.2.9-f2d9dffc79-0ca786347d.zip/node_modules/@floating-ui/utils/",\
         "packageDependencies": [\
@@ -8801,6 +8825,7 @@ const RAW_RUNTIME_STATE =
           ["react-intersection-observer", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:9.16.0"],\
           ["react-simple-toasts", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:6.1.0"],\
           ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
+          ["react-tooltip", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:5.30.0"],\
           ["react-virtuoso", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:4.12.5"],\
           ["recharts", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:2.15.1"],\
           ["tailwindcss", "npm:3.4.17"]\
@@ -11667,6 +11692,34 @@ const RAW_RUNTIME_STATE =
           ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
           ["@types/react", null],\
           ["@types/react-dom", null],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-tooltip", [\
+      ["npm:5.30.0", {\
+        "packageLocation": "./.yarn/cache/react-tooltip-npm-5.30.0-db590b1b4d-f638f381fe.zip/node_modules/react-tooltip/",\
+        "packageDependencies": [\
+          ["react-tooltip", "npm:5.30.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:5.30.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-tooltip-virtual-18a85d0dfb/0/cache/react-tooltip-npm-5.30.0-db590b1b4d-f638f381fe.zip/node_modules/react-tooltip/",\
+        "packageDependencies": [\
+          ["react-tooltip", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:5.30.0"],\
+          ["@floating-ui/dom", "npm:1.7.4"],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["classnames", "npm:2.5.1"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"]\
         ],\
