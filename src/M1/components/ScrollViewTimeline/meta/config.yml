@@ -10,3 +10,146 @@ description:
 
 category: content
 export: true
+
+items:
+  separator: divider
+  elements:
+    title:
+    subtitle:
+    text:
+    media:
+      description:
+        en: The video content of the item, which can be MP4 or YouTube, and it can also accept an optional image to be used as the cover image for MP4 type videos.
+        fr: Le contenu vidéo de l'élément, qui peut être MP4 ou YouTube, et il peut également accepter une image facultative à utiliser comme image de couverture pour les vidéos de type MP4.
+    form:
+      description:
+        en: A form for collecting user input related to the timeline items.
+        fr: Un formulaire pour collecter les entrées de l'utilisateur liées aux éléments de la chronologie.
+      schemas:
+        - id: form
+          name:
+            en: Item Specification
+            fr: Spécification de l'élément
+          isComposite: false
+          fields:
+            - id: bgColorTone
+              type: select
+              label:
+                en: Background Color Tone
+                fr: Tonalité de couleur d'arrière-plan
+              description:
+                en: Defines the background color tone for the timeline item.
+                fr: Définit la tonalité de couleur d'arrière-plan pour l'élément de la chronologie.
+              required: true
+              options:
+                - value: green
+                  label:
+                    en: Green
+                    fr: Vert
+                - value: blue
+                  label:
+                    en: Blue
+                    fr: Bleu
+                - value: red
+                  label:
+                    en: Red
+                    fr: Rouge
+                - value: purple
+                  label:
+                    en: Purple
+                    fr: Violet
+                - value: yellow
+                  label:
+                    en: Yellow
+                    fr: Jaune
+                - value: gray
+                  label:
+                    en: Gray
+                    fr: Gris
+                - value: pink
+                  label:
+                    en: Pink
+                    fr: Rose
+                - value: indigo
+                  label:
+                    en: Indigo
+                    fr: Indigo
+                - value: teal
+                  label:
+                    en: Teal
+                    fr: Sarcelle
+                - value: orange
+                  label:
+                    en: Orange
+                    fr: Orange
+                - value: cyan
+                  label:
+                    en: Cyan
+                    fr: Cyan
+                - value: lime
+                  label:
+                    en: Lime
+                    fr: Citron vert
+                - value: amber
+                  label:
+                    en: Amber
+                    fr: Ambre
+                - value: emerald
+                  label:
+                    en: Emerald
+                    fr: Émeraude
+                - value: rose
+                  label:
+                    en: Rose
+                    fr: Rose
+                - value: sky
+                  label:
+                    en: Sky
+                    fr: Ciel
+                - value: fuchsia
+                  label:
+                    en: Fuchsia
+                    fr: Fuchsia
+                - value: violet
+                  label:
+                    en: Violet
+                    fr: Violet
+                - value: slate
+                  label:
+                    en: Slate
+                    fr: Ardoise
+                - value: zinc
+                  label:
+                    en: Zinc
+                    fr: Zinc
+                - value: stone
+                  label:
+                    en: Stone
+                    fr: Pierre
+
+
+
+
+
+
+        # green: 'from-green-500 to-green-700',
+        # blue: 'from-blue-500 to-blue-700',
+        # red: 'from-red-500 to-red-700',
+        # purple: 'from-purple-500 to-purple-700',
+        # yellow: 'from-yellow-500 to-yellow-700',
+        # gray: 'from-gray-500 to-gray-700',
+        # pink: 'from-pink-500 to-pink-700',
+        # indigo: 'from-indigo-500 to-indigo-700',
+        # teal: 'from-teal-500 to-teal-700',
+        # orange: 'from-orange-500 to-orange-700',
+        # cyan: 'from-cyan-500 to-cyan-700',
+        # lime: 'from-lime-500 to-lime-700',
+        # amber: 'from-amber-500 to-amber-700',
+        # emerald: 'from-emerald-500 to-emerald-700',
+        # rose: 'from-rose-500 to-rose-700',
+        # sky: 'from-sky-500 to-sky-700',
+        # fuchsia: 'from-fuchsia-500 to-fuchsia-700',
+        # violet: 'from-violet-500 to-violet-700',
+        # slate: 'from-slate-500 to-slate-700',
+        # zinc: 'from-zinc-500 to-zinc-700',
+        # stone: 'from-stone-500 to-stone-700',

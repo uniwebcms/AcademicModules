@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { getPageProfile } from '@uniwebcms/module-sdk';
 import { SafeHtml } from '@uniwebcms/core-components';
 
@@ -47,7 +47,9 @@ const parseBlockItems = (items) => {
         stone: 'from-stone-500 to-stone-700',
     };
     return items.map((item) => {
-        const { title, subtitle, paragraphs, videos, images, properties } = item;
+        const { title, subtitle, paragraphs, videos, images, forms, properties } = item;
+
+        const form = forms[0];
 
         const result = {
             title,
@@ -57,9 +59,7 @@ const parseBlockItems = (items) => {
 
         const video = videos[0];
         const image = images[0];
-        const bgColorTone = properties
-            ? typeof properties === 'object' && properties.bgColorTone
-            : null;
+        const bgColorTone = form ? form.bgColorTone : null;
 
         if (video) {
             if (video.src.startsWith('https://www.youtube')) {
