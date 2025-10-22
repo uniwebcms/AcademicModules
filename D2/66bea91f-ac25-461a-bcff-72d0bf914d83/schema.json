@@ -1,0 +1,266 @@
+{
+  "_self": {
+    "name": "Documentation Series 2",
+    "description": "A collection of components for building documentation websites, offering a modern design, light and dark mode and user-friendly navigation. This collection does not require any custom colors set in the docufolio or website studio."
+  },
+  "Callout": {
+    "title": {
+      "en": "Call Out",
+      "fr": "Appel"
+    },
+    "label": {
+      "en": "Call Out",
+      "fr": "Appel"
+    },
+    "description": {
+      "en": "Component to render a call out box with title and paragraphs. Can be used for info or warning messages.",
+      "fr": "Composant pour rendre une boîte d'appel avec un titre et des paragraphes. Peut être utilisé pour des messages d'info ou d'avertissement."
+    },
+    "export": true,
+    "properties": {
+      "type": {
+        "label": {
+          "en": "Call Out Type",
+          "fr": "Type d'appel"
+        },
+        "type": "string",
+        "default": "info",
+        "enum": [
+          {
+            "label": {
+              "en": "Info",
+              "fr": "Info"
+            },
+            "value": "info"
+          },
+          {
+            "label": {
+              "en": "Warning",
+              "fr": "Avertissement"
+            },
+            "value": "warning"
+          }
+        ],
+        "description": {
+          "en": "The type of call out.",
+          "fr": "Le type d'appel."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Info Call Out",
+          "fr": "Appel d'info"
+        },
+        "properties": {
+          "type": "info"
+        },
+        "image": {
+          "height": 530,
+          "width": 1638,
+          "type": "webp",
+          "path": "assets/Callout/info.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Warning Call Out",
+          "fr": "Appel d'avertissement"
+        },
+        "properties": {
+          "type": "warning"
+        },
+        "image": {
+          "height": 534,
+          "width": 1628,
+          "type": "webp",
+          "path": "assets/Callout/warning.webp"
+        }
+      }
+    ],
+    "name": "Callout"
+  },
+  "Feedback": {
+    "title": {
+      "en": "Feedback",
+      "fr": "Retour d'information"
+    },
+    "label": {
+      "en": "Feedback",
+      "fr": "Retour d'information"
+    },
+    "description": {
+      "en": "A feedback form is used to collect user input.",
+      "fr": "Un formulaire de retour d'information est utilisé pour collecter les commentaires des utilisateurs."
+    },
+    "category": "form",
+    "export": true,
+    "name": "Feedback"
+  },
+  "Footer": {
+    "title": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "label": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "description": {
+      "en": "A footer component renders the navigation to the next and previous pages.",
+      "fr": "Un composant de pied de page rend la navigation vers les pages suivantes et précédentes."
+    },
+    "export": true,
+    "images": [
+      {
+        "height": 158,
+        "width": 1594,
+        "type": "webp",
+        "path": "assets/Footer/example.png"
+      }
+    ],
+    "name": "Footer"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "A component to render a header with a website logo, search bar, dark mode toggle, language selector, and media links.",
+      "fr": "Un composant pour rendre un en-tête avec un logo de site Web, une barre de recherche, un basculement du mode sombre, un sélecteur de langue et des liens multimédias."
+    },
+    "export": true,
+    "images": [
+      {
+        "height": 128,
+        "width": 2486,
+        "type": "webp",
+        "path": "assets/Header/example.png"
+      }
+    ],
+    "name": "Header"
+  },
+  "LeftPanel": {
+    "title": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "label": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "description": {
+      "en": "A component that render a list of navigation links, usually used for a sidebar.",
+      "fr": "Un composant qui rend une liste de liens de navigation, généralement utilisé pour une barre latérale."
+    },
+    "export": true,
+    "images": [
+      {
+        "height": 758,
+        "width": 638,
+        "type": "webp",
+        "path": "assets/LeftPanel/example.png"
+      }
+    ],
+    "name": "LeftPanel"
+  },
+  "QuickLinks": {
+    "title": {
+      "en": "Quick Links",
+      "fr": "Liens rapides"
+    },
+    "label": {
+      "en": "Quick Links",
+      "fr": "Liens rapides"
+    },
+    "description": {
+      "en": "A component that renders a list of clickable quick link card in a grid layout. Each card with a icon, title and description.",
+      "fr": "Un composant qui rend une liste de cartes de liens rapides cliquables dans une mise en page en grille. Chaque carte avec une icône, un titre et une description."
+    },
+    "export": true,
+    "images": [
+      {
+        "height": 774,
+        "width": 1558,
+        "type": "webp",
+        "path": "assets/QuickLinks/example.png"
+      }
+    ],
+    "name": "QuickLinks"
+  },
+  "RightPanel": {
+    "title": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "label": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "description": {
+      "en": "A component that renders a list of links to the topics of the current page.",
+      "fr": "Un composant qui rend une liste de liens vers les sujets de la page actuelle."
+    },
+    "export": true,
+    "images": [
+      {
+        "height": 764,
+        "width": 578,
+        "type": "webp",
+        "path": "assets/RightPanel/example.png"
+      }
+    ],
+    "name": "RightPanel"
+  },
+  "Section": {
+    "title": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "description": {
+      "en": "A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.",
+      "fr": "Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "_raw": {
+        "en": "This category renders content from the Webpages editor as-is.",
+        "fr": "Cette catégorie affiche le contenu de l'éditeur de pages tel quel."
+      }
+    },
+    "properties": {
+      "paragraph_standout": {
+        "label": {
+          "en": "Paragraph Standout",
+          "fr": "Mise en valeur du paragraphe"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether to make the paragraph standout.",
+          "fr": "Indique si le paragraphe doit être mis en valeur."
+        }
+      },
+      "video_control": {
+        "label": {
+          "en": "Video Control",
+          "fr": "Contrôle vidéo"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "Whether to display the additional video control, such as mini player and overlay play button.",
+          "fr": "Afficher ou non le contrôle vidéo supplémentaire, tel que le mini lecteur et le bouton de lecture superposé."
+        }
+      }
+    },
+    "name": "Section"
+  }
+}
