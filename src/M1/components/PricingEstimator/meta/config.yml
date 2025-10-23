@@ -57,6 +57,11 @@ items:
                                       en: Title
                                       fr: Titre
                                   required: true
+                                - id: unique
+                                  type: checkbox
+                                  label:
+                                      en: Unique Selection
+                                      fr: Sélection unique
                                 - id: options
                                   label:
                                       en: Options
@@ -102,11 +107,7 @@ items:
                                             label:
                                                 en: Icon
                                                 fr: Icône
-                                - id: unique
-                                  type: checkbox
-                                  label:
-                                      en: Unique Selection
-                                      fr: Sélection unique
+
                       - id: total
                         label:
                             en: Total
@@ -118,16 +119,17 @@ items:
                               label:
                                   en: Title
                                   fr: Titre
-                            - id: description
-                              type: textarea
-                              label:
-                                  en: Description
-                                  fr: Description
                             - id: basePrice
                               type: text
                               label:
                                   en: Base Price
                                   fr: Prix de base
+                            - id: description
+                              type: textarea
+                              label:
+                                  en: Description
+                                  fr: Description
+
                       - id: yearlyPromotionText
                         type: text
                         label:

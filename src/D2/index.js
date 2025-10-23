@@ -8,7 +8,12 @@ import Layout from './components/Layout';
 // Export selectable components under the module's "default" property
 export default dynamicExports;
 
-export const site = { Layout };
+export const site = {
+    Layout,
+    props: {
+        themeToggleEnabled: true, // Tell the site that theme toggling is enabled
+    },
+};
 
 // Export site-level components and settings under the module's "site" property
 // Example:
