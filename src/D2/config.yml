@@ -1,4 +1,44 @@
 name: Documentation Series 2
 description: A collection of components for building documentation websites, offering a modern design, light and dark mode and user-friendly navigation. This collection does not require any custom colors set in the docufolio or website studio.
 properties:
-  themeToggleEnabled: true
+    themeToggleEnabled: true
+
+styles:
+    - id: 'border-radius'
+      type: select
+      label:
+          en: Corner Style
+          fr: Style de coin
+      description:
+          en: The style of the corners for the component.
+          fr: Le style des coins pour le composant.
+      default: '0.25rem'
+      options:
+          - value: 0
+            label:
+                en: Straight
+                fr: Droit
+          - value: '0.25rem'
+            label:
+                en: Rounded
+                fr: Arrondi
+          - value: '0.75rem'
+            label:
+                en: Circular
+                fr: Circulaire
+    - id: 'border-color'
+      type: color
+      label:
+          en: Border Color
+          fr: Couleur de la bordure
+      description:
+          en: The color of the border for the component.
+          fr: La couleur de la bordure pour le composant.
+    - id: 'border-dark-color'
+      type: color
+      label:
+          en: Border Color in Dark Mode
+          fr: Couleur de la bordure en mode sombre
+      description:
+          en: The color of the border for the component in dark mode.
+          fr: La couleur de la bordure pour le composant en mode sombre.
