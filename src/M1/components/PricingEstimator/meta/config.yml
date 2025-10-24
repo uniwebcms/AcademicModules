@@ -46,6 +46,9 @@ items:
                             en: Steps
                             fr: Étapes
                         type: form
+                        description:
+                            en: Steps for the pricing calculator.
+                            fr: Étapes pour le calculateur de prix.
                         childSchema:
                             name:
                                 en: Step
