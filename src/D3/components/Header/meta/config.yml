@@ -1,0 +1,70 @@
+title: 
+  en: Header
+  fr: En-tête
+label:
+  en: Header
+  fr: En-tête
+description:
+  en: A component to render a header with a website logo, search bar, dark mode toggle, language selector, and media links.
+  fr: Un composant pour rendre un en-tête avec un logo de site Web, une barre de recherche, un basculement du mode sombre, un sélecteur de langue et des liens multimédias.
+
+export: true
+
+images:
+  - example.png
+
+properties:
+  sticky:
+    label:
+      en: Sticky Header
+      fr: En-tête collant
+    type: boolean
+    default: true
+    description:
+      en: If enabled, the header will stick to the top of the page when scrolling.
+      fr: Si activé, l'en-tête restera en haut de la page lors du défilement.
+  mode:
+    label:
+      en: Header Mode
+      fr: Mode d'en-tête
+    type: string
+    enum:
+      - label:
+          en: Full Width
+          fr: Par défaut
+        value: full_width
+      - label:
+          en: Island
+          fr: Transparent
+        value: island
+    default: full_width
+    description:
+      en: The mode of the header, which can be either full width or island.
+      fr: Le mode de l'en-tête, qui peut être en pleine largeur ou en îlot.
+  search_position:
+    label:
+      en: Search Position
+      fr: Position de la recherche
+    type: string
+    enum:
+      - label:
+          en: Center
+          fr: Centre
+        value: center
+      - label:
+          en: Right
+          fr: Droite
+        value: right
+    default: center
+    description:
+      en: The position of the search bar in the header.
+      fr: La position de la barre de recherche dans l'en-tête.
+  transparency:
+    label:
+      en: Transparency
+      fr: Transparence
+    type: boolean
+    default: true
+    description:
+      en: If enabled, the header will have a transparent background.
+      fr: Si activé, l'en-tête aura un fond transparent.

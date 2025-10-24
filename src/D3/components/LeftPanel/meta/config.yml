@@ -1,0 +1,60 @@
+title:
+  en: Left Panel
+  fr: Panneau de gauche
+label:
+  en: Left Panel
+  fr: Panneau de gauche
+description:
+  en: A component that render a list of navigation links, usually used for a sidebar.
+  fr: Un composant qui rend une liste de liens de navigation, généralement utilisé pour une barre latérale.
+
+export: true
+
+properties:
+  collapsible:
+    label:
+      en: Collapsible
+      fr: Pliable
+    type: string
+    enum:
+      - label:
+          en: 'No'
+          fr: Non
+        value: 'no'
+      - label:
+          en: Arrows
+          fr: Flèches
+        value: arrows
+      - label:
+          en: Plus/Minus
+          fr: Plus/Moins
+        value: plus_minus
+    default: 'no'
+    description:
+      en: The collapsible behavior of the left panel.
+      fr: Le comportement pliable du panneau de gauche.
+  hierarchy_indicator:
+    label:
+      en: Hierarchy Indicator
+      fr: Indicateur de hiérarchie
+    type: string
+    enum:
+      - label:
+          en: Line
+          fr: Ligne
+        value: line
+      - label:
+          en: Thread
+          fr: Fil
+        value: thread
+      - label:
+          en: None
+          fr: Aucun
+        value: none
+    default: none
+    description:
+      en: The type of hierarchy indicator to use for nested items.
+      fr: Le type d'indicateur de hiérarchie à utiliser pour les éléments imbriqués.
+
+images:
+  - example.png

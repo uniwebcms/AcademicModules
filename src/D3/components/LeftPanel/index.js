@@ -1,0 +1,161 @@
+import React, { useCallback, useState } from 'react';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
+import { LuArrowRight, LuPlus, LuChevronDown, LuMinus } from 'react-icons/lu';
+
+const registerOpenState = (navigation, state) => {
+    navigation.forEach((page) => {
+        if (page.child_items && page.child_items.length > 0) {
+            state[page.id] = true;
+            registerOpenState(page.child_items, state);
+        }
+    });
+};
+
+export default function LeftPanel(props) {
+    const {
+        block,
+        website,
+        page: { activeRoute },
+    } = props;
+    const pages = website.getPageHierarchy();
+
+    const { collapsible = 'no', hierarchy_indicator = 'none' } = block.getBlockProperties();
+
+    const [openState, setOpenState] = useState(() => {
+        const state = {};
+        registerOpenState(pages, state);
+        return state;
+    });
+
+    const toggleOpen = useCallback((id) => {
+        setOpenState((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }));
+    }, []);
+
+    return (
+        <div className="relative">
+            <div className="md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-1">
+                <nav className="text-base md:text-sm lg:text-base xl:text-base">
+                    <Navigation
+                        navigation={pages}
+                        activeRoute={activeRoute}
+                        collapsible={collapsible}
+                        openState={openState}
+                        toggleNavOpen={toggleOpen}
+                        hierarchyIndicator={hierarchy_indicator}
+                    />
+                </nav>
+            </div>
+        </div>
+    );
+}
+
+const Navigation = ({
+    navigation,
+    activeRoute,
+    collapsible,
+    openState,
+    toggleNavOpen,
+    hierarchyIndicator,
+    level = 0,
+}) => {
+    const isActive = (page) => page.route === activeRoute;
+
+    const isRoot = level === 0;
+
+    const containerClass = [
+        level === 0 ? 'space-y-9' : 'mt-2 space-y-2 lg:mt-4 lg:space-y-4',
+        hierarchyIndicator === 'line' && level > 0 ? 'border-l-2 border-text-color/20' : '',
+        level > 1 ? 'ml-5' : 'ml-1',
+    ].filter(Boolean);
+
+    return (
+        <ul role="list" className={twJoin(containerClass)}>
+            {navigation.map((page) => {
+                const hasChildren = page.child_items?.length > 0;
+                const showChildren = (hasChildren && openState[page.id]) || collapsible === 'no';
+
+                const labelClass = [];
+
+                if (level === 0) {
+                    labelClass.push('font-semibold');
+
+                    if (page.hasData) {
+                        if (isActive(page)) {
+                            labelClass.push('text-link-hover-color');
+                        } else {
+                            labelClass.push('text-text-color hover:text-link-hover-color');
+                        }
+                    } else {
+                        labelClass.push('text-text-color');
+                    }
+                } else {
+                    labelClass.push('ml-3.5');
+
+                    if (page.hasData) {
+                        if (isActive(page)) {
+                            labelClass.push('font-medium text-link-hover-color');
+                        } else {
+                            labelClass.push(
+                                'text-text-color hover:text-link-hover-color hover:font-medium'
+                            );
+                        }
+                    } else {
+                        labelClass.push('text-text-color');
+                    }
+                }
+
+                return (
+                    <li key={page.id} className={twJoin(!isRoot && 'relative')}>
+                        <div className="flex items-center justify-between">
+                            <div>
+                                {page.hasData ? (
+                                    <Link to={page.route} className={twJoin(labelClass)}>
+                                        {page.label}
+                                    </Link>
+                                ) : (
+                                    <p className={twJoin(labelClass)}>{page.label}</p>
+                                )}
+                            </div>
+                            {collapsible !== 'no' && hasChildren ? (
+                                <button
+                                    className="ml-2 focus:outline-none"
+                                    onClick={() => toggleNavOpen(page.id)}
+                                >
+                                    {collapsible === 'arrows' && (
+                                        <LuChevronDown
+                                            className={twJoin(
+                                                'h-5 w-5 text-text-color/70 hover:text-text-color',
+                                                !openState[page.id] ? '-rotate-90' : ''
+                                            )}
+                                        />
+                                    )}
+                                    {collapsible === 'plus_minus' &&
+                                        (openState[page.id] ? (
+                                            <LuMinus className="h-5 w-5 text-text-color/70 hover:text-text-color" />
+                                        ) : (
+                                            <LuPlus className="h-5 w-5 text-text-color/70 hover:text-text-color" />
+                                        ))}
+                                </button>
+                            ) : null}
+                        </div>
+                        {showChildren ? (
+                            <Navigation
+                                navigation={page.child_items}
+                                activeRoute={activeRoute}
+                                level={level + 1}
+                                collapsible={collapsible}
+                                openState={openState}
+                                toggleNavOpen={toggleNavOpen}
+                                hierarchyIndicator={hierarchyIndicator}
+                            />
+                        ) : null}
+                    </li>
+                );
+            })}
+        </ul>
+    );
+};
