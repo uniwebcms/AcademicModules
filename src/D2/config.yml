@@ -34,12 +34,3 @@ styles:
       description:
           en: The color of the border for the component.
           fr: La couleur de la bordure pour le composant.
-    - id: 'border-dark-color'
-      type: color
-      label:
-          en: Border Color (Dark)
-          fr: Couleur de la bordure (Sombre)
-
-      description:
-          en: The color of the border for the component in dark mode.
-          fr: La couleur de la bordure pour le composant en mode sombre.

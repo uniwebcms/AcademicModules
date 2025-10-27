@@ -11,7 +11,7 @@ function QuickLink(props) {
     const elementProps = link ? { to: link.href } : {};
 
     return (
-        <div className="group relative rounded-[var(--border-radius)] border border-[var(--border-color)] dark:border-[var(--border-dark-color)] dark:bg-slate-800/60">
+        <div className="group relative rounded-[var(--border-radius)] border border-[var(--border-color)] dark:bg-slate-800/60">
             <div className="absolute -inset-px rounded-[var(--border-radius)] border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.50)),var(--quick-links-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]" />
             <div className="relative overflow-hidden rounded-xl p-6">
                 {icon ? (
