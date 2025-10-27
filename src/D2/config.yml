@@ -37,8 +37,9 @@ styles:
     - id: 'border-dark-color'
       type: color
       label:
-          en: Border Color in Dark Mode
-          fr: Couleur de la bordure en mode sombre
+          en: Border Color (Dark)
+          fr: Couleur de la bordure (Sombre)
+
       description:
           en: The color of the border for the component in dark mode.
           fr: La couleur de la bordure pour le composant en mode sombre.
