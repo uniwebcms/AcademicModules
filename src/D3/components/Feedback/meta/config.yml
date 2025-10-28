@@ -1,0 +1,12 @@
+title:
+    en: Feedback
+    fr: Retour d'information
+label:
+    en: Feedback
+    fr: Retour d'information
+description:
+    en: A feedback form is used to collect user input.
+    fr: Un formulaire de retour d'information est utilisé pour collecter les commentaires des utilisateurs.
+
+category: form
+export: true

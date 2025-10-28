@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { twJoin, website } from '@uniwebcms/module-sdk';
 import { Link, Asset, FileLogo } from '@uniwebcms/core-components';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { IoDownload } from 'react-icons/io5';
+import { LuMapPin, LuPhone, LuLink, LuCalendarDays, LuDownload } from 'react-icons/lu';
 
 const MapComponent = ({ address }) => {
     const { isLoaded } = useJsApiLoader({
@@ -42,11 +42,11 @@ export default function Card(props) {
         datetime,
         document,
         href,
-        targetId,
+        // targetId,
         title,
         type,
         hidden,
-        info,
+        // info,
         displayMode,
     } = props;
 
@@ -76,69 +76,46 @@ const Event = (props) => {
         cleanedPhoneNum = phoneNumber.replace(/[^+\d]/g, '');
     }
 
-    const Wrapper = href ? Link : 'div';
-    const wrapperProps = href ? { to: href } : {};
-
     return (
-        <Wrapper
-            {...wrapperProps}
-            className={twJoin(
-                'block not-prose border rounded-lg p-6 text-center w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
-                href ? 'hover:shadow-xl' : ''
-            )}
-        >
-            {title ? (
-                <h3
-                    className={
-                        'text-xl lg:text-2xl font-semibold text-slate-800 dark:text-slate-200'
-                    }
-                >
-                    {title}
-                </h3>
-            ) : null}
-            {caption ? (
-                <p
-                    className={
-                        'mt-2 text-base lg:text-lg text-slate-700 dark:text-slate-300 font-medium'
-                    }
-                >
-                    {caption}
-                </p>
-            ) : null}
+        <div className="not-prose p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)]">
             {datetime ? (
-                <p
-                    className={
-                        'mt-4 text-base lg:text-lg font-medium text-slate-500 dark:text-slate-400'
-                    }
-                >
-                    {datetime}
-                </p>
+                <p className="mb-4 text-sm lg:text-base font-medium text-link-color">{datetime}</p>
             ) : null}
+            <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+            {caption ? <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p> : null}
             {address ? (
-                <p
-                    className={
-                        'mt-4 text-sm lg:text-base text-slate-700 dark:text-slate-300 !leading-relaxed'
-                    }
-                >
-                    {address.formatted_address}
-                </p>
+                <div className="mt-4 flex items-start">
+                    <LuMapPin className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                    <p className="text-sm lg:text-base">{address.formatted_address}</p>
+                </div>
             ) : null}
             {contact && (
-                <span className="block mt-2 text-sm lg:text-base text-text-color-80">
-                    {href ? (
-                        <span>{phoneNumber}</span>
-                    ) : (
-                        <a
-                            href={`tel:${cleanedPhoneNum}`}
-                            className="text-inherit hover:text-sky-500"
-                        >
-                            {phoneNumber}
-                        </a>
-                    )}
-                    {extension && <span> ext. {extension}</span>}
-                </span>
+                <div className="mt-3 flex items-start">
+                    <LuPhone className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                    <p className="text-sm lg:text-base">
+                        <a href={`tel:${cleanedPhoneNum}`}>{phoneNumber}</a>
+                        {extension && (
+                            <span>
+                                {website.localize({
+                                    en: ` ext. ${extension}`,
+                                    fr: ` poste ${extension}`,
+                                    es: ` ext. ${extension}`,
+                                    zh: ` 分机 ${extension}`,
+                                })}
+                            </span>
+                        )}
+                    </p>
+                </div>
             )}
-        </Wrapper>
+            {href && (
+                <div className="mt-3 flex items-start">
+                    <LuLink className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                    <Link to={href} className="text-sm lg:text-base hover:underline break-all">
+                        {href}
+                    </Link>
+                </div>
+            )}
+        </div>
     );
 };
 
@@ -152,58 +129,56 @@ const Address = (props) => {
         cleanedPhoneNum = phoneNumber.replace(/[^+\d]/g, '');
     }
 
-    const Wrapper = href ? Link : 'div';
-    const wrapperProps = href ? { to: href } : {};
-
     return (
-        <Wrapper
-            {...wrapperProps}
-            className={twJoin(
-                'not-prose flex flex-col gap-4 border rounded-lg p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700',
-                href ? 'hover:shadow-xl' : ''
-            )}
-        >
-            <div className="flex-1 text-left">
-                {title ? (
-                    <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 dark:text-slate-200">
-                        {title}
-                    </h3>
-                ) : null}
-                {caption ? (
-                    <p className="text-base lg:text-lg text-slate-700 dark:text-slate-300 font-medium">
-                        {caption}
-                    </p>
-                ) : null}
-                {date ? (
-                    <p className="mt-2 text-sm lg:text-base font-medium text-slate-500 dark:text-slate-400">
-                        {date}
-                    </p>
-                ) : null}
-                {address ? (
-                    <p className="mt-2 text-sm lg:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-                        {address.formatted_address}
-                    </p>
-                ) : null}
-                {contact && (
-                    <span className="block mt-2 text-sm lg:text-base text-slate-600 dark:text-slate-300">
-                        {href ? (
-                            <span>{phoneNumber}</span>
-                        ) : (
-                            <a
-                                href={`tel:${cleanedPhoneNum}`}
-                                className="text-inherit hover:text-sky-500"
-                            >
-                                {phoneNumber}
-                            </a>
-                        )}
-                        {extension && <span> ext. {extension}</span>}
-                    </span>
-                )}
-            </div>
-            <div className="w-full h-48 md:h-auto md:flex-1 md:min-h-[192px] rounded-md overflow-hidden shadow-md">
+        <div className="not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden">
+            <div className="w-full h-40 overflow-hidden">
                 <MapComponent address={address} />
             </div>
-        </Wrapper>
+            <div className="px-6 py-4">
+                <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+                {caption ? (
+                    <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p>
+                ) : null}
+                {address ? (
+                    <div className="mt-4 flex items-start">
+                        <LuMapPin className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <p className="text-sm lg:text-base">{address.formatted_address}</p>
+                    </div>
+                ) : null}
+                {date ? (
+                    <div className="mt-4 flex items-start">
+                        <LuCalendarDays className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <p className="text-sm lg:text-base">{date}</p>
+                    </div>
+                ) : null}
+                {contact && (
+                    <div className="mt-3 flex items-start">
+                        <LuPhone className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <p className="text-sm lg:text-base">
+                            <a href={`tel:${cleanedPhoneNum}`}>{phoneNumber}</a>
+                            {extension && (
+                                <span>
+                                    {website.localize({
+                                        en: ` ext. ${extension}`,
+                                        fr: ` poste ${extension}`,
+                                        es: ` ext. ${extension}`,
+                                        zh: ` 分机 ${extension}`,
+                                    })}
+                                </span>
+                            )}
+                        </p>
+                    </div>
+                )}
+                {href && (
+                    <div className="mt-3 flex items-start">
+                        <LuLink className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <Link to={href} className="text-sm lg:text-base hover:underline break-all">
+                            {href}
+                        </Link>
+                    </div>
+                )}
+            </div>
+        </div>
     );
 };
 
@@ -212,64 +187,67 @@ const Document = (props) => {
 
     const assetRef = useRef(null);
 
-    if (!document) {
-        return null;
-    }
-
     const data = document.at('info');
 
     const displayName = data.name;
     const { url } = data.metadata;
 
     return (
-        <div className="not-prose border rounded-lg w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg overflow-hidden bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+        <div className="relative not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden">
             <div
                 className={twJoin(
-                    'h-48',
-                    displayMode !== 'card_file_content' && 'absolute inset-0 -z-10'
+                    'w-full',
+                    displayMode === 'card_file_content' && 'h-40',
+                    displayMode === 'card_file_logo' && 'h-[72px]'
                 )}
             >
-                <Asset
-                    {...{
-                        ref: assetRef,
-                        value: url,
-                        profile: document,
-                    }}
-                />
-            </div>
-            {displayMode === 'card_file_logo' && (
-                <div className="h-48 w-full flex items-center justify-center">
-                    <FileLogo filename={url} size="24"></FileLogo>
-                </div>
-            )}
-            <div
-                className={twJoin(
-                    'px-6 py-3 flex items-center justify-between gap-x-2 text-left',
-                    displayMode !== 'link' && 'border-t border-slate-200 dark:border-slate-700'
-                )}
-            >
-                <div className="max-w-[calc(100%-40px)]">
-                    <h3
-                        className="text-base lg:text-lg font-semibold line-clamp-1 text-slate-800 dark:text-slate-200"
-                        title={displayName}
-                    >
-                        {displayName}
-                    </h3>
-                    {caption ? (
-                        <p className="text-sm lg:text-base text-slate-700 dark:text-slate-300 font-medium">
-                            {caption}
-                        </p>
-                    ) : null}
+                <div
+                    className={twJoin(
+                        'w-full h-full',
+                        displayMode !== 'card_file_content' && 'hidden'
+                    )}
+                >
+                    <Asset
+                        {...{
+                            ref: assetRef,
+                            value: url,
+                            profile: document,
+                        }}
+                    />
                 </div>
                 <div
-                    className="w-8 p-0.5 cursor-pointer group"
-                    onClick={() => {
-                        if (assetRef.current) {
-                            assetRef.current.triggerDownload();
-                        }
-                    }}
+                    className={twJoin(
+                        'w-full h-full flex items-center px-6 pt-6',
+                        displayMode !== 'card_file_logo' && 'hidden'
+                    )}
                 >
-                    <IoDownload className="w-7 h-7 text-slate-600 dark:text-slate-400 hover:text-sky-500" />
+                    <FileLogo filename={url} size="12"></FileLogo>
+                </div>
+            </div>
+            <div
+                className={twJoin(
+                    'absolute cursor-pointer',
+                    displayMode === 'card_file_content'
+                        ? 'w-10 h-10 p-2 rounded-full bg-[var(--card-background-color)]'
+                        : 'w-6 h-6',
+                    displayMode === 'card_file_content' && 'top-4 right-4',
+                    displayMode === 'card_file_logo' && 'top-8 right-6',
+                    displayMode === 'link' && 'top-1/2 -translate-y-1/2 right-6'
+                )}
+                onClick={() => {
+                    if (assetRef?.current) {
+                        assetRef.current.triggerDownload();
+                    }
+                }}
+            >
+                <LuDownload className="w-full h-full text-link-color hover:text-link-hover-color" />
+            </div>
+            <div className="px-6 py-4">
+                <div className={twJoin(displayMode === 'link' ? 'w-[calc(100%-40px)]' : 'w-full')}>
+                    <h3 className="text-lg lg:text-xl font-semibold">{displayName}</h3>
+                    {caption ? (
+                        <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p>
+                    ) : null}
                 </div>
             </div>
         </div>
@@ -280,22 +258,11 @@ const Basic = (props) => {
     const { title, caption, href } = props;
 
     return (
-        <div className="not-prose border rounded-lg p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] shadow-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
-            {title ? (
-                <h3 className="text-xl lg:text-2xl font-semibold text-slate-800 dark:text-slate-200">
-                    {title}
-                </h3>
-            ) : null}
-            {caption ? (
-                <p className="mt-2 text-base lg:text-lg text-slate-700 dark:text-slate-300 font-medium">
-                    {caption}
-                </p>
-            ) : null}
+        <div className="not-prose p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)]">
+            <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+            {caption ? <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p> : null}
             {href && (
-                <Link
-                    to={href}
-                    className="mt-4 inline-block text-sm lg:text-base text-sky-500 hover:underline"
-                >
+                <Link to={href} className="mt-4 inline-block text-sm lg:text-base hover:underline">
                     {href}
                 </Link>
             )}

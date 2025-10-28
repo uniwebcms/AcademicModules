@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Image } from '@uniwebcms/core-components';
 
-const imageCaptionStyle = `block outline-none border-none text-slate-500 dark:text-slate-400 text-sm text-center`;
-
 export default function ImageBlock(props) {
     const { url, caption, direction, filter, info, targetId, aspect_ratio, page } = props;
 
@@ -37,6 +35,8 @@ export default function ImageBlock(props) {
     const { identifier } = info;
 
     let imgProps = identifier ? { value: identifier } : { url: url };
+
+    const imageCaptionStyle = `block outline-none border-none text-text-color/80 text-sm text-center`;
 
     const inner = (
         <>
@@ -108,7 +108,7 @@ export default function ImageBlock(props) {
             >
                 <div
                     className={`md:w-3/4  ${
-                        direction === 'left' ? 'fload-left' : 'float-right'
+                        direction === 'left' ? 'float-left' : 'float-right'
                     } relative mb-6 ${marginStyle}`}
                 >
                     {inner}

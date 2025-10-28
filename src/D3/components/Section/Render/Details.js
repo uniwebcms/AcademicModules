@@ -11,18 +11,18 @@ export default function Details(props) {
     const description = content.find((c) => c.type === 'detailsContent')?.content || [];
 
     return (
-        <div className="mb-6 bg-text-color/10 border border-text-color/50 rounded-lg p-4">
+        <div className="my-[2em] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] p-4 lg:p-6">
             <button
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center justify-between gap-2"
+                className="w-full flex items-center justify-between gap-2 bg-transparent focus:outline-none group"
             >
-                <span className="text-lg font-medium truncate" title={title}>
+                <h3 className="!my-0 text-lg font-medium truncate text-heading-color" title={title}>
                     {title}
-                </span>
+                </h3>
                 {open ? (
-                    <HiMinus className="w-6 h-6 text-text-color-70 hover:text-text-color-100" />
+                    <HiMinus className="w-6 h-6 text-text-color/70 group-hover:text-text-color" />
                 ) : (
-                    <HiPlus className="w-6 h-6 text-text-color-70 hover:text-text-color-100" />
+                    <HiPlus className="w-6 h-6 text-text-color/70 group-hover:text-text-color" />
                 )}
             </button>
             {open && (

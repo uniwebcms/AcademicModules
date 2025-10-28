@@ -9,15 +9,18 @@ function ProseWrapper({ children }) {
             className={twJoin(
                 'prose prose-sm lg:prose-base max-w-none',
                 // headings
-                'prose-headings:font-normal',
+                'prose-headings:font-normal prose-headings:tracking-tight prose-headings:text-heading-color',
+                // text
+                'prose-p:text-text-color prose-p:leading-7',
                 // links
                 'prose-a:font-semibold',
                 // link underline
                 'prose-a:no-underline',
                 // pre
-                'prose-pre:rounded-xl prose-pre:shadow-lg prose-pre:px-[16px] prose-pre:py-[12px] prose-pre:text-base',
+                'prose-pre:!my-[2em]',
+                // 'prose-pre:rounded-xl prose-pre:shadow-lg prose-pre:px-[16px] prose-pre:py-[12px] prose-pre:text-base',
                 // hr
-                ''
+                'prose-hr:border-t-text-color/20'
             )}
         >
             {children}
@@ -71,7 +74,7 @@ export default function Layout(props) {
 
     return (
         <SidebarProvider>
-            <div className="context__light flex flex-col min-h-screen">
+            <div className="context__light flex flex-col min-h-screen [background:var(--bg-gradient,var(--bg-color))]">
                 {/* Top Fixed Header */}
                 <header
                     className={twJoin(
@@ -88,7 +91,7 @@ export default function Layout(props) {
                 <MobileSidebar>{leftPanel}</MobileSidebar>
 
                 {/* Main Content Area */}
-                <div className="bg-bg-color relative w-full max-w-8xl mx-auto flex flex-1 md:px-8 lg:px-12 xl:px-16">
+                <div className="relative w-full max-w-8xl mx-auto flex flex-1 md:px-8 lg:px-12 xl:px-16">
                     {/* Left Sidebar */}
                     <aside className="hidden md:block fixed top-16 md:left-8 lg:left-12 xl:left-[max(48px,calc((100vw-88rem)/2))] w-64 h-[calc(100vh-64px)] overflow-y-auto">
                         {leftPanel}

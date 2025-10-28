@@ -3,6 +3,7 @@ import { FaCompress, FaExpand } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
 import { twJoin, website, stripTags } from '@uniwebcms/module-sdk';
 import { Media, Image } from '@uniwebcms/core-components';
+import { BiPlay } from 'react-icons/bi';
 
 const youtubeRegex =
     /\b(?:https?:\/\/)?(?:(?:www|m)\.)?youtu(?:\.be\/|be\.com\/(?:watch(?:\?(?:(?:feature=player_embedded|app=desktop)&)?v=|\/)|v\/|oembed\?url=http%3A\/\/www\.youtube\.com\/watch\?v%3D|attribution_link\?a=[0-9A-Za-z\-_]{10,20}&u=(?:%2F|\/)watch%3Fv%3D|e(?:mbed)?\/|shorts\/)|be-nocookie\.com\/embed\/)([0-9A-Za-z\-_]{10,20})/;
@@ -221,6 +222,12 @@ export default function Video({ block, page, videoControl, ...video }) {
         />
     );
 
+    const FacadePlayControl = (
+        <div className="w-14 h-14 py-2 pl-2.5 pr-1.5 rounded-full bg-text-color/50 group-hover:bg-text-color/30">
+            <BiPlay className="w-full h-full" />
+        </div>
+    );
+
     return (
         <div className="not-prose mb-6 lg:my-8">
             <div className="relative">
@@ -251,6 +258,9 @@ export default function Video({ block, page, videoControl, ...video }) {
                                 media={currentVideo}
                                 block={block}
                                 {...(thumbnail && { thumbnail: { url: thumbnail } })}
+                                components={{
+                                    FacadePlayControl,
+                                }}
                             />
                         </div>
                         {/* Thumbnail Grid */}
@@ -298,7 +308,7 @@ export default function Video({ block, page, videoControl, ...video }) {
                     </div>
                     {caption && !overlay ? (
                         <div
-                            className={`block outline-none text-slate-500 dark:text-slate-400 border-none text-sm text-center mt-1`}
+                            className={`block outline-none text-text-color/80 border-none text-sm text-center mt-2.5`}
                         >
                             {caption}
                         </div>

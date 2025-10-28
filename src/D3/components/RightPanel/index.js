@@ -117,7 +117,7 @@ export default function RightPanel(props) {
                             <li key={content.id}>
                                 <button
                                     className={twJoin(
-                                        'text-left focus:outline-none',
+                                        'text-left focus:outline-none bg-transparent',
                                         isActive(content)
                                             ? 'text-primary-500 font-semibold'
                                             : 'text-text-color/90 hover:text-text-color hover:font-semibold'
@@ -134,7 +134,7 @@ export default function RightPanel(props) {
                                             <li key={subContent.id}>
                                                 <button
                                                     className={twJoin(
-                                                        'text-left focus:outline-none',
+                                                        'text-left focus:outline-none bg-transparent',
                                                         isActive(content)
                                                             ? 'text-primary-500 font-semibold'
                                                             : 'text-text-color/90 hover:text-text-color hover:font-semibold'

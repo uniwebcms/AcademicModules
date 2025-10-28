@@ -1,17 +1,17 @@
 import React from 'react';
+import { LuDot } from 'react-icons/lu';
 
 export default function ({ dividerType }) {
     let body = null;
 
     if (dividerType === 'hr') {
-        body = <hr className="my-8" />;
+        body = <hr className="my-6 2xl:my-8" />;
     } else {
         body = (
-            <div
-                className={`block text-center overflow-visible mt-4 mb-4 py-2 w-[896px] mx-auto`}
-                contentEditable={false}
-            >
-                <span className={`text-[30px] inline-block relative italic font-normal`}>...</span>
+            <div className="my-6 2xl:my-8 flex items-center justify-center space-x-2">
+                {Array.from({ length: 3 }).map((_, i) => (
+                    <LuDot key={i} className="w-4 h-4 text-text-color/40" />
+                ))}
             </div>
         );
     }

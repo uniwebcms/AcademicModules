@@ -80,6 +80,9 @@ function toggleMode(theme) {
         document.documentElement.classList.toggle('dark', theme === 'dark');
     }
 
+    // broadcast the theme change event
+    uniweb.eventBus.publish('themeChange', { theme });
+
     window.localStorage.setItem('theme', theme);
 }
 
@@ -105,7 +108,7 @@ export function ThemeSelector({ theme, setTheme, ...props }) {
     return (
         <Listbox as="div" value={theme} onChange={setTheme} {...props}>
             <Listbox.Label className="sr-only">Theme</Listbox.Label>
-            <Listbox.Button className="flex focus:outline-none" aria-label="Theme">
+            <Listbox.Button className="flex bg-transparent focus:outline-none" aria-label="Theme">
                 {finalTheme === 'light' && (
                     <IoSunnySharp className="h-5 w-5 text-icon-color hover:text-icon-color/60 transition-colors duration-200" />
                 )}

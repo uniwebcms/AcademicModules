@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { twJoin } from '@uniwebcms/module-sdk';
 import { Link } from '@uniwebcms/core-components';
-import { LuArrowRight, LuPlus, LuChevronDown, LuMinus } from 'react-icons/lu';
+import { LuPlus, LuChevronDown, LuMinus } from 'react-icons/lu';
+import { TbBorderCornerSquare } from 'react-icons/tb';
 
 const registerOpenState = (navigation, state) => {
     navigation.forEach((page) => {
@@ -20,7 +21,11 @@ export default function LeftPanel(props) {
     } = props;
     const pages = website.getPageHierarchy();
 
-    const { collapsible = 'no', hierarchy_indicator = 'none' } = block.getBlockProperties();
+    const {
+        collapsible = 'no',
+        hierarchy_indicator = 'none',
+        navigation_style = 'link_like',
+    } = block.getBlockProperties();
 
     const [openState, setOpenState] = useState(() => {
         const state = {};
@@ -46,6 +51,7 @@ export default function LeftPanel(props) {
                         openState={openState}
                         toggleNavOpen={toggleOpen}
                         hierarchyIndicator={hierarchy_indicator}
+                        navigationStyle={navigation_style}
                     />
                 </nav>
             </div>
@@ -60,6 +66,7 @@ const Navigation = ({
     openState,
     toggleNavOpen,
     hierarchyIndicator,
+    navigationStyle,
     level = 0,
 }) => {
     const isActive = (page) => page.route === activeRoute;
@@ -88,13 +95,14 @@ const Navigation = ({
                             labelClass.push('text-link-hover-color');
                         } else {
                             labelClass.push('text-text-color hover:text-link-hover-color');
+                            if (navigationStyle === 'button_like') {
+                                labelClass.push('block');
+                            }
                         }
                     } else {
                         labelClass.push('text-text-color');
                     }
                 } else {
-                    labelClass.push('ml-3.5');
-
                     if (page.hasData) {
                         if (isActive(page)) {
                             labelClass.push('font-medium text-link-hover-color');
@@ -102,6 +110,9 @@ const Navigation = ({
                             labelClass.push(
                                 'text-text-color hover:text-link-hover-color hover:font-medium'
                             );
+                            if (navigationStyle === 'button_like') {
+                                labelClass.push('block');
+                            }
                         }
                     } else {
                         labelClass.push('text-text-color');
@@ -110,8 +121,30 @@ const Navigation = ({
 
                 return (
                     <li key={page.id} className={twJoin(!isRoot && 'relative')}>
-                        <div className="flex items-center justify-between">
-                            <div>
+                        <div
+                            className={twJoin(
+                                'relative flex items-center justify-between',
+                                navigationStyle === 'button_like' && 'px-2 py-1 rounded-r-lg',
+                                navigationStyle === 'button_like' && !isRoot
+                                    ? isActive(page)
+                                        ? 'bg-btn-hover-color [&_a]:!text-btn-hover-text-color [&_button_svg]:!text-btn-hover-text-color'
+                                        : 'bg-btn-color [&_a]:!text-btn-text-color hover:bg-btn-hover-color [&_a]:hover:!text-btn-hover-text-color [&_button_svg]:hover:!text-btn-hover-text-color'
+                                    : '',
+                                navigationStyle === 'button_like' && isRoot && page.hasData
+                                    ? isActive(page)
+                                        ? 'bg-btn-hover-color [&_a]:!text-btn-hover-text-color [&_button_svg]:!text-btn-hover-text-color'
+                                        : 'hover:bg-btn-hover-color [&_a]:hover:!text-btn-hover-text-color [&_button_svg]:hover:!text-btn-hover-text-color'
+                                    : '',
+                                !isRoot
+                                    ? navigationStyle === 'button_like'
+                                        ? hierarchyIndicator !== 'none'
+                                            ? 'ml-5'
+                                            : 'ml-1'
+                                        : 'ml-3.5'
+                                    : ''
+                            )}
+                        >
+                            <div className={navigationStyle === 'button_like' ? 'flex-grow' : ''}>
                                 {page.hasData ? (
                                     <Link to={page.route} className={twJoin(labelClass)}>
                                         {page.label}
@@ -120,9 +153,14 @@ const Navigation = ({
                                     <p className={twJoin(labelClass)}>{page.label}</p>
                                 )}
                             </div>
+                            {hierarchyIndicator === 'thread' && level > 0 ? (
+                                <div className="absolute top-[0px] -left-[18px]">
+                                    <TbBorderCornerSquare className="w-4 h-4 -rotate-90 text-text-color/60" />
+                                </div>
+                            ) : null}
                             {collapsible !== 'no' && hasChildren ? (
                                 <button
-                                    className="ml-2 focus:outline-none"
+                                    className="ml-2 focus:outline-none bg-transparent"
                                     onClick={() => toggleNavOpen(page.id)}
                                 >
                                     {collapsible === 'arrows' && (
@@ -151,6 +189,7 @@ const Navigation = ({
                                 openState={openState}
                                 toggleNavOpen={toggleNavOpen}
                                 hierarchyIndicator={hierarchyIndicator}
+                                navigationStyle={navigationStyle}
                             />
                         ) : null}
                     </li>

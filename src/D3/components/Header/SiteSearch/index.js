@@ -304,7 +304,7 @@ const Search = (props) => {
             ) : (
                 <button
                     type="button"
-                    className="flex items-center flex-shrink-0 focus:ring-0 focus:outline-none"
+                    className="flex items-center bg-transparent focus:ring-0 focus:outline-none"
                     onClick={openModal}
                 >
                     <LuSearch className="h-5 w-5 text-icon-color hover:text-icon-color/80 transition-colors duration-200" />

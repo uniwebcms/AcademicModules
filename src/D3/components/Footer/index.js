@@ -15,18 +15,20 @@ function PageLink({ label, route, dir = 'next', id, depthStyle, cornerStyle }) {
         />
     );
 
-    const wrapperClass = ['cursor-pointer group w-full'];
+    const wrapperClass = [
+        'cursor-pointer group w-full border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] p-2.5 ',
+    ];
 
-    if (depthStyle === 'drop_shadow') {
-        wrapperClass.push('p-2.5 shadow-md hover:shadow-lg');
-    }
-    if (depthStyle === 'outline') {
-        wrapperClass.push('p-2.5 border border-text-color/20');
-    }
+    // if (depthStyle === 'drop_shadow') {
+    //     wrapperClass.push('p-2.5 shadow-md hover:shadow-lg');
+    // }
+    // if (depthStyle === 'outline') {
+    //     wrapperClass.push('p-2.5 border border-text-color/20');
+    // }
 
-    if (cornerStyle === 'rounded') {
-        wrapperClass.push('rounded-lg');
-    }
+    // if (cornerStyle === 'rounded') {
+    //     wrapperClass.push('rounded-lg');
+    // }
 
     return (
         <Link to={route} className={twJoin(wrapperClass)}>
@@ -86,7 +88,7 @@ export default function footer(props) {
     return (
         <dl
             className={twJoin(
-                'mt-12 pt-6 w-full flex flex-col sm:flex-row gap-4',
+                'mt-12 pt-8 w-full flex flex-col sm:flex-row gap-4',
                 with_line_divider && 'border-t border-text-color/20'
             )}
         >

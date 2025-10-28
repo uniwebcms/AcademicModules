@@ -3,10 +3,12 @@
 @tailwind utilities;
 @import './prism.css';
 
+/* lead text */
 article > p:first-child:has(+ :is(h1, h2, h3, h4, h5, h6)) {
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 1.25em;
     line-height: 1.6;
-    color: color-mix(in lch, var(--heading-color) 90%, transparent);
+    padding-top: 0px;
+    padding-bottom: 0px;
 }

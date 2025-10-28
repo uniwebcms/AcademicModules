@@ -1,0 +1,14 @@
+title: 
+  en: Quick Links
+  fr: Liens rapides
+label:
+  en: Quick Links
+  fr: Liens rapides
+description:
+  en: A component that renders a list of clickable quick link card in a grid layout. Each card with a icon, title and description.
+  fr: Un composant qui rend une liste de cartes de liens rapides cliquables dans une mise en page en grille. Chaque carte avec une icône, un titre et une description.
+
+export: true
+
+images:
+  - example.png
