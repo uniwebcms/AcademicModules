@@ -1,4 +1,6 @@
-import React from 'react';
+import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import React, { useState, useCallback } from 'react';
+import { FiHash, FiCheck } from 'react-icons/fi';
 import Divider from './Divider';
 import Video from './Video';
 import Image from './Image';
@@ -8,7 +10,6 @@ import Code from './Code';
 import Math from './Math';
 import Table from './Table';
 import Details from './Details';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
 
 function normalizeId(string) {
     return stripTags(string).replace(/\s/g, '-').toLowerCase();
@@ -17,9 +18,26 @@ function normalizeId(string) {
 const Render = function (props) {
     const { block: pageBlock, content, page, settings } = props;
 
-    const {} = settings || {};
-
     if (!content || !content.length) return null;
+
+    const [copiedId, setCopiedId] = useState('');
+
+    const handleCopyLink = useCallback((id) => {
+        // Creates the full URL with the hash
+        const url = `${window.location.origin}${window.location.pathname}${window.location.search}#${id}`;
+
+        navigator.clipboard
+            .writeText(url)
+            .then(() => {
+                setCopiedId(id);
+                setTimeout(() => {
+                    setCopiedId('');
+                }, 2000);
+            })
+            .catch((err) => {
+                console.error('Failed to copy link: ', err);
+            });
+    }, []);
 
     return content.map((block, index) => {
         const { type, content, alignment } = block;
@@ -39,13 +57,45 @@ const Render = function (props) {
                 const blockId = pageBlock?.id || '';
                 const Heading = `h${level}`;
 
+                const id = `Section${blockId}-${normalizeId(content)}`;
+
+                // Wrap the heading in a 'group' div to control
+                // the icon's visibility on hover.
                 return (
-                    <Heading
-                        key={index}
-                        id={`Section${blockId}-${normalizeId(content)}`}
-                        style={{ textAlign: alignment }}
-                        dangerouslySetInnerHTML={{ __html: content }}
-                    ></Heading>
+                    <div key={index} className="group relative">
+                        <Heading
+                            id={id}
+                            style={{ textAlign: alignment }}
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        ></Heading>
+
+                        {/* This is the new icon button */}
+                        <button
+                            onClick={() => handleCopyLink(id)}
+                            className={twJoin(
+                                'absolute top-1/2 -translate-y-1/2 -left-7', // Your positioning
+                                'text-text-color/40 hover:text-text-color focus:outline-none', // Your styling
+
+                                // --- ADD THESE CLASSES ---
+                                'opacity-0',
+                                'transition-opacity duration-200', // Standard 200ms fade
+                                'delay-200', // DEFAULT: Wait 200ms before hiding
+                                'group-hover:opacity-100', // On parent hover, become visible
+                                'group-hover:delay-0', // ON ENTRY: Appear instantly (override delay)
+                                'hover:opacity-100' // ON SELF-HOVER: Stay visible
+                                // -------------------------
+                            )}
+                            aria-label="Copy link to this section"
+                        >
+                            {copiedId === id ? (
+                                // Show green checkmark when copied
+                                <FiCheck className="h-5 w-5 text-green-500" />
+                            ) : (
+                                // Show hash icon by default
+                                <FiHash className="h-5 w-5" />
+                            )}
+                        </button>
+                    </div>
                 );
             case 'image':
                 return <Image key={index} {...block} page={page} />;
