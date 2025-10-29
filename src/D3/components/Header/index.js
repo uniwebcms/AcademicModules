@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile, useSiteTheme } from '@uniwebcms/module-sdk';
 import { MediaIcon, Image, Link } from '@uniwebcms/core-components';
 import { ThemeSelector } from './ThemeSelector';
 import { getMediaLinkType } from '../_utils/media';
@@ -22,37 +22,7 @@ export default function Header(props) {
 
     const { toggleSidebar } = useSidebar();
 
-    // Add states for theme
-    const [theme, setTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return window.localStorage.getItem('theme') || 'system';
-        }
-        return 'system';
-    });
-    const [systemTheme, setSystemTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-        return 'light';
-    });
-
-    // Effect to handle system theme changes
-    useEffect(() => {
-        if (theme === 'system') {
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const handler = (e) => {
-                const newTheme = e.matches ? 'dark' : 'light';
-                setSystemTheme(newTheme);
-                document.documentElement.classList.toggle('dark', newTheme === 'dark');
-            };
-            mediaQuery.addEventListener('change', handler);
-            return () => {
-                mediaQuery.removeEventListener('change', handler);
-            };
-        }
-    }, [theme]);
-
-    const finalTheme = theme === 'system' ? systemTheme : theme;
+    const { theme: finalTheme, setTheme, mode: themeMode } = useSiteTheme(true);
 
     const { banner, images, links } = block.getBlockContent();
     const allImages = [banner, ...images].filter(Boolean);
@@ -152,7 +122,10 @@ export default function Header(props) {
                     >
                         <Search {...props} enableShortcut={search_position !== 'center'} />
                     </div>
-                    <ThemeSelector className="relative z-10" {...{ theme, setTheme }} />
+                    <ThemeSelector
+                        className="relative z-10"
+                        {...{ theme: themeMode, finalTheme, setTheme }}
+                    />
                     {mediaLinks.map((link, index) => {
                         return (
                             <Link key={index} to={website.makeHref(link.href)} target="_blank">

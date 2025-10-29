@@ -12,3 +12,7 @@ article > p:first-child:has(+ :is(h1, h2, h3, h4, h5, h6)) {
     padding-top: 0px;
     padding-bottom: 0px;
 }
+
+:root {
+    --depth-style-outline: 1px;
+}

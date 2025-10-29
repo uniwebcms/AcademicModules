@@ -2878,6 +2878,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uniwebcms/module-sdk@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "@uniwebcms/module-sdk@npm:2.0.6"
+  dependencies:
+    tailwind-merge: "npm:^1.13.2"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/17a4f175719f3b7f9c4b83c2d5450eb9ea47a4ecb384bbbd40894a9fdbafe26db4e5b142780137e4ab95b8bd9aa52eb180cde1134da5dab9f75fcb672c516b9e
+  languageName: node
+  linkType: hard
+
 "@uniwebcms/uniweb-tailwind-plugin@npm:^1.0.1, @uniwebcms/uniweb-tailwind-plugin@npm:^1.1.0":
   version: 1.1.0
   resolution: "@uniwebcms/uniweb-tailwind-plugin@npm:1.1.0"
@@ -4573,7 +4585,7 @@ __metadata:
     "@react-google-maps/api": "npm:^2.19.1"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.29"
-    "@uniwebcms/module-sdk": "npm:^2.0.3"
+    "@uniwebcms/module-sdk": "npm:^2.0.6"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     flexsearch: "npm:^0.7.31"
     katex: "npm:^0.16.11"

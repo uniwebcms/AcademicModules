@@ -33,7 +33,7 @@ styles:
       description:
           en: The style of the outline for the table or button like elements across the site.
           fr: Le style du contour pour les éléments de tableau ou de type bouton sur l'ensemble du site.
-      default: '0px'
+      default: '1px'
       options:
           - label:
                 en: None
