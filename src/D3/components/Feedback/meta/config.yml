@@ -108,6 +108,7 @@ elements:
                                 $in:
                                     - select
                                     - radio
+                                    - checkbox
                       - id: file_accept
                         type: text
                         label:
@@ -175,6 +176,7 @@ elements:
                                 $in:
                                     - select
                                     - radio
+                                    - checkbox
     code:
         description:
             en: Additional information for the feedback form, such as select options.
@@ -183,3 +185,6 @@ elements:
         description:
             en: The button to submit the feedback form.
             fr: Le bouton pour soumettre le formulaire de retour d'information.
+
+images:
+    - example.png

@@ -36,7 +36,9 @@ function DocHeader({ page }) {
     return (
         <div className="mb-9 space-y-1">
             {parent && (
-                <p className="text-sm font-medium">{JSON.parse(parent.label)[activeLang]}</p>
+                <p className="text-sm lg:text-base font-medium text-text-color-80">
+                    {JSON.parse(parent.label)[activeLang]}
+                </p>
             )}
             {title && <h1 className="text-3xl tracking-tight">{JSON.parse(title)[activeLang]}</h1>}
         </div>

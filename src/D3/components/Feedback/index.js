@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { twJoin, useSecureSubmission } from '@uniwebcms/module-sdk';
 import { HiCheck, HiChevronDown } from 'react-icons/hi';
-import { LuFileUp } from 'react-icons/lu';
+import { LuFileUp, LuTrash2 } from 'react-icons/lu';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { LuCheck } from 'react-icons/lu';
 
@@ -78,7 +78,7 @@ const SelectWidget = ({ data, setData, options = [], placeholder, website }) => 
             <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex h-10 w-full items-center justify-between rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 pl-3 pr-8 text-sm text-text-color-80 transition-colors focus:outline-none focus:bg-text-color-0 focus:ring-2 focus:ring-primary-300 focus:ring-offset-0"
+                className="flex h-10 w-full items-center justify-between rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 pl-3 pr-8 text-sm text-text-color-80 transition-colors focus:outline-none focus:bg-text-color-0 focus:ring-2 focus:ring-primary-400 focus:ring-offset-0"
             >
                 {selectedLabel || displayPlaceholder}
                 <HiChevronDown className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-color/60" />
@@ -172,10 +172,10 @@ const Field = (props) => {
             : placeholder;
 
     const inputClassName =
-        'flex h-10 w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-300 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-text-color/60';
+        'flex h-10 w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-400 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-text-color/60';
 
     const textareaClassName =
-        'flex min-h-[120px] w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-300 md:text-sm placeholder:text-text-color/60';
+        'flex min-h-[120px] w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-400 md:text-sm placeholder:text-text-color/60';
 
     const updateValue = (nextValue) => {
         setData((prev) => ({
@@ -309,6 +309,21 @@ const Field = (props) => {
             es: 'Seleccionado: ',
             zh: '已选择：',
         });
+        const removeFileLabel = website.localize({
+            en: 'Remove file',
+            fr: 'Supprimer le fichier',
+            es: 'Eliminar archivo',
+            zh: '删除文件',
+        });
+
+        const handleFileClear = (e) => {
+            e.stopPropagation();
+            setLocalError(null);
+            updateValue('');
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+        };
         return (
             <div className="space-y-2">
                 {renderLabel()}
@@ -355,24 +370,40 @@ const Field = (props) => {
                     <LuFileUp className="h-12 w-12 text-text-color/60" />
                     <p className="text-sm text-text-color">
                         <span className="font-semibold text-text-color">{uploadLabel}</span>
-                        <span className="text-primary-400 underline underline-offset-4">
+                        <span className="text-primary-600 underline underline-offset-4">
                             {' '}
                             {fileLinkLabel}
                         </span>{' '}
                         {dragDropLabel}
                     </p>
                     <p className="text-xs text-text-color/70">{acceptedFormatsText}</p>
-                    <div className="mt-2 min-h-[1.5rem] flex flex-col items-center justify-center gap-1">
-                        {displayFileName ? (
-                            <p className="text-sm text-text-color">
-                                {selectedLabel}
-                                <span className="font-medium">{displayFileName}</span>
-                            </p>
-                        ) : null}
-                        {combinedError && !displayFileName ? (
-                            <p className="text-sm text-red-500">{combinedError}</p>
-                        ) : null}
-                    </div>
+                    {displayFileName || (combinedError && !displayFileName) ? (
+                        <div className="mt-2 flex flex-col items-center justify-center gap-1">
+                            {displayFileName ? (
+                                <div className="flex items-center gap-2">
+                                    <p className="text-sm text-text-color">
+                                        {selectedLabel}
+                                        <span className="font-medium">{displayFileName}</span>
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onClick={handleFileClear}
+                                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-text-color/20 bg-text-color-0 text-text-color/70 transition-colors group-hover:bg-text-color/10 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                                        aria-label={removeFileLabel}
+                                        title={removeFileLabel}
+                                    >
+                                        <LuTrash2
+                                            className="h-4 w-4 text-inherit hover:text-icon-color"
+                                            aria-hidden="true"
+                                        />
+                                    </button>
+                                </div>
+                            ) : null}
+                            {combinedError && !displayFileName ? (
+                                <p className="text-sm text-red-500">{combinedError}</p>
+                            ) : null}
+                        </div>
+                    ) : null}
                 </div>
             </div>
         );
@@ -399,7 +430,7 @@ const Field = (props) => {
                                 >
                                     <input
                                         type="checkbox"
-                                        className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-300"
+                                        className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-400"
                                         checked={isChecked}
                                         onChange={(event) => {
                                             const nextValues = event.target.checked
@@ -425,7 +456,7 @@ const Field = (props) => {
                     id={id}
                     name={id}
                     type="checkbox"
-                    className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-300"
+                    className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-400"
                     checked={Boolean(value)}
                     onChange={(event) => updateValue(event.target.checked)}
                 />
@@ -457,7 +488,7 @@ const Field = (props) => {
                                     type="radio"
                                     name={id}
                                     value={optionValue}
-                                    className="h-4 w-4 border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-300"
+                                    className="h-4 w-4 border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-400"
                                     checked={value === optionValue}
                                     onChange={(event) => updateValue(event.target.value)}
                                 />
@@ -875,10 +906,10 @@ export default function Feedback(props) {
         <div className="not-prose max-w-full relative border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] p-6">
             <div className="text-center">
                 <h2 className="text-xl lg:text-2xl font-semibold">{title}</h2>
-                {subtitle && <p className="mt-2 text-lg lg:text-xl">{subtitle}</p>}
+                {subtitle && <p className="mt-2 text-base lg:text-lg">{subtitle}</p>}
             </div>
             {formSchema.length ? (
-                <form className="mt-6 space-y-6">
+                <form className="mt-8 space-y-6">
                     {formSchema.map((field, index) => (
                         <Field
                             key={index}
@@ -893,7 +924,7 @@ export default function Feedback(props) {
                         {buttons[0] && (
                             <button
                                 type="button"
-                                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
                                 onClick={handleSubmit}
                                 disabled={isSubmitting || showSuccessIcon}
                             >

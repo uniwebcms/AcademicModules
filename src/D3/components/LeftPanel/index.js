@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { twJoin } from '@uniwebcms/module-sdk';
 import { Link } from '@uniwebcms/core-components';
 import { LuPlus, LuChevronDown, LuMinus } from 'react-icons/lu';
-import { TbBorderCornerSquare } from 'react-icons/tb';
+import { TbBorderCornerIos } from 'react-icons/tb';
 
 const registerOpenState = (navigation, state) => {
     navigation.forEach((page) => {
@@ -155,7 +155,7 @@ const Navigation = ({
                             </div>
                             {hierarchyIndicator === 'thread' && level > 0 ? (
                                 <div className="absolute top-[0px] -left-[18px]">
-                                    <TbBorderCornerSquare className="w-4 h-4 -rotate-90 text-text-color/60" />
+                                    <TbBorderCornerIos className="w-4 h-4 -rotate-90 text-text-color/60" />
                                 </div>
                             ) : null}
                             {collapsible !== 'no' && hasChildren ? (

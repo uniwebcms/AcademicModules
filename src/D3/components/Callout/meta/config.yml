@@ -53,3 +53,17 @@ presets:
         properties:
             type: warning
         image: warning.png
+    success:
+        label:
+            en: Success Call Out
+            fr: Appel de succès
+        properties:
+            type: success
+        image: success.png
+    danger:
+        label:
+            en: Danger Call Out
+            fr: Appel de danger
+        properties:
+            type: danger
+        image: danger.png

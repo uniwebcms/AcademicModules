@@ -82,8 +82,9 @@ const Render = function (props) {
                                 'delay-200', // DEFAULT: Wait 200ms before hiding
                                 'group-hover:opacity-100', // On parent hover, become visible
                                 'group-hover:delay-0', // ON ENTRY: Appear instantly (override delay)
-                                'hover:opacity-100' // ON SELF-HOVER: Stay visible
+                                'hover:opacity-100', // ON SELF-HOVER: Stay visible
                                 // -------------------------
+                                'bg-transparent'
                             )}
                             aria-label="Copy link to this section"
                         >
