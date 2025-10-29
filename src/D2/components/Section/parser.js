@@ -368,8 +368,6 @@ export const buildArticleBlocks = (articleContent) => {
                         content: content.map((item) => {
                             const { type, content } = item;
 
-                            console.log('details item', item);
-
                             return {
                                 type,
                                 content:
