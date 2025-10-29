@@ -4585,6 +4585,7 @@ __metadata:
     react-icons: "npm:^5.3.0"
     react-katex: "npm:^3.0.1"
     react-simple-toasts: "npm:^6.1.0"
+    react-spinners: "npm:^0.17.0"
     tailwindcss: "npm:^3.4.13"
   peerDependencies:
     react: "*"

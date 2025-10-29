@@ -139,18 +139,18 @@ export default function Header(props) {
                         </Link>
                     ) : null}
                 </div>
-                <div
-                    className={twJoin(search_position === 'center' ? 'hidden md:block' : 'hidden')}
-                >
-                    <Search {...props} searchPosition={search_position} />
-                </div>
+                {search_position === 'center' ? (
+                    <div className="hidden md:block">
+                        <Search {...props} searchPosition={search_position} enableShortcut />
+                    </div>
+                ) : null}
                 <div className="h-full w-auto lg:w-64 flex-shrink-0 flex items-center justify-end gap-4 xl:gap-5">
                     <div
                         className={twJoin(
                             search_position === 'center' ? 'md:hidden block' : 'block'
                         )}
                     >
-                        <Search {...props} />
+                        <Search {...props} enableShortcut={search_position !== 'center'} />
                     </div>
                     <ThemeSelector className="relative z-10" {...{ theme, setTheme }} />
                     {mediaLinks.map((link, index) => {

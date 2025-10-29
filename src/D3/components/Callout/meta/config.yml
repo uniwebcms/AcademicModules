@@ -1,0 +1,55 @@
+title:
+    en: Call Out
+    fr: Appel
+label:
+    en: Call Out
+    fr: Appel
+description:
+    en: Component to render a call out box with title and paragraphs. Can be used for info or warning messages.
+    fr: Composant pour rendre une boîte d'appel avec un titre et des paragraphes. Peut être utilisé pour des messages d'info ou d'avertissement.
+
+export: true
+
+properties:
+    type:
+        label:
+            en: Call Out Type
+            fr: Type d'appel
+        type: string
+        default: info
+        enum:
+            - label:
+                  en: Info
+                  fr: Info
+              value: info
+            - label:
+                  en: Warning
+                  fr: Avertissement
+              value: warning
+            - label:
+                  en: Success
+                  fr: Succès
+              value: success
+            - label:
+                  en: Danger
+                  fr: Danger
+              value: danger
+        description:
+            en: The type of call out.
+            fr: Le type d'appel.
+
+presets:
+    info:
+        label:
+            en: Info Call Out
+            fr: Appel d'info
+        properties:
+            type: info
+        image: info.png
+    warning:
+        label:
+            en: Warning Call Out
+            fr: Appel d'avertissement
+        properties:
+            type: warning
+        image: warning.png

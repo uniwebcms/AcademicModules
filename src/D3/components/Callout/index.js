@@ -1,0 +1,73 @@
+import React from 'react';
+import { twJoin } from '@uniwebcms/module-sdk';
+import { SafeHtml } from '@uniwebcms/core-components';
+import { HiExclamation, HiInformationCircle, HiCheckCircle, HiXCircle } from 'react-icons/hi';
+
+const ALERT_CONFIG = {
+    warning: {
+        Icon: HiExclamation,
+        bgColor: "bg-[var(--bg-warning,theme('colors.yellow.50'))]",
+        borderColor: "border-[var(--border-warning,theme('colors.yellow.400'))]",
+
+        iconStyle: "text-[var(--text-warning,theme('colors.yellow.400'))]",
+        textStyle: "!text-[var(--text-warning,theme('colors.yellow.700'))]",
+    },
+    success: {
+        Icon: HiCheckCircle,
+        bgColor: "bg-[var(--bg-success,theme('colors.green.50'))]",
+        borderColor: "border-[var(--border-success,theme('colors.green.400'))]",
+
+        iconStyle: "text-[var(--text-success,theme('colors.green.400'))]",
+        textStyle: "!text-[var(--text-success,theme('colors.green.700'))]",
+    },
+    danger: {
+        Icon: HiXCircle,
+        bgColor: "bg-[var(--bg-danger,theme('colors.red.50'))]",
+        borderColor: "border-[var(--border-danger,theme('colors.red.400'))]",
+
+        iconStyle: "text-[var(--text-danger,theme('colors.red.400'))]",
+        textStyle: "!text-[var(--text-danger,theme('colors.red.700'))]",
+    },
+    info: {
+        Icon: HiInformationCircle,
+        bgColor: "bg-[var(--bg-info,theme('colors.blue.50'))]",
+        borderColor: "border-[var(--border-info,theme('colors.blue.400'))]",
+        iconStyle: "text-[var(--text-info,theme('colors.blue.400'))]",
+        textStyle: "!text-[var(--text-info,theme('colors.blue.700'))]",
+    },
+};
+
+export default function Callout(props) {
+    const { block } = props;
+
+    const { title, paragraphs } = block.getBlockContent();
+    const { type = 'info' } = block.getBlockProperties();
+
+    const { Icon, bgColor, borderColor, iconStyle, textStyle } =
+        ALERT_CONFIG[type] ?? ALERT_CONFIG.info;
+
+    return (
+        <div
+            className={twJoin(
+                'my-8 flex items-center gap-4 p-6 border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)]',
+                bgColor,
+                borderColor
+            )}
+        >
+            <span className="flex-shrink-0 h-8 w-8 flex-none items-center justify-center">
+                <Icon className={twJoin('h-8 w-8', iconStyle)} aria-hidden="true" />
+            </span>
+            <div className="flex flex-col">
+                {title ? (
+                    <h3 className={twJoin('!my-0 text-xl lg:text-2xl', textStyle)}>{title}</h3>
+                ) : null}
+                <div className="prose">
+                    <SafeHtml
+                        value={paragraphs}
+                        className={twJoin(textStyle, '[&_p:last-child]:mb-2')}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}

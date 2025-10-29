@@ -53,7 +53,7 @@ elements:
                             - label:
                                   en: Input
                                   fr: Input
-                              value: string
+                              value: input
                             - label:
                                   en: Text Area
                                   fr: Zone de texte
@@ -82,22 +82,6 @@ elements:
                         description:
                             en: If true, the field is mandatory.
                             fr: Si vrai, le champ est obligatoire.
-                      - id: validation
-                        type: text
-                        label:
-                            en: Validation (Regex)
-                            fr: Validation (Regex)
-                        description:
-                            en: A regular expression for validation.
-                            fr: Une expression régulière pour la validation.
-                      - id: error_msg
-                        type: text
-                        label:
-                            en: Error Message
-                            fr: Message d'erreur
-                        description:
-                            en: Custom error message for failed validation.
-                            fr: Message d'erreur personnalisé pour une validation échouée.
                       - id: placeholder
                         type: text
                         label:
@@ -106,3 +90,96 @@ elements:
                         description:
                             en: Placeholder text for the input field.
                             fr: Texte de l'espace réservé pour le champ d'entrée.
+                        condition:
+                            widget:
+                                $in:
+                                    - input
+                                    - textarea
+                      - id: select_options
+                        type: text
+                        label:
+                            en: Select Options (Source)
+                            fr: Options de sélection (Source)
+                        description:
+                            en: The source for select options, normally from a Code Block element.
+                            fr: La source des options de sélection, normalement à partir d'un élément Bloc de code
+                        condition:
+                            widget:
+                                $in:
+                                    - select
+                                    - radio
+                      - id: file_accept
+                        type: text
+                        label:
+                            en: File Accept Types
+                            fr: Types de fichiers acceptés
+                        placeholder:
+                            en: .pdf,.jpg,.png,.doc,.docx
+                            fr: .pdf,.jpg,.png,.doc,.docx
+                        condition:
+                            widget: file
+                      - id: file_size_limit
+                        type: number
+                        label:
+                            en: File Size Limit (MB)
+                            fr: Limite de taille de fichier (Mo)
+                        placeholder:
+                            en: '5'
+                            fr: '5'
+                        min: 1
+                        max: 5
+                        condition:
+                            widget: file
+                      - id: validation_regex
+                        type: text
+                        label:
+                            en: Validation (Regex)
+                            fr: Validation (Regex)
+                        description:
+                            en: A regular expression for validation.
+                            fr: Une expression régulière pour la validation.
+                        condition:
+                            widget: input
+                      - id: validation_type
+                        type: select
+                        label:
+                            en: Validation (Type)
+                            fr: Validation (Type)
+                        description:
+                            en: Validation by type.
+                            fr: Validation par type.
+                        options:
+                            - value: email
+                              label:
+                                  en: Email
+                                  fr: Email
+                            - value: positive_integer
+                              label:
+                                  en: Positive Integer
+                                  fr: Entier positif
+                        condition:
+                            widget:
+                                $in:
+                                    - input
+                                    - number
+                      - id: default_value
+                        type: text
+                        label:
+                            en: Default Value
+                            fr: Valeur par défaut
+                        description:
+                            en: The initial value of the field.
+                            fr: La valeur initiale du champ.
+                        condition:
+                            widget:
+                                $in:
+                                    - select
+                                    - radio
+    code:
+        description:
+            en: Additional information for the feedback form, such as select options.
+            fr: Informations supplémentaires pour le formulaire de retour d'information, telles que les options de sélection
+    button:
+        description:
+            en: The button to submit the feedback form.
+            fr: Le bouton pour soumettre le formulaire de retour d'information.

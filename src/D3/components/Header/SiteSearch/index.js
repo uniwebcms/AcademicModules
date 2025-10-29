@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Dialog } from '@headlessui/react';
-import { LuSearch } from 'react-icons/lu';
+import { LuSearch, LuCommand } from 'react-icons/lu';
 import ResultItem from './ResultItem';
 import FlexSearch from 'flexsearch';
 
@@ -177,7 +177,7 @@ const SearchKit = (props) => {
 };
 
 const Search = (props) => {
-    const { website, searchPosition } = props;
+    const { website, searchPosition, enableShortcut = true } = props;
 
     let [isOpen, setIsOpen] = useState(false);
 
@@ -261,7 +261,7 @@ const Search = (props) => {
     );
 
     useEffect(() => {
-        if (isOpen) {
+        if (!enableShortcut || isOpen) {
             return;
         }
 
@@ -277,7 +277,7 @@ const Search = (props) => {
         return () => {
             window.removeEventListener('keydown', onKeyDown);
         };
-    }, [isOpen, setIsOpen]);
+    }, [enableShortcut, isOpen, setIsOpen]);
 
     useEffect(() => {
         if (isOpen) {
@@ -290,16 +290,22 @@ const Search = (props) => {
             {searchPosition === 'center' ? (
                 <button
                     type="button"
-                    className="hidden md:flex p-1.5 items-center w-8 h-8 rounded-lg bg-transparent hover:bg-text-color-0 hover:w-44 xl:hover:w-64 transition-all duration-300 group overflow-hidden gap-2 shadow-none hover:shadow-sm border border-transparent hover:border-text-color/40 focus:ring-0 focus:outline-none"
+                    className="hidden md:flex items-center gap-2 border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] border-text-color/20 hover:[box-shadow:var(--depth-style-shadow)] bg-text-color/5 px-2 h-9 transition-colors duration-200 hover:bg-text-color-0 focus:outline-none focus:ring-0"
                     onClick={openModal}
                 >
-                    <LuSearch className="h-5 w-5 text-text-color/70 group-hover:text-text-color/90 flex-shrink-0" />
-                    <p className="text-sm w-0 group-hover:w-fit hidden md:group-hover:block transition-all duration-1000 text-nowrap text-text-color-80">
+                    <LuSearch className="h-5 w-5 text-text-color/70" />
+                    <span className="text-sm text-text-color-80 mr-8 2xl:mr-12">
                         {website.localize({
                             en: 'Quick Search...',
                             fr: 'Recherche Rapide...',
+                            es: 'Búsqueda Rápida...',
+                            zh: '快速搜索...',
                         })}
-                    </p>
+                    </span>
+                    <span className="flex items-center gap-1 border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] border-text-color/20 bg-text-color-0 px-2 py-0.5 text-xs text-text-color/70">
+                        <LuCommand className="h-3 w-3" />
+                        <span className="font-medium leading-none">K</span>
+                    </span>
                 </button>
             ) : (
                 <button
@@ -330,19 +336,3 @@ const Search = (props) => {
 };
 
 export default Search;
-
-/*
-<button
-                    type="button"
-                    className="flex md:p-1 md:hover:px-1.5 items-center w-5 md:w-8 h-8 rounded-lg md:hover:bg-text-color-0 md:hover:w-44 xl:hover:w-64 transition-all duration-300 focus:outline-none group overflow-hidden gap-2 ring-0 md:hover:ring-1 shadow-none md:hover:shadow-sm md:hover:ring-text-color/40 bg-transparent"
-                    onClick={openModal}
-                >
-                    <LuSearch className="h-5 w-5 text-text-color/60 flex-shrink-0" />
-                    <p className="text-sm w-0 group-hover:w-fit hidden md:group-hover:block transition-all duration-1000 text-nowrap text-text-color/50">
-                        {website.localize({
-                            en: 'Quick Search...',
-                            fr: 'Recherche Rapide...',
-                        })}
-                    </p>
-                </button>
-                */

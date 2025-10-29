@@ -105,12 +105,12 @@ export default function RightPanel(props) {
     return (
         <div className="relative hidden xl:block">
             <div className="h-[calc(100vh-64px)] w-64 overflow-y-auto overflow-x-hidden py-8 pl-8 pr-1">
-                <h2 className="text-xs font-medium uppercase tracking-wide text-text-color/70">
+                <p className="text-xs font-medium uppercase tracking-wide text-text-color/70">
                     {website.localize({
                         en: 'On this page',
                         fr: 'Sur cette page',
                     })}
-                </h2>
+                </p>
                 <nav className="text-sm">
                     <ul role="list" className="mt-4 space-y-4">
                         {pageContent.map((content) => (
