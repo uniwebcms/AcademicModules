@@ -303,7 +303,7 @@ const Search = (props) => {
                         })}
                     </span>
                     <span className="flex items-center gap-1 border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] border-text-color/20 bg-text-color-0 px-2 py-0.5 text-xs text-text-color/70">
-                        <LuCommand className="h-3 w-3" />
+                        <LuCommand className="h-3 w-3 text-text-color/70" />
                         <span className="font-medium leading-none">K</span>
                     </span>
                 </button>
