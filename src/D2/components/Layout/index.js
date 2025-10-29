@@ -73,10 +73,10 @@ const MobileSidebar = ({ children }) => {
 
 export default function Layout(props) {
     const { page, header, footer, body, leftPanel, rightPanel } = props;
-
+    //bg-white dark:bg-slate-900/95
     return (
         <SidebarProvider>
-            <div className="flex flex-col min-h-screen bg-white dark:bg-slate-900/95">
+            <div className="context__light flex flex-col min-h-screen [background:var(--bg-gradient,white)_fixed] dark:[background:var(--bg-gradient,theme(colors.slate.900/95))_fixed]">
                 {/* Top Fixed Header */}
                 <header className="fixed top-0 z-50 h-16 w-screen">{header}</header>
                 {/* Header placeholder */}

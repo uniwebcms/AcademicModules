@@ -120,7 +120,7 @@ export default function RightPanel(props) {
                                         'text-left focus:outline-none bg-transparent',
                                         isActive(content)
                                             ? 'text-primary-500 font-semibold'
-                                            : 'text-text-color/90 hover:text-text-color hover:font-semibold'
+                                            : 'text-text-color/90 hover:text-text-color hover:[text-shadow:0.5px_0_0_currentColor]'
                                     )}
                                     onClick={() => {
                                         scrollTo(content.id);
@@ -135,9 +135,9 @@ export default function RightPanel(props) {
                                                 <button
                                                     className={twJoin(
                                                         'text-left focus:outline-none bg-transparent',
-                                                        isActive(content)
+                                                        isActive(subContent)
                                                             ? 'text-primary-500 font-semibold'
-                                                            : 'text-text-color/90 hover:text-text-color hover:font-semibold'
+                                                            : 'text-text-color/90 hover:text-text-color hover:[text-shadow:0.5px_0_0_currentColor]'
                                                     )}
                                                     onClick={() => {
                                                         scrollTo(subContent.id);

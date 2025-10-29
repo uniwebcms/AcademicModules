@@ -108,7 +108,7 @@ const Navigation = ({
                             labelClass.push('font-medium text-link-hover-color');
                         } else {
                             labelClass.push(
-                                'text-text-color hover:text-link-hover-color hover:font-medium'
+                                'text-text-color hover:text-link-hover-color hover:[text-shadow:0.5px_0_0_currentColor]'
                             );
                             if (navigationStyle === 'button_like') {
                                 labelClass.push('block');

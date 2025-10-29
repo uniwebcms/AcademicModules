@@ -14,7 +14,7 @@ styles:
           fr: Le style des coins pour le composant.
       default: '0.25rem'
       options:
-          - value: 0
+          - value: '0'
             label:
                 en: Straight
                 fr: Droit
@@ -29,8 +29,14 @@ styles:
     - id: 'border-color'
       type: color
       label:
-          en: Border Color
-          fr: Couleur de la bordure
+          en: Border
+          fr: Bordure
       description:
           en: The color of the border for the component.
           fr: La couleur de la bordure pour le composant.
+    - id: 'bg-gradient'
+      type: gradient
+      globalOnly: true
+      label:
+          en: Gradient Background
+          fr: Fond en dégradé
