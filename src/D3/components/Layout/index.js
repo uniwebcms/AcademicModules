@@ -74,7 +74,7 @@ export default function Layout(props) {
 
     return (
         <SidebarProvider>
-            <div className="context__light flex flex-col min-h-screen [background:var(--bg-gradient,var(--bg-color))]">
+            <div className="context__light flex flex-col min-h-screen [background:var(--bg-gradient,var(--bg-color))_fixed]">
                 {/* Top Fixed Header */}
                 <header
                     className={twJoin(

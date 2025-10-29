@@ -74,7 +74,7 @@ const Render = function (props) {
                             onClick={() => handleCopyLink(id)}
                             className={twJoin(
                                 'absolute top-1/2 -translate-y-1/2 -left-7', // Your positioning
-                                'text-text-color/40 hover:text-text-color focus:outline-none', // Your styling
+                                'focus:outline-none', // Your styling
 
                                 // --- ADD THESE CLASSES ---
                                 'opacity-0',
@@ -89,10 +89,10 @@ const Render = function (props) {
                         >
                             {copiedId === id ? (
                                 // Show green checkmark when copied
-                                <FiCheck className="h-5 w-5 text-green-500" />
+                                <FiCheck className="h-5 w-5 text-heading-color" />
                             ) : (
                                 // Show hash icon by default
-                                <FiHash className="h-5 w-5" />
+                                <FiHash className="h-5 w-5 text-heading-color/80 hover:text-heading-color" />
                             )}
                         </button>
                     </div>
