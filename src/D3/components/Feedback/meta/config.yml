@@ -5,8 +5,104 @@ label:
     en: Feedback
     fr: Retour d'information
 description:
-    en: A feedback form is used to collect user input.
-    fr: Un formulaire de retour d'information est utilisé pour collecter les commentaires des utilisateurs.
+    en: A feedback form is used to collect user feedback or comments.
+    fr: Un formulaire de retour d'information est utilisé pour collecter les commentaires ou les avis des utilisateurs.
 
 category: form
 export: true
+
+elements:
+    title:
+    subtitle:
+    form:
+        description:
+            en: A form to construct the feedback collection interface.
+            fr: Un formulaire pour construire l'interface de collecte des retours d'information.
+        schemas:
+            - id: form
+              name:
+                  en: Feedback Form
+                  fr: Formulaire de retour d'information
+              # isComposite: false means the form data will be a single object {}.
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Field
+                      fr: Champ
+                  # 'fields' defines the inputs for this specific form layout.
+                  fields:
+                      - id: label
+                        type: text
+                        label:
+                            en: Field Label
+                            fr: Étiquette du champ
+                        description:
+                            en: The label for the field.
+                            fr: L'étiquette du champ.
+                        required: true
+                      - id: widget
+                        type: select
+                        label:
+                            en: Field Type
+                            fr: Type de champ
+                        description:
+                            en: Defines the input type.
+                            fr: Définit le type d'entrée.
+                        required: true
+                        options:
+                            - label:
+                                  en: Input
+                                  fr: Input
+                              value: string
+                            - label:
+                                  en: Text Area
+                                  fr: Zone de texte
+                              value: textarea
+                            - label:
+                                  en: Select
+                                  fr: Sélect
+                              value: select
+                            - label:
+                                  en: Radio Group
+                                  fr: Groupe de boutons radio
+                              value: radio
+                            - label:
+                                  en: Checkbox
+                                  fr: Case à cocher
+                              value: checkbox
+                            - label:
+                                  en: File Upload
+                                  fr: Téléchargement de fichier
+                              value: file
+                      - id: required
+                        type: checkbox
+                        label:
+                            en: Required
+                            fr: Requis
+                        description:
+                            en: If true, the field is mandatory.
+                            fr: Si vrai, le champ est obligatoire.
+                      - id: validation
+                        type: text
+                        label:
+                            en: Validation (Regex)
+                            fr: Validation (Regex)
+                        description:
+                            en: A regular expression for validation.
+                            fr: Une expression régulière pour la validation.
+                      - id: error_msg
+                        type: text
+                        label:
+                            en: Error Message
+                            fr: Message d'erreur
+                        description:
+                            en: Custom error message for failed validation.
+                            fr: Message d'erreur personnalisé pour une validation échouée.
+                      - id: placeholder
+                        type: text
+                        label:
+                            en: Placeholder Text
+                            fr: Texte de l'espace réservé
+                        description:
+                            en: Placeholder text for the input field.
+                            fr: Texte de l'espace réservé pour le champ d'entrée.
