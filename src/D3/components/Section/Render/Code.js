@@ -1,52 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { twJoin } from '@uniwebcms/module-sdk';
+import React, { Fragment, useState } from 'react';
+import { twJoin, useSiteTheme } from '@uniwebcms/module-sdk';
 import { Highlight, themes } from 'prism-react-renderer';
 import { LuCopy, LuCheck } from 'react-icons/lu';
 
 export default function Code(props) {
     const { language, content } = props;
 
-    const [theme, setTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return window.localStorage.getItem('theme') || 'system';
-        }
-        return 'system';
-    });
+    const { theme: finalTheme } = useSiteTheme();
 
-    const [systemTheme, setSystemTheme] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-        return 'light';
-    });
-
-    const [copied, setCopied] = useState(false);
-
-    useEffect(() => {
-        const unsubscribe = uniweb.eventBus.subscribe('themeChange', (params) => {
-            setTheme(params.theme || 'light');
-        });
-
-        return () => {
-            unsubscribe();
-        };
-    }, []);
-
-    useEffect(() => {
-        if (theme === 'system') {
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const handler = (e) => {
-                const newTheme = e.matches ? 'dark' : 'light';
-                setSystemTheme(newTheme);
-            };
-            mediaQuery.addEventListener('change', handler);
-            return () => {
-                mediaQuery.removeEventListener('change', handler);
-            };
-        }
-    }, [theme]);
-
-    const finalTheme = theme === 'system' ? systemTheme : theme;
+    const [copied, setCopied] = useState();
 
     const darkMode = finalTheme === 'dark';
 
