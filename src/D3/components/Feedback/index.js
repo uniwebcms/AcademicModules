@@ -594,7 +594,7 @@ const Field = (props) => {
     );
 };
 
-const parseFormSchema = (schema = [], json) => {
+const parseFormSchema = (schema = []) => {
     return schema.map((item) => {
         const {
             id,
@@ -604,7 +604,7 @@ const parseFormSchema = (schema = [], json) => {
             validation_regex,
             validation_type,
             widget,
-            select_options,
+            options,
             default_value,
             file_size_limit = widget === 'file' ? '5' : null,
             file_accept = widget === 'file' ? '.pdf,.jpg,.png,.doc,.docx' : null,
@@ -616,10 +616,10 @@ const parseFormSchema = (schema = [], json) => {
         let defaultValue;
 
         if (widget === 'select' || widget === 'radio' || widget === 'checkbox') {
-            if (select_options && json && typeof json === 'object') {
-                const options = json[select_options] || [];
+            if (options?.length) {
                 options.forEach((option) => {
-                    selectOptions.push({ value: option, label: option });
+                    if (option.value)
+                        selectOptions.push({ value: option.value, label: option.value });
                 });
             }
         }
@@ -686,15 +686,7 @@ export default function Feedback(props) {
     const { title, subtitle, buttons, form: schema, properties: json } = block.getBlockContent();
 
     const formSchema = useMemo(() => parseFormSchema(schema, json), [schema, json]);
-
-    const [data, setData] = useState({});
-    const [errors, setErrors] = useState({});
-    const [submitMessage, setSubmitMessage] = useState('');
-    const [showSuccessIcon, setShowSuccessIcon] = useState(false);
-
-    const { isSubmitting, secureSubmit, error: submitError } = useSecureSubmission(block);
-
-    useEffect(() => {
+    const initialFormData = useMemo(() => {
         const initData = {};
 
         formSchema.forEach((item) => {
@@ -703,8 +695,15 @@ export default function Feedback(props) {
             }
         });
 
-        setData(initData);
+        return initData;
     }, [formSchema]);
+
+    const [data, setData] = useState(initialFormData);
+    const [errors, setErrors] = useState({});
+    const [submitMessage, setSubmitMessage] = useState('');
+    const [showSuccessIcon, setShowSuccessIcon] = useState(false);
+
+    const { isSubmitting, secureSubmit, error: submitError } = useSecureSubmission(block);
 
     useEffect(() => {
         if (submitError) {

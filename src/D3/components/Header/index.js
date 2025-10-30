@@ -67,7 +67,9 @@ export default function Header(props) {
         if (isScrolled) {
             outerWrapperClass.push('shadow-md border-none');
             if (transparency) {
-                outerWrapperClass.push('backdrop-blur bg-[var(--header-bg,transparent)]');
+                outerWrapperClass.push(
+                    'backdrop-blur bg-[color-mix(in_lch,var(--header-bg,var(--bg-color))_60%,transparent)]'
+                );
             } else {
                 outerWrapperClass.push('bg-[var(--header-bg,var(--bg-color))]');
             }
@@ -79,13 +81,7 @@ export default function Header(props) {
     }
 
     return (
-        <div
-            className={twJoin(...outerWrapperClass)}
-            // className={twJoin(
-            //     'h-16 w-full max-w-screen transition duration-500 border-b border-text-color/20',
-            //     isScrolled ? 'shadow-md border-none backdrop-blur bg-transparent' : 'bg-bg-color'
-            // )}
-        >
+        <div className={twJoin(...outerWrapperClass)}>
             <div
                 className={twJoin(
                     'h-full flex items-center justify-between max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 py-3',

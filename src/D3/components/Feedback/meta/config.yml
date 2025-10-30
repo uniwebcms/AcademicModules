@@ -95,14 +95,25 @@ elements:
                                 $in:
                                     - input
                                     - textarea
-                      - id: select_options
-                        type: text
+                      - id: options
+                        type: form
                         label:
-                            en: Select Options (Source)
-                            fr: Options de sélection (Source)
+                            en: Options to Select
+                            fr: Options à sélectionner
                         description:
-                            en: The source for select options, normally from a Code Block element.
-                            fr: La source des options de sélection, normalement à partir d'un élément Bloc de code
+                            en: Options for select, radio, or checkbox fields.
+                            fr: Options pour les champs de sélection, de radio ou de case à cocher.
+                        childSchema:
+                            name:
+                                en: Option
+                                fr: Option
+                            fields:
+                                - id: value
+                                  type: text
+                                  label:
+                                      en: Option Value
+                                      fr: Valeur de l'option
+                                  required: true
                         condition:
                             widget:
                                 $in:
