@@ -90,22 +90,16 @@ export default function Layout(props) {
                     {header}
                 </header>
                 {/* Header placeholder */}
-                {stickyHeader && (
-                    <div
-                        className={twJoin(
-                            'h-16 w-full opacity-0',
-                            headerMode === 'island' ? 'desktop:h-20' : ''
-                        )}
-                    />
-                )}
+                <div className="h-16 w-full opacity-0" />
                 {/* Mobile Left Sidebar */}
                 <MobileSidebar>{leftPanel}</MobileSidebar>
+
                 {/* Main Content Area */}
                 <div className="relative w-full max-w-8xl mx-auto flex flex-1 md:px-8 lg:px-12 xl:px-16">
                     {/* Left Sidebar */}
                     <aside
                         className={twJoin(
-                            'hidden md:block fixed md:left-8 lg:left-12 xl:left-[max(48px,calc((100vw-88rem)/2))] w-64 h-[calc(100vh-64px)] overflow-y-auto',
+                            'hidden md:block absolute md:left-8 lg:left-12 xl:left-[max(48px,calc((100vw-88rem)/2))] w-64 h-[calc(100vh-64px)] overflow-y-auto',
                             headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
                         )}
                     >

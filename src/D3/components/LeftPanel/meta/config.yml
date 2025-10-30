@@ -1,78 +1,95 @@
 title:
-  en: Left Panel
-  fr: Panneau de gauche
+    en: Left Panel
+    fr: Panneau de gauche
 label:
-  en: Left Panel
-  fr: Panneau de gauche
+    en: Left Panel
+    fr: Panneau de gauche
 description:
-  en: A component that render a list of navigation links, usually used for a sidebar.
-  fr: Un composant qui rend une liste de liens de navigation, généralement utilisé pour une barre latérale.
+    en: A component that render a list of navigation links, usually used for a sidebar.
+    fr: Un composant qui rend une liste de liens de navigation, généralement utilisé pour une barre latérale.
 
 export: true
 
 properties:
-  collapsible:
-    label:
-      en: Collapsible
-      fr: Pliable
-    type: string
-    enum:
-      - label:
-          en: 'No'
-          fr: Non
-        value: 'no'
-      - label:
-          en: Arrows
-          fr: Flèches
-        value: arrows
-      - label:
-          en: Plus/Minus
-          fr: Plus/Moins
-        value: plus_minus
-    default: 'no'
-    description:
-      en: The collapsible behavior of the left panel.
-      fr: Le comportement pliable du panneau de gauche.
-  hierarchy_indicator:
-    label:
-      en: Hierarchy Indicator
-      fr: Indicateur de hiérarchie
-    type: string
-    enum:
-      - label:
-          en: Line
-          fr: Ligne
-        value: line
-      - label:
-          en: Thread
-          fr: Fil
-        value: thread
-      - label:
-          en: None
-          fr: Aucun
-        value: none
-    default: none
-    description:
-      en: The type of hierarchy indicator to use for nested items.
-      fr: Le type d'indicateur de hiérarchie à utiliser pour les éléments imbriqués.
-  navigation_style:
-    label:
-      en: Navigation Style
-      fr: Style de navigation
-    type: string
-    enum:
-      - label:
-          en: Link Like
-          fr: Comme un lien
-        value: link_like
-      - label:
-          en: Button Like
-          fr: Comme un bouton
-        value: button_like
-    default: link_like
-    description:
-      en: The style of the navigation links, which can be either link-like or button-like.
-      fr: Le style des liens de navigation, qui peut être comme un lien ou comme un bouton.
+    collapsible:
+        label:
+            en: Collapsible
+            fr: Pliable
+        type: string
+        enum:
+            - label:
+                  en: 'No'
+                  fr: Non
+              value: 'no'
+            - label:
+                  en: Arrows
+                  fr: Flèches
+              value: arrows
+            - label:
+                  en: Plus/Minus
+                  fr: Plus/Moins
+              value: plus_minus
+        default: 'no'
+        description:
+            en: The collapsible behavior of the left panel.
+            fr: Le comportement pliable du panneau de gauche.
+    hierarchy_indicator:
+        label:
+            en: Hierarchy Indicator
+            fr: Indicateur de hiérarchie
+        type: string
+        enum:
+            - label:
+                  en: Line
+                  fr: Ligne
+              value: line
+            - label:
+                  en: Thread
+                  fr: Fil
+              value: thread
+            - label:
+                  en: None
+                  fr: Aucun
+              value: none
+        default: none
+        description:
+            en: The type of hierarchy indicator to use for nested items.
+            fr: Le type d'indicateur de hiérarchie à utiliser pour les éléments imbriqués.
+    navigation_style:
+        label:
+            en: Navigation Style
+            fr: Style de navigation
+        type: string
+        enum:
+            - label:
+                  en: Link Like
+                  fr: Comme un lien
+              value: link_like
+            - label:
+                  en: Button Like
+                  fr: Comme un bouton
+              value: button_like
+        default: link_like
+        description:
+            en: The style of the navigation links, which can be either link-like or button-like.
+            fr: Le style des liens de navigation, qui peut être comme un lien ou comme un bouton.
 
-images:
-  - example.png
+presets:
+    arrow_thread_link:
+        label:
+            en: Arrow Thread Link
+            fr: Flèche Fil Lien
+        properties:
+            collapsible: arrows
+            hierarchy_indicator: thread
+            navigation_style: link_like
+        image: arrow_thread_link.png
+    plus_minus_line_link:
+        label:
+            en: Plus/Minus Line Link
+            fr: Plus/Moins Ligne Lien
+        properties:
+            collapsible: plus_minus
+            hierarchy_indicator: line
+            navigation_style: link_like
+        image: plus_minus_line_link.png

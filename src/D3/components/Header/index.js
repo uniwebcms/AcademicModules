@@ -57,7 +57,7 @@ export default function Header(props) {
         outerWrapperClass.push('w-full max-w-screen border-b border-text-color/20');
     } else {
         outerWrapperClass.push(
-            'my-0 desktop:my-2 w-full max-w-screen desktop:max-w-8xl mx-auto border-b desktop:border border-text-color/20 desktop:rounded-lg !bg-text-color-5'
+            'my-0 desktop:my-2 w-full max-w-screen desktop:max-w-8xl mx-auto border-b desktop:border border-text-color/20 desktop:rounded-lg'
         );
     }
 
@@ -74,6 +74,8 @@ export default function Header(props) {
         } else {
             outerWrapperClass.push('bg-bg-color');
         }
+    } else {
+        outerWrapperClass.push('bg-bg-color');
     }
 
     return (
