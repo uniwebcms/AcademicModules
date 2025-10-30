@@ -2,7 +2,7 @@ name: Documentation Series 3
 description: A collection of components for building documentation websites, offering a modern design, light and dark mode and user-friendly navigation. This collection does not require any custom colors set in the docufolio or website studio.
 properties:
     themeToggleEnabled: true
-styles:
+styleFields:
     - id: 'border-radius'
       type: select
       label:
@@ -83,3 +83,100 @@ styles:
       label:
           en: Gradient Background
           fr: Fond en dégradé
+stylePresets:
+    - id: clean
+      label:
+          en: Clean
+          fr: Propre
+      description:
+          en: Minimalistic and elegant
+          fr: Minimaliste et élégant
+      properties:
+          light:
+              bg-color: 'rgba(var(--neutral-50) / 1)'
+              btn-color: ''
+              btn-hover-color: ''
+              text-color: 'rgba(var(--neutral-700) / 1)'
+              heading-color: 'rgba(var(--neutral-950) / 1)'
+              link-color: 'rgba(var(--accent-400) / 1)'
+              link-hover-color: 'rgba(var(--accent-500) / 1)'
+              link-active-color: 'rgba(var(--accent-600) / 1)'
+              icon-color: 'rgba(var(--neutral-600) / 1)'
+              btn-text-color: ''
+              btn-hover-text-color: ''
+              btn-alt-color: 'rgba(var(--neutral-100) / 1)'
+              btn-alt-text-color: 'rgba(var(--neutral-900) / 1)'
+              btn-alt-hover-color: 'rgba(var(--neutral-200) / 1)'
+              btn-alt-hover-text-color: 'rgba(var(--neutral-900) / 1)'
+              callout: 'rgba(var(--primary-600) / 1)'
+              muted: 'rgba(var(--secondary-400) / 1)'
+              highlight: 'rgba(var(--accent-200) / 1)'
+          dark:
+              bg-color: 'rgba(var(--neutral-900) / 1)'
+              btn-color: ''
+              btn-hover-color: ''
+              text-color: 'rgba(var(--neutral-200) / 1)'
+              heading-color: 'rgba(var(--neutral-50) / 1)'
+              link-color: 'rgba(var(--accent-600) / 1)'
+              link-hover-color: 'rgba(var(--accent-500) / 1)'
+              link-active-color: 'rgba(var(--accent-400) / 1)'
+              icon-color: 'rgba(var(--neutral-400) / 1)'
+              btn-text-color: ''
+              btn-hover-text-color: ''
+              btn-alt-color: 'rgba(var(--neutral-900) / 1)'
+              btn-alt-text-color: 'rgba(var(--neutral-100) / 1)'
+              btn-alt-hover-color: 'rgba(var(--neutral-800) / 1)'
+              btn-alt-hover-text-color: 'rgba(var(--neutral-100) / 1)'
+              callout: 'rgba(var(--primary-400) / 1)'
+              muted: 'rgba(var(--secondary-600) / 1)'
+              highlight: 'rgba(var(--accent-800) / 1)'
+
+    - id: 'gradient'
+      label:
+          en: Gradient
+          fr: Dégradé
+      description:
+          en: Trendy and colorful
+          fr: Tendance et coloré
+      properties:
+          light:
+              bg-color: ''
+              btn-color: ''
+              btn-hover-color: ''
+              text-color: 'rgba(var(--neutral-700) / 1.00)'
+              heading-color: 'rgba(var(--neutral-950) / 1)'
+              link-color: 'rgba(var(--accent-400) / 1)'
+              link-hover-color: 'rgba(var(--accent-500) / 1)'
+              link-active-color: 'rgba(var(--accent-600) / 1)'
+              icon-color: 'rgba(var(--neutral-600) / 1)'
+              btn-text-color: ''
+              btn-hover-text-color: ''
+              btn-alt-color: 'rgba(var(--neutral-100) / 1)'
+              btn-alt-text-color: 'rgba(var(--neutral-900) / 1)'
+              btn-alt-hover-color: 'rgba(var(--neutral-200) / 1)'
+              btn-alt-hover-text-color: 'rgba(var(--neutral-900) / 1)'
+              callout: 'rgba(var(--primary-600) / 1)'
+              muted: 'rgba(var(--secondary-400) / 1)'
+              highlight: 'rgba(var(--accent-200) / 1)'
+              bg-gradient: 'linear-gradient(180deg, rgba(var(--accent-50) / 0.7) 0%, rgba(var(--secondary-600) / 0.3) 60%)'
+
+          dark:
+              bg-color: ''
+              btn-color: ''
+              btn-hover-color: ''
+              text-color: 'rgba(var(--neutral-200) / 1.00)'
+              heading-color: 'rgba(var(--neutral-50) / 1.00)'
+              link-color: 'rgba(var(--accent-600) / 1.00)'
+              link-hover-color: 'rgba(var(--accent-500) / 1.00)'
+              link-active-color: 'rgba(var(--accent-400) / 1.00)'
+              icon-color: 'rgba(var(--neutral-400) / 1.00)'
+              btn-text-color: ''
+              btn-hover-text-color: ''
+              btn-alt-color: 'rgba(var(--neutral-900) / 1.00)'
+              btn-alt-text-color: 'rgba(var(--neutral-100) / 1.00)'
+              btn-alt-hover-color: 'rgba(var(--neutral-800) / 1.00)'
+              btn-alt-hover-text-color: 'rgba(var(--neutral-100) / 1.00)'
+              callout: 'rgba(var(--primary-400) / 1.00)'
+              muted: 'rgba(var(--secondary-600) / 1.00)'
+              highlight: 'rgba(var(--accent-800) / 1.00)'
+              bg-gradient: 'linear-gradient(45deg, rgba(var(--neutral-900) / 0.95) 0%, rgba(var(--neutral-950) / 1) 60%)'
