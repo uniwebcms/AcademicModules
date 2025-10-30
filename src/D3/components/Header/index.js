@@ -67,15 +67,15 @@ export default function Header(props) {
         if (isScrolled) {
             outerWrapperClass.push('shadow-md border-none');
             if (transparency) {
-                outerWrapperClass.push('backdrop-blur bg-transparent');
+                outerWrapperClass.push('backdrop-blur bg-[var(--header-bg,transparent)]');
             } else {
-                outerWrapperClass.push('bg-bg-color');
+                outerWrapperClass.push('bg-[var(--header-bg,var(--bg-color))]');
             }
         } else {
-            outerWrapperClass.push('bg-bg-color');
+            outerWrapperClass.push('bg-[var(--header-bg,var(--bg-color))]');
         }
     } else {
-        outerWrapperClass.push('bg-bg-color');
+        outerWrapperClass.push('bg-[var(--header-bg,var(--bg-color))]');
     }
 
     return (
