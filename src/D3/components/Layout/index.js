@@ -55,16 +55,27 @@ const MobileSidebar = ({ children }) => {
     }, [activeRoute]);
 
     return (
-        <div
-            className={`md:hidden fixed top-16 left-0 w-full h-[calc(100vh-64px)] z-50 transition-transform transform ${
-                isOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
-        >
-            <button className="absolute top-5 right-6 focus:outline-none" onClick={closeSidebar}>
-                <HiX className="h-5 w-5" />
-            </button>
-            <div className="pl-6 pr-14">{children}</div>
-        </div>
+        <>
+            {isOpen && (
+                <div
+                    className="md:hidden fixed top-16 left-0 w-full h-[calc(100vh-64px)] bg-black/50 z-40"
+                    onClick={closeSidebar}
+                />
+            )}
+            <div
+                className={`md:hidden fixed top-16 left-0 w-full h-[calc(100vh-64px)] z-50 transition-transform transform duration-300 ${
+                    isOpen ? 'translate-x-0' : '-translate-x-full'
+                }`}
+            >
+                <button
+                    className="absolute top-4 right-4 focus:outline-none bg-transparent"
+                    onClick={closeSidebar}
+                >
+                    <HiX className="h-6 w-6 text-gray-200 hover:text-gray-100" />
+                </button>
+                <div className="pr-14">{children}</div>
+            </div>
+        </>
     );
 };
 
