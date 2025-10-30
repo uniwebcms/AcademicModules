@@ -92,7 +92,7 @@ const Navigation = ({
 
                     if (page.hasData) {
                         if (isActive(page)) {
-                            labelClass.push('text-link-hover-color');
+                            labelClass.push('text-link-active-color');
                         } else {
                             labelClass.push('text-text-color hover:text-link-hover-color');
                             if (navigationStyle === 'button_like') {
@@ -105,7 +105,7 @@ const Navigation = ({
                 } else {
                     if (page.hasData) {
                         if (isActive(page)) {
-                            labelClass.push('font-medium text-link-hover-color');
+                            labelClass.push('font-medium text-link-active-color');
                         } else {
                             labelClass.push(
                                 'text-text-color hover:text-link-hover-color hover:[text-shadow:0.5px_0_0_currentColor]'

@@ -119,8 +119,8 @@ export default function RightPanel(props) {
                                     className={twJoin(
                                         'text-left focus:outline-none bg-transparent',
                                         isActive(content)
-                                            ? 'text-primary-500 font-semibold'
-                                            : 'text-text-color/90 hover:text-text-color hover:[text-shadow:0.5px_0_0_currentColor]'
+                                            ? 'text-link-active-color font-semibold'
+                                            : 'text-text-color/90 hover:text-link-color hover:[text-shadow:0.5px_0_0_currentColor]'
                                     )}
                                     onClick={() => {
                                         scrollTo(content.id);
