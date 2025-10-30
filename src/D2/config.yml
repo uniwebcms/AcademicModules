@@ -3,7 +3,7 @@ description: A collection of components for building documentation websites, off
 properties:
     themeToggleEnabled: true
 
-styles:
+styleFields:
     - id: 'border-radius'
       type: select
       label:
