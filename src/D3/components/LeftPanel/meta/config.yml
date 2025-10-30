@@ -77,8 +77,8 @@ properties:
 presets:
     arrow_thread_link:
         label:
-            en: Arrow Thread Link
-            fr: Flèche Fil Lien
+            en: Arrows with Thread Indicator
+            fr: Flèches avec indicateur de fil
         properties:
             collapsible: arrows
             hierarchy_indicator: thread
@@ -86,10 +86,19 @@ presets:
         image: arrow_thread_link.png
     plus_minus_line_link:
         label:
-            en: Plus/Minus Line Link
-            fr: Plus/Moins Ligne Lien
+            en: Plus/Minus with Line Indicator
+            fr: Plus/Moins avec indicateur de ligne
         properties:
             collapsible: plus_minus
             hierarchy_indicator: line
             navigation_style: link_like
         image: plus_minus_line_link.png
+    plus_minus_line_btn:
+        label:
+            en: Plus/Minus Buttons with Line Indicator
+            fr: Boutons Plus/Moins avec indicateur de ligne
+        properties:
+            collapsible: plus_minus
+            hierarchy_indicator: line
+            navigation_style: button_like
+        image: plus_minus_line_button.png

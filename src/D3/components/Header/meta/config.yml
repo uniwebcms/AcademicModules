@@ -72,8 +72,8 @@ properties:
 presets:
     sticky_full_center_transparency:
         label:
-            en: Sticky Full Width Center Search Transparent
-            fr: En-tête collant pleine largeur recherche centrée transparente
+            en: Sticky Full Width with Center Search (Transparent)
+            fr: En-tête collant pleine largeur avec recherche centrée (transparent)
         properties:
             sticky: true
             mode: full_width
@@ -82,8 +82,8 @@ presets:
         image: sticky_full_center_transparency.png
     island_right:
         label:
-            en: Island Right Search
-            fr: En-tête îlot recherche à droite
+            en: Island Layout with Right Search
+            fr: Mise en page îlot avec recherche à droite
         properties:
             sticky: true
             mode: island

@@ -42,7 +42,7 @@ export default function LeftPanel(props) {
 
     return (
         <div className="relative">
-            <div className="md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-1">
+            <div className="md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-6 md:pl-1">
                 <nav className="text-base md:text-sm lg:text-base xl:text-base">
                     <Navigation
                         navigation={pages}
