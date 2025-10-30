@@ -1,12 +1,12 @@
 title:
-    en: Feedback
-    fr: Retour d'information
+    en: Form
+    fr: Formulaire
 label:
-    en: Feedback
-    fr: Retour d'information
+    en: Form
+    fr: Formulaire
 description:
-    en: A feedback form is used to collect user feedback or comments.
-    fr: Un formulaire de retour d'information est utilisé pour collecter les commentaires ou les avis des utilisateurs.
+    en: A form component to collect user feedback or data.
+    fr: Un composant de formulaire pour collecter les retours d'information ou les données
 
 category: form
 export: true
@@ -16,13 +16,13 @@ elements:
     subtitle:
     form:
         description:
-            en: A form to construct the feedback collection interface.
-            fr: Un formulaire pour construire l'interface de collecte des retours d'information.
+            en: A form to construct the data collection interface.
+            fr: Un formulaire pour construire l'interface de collecte de données.
         schemas:
             - id: form
               name:
-                  en: Feedback Form
-                  fr: Formulaire de retour d'information
+                  en: Form
+                  fr: Formulaire
               # isComposite: false means the form data will be a single object {}.
               isComposite: true
               childSchema:
@@ -188,14 +188,10 @@ elements:
                                     - select
                                     - radio
                                     - checkbox
-    code:
-        description:
-            en: Additional information for the feedback form, such as select options.
-            fr: Informations supplémentaires pour le formulaire de retour d'information, telles que les options de sélection
     button:
         description:
-            en: The button to submit the feedback form.
-            fr: Le bouton pour soumettre le formulaire de retour d'information.
+            en: The button to submit the form.
+            fr: Le bouton pour soumettre le formulaire.
 
 images:
     - example.png
