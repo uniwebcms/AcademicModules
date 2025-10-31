@@ -19,28 +19,30 @@ export default function Code(props) {
             theme={darkMode ? themes.oneDark : themes.oneLight}
         >
             {({ className, style, tokens, getTokenProps }) => (
-                <pre
-                    className={twJoin(
-                        'relative !pt-12 border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20',
-                        className
-                    )}
-                    style={style}
-                >
-                    <code>
-                        {tokens.map((line, lineIndex) => (
-                            <Fragment key={lineIndex}>
-                                {line
-                                    .filter((token) => !token.empty)
-                                    .map((token, tokenIndex) => (
-                                        <span key={tokenIndex} {...getTokenProps({ token })} />
-                                    ))}
-                                {'\n'}
-                            </Fragment>
-                        ))}
-                    </code>
+                <div className="relative">
+                    <pre
+                        className={twJoin(
+                            '!pt-12 overflow-x-auto border-[length:var(--depth-style-outline)] !rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20',
+                            className
+                        )}
+                        style={style}
+                    >
+                        <code>
+                            {tokens.map((line, lineIndex) => (
+                                <Fragment key={lineIndex}>
+                                    {line
+                                        .filter((token) => !token.empty)
+                                        .map((token, tokenIndex) => (
+                                            <span key={tokenIndex} {...getTokenProps({ token })} />
+                                        ))}
+                                    {'\n'}
+                                </Fragment>
+                            ))}
+                        </code>
+                    </pre>
                     <div
                         className={twJoin(
-                            'not-prose absolute top-0 inset-x-0 h-10 flex items-center justify-between px-4',
+                            'not-prose absolute top-[length:var(--depth-style-outline)] inset-x-[length:var(--depth-style-outline)] h-10 flex items-center justify-between px-4 rounded-t-[var(--border-radius)]',
                             darkMode ? 'bg-[#424957]' : 'bg-[#f0f0f0]'
                         )}
                     >
@@ -61,7 +63,7 @@ export default function Code(props) {
                             )}
                         </button>
                     </div>
-                </pre>
+                </div>
             )}
         </Highlight>
     );
