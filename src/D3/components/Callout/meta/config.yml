@@ -8,7 +8,7 @@ description:
     en: Component to render a call out box with title and paragraphs. Can be used for info or warning messages.
     fr: Composant pour rendre une boîte d'appel avec un titre et des paragraphes. Peut être utilisé pour des messages d'info ou d'avertissement.
 
-export: true
+export: false
 
 properties:
     type:
