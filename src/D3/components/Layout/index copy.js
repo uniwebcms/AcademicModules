@@ -116,7 +116,7 @@ export default function Layout(props) {
                     {/* Left Sidebar */}
                     <aside
                         className={twJoin(
-                            'hidden md:block sticky flex-none w-64 h-[calc(100vh-64px)] overflow-y-auto',
+                            'hidden md:block fixed md:left-8 lg:left-12 xl:left-[max(48px,calc((100vw-88rem)/2))] w-64 h-[calc(100vh-64px)] overflow-y-auto',
                             headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
                         )}
                     >
@@ -124,7 +124,7 @@ export default function Layout(props) {
                     </aside>
 
                     {/* Center Content */}
-                    <main className="flex-1 min-w-0 px-6 py-8">
+                    <main className="mx-0 md:ml-64 xl:mr-64 px-6 py-8 w-full md:w-[calc(100%-16rem)] xl:w-[calc(100%-32rem)]">
                         <div className="mx-auto max-w-3xl">
                             {/* Page Title & Subtitle */}
                             <DocHeader page={page} />
@@ -138,7 +138,7 @@ export default function Layout(props) {
                     {/* Right Section Nav */}
                     <aside
                         className={twJoin(
-                            'hidden xl:block sticky flex-none w-64 h-[calc(100vh-64px)] overflow-y-auto',
+                            'hidden xl:block fixed xl:right-[max(48px,calc((100vw-88rem)/2))] w-64 h-[calc(100vh-64px)] overflow-y-auto',
                             headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
                         )}
                     >
