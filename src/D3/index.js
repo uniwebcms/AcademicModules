@@ -12,6 +12,7 @@ export const site = {
     Layout,
     props: {
         themeToggleEnabled: true, // Tell the site that theme toggling is enabled
+        markdownCopyEnabled: true,
     },
 };
 
