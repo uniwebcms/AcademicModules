@@ -88,6 +88,8 @@ export default function ScrollViewTimeline(props) {
     const items = block.getBlockItems();
     const sections = parseBlockItems(items);
 
+    const { text_shadow = false } = block.getBlockProperties();
+
     const frameRef = useRef(null);
     const firstSectionRef = useRef(null);
     const lastSectionRef = useRef(null);
@@ -311,6 +313,10 @@ export default function ScrollViewTimeline(props) {
                                 i === 0
                                     ? 'min-h-[calc(100vh-80px)] md:pb-28 lg:pb-36'
                                     : 'min-h-screen'
+                            } ${
+                                text_shadow
+                                    ? '[&_h2]:[text-shadow:0_1px_2px_rgba(0,0,0,0.2)] [&_p]:[text-shadow:0_1px_2px_rgba(0,0,0,0.2)]'
+                                    : ''
                             }`}
                             style={{
                                 viewTimelineName: `--section-${i}`,
