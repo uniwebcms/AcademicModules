@@ -33,6 +33,42 @@ properties:
         description:
             en: The collapsible behavior of the left panel.
             fr: Le comportement pliable du panneau de gauche.
+    auto_collapse:
+        label:
+            en: Auto Collapse
+            fr: Pliage automatique
+        type: string
+        enum:
+            - label:
+                  en: 'Yes'
+                  fr: Oui
+              value: 'yes'
+            - label:
+                  en: 'No'
+                  fr: Non
+              value: 'no'
+        default: 'no'
+        description:
+            en: If 'Yes', opening one item will automatically close all its siblings at the same level.
+            fr: Si 'Oui', l'ouverture d'un élément fermera automatiquement tous ses frères et sœurs au même niveau.
+    initial_state:
+        label:
+            en: Initial State
+            fr: État initial
+        type: string
+        enum:
+            - label:
+                  en: Open All
+                  fr: Ouvrir tout
+              value: open_all
+            - label:
+                  en: Close All
+                  fr: Fermer tout
+              value: close_all
+        default: close_all
+        description:
+            en: The initial state of the left panel, whether it starts open or closed.
+            fr: L'état initial du panneau de gauche, s'il commence ouvert ou fermé.
     hierarchy_indicator:
         label:
             en: Hierarchy Indicator

@@ -25,24 +25,48 @@ export default function LeftPanel(props) {
         collapsible = 'no',
         hierarchy_indicator = 'none',
         navigation_style = 'link_like',
+        auto_collapse = 'no',
+        initial_state = 'close_all', // <-- Add new property, default to 'close_all'
     } = block.getBlockProperties();
 
     const [openState, setOpenState] = useState(() => {
         const state = {};
-        registerOpenState(pages, state);
+        // Only open all if 'open_all' is explicitly set
+        if (initial_state === 'open_all') {
+            registerOpenState(pages, state);
+        }
+        // Otherwise, return an empty state (all closed)
         return state;
     });
 
-    const toggleOpen = useCallback((id) => {
-        setOpenState((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
-    }, []);
+    // Update toggleOpen to handle accordion logic
+    const toggleOpen = useCallback(
+        (id, siblingIds) => {
+            setOpenState((prev) => {
+                const newState = { ...prev };
+                const isOpening = !prev[id]; // Check if we're about to open this item
+
+                // If auto_collapse is on, and we are opening an item, close all siblings
+                if (auto_collapse === 'yes' && isOpening && siblingIds) {
+                    siblingIds.forEach((siblingId) => {
+                        if (siblingId !== id) {
+                            newState[siblingId] = false;
+                        }
+                    });
+                }
+
+                // Toggle the clicked item
+                newState[id] = isOpening;
+
+                return newState;
+            });
+        },
+        [auto_collapse] // <-- Add dependency
+    );
 
     return (
         <div className="relative">
-            <div className="md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-6 md:pl-1">
+            <div className="bg-text-color-0 md:bg-bg-color md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-6 md:pl-1">
                 <nav className="text-base md:text-sm lg:text-base xl:text-base">
                     <Navigation
                         navigation={pages}
@@ -74,8 +98,15 @@ const Navigation = ({
     const isRoot = level === 0;
 
     const containerClass = [
-        level === 0 ? 'space-y-9' : 'mt-2 space-y-2 lg:mt-4 lg:space-y-4',
-        hierarchyIndicator === 'line' && level > 0 ? 'border-l-2 border-text-color/20' : '',
+        // isRoot ? 'space-y-6' : 'mt-2 space-y-2 lg:mt-4 lg:space-y-4',
+        isRoot
+            ? navigationStyle === 'button_like'
+                ? 'space-y-4' // Smaller gap for root buttons
+                : 'space-y-6' // Original gap for root links
+            : navigationStyle === 'button_like'
+            ? 'mt-1 space-y-2 lg:mt-3 lg:space-y-3' // Smaller gap for nested buttons
+            : 'mt-2 space-y-2 lg:mt-3 lg:space-y-4', // Original gap for nested links
+        hierarchyIndicator === 'line' && !isRoot ? 'border-l-2 border-text-color/20' : '',
         level > 1 ? 'ml-5' : 'ml-1',
     ].filter(Boolean);
 
@@ -85,75 +116,96 @@ const Navigation = ({
                 const hasChildren = page.child_items?.length > 0;
                 const showChildren = (hasChildren && openState[page.id]) || collapsible === 'no';
 
-                const labelClass = [];
+                // 1. Classes for the <li> wrapper <div>
+                const itemWrapperClasses = ['relative flex items-center justify-between'];
 
-                if (level === 0) {
-                    labelClass.push('font-semibold');
+                if (!isRoot) {
+                    // Handle indentation for nested items
+                    if (navigationStyle === 'button_like') {
+                        itemWrapperClasses.push(hierarchyIndicator !== 'none' ? 'ml-5' : 'ml-1');
+                    } else {
+                        itemWrapperClasses.push('ml-3.5');
+                    }
+                }
 
-                    if (page.hasData) {
-                        if (isActive(page)) {
-                            labelClass.push('text-link-active-color');
-                        } else {
-                            labelClass.push('text-text-color hover:text-link-hover-color');
-                            if (navigationStyle === 'button_like') {
-                                labelClass.push('block');
-                            }
+                if (navigationStyle === 'button_like') {
+                    itemWrapperClasses.push('px-2 py-1 rounded-[var(--border-radius)]');
+
+                    // Handle button-like active/inactive/hover states
+                    if (isActive(page)) {
+                        itemWrapperClasses.push(
+                            'bg-btn-hover-color [&_a]:!text-btn-hover-text-color [&_button_svg]:!text-btn-hover-text-color'
+                        );
+                    } else if (!isRoot) {
+                        // Inactive, non-root button
+                        itemWrapperClasses.push(
+                            'bg-btn-color [&_a]:!text-btn-text-color hover:bg-btn-hover-color [&_a]:hover:!text-btn-hover-text-color [&_button_svg]:hover:!text-btn-hover-text-color'
+                        );
+                    } else if (isRoot && page.hasData) {
+                        // Inactive, root, and has a link (so it can be hovered)
+                        itemWrapperClasses.push(
+                            'hover:bg-btn-hover-color [&_a]:hover:!text-btn-hover-text-color [&_button_svg]:hover:!text-btn-hover-text-color'
+                        );
+                    }
+                }
+
+                // 3. Classes for the hover-dot (if applicable)
+                if (page.hasData && hierarchyIndicator === 'line' && !isRoot) {
+                    itemWrapperClasses.push(
+                        'before:pointer-events-none before:absolute before:bg-text-color-40',
+                        'before:top-1/2 before:-translate-y-1/2', // Vertical centering
+                        'before:h-1.5 before:w-1.5 before:rounded-full',
+                        'before:opacity-0 hover:before:opacity-100 before:transition-opacity',
+                        // Horizontal positioning based on style
+                        navigationStyle === 'button_like'
+                            ? 'before:-left-[24px]'
+                            : 'before:-left-[1.1rem]'
+                    );
+                }
+
+                // 2. Classes for the <p> or <Link> label
+                const labelClasses = [];
+
+                if (isRoot) {
+                    labelClasses.push('font-semibold');
+                }
+
+                if (page.hasData) {
+                    // This is a clickable link
+                    if (isActive(page)) {
+                        labelClasses.push('text-link-active-color');
+                        if (!isRoot) {
+                            // Active, non-root links are also medium weight
+                            labelClasses.push('font-medium');
                         }
                     } else {
-                        labelClass.push('text-text-color');
+                        // Inactive link
+                        labelClasses.push('text-text-color hover:text-link-hover-color');
+                        if (!isRoot) {
+                            labelClasses.push('hover:[text-shadow:0.5px_0_0_currentColor]');
+                        }
+                        if (navigationStyle === 'button_like') {
+                            labelClasses.push('block');
+                        }
                     }
                 } else {
-                    if (page.hasData) {
-                        if (isActive(page)) {
-                            labelClass.push('font-medium text-link-active-color');
-                        } else {
-                            labelClass.push(
-                                'text-text-color hover:text-link-hover-color hover:[text-shadow:0.5px_0_0_currentColor]'
-                            );
-                            if (navigationStyle === 'button_like') {
-                                labelClass.push('block');
-                            }
-                        }
-                    } else {
-                        labelClass.push('text-text-color');
-                    }
+                    // This is just a text label
+                    labelClasses.push('text-text-color');
                 }
 
                 return (
                     <li key={page.id} className={twJoin(!isRoot && 'relative')}>
-                        <div
-                            className={twJoin(
-                                'relative flex items-center justify-between',
-                                navigationStyle === 'button_like' && 'px-2 py-1 rounded-r-lg',
-                                navigationStyle === 'button_like' && !isRoot
-                                    ? isActive(page)
-                                        ? 'bg-btn-hover-color [&_a]:!text-btn-hover-text-color [&_button_svg]:!text-btn-hover-text-color'
-                                        : 'bg-btn-color [&_a]:!text-btn-text-color hover:bg-btn-hover-color [&_a]:hover:!text-btn-hover-text-color [&_button_svg]:hover:!text-btn-hover-text-color'
-                                    : '',
-                                navigationStyle === 'button_like' && isRoot && page.hasData
-                                    ? isActive(page)
-                                        ? 'bg-btn-hover-color [&_a]:!text-btn-hover-text-color [&_button_svg]:!text-btn-hover-text-color'
-                                        : 'hover:bg-btn-hover-color [&_a]:hover:!text-btn-hover-text-color [&_button_svg]:hover:!text-btn-hover-text-color'
-                                    : '',
-                                !isRoot
-                                    ? navigationStyle === 'button_like'
-                                        ? hierarchyIndicator !== 'none'
-                                            ? 'ml-5'
-                                            : 'ml-1'
-                                        : 'ml-3.5'
-                                    : ''
-                            )}
-                        >
+                        <div className={twJoin(itemWrapperClasses)}>
                             <div className={navigationStyle === 'button_like' ? 'flex-grow' : ''}>
                                 {page.hasData ? (
-                                    <Link to={page.route} className={twJoin(labelClass)}>
+                                    <Link to={page.route} className={twJoin(labelClasses)}>
                                         {page.label}
                                     </Link>
                                 ) : (
-                                    <p className={twJoin(labelClass)}>{page.label}</p>
+                                    <p className={twJoin(labelClasses)}>{page.label}</p>
                                 )}
                             </div>
-                            {hierarchyIndicator === 'thread' && level > 0 ? (
+                            {hierarchyIndicator === 'thread' && !isRoot ? (
                                 <div className="absolute top-[0px] -left-[18px]">
                                     <TbBorderCornerIos className="w-4 h-4 -rotate-90 text-text-color/60" />
                                 </div>
@@ -161,7 +213,11 @@ const Navigation = ({
                             {collapsible !== 'no' && hasChildren ? (
                                 <button
                                     className="ml-2 focus:outline-none bg-transparent"
-                                    onClick={() => toggleNavOpen(page.id)}
+                                    // Update onClick to pass sibling IDs
+                                    onClick={() => {
+                                        const siblingIds = navigation.map((p) => p.id);
+                                        toggleNavOpen(page.id, siblingIds);
+                                    }}
                                 >
                                     {collapsible === 'arrows' && (
                                         <LuChevronDown
