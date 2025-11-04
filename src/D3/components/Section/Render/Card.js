@@ -1,8 +1,31 @@
 import React, { useRef } from 'react';
 import { twJoin, website } from '@uniwebcms/module-sdk';
-import { Link, Asset, FileLogo } from '@uniwebcms/core-components';
+import { Link, Asset, FileLogo, Icon } from '@uniwebcms/core-components';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { LuMapPin, LuPhone, LuLink, LuCalendarDays, LuDownload } from 'react-icons/lu';
+import {
+    LuMapPin,
+    LuPhone,
+    LuLink,
+    LuCalendarDays,
+    LuDownload,
+    LuExternalLink,
+} from 'react-icons/lu';
+
+function getCoverImgUrl(coverImg) {
+    if (!coverImg) return null;
+
+    let coverUrl = '';
+
+    if (coverImg.src) {
+        coverUrl = coverImg.src;
+    } else if (coverImg.identifier) {
+        coverUrl =
+            new uniweb.Profile(`docufolio/profile`, '_template').getAssetInfo(coverImg.identifier)
+                ?.src || '';
+    }
+
+    return coverUrl;
+}
 
 const MapComponent = ({ address }) => {
     const { isLoaded } = useJsApiLoader({
@@ -48,6 +71,8 @@ export default function Card(props) {
         hidden,
         // info,
         displayMode,
+        coverImg,
+        icon,
     } = props;
 
     if (hidden) {
@@ -56,18 +81,22 @@ export default function Card(props) {
 
     switch (type) {
         case 'event':
-            return <Event {...{ title, caption, href, address, datetime, contact }}></Event>;
+            return (
+                <Event
+                    {...{ title, caption, href, address, datetime, contact, icon, coverImg }}
+                ></Event>
+            );
         case 'address':
             return <Address {...{ title, caption, href, address, date, contact }}></Address>;
         case 'document':
             return <Document {...{ title, caption, document, displayMode }}></Document>;
         default:
-            return <Basic {...{ title, caption, href }}></Basic>;
+            return <Basic {...{ title, caption, href, icon, coverImg }}></Basic>;
     }
 }
 
 const Event = (props) => {
-    const { title, caption, href, address, datetime, contact } = props;
+    const { title, caption, href, address, datetime, contact, coverImg, icon } = props;
 
     let phoneNumber, extension, cleanedPhoneNum;
 
@@ -76,45 +105,72 @@ const Event = (props) => {
         cleanedPhoneNum = phoneNumber.replace(/[^+\d]/g, '');
     }
 
+    const coverImgUrl = getCoverImgUrl(coverImg);
+
     return (
-        <div className="not-prose p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)]">
-            {datetime ? (
-                <p className="mb-4 text-sm lg:text-base font-medium text-link-color">{datetime}</p>
-            ) : null}
-            <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
-            {caption ? <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p> : null}
-            {address ? (
-                <div className="mt-4 flex items-start">
-                    <LuMapPin className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
-                    <p className="text-sm lg:text-base">{address.formatted_address}</p>
+        <div
+            className={twJoin(
+                'not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden',
+                coverImgUrl ? '' : 'p-6'
+            )}
+        >
+            {coverImgUrl && (
+                <div className="w-full h-40 overflow-hidden">
+                    <img
+                        src={coverImgUrl}
+                        alt={'Card Cover Image'}
+                        className="w-full h-full object-cover"
+                    />
                 </div>
-            ) : null}
-            {contact && (
-                <div className="mt-3 flex items-start">
-                    <LuPhone className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
-                    <p className="text-sm lg:text-base">
-                        <a href={`tel:${cleanedPhoneNum}`}>{phoneNumber}</a>
-                        {extension && (
-                            <span>
-                                {website.localize({
-                                    en: ` ext. ${extension}`,
-                                    fr: ` poste ${extension}`,
-                                    es: ` ext. ${extension}`,
-                                    zh: ` 分机 ${extension}`,
-                                })}
-                            </span>
-                        )}
+            )}
+            <div className={twJoin('relative', coverImgUrl ? 'px-6 py-4' : '')}>
+                {icon && (
+                    <div className="mb-4">
+                        <Icon icon={icon} className="w-8 h-8" />
+                    </div>
+                )}
+                {datetime ? (
+                    <p className="mb-4 text-sm lg:text-base font-medium text-link-color">
+                        {datetime}
                     </p>
-                </div>
-            )}
-            {href && (
-                <div className="mt-3 flex items-start">
-                    <LuLink className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
-                    <Link to={href} className="text-sm lg:text-base hover:underline break-all">
-                        {href}
-                    </Link>
-                </div>
-            )}
+                ) : null}
+                <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+                {caption ? (
+                    <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p>
+                ) : null}
+                {address ? (
+                    <div className="mt-4 flex items-start">
+                        <LuMapPin className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <p className="text-sm lg:text-base">{address.formatted_address}</p>
+                    </div>
+                ) : null}
+                {contact && (
+                    <div className="mt-3 flex items-start">
+                        <LuPhone className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <p className="text-sm lg:text-base">
+                            <a href={`tel:${cleanedPhoneNum}`}>{phoneNumber}</a>
+                            {extension && (
+                                <span>
+                                    {website.localize({
+                                        en: ` ext. ${extension}`,
+                                        fr: ` poste ${extension}`,
+                                        es: ` ext. ${extension}`,
+                                        zh: ` 分机 ${extension}`,
+                                    })}
+                                </span>
+                            )}
+                        </p>
+                    </div>
+                )}
+                {href && (
+                    <div className="mt-3 flex items-start">
+                        <LuLink className="w-4 h-4 mt-1 mr-2 flex-shrink-0 text-text-color/80" />
+                        <Link to={href} className="text-sm lg:text-base hover:underline break-all">
+                            {href}
+                        </Link>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
@@ -255,17 +311,50 @@ const Document = (props) => {
 };
 
 const Basic = (props) => {
-    const { title, caption, href } = props;
+    const { title, caption, href, coverImg, icon } = props;
+
+    const coverImgUrl = getCoverImgUrl(coverImg);
+
+    console.log('icon', icon);
 
     return (
-        <div className="not-prose p-6 w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)]">
-            <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
-            {caption ? <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p> : null}
-            {href && (
-                <Link to={href} className="mt-4 inline-block text-sm lg:text-base hover:underline">
-                    {href}
-                </Link>
+        <div
+            className={twJoin(
+                'not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden',
+                coverImgUrl ? '' : 'p-6'
             )}
+        >
+            {coverImgUrl && (
+                <div className="w-full h-40 overflow-hidden">
+                    <img
+                        src={coverImgUrl}
+                        alt={'Card Cover Image'}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+            )}
+            <div className={twJoin('relative', coverImgUrl ? 'px-6 py-4' : '')}>
+                {icon && (
+                    <div className="mb-4">
+                        <Icon icon={icon} className="w-8 h-8" />
+                    </div>
+                )}
+                <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+                {caption ? (
+                    <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p>
+                ) : null}
+                {href && (
+                    <Link
+                        to={href}
+                        className={twJoin(
+                            'absolute inline-block',
+                            coverImgUrl ? 'top-4 right-6' : 'top-0 right-0'
+                        )}
+                    >
+                        <LuExternalLink className="w-6 h-6 text-link-color hover:text-link-hover-color transition-colors duration-200" />
+                    </Link>
+                )}
+            </div>
         </div>
     );
 };
