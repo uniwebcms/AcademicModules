@@ -10,7 +10,10 @@ export default function ({ website }) {
         <Popover className={`relative`}>
             {({ open }) => (
                 <>
-                    <Popover.Button as="div" className="focus:outline-none flex-shrink-0">
+                    <Popover.Button
+                        as="div"
+                        className="focus:outline-none flex-shrink-0 cursor-pointer"
+                    >
                         <LuGlobe className="h-5 w-5 text-icon-color hover:text-icon-color/80 transition-colors duration-200" />
                     </Popover.Button>
                     <Transition

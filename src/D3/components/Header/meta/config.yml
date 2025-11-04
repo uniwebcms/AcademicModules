@@ -10,8 +10,218 @@ description:
 
 export: true
 
-images:
-    - example.png
+elements:
+    media:
+        type: image
+        label:
+            en: Site logo
+            fr: Logo du site
+        description:
+            en: The logo of the website displayed in the header. Use "logo-dark" or "logo-light" caption to specify different logos for dark and light modes.
+            fr: Le logo du site Web affiché dans l'en-tête. Utilisez la légende "logo-dark" ou "logo-light" pour spécifier différents logos pour les modes sombre et clair.
+    form:
+        description:
+            en: A form to collect navigation links.
+            fr: Un formulaire pour collecter des liens de navigation.
+        schemas:
+            - id: form
+              name:
+                  en: Form
+                  fr: Formulaire
+              # isComposite: false means the form data will be a single object {}.
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Link
+                      fr: Link
+                  fields:
+                      - id: type
+                        type: select
+                        label:
+                            en: Link Type
+                            fr: Type de lien
+                        description:
+                            en: Defines the type of link.
+                            fr: Définit le type de lien.
+                        required: true
+                        options:
+                            - label:
+                                  en: Plain
+                                  fr: Simple
+                              value: plain
+                            - label:
+                                  en: Group
+                                  fr: Groupe
+                              value: group
+                            - label:
+                                  en: Primary
+                                  fr: Primaire
+                              value: primary
+                            - label:
+                                  en: Secondary
+                                  fr: Secondaire
+                              value: secondary
+                      - id: label
+                        type: text
+                        label:
+                            en: Link Label
+                            fr: Label du lien
+                        description:
+                            en: The label for the link.
+                            fr: L'étiquette du lien.
+                      - id: href
+                        type: text
+                        label:
+                            en: Link URL
+                            fr: URL du lien
+                        description:
+                            en: The URL for the link.
+                            fr: L'URL du lien.
+                      - id: icon
+                        type: select
+                        label:
+                            en: Icon
+                            fr: Icône
+                        description:
+                            en: The icon for the link.
+                            fr: L'icône du lien.
+                        options:
+                            - value: none
+                              label:
+                                  en: None
+                                  fr: Aucune
+                            - value: facebook
+                              label:
+                                  en: Facebook
+                                  fr: Facebook
+                            - value: linkedin
+                              label:
+                                  en: LinkedIn
+                                  fr: LinkedIn
+                            - value: medium
+                              label:
+                                  en: Medium
+                                  fr: Medium
+                            - value: quora
+                              label:
+                                  en: Quora
+                                  fr: Quora
+                            - value: tumblr
+                              label:
+                                  en: Tumblr
+                                  fr: Tumblr
+                            - value: youtube
+                              label:
+                                  en: YouTube
+                                  fr: YouTube
+                            - value: github
+                              label:
+                                  en: GitHub
+                                  fr: GitHub
+                            - value: x
+                              label:
+                                  en: X
+                                  fr: X
+                            - value: instagram
+                              label:
+                                  en: Instagram
+                                  fr: Instagram
+                            - value: arrow_right
+                              label:
+                                  en: Arrow Right
+                                  fr: Flèche droite
+                            - value: arrow_right_up
+                              label:
+                                  en: Arrow Right Up
+                                  fr: Flèche droite vers le haut
+                      - id: group_links
+                        type: form
+                        label:
+                            en: Group Links
+                            fr: Liens de groupe
+                        description:
+                            en: Links in the group.
+                            fr: Liens dans le groupe.
+                        childSchema:
+                            name:
+                                en: Group Links
+                                fr: Liens de groupe
+                            fields:
+                                - id: label
+                                  type: text
+                                  label:
+                                      en: Link Label
+                                      fr: Label du lien
+                                  description:
+                                      en: The label for the link.
+                                      fr: L'étiquette du lien.
+                                - id: href
+                                  type: text
+                                  label:
+                                      en: Link URL
+                                      fr: URL du lien
+                                  description:
+                                      en: The URL for the link.
+                                      fr: L'URL du lien.
+                                # - id: icon
+                                #   type: select
+                                #   label:
+                                #       en: Icon
+                                #       fr: Icône
+                                #   description:
+                                #       en: The icon for the link.
+                                #       fr: L'icône du lien.
+                                #   options:
+                                #       - value: none
+                                #         label:
+                                #             en: None
+                                #             fr: Aucune
+                                #       - value: facebook
+                                #         label:
+                                #             en: Facebook
+                                #             fr: Facebook
+                                #       - value: linkedin
+                                #         label:
+                                #             en: LinkedIn
+                                #             fr: LinkedIn
+                                #       - value: medium
+                                #         label:
+                                #             en: Medium
+                                #             fr: Medium
+                                #       - value: quora
+                                #         label:
+                                #             en: Quora
+                                #             fr: Quora
+                                #       - value: tumblr
+                                #         label:
+                                #             en: Tumblr
+                                #             fr: Tumblr
+                                #       - value: youtube
+                                #         label:
+                                #             en: YouTube
+                                #             fr: YouTube
+                                #       - value: github
+                                #         label:
+                                #             en: GitHub
+                                #             fr: GitHub
+                                #       - value: x
+                                #         label:
+                                #             en: X
+                                #             fr: X
+                                #       - value: instagram
+                                #         label:
+                                #             en: Instagram
+                                #             fr: Instagram
+                                #       - value: arrow_right
+                                #         label:
+                                #             en: Arrow Right
+                                #             fr: Flèche droite
+                                #       - value: arrow_right_up
+                                #         label:
+                                #             en: Arrow Right Up
+                                #             fr: Flèche droite vers le haut
+                        condition:
+                            type: group
 
 properties:
     sticky:
@@ -68,25 +278,24 @@ properties:
         description:
             en: If enabled, the header will have a transparent background.
             fr: Si activé, l'en-tête aura un fond transparent.
-
-presets:
-    sticky_full_center_transparency:
-        label:
-            en: Sticky Full Width with Center Search (Transparent)
-            fr: En-tête collant pleine largeur avec recherche centrée (transparent)
-        properties:
-            sticky: true
-            mode: full_width
-            search_position: center
-            transparency: true
-        image: sticky_full_center_transparency.png
-    island_right:
-        label:
-            en: Island Layout with Right Search
-            fr: Mise en page îlot avec recherche à droite
-        properties:
-            sticky: true
-            mode: island
-            search_position: right
-            transparency: false
-        image: island_right.png
+# presets:
+#     sticky_full_center_transparency:
+#         label:
+#             en: Sticky Full Width with Center Search (Transparent)
+#             fr: En-tête collant pleine largeur avec recherche centrée (transparent)
+#         properties:
+#             sticky: true
+#             mode: full_width
+#             search_position: center
+#             transparency: true
+#         image: sticky_full_center_transparency.png
+#     island_right:
+#         label:
+#             en: Island Layout with Right Search
+#             fr: Mise en page îlot avec recherche à droite
+#         properties:
+#             sticky: true
+#             mode: island
+#             search_position: right
+#             transparency: false
+#         image: island_right.png
