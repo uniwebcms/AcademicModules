@@ -124,7 +124,7 @@ const Event = (props) => {
                 </div>
             )}
             <div className={twJoin('relative', coverImgUrl ? 'px-6 py-4' : '')}>
-                {icon && (
+                {icon.svg && (
                     <div className="mb-4">
                         <Icon icon={icon} className="w-8 h-8" />
                     </div>
@@ -315,8 +315,6 @@ const Basic = (props) => {
 
     const coverImgUrl = getCoverImgUrl(coverImg);
 
-    console.log('icon', icon);
-
     return (
         <div
             className={twJoin(
@@ -334,7 +332,7 @@ const Basic = (props) => {
                 </div>
             )}
             <div className={twJoin('relative', coverImgUrl ? 'px-6 py-4' : '')}>
-                {icon && (
+                {icon.svg && (
                     <div className="mb-4">
                         <Icon icon={icon} className="w-8 h-8" />
                     </div>
