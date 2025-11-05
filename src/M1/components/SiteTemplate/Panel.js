@@ -11,14 +11,17 @@ export default function (props) {
     const info = profile.getBasicInfo();
     const { title: name, subtitle: description } = info;
 
+    const { useLocation } = website.getRoutingComponents();
     const templateSite = profile.getId();
+
+    const location = useLocation();
 
     return (
         <div className={`flex h-full w-full flex-col bg-neutral-50`}>
             <div className={`flex flex-col w-full px-4 py-3`}>
                 <div className={`flex items-center justify-between`}>
                     <Link
-                        to={input.makeHrefToIndex()}
+                        to={`${input.makeHrefToIndex()}${location.search}`}
                         className={`group flex items-center space-x-1 cursor-pointer text-neutral-600 hover:text-neutral-900`}
                     >
                         <HiArrowLeft

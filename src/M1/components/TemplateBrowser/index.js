@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Container from '../_utils/Container';
 import { twJoin, website } from '@uniwebcms/module-sdk';
 import { Link } from '@uniwebcms/core-components';
@@ -9,6 +9,7 @@ import { IoPricetagsOutline } from 'react-icons/io5';
 import VirtualGrid from './components/VirtualGrid';
 import { normalizeData } from './helper';
 import Modal from './components/Modal';
+import debounce from 'lodash.debounce';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { motion } from 'framer-motion';
 
@@ -344,6 +345,8 @@ const initFilters = (config) => {
     return filterObj;
 };
 
+const SEARCH_DEBOUNCE_MS = 300;
+
 export default function TemplateBrowser(props) {
     const { block, input } = props;
     const { title, properties, links } = block.getBlockContent();
@@ -352,57 +355,113 @@ export default function TemplateBrowser(props) {
     const menuFilter = filterInfo.find((filter) => filter.type === 'menu');
     const templates = normalizeData(input, properties);
 
-    const { useLocation } = website.getRoutingComponents();
+    const filterKeys = useMemo(() => {
+        const keys = new Set(['searchText']);
+
+        filterInfo.forEach((filter) => {
+            if (filter?.name) {
+                keys.add(filter.name);
+            }
+        });
+
+        if (sort) {
+            keys.add('sort');
+        }
+
+        return Array.from(keys);
+    }, [filterInfo, sort]);
+
+    const defaultFilters = useMemo(() => initFilters(properties), [properties]);
+
+    const { useLocation, useNavigate } = website.getRoutingComponents();
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const [filters, setFilters] = useState(defaultFilters);
+    const [sectionStyle, setSectionStyle] = useState({});
+
+    const updateQueryParams = useCallback(
+        (updates) => {
+            const searchParams = new URLSearchParams(location.search);
+            let hasChanges = false;
+
+            Object.entries(updates).forEach(([key, rawValue]) => {
+                const value = rawValue == null ? rawValue : String(rawValue);
+                const defaultValue =
+                    defaultFilters[key] == null ? defaultFilters[key] : String(defaultFilters[key]);
+
+                const shouldRemove =
+                    value === undefined ||
+                    value === null ||
+                    value === '' ||
+                    (defaultValue !== undefined && defaultValue !== null && value === defaultValue);
+
+                if (shouldRemove) {
+                    if (searchParams.has(key)) {
+                        searchParams.delete(key);
+                        hasChanges = true;
+                    }
+                } else if (searchParams.get(key) !== value) {
+                    searchParams.set(key, value);
+                    hasChanges = true;
+                }
+            });
+
+            if (!hasChanges) {
+                return;
+            }
+
+            const searchString = searchParams.toString();
+            const nextPath = `${location.pathname}${searchString ? `?${searchString}` : ''}${
+                location.hash || ''
+            }`;
+
+            navigate(nextPath, { replace: true });
+        },
+        [defaultFilters, location.hash, location.pathname, location.search, navigate]
+    );
 
     const updateSearchText = (text) => {
-        setFilters((prevFilters) => ({ ...prevFilters, searchText: text }));
+        updateQueryParams({ searchText: text || '' });
     };
 
     const updateFilters = (key, newValue) => {
-        setFilters((prevFilters) => ({ ...prevFilters, [key]: newValue }));
+        updateQueryParams({ [key]: newValue });
     };
 
     const updateSort = (newSort) => {
-        setFilters((prevFilters) => ({ ...prevFilters, sort: newSort }));
+        updateQueryParams({ sort: newSort });
     };
 
-    const [filters, setFilters] = useState(initFilters(properties));
-    const [sectionStyle, setSectionStyle] = useState({});
-
-    // get the category and libraryType from the URL if they exist, set them to the filters
+    // sync filter state with URL search params
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
-        const category = searchParams.get('category');
-        const libraryType = searchParams.get('libraryType');
+        const nextFilters = { ...defaultFilters };
 
-        if (category || libraryType) {
-            setFilters((prevFilters) => {
-                const updatedFilters = { ...prevFilters };
+        filterKeys.forEach((key) => {
+            if (!(key in nextFilters)) {
+                nextFilters[key] = '';
+            }
 
-                if (category && prevFilters.category !== category) {
-                    updatedFilters.category = category;
+            const paramValue = searchParams.get(key);
+
+            if (paramValue !== null) {
+                nextFilters[key] = paramValue;
+            }
+        });
+
+        setFilters((prevFilters) => {
+            const allKeys = new Set([...Object.keys(prevFilters), ...Object.keys(nextFilters)]);
+
+            for (const key of allKeys) {
+                if (prevFilters[key] !== nextFilters[key]) {
+                    return nextFilters;
                 }
+            }
 
-                if (libraryType && prevFilters.libraryType !== libraryType) {
-                    updatedFilters.libraryType = libraryType;
-                }
-
-                return updatedFilters;
-            });
-
-            // Clean up the URL to remove 'category' and 'libraryType' params (without causing a page reload)
-            searchParams.delete('category');
-            searchParams.delete('libraryType');
-
-            const newUrl =
-                window.location.pathname +
-                (searchParams.toString() ? '?' + searchParams.toString() : '') +
-                window.location.hash;
-
-            window.history.replaceState(null, '', newUrl);
-        }
-    }, [location.search]);
+            return prevFilters;
+        });
+    }, [location.search, defaultFilters, filterKeys]);
 
     // this is for the Dialog (Modal) to use all css variables from the section
     useEffect(() => {

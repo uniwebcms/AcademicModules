@@ -2,14 +2,17 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import VideoPreview from './VideoPreview';
 import IframePreview from './IframePreview';
-import { twJoin, stripTags } from '@uniwebcms/module-sdk';
+import { twJoin, stripTags, website } from '@uniwebcms/module-sdk';
 import { Link } from '@uniwebcms/core-components';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 const ItemCard = React.memo(({ item }) => {
+    const { useLocation } = website.getRoutingComponents();
+
     const [isHovering, setIsHovering] = useState(false);
     const [previewReady, setPreviewReady] = useState(false);
     const [coverImageLoaded, setCoverImageLoaded] = useState(false);
+    const location = useLocation();
 
     // Use intersection observer to detect when card is visible
     const { ref: cardRef, inView } = useInView({
@@ -43,13 +46,13 @@ const ItemCard = React.memo(({ item }) => {
 
         return (
             <div className={twJoin('block mt-2 px-1 py-1 relative space-y-0.5')}>
-                {/* <p
+                <p
                     className={twJoin('text-base font-bold truncate group-hover:underline')}
                     title={title}
                 >
                     {title}
-                </p> */}
-                {item.href ? (
+                </p>
+                {/* {item.href ? (
                     <Link to={item.href} className="text-base font-bold truncate hover:underline">
                         {title}
                     </Link>
@@ -57,7 +60,7 @@ const ItemCard = React.memo(({ item }) => {
                     <p className="text-base font-bold truncate" title={title}>
                         {title}
                     </p>
-                )}
+                )} */}
                 <p className="truncate text-sm text-text-color/70 h-5" title={description}>
                     {description}
                 </p>
@@ -121,7 +124,9 @@ const ItemCard = React.memo(({ item }) => {
             {cardInfo}
 
             {/* Overlay for link click */}
-            {/* {item.href && <Link to={item.href} className="absolute inset-0 z-[1]" />} */}
+            {item.href && (
+                <Link to={`${item.href}${location.search}`} className="absolute inset-0 z-[1]" />
+            )}
         </div>
     );
 });
