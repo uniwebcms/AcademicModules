@@ -278,6 +278,15 @@ properties:
         description:
             en: If enabled, the header will have a transparent background.
             fr: Si activé, l'en-tête aura un fond transparent.
+    site_navigation:
+        label:
+            en: Site Navigation
+            fr: Navigation du site
+        type: boolean
+        default: false
+        description:
+            en: If enabled, the header will include site navigation links.
+            fr: Si activé, l'en-tête inclura des liens de navigation du site.
 # presets:
 #     sticky_full_center_transparency:
 #         label:

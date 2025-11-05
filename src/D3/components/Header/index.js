@@ -43,8 +43,27 @@ const parseLinks = (form) => {
     return links;
 };
 
+const findNavigationRoute = (navigationItem) => {
+    if (navigationItem.hasData) return navigationItem.route;
+
+    // iterate through child items to find a valid route, return the first one hasData, use DFS
+    for (const child of navigationItem.child_items || []) {
+        const route = findNavigationRoute(child);
+        if (route) return route;
+    }
+
+    return null;
+};
+
+// return true if node route is a parent of current route
+const isParent = (current, node) => {
+    const firstSegment = current.split('/')[1];
+
+    return firstSegment === node.route;
+};
+
 // Mobile Nav Menu Component
-const MobileNavMenu = ({ links, isOpen, closeNav }) => {
+const MobileNavMenu = ({ links, isOpen, closeNav, siteNavigation }) => {
     // Define common styles
     const buttonStyles =
         'border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)]';
@@ -55,7 +74,8 @@ const MobileNavMenu = ({ links, isOpen, closeNav }) => {
             {/* Overlay */}
             <div
                 className={twJoin(
-                    'md:hidden fixed top-16 left-0 w-full h-[calc(100vh-64px)] bg-black/50 z-40',
+                    'md:hidden fixed left-0 w-full bg-black/50 z-40',
+                    siteNavigation ? 'top-28 h-[calc(100vh-112px)]' : 'top-16 h-[calc(100vh-64px)]',
                     isOpen ? 'block' : 'hidden'
                 )}
                 onClick={closeNav}
@@ -63,7 +83,8 @@ const MobileNavMenu = ({ links, isOpen, closeNav }) => {
             {/* Panel */}
             <div
                 className={twJoin(
-                    'md:hidden fixed top-16 right-0 w-full h-[calc(100vh-64px)] z-50 transition-transform transform duration-300 shadow-lg',
+                    'md:hidden fixed right-0 w-full z-50 transition-transform transform duration-300 shadow-lg',
+                    siteNavigation ? 'top-28 h-[calc(100vh-112px)]' : 'top-16 h-[calc(100vh-64px)]',
                     isOpen ? 'translate-x-0' : 'translate-x-full'
                 )}
             >
@@ -151,13 +172,16 @@ const MobileNavMenu = ({ links, isOpen, closeNav }) => {
 };
 
 export default function Header(props) {
-    const { block, website } = props;
+    const { page, block, website } = props;
+
+    console.log('page', website.activePage.activeRoute);
 
     const {
         sticky = true,
         mode = 'full_width',
-        search_position = 'center',
+        search_position: searchPosition = 'center',
         transparency = true,
+        site_navigation: siteNavigation = false,
     } = block.getBlockProperties();
 
     const { banner, images, form } = block.getBlockContent();
@@ -217,13 +241,19 @@ export default function Header(props) {
         (l) => !primaryLinks.includes(l) && !iconOnlyLinks.includes(l)
     );
 
+    // get site hierarchy for site navigation
+    const hierarchy = website.getPageHierarchy({
+        nested: true,
+        pageOnly: false,
+    });
+
     // Define common styles
     const buttonStyles =
         'border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)]';
     const linkBaseClass =
         'flex items-center gap-2 px-3 py-[7px] text-sm font-medium transition-colors duration-200';
 
-    const outerWrapperClass = ['h-16'];
+    const outerWrapperClass = siteNavigation ? ['h-28'] : ['h-16'];
 
     if (mode === 'full_width') {
         outerWrapperClass.push('w-full max-w-screen border-b border-text-color/20');
@@ -255,193 +285,229 @@ export default function Header(props) {
     return (
         <>
             <div className={twJoin(...outerWrapperClass)}>
-                <div
-                    className={twJoin(
-                        'h-full flex items-center justify-between max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 py-3',
-                        mode === 'full_width'
-                            ? 'xl:px-0 xl:mx-[max(48px,calc((100vw-88rem)/2))]'
-                            : ''
-                    )}
-                >
-                    <div className="w-auto lg:w-64 flex-shrink-0 flex items-center justify-start">
-                        <button
-                            className="group md:hidden p-1 rounded-md bg-transparent hover:bg-text-color/10 focus:outline-none mr-2"
-                            onClick={toggleSidebar}
-                        >
-                            <span className="sr-only">Toggle Sidebar</span>
-                            <HiMiniBars3BottomLeft className="h-6 w-6 text-text-color/80 group-hover:text-text-color" />
-                        </button>
-                        {/* Logo Image */}
-                        {logoImg ? (
-                            <Link to="/">
-                                <Image
-                                    profile={getPageProfile()}
-                                    {...logoImg}
-                                    className="h-10 w-auto"
-                                />
-                            </Link>
-                        ) : null}
-                    </div>
-                    {search_position === 'center' ? (
-                        <div className="hidden md:block">
-                            <Search {...props} searchPosition={search_position} enableShortcut />
+                <div className="flex flex-col w-full">
+                    {/* regular header content wrapper */}
+                    <div
+                        className={twJoin(
+                            'h-16 flex items-center justify-between max-w-full xl:max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 py-3',
+                            mode === 'full_width'
+                                ? 'w-full xl:w-auto xl:px-0 xl:mx-[max(48px,calc((100vw-88rem)/2))]'
+                                : 'w-full'
+                        )}
+                    >
+                        <div className="w-auto lg:w-64 flex-shrink-0 flex items-center justify-start">
+                            <button
+                                className="group md:hidden p-1 rounded-md bg-transparent hover:bg-text-color/10 focus:outline-none mr-2"
+                                onClick={toggleSidebar}
+                            >
+                                <span className="sr-only">Toggle Sidebar</span>
+                                <HiMiniBars3BottomLeft className="h-6 w-6 text-text-color/80 group-hover:text-text-color" />
+                            </button>
+                            {/* Logo Image */}
+                            {logoImg ? (
+                                <Link to="/">
+                                    <Image
+                                        profile={getPageProfile()}
+                                        {...logoImg}
+                                        className="h-10 w-auto"
+                                    />
+                                </Link>
+                            ) : null}
                         </div>
-                    ) : null}
-                    <div className="h-full w-auto lg:w-64 flex-shrink-0 flex items-center justify-end gap-3 xl:gap-4">
-                        {/* Render Regular and Icon-Only Links */}
-                        <div className="hidden md:flex items-center gap-3 xl:gap-4">
-                            {/* Regular Links */}
-                            {regularLinks.map((link, i) => {
-                                const { style, label, href, icon } = link;
+                        {searchPosition === 'center' ? (
+                            <div className="hidden md:block">
+                                <Search {...props} searchPosition={searchPosition} enableShortcut />
+                            </div>
+                        ) : null}
+                        <div className="h-full w-auto lg:w-64 flex-shrink-0 flex items-center justify-end gap-3 xl:gap-4">
+                            {/* Render Regular and Icon-Only Links */}
+                            <div className="hidden md:flex items-center gap-3 xl:gap-4">
+                                {/* Regular Links */}
+                                {regularLinks.map((link, i) => {
+                                    const { style, label, href, icon } = link;
 
-                                if (style === 'plain') {
+                                    if (style === 'plain') {
+                                        return (
+                                            <Link
+                                                key={i}
+                                                to={href}
+                                                className="flex items-center gap-2 text-text-color/90 hover:text-text-color transition-colors duration-200"
+                                            >
+                                                {icon && icon !== 'none' && (
+                                                    <Icon
+                                                        icon={icon}
+                                                        className="h-5 w-5 flex-shrink-0"
+                                                    />
+                                                )}
+                                                {label && (
+                                                    <span className="text-sm font-medium whitespace-nowrap truncate max-w-32">
+                                                        {label}
+                                                    </span>
+                                                )}
+                                            </Link>
+                                        );
+                                    }
+
+                                    if (style === 'group') {
+                                        const trigger = (
+                                            <div
+                                                className={twJoin(
+                                                    linkBaseClass,
+                                                    buttonStyles,
+                                                    'border-text-color/20 cursor-pointer hover:bg-text-color-0'
+                                                )}
+                                            >
+                                                {icon && icon !== 'none' && (
+                                                    <Icon
+                                                        icon={icon}
+                                                        className="h-4 w-4 flex-shrink-0"
+                                                    />
+                                                )}
+                                                {label && (
+                                                    <span className="whitespace-nowrap truncate max-w-32">
+                                                        {label}
+                                                    </span>
+                                                )}
+                                                <LuChevronDown className="h-4 w-4 text-text-color/70 ml-1" />
+                                            </div>
+                                        );
+
+                                        const options = link.links.map((item, j) => (
+                                            <Link
+                                                key={j}
+                                                to={item.href}
+                                                className="block w-full px-4 py-2 text-left text-sm text-text-color hover:bg-text-color/10"
+                                            >
+                                                {item.label}
+                                            </Link>
+                                        ));
+
+                                        return (
+                                            <PopoverMenu
+                                                key={i}
+                                                trigger={trigger}
+                                                options={options}
+                                                menuClassName={twJoin(
+                                                    buttonStyles,
+                                                    'bg-text-color-0 w-48 mt-2'
+                                                )}
+                                                autoClose={true}
+                                            />
+                                        );
+                                    }
+                                    return null;
+                                })}
+
+                                {/* Icon-Only Links */}
+                                {iconOnlyLinks.map((link, i) => (
+                                    <Link
+                                        key={i}
+                                        to={link.href}
+                                        className="flex items-center gap-2"
+                                        aria-label={link.icon}
+                                    >
+                                        <Icon
+                                            icon={link.icon}
+                                            className="h-5 w-5 text-icon-color hover:text-icon-color/80 transition-colors duration-200"
+                                        />
+                                    </Link>
+                                ))}
+                            </div>
+
+                            {/* Search (right position) */}
+                            <div
+                                className={twJoin(
+                                    searchPosition === 'center' ? 'md:hidden block' : 'block'
+                                )}
+                            >
+                                <Search {...props} enableShortcut={searchPosition !== 'center'} />
+                            </div>
+                            <ThemeSelector
+                                className="relative z-10"
+                                {...{ theme: themeMode, finalTheme, setTheme }}
+                            />
+                            <LangSwitch website={website} />
+
+                            {/* Primary/Secondary Links (Desktop) */}
+                            <div className="hidden md:flex items-center gap-3 xl:gap-4">
+                                {primaryLinks.map((link, i) => {
+                                    const { style, label, href, icon } = link;
+                                    const isPrimary = style === 'primary';
+                                    const buttonTypeClass = isPrimary
+                                        ? 'bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color'
+                                        : 'bg-btn-alt-color text-btn-alt-text-color hover:bg-btn-alt-hover-color hover:text-btn-alt-hover-text-color';
+
                                     return (
                                         <Link
                                             key={i}
                                             to={href}
-                                            className="flex items-center gap-2 text-text-color/90 hover:text-text-color transition-colors duration-200"
-                                        >
-                                            {icon && icon !== 'none' && (
-                                                <Icon
-                                                    icon={icon}
-                                                    className="h-5 w-5 flex-shrink-0"
-                                                />
-                                            )}
-                                            {label && (
-                                                <span className="text-sm font-medium whitespace-nowrap truncate max-w-32">
-                                                    {label}
-                                                </span>
-                                            )}
-                                        </Link>
-                                    );
-                                }
-
-                                if (style === 'group') {
-                                    const trigger = (
-                                        <div
                                             className={twJoin(
                                                 linkBaseClass,
                                                 buttonStyles,
-                                                'border-text-color/20 cursor-pointer hover:bg-text-color-0'
+                                                buttonTypeClass
                                             )}
                                         >
-                                            {icon && icon !== 'none' && (
-                                                <Icon
-                                                    icon={icon}
-                                                    className="h-4 w-4 flex-shrink-0"
-                                                />
-                                            )}
                                             {label && (
                                                 <span className="whitespace-nowrap truncate max-w-32">
                                                     {label}
                                                 </span>
                                             )}
-                                            <LuChevronDown className="h-4 w-4 text-text-color/70 ml-1" />
-                                        </div>
-                                    );
-
-                                    const options = link.links.map((item, j) => (
-                                        <Link
-                                            key={j}
-                                            to={item.href}
-                                            className="block w-full px-4 py-2 text-left text-sm text-text-color hover:bg-text-color/10"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    ));
-
-                                    return (
-                                        <PopoverMenu
-                                            key={i}
-                                            trigger={trigger}
-                                            options={options}
-                                            menuClassName={twJoin(
-                                                buttonStyles,
-                                                'bg-text-color-0 w-48 mt-2'
+                                            {icon && icon !== 'none' && (
+                                                <Icon
+                                                    icon={icon}
+                                                    className="h-4 w-4 flex-shrink-0 text-inherit"
+                                                />
                                             )}
-                                            autoClose={true}
-                                        />
+                                        </Link>
                                     );
-                                }
-                                return null;
-                            })}
+                                })}
+                            </div>
 
-                            {/* Icon-Only Links */}
-                            {iconOnlyLinks.map((link, i) => (
+                            {/* Mobile Nav Toggle Button */}
+                            <button
+                                className="group md:hidden p-1 rounded-md bg-transparent hover:bg-text-color/10 focus:outline-none"
+                                onClick={() => setIsNavOpen(!isNavOpen)}
+                            >
+                                <span className="sr-only">Toggle Navigation</span>
+                                <HiMiniBars3BottomRight className="h-6 w-6 text-text-color/80 group-hover:text-text-color" />
+                            </button>
+                        </div>
+                    </div>
+                    {siteNavigation && (
+                        <div
+                            className={twJoin(
+                                'h-12 flex items-center space-x-2 lg:space-x-3 max-w-full xl:max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 py-2 overflow-x-auto',
+                                mode === 'full_width'
+                                    ? 'w-full xl:w-auto xl:px-0 xl:mx-[max(48px,calc((100vw-88rem)/2))]'
+                                    : 'w-full'
+                            )}
+                        >
+                            {hierarchy.map((item, index) => (
                                 <Link
-                                    key={i}
-                                    to={link.href}
-                                    className="flex items-center gap-2"
-                                    aria-label={link.icon}
+                                    key={index}
+                                    to={findNavigationRoute(item) || '/'}
+                                    className={twJoin(
+                                        'border-b-2 transition-colors duration-200 whitespace-nowrap px-3 pt-1 pb-1.5 text-sm font-medium',
+                                        website.activePage.activeRoute.split('/')[0] === item.route
+                                            ? 'border-link-active-color/60 text-link-active-color'
+                                            : 'border-transparent'
+                                    )}
                                 >
-                                    <Icon
-                                        icon={link.icon}
-                                        className="h-5 w-5 text-icon-color hover:text-icon-color/80 transition-colors duration-200"
-                                    />
+                                    {item.label}
                                 </Link>
                             ))}
                         </div>
-
-                        {/* Search (right position) */}
-                        <div
-                            className={twJoin(
-                                search_position === 'center' ? 'md:hidden block' : 'block'
-                            )}
-                        >
-                            <Search {...props} enableShortcut={search_position !== 'center'} />
-                        </div>
-                        <ThemeSelector
-                            className="relative z-10"
-                            {...{ theme: themeMode, finalTheme, setTheme }}
-                        />
-                        <LangSwitch website={website} />
-
-                        {/* Primary/Secondary Links (Desktop) */}
-                        <div className="hidden md:flex items-center gap-3 xl:gap-4">
-                            {primaryLinks.map((link, i) => {
-                                const { style, label, href, icon } = link;
-                                const isPrimary = style === 'primary';
-                                const buttonTypeClass = isPrimary
-                                    ? 'bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color'
-                                    : 'bg-btn-alt-color text-btn-alt-text-color hover:bg-btn-alt-hover-color hover:text-btn-alt-hover-text-color';
-
-                                return (
-                                    <Link
-                                        key={i}
-                                        to={href}
-                                        className={twJoin(
-                                            linkBaseClass,
-                                            buttonStyles,
-                                            buttonTypeClass
-                                        )}
-                                    >
-                                        {label && (
-                                            <span className="whitespace-nowrap truncate max-w-32">
-                                                {label}
-                                            </span>
-                                        )}
-                                        {icon && icon !== 'none' && (
-                                            <Icon icon={icon} className="h-4 w-4 flex-shrink-0" />
-                                        )}
-                                    </Link>
-                                );
-                            })}
-                        </div>
-
-                        {/* Mobile Nav Toggle Button */}
-                        <button
-                            className="group md:hidden p-1 rounded-md bg-transparent hover:bg-text-color/10 focus:outline-none"
-                            onClick={() => setIsNavOpen(!isNavOpen)}
-                        >
-                            <span className="sr-only">Toggle Navigation</span>
-                            <HiMiniBars3BottomRight className="h-6 w-6 text-text-color/80 group-hover:text-text-color" />
-                        </button>
-                    </div>
+                    )}
                 </div>
             </div>
 
             {/* Mobile Nav Panel */}
-            <MobileNavMenu links={links} isOpen={isNavOpen} closeNav={() => setIsNavOpen(false)} />
+            <MobileNavMenu
+                links={links}
+                isOpen={isNavOpen}
+                closeNav={() => setIsNavOpen(false)}
+                siteNavigation={siteNavigation}
+            />
         </>
     );
 }
