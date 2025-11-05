@@ -1,0 +1,1374 @@
+{
+  "_self": {
+    "name": "Documentation Series 3",
+    "description": "A collection of components for building documentation websites, offering a modern design, light and dark mode and user-friendly navigation. This collection does not require any custom colors set in the docufolio or website studio.",
+    "properties": {
+      "themeToggleEnabled": true,
+      "markdownCopyEnabled": true
+    },
+    "styleFields": [
+      {
+        "id": "border-radius",
+        "type": "select",
+        "label": {
+          "en": "Corner Style",
+          "fr": "Style de coin"
+        },
+        "description": {
+          "en": "The style of the corners for the table or button like elements across the site.",
+          "fr": "Le style des coins pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0px",
+        "options": [
+          {
+            "label": {
+              "en": "Straight",
+              "fr": "Droit"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Rounded",
+              "fr": "Arrondi"
+            },
+            "value": "0.5rem"
+          },
+          {
+            "value": "0.75rem",
+            "label": {
+              "en": "Circular",
+              "fr": "Circulaire"
+            }
+          }
+        ]
+      },
+      {
+        "id": "depth-style-outline",
+        "type": "select",
+        "label": {
+          "en": "Depth Style (Outline)",
+          "fr": "Style de profondeur (Contour)"
+        },
+        "description": {
+          "en": "The style of the outline for the table or button like elements across the site.",
+          "fr": "Le style du contour pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "1px",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Thin",
+              "fr": "Fin"
+            },
+            "value": "1px"
+          },
+          {
+            "label": {
+              "en": "Thick",
+              "fr": "Épais"
+            },
+            "value": "2px"
+          }
+        ]
+      },
+      {
+        "id": "depth-style-shadow",
+        "type": "select",
+        "label": {
+          "en": "Depth Style (Shadow)",
+          "fr": "Style de profondeur (Ombre)"
+        },
+        "description": {
+          "en": "The style of the shadow for the table or button like elements across the site.",
+          "fr": "Le style de l'ombre pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0 0 #0000",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "0 0 #0000"
+          },
+          {
+            "label": {
+              "en": "Light",
+              "fr": "Léger"
+            },
+            "value": "0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1)"
+          },
+          {
+            "label": {
+              "en": "Dark",
+              "fr": "Sombre"
+            },
+            "value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)"
+          }
+        ]
+      },
+      {
+        "id": "header-bg",
+        "type": "color",
+        "label": {
+          "en": "Header background",
+          "fr": "Couleur de fond de l'en-tête"
+        }
+      },
+      {
+        "id": "card-background-color",
+        "type": "color",
+        "label": {
+          "en": "Card background",
+          "fr": "Couleur de fond de la carte"
+        },
+        "description": {
+          "en": "The background color for card elements.",
+          "fr": "La couleur de fond pour les éléments de carte."
+        }
+      },
+      {
+        "id": "bg-gradient",
+        "type": "gradient",
+        "globalOnly": true,
+        "label": {
+          "en": "Gradient Background",
+          "fr": "Fond en dégradé"
+        }
+      }
+    ],
+    "stylePresets": [
+      {
+        "id": "clean",
+        "label": {
+          "en": "Clean",
+          "fr": "Propre"
+        },
+        "description": {
+          "en": "Minimalistic and elegant",
+          "fr": "Minimaliste et élégant"
+        },
+        "properties": {
+          "foundationStyles": {
+            "border-radius": "0.5rem",
+            "depth-style-shadow": "0 0 #0000",
+            "depth-style-outline": "0px"
+          },
+          "elements": {
+            "light": {
+              "bg-color": "rgba(var(--neutral-50) / 1.00)",
+              "btn-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-500) / 1.00)",
+              "text-color": "rgba(var(--neutral-700) / 1.00)",
+              "heading-color": "rgba(var(--neutral-950) / 1.00)",
+              "link-color": "rgba(var(--primary-500) / 1.00)",
+              "link-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "link-active-color": "rgba(var(--primary-700) / 1.00)",
+              "icon-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "",
+              "btn-alt-text-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-200) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-900) / 1)",
+              "callout": "rgba(var(--primary-600) / 1)",
+              "muted": "rgba(var(--neutral-400) / 1.00)",
+              "highlight": "rgba(var(--primary-200) / 1.00)",
+              "header-bg": "",
+              "card-background-color": "",
+              "bg-gradient": "",
+              "text-info": "",
+              "bg-info": "rgba(var(--neutral-50) / 1.00)",
+              "bg-success": "rgba(var(--neutral-50) / 1.00)",
+              "bg-warning": "rgba(var(--neutral-50) / 1.00)",
+              "bg-danger": "rgba(var(--neutral-50) / 1.00)"
+            },
+            "dark": {
+              "bg-color": "rgba(var(--neutral-950) / 1.00)",
+              "btn-color": "rgba(var(--primary-950) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "text-color": "rgba(var(--neutral-200) / 1)",
+              "heading-color": "rgba(var(--neutral-50) / 1)",
+              "link-color": "rgba(var(--primary-700) / 1.00)",
+              "link-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "link-active-color": "rgba(var(--primary-500) / 1.00)",
+              "icon-color": "rgba(var(--primary-600) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-800) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-100) / 1)",
+              "callout": "rgba(var(--primary-500) / 1.00)",
+              "muted": "rgba(var(--neutral-500) / 1.00)",
+              "highlight": "rgba(var(--primary-800) / 1.00)",
+              "header-bg": "",
+              "card-background-color": "",
+              "bg-info": "rgba(var(--neutral-950) / 1.00)",
+              "text-info": "#60a5fa",
+              "border-info": "#60a5fa",
+              "bg-success": "rgba(var(--neutral-950) / 1.00)",
+              "text-success": "#4ade80",
+              "border-success": "#4ade80",
+              "bg-warning": "rgba(var(--neutral-950) / 1.00)",
+              "text-warning": "#facc15",
+              "border-warning": "#facc15",
+              "bg-danger": "rgba(var(--neutral-950) / 1.00)",
+              "text-danger": "#f87171",
+              "border-danger": "#f87171",
+              "bg-gradient": ""
+            }
+          }
+        }
+      },
+      {
+        "id": "bold",
+        "label": {
+          "en": "Bold",
+          "fr": "Audacieux"
+        },
+        "description": {
+          "en": "Strong and impactful",
+          "fr": "Fort et percutant"
+        },
+        "properties": {
+          "foundationStyles": {
+            "border-radius": "0.5rem",
+            "depth-style-shadow": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+            "depth-style-outline": "2px"
+          },
+          "elements": {
+            "light": {
+              "bg-color": "rgba(var(--neutral-50) / 1.00)",
+              "btn-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-500) / 1.00)",
+              "text-color": "rgba(var(--neutral-700) / 1.00)",
+              "heading-color": "rgba(var(--neutral-950) / 1.00)",
+              "link-color": "rgba(var(--accent-500) / 1)",
+              "link-hover-color": "rgba(var(--accent-600) / 1)",
+              "link-active-color": "rgba(var(--accent-700) / 1)",
+              "icon-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-200) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-900) / 1)",
+              "callout": "rgba(var(--primary-600) / 1)",
+              "muted": "rgba(var(--secondary-400) / 1)",
+              "highlight": "rgba(var(--accent-300) / 1)",
+              "header-bg": "rgba(var(--secondary-500) / 1.00)",
+              "card-background-color": "rgba(var(--neutral-50) / 0.50)",
+              "bg-gradient": ""
+            },
+            "dark": {
+              "bg-color": "rgba(var(--neutral-950) / 1.00)",
+              "btn-color": "rgba(var(--primary-950) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "text-color": "rgba(var(--neutral-200) / 1)",
+              "heading-color": "rgba(var(--neutral-50) / 1)",
+              "link-color": "rgba(var(--accent-700) / 1)",
+              "link-hover-color": "rgba(var(--accent-600) / 1)",
+              "link-active-color": "rgba(var(--accent-500) / 1)",
+              "icon-color": "rgba(var(--primary-600) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-800) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-100) / 1)",
+              "callout": "rgba(var(--primary-400) / 1)",
+              "muted": "rgba(var(--secondary-600) / 1)",
+              "highlight": "rgba(var(--accent-900) / 1)",
+              "header-bg": "rgba(var(--primary-950) / 1.00)",
+              "card-background-color": "rgba(var(--neutral-50) / 0.05)",
+              "bg-info": "#172554",
+              "text-info": "#60a5fa",
+              "border-info": "#60a5fa",
+              "bg-success": "#052e16",
+              "text-success": "#4ade80",
+              "border-success": "#4ade80",
+              "bg-warning": "#422006",
+              "text-warning": "#facc15",
+              "border-warning": "#facc15",
+              "bg-danger": "#450a0a",
+              "text-danger": "#f87171",
+              "border-danger": "#f87171",
+              "bg-gradient": ""
+            }
+          }
+        }
+      },
+      {
+        "id": "gradient",
+        "label": {
+          "en": "Gradient",
+          "fr": "Dégradé"
+        },
+        "description": {
+          "en": "Trendy and colorful",
+          "fr": "Tendance et coloré"
+        },
+        "properties": {
+          "foundationStyles": {
+            "border-radius": "0.5rem",
+            "depth-style-shadow": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+            "depth-style-outline": "1px"
+          },
+          "elements": {
+            "light": {
+              "bg-color": "",
+              "btn-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-500) / 1.00)",
+              "text-color": "rgba(var(--neutral-800) / 1)",
+              "heading-color": "rgba(var(--primary-800) / 1.00)",
+              "link-color": "rgba(var(--accent-500) / 1)",
+              "link-hover-color": "rgba(var(--accent-600) / 1)",
+              "link-active-color": "rgba(var(--accent-700) / 1)",
+              "icon-color": "rgba(var(--primary-600) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-200) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-900) / 1)",
+              "callout": "rgba(var(--primary-600) / 1)",
+              "muted": "rgba(var(--secondary-400) / 1)",
+              "highlight": "rgba(var(--accent-300) / 1)",
+              "header-bg": "",
+              "card-background-color": "rgba(var(--neutral-50) / 0.50)",
+              "bg-gradient": "linear-gradient(225deg, rgba(var(--accent-500) / 0.21) 0%, rgba(var(--neutral-50) / 0.21) 60%)"
+            },
+            "dark": {
+              "bg-color": "",
+              "btn-color": "rgba(var(--primary-950) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "text-color": "rgba(var(--neutral-200) / 1)",
+              "heading-color": "rgba(var(--neutral-50) / 1)",
+              "link-color": "rgba(var(--accent-700) / 1)",
+              "link-hover-color": "rgba(var(--accent-600) / 1)",
+              "link-active-color": "rgba(var(--accent-500) / 1)",
+              "icon-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-800) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-100) / 1)",
+              "callout": "rgba(var(--primary-400) / 1)",
+              "muted": "rgba(var(--secondary-600) / 1)",
+              "highlight": "rgba(var(--accent-900) / 1)",
+              "header-bg": "",
+              "card-background-color": "rgba(var(--neutral-50) / 0.05)",
+              "bg-info": "#172554",
+              "text-info": "#60a5fa",
+              "border-info": "#60a5fa",
+              "bg-success": "#052e16",
+              "text-success": "#4ade80",
+              "border-success": "#4ade80",
+              "bg-warning": "#422006",
+              "text-warning": "#facc15",
+              "border-warning": "#facc15",
+              "bg-danger": "#450a0a",
+              "text-danger": "#f87171",
+              "border-danger": "#f87171",
+              "bg-gradient": "linear-gradient(45deg, rgba(var(--neutral-950) / 1) 63%, rgba(var(--primary-950) / 1) 100%)"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "Footer": {
+    "title": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "label": {
+      "en": "Footer",
+      "fr": "Pied de page"
+    },
+    "description": {
+      "en": "A footer component renders the navigation to the next and previous pages.",
+      "fr": "Un composant de pied de page rend la navigation vers les pages suivantes et précédentes."
+    },
+    "export": true,
+    "properties": {
+      "with_line_divider": {
+        "label": {
+          "en": "With Line Divider",
+          "fr": "Avec ligne de séparation"
+        },
+        "type": "boolean",
+        "default": true,
+        "description": {
+          "en": "If enabled, a line divider will be displayed above the footer.",
+          "fr": "Si activé, une ligne de séparation sera affichée au-dessus du pied de page."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 158,
+        "width": 1594,
+        "type": "webp",
+        "path": "assets/Footer/example.png"
+      }
+    ],
+    "name": "Footer"
+  },
+  "Form": {
+    "title": {
+      "en": "Form",
+      "fr": "Formulaire"
+    },
+    "label": {
+      "en": "Form",
+      "fr": "Formulaire"
+    },
+    "description": {
+      "en": "A form component to collect user feedback or data.",
+      "fr": "Un composant de formulaire pour collecter les retours d'information ou les données"
+    },
+    "category": "form",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "form": {
+        "description": {
+          "en": "A form to construct the data collection interface.",
+          "fr": "Un formulaire pour construire l'interface de collecte de données."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Form",
+              "fr": "Formulaire"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Field",
+                "fr": "Champ"
+              },
+              "fields": [
+                {
+                  "id": "label",
+                  "type": "text",
+                  "label": {
+                    "en": "Field Label",
+                    "fr": "Étiquette du champ"
+                  },
+                  "description": {
+                    "en": "The label for the field.",
+                    "fr": "L'étiquette du champ."
+                  },
+                  "required": true
+                },
+                {
+                  "id": "widget",
+                  "type": "select",
+                  "label": {
+                    "en": "Field Type",
+                    "fr": "Type de champ"
+                  },
+                  "description": {
+                    "en": "Defines the input type.",
+                    "fr": "Définit le type d'entrée."
+                  },
+                  "required": true,
+                  "options": [
+                    {
+                      "label": {
+                        "en": "Input",
+                        "fr": "Input"
+                      },
+                      "value": "input"
+                    },
+                    {
+                      "label": {
+                        "en": "Text Area",
+                        "fr": "Zone de texte"
+                      },
+                      "value": "textarea"
+                    },
+                    {
+                      "label": {
+                        "en": "Select",
+                        "fr": "Sélect"
+                      },
+                      "value": "select"
+                    },
+                    {
+                      "label": {
+                        "en": "Radio Group",
+                        "fr": "Groupe de boutons radio"
+                      },
+                      "value": "radio"
+                    },
+                    {
+                      "label": {
+                        "en": "Checkbox",
+                        "fr": "Case à cocher"
+                      },
+                      "value": "checkbox"
+                    },
+                    {
+                      "label": {
+                        "en": "File Upload",
+                        "fr": "Téléchargement de fichier"
+                      },
+                      "value": "file"
+                    }
+                  ]
+                },
+                {
+                  "id": "required",
+                  "type": "checkbox",
+                  "label": {
+                    "en": "Required",
+                    "fr": "Requis"
+                  },
+                  "description": {
+                    "en": "If true, the field is mandatory.",
+                    "fr": "Si vrai, le champ est obligatoire."
+                  }
+                },
+                {
+                  "id": "placeholder",
+                  "type": "text",
+                  "label": {
+                    "en": "Placeholder Text",
+                    "fr": "Texte de l'espace réservé"
+                  },
+                  "description": {
+                    "en": "Placeholder text for the input field.",
+                    "fr": "Texte de l'espace réservé pour le champ d'entrée."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "textarea"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "options",
+                  "type": "form",
+                  "label": {
+                    "en": "Options to Select",
+                    "fr": "Options à sélectionner"
+                  },
+                  "description": {
+                    "en": "Options for select, radio, or checkbox fields.",
+                    "fr": "Options pour les champs de sélection, de radio ou de case à cocher."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Option",
+                      "fr": "Option"
+                    },
+                    "fields": [
+                      {
+                        "id": "value",
+                        "type": "text",
+                        "label": {
+                          "en": "Option Value",
+                          "fr": "Valeur de l'option"
+                        },
+                        "required": true
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "select",
+                        "radio",
+                        "checkbox"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "file_accept",
+                  "type": "text",
+                  "label": {
+                    "en": "File Accept Types",
+                    "fr": "Types de fichiers acceptés"
+                  },
+                  "placeholder": {
+                    "en": ".pdf,.jpg,.png,.doc,.docx",
+                    "fr": ".pdf,.jpg,.png,.doc,.docx"
+                  },
+                  "condition": {
+                    "widget": "file"
+                  }
+                },
+                {
+                  "id": "file_size_limit",
+                  "type": "number",
+                  "label": {
+                    "en": "File Size Limit (MB)",
+                    "fr": "Limite de taille de fichier (Mo)"
+                  },
+                  "placeholder": {
+                    "en": "5",
+                    "fr": "5"
+                  },
+                  "min": 1,
+                  "max": 5,
+                  "condition": {
+                    "widget": "file"
+                  }
+                },
+                {
+                  "id": "validation_regex",
+                  "type": "text",
+                  "label": {
+                    "en": "Validation (Regex)",
+                    "fr": "Validation (Regex)"
+                  },
+                  "description": {
+                    "en": "A regular expression for validation.",
+                    "fr": "Une expression régulière pour la validation."
+                  },
+                  "condition": {
+                    "widget": "input"
+                  }
+                },
+                {
+                  "id": "validation_type",
+                  "type": "select",
+                  "label": {
+                    "en": "Validation (Type)",
+                    "fr": "Validation (Type)"
+                  },
+                  "description": {
+                    "en": "Validation by type.",
+                    "fr": "Validation par type."
+                  },
+                  "options": [
+                    {
+                      "value": "email",
+                      "label": {
+                        "en": "Email",
+                        "fr": "Email"
+                      }
+                    },
+                    {
+                      "value": "positive_integer",
+                      "label": {
+                        "en": "Positive Integer",
+                        "fr": "Entier positif"
+                      }
+                    }
+                  ],
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "number"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "default_value",
+                  "type": "text",
+                  "label": {
+                    "en": "Default Value",
+                    "fr": "Valeur par défaut"
+                  },
+                  "description": {
+                    "en": "The initial value of the field.",
+                    "fr": "La valeur initiale du champ."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "select",
+                        "radio",
+                        "checkbox"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "button": {
+        "description": {
+          "en": "The button to submit the form.",
+          "fr": "Le bouton pour soumettre le formulaire."
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1153,
+        "width": 728,
+        "type": "webp",
+        "path": "assets/Form/example.png"
+      }
+    ],
+    "name": "Form"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "A component to render a header with a website logo, search bar, dark mode toggle, language selector, and media links.",
+      "fr": "Un composant pour rendre un en-tête avec un logo de site Web, une barre de recherche, un basculement du mode sombre, un sélecteur de langue et des liens multimédias."
+    },
+    "export": true,
+    "elements": {
+      "media": {
+        "type": "image",
+        "label": {
+          "en": "Site logo",
+          "fr": "Logo du site"
+        },
+        "description": {
+          "en": "The logo of the website displayed in the header. Use \"logo-dark\" or \"logo-light\" caption to specify different logos for dark and light modes.",
+          "fr": "Le logo du site Web affiché dans l'en-tête. Utilisez la légende \"logo-dark\" ou \"logo-light\" pour spécifier différents logos pour les modes sombre et clair."
+        }
+      },
+      "form": {
+        "description": {
+          "en": "A form to collect navigation links.",
+          "fr": "Un formulaire pour collecter des liens de navigation."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Form",
+              "fr": "Formulaire"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Link",
+                "fr": "Link"
+              },
+              "fields": [
+                {
+                  "id": "type",
+                  "type": "select",
+                  "label": {
+                    "en": "Link Type",
+                    "fr": "Type de lien"
+                  },
+                  "description": {
+                    "en": "Defines the type of link.",
+                    "fr": "Définit le type de lien."
+                  },
+                  "required": true,
+                  "options": [
+                    {
+                      "label": {
+                        "en": "Plain",
+                        "fr": "Simple"
+                      },
+                      "value": "plain"
+                    },
+                    {
+                      "label": {
+                        "en": "Group",
+                        "fr": "Groupe"
+                      },
+                      "value": "group"
+                    },
+                    {
+                      "label": {
+                        "en": "Primary",
+                        "fr": "Primaire"
+                      },
+                      "value": "primary"
+                    },
+                    {
+                      "label": {
+                        "en": "Secondary",
+                        "fr": "Secondaire"
+                      },
+                      "value": "secondary"
+                    }
+                  ]
+                },
+                {
+                  "id": "label",
+                  "type": "text",
+                  "label": {
+                    "en": "Link Label",
+                    "fr": "Label du lien"
+                  },
+                  "description": {
+                    "en": "The label for the link.",
+                    "fr": "L'étiquette du lien."
+                  }
+                },
+                {
+                  "id": "href",
+                  "type": "text",
+                  "label": {
+                    "en": "Link URL",
+                    "fr": "URL du lien"
+                  },
+                  "description": {
+                    "en": "The URL for the link.",
+                    "fr": "L'URL du lien."
+                  }
+                },
+                {
+                  "id": "icon",
+                  "type": "select",
+                  "label": {
+                    "en": "Icon",
+                    "fr": "Icône"
+                  },
+                  "description": {
+                    "en": "The icon for the link.",
+                    "fr": "L'icône du lien."
+                  },
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": {
+                        "en": "None",
+                        "fr": "Aucune"
+                      }
+                    },
+                    {
+                      "value": "facebook",
+                      "label": {
+                        "en": "Facebook",
+                        "fr": "Facebook"
+                      }
+                    },
+                    {
+                      "value": "linkedin",
+                      "label": {
+                        "en": "LinkedIn",
+                        "fr": "LinkedIn"
+                      }
+                    },
+                    {
+                      "value": "medium",
+                      "label": {
+                        "en": "Medium",
+                        "fr": "Medium"
+                      }
+                    },
+                    {
+                      "value": "quora",
+                      "label": {
+                        "en": "Quora",
+                        "fr": "Quora"
+                      }
+                    },
+                    {
+                      "value": "tumblr",
+                      "label": {
+                        "en": "Tumblr",
+                        "fr": "Tumblr"
+                      }
+                    },
+                    {
+                      "value": "youtube",
+                      "label": {
+                        "en": "YouTube",
+                        "fr": "YouTube"
+                      }
+                    },
+                    {
+                      "value": "github",
+                      "label": {
+                        "en": "GitHub",
+                        "fr": "GitHub"
+                      }
+                    },
+                    {
+                      "value": "x",
+                      "label": {
+                        "en": "X",
+                        "fr": "X"
+                      }
+                    },
+                    {
+                      "value": "instagram",
+                      "label": {
+                        "en": "Instagram",
+                        "fr": "Instagram"
+                      }
+                    },
+                    {
+                      "value": "arrow_right",
+                      "label": {
+                        "en": "Arrow Right",
+                        "fr": "Flèche droite"
+                      }
+                    },
+                    {
+                      "value": "arrow_right_up",
+                      "label": {
+                        "en": "Arrow Right Up",
+                        "fr": "Flèche droite vers le haut"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "group_links",
+                  "type": "form",
+                  "label": {
+                    "en": "Group Links",
+                    "fr": "Liens de groupe"
+                  },
+                  "description": {
+                    "en": "Links in the group.",
+                    "fr": "Liens dans le groupe."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Group Links",
+                      "fr": "Liens de groupe"
+                    },
+                    "fields": [
+                      {
+                        "id": "label",
+                        "type": "text",
+                        "label": {
+                          "en": "Link Label",
+                          "fr": "Label du lien"
+                        },
+                        "description": {
+                          "en": "The label for the link.",
+                          "fr": "L'étiquette du lien."
+                        }
+                      },
+                      {
+                        "id": "href",
+                        "type": "text",
+                        "label": {
+                          "en": "Link URL",
+                          "fr": "URL du lien"
+                        },
+                        "description": {
+                          "en": "The URL for the link.",
+                          "fr": "L'URL du lien."
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "type": "group"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "properties": {
+      "sticky": {
+        "label": {
+          "en": "Sticky Header",
+          "fr": "En-tête collant"
+        },
+        "type": "boolean",
+        "default": true,
+        "description": {
+          "en": "If enabled, the header will stick to the top of the page when scrolling.",
+          "fr": "Si activé, l'en-tête restera en haut de la page lors du défilement."
+        }
+      },
+      "mode": {
+        "label": {
+          "en": "Header Mode",
+          "fr": "Mode d'en-tête"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Full Width",
+              "fr": "Par défaut"
+            },
+            "value": "full_width"
+          },
+          {
+            "label": {
+              "en": "Island",
+              "fr": "Transparent"
+            },
+            "value": "island"
+          }
+        ],
+        "default": "full_width",
+        "description": {
+          "en": "The mode of the header, which can be either full width or island.",
+          "fr": "Le mode de l'en-tête, qui peut être en pleine largeur ou en îlot."
+        }
+      },
+      "search_position": {
+        "label": {
+          "en": "Search Position",
+          "fr": "Position de la recherche"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "center",
+        "description": {
+          "en": "The position of the search bar in the header.",
+          "fr": "La position de la barre de recherche dans l'en-tête."
+        }
+      },
+      "transparency": {
+        "label": {
+          "en": "Transparency",
+          "fr": "Transparence"
+        },
+        "type": "boolean",
+        "default": true,
+        "description": {
+          "en": "If enabled, the header will have a transparent background.",
+          "fr": "Si activé, l'en-tête aura un fond transparent."
+        }
+      },
+      "site_navigation": {
+        "label": {
+          "en": "Site Navigation",
+          "fr": "Navigation du site"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "If enabled, the header will include site navigation links.",
+          "fr": "Si activé, l'en-tête inclura des liens de navigation du site."
+        }
+      }
+    },
+    "name": "Header"
+  },
+  "LeftPanel": {
+    "title": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "label": {
+      "en": "Left Panel",
+      "fr": "Panneau de gauche"
+    },
+    "description": {
+      "en": "A component that render a list of navigation links, usually used for a sidebar.",
+      "fr": "Un composant qui rend une liste de liens de navigation, généralement utilisé pour une barre latérale."
+    },
+    "export": true,
+    "properties": {
+      "collapsible": {
+        "label": {
+          "en": "Collapsible",
+          "fr": "Pliable"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "No",
+              "fr": "Non"
+            },
+            "value": "no"
+          },
+          {
+            "label": {
+              "en": "Arrows",
+              "fr": "Flèches"
+            },
+            "value": "arrows"
+          },
+          {
+            "label": {
+              "en": "Plus/Minus",
+              "fr": "Plus/Moins"
+            },
+            "value": "plus_minus"
+          }
+        ],
+        "default": "no",
+        "description": {
+          "en": "The collapsible behavior of the left panel.",
+          "fr": "Le comportement pliable du panneau de gauche."
+        }
+      },
+      "auto_collapse": {
+        "label": {
+          "en": "Auto Collapse",
+          "fr": "Pliage automatique"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Yes",
+              "fr": "Oui"
+            },
+            "value": "yes"
+          },
+          {
+            "label": {
+              "en": "No",
+              "fr": "Non"
+            },
+            "value": "no"
+          }
+        ],
+        "default": "no",
+        "description": {
+          "en": "If 'Yes', opening one item will automatically close all its siblings at the same level.",
+          "fr": "Si 'Oui', l'ouverture d'un élément fermera automatiquement tous ses frères et sœurs au même niveau."
+        }
+      },
+      "initial_state": {
+        "label": {
+          "en": "Initial State",
+          "fr": "État initial"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Open All",
+              "fr": "Ouvrir tout"
+            },
+            "value": "open_all"
+          },
+          {
+            "label": {
+              "en": "Close All",
+              "fr": "Fermer tout"
+            },
+            "value": "close_all"
+          }
+        ],
+        "default": "close_all",
+        "description": {
+          "en": "The initial state of the left panel, whether it starts open or closed.",
+          "fr": "L'état initial du panneau de gauche, s'il commence ouvert ou fermé."
+        }
+      },
+      "hierarchy_indicator": {
+        "label": {
+          "en": "Hierarchy Indicator",
+          "fr": "Indicateur de hiérarchie"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Line",
+              "fr": "Ligne"
+            },
+            "value": "line"
+          },
+          {
+            "label": {
+              "en": "Thread",
+              "fr": "Fil"
+            },
+            "value": "thread"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "default": "none",
+        "description": {
+          "en": "The type of hierarchy indicator to use for nested items.",
+          "fr": "Le type d'indicateur de hiérarchie à utiliser pour les éléments imbriqués."
+        }
+      },
+      "navigation_style": {
+        "label": {
+          "en": "Navigation Style",
+          "fr": "Style de navigation"
+        },
+        "type": "string",
+        "enum": [
+          {
+            "label": {
+              "en": "Link Like",
+              "fr": "Comme un lien"
+            },
+            "value": "link_like"
+          },
+          {
+            "label": {
+              "en": "Button Like",
+              "fr": "Comme un bouton"
+            },
+            "value": "button_like"
+          }
+        ],
+        "default": "link_like",
+        "description": {
+          "en": "The style of the navigation links, which can be either link-like or button-like.",
+          "fr": "Le style des liens de navigation, qui peut être comme un lien ou comme un bouton."
+        }
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Arrows with Thread Indicator",
+          "fr": "Flèches avec indicateur de fil"
+        },
+        "properties": {
+          "collapsible": "arrows",
+          "hierarchy_indicator": "thread",
+          "navigation_style": "link_like"
+        },
+        "image": {
+          "height": 512,
+          "width": 251,
+          "type": "webp",
+          "path": "assets/LeftPanel/arrow_thread_link.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Plus/Minus with Line Indicator",
+          "fr": "Plus/Moins avec indicateur de ligne"
+        },
+        "properties": {
+          "collapsible": "plus_minus",
+          "hierarchy_indicator": "line",
+          "navigation_style": "link_like"
+        },
+        "image": {
+          "height": 420,
+          "width": 208,
+          "type": "webp",
+          "path": "assets/LeftPanel/plus_minus_line_link.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Plus/Minus Buttons with Line Indicator",
+          "fr": "Boutons Plus/Moins avec indicateur de ligne"
+        },
+        "properties": {
+          "collapsible": "plus_minus",
+          "hierarchy_indicator": "line",
+          "navigation_style": "button_like"
+        },
+        "image": {}
+      }
+    ],
+    "name": "LeftPanel"
+  },
+  "RightPanel": {
+    "title": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "label": {
+      "en": "Right Panel",
+      "fr": "Panneau de droite"
+    },
+    "description": {
+      "en": "A component that renders a list of links to the topics of the current page.",
+      "fr": "Un composant qui rend une liste de liens vers les sujets de la page actuelle."
+    },
+    "export": true,
+    "images": [
+      {
+        "height": 764,
+        "width": 578,
+        "type": "webp",
+        "path": "assets/RightPanel/example.png"
+      }
+    ],
+    "name": "RightPanel"
+  },
+  "Section": {
+    "title": {
+      "en": "Section",
+      "fr": "Section"
+    },
+    "description": {
+      "en": "A section that seamlessly displays content from the editor on the webpage, exactly as it appears in the editor.",
+      "fr": "Une section qui affiche de manière transparente le contenu de l'éditeur sur la page Web, exactement comme il apparaît dans l'éditeur."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "_raw": {
+        "en": "This category renders content from the Webpages editor as-is.",
+        "fr": "Cette catégorie affiche le contenu de l'éditeur de pages tel quel."
+      }
+    },
+    "images": [
+      {
+        "height": 964,
+        "width": 783,
+        "type": "webp",
+        "path": "assets/Section/example.png"
+      }
+    ],
+    "name": "Section"
+  }
+}
