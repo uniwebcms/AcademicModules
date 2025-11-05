@@ -158,7 +158,7 @@ export default function Layout(props) {
                     })}
                 </MobileSidebar>
                 {/* Main Content Area */}
-                <div className="relative w-full max-w-[88rem] mx-auto xl:mx-[max(48px,calc((100vw-88rem)/2))] flex flex-1 px-6 md:px-8 lg:px-12 xl:px-0">
+                <div className="relative w-full max-w-full desktop:max-w-[88rem] mx-0 desktop:mx-auto flex flex-1 px-6 md:px-8 lg:px-12 desktop:px-0">
                     {/* Left Sidebar */}
                     <aside
                         className={twJoin(

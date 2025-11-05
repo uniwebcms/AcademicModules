@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { twJoin, getPageProfile, useSiteTheme, website } from '@uniwebcms/module-sdk';
+import { twJoin, twMerge, getPageProfile, useSiteTheme, website } from '@uniwebcms/module-sdk';
 import { Image, Link } from '@uniwebcms/core-components';
 import { ThemeSelector } from './ThemeSelector';
 import { useSidebar } from '../_utils/SidebarContext';
@@ -143,7 +143,7 @@ const MobileNavMenu = ({ links, isOpen, closeNav, siteNavigation }) => {
                                     ? 'bg-btn-color text-btn-text-color hover:bg-btn-hover-color hover:text-btn-hover-text-color'
                                     : 'bg-btn-alt-color text-btn-alt-text-color hover:bg-btn-alt-hover-color hover:text-btn-alt-hover-text-color';
 
-                                linkClass = twJoin(
+                                linkClass = twMerge(
                                     linkBaseClass,
                                     buttonStyles,
                                     buttonTypeClass,
@@ -153,13 +153,16 @@ const MobileNavMenu = ({ links, isOpen, closeNav, siteNavigation }) => {
 
                             return (
                                 <Link key={i} to={href} className={linkClass}>
-                                    {icon && icon !== 'none' && (
-                                        <Icon icon={icon} className="h-5 w-5 flex-shrink-0" />
-                                    )}
                                     {label && (
                                         <span className="font-medium whitespace-nowrap truncate">
                                             {label}
                                         </span>
+                                    )}
+                                    {icon && icon !== 'none' && (
+                                        <Icon
+                                            icon={icon}
+                                            className="h-5 w-5 flex-shrink-0 text-inherit"
+                                        />
                                     )}
                                 </Link>
                             );
@@ -289,10 +292,10 @@ export default function Header(props) {
                     {/* regular header content wrapper */}
                     <div
                         className={twJoin(
-                            'h-16 flex items-center justify-between max-w-full xl:max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 py-3',
+                            'h-16 flex items-center justify-between max-w-full desktop:max-w-[88rem] mx-auto py-3',
                             mode === 'full_width'
-                                ? 'w-full xl:w-auto xl:px-0 xl:mx-[max(48px,calc((100vw-88rem)/2))]'
-                                : 'w-full'
+                                ? 'w-full px-6 md:px-8 lg:px-12 desktop:px-0'
+                                : 'w-full px-6 md:px-8 lg:px-12 desktop:px-4'
                         )}
                     >
                         <div className="w-auto lg:w-64 flex-shrink-0 flex items-center justify-start">
@@ -476,10 +479,10 @@ export default function Header(props) {
                     {siteNavigation && (
                         <div
                             className={twJoin(
-                                'h-12 flex items-center space-x-2 lg:space-x-3 max-w-full xl:max-w-[88rem] mx-auto px-6 md:px-8 lg:px-12 py-2 overflow-x-auto',
+                                'h-12 flex items-center space-x-2 lg:space-x-3 max-w-full desktop:max-w-[88rem] mx-auto overflow-x-auto',
                                 mode === 'full_width'
-                                    ? 'w-full xl:w-auto xl:px-0 xl:mx-[max(48px,calc((100vw-88rem)/2))]'
-                                    : 'w-full'
+                                    ? 'w-full px-6 md:px-8 lg:px-12 desktop:px-0 py-2'
+                                    : 'w-full px-6 md:px-8 lg:px-12 desktop:px-4 pt-1 pb-3'
                             )}
                         >
                             {hierarchy.map((item, index) => (
