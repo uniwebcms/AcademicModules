@@ -367,7 +367,7 @@ const Field = (props) => {
                         handleFileSelection(event.dataTransfer.files);
                     }}
                 >
-                    <LuFileUp className="h-12 w-12 text-text-color/60" />
+                    <LuFileUp className="h-12 w-12" />
                     <p className="text-sm text-text-color">
                         <span className="font-semibold text-text-color">{uploadLabel}</span>
                         <span className="text-primary-600 underline underline-offset-4">
