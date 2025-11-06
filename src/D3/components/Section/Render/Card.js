@@ -110,7 +110,7 @@ const Event = (props) => {
     return (
         <div
             className={twJoin(
-                'not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden',
+                'not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 hover:ring-2 hover:ring-[var(--card-ring-color)] bg-[var(--card-background-color)] overflow-hidden',
                 coverImgUrl ? '' : 'p-6'
             )}
         >
@@ -186,7 +186,7 @@ const Address = (props) => {
     }
 
     return (
-        <div className="not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden">
+        <div className="not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 hover:ring-2 hover:ring-[var(--card-ring-color)] bg-[var(--card-background-color)] overflow-hidden">
             <div className="w-full h-40 overflow-hidden">
                 <MapComponent address={address} />
             </div>
@@ -249,7 +249,7 @@ const Document = (props) => {
     const { url } = data.metadata;
 
     return (
-        <div className="relative not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden">
+        <div className="relative not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 hover:ring-2 hover:ring-[var(--card-ring-color)] bg-[var(--card-background-color)] overflow-hidden">
             <div
                 className={twJoin(
                     'w-full',
@@ -315,10 +315,18 @@ const Basic = (props) => {
 
     const coverImgUrl = getCoverImgUrl(coverImg);
 
+    const Wrapper = href ? Link : 'div';
+    const wrapperProps = href
+        ? {
+              to: href,
+          }
+        : {};
+
     return (
-        <div
+        <Wrapper
+            {...wrapperProps}
             className={twJoin(
-                'not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 bg-[var(--card-background-color)] overflow-hidden',
+                'block not-prose w-full max-w-full sm:max-w-[calc(50%-12px)] border-[length:var(--depth-style-outline)] rounded-[var(--border-radius)] [box-shadow:var(--depth-style-shadow)] border-text-color/20 hover:ring-2 hover:ring-[var(--card-ring-color)] bg-[var(--card-background-color)] overflow-hidden group',
                 coverImgUrl ? '' : 'p-6'
             )}
         >
@@ -337,22 +345,23 @@ const Basic = (props) => {
                         <Icon icon={icon} className="w-8 h-8" />
                     </div>
                 )}
-                <h3 className="text-lg lg:text-xl font-semibold">{title}</h3>
+                <h3 className="text-lg lg:text-xl font-semibold text-heading-color">{title}</h3>
                 {caption ? (
-                    <p className="mt-1 text-base lg:text-lg font-medium">{caption}</p>
+                    <p className="mt-1 text-base lg:text-lg font-medium text-text-color">
+                        {caption}
+                    </p>
                 ) : null}
-                {href && (
-                    <Link
-                        to={href}
+                {href && !href.startsWith('topic:') && (
+                    <div
                         className={twJoin(
                             'absolute inline-block',
                             coverImgUrl ? 'top-4 right-6' : 'top-0 right-0'
                         )}
                     >
-                        <LuExternalLink className="w-6 h-6 text-link-color hover:text-link-hover-color transition-colors duration-200" />
-                    </Link>
+                        <LuExternalLink className="w-6 h-6 text-link-color group-hover:text-link-hover-color transition-colors duration-200" />
+                    </div>
                 )}
             </div>
-        </div>
+        </Wrapper>
     );
 };

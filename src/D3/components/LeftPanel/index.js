@@ -26,12 +26,6 @@ export default function LeftPanel(props) {
 
     const pages = website.getPageHierarchy();
 
-    console.log(
-        'fir',
-        firstSegment,
-        pages.find((p) => p.route === firstSegment)
-    );
-
     const {
         collapsible = 'no',
         hierarchy_indicator = 'none',

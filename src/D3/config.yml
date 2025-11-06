@@ -84,6 +84,14 @@ styleFields:
       description:
           en: The background color for card elements.
           fr: La couleur de fond pour les éléments de carte.
+    - id: 'card-ring-color'
+      type: color
+      label:
+          en: Card Ring Color
+          fr: Couleur de l'anneau de la carte
+      description:
+          en: The color of the ring around card elements.
+          fr: La couleur de l'anneau autour des éléments de carte.
     - id: 'bg-gradient'
       type: gradient
       globalOnly: true

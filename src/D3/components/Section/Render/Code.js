@@ -42,7 +42,7 @@ export default function Code(props) {
                     </pre>
                     <div
                         className={twJoin(
-                            'not-prose absolute top-[length:var(--depth-style-outline)] inset-x-[length:var(--depth-style-outline)] h-10 flex items-center justify-between px-4 rounded-t-[var(--border-radius)]',
+                            'not-prose absolute top-[var(--depth-style-outline)] inset-x-[var(--depth-style-outline)] h-10 flex items-center justify-between px-4 rounded-t-[var(--border-radius)]',
                             darkMode ? 'bg-[#424957]' : 'bg-[#f0f0f0]'
                         )}
                     >
