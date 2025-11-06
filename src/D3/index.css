@@ -4,7 +4,7 @@
 @import './prism.css';
 
 /* lead text */
-article > p:first-child:has(+ :is(h1, h2, h3, h4, h5, h6)) {
+article > p:first-child:has(+ :is(h1, h2, h3, h4, h5, h6, hr, div)) {
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 1.25em;
