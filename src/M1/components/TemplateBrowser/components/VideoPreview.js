@@ -109,7 +109,10 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
 
     return (
         <div className="relative w-full aspect-video">
-            <div onClick={togglePlayPause} className="relative h-full w-full cursor-pointer">
+            <div
+                // onClick={togglePlayPause}
+                className="relative h-full w-full cursor-pointer"
+            >
                 <video
                     ref={videoRef}
                     muted
@@ -130,7 +133,7 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
                     Your browser does not support the video.
                 </video>
 
-                {showOverlay && (
+                {/* {showOverlay && (
                     <div className="absolute inset-0 flex items-center justify-center">
                         {isPlaying ? (
                             <MdPause className="text-text-color-0 w-12 h-12" />
@@ -138,11 +141,11 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
                             <MdPlayArrow className="text-text-color-0 w-12 h-12" />
                         )}
                     </div>
-                )}
+                )} */}
             </div>
 
             {/* Sound Control */}
-            <button
+            {/* <button
                 onClick={toggleMute}
                 aria-label={isMuted ? 'Unmute video' : 'Mute video'}
                 className="absolute top-3 right-3 bg-neutral-800/70 text-neutral-100 rounded-full p-2 hover:bg-neutral-700/70 focus:outline-none z-10"
@@ -152,10 +155,10 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
                 ) : (
                     <MdVolumeUp className="w-6 h-6 text-inherit" />
                 )}
-            </button>
+            </button> */}
 
             {/* Progress Bar */}
-            <div
+            {/* <div
                 role="slider"
                 aria-label="Video progress"
                 aria-valuemin={0}
@@ -179,7 +182,7 @@ const VideoPreview = React.memo(({ src, inView, isHovered, onReady }) => {
                     className="h-full bg-red-500 transition-all duration-100"
                     style={{ width: `${progress}%` }}
                 />
-            </div>
+            </div> */}
         </div>
     );
 });

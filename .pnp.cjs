@@ -8956,6 +8956,7 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.9.0"],\
           ["flexsearch", "npm:0.7.43"],\
           ["framer-motion", "virtual:5fc673bacf53eb2345ba55531af294a4acbc6211d3c4f606168a5a83728a25c4a60fb81b469a6b3b32809214aebd2f38d391640d8b879864dff614929d5560bf#npm:11.18.2"],\
+          ["lodash.debounce", "npm:4.0.8"],\
           ["prop-types", "npm:15.8.1"],\
           ["react", "npm:18.3.1"],\
           ["react-click-away-listener", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.3.0"],\

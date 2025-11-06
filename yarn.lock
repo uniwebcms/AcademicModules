@@ -6526,6 +6526,7 @@ __metadata:
     axios: "npm:^1.9.0"
     flexsearch: "npm:^0.7.31"
     framer-motion: "npm:^11.15.0"
+    lodash.debounce: "npm:^4.0.8"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-click-away-listener: "npm:^2.2.3"

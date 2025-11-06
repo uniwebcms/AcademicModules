@@ -103,8 +103,8 @@ export default function RightPanel(props) {
     if (!pageContent.length) return null;
 
     return (
-        <div className="relative hidden xl:block">
-            <div className="h-[calc(100vh-64px)] w-64 overflow-y-auto overflow-x-hidden py-8 pl-8 pr-1">
+        <div className="relative hidden xl:block h-full">
+            <div className="h-full w-64 overflow-y-auto overflow-x-hidden py-8 pl-8 pr-1">
                 <p className="text-xs font-medium uppercase tracking-wide text-text-color/70">
                     {website.localize({
                         en: 'On this page',

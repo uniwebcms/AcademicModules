@@ -286,9 +286,8 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
             />
-
             {/* Sound Control */}
-            <button
+            {/* <button
                 onClick={toggleMute}
                 aria-label={isMuted ? 'Unmute video' : 'Mute video'}
                 className="absolute top-3 right-3 bg-neutral-800/70 text-neutral-100 rounded-full p-2 hover:bg-neutral-700/70 focus:outline-none"
@@ -298,10 +297,10 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
                 ) : (
                     <MdVolumeUp className="w-6 h-6 text-inherit" aria-hidden="true" />
                 )}
-            </button>
+            </button> */}
 
             {/* Progress Bar */}
-            <div
+            {/* <div
                 className="absolute bottom-0 left-0 w-full h-1 bg-gray-700 cursor-pointer hover:h-2 transition-all duration-200"
                 onClick={handleSeek}
             >
@@ -309,7 +308,7 @@ const IframePreview = React.memo(({ src, type, inView, isHovered, onReady }) => 
                     className="h-full bg-red-500 transition-all duration-100"
                     style={{ width: `${progress}%` }}
                 />
-            </div>
+            </div> */}
         </div>
     );
 });

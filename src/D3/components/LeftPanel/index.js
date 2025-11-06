@@ -18,22 +18,39 @@ export default function LeftPanel(props) {
         block,
         website,
         page: { activeRoute },
+        extra,
     } = props;
+
+    const headerSiteNavigation = extra?.headerSiteNavigation || false;
+    const firstSegment = activeRoute.split('/')[0];
+
     const pages = website.getPageHierarchy();
+
+    console.log(
+        'fir',
+        firstSegment,
+        pages.find((p) => p.route === firstSegment)
+    );
 
     const {
         collapsible = 'no',
         hierarchy_indicator = 'none',
         navigation_style = 'link_like',
         auto_collapse = 'no',
-        initial_state = 'close_all', // <-- Add new property, default to 'close_all'
+        initial_state = 'close_all',
     } = block.getBlockProperties();
+
+    const navigation = headerSiteNavigation
+        ? pages.find((p) => p.route === firstSegment)
+            ? [pages.find((p) => p.route === firstSegment)]
+            : pages
+        : pages;
 
     const [openState, setOpenState] = useState(() => {
         const state = {};
         // Only open all if 'open_all' is explicitly set
         if (initial_state === 'open_all') {
-            registerOpenState(pages, state);
+            registerOpenState(navigation, state);
         }
         // Otherwise, return an empty state (all closed)
         return state;
@@ -61,15 +78,15 @@ export default function LeftPanel(props) {
                 return newState;
             });
         },
-        [auto_collapse] // <-- Add dependency
+        [auto_collapse]
     );
 
     return (
-        <div className="relative">
-            <div className="bg-text-color-0 md:bg-bg-color md:ml-auto h-[calc(100vh-64px)] w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-6 md:pl-1">
+        <div className="relative h-full">
+            <div className="bg-text-color-0 md:bg-bg-color md:ml-auto h-full w-full md:w-64 overflow-y-auto overflow-x-hidden py-6 md:py-8 pr-8 pl-6 md:pl-1">
                 <nav className="text-base md:text-sm lg:text-base xl:text-base">
                     <Navigation
-                        navigation={pages}
+                        navigation={navigation}
                         activeRoute={activeRoute}
                         collapsible={collapsible}
                         openState={openState}
@@ -98,7 +115,6 @@ const Navigation = ({
     const isRoot = level === 0;
 
     const containerClass = [
-        // isRoot ? 'space-y-6' : 'mt-2 space-y-2 lg:mt-4 lg:space-y-4',
         isRoot
             ? navigationStyle === 'button_like'
                 ? 'space-y-4' // Smaller gap for root buttons
