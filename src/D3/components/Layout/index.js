@@ -189,7 +189,7 @@ export default function Layout(props) {
                     </main>
 
                     {/* Right Section Nav */}
-                    {!!{ rightPanel } && (
+                    {!!rightPanel && (
                         <aside
                             className={twJoin(
                                 'hidden xl:block sticky flex-none w-64 overflow-y-auto',
