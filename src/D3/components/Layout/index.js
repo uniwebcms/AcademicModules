@@ -110,18 +110,20 @@ export default function Layout(props) {
                     />
                 )}
                 {/* Mobile Left Sidebar */}
-                <MobileSidebar>{leftPanel}</MobileSidebar>
+                {!!leftPanel && <MobileSidebar>{leftPanel}</MobileSidebar>}
                 {/* Main Content Area */}
                 <div className="relative w-full max-w-8xl mx-auto flex flex-1 md:px-8 lg:px-12 xl:px-16">
                     {/* Left Sidebar */}
-                    <aside
-                        className={twJoin(
-                            'hidden md:block sticky flex-none w-64 h-[calc(100vh-64px)] overflow-y-auto',
-                            headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
-                        )}
-                    >
-                        {leftPanel}
-                    </aside>
+                    {!!leftPanel && (
+                        <aside
+                            className={twJoin(
+                                'hidden md:block sticky flex-none w-64 h-[calc(100vh-64px)] overflow-y-auto',
+                                headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
+                            )}
+                        >
+                            {leftPanel}
+                        </aside>
+                    )}
 
                     {/* Center Content */}
                     <main className="flex-1 min-w-0 px-6 py-8">
@@ -136,14 +138,16 @@ export default function Layout(props) {
                     </main>
 
                     {/* Right Section Nav */}
-                    <aside
-                        className={twJoin(
-                            'hidden xl:block sticky flex-none w-64 h-[calc(100vh-64px)] overflow-y-auto',
-                            headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
-                        )}
-                    >
-                        {rightPanel}
-                    </aside>
+                    {!!rightPanel && (
+                        <aside
+                            className={twJoin(
+                                'hidden xl:block sticky flex-none w-64 h-[calc(100vh-64px)] overflow-y-auto',
+                                headerMode === 'island' ? 'top-16 desktop:top-20' : 'top-16'
+                            )}
+                        >
+                            {rightPanel}
+                        </aside>
+                    )}
                 </div>
             </div>
         </SidebarProvider>

@@ -15,3 +15,17 @@ elements:
 
 images:
     - example.png
+
+acceptedLayouts:
+    - center
+    - wide
+    - fill
+    - left
+    - right
+    - small
+
+acceptedRoles:
+    - illustration
+    - logo
+    - icon
+    - custom
