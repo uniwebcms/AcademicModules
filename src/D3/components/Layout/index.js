@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { twJoin, website } from '@uniwebcms/module-sdk';
+import { Link } from '@uniwebcms/core-components';
 import { SidebarProvider, useSidebar } from '../_utils/SidebarContext';
 import { HiX } from 'react-icons/hi';
 
@@ -27,19 +28,53 @@ function ProseWrapper({ children }) {
     );
 }
 
-function DocHeader({ page }) {
-    const { activeLang } = page;
-    const parent = page.getParentPage();
-    const title = page.options.activeContent.label;
+function DocHeader({ website }) {
+    // const { activeLang } = page;
+    // const title = page.options.activeContent.label;
+
+    const hierarchy = website.getPageHierarchy({
+        nested: false,
+        pageOnly: false,
+    });
+
+    const activeRoute = website.activePage.activeRoute;
+    const routingPath = findRouteAncestors(hierarchy, activeRoute);
+
+    if (!routingPath.length) {
+        return null;
+    }
 
     return (
-        <div className="mb-9 space-y-1">
-            {parent && (
-                <p className="text-sm lg:text-base font-medium text-text-color-80">
-                    {JSON.parse(parent.label)[activeLang]}
-                </p>
-            )}
-            {title && <h1 className="text-3xl tracking-tight">{JSON.parse(title)[activeLang]}</h1>}
+        <div className="mb-12">
+            <nav aria-label="Breadcrumb">
+                <ol className="flex flex-wrap items-center gap-2 text-sm xl:text-base text-text-color/80">
+                    {routingPath.map((node, index) => {
+                        const isLast = index === routingPath.length - 1;
+                        const key = node.route || `${node.label}-${index}`;
+
+                        const label =
+                            isLast || !node.hasData ? (
+                                <span className={isLast ? 'font-semibold text-text-color' : ''}>
+                                    {node.label}
+                                </span>
+                            ) : (
+                                <Link
+                                    to={node.route}
+                                    className="transition-colors text-text-color/80 hover:text-link-hover-color"
+                                >
+                                    {node.label}
+                                </Link>
+                            );
+
+                        return (
+                            <li key={key} className="flex items-center gap-2">
+                                {label}
+                                {!isLast && <span className="text-text-color/40">/</span>}
+                            </li>
+                        );
+                    })}
+                </ol>
+            </nav>
         </div>
     );
 }
@@ -90,8 +125,28 @@ const MobileSidebar = ({ children, headerSiteNavigation = false }) => {
     );
 };
 
+function findRouteAncestors(items, targetRoute) {
+    const byRoute = new Map();
+    for (const it of items) {
+        const r = it.route;
+        byRoute.set(r, it);
+    }
+
+    const parts = targetRoute.split('/').filter(Boolean);
+    const ancestors = [];
+
+    // Accumulate path segments up to (but not including) the full route
+    for (let i = 1; i <= parts.length; i++) {
+        const prefix = parts.slice(0, i).join('/');
+        const found = byRoute.get(prefix);
+        if (found) ancestors.push(found);
+    }
+
+    return ancestors;
+}
+
 export default function Layout(props) {
-    const { page, header, footer, body, leftPanel, rightPanel } = props;
+    const { page, header: headerElement, footer, body, leftPanel, rightPanel } = props;
 
     const {
         sticky: stickyHeader = true,
@@ -134,7 +189,7 @@ export default function Layout(props) {
                         stickyHeader ? 'fixed top-0 z-50 [&>div]:!bg-[unset]' : ''
                     )}
                 >
-                    {header}
+                    {headerElement}
                 </header>
                 {/* Header placeholder */}
                 {stickyHeader && (
@@ -180,7 +235,7 @@ export default function Layout(props) {
                     <main className="flex-1 min-w-0 py-8">
                         <div className="mx-auto max-w-3xl">
                             {/* Page Title & Subtitle */}
-                            <DocHeader page={page} />
+                            <DocHeader page={page} website={website} />
                             {/* Actual Content */}
                             <ProseWrapper>{body}</ProseWrapper>
                             {/* Prev / Next */}
