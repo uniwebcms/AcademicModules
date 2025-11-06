@@ -175,9 +175,7 @@ const MobileNavMenu = ({ links, isOpen, closeNav, siteNavigation }) => {
 };
 
 export default function Header(props) {
-    const { page, block, website } = props;
-
-    console.log('page', website.activePage.activeRoute);
+    const { block, website } = props;
 
     const {
         sticky = true,
