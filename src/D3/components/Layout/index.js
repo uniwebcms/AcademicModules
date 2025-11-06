@@ -152,25 +152,29 @@ export default function Layout(props) {
                     />
                 )}
                 {/* Mobile Left Sidebar - pass prop */}
-                <MobileSidebar headerSiteNavigation={headerSiteNavigation}>
-                    {React.cloneElement(leftPanel, {
-                        extra: { headerSiteNavigation },
-                    })}
-                </MobileSidebar>
-                {/* Main Content Area */}
-                <div className="relative w-full max-w-full desktop:max-w-[88rem] mx-0 desktop:mx-auto flex flex-1 px-6 md:px-8 lg:px-12 desktop:px-0">
-                    {/* Left Sidebar */}
-                    <aside
-                        className={twJoin(
-                            'hidden md:block sticky flex-none w-64 overflow-y-auto',
-                            sidebarHeightClass,
-                            sidebarTopClass
-                        )}
-                    >
+                {!!leftPanel && (
+                    <MobileSidebar headerSiteNavigation={headerSiteNavigation}>
                         {React.cloneElement(leftPanel, {
                             extra: { headerSiteNavigation },
                         })}
-                    </aside>
+                    </MobileSidebar>
+                )}
+                {/* Main Content Area */}
+                <div className="relative w-full max-w-full desktop:max-w-[88rem] mx-0 desktop:mx-auto flex flex-1 px-6 md:px-8 lg:px-12 desktop:px-0">
+                    {/* Left Sidebar */}
+                    {!!leftPanel && (
+                        <aside
+                            className={twJoin(
+                                'hidden md:block sticky flex-none w-64 overflow-y-auto',
+                                sidebarHeightClass,
+                                sidebarTopClass
+                            )}
+                        >
+                            {React.cloneElement(leftPanel, {
+                                extra: { headerSiteNavigation },
+                            })}
+                        </aside>
+                    )}
 
                     {/* Center Content */}
                     <main className="flex-1 min-w-0 py-8">
@@ -185,15 +189,17 @@ export default function Layout(props) {
                     </main>
 
                     {/* Right Section Nav */}
-                    <aside
-                        className={twJoin(
-                            'hidden xl:block sticky flex-none w-64 overflow-y-auto',
-                            sidebarHeightClass,
-                            sidebarTopClass
-                        )}
-                    >
-                        {rightPanel}
-                    </aside>
+                    {!!rightPanel && (
+                        <aside
+                            className={twJoin(
+                                'hidden xl:block sticky flex-none w-64 overflow-y-auto',
+                                sidebarHeightClass,
+                                sidebarTopClass
+                            )}
+                        >
+                            {rightPanel}
+                        </aside>
+                    )}
                 </div>
             </div>
         </SidebarProvider>
