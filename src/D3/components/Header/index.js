@@ -186,6 +186,7 @@ export default function Header(props) {
     } = block.getBlockProperties();
 
     const { banner, images, form } = block.getBlockContent();
+
     const allImages = [banner, ...images].filter(Boolean);
 
     const [isScrolled, setIsScrolled] = useState(false);
@@ -228,7 +229,7 @@ export default function Header(props) {
     }, []);
 
     let logoImg = allImages.find((img) => {
-        return img.caption === `logo-${finalTheme}`;
+        return img.theme === finalTheme;
     });
 
     const links = parseLinks(form);
@@ -306,7 +307,15 @@ export default function Header(props) {
                             </button>
                             {/* Logo Image */}
                             {logoImg ? (
-                                <Link to="/">
+                                <Link
+                                    to="/"
+                                    ariaLabel={website.localize({
+                                        en: 'Company logo',
+                                        fr: 'Logo de l’entreprise',
+                                        es: 'Logo de la empresa',
+                                        zh: '公司标志',
+                                    })}
+                                >
                                     <Image
                                         profile={getPageProfile()}
                                         {...logoImg}
