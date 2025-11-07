@@ -45,19 +45,29 @@ const getPageContent = (page) => {
 };
 
 export default function RightPanel(props) {
-    const offset = 90;
+    // const offset = 90;
     const { page, website } = props;
     const [activeId, setActiveId] = useState('');
     const pageContent = useMemo(() => getPageContent(page), [page]);
+
+    // const scrollTo = useCallback(
+    //     (id) => {
+    //         const el = document.getElementById(id);
+    //         if (!el) return;
+    //         const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    //         window.scrollTo({ top: y, behavior: 'smooth' });
+    //     },
+    //     [offset]
+    // );
 
     const scrollTo = useCallback(
         (id) => {
             const el = document.getElementById(id);
             if (!el) return;
-            const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
+
+            website.scrollTo(el);
         },
-        [offset]
+        [website]
     );
 
     let getHeadings = useCallback((pageContent) => {
