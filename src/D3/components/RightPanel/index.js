@@ -167,7 +167,7 @@ export default function RightPanel(props) {
                                     className={twJoin(
                                         'text-left focus:outline-none bg-transparent',
                                         isActive(content)
-                                            ? 'text-link-active-color font-semibold'
+                                            ? 'text-link-active-color [text-shadow:0.5px_0_0_currentColor]'
                                             : 'text-text-color/90 hover:text-link-color hover:[text-shadow:0.5px_0_0_currentColor]'
                                     )}
                                     onClick={() => {
@@ -184,7 +184,7 @@ export default function RightPanel(props) {
                                                     className={twJoin(
                                                         'text-left focus:outline-none bg-transparent',
                                                         isActive(subContent)
-                                                            ? 'text-primary-500 font-semibold'
+                                                            ? 'text-primary-500 [text-shadow:0.5px_0_0_currentColor]'
                                                             : 'text-text-color/90 hover:text-text-color hover:[text-shadow:0.5px_0_0_currentColor]'
                                                     )}
                                                     onClick={() => {
