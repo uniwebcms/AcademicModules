@@ -2811,6 +2811,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uniwebcms/core-components@npm:^1.6.31":
+  version: 1.6.31
+  resolution: "@uniwebcms/core-components@npm:1.6.31"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.3"
+    "@popperjs/core": "npm:^2.10.1"
+    "@react-google-maps/api": "npm:^2.19.1"
+    katex: "npm:^0.16.11"
+    prismjs: "npm:^1.29.0"
+    react-icons: "npm:^4.11.0"
+    react-katex: "npm:^3.0.1"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/134e5ae754b831502215d02b111828661abbcf941b8ecb461aab4e20986c01001566e35b90ca55a32dab24aeebaf1617f05009ac6fc662cecd48d2b24a8d8754
+  languageName: node
+  linkType: hard
+
 "@uniwebcms/module-builder@npm:^1.7.2":
   version: 1.9.0
   resolution: "@uniwebcms/module-builder@npm:1.9.0"
@@ -4584,7 +4602,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@react-google-maps/api": "npm:^2.19.1"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.30"
+    "@uniwebcms/core-components": "npm:^1.6.31"
     "@uniwebcms/module-sdk": "npm:^2.0.6"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     flexsearch: "npm:^0.7.31"
