@@ -45,7 +45,7 @@ const getPageContent = (page) => {
 };
 
 export default function RightPanel(props) {
-    // const offset = 90;
+    const offset = 90;
     const { page, website } = props;
     const [activeId, setActiveId] = useState('');
     const pageContent = useMemo(() => getPageContent(page), [page]);
