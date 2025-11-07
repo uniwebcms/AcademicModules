@@ -45,10 +45,45 @@ const getPageContent = (page) => {
 };
 
 export default function RightPanel(props) {
-    const offset = 90;
     const { page, website } = props;
     const [activeId, setActiveId] = useState('');
     const pageContent = useMemo(() => getPageContent(page), [page]);
+
+    const [offset, setOffset] = useState(90);
+
+    // dynamic offset based on header height
+    useEffect(() => {
+        let headerOffset = 0;
+        let foundHeader = null;
+
+        // 1. Get all <header> elements in document order
+        const allHeaders = document.querySelectorAll('header');
+
+        // 2. Loop to find the *first* one that is fixed or sticky
+        for (const header of allHeaders) {
+            const style = window.getComputedStyle(header);
+            const position = style.position;
+
+            if (position === 'fixed' || position === 'sticky') {
+                // This is the first one that matches our criteria.
+                foundHeader = header;
+                // Stop searching
+                break;
+            }
+        }
+
+        // 3. If we found a matching header, check if it's at the top
+        if (foundHeader) {
+            const headerRect = foundHeader.getBoundingClientRect();
+
+            // Check if this header is currently at the top of the viewport
+            // (We use < 1 to account for sub-pixel rendering)
+            if (headerRect.top >= 0 && headerRect.top < 1) {
+                headerOffset = foundHeader.offsetHeight;
+                setOffset(headerOffset);
+            }
+        }
+    }, []);
 
     // const scrollTo = useCallback(
     //     (id) => {
@@ -65,26 +100,29 @@ export default function RightPanel(props) {
             const el = document.getElementById(id);
             if (!el) return;
 
-            website.scrollTo(el);
+            website.scrollTo(el, 10);
         },
         [website]
     );
 
-    let getHeadings = useCallback((pageContent) => {
-        return pageContent
-            .flatMap((node) => [node.id, ...node.children.map((child) => child.id)])
-            .map((id) => {
-                let el = document.getElementById(id);
-                if (!el) return null;
+    let getHeadings = useCallback(
+        (pageContent) => {
+            return pageContent
+                .flatMap((node) => [node.id, ...node.children.map((child) => child.id)])
+                .map((id) => {
+                    let el = document.getElementById(id);
+                    if (!el) return null;
 
-                let style = window.getComputedStyle(el);
-                let scrollMt = parseFloat(style.scrollMarginTop);
+                    let style = window.getComputedStyle(el);
+                    let scrollMt = parseFloat(style.scrollMarginTop);
 
-                let top = window.scrollY + el.getBoundingClientRect().top - scrollMt - offset;
-                return { id, top };
-            })
-            .filter((x) => x !== null);
-    }, []);
+                    let top = window.scrollY + el.getBoundingClientRect().top - scrollMt - offset; // dynamic offset based on header height
+                    return { id, top };
+                })
+                .filter((x) => x !== null);
+        },
+        [offset]
+    );
 
     useEffect(() => {
         if (pageContent.length === 0) return;
