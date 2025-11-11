@@ -32,7 +32,7 @@ export default function MotionFeature(props) {
                     {paragraphs.length > 0 && <SafeHtml value={paragraphs} className="mt-6" />}
 
                     {quote && (
-                        <aside className="mt-8 border-l-4 border-secondary-500 pl-6">
+                        <aside className="mt-8 border-l-4 border-secondary-600 pl-6">
                             <p className="text-lg font-medium italic text-heading-color/90">
                                 {quote}
                             </p>
@@ -137,7 +137,7 @@ const SlidingBlocks = ({ items }) => {
             {secondItem && (
                 <motion.div
                     className={
-                        'absolute bottom-0 right-0 bg-text-color-0 p-6 rounded-xl shadow-2xl border-4 border-secondary-500 w-full lg:w-3/4 transform rotate-2 origin-bottom-right'
+                        'absolute bottom-0 right-0 bg-text-color-0 p-6 rounded-xl shadow-2xl border-4 border-secondary-600 w-full lg:w-3/4 transform rotate-2 origin-bottom-right'
                     }
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -148,7 +148,7 @@ const SlidingBlocks = ({ items }) => {
                     <div className="mt-3 space-y-2">
                         <div
                             className={
-                                'bg-primary-500/10 p-3 rounded-lg border border-secondary-500 text-heading-color/90 font-semibold'
+                                'bg-primary-500/10 p-3 rounded-lg border border-secondary-600 text-heading-color/90 font-semibold'
                             }
                         >
                             {secondItem.paragraphs[0]}
@@ -168,7 +168,7 @@ const GrowingCards = ({ items }) => {
             {firstItem && (
                 <motion.div
                     className={
-                        'absolute top-[-10px] left-0 bg-secondary-50 p-6 rounded-xl shadow-xl border-2 border-secondary-500 w-full lg:w-3/4 transform -rotate-1 origin-top-left flex flex-col items-center justify-center'
+                        'absolute top-[-10px] left-0 bg-secondary-50 p-6 rounded-xl shadow-xl border-2 border-secondary-600 w-full lg:w-3/4 transform -rotate-1 origin-top-left flex flex-col items-center justify-center'
                     }
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -178,7 +178,7 @@ const GrowingCards = ({ items }) => {
                     {firstItem.icons[0] && (
                         <Icon
                             icon={firstItem.icons[0]}
-                            className="w-12 h-12 [&_svg]:text-secondary-500"
+                            className="w-12 h-12 [&_svg]:text-secondary-600"
                         />
                     )}
                     <p className={'text-xl font-semibold mt-4 text-heading-color/90'}>
@@ -215,7 +215,7 @@ const Button = ({ link }) => {
     return (
         <Link
             to={link.href}
-            className="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all transform hover:-translate-y-px hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 bg-secondary-500 text-text-color-0 hover:bg-secondary-600 px-6 py-3 text-base mt-8"
+            className="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all transform hover:-translate-y-px hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 bg-secondary-600 text-text-color-0 hover:bg-secondary-700 px-6 py-3 text-base mt-8"
         >
             {link.label}
         </Link>

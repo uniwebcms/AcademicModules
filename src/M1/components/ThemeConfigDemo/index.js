@@ -77,7 +77,7 @@ const ConfigurationVisual = () => {
                             })}
                         </label>
                         <div className="flex gap-2">
-                            <div className="w-8 h-8 rounded-lg border border-neutral-200 bg-secondary-500"></div>
+                            <div className="w-8 h-8 rounded-lg border border-neutral-200 bg-secondary-600"></div>
                             <div className="w-8 h-8 rounded-lg border border-neutral-200 bg-primary-500"></div>
                             <div className="w-8 h-8 rounded-lg border border-neutral-200 bg-heading-color"></div>
                             <div className="w-8 h-8 rounded-lg border border-neutral-200 bg-neutral-400"></div>
@@ -296,8 +296,8 @@ const ConfigurationVisual = () => {
                 >
                     {/* Card Header */}
                     <div className="flex items-center gap-4">
-                        <span className={'inline-block p-3 bg-secondary-500/10 rounded-lg'}>
-                            <currentCard.icon className={'w-6 h-6 text-secondary-500'} />
+                        <span className={'inline-block p-3 bg-secondary-600/10 rounded-lg'}>
+                            <currentCard.icon className={'w-6 h-6 text-secondary-600'} />
                         </span>
                         <div>
                             <h3 className={'text-xl font-semibold'}>{currentCard.title}</h3>
@@ -320,7 +320,7 @@ const ConfigurationVisual = () => {
                         onClick={() => handleDotClick(i)} // Use new handler
                         className={`w-2.5 h-2.5 rounded-full transition-all ${
                             i === index
-                                ? 'bg-secondary-500 scale-110'
+                                ? 'bg-secondary-600 scale-110'
                                 : 'bg-neutral-300 hover:bg-neutral-400'
                         }`}
                         aria-label={`Go to step ${i + 1}`}
@@ -339,7 +339,7 @@ const MockToggle = ({ icon: Icon, label, active }) => (
         </div>
         <div
             className={`relative w-12 h-6 rounded-full transition-colors ${
-                active ? 'bg-secondary-500' : 'bg-neutral-300'
+                active ? 'bg-secondary-600' : 'bg-neutral-300'
             }`}
         >
             <div
@@ -378,7 +378,7 @@ const MockSectionLayoutSelector = () => {
                         onClick={() => setActiveLayout(layout.name)}
                         className={`flex flex-col items-center justify-center gap-1 p-3 rounded-lg border-2 transition-all ${
                             activeLayout === layout.name
-                                ? 'border-secondary-500 bg-text-color-0 text-secondary-500'
+                                ? 'border-secondary-600 bg-text-color-0 text-secondary-600'
                                 : 'border-neutral-200 bg-neutral-50 text-neutral-600 hover:bg-neutral-100 hover:border-neutral-300'
                         }`}
                     >
