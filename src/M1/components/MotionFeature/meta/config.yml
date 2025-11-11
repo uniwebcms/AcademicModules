@@ -1,0 +1,36 @@
+title:
+    en: Motion Feature
+    fr: Fonctionnalité de mouvement
+label:
+    en: Motion Feature
+    fr: Fonctionnalité de mouvement
+description:
+    en: A component that displays a feature with title, subtitle, text, and optional callout text, with a selected motion effect applied to the child items.
+    fr: Un composant qui affiche une fonctionnalité avec un titre, un sous-titre, un texte et un texte d'appel facultatif, avec un effet de mouvement sélectionné appliqué aux éléments enfants.
+
+category: content
+export: true
+
+properties:
+    sub_feature_style:
+        label:
+            en: Sub Feature Style
+            fr: Style de sous-fonctionnalité
+        type: string
+        default: grid_cards
+        enum:
+            - label:
+                  en: Grid Cards
+                  fr: Cartes en grille
+              value: grid_cards
+            - label:
+                  en: Sliding Blocks
+                  fr: Blocs glissants
+              value: sliding_blocks
+            - label:
+                  en: Growing Cards
+                  fr: Cartes en croissance
+              value: growing_cards
+        description:
+            en: Defines the style of the sub-feature.
+            fr: Définit le style de la sous-fonctionnalité.

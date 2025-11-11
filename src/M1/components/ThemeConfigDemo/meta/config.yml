@@ -1,0 +1,12 @@
+title:
+    en: Theme Config Demo
+    fr: Démo de configuration du thème
+label:
+    en: Theme Config Demo
+    fr: Démo de configuration du thème
+description:
+    en: A component to demonstrate theme configuration capabilities.
+    fr: Un composant pour démontrer les capacités de configuration du thème.
+
+category: content
+export: true
