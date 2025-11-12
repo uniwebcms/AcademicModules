@@ -309,4 +309,33 @@ export default function FeatureItem(props) {
             </div>
         );
     }
+
+    if (mode === 'testimonial') {
+        const { title, subtitle, images, paragraphs } = block.getBlockContent();
+
+        return (
+            <motion.div
+                key={item.name}
+                className="p-8 rounded-2xl shadow-lg border border-text-color/20 flex flex-col relative"
+                whileHover={{ y: -5 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+                <p className="text-lg leading-relaxed flex-grow z-10 relative">“{paragraphs[0]}”</p>
+
+                <div className="mt-6 z-10 relative flex items-center gap-4">
+                    {images[0] && (
+                        <Image
+                            {...images[0]}
+                            profile={getPageProfile()}
+                            className="w-12 h-12 rounded-full bg-gray-700 border-2 border-text-color/80 object-cover"
+                        />
+                    )}
+                    <div>
+                        <div className={'font-bold text-heading-color'}>{title}</div>
+                        <div className="text-text-color/70">{subtitle}</div>
+                    </div>
+                </div>
+            </motion.div>
+        );
+    }
 }
