@@ -315,7 +315,7 @@ export default function FeatureItem(props) {
 
         return (
             <MotionWrapper>
-                <div className="p-8 rounded-2xl shadow-lg border border-text-color/20 flex flex-col relative">
+                <div className="p-8 rounded-2xl shadow-lg border border-text-color/20 flex flex-col relative h-full">
                     <p className="text-lg leading-relaxed flex-grow z-10 relative">
                         “{paragraphs[0]}”
                     </p>
