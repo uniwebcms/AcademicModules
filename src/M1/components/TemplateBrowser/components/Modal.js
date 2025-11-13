@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog } from '@headlessui/react';
 import { HiX } from 'react-icons/hi';
 import { twJoin } from '@uniwebcms/module-sdk';
