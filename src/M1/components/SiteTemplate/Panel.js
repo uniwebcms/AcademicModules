@@ -106,11 +106,11 @@ export default function (props) {
                 </div>
             </div>
             <div className={`flex flex-col px-4 py-3 flex-1`}>
-                <h2 className={`text-lg font-bold`}>{name}</h2>
+                <h2 className={`text-[1.4rem] font-bold`}>{name}</h2>
                 {description ? (
                     <div
                         className={
-                            `text-neutral-600 mt-3 max-h-[300px] overflow-y-auto text-[13px] break-words leading-[140%] flex flex-col space-y-3` +
+                            `text-neutral-600 mt-3 max-h-[300px] overflow-y-auto text-[1rem] break-words leading-[140%] flex flex-col space-y-3` +
                             ` ${Styles.Scrollbar}`
                         }
                     >

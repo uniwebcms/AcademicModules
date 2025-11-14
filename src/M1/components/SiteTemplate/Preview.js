@@ -65,7 +65,7 @@ export default function (props) {
                 src={iframeSrc}
                 // --- 4. CHANGE (className) ---
                 // The className now only contains static classes
-                className={`${iframeSize} ${
+                className={`${iframeSize} bg-white ${
                     screen === 'desktop'
                         ? // All static classes for desktop mode go here
                           // Note: `!w-[1440px]` is moved to the style prop

@@ -38,7 +38,16 @@ function useBreakpoint(breakpointQuery = LG_BREAKPOINT) {
 }
 
 const MobileLayout = (props) => {
-    const { website, input, mobileView, iframeSrc, screen, setScreen, setMobileView } = props;
+    const {
+        website,
+        input,
+        mobileView,
+        iframeSrc,
+        screen,
+        setScreen,
+        setMobileView,
+        handleSelect,
+    } = props;
 
     if (mobileView === 'details') {
         return (
@@ -71,7 +80,7 @@ const MobileLayout = (props) => {
                         </h2>
                     </div>
                     <div
-                        onClick={() => {}}
+                        onClick={handleSelect}
                         className={`flex items-center justify-center rounded-lg px-3 py-1.5 text-neutral-50 hover:text-neutral-50 bg-neutral-900 hover:bg-neutral-900 cursor-pointer`}
                     >
                         <p className={`text-xs`}>
@@ -158,7 +167,7 @@ export default function SiteTemplate(props) {
         isMobileLayout ? 'w-full' : 'w-[24rem]'
     } flex-shrink-0 rounded-md h-full bg-white pointer-events-none overflow-hidden transform transition ease-in-out duration-500 shadow border`;
 
-    // const templateSite = profile.getId();
+    const templateSite = profile.getId();
     // const info = profile.getBasicInfo();
     // const { title: name, subtitle: description } = info;
 
@@ -177,6 +186,33 @@ export default function SiteTemplate(props) {
                     setScreen,
                     mobileView,
                     setMobileView,
+                    handleSelect: () => {
+                        const appDomain = uniweb.getAppDomain();
+                        fetch(`${appDomain}/temp_resource.php`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json', // Specify content type
+                            },
+                            body: JSON.stringify({
+                                action: 'store',
+                                data: {
+                                    templateSite, //:'_blank'
+                                },
+                            }), // Convert data object to JSON string
+                        })
+                            .then((response) => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                                return response.json(); // Parse the JSON response
+                            })
+                            .then((data) => {
+                                window.location.replace(data);
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error); // Handle any errors
+                            });
+                    },
                 }}
             />
         );
