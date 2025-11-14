@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGetProfile } from '@uniwebcms/module-sdk';
 import { SafeHtml, Link } from '@uniwebcms/core-components';
 import { LuCrown, LuLayers2 } from 'react-icons/lu';
 import { GrDiamond } from 'react-icons/gr';
+import { HiOutlineSparkles } from 'react-icons/hi';
+import { HiOutlinePlayCircle } from 'react-icons/hi2';
 
-const LibrarySection = ({ info, website }) => {
+const LibrarySection = ({ info, website, setFoundationPreview }) => {
     const { head } = info;
 
     if (!head?.template?.[0]) return null;
@@ -39,12 +41,18 @@ const LibrarySection = ({ info, website }) => {
             : metadata
         : {};
 
-    let { type = 'essential', creator = 'Uniweb Studio', tagline = '', url = '' } = parsedMeta;
+    let {
+        type = 'essential',
+        creator = 'Uniweb Studio',
+        tagline = '',
+        url = '',
+        video = null,
+    } = parsedMeta;
 
     let icon,
         price,
         label,
-        iconClass = 'w-6 h-6 text-neutral-300 lg:text-neutral-600';
+        iconClass = 'w-6 h-6 text-neutral-600';
     if (type === 'essential') {
         label = website.localize({ en: 'Essential Library', fr: 'Bibliothèque essentielle' });
         icon = <LuLayers2 className={iconClass} />;
@@ -72,10 +80,8 @@ const LibrarySection = ({ info, website }) => {
             <div className={`flex items-center gap-3`}>
                 {icon}
                 <div className={`flex flex-col`}>
-                    <p className={`font-medium text-sm text-neutral-200 lg:text-neutral-800`}>
-                        {label}
-                    </p>
-                    <p className={`text-xs text-neutral-400 lg:text-neutral-500`}>
+                    <p className={`font-medium text-sm text-neutral-800`}>{label}</p>
+                    <p className={`text-xs text-neutral-500`}>
                         {website.localize({
                             en: `by ${creator}`,
                             fr: `par ${creator}`,
@@ -84,20 +90,50 @@ const LibrarySection = ({ info, website }) => {
                 </div>
             </div>
             <SafeHtml
-                className={'text-neutral-300 lg:text-neutral-600 text-xs ml-9'}
+                className={'text-neutral-600 text-xs ml-9'}
                 value={`<strong>${name}</strong>${tagline ? ` —— ${tagline}` : ''}`}
             />
+            {video ? (
+                <button
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setFoundationPreview({
+                            open: true,
+                            video,
+                            foundation: {
+                                url,
+                                name,
+                                type: label,
+                                description: metadata?.description
+                                    ? website.localize(metadata?.description)
+                                    : website.localize({
+                                          en: `Created by ${creator}`,
+                                          fr: `Créé par ${creator}`,
+                                      }),
+                            },
+                        });
+
+                        return false;
+                    }}
+                    className={`w-full flex items-center justify-center gap-2 bg-neutral-300 hover:bg-neutral-400 text-neutral-700 hover:text-neutral-900 font-semibold py-2 px-4 rounded-lg transition-colors text-sm`}
+                >
+                    <HiOutlinePlayCircle className={`w-5 h-5`} />
+                    {website.localize({
+                        en: 'Watch Capabilities',
+                        fr: 'Regarder les capacités',
+                    })}
+                </button>
+            ) : null}
         </Wrapper>
     );
 
     return (
         <>
-            <div
-                className={`bg-neutral-800 lg:bg-neutral-200/75 rounded-lg border border-neutral-600 lg:border-neutral-300 my-2 lg:my-4`}
-            >
+            <div className={`bg-neutral-200/75 rounded-lg border border-neutral-300 my-2 lg:my-4`}>
                 <div className={`p-3 lg:p-4 block group`}>{body}</div>
             </div>
-            <div className={`flex flex-col`}>
+            {/* <div className={`flex flex-col`}>
                 <p className={`text-sm text-neutral-200 lg:text-neutral-600`}>
                     {website.localize({
                         en: `Library: $${price}/mo + hosting and add-ons`,
@@ -110,6 +146,15 @@ const LibrarySection = ({ info, website }) => {
                         fr: `Gratuit pendant la personnalisation de votre site. Payez uniquement lorsque vous publiez.`,
                     })}
                 </p>
+            </div> */}
+            <div className={`flex items-start gap-3 text-sm text-neutral-500 pr-4 pl-1`}>
+                <HiOutlineSparkles className={`flex-shrink-0 mt-0.5 w-5 h-5`} />
+                <span>
+                    {website.localize({
+                        en: 'This template is a starting point. You can fully change it using all the components and features from its Foundation.',
+                        fr: 'Ce modèle est un point de départ. Vous pouvez le modifier entièrement en utilisant tous les composants et fonctionnalités de sa Fondation.',
+                    })}
+                </span>
             </div>
         </>
     );
