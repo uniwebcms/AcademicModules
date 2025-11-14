@@ -5097,6 +5097,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"expert-series-2@workspace:src/E2":
+  version: 0.0.0-use.local
+  resolution: "expert-series-2@workspace:src/E2"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.13"
+    "@headlessui/tailwindcss": "npm:^0.2.2"
+    "@tailwindcss/typography": "npm:^0.5.15"
+    "@uniwebcms/core-components": "npm:^1.6.27"
+    "@uniwebcms/module-sdk": "npm:^2.0.3"
+    "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
+    prop-types: "npm:^15.8.1"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-icons: "npm:^5.4.0"
+    react-spinners: "npm:^0.17.0"
+    tailwindcss: "npm:^3.4.13"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
 "exponential-backoff@npm:^3.1.1":
   version: 3.1.2
   resolution: "exponential-backoff@npm:3.1.2"

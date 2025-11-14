@@ -1,0 +1,205 @@
+title:
+    en: Form
+    fr: Formulaire
+label:
+    en: Form
+    fr: Formulaire
+description:
+    en: A form component to collect user feedback or data.
+    fr: Un composant de formulaire pour collecter les retours d'information ou les données
+
+category: form
+export: true
+
+elements:
+    title:
+    subtitle:
+    form:
+        description:
+            en: A form to construct the data collection interface.
+            fr: Un formulaire pour construire l'interface de collecte de données.
+        schemas:
+            - id: form
+              name:
+                  en: Form
+                  fr: Formulaire
+              # isComposite: false means the form data will be a single object {}.
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Field
+                      fr: Champ
+                  # 'fields' defines the inputs for this specific form layout.
+                  fields:
+                      - id: label
+                        type: text
+                        label:
+                            en: Field Label
+                            fr: Étiquette du champ
+                        description:
+                            en: The label for the field.
+                            fr: L'étiquette du champ.
+                        required: true
+                      - id: widget
+                        type: select
+                        label:
+                            en: Field Type
+                            fr: Type de champ
+                        description:
+                            en: Defines the input type.
+                            fr: Définit le type d'entrée.
+                        required: true
+                        options:
+                            - label:
+                                  en: Input
+                                  fr: Input
+                              value: input
+                            - label:
+                                  en: Text Area
+                                  fr: Zone de texte
+                              value: textarea
+                            - label:
+                                  en: Select
+                                  fr: Sélect
+                              value: select
+                            - label:
+                                  en: Radio Group
+                                  fr: Groupe de boutons radio
+                              value: radio
+                            - label:
+                                  en: Checkbox
+                                  fr: Case à cocher
+                              value: checkbox
+                            - label:
+                                  en: File Upload
+                                  fr: Téléchargement de fichier
+                              value: file
+                      - id: required
+                        type: checkbox
+                        label:
+                            en: Required
+                            fr: Requis
+                        description:
+                            en: If true, the field is mandatory.
+                            fr: Si vrai, le champ est obligatoire.
+                      - id: placeholder
+                        type: text
+                        label:
+                            en: Placeholder Text
+                            fr: Texte de l'espace réservé
+                        description:
+                            en: Placeholder text for the input field.
+                            fr: Texte de l'espace réservé pour le champ d'entrée.
+                        condition:
+                            widget:
+                                $in:
+                                    - input
+                                    - textarea
+                      - id: options
+                        type: form
+                        label:
+                            en: Options to Select
+                            fr: Options à sélectionner
+                        description:
+                            en: Options for select, radio, or checkbox fields.
+                            fr: Options pour les champs de sélection, de radio ou de case à cocher.
+                        childSchema:
+                            name:
+                                en: Option
+                                fr: Option
+                            fields:
+                                - id: value
+                                  type: text
+                                  label:
+                                      en: Option Value
+                                      fr: Valeur de l'option
+                                  required: true
+                        condition:
+                            widget:
+                                $in:
+                                    - select
+                                    - radio
+                                    - checkbox
+                      - id: file_accept
+                        type: text
+                        label:
+                            en: File Accept Types
+                            fr: Types de fichiers acceptés
+                        placeholder:
+                            en: .pdf,.jpg,.png,.doc,.docx
+                            fr: .pdf,.jpg,.png,.doc,.docx
+                        condition:
+                            widget: file
+                      - id: file_size_limit
+                        type: number
+                        label:
+                            en: File Size Limit (MB)
+                            fr: Limite de taille de fichier (Mo)
+                        placeholder:
+                            en: '5'
+                            fr: '5'
+                        min: 1
+                        max: 5
+                        condition:
+                            widget: file
+                      - id: validation_regex
+                        type: text
+                        label:
+                            en: Validation (Regex)
+                            fr: Validation (Regex)
+                        description:
+                            en: A regular expression for validation.
+                            fr: Une expression régulière pour la validation.
+                        condition:
+                            widget: input
+                      - id: validation_type
+                        type: select
+                        label:
+                            en: Validation (Type)
+                            fr: Validation (Type)
+                        description:
+                            en: Validation by type.
+                            fr: Validation par type.
+                        options:
+                            - value: email
+                              label:
+                                  en: Email
+                                  fr: Email
+                            - value: positive_integer
+                              label:
+                                  en: Positive Integer
+                                  fr: Entier positif
+                        condition:
+                            widget:
+                                $in:
+                                    - input
+                                    - number
+                      - id: default_value
+                        type: text
+                        label:
+                            en: Default Value
+                            fr: Valeur par défaut
+                        description:
+                            en: The initial value of the field.
+                            fr: La valeur initiale du champ.
+                        condition:
+                            widget:
+                                $in:
+                                    - select
+                                    - radio
+                                    - checkbox
+                      - id: group
+                        type: text
+                        label:
+                            en: Field Group
+                            fr: Groupe de champs
+                        description:
+                            en: Group name for the field, useful for organizing fields.
+                            fr: Nom du groupe pour le champ, utile pour organiser les champs.
+    button:
+        description:
+            en: The button to submit the form.
+            fr: Le bouton pour soumettre le formulaire.
+
+images:
+    - example.png

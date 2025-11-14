@@ -1,0 +1,23 @@
+title:
+    en: Featured Experts
+    fr: Experts en vedette
+label:
+    en: Featured Experts
+    fr: Experts en vedette
+description:
+    en: A component to display featured experts with their details and links in a card format.
+    fr: Un composant pour afficher des experts en vedette avec leurs détails et liens dans un format de carte.
+
+category: content
+export: true
+
+properties:
+    animation_loader_count:
+        label:
+            en: Animation Loader Count
+            fr: Nombre de chargeurs d'animation
+        type: number
+        default: 0
+        description:
+            en: The number of skeleton loaders to display while the expert data is being fetched.
+            fr: Le nombre de chargeurs d'animation à afficher pendant que les données des experts sont récupérées.

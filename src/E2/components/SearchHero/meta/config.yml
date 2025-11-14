@@ -1,0 +1,12 @@
+title:
+    en: Search Hero
+    fr: Héros de recherche
+label:
+    en: Search Hero
+    fr: Héros de recherche
+description:
+    en: A hero component with a search title and filter bar, with a back to home button.
+    fr: Un composant héros avec un titre de recherche et une barre de filtre, avec un bouton de retour à l'accueil.
+
+category: content
+export: true

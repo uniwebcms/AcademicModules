@@ -1,0 +1,69 @@
+title:
+    en: Home Hero
+    fr: Héros de la page d'accueil
+label:
+    en: Home Hero
+    fr: Héros de la page d'accueil
+description:
+    en: The homepage hero component includes a title, subtitle, search bar, and two filter groups (Topics and Faculties) with filter badges for quick searching or filtering.
+    fr: Le composant héros de la page d'accueil comprend un titre, un sous-titre, une barre de recherche et deux groupes de filtres (Sujets et Facultés) avec des badges de filtre pour une recherche ou un filtrage rapide.
+
+category: content
+export: true
+
+elements:
+    form:
+        description:
+            en: A form to collect filter categories.
+            fr: Un formulaire pour collecter les catégories de filtres.
+        schemas:
+            - id: form
+              name:
+                  en: Browse By
+                  fr: Parcourir par
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Category
+                      fr: Catégorie
+                  fields:
+                      - id: title
+                        type: string
+                        label:
+                            en: Title
+                            fr: Titre
+                        description:
+                            en: Defines the title of the category.
+                            fr: Définit le titre de la catégorie.
+                        required: true
+                      - id: key
+                        type: string
+                        label:
+                            en: URL Query Key
+                            fr: Clé de requête URL
+                        description:
+                            en: Defines the URL query key for the category.
+                            fr: Définit la clé de requête URL pour la catégorie.
+                        required: true
+                      - id: items
+                        type: form
+                        label:
+                            en: Category Items
+                            fr: Éléments de la catégorie
+                        description:
+                            en: Defines the items in the category.
+                            fr: Définit les éléments de la catégorie.
+                        childSchema:
+                            name:
+                                en: Category Item
+                                fr: Élément de catégorie
+                            fields:
+                                - id: name
+                                  type: text
+                                  label:
+                                      en: Category Name
+                                      fr: Nom de la catégorie
+                                  description:
+                                      en: The name of the category item.
+                                      fr: Le nom de l'élément de la catégorie.
+                                  required: true

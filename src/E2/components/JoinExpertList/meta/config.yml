@@ -1,0 +1,12 @@
+title:
+    en: Join Expert List
+    fr: Rejoindre la liste des experts
+labels:
+    en: Join Expert List
+    fr: Rejoindre la liste des experts
+description:
+    en: Renders a link to the form to join the expert list.
+    fr: Affiche un lien vers le formulaire pour rejoindre la liste des experts.
+
+category: content
+export: true
