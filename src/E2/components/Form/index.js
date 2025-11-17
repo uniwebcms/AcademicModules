@@ -78,7 +78,7 @@ const SelectWidget = ({ data, setData, options = [], placeholder, website }) => 
             <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex h-10 w-full items-center justify-between rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 pl-3 pr-8 text-sm text-text-color-80 transition-colors focus:outline-none focus:bg-text-color-0 focus:ring-2 focus:ring-primary-400 focus:ring-offset-0"
+                className="flex h-10 w-full items-center justify-between rounded-[var(--border-radius)] border border-text-color/20 bg-text-color/5 pl-3 pr-8 text-sm text-text-color-80 transition-colors focus:outline-none focus:bg-text-color-0 focus:ring-2 focus:ring-primary-700 focus:ring-offset-0"
             >
                 {selectedLabel || displayPlaceholder}
                 <HiChevronDown className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-color/60" />
@@ -109,7 +109,7 @@ const SelectWidget = ({ data, setData, options = [], placeholder, website }) => 
                                 className={`flex w-full items-center px-3 py-1.5 text-left text-sm ${
                                     data === option.value
                                         ? 'bg-text-color-10 text-text-color font-medium'
-                                        : 'text-text-color-80 hover:bg-text-color-5'
+                                        : 'text-text-color-80 hover:bg-text-color/5'
                                 }`}
                                 onClick={() => {
                                     setData(option.value);
@@ -172,10 +172,10 @@ const Field = (props) => {
             : placeholder;
 
     const inputClassName =
-        'flex h-10 w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-400 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-text-color/60';
+        'flex h-10 w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color/5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-700 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm placeholder:text-text-color/60';
 
     const textareaClassName =
-        'flex min-h-[120px] w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color-5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-400 md:text-sm placeholder:text-text-color/60';
+        'flex min-h-[120px] w-full rounded-[var(--border-radius)] border border-text-color/20 bg-text-color/5 px-3 py-2 text-base text-text-color focus-visible:outline-none focus-visible:bg-text-color-0 focus-visible:ring-2 focus-visible:ring-primary-700 md:text-sm placeholder:text-text-color/60';
 
     const updateValue = (nextValue) => {
         setData((prev) => ({
@@ -340,7 +340,7 @@ const Field = (props) => {
                     role="button"
                     tabIndex={0}
                     className={twJoin(
-                        'group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-[var(--border-radius)] border border-dashed border-text-color/30 bg-text-color-5 px-6 py-10 text-center transition-colors duration-200',
+                        'group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-[var(--border-radius)] border border-dashed border-text-color/30 bg-text-color/5 px-6 py-10 text-center transition-colors duration-200',
                         isDragActive
                             ? 'border-text-color/50 bg-text-color-0/80'
                             : 'hover:bg-text-color-0'
@@ -388,7 +388,7 @@ const Field = (props) => {
                                     <button
                                         type="button"
                                         onClick={handleFileClear}
-                                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-text-color/20 bg-text-color-0 text-text-color/70 transition-colors group-hover:bg-text-color/10 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                                        className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-text-color/20 bg-text-color-0 text-text-color/70 transition-colors group-hover:bg-text-color/10 focus:outline-none focus:ring-2 focus:ring-primary-700"
                                         aria-label={removeFileLabel}
                                         title={removeFileLabel}
                                     >
@@ -430,7 +430,7 @@ const Field = (props) => {
                                 >
                                     <input
                                         type="checkbox"
-                                        className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-400"
+                                        className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-700"
                                         checked={isChecked}
                                         onChange={(event) => {
                                             const nextValues = event.target.checked
@@ -451,12 +451,12 @@ const Field = (props) => {
         }
 
         return (
-            <label className="flex items-center gap-2 text-sm text-text-color/90">
+            <label className="flex items-start gap-2 text-sm">
                 <input
                     id={id}
                     name={id}
                     type="checkbox"
-                    className="h-4 w-4 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-400"
+                    className="h-6 w-6 pt-0.5 rounded border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-700"
                     checked={Boolean(value)}
                     onChange={(event) => updateValue(event.target.checked)}
                 />
@@ -488,7 +488,7 @@ const Field = (props) => {
                                     type="radio"
                                     name={id}
                                     value={optionValue}
-                                    className="h-4 w-4 border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-400"
+                                    className="h-4 w-4 border-text-color/30 bg-text-color-0 text-primary-400 focus:ring-primary-700"
                                     checked={value === optionValue}
                                     onChange={(event) => updateValue(event.target.value)}
                                 />
@@ -608,6 +608,8 @@ const parseFormSchema = (schema = []) => {
             default_value,
             file_size_limit = widget === 'file' ? '5' : null,
             file_accept = widget === 'file' ? '.pdf,.jpg,.png,.doc,.docx' : null,
+            group, // <-- ADDED
+            half_width_on_large, // <-- ADDED
         } = item;
 
         const validation = {},
@@ -674,13 +676,15 @@ const parseFormSchema = (schema = []) => {
             widget,
             selectOptions,
             validation,
-            default_value,
+            // default_value,
             defaultValue,
+            group,
+            half_width_on_large,
         };
     });
 };
 
-export default function Feedback(props) {
+export default function Form(props) {
     const { block, website } = props;
 
     const { title, subtitle, buttons, form: schema, properties: json } = block.getBlockContent();
@@ -696,6 +700,28 @@ export default function Feedback(props) {
         });
 
         return initData;
+    }, [formSchema]);
+
+    // add grouping logic
+    const { groupedFields, ungroupedFields, groupOrder } = useMemo(() => {
+        const grouped = {};
+        const ungrouped = [];
+        const order = [];
+
+        formSchema.forEach((field) => {
+            const groupName = field.group;
+            if (groupName) {
+                if (!grouped[groupName]) {
+                    grouped[groupName] = [];
+                    order.push(groupName); // Store the order of appearance
+                }
+                grouped[groupName].push(field);
+            } else {
+                ungrouped.push(field);
+            }
+        });
+
+        return { groupedFields: grouped, ungroupedFields: ungrouped, groupOrder: order };
     }, [formSchema]);
 
     const [data, setData] = useState(initialFormData);
@@ -872,7 +898,7 @@ export default function Feedback(props) {
             typeof title === 'object' && title !== null ? website.localize(title) : title;
 
         const metadata = {
-            tag: metadataTag || block?.getId?.() || 'feedback_form',
+            tag: metadataTag || block?.getId?.() || 'form',
         };
 
         secureSubmit(payload, metadata, fileArray)
@@ -902,44 +928,136 @@ export default function Feedback(props) {
     };
 
     return (
-        <section className="not-prose max-w-3xl mx-auto relative">
-            <div className="text-center">
+        <section className="not-prose max-w-full relative">
+            <div className="text-center lg:text-left">
                 <h2 className="text-4xl font-bold">{title}</h2>
                 {subtitle && <p className="mt-4 text-lg">{subtitle}</p>}
             </div>
             {formSchema.length ? (
-                <form className="mt-8 space-y-6 border rounded-xl shadow border-text-color/10 p-6">
-                    {formSchema.map((field, index) => (
-                        <Field
-                            key={index}
-                            {...field}
-                            data={data}
-                            setData={setData}
-                            error={errors[field.id]}
-                            website={website}
-                        />
-                    ))}
-                    <div className="space-y-4">
-                        {buttons[0] && (
-                            <button
-                                type="button"
-                                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
-                                onClick={handleSubmit}
-                                disabled={isSubmitting || showSuccessIcon}
-                            >
-                                {showSuccessIcon ? (
-                                    <LuCheck className="h-5 w-5 text-green-500" />
-                                ) : isSubmitting ? (
-                                    <ClipLoader size={16} color="currentColor" />
-                                ) : (
-                                    buttons[0].content
-                                )}
-                            </button>
+                <form className="mt-8 border bg-text-color-0 rounded-[var(--border-radius)] shadow border-text-color/10 p-6">
+                    <div className="space-y-6">
+                        {groupOrder.map((groupName, groupIndex) => {
+                            const fields = groupedFields[groupName];
+                            const isLastGroup = groupIndex === groupOrder.length - 1;
+                            const showDivider =
+                                !isLastGroup || (isLastGroup && ungroupedFields.length > 0);
+
+                            return (
+                                <React.Fragment key={groupName}>
+                                    <section>
+                                        <h3 className="text-lg font-medium text-text-color mb-4">
+                                            {groupName}
+                                        </h3>
+                                        {/* START: MODIFIED LINE */}
+                                        <div className="flex flex-wrap -mx-3 -mb-4">
+                                            {/* END: MODIFIED LINE */}
+                                            {fields.map((field) => (
+                                                <div
+                                                    key={field.id}
+                                                    className={twJoin(
+                                                        'w-full px-3 mb-6',
+                                                        field.half_width_on_large
+                                                            ? 'lg:w-1/2'
+                                                            : 'lg:w-full'
+                                                    )}
+                                                >
+                                                    <Field
+                                                        {...field}
+                                                        data={data}
+                                                        setData={setData}
+                                                        error={errors[field.id]}
+                                                        website={website}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </section>
+                                    {showDivider && <hr className="border-text-color/10" />}
+                                </React.Fragment>
+                            );
+                        })}
+
+                        {ungroupedFields.length > 0 && (
+                            <section>
+                                {/* START: MODIFIED LINE */}
+                                <div className="flex flex-wrap -mx-3 -mb-4">
+                                    {/* END: MODIFIED LINE */}
+                                    {ungroupedFields.map((field) => (
+                                        <div
+                                            key={field.id}
+                                            className={twJoin(
+                                                'w-full px-3 mb-6',
+                                                field.half_width_on_large ? 'lg:w-1/2' : 'lg:w-full'
+                                            )}
+                                        >
+                                            <Field
+                                                {...field}
+                                                data={data}
+                                                setData={setData}
+                                                error={errors[field.id]}
+                                                website={website}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
                         )}
-                        {submitError ? <p className="text-sm text-red-500">{submitError}</p> : null}
+
+                        <div className="space-y-4">
+                            {buttons[0] && (
+                                <button
+                                    type="button"
+                                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--border-radius)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
+                                    onClick={handleSubmit}
+                                    disabled={isSubmitting || showSuccessIcon}
+                                >
+                                    {showSuccessIcon ? (
+                                        <LuCheck className="h-5 w-5 text-green-500" />
+                                    ) : isSubmitting ? (
+                                        <ClipLoader size={16} color="currentColor" />
+                                    ) : (
+                                        buttons[0].content
+                                    )}
+                                </button>
+                            )}
+                            {submitError ? (
+                                <p className="text-sm text-red-500">{submitError}</p>
+                            ) : null}
+                        </div>
                     </div>
                 </form>
-            ) : null}
+            ) : // <form className="mt-8 space-y-6 border rounded-[var(--border-radius)] shadow border-text-color/10 p-6">
+            //     {formSchema.map((field, index) => (
+            //         <Field
+            //             key={index}
+            //             {...field}
+            //             data={data}
+            //             setData={setData}
+            //             error={errors[field.id]}
+            //             website={website}
+            //         />
+            //     ))}
+            //     <div className="space-y-4">
+            //         {buttons[0] && (
+            //             <button
+            //                 type="button"
+            //                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--border-radius)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
+            //                 onClick={handleSubmit}
+            //                 disabled={isSubmitting || showSuccessIcon}
+            //             >
+            //                 {showSuccessIcon ? (
+            //                     <LuCheck className="h-5 w-5 text-green-500" />
+            //                 ) : isSubmitting ? (
+            //                     <ClipLoader size={16} color="currentColor" />
+            //                 ) : (
+            //                     buttons[0].content
+            //                 )}
+            //             </button>
+            //         )}
+            //         {submitError ? <p className="text-sm text-red-500">{submitError}</p> : null}
+            //     </div>
+            // </form>
+            null}
         </section>
     );
 }

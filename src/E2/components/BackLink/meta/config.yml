@@ -1,0 +1,12 @@
+title:
+    en: Back Link
+    fr: Lien de retour
+label:
+    en: Back Link
+    fr: Lien de retour
+description:
+    en: A component that renders a back link to navigate to the previous page.
+    fr: Un composant qui rend un lien de retour pour naviguer vers la page précédente
+
+category: navigation
+export: true

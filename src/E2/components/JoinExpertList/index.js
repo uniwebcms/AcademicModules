@@ -5,7 +5,7 @@ export default function JoinExpertList(props) {
     const { website } = props;
 
     return (
-        <section className="container mt-16">
+        <section className="mt-16">
             <div className="text-center border-t border-text-color/20 pt-8">
                 <p className="text-base text-[var(--color-text-secondary)] font-body">
                     {website.localize({

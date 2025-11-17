@@ -4,14 +4,14 @@ import { Image } from '@uniwebcms/core-components';
 export default function FeaturedExperts(props) {
     const { input, website } = props;
 
-    const { useNavigate, useLocation } = website.getRoutingComponents();
+    const { useNavigate } = website.getRoutingComponents();
 
     const profiles = input.profiles || [];
 
     const navigate = useNavigate();
 
     return (
-        <section className="container mt-16">
+        <section className="mt-16">
             <h2 className="text-2xl font-bold">
                 {website.localize({
                     en: 'Featured Experts',
@@ -42,7 +42,7 @@ const ExpertCard = ({ website, expert, navigate }) => {
 
     return (
         <div
-            className="border border-text-color/10 overflow-hidden transition-all duration-300 shadow hover:shadow-md flex flex-col md:flex-row cursor-pointer rounded-lg group"
+            className="border border-text-color/10 overflow-hidden transition-all duration-300 shadow hover:shadow-md flex flex-col md:flex-row cursor-pointer rounded-[var(--border-radius)] group"
             onClick={() => {
                 navigate(`expert?id=${expert.contentId}`);
             }}
@@ -54,7 +54,7 @@ const ExpertCard = ({ website, expert, navigate }) => {
                     className="h-48 w-full object-cover md:w-48 md:h-full"
                 />
             </div>
-            <div className="p-6 flex flex-col justify-between">
+            <div className="p-6 flex flex-col justify-between flex-grow">
                 <div>
                     <h3 className="text-xl font-bold">{title}</h3>
                     <p className="mt-1 text-base font-medium">
@@ -98,9 +98,9 @@ const ExpertiseTag = ({ children }) => (
 );
 
 const ExpertCardLoader = () => (
-    <div className="border border-text-color/10 overflow-hidden shadow flex flex-col md:flex-row rounded-lg">
+    <div className="border border-text-color/10 overflow-hidden shadow flex flex-col md:flex-row rounded-[var(--border-radius)]">
         {/* Skeleton for the Image */}
-        <div className="flex-shrink-0 h-48 w-full md:w-48 md:h-full">
+        <div className="flex-shrink-0 h-48 w-full md:w-56 md:h-full">
             <div className="w-full h-full bg-gray-300 animate-pulse"></div>
         </div>
         {/* Skeleton for the Content */}
@@ -132,7 +132,7 @@ FeaturedExperts.Loader = ({ block }) => {
     const { animation_loader_count = 0 } = block.getBlockProperties();
 
     return (
-        <section className="container mt-16">
+        <section className="mt-16">
             <h2 className="text-2xl font-bold">
                 {block.website.localize({
                     en: 'Featured Experts',

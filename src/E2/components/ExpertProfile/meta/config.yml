@@ -10,3 +10,27 @@ description:
 
 category: content
 export: true
+
+properties:
+    layout:
+        label:
+            en: Layout
+            fr: Mise en page
+        type: string
+        default: wide_banner
+        enum:
+            - label:
+                  en: Wide Banner
+                  fr: Bannière large
+              value: wide_banner
+            - label:
+                  en: Sidebar Left
+                  fr: Barre latérale à gauche
+              value: sidebar_left
+            - label:
+                  en: Sidebar Right
+                  fr: Barre latérale à droite
+              value: sidebar_right
+        description:
+            en: Defines the layout of the expert profile.
+            fr: Définit la mise en page du profil de l'expert.

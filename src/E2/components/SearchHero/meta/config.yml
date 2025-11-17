@@ -10,3 +10,64 @@ description:
 
 category: content
 export: true
+
+elements:
+    form:
+        description:
+            en: A form to collect filter categories.
+            fr: Un formulaire pour collecter les catégories de filtres.
+        schemas:
+            - id: form
+              name:
+                  en: Search By
+                  fr: Rechercher par
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Category
+                      fr: Catégorie
+                  fields:
+                      - id: category
+                        type: select
+                        label:
+                            en: Category
+                            fr: Catégorie
+                        description:
+                            en: Defines the category to filter by.
+                            fr: Définit la catégorie à filtrer.
+                        required: true
+                        options:
+                            - label:
+                                  en: Faculty
+                                  fr: Faculté
+                              value: faculty
+                            - label:
+                                  en: Language
+                                  fr: Langue
+                              value: language
+                            - label:
+                                  en: Topic
+                                  fr: Sujet
+                              value: topic
+                      - id: items
+                        type: form
+                        label:
+                            en: Category Items
+                            fr: Éléments de la catégorie
+                        description:
+                            en: Defines the items in the category.
+                            fr: Définit les éléments de la catégorie.
+                        childSchema:
+                            name:
+                                en: Category Item
+                                fr: Élément de catégorie
+                            fields:
+                                - id: option
+                                  type: text
+                                  label:
+                                      en: Category Option
+                                      fr: Option de catégorie
+                                  description:
+                                      en: The option for the category.
+                                      fr: L'option pour la catégorie.
+                                  required: true

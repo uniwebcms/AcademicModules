@@ -101,8 +101,8 @@ elements:
                             en: Options to Select
                             fr: Options à sélectionner
                         description:
-                            en: Options for select, radio, or checkbox fields.
-                            fr: Options pour les champs de sélection, de radio ou de case à cocher.
+                            en: Options for select, radio fields.
+                            fr: Options pour les champs de sélection, radio.
                         childSchema:
                             name:
                                 en: Option
@@ -119,7 +119,6 @@ elements:
                                 $in:
                                     - select
                                     - radio
-                                    - checkbox
                       - id: file_accept
                         type: text
                         label:
@@ -196,6 +195,19 @@ elements:
                         description:
                             en: Group name for the field, useful for organizing fields.
                             fr: Nom du groupe pour le champ, utile pour organiser les champs.
+                      - id: half_width_on_large
+                        type: checkbox
+                        label:
+                            en: Half Width on Large Screens
+                            fr: Demi-largeur sur les écrans larges
+                        description:
+                            en: If true, the field will take half the width on large screens.
+                            fr: Si vrai, le champ prendra la moitié de la largeur sur les écrans larges.
+                        condition:
+                            widget:
+                                $in:
+                                    - input
+                                    - select
     button:
         description:
             en: The button to submit the form.

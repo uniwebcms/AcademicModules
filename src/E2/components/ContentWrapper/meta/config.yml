@@ -1,0 +1,37 @@
+title:
+    en: Content Wrapper
+    fr: Conteneur de contenu
+description:
+    en: A component that wraps content with a configurable layout and style.
+    fr: Un composant qui enveloppe le contenu avec une mise en page et un style configurables.
+
+category: layout
+export: true
+
+properties:
+    width:
+        label:
+            en: Width
+            fr: Largeur
+        type: string
+        default: medium
+        enum:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: small
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: medium
+            - label:
+                  en: Large
+                  fr: Grand
+              value: large
+            - label:
+                  en: X-Large
+                  fr: X-Large
+              value: xlarge
+        description:
+            en: Sets the width of the content wrapper.
+            fr: Définit la largeur du conteneur de contenu.
