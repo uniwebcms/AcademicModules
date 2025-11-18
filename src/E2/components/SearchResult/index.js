@@ -1,8 +1,9 @@
-import React, { memo } from 'react';
+import React, { useEffect } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { Virtuoso } from 'react-virtuoso';
 import { Image } from '@uniwebcms/core-components';
 import { twJoin } from '@uniwebcms/module-sdk';
+import client from '../_utils/ajax';
 
 export default function SearchResult(props) {
     const { website, input } = props;
@@ -11,7 +12,47 @@ export default function SearchResult(props) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const filteredResults = input.profiles || [];
+    const params = new URLSearchParams(location.search);
+    const searchText = params.get('search') || '';
+    const searchTopic = params.get('topic') || '';
+    const searchFaculty = params.get('faculty') || '';
+    const searchLanguage = params.get('language') || '';
+    const sort = params.get('sort') || '';
+
+    const { data: experts, error } = uniweb.useCompleteQuery('getExperts', async () => {
+        const response = await client.get('experts.php', {
+            params: {
+                action: 'searchExperts',
+                siteId: website.getSiteId(),
+                query: searchText,
+            },
+        });
+        return response.data;
+    });
+
+    if (!experts) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        console.error('Error fetching experts:', error);
+        return <div>Error...</div>;
+        // return (
+        //     <div className="text-center p-12 bg-text-color-0 shadow rounded-[var(--border-radius)] border border-text-color/20">
+        //         <FiAlertCircle className="h-12 w-12 text-text-color/80 mx-auto" />
+        //         <p className="mt-4 text-xl font-semibold text-heading-color">
+        //             {website.localize({
+        //                 en: 'Error fetching experts',
+        //                 fr: 'Erreur lors de la récupération des experts',
+        //             })}
+        //         </p>
+        //     </div>
+        // );
+    }
+
+    const filtered = experts;
+
+    console.log('info', experts);
 
     return (
         <React.Fragment>
@@ -20,17 +61,17 @@ export default function SearchResult(props) {
                     en: 'Showing ',
                     fr: 'Affichage de ',
                 })}
-                <span className="font-bold text-text-color">{filteredResults.length}</span>{' '}
-                {filteredResults.length === 1
+                <span className="font-bold text-text-color">{filtered.length}</span>{' '}
+                {filtered.length === 1
                     ? website.localize({ en: 'expert', fr: 'expert' })
                     : website.localize({ en: 'experts', fr: 'experts' })}{' '}
             </p>
-            {filteredResults.length > 0 ? (
+            {filtered.length > 0 ? (
                 <div>
                     <Virtuoso
                         useWindowScroll
-                        data={filteredResults}
-                        totalCount={filteredResults.length}
+                        data={filtered}
+                        totalCount={filtered.length}
                         itemContent={(index, expert) => {
                             return (
                                 <div key={index} className="pb-6">

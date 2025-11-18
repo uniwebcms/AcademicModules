@@ -5266,6 +5266,7 @@ __metadata:
     "@uniwebcms/core-components": "npm:^1.6.27"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
+    axios: "npm:^1.9.0"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"

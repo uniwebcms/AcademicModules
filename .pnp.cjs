@@ -7628,6 +7628,7 @@ const RAW_RUNTIME_STATE =
           ["@uniwebcms/core-components", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:1.6.27"],\
           ["@uniwebcms/module-sdk", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:2.0.3"],\
           ["@uniwebcms/uniweb-tailwind-plugin", "virtual:13c4da9afd686e74c2757002d3fbc5bca54ed6d7c4bf7a32a101dc027e2af239af1a131ac8aff9f89bf6dda19219df211bf462b84ecd3587a5058deeb8d88390#npm:1.1.2"],\
+          ["axios", "npm:1.9.0"],\
           ["prop-types", "npm:15.8.1"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
