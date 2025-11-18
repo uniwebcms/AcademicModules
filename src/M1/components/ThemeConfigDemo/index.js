@@ -197,7 +197,7 @@ const ConfigurationVisual = () => {
                     <MockToggle
                         icon={LuSearch}
                         label={website.localize({
-                            en: 'Enable Site LuSearch',
+                            en: 'Enable Site Search',
                             fr: 'Activer la recherche sur le site',
                             es: 'Habilitar búsqueda en el sitio',
                             zh: '启用站点搜索',
