@@ -12,8 +12,6 @@ export default function HomeHero(props) {
     const location = useLocation();
     const submitRef = React.useRef(null);
 
-    console.log('ref', submitRef.current?.getBoundingClientRect()?.width);
-
     const handleNavigateWithParam = (key, value) => {
         const params = new URLSearchParams(location.search);
 
@@ -102,7 +100,7 @@ export default function HomeHero(props) {
                 </div>
             </form>
             {/* category items */}
-            {form.map((category) => (
+            {form?.map((category) => (
                 <div key={category.key} className="mt-12 max-w-4xl mx-auto">
                     <h3 className="text-sm font-semibold text-text-color/70 uppercase tracking-wider text-center tag-label">
                         {category.title}
