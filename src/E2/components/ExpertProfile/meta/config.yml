@@ -34,3 +34,12 @@ properties:
         description:
             en: Defines the layout of the expert profile.
             fr: Définit la mise en page du profil de l'expert.
+    show_media_request_form:
+        label:
+            en: Show Media Request Form
+            fr: Afficher le formulaire de demande médiatique
+        type: boolean
+        default: true
+        description:
+            en: If true, the media request form will be displayed in the sidebar.
+            fr: Si vrai, le formulaire de demande médiatique sera affiché dans la barre latérale.

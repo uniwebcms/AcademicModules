@@ -44,3 +44,12 @@ properties:
         description:
             en: Sets the minimum height of the content wrapper.
             fr: Définit la hauteur minimale du conteneur de contenu.
+    vertical_centering:
+        label:
+            en: Vertical Centering
+            fr: Centrage vertical
+        type: boolean
+        default: false
+        description:
+            en: Enables vertical centering of the content within the wrapper.
+            fr: Active le centrage vertical du contenu dans le conteneur.

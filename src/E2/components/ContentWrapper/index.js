@@ -5,7 +5,11 @@ export default function ContentWrapper({ block }) {
 
     const ChildBlocks = block.getChildBlockRenderer();
 
-    const { width = 'medium', min_height = 'auto' } = block.getBlockProperties();
+    const {
+        width = 'medium',
+        min_height = 'auto',
+        vertical_centering = false,
+    } = block.getBlockProperties();
 
     const maxWidthClass = {
         small: 'max-w-3xl',
@@ -16,7 +20,9 @@ export default function ContentWrapper({ block }) {
 
     return (
         <div
-            className={`${maxWidthClass} mx-auto p-4 md:p-8 lg:p-12`}
+            className={`${maxWidthClass} mx-auto p-4 md:p-8 lg:p-12 ${
+                vertical_centering ? 'flex flex-col justify-center' : ''
+            }`}
             style={{
                 minHeight: min_height,
             }}
