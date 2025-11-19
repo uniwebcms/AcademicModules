@@ -1,0 +1,851 @@
+{
+  "_self": {
+    "name": "Expert Series 2",
+    "description": "This is a collection of components designed for the Expert Website, and it is ideally suited for the embedded mode.",
+    "styleFields": [
+      {
+        "id": "border-radius",
+        "type": "select",
+        "label": {
+          "en": "Corner Style",
+          "fr": "Style de coin"
+        },
+        "description": {
+          "en": "The style of the corners for the table or button like elements across the site.",
+          "fr": "Le style des coins pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0px",
+        "options": [
+          {
+            "label": {
+              "en": "Straight",
+              "fr": "Droit"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Rounded",
+              "fr": "Arrondi"
+            },
+            "value": "0.5rem"
+          },
+          {
+            "value": "0.75rem",
+            "label": {
+              "en": "Circular",
+              "fr": "Circulaire"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "BackLink": {
+    "title": {
+      "en": "Back Link",
+      "fr": "Lien de retour"
+    },
+    "label": {
+      "en": "Back Link",
+      "fr": "Lien de retour"
+    },
+    "description": {
+      "en": "A component that renders a back link to navigate to the previous page.",
+      "fr": "Un composant qui rend un lien de retour pour naviguer vers la page précédente"
+    },
+    "category": "navigation",
+    "export": true,
+    "name": "BackLink"
+  },
+  "ContentWrapper": {
+    "title": {
+      "en": "Content Wrapper",
+      "fr": "Conteneur de contenu"
+    },
+    "description": {
+      "en": "A component that wraps content with a configurable layout and style.",
+      "fr": "Un composant qui enveloppe le contenu avec une mise en page et un style configurables."
+    },
+    "category": "layout",
+    "export": true,
+    "properties": {
+      "width": {
+        "label": {
+          "en": "Width",
+          "fr": "Largeur"
+        },
+        "type": "string",
+        "default": "medium",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "medium"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "large"
+          },
+          {
+            "label": {
+              "en": "X-Large",
+              "fr": "X-Large"
+            },
+            "value": "xlarge"
+          }
+        ],
+        "description": {
+          "en": "Sets the width of the content wrapper.",
+          "fr": "Définit la largeur du conteneur de contenu."
+        }
+      }
+    },
+    "name": "ContentWrapper"
+  },
+  "ExpertProfile": {
+    "title": {
+      "en": "Expert Profile",
+      "fr": "Profil de l'expert"
+    },
+    "label": {
+      "en": "Expert Profile",
+      "fr": "Profil de l'expert"
+    },
+    "description": {
+      "en": "A component to display an expert's profile with their hero banner, details with a Media Inquiries side panel.",
+      "fr": "Un composant pour afficher le profil d'un expert avec sa bannière héro, ses détails et un panneau latéral de demandes médiatiques."
+    },
+    "category": "content",
+    "export": true,
+    "properties": {
+      "layout": {
+        "label": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        },
+        "type": "string",
+        "default": "wide_banner",
+        "enum": [
+          {
+            "label": {
+              "en": "Wide Banner",
+              "fr": "Bannière large"
+            },
+            "value": "wide_banner"
+          },
+          {
+            "label": {
+              "en": "Sidebar Left",
+              "fr": "Barre latérale à gauche"
+            },
+            "value": "sidebar_left"
+          },
+          {
+            "label": {
+              "en": "Sidebar Right",
+              "fr": "Barre latérale à droite"
+            },
+            "value": "sidebar_right"
+          }
+        ],
+        "description": {
+          "en": "Defines the layout of the expert profile.",
+          "fr": "Définit la mise en page du profil de l'expert."
+        }
+      }
+    },
+    "name": "ExpertProfile"
+  },
+  "FeaturedExperts": {
+    "title": {
+      "en": "Featured Experts",
+      "fr": "Experts en vedette"
+    },
+    "label": {
+      "en": "Featured Experts",
+      "fr": "Experts en vedette"
+    },
+    "description": {
+      "en": "A component to display featured experts with their details and links in a card format.",
+      "fr": "Un composant pour afficher des experts en vedette avec leurs détails et liens dans un format de carte."
+    },
+    "category": "content",
+    "export": true,
+    "properties": {
+      "animation_loader_count": {
+        "label": {
+          "en": "Animation Loader Count",
+          "fr": "Nombre de chargeurs d'animation"
+        },
+        "type": "number",
+        "default": 0,
+        "description": {
+          "en": "The number of skeleton loaders to display while the expert data is being fetched.",
+          "fr": "Le nombre de chargeurs d'animation à afficher pendant que les données des experts sont récupérées."
+        }
+      }
+    },
+    "name": "FeaturedExperts"
+  },
+  "Form": {
+    "title": {
+      "en": "Form",
+      "fr": "Formulaire"
+    },
+    "label": {
+      "en": "Form",
+      "fr": "Formulaire"
+    },
+    "description": {
+      "en": "A form component to collect user feedback or data.",
+      "fr": "Un composant de formulaire pour collecter les retours d'information ou les données"
+    },
+    "category": "form",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "form": {
+        "description": {
+          "en": "A form to construct the data collection interface.",
+          "fr": "Un formulaire pour construire l'interface de collecte de données."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Form",
+              "fr": "Formulaire"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Field",
+                "fr": "Champ"
+              },
+              "fields": [
+                {
+                  "id": "label",
+                  "type": "text",
+                  "label": {
+                    "en": "Field Label",
+                    "fr": "Étiquette du champ"
+                  },
+                  "description": {
+                    "en": "The label for the field.",
+                    "fr": "L'étiquette du champ."
+                  },
+                  "required": true
+                },
+                {
+                  "id": "widget",
+                  "type": "select",
+                  "label": {
+                    "en": "Field Type",
+                    "fr": "Type de champ"
+                  },
+                  "description": {
+                    "en": "Defines the input type.",
+                    "fr": "Définit le type d'entrée."
+                  },
+                  "required": true,
+                  "options": [
+                    {
+                      "label": {
+                        "en": "Input",
+                        "fr": "Input"
+                      },
+                      "value": "input"
+                    },
+                    {
+                      "label": {
+                        "en": "Text Area",
+                        "fr": "Zone de texte"
+                      },
+                      "value": "textarea"
+                    },
+                    {
+                      "label": {
+                        "en": "Select",
+                        "fr": "Sélect"
+                      },
+                      "value": "select"
+                    },
+                    {
+                      "label": {
+                        "en": "Radio Group",
+                        "fr": "Groupe de boutons radio"
+                      },
+                      "value": "radio"
+                    },
+                    {
+                      "label": {
+                        "en": "Checkbox",
+                        "fr": "Case à cocher"
+                      },
+                      "value": "checkbox"
+                    },
+                    {
+                      "label": {
+                        "en": "File Upload",
+                        "fr": "Téléchargement de fichier"
+                      },
+                      "value": "file"
+                    }
+                  ]
+                },
+                {
+                  "id": "required",
+                  "type": "checkbox",
+                  "label": {
+                    "en": "Required",
+                    "fr": "Requis"
+                  },
+                  "description": {
+                    "en": "If true, the field is mandatory.",
+                    "fr": "Si vrai, le champ est obligatoire."
+                  }
+                },
+                {
+                  "id": "placeholder",
+                  "type": "text",
+                  "label": {
+                    "en": "Placeholder Text",
+                    "fr": "Texte de l'espace réservé"
+                  },
+                  "description": {
+                    "en": "Placeholder text for the input field.",
+                    "fr": "Texte de l'espace réservé pour le champ d'entrée."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "textarea"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "options",
+                  "type": "form",
+                  "label": {
+                    "en": "Options to Select",
+                    "fr": "Options à sélectionner"
+                  },
+                  "description": {
+                    "en": "Options for select, radio fields.",
+                    "fr": "Options pour les champs de sélection, radio."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Option",
+                      "fr": "Option"
+                    },
+                    "fields": [
+                      {
+                        "id": "value",
+                        "type": "text",
+                        "label": {
+                          "en": "Option Value",
+                          "fr": "Valeur de l'option"
+                        },
+                        "required": true
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "select",
+                        "radio"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "file_accept",
+                  "type": "text",
+                  "label": {
+                    "en": "File Accept Types",
+                    "fr": "Types de fichiers acceptés"
+                  },
+                  "placeholder": {
+                    "en": ".pdf,.jpg,.png,.doc,.docx",
+                    "fr": ".pdf,.jpg,.png,.doc,.docx"
+                  },
+                  "condition": {
+                    "widget": "file"
+                  }
+                },
+                {
+                  "id": "file_size_limit",
+                  "type": "number",
+                  "label": {
+                    "en": "File Size Limit (MB)",
+                    "fr": "Limite de taille de fichier (Mo)"
+                  },
+                  "placeholder": {
+                    "en": "5",
+                    "fr": "5"
+                  },
+                  "min": 1,
+                  "max": 5,
+                  "condition": {
+                    "widget": "file"
+                  }
+                },
+                {
+                  "id": "validation_regex",
+                  "type": "text",
+                  "label": {
+                    "en": "Validation (Regex)",
+                    "fr": "Validation (Regex)"
+                  },
+                  "description": {
+                    "en": "A regular expression for validation.",
+                    "fr": "Une expression régulière pour la validation."
+                  },
+                  "condition": {
+                    "widget": "input"
+                  }
+                },
+                {
+                  "id": "validation_type",
+                  "type": "select",
+                  "label": {
+                    "en": "Validation (Type)",
+                    "fr": "Validation (Type)"
+                  },
+                  "description": {
+                    "en": "Validation by type.",
+                    "fr": "Validation par type."
+                  },
+                  "options": [
+                    {
+                      "value": "email",
+                      "label": {
+                        "en": "Email",
+                        "fr": "Email"
+                      }
+                    },
+                    {
+                      "value": "positive_integer",
+                      "label": {
+                        "en": "Positive Integer",
+                        "fr": "Entier positif"
+                      }
+                    }
+                  ],
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "number"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "default_value",
+                  "type": "text",
+                  "label": {
+                    "en": "Default Value",
+                    "fr": "Valeur par défaut"
+                  },
+                  "description": {
+                    "en": "The initial value of the field.",
+                    "fr": "La valeur initiale du champ."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "select",
+                        "radio",
+                        "checkbox"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "group",
+                  "type": "text",
+                  "label": {
+                    "en": "Field Group",
+                    "fr": "Groupe de champs"
+                  },
+                  "description": {
+                    "en": "Group name for the field, useful for organizing fields.",
+                    "fr": "Nom du groupe pour le champ, utile pour organiser les champs."
+                  }
+                },
+                {
+                  "id": "half_width_on_large",
+                  "type": "checkbox",
+                  "label": {
+                    "en": "Half Width on Large Screens",
+                    "fr": "Demi-largeur sur les écrans larges"
+                  },
+                  "description": {
+                    "en": "If true, the field will take half the width on large screens.",
+                    "fr": "Si vrai, le champ prendra la moitié de la largeur sur les écrans larges."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "select"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "button": {
+        "description": {
+          "en": "The button to submit the form.",
+          "fr": "Le bouton pour soumettre le formulaire."
+        }
+      }
+    },
+    "properties": {
+      "submission_delivery_method": {
+        "type": "string",
+        "label": {
+          "en": "Submission Delivery Method",
+          "fr": "Méthode de livraison de la soumission"
+        },
+        "description": {
+          "en": "How the form submission will be delivered.",
+          "fr": "Comment la soumission du formulaire sera livrée."
+        },
+        "enum": [
+          {
+            "value": "email",
+            "label": {
+              "en": "Email",
+              "fr": "Email"
+            }
+          },
+          {
+            "value": "message",
+            "label": {
+              "en": "In-Site Message",
+              "fr": "Message sur le site"
+            }
+          }
+        ],
+        "default": "message"
+      },
+      "email_recipient": {
+        "type": "string",
+        "label": {
+          "en": "Email Recipient",
+          "fr": "Destinataire de l'email"
+        },
+        "description": {
+          "en": "The email address to receive form submissions when delivery method is email.",
+          "fr": "L'adresse e-mail pour recevoir les soumissions du formulaire lorsque la méthode de livraison"
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1153,
+        "width": 728,
+        "type": "webp",
+        "path": "assets/Form/example.png"
+      }
+    ],
+    "name": "Form"
+  },
+  "HomeHero": {
+    "title": {
+      "en": "Home Hero",
+      "fr": "Héros de la page d'accueil"
+    },
+    "label": {
+      "en": "Home Hero",
+      "fr": "Héros de la page d'accueil"
+    },
+    "description": {
+      "en": "The homepage hero component includes a title, subtitle, search bar, and two filter groups (Topics and Faculties) with filter badges for quick searching or filtering.",
+      "fr": "Le composant héros de la page d'accueil comprend un titre, un sous-titre, une barre de recherche et deux groupes de filtres (Sujets et Facultés) avec des badges de filtre pour une recherche ou un filtrage rapide."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "form": {
+        "description": {
+          "en": "A form to collect filter categories.",
+          "fr": "Un formulaire pour collecter les catégories de filtres."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Browse By",
+              "fr": "Parcourir par"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Category",
+                "fr": "Catégorie"
+              },
+              "fields": [
+                {
+                  "id": "title",
+                  "type": "string",
+                  "label": {
+                    "en": "Title",
+                    "fr": "Titre"
+                  },
+                  "description": {
+                    "en": "Defines the title of the category.",
+                    "fr": "Définit le titre de la catégorie."
+                  },
+                  "required": true
+                },
+                {
+                  "id": "key",
+                  "type": "string",
+                  "label": {
+                    "en": "URL Query Key",
+                    "fr": "Clé de requête URL"
+                  },
+                  "description": {
+                    "en": "Defines the URL query key for the category.",
+                    "fr": "Définit la clé de requête URL pour la catégorie."
+                  },
+                  "required": true
+                },
+                {
+                  "id": "items",
+                  "type": "form",
+                  "label": {
+                    "en": "Category Items",
+                    "fr": "Éléments de la catégorie"
+                  },
+                  "description": {
+                    "en": "Defines the items in the category.",
+                    "fr": "Définit les éléments de la catégorie."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Category Item",
+                      "fr": "Élément de catégorie"
+                    },
+                    "fields": [
+                      {
+                        "id": "name",
+                        "type": "text",
+                        "label": {
+                          "en": "Category Name",
+                          "fr": "Nom de la catégorie"
+                        },
+                        "description": {
+                          "en": "The name of the category item.",
+                          "fr": "Le nom de l'élément de la catégorie."
+                        },
+                        "required": true
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "name": "HomeHero"
+  },
+  "JoinExpertList": {
+    "title": {
+      "en": "Join Expert List",
+      "fr": "Rejoindre la liste des experts"
+    },
+    "labels": {
+      "en": "Join Expert List",
+      "fr": "Rejoindre la liste des experts"
+    },
+    "description": {
+      "en": "Renders a link to the form to join the expert list.",
+      "fr": "Affiche un lien vers le formulaire pour rejoindre la liste des experts."
+    },
+    "category": "content",
+    "export": true,
+    "name": "JoinExpertList"
+  },
+  "SearchHero": {
+    "title": {
+      "en": "Search Hero",
+      "fr": "Héros de recherche"
+    },
+    "label": {
+      "en": "Search Hero",
+      "fr": "Héros de recherche"
+    },
+    "description": {
+      "en": "A hero component with a search title and filter bar, with a back to home button.",
+      "fr": "Un composant héros avec un titre de recherche et une barre de filtre, avec un bouton de retour à l'accueil."
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "form": {
+        "description": {
+          "en": "A form to collect filter categories.",
+          "fr": "Un formulaire pour collecter les catégories de filtres."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Search By",
+              "fr": "Rechercher par"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Category",
+                "fr": "Catégorie"
+              },
+              "fields": [
+                {
+                  "id": "category",
+                  "type": "select",
+                  "label": {
+                    "en": "Category",
+                    "fr": "Catégorie"
+                  },
+                  "description": {
+                    "en": "Defines the category to filter by.",
+                    "fr": "Définit la catégorie à filtrer."
+                  },
+                  "required": true,
+                  "options": [
+                    {
+                      "label": {
+                        "en": "Faculty",
+                        "fr": "Faculté"
+                      },
+                      "value": "faculty"
+                    },
+                    {
+                      "label": {
+                        "en": "Language",
+                        "fr": "Langue"
+                      },
+                      "value": "language"
+                    },
+                    {
+                      "label": {
+                        "en": "Topic",
+                        "fr": "Sujet"
+                      },
+                      "value": "topic"
+                    }
+                  ]
+                },
+                {
+                  "id": "items",
+                  "type": "form",
+                  "label": {
+                    "en": "Category Items",
+                    "fr": "Éléments de la catégorie"
+                  },
+                  "description": {
+                    "en": "Defines the items in the category.",
+                    "fr": "Définit les éléments de la catégorie."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Category Options",
+                      "fr": "Options de catégorie"
+                    },
+                    "fields": [
+                      {
+                        "id": "label",
+                        "type": "text",
+                        "label": {
+                          "en": "Option Label",
+                          "fr": "Étiquette de l'option"
+                        },
+                        "description": {
+                          "en": "The label for the option.",
+                          "fr": "L'étiquette de l'option."
+                        }
+                      },
+                      {
+                        "id": "value",
+                        "type": "text",
+                        "label": {
+                          "en": "Option Value",
+                          "fr": "Valeur de l'option"
+                        },
+                        "description": {
+                          "en": "The value for the option.",
+                          "fr": "La valeur de l'option."
+                        },
+                        "required": true
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "name": "SearchHero"
+  },
+  "SearchResult": {
+    "title": {
+      "en": "Search Result",
+      "fr": "Résultat de recherche"
+    },
+    "label": {
+      "en": "Search Result",
+      "fr": "Résultat de recherche"
+    },
+    "description": {
+      "en": "A component to display search results of experts in a list format, each with a card containing an image, title, details and a link to the expert's page.",
+      "fr": "Un composant pour afficher les résultats de recherche d'experts dans un format de liste, chacun avec une carte contenant une image, un titre, des détails et un lien vers la page de l'expert."
+    },
+    "category": "content",
+    "export": true,
+    "name": "SearchResult"
+  }
+}
