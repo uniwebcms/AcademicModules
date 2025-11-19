@@ -10,6 +10,9 @@ export default function HomeHero(props) {
     const [query, setQuery] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const submitRef = React.useRef(null);
+
+    console.log('ref', submitRef.current?.getBoundingClientRect()?.width);
 
     const handleNavigateWithParam = (key, value) => {
         const params = new URLSearchParams(location.search);
@@ -77,13 +80,16 @@ export default function HomeHero(props) {
                         <button
                             type="button"
                             onClick={() => setQuery('')}
-                            className="absolute inset-y-0 right-24 pr-2 flex items-center z-10 cursor-pointer bg-transparent focus:outline-none"
+                            aria-label="Clear search"
+                            style={{ right: submitRef.current?.getBoundingClientRect()?.width + 6 }}
+                            className="absolute inset-y-0 pr-2 flex items-center z-10 cursor-pointer bg-transparent focus:outline-none"
                         >
                             <LuX className="h-5 w-5" />
                         </button>
                     )}
                     <div className="absolute inset-y-0 right-0 flex items-center">
                         <button
+                            ref={submitRef}
                             type="submit"
                             className="inline-flex items-center justify-center gap-2 px-4 py-2 font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-btn-hover-color h-full rounded-r-[var(--border-radius)]"
                         >
