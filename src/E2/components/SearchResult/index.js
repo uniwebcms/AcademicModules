@@ -168,7 +168,7 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
             </div>
             <div className="p-6 flex flex-col justify-between">
                 <div>
-                    <h3 className="text-xl font-bold">{title}</h3>
+                    <h3 className="text-xl font-bold text-primary-800">{title}</h3>
                     <p className="mt-1 text-base font-medium">
                         {position && <span>{position}</span>}
                         {position && unit ? ', ' : ''}

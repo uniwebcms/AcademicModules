@@ -275,8 +275,8 @@ const FilterDropdown = ({ options, value, onChange }) => {
                                 {option.label}
                             </span>
 
-                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-primary-700 group-[:not([data-selected])]:hidden group-data-[focus]:text-text-color-0">
-                                <HiCheck aria-hidden="true" className="w-5 h-5" />
+                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-primary-800 group-[:not([data-selected])]:hidden group-data-[focus]:text-text-color-0">
+                                <HiCheck aria-hidden="true" className="w-5 h-5 text-inherit" />
                             </span>
                         </ListboxOption>
                     ))}

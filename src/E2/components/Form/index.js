@@ -371,7 +371,7 @@ const Field = (props) => {
                     <LuFileUp className="h-12 w-12" />
                     <p className="text-sm text-text-color">
                         <span className="font-semibold text-text-color">{uploadLabel}</span>
-                        <span className="text-primary-600 underline underline-offset-4">
+                        <span className="text-primary-800 underline underline-offset-4">
                             {' '}
                             {fileLinkLabel}
                         </span>{' '}

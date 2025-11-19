@@ -5,7 +5,7 @@ export default function ContentWrapper({ block }) {
 
     const ChildBlocks = block.getChildBlockRenderer();
 
-    const { width = 'medium' } = block.getBlockProperties();
+    const { width = 'medium', min_height = 'auto' } = block.getBlockProperties();
 
     const maxWidthClass = {
         small: 'max-w-3xl',
@@ -15,7 +15,12 @@ export default function ContentWrapper({ block }) {
     }[width];
 
     return (
-        <div className={`${maxWidthClass} mx-auto p-4 md:p-8 lg:p-12`}>
+        <div
+            className={`${maxWidthClass} mx-auto p-4 md:p-8 lg:p-12`}
+            style={{
+                minHeight: min_height,
+            }}
+        >
             <ChildBlocks block={block} childBlocks={childBlocks} />
         </div>
     );

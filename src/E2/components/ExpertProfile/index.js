@@ -67,7 +67,7 @@ const WideBanner = ({ id }) => {
             <Banner profile={expert} className="h-48 md:h-64 lg:h-80" />
             <div className="mt-8">
                 <h1 className="text-4xl font-bold">{title}</h1>
-                <p className="mt-2 text-xl font-medium text-primary-700">
+                <p className="mt-2 text-xl font-medium text-primary-800">
                     {position && <span>{position}</span>}
                     {position && unit ? ', ' : ''}
                     {unit && <span>{unit}</span>}
@@ -114,7 +114,7 @@ const SidebarLeft = ({ id }) => {
             </div>
             <div className="lg:col-span-2">
                 <h1 className="text-4xl font-bold">{title}</h1>
-                <p className="mt-2 text-xl font-medium text-primary-700">
+                <p className="mt-2 text-xl font-medium text-primary-800">
                     {position && <span>{position}</span>}
                     {position && unit ? ', ' : ''}
                     {unit && <span>{unit}</span>}
@@ -158,7 +158,7 @@ const SidebarRight = ({ id, website }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             <div className="lg:col-span-2 lg:order-1">
                 <h1 className="text-4xl font-bold">{title}</h1>
-                <p className="mt-2 text-xl font-medium text-primary-700">
+                <p className="mt-2 text-xl font-medium text-primary-800">
                     {position && <span>{position}</span>}
                     {position && unit ? ', ' : ''}
                     {unit && <span>{unit}</span>}
@@ -195,14 +195,8 @@ const joinWithComma = (a, b) => [a, b].filter(Boolean).join(', ');
 const MediaInquiriesBox = ({ profile, website }) => {
     const { title, head } = profile.getBasicInfo();
     const { email, telephone, office } = head || {};
-    // const {
-    //     email: emailContact = '0',
-    //     telephone: telephoneContact = '0',
-    //     office: officeContact = '0',
-    // } = profile.at('contact_preferences') || {};
     const contactPreferences = profile.at('contact_preferences');
     const { language, others: otherLanguages } = profile.at('language_proficiency');
-    // office is to show the contact form
 
     const languageMapping = {
         english: 'English',
@@ -237,20 +231,20 @@ const MediaInquiriesBox = ({ profile, website }) => {
 
     return (
         <div className="p-6 bg-text-color-0 shadow border border-text-color/20 rounded-[var(--border-radius)]">
-            <h2 className="text-lg font-bold">
+            <p className="text-lg font-bold">
                 {website.localize({
                     en: 'For Media Inquiries',
                     fr: 'Pour les demandes des médias',
                 })}
-            </h2>
+            </p>
 
             <div className="mt-4 p-3 bg-text-color/5 rounded-[var(--border-radius)] border border-text-color/20">
-                <h3 className="font-semibold text-heading-color/80">
+                <p className="font-semibold text-heading-color/80">
                     {website.localize({
                         en: 'Availability',
                         fr: 'Disponibilité',
                     })}
-                </h3>
+                </p>
                 <p className="mt-1 text-sm">
                     Available for short-notice breaking news. Prefers morning interviews.
                 </p>

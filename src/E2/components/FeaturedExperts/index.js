@@ -56,7 +56,7 @@ const ExpertCard = ({ website, expert, navigate }) => {
             </div>
             <div className="p-6 flex flex-col justify-between flex-grow">
                 <div>
-                    <h3 className="text-xl font-bold">{title}</h3>
+                    <h3 className="text-xl font-bold text-primary-800">{title}</h3>
                     <p className="mt-1 text-base font-medium">
                         {position && <span>{position}, </span>}
                         {unit && <span>{unit}</span>}

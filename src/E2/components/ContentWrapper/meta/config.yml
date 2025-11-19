@@ -35,3 +35,12 @@ properties:
         description:
             en: Sets the width of the content wrapper.
             fr: Définit la largeur du conteneur de contenu.
+    min_height:
+        label:
+            en: Minimum Height
+            fr: Hauteur minimale
+        type: string
+        default: auto
+        description:
+            en: Sets the minimum height of the content wrapper.
+            fr: Définit la hauteur minimale du conteneur de contenu.
