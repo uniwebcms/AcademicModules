@@ -213,5 +213,33 @@ elements:
             en: The button to submit the form.
             fr: Le bouton pour soumettre le formulaire.
 
+properties:
+    submission_delivery_method:
+        type: string
+        label:
+            en: Submission Delivery Method
+            fr: Méthode de livraison de la soumission
+        description:
+            en: How the form submission will be delivered.
+            fr: Comment la soumission du formulaire sera livrée.
+        enum:
+            - value: email
+              label:
+                  en: Email
+                  fr: Email
+            - value: message
+              label:
+                  en: In-Site Message
+                  fr: Message sur le site
+        default: message
+    email_recipient:
+        type: string
+        label:
+            en: Email Recipient
+            fr: Destinataire de l'email
+        description:
+            en: The email address to receive form submissions when delivery method is email.
+            fr: L'adresse e-mail pour recevoir les soumissions du formulaire lorsque la méthode de livraison
+
 images:
     - example.png

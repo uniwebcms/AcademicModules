@@ -4,6 +4,7 @@ import { HiCheck, HiChevronDown } from 'react-icons/hi';
 import { LuFileUp, LuTrash2 } from 'react-icons/lu';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { LuCheck } from 'react-icons/lu';
+import { formatEmailSubmissionPlain } from '../_utils/form';
 
 const SelectWidget = ({ data, setData, options = [], placeholder, website }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -689,6 +690,9 @@ export default function Form(props) {
 
     const { title, subtitle, buttons, form: schema, properties: json } = block.getBlockContent();
 
+    const { submission_delivery_method = 'message', email_recipient = '' } =
+        block.getBlockProperties();
+
     const formSchema = useMemo(() => parseFormSchema(schema, json), [schema, json]);
     const initialFormData = useMemo(() => {
         const initData = {};
@@ -730,6 +734,8 @@ export default function Form(props) {
     const [showSuccessIcon, setShowSuccessIcon] = useState(false);
 
     const { isSubmitting, secureSubmit, error: submitError } = useSecureSubmission(block);
+
+    const submitRef = useRef(null);
 
     useEffect(() => {
         if (submitError) {
@@ -871,6 +877,31 @@ export default function Form(props) {
         return Object.keys(newErrors).length === 0;
     };
 
+    const onSubmitSuccess = () => {
+        setErrors({});
+        const resetData = {};
+        formSchema.forEach((item) => {
+            if (item.defaultValue !== undefined) {
+                resetData[item.id] = item.defaultValue;
+            } else if (item.widget === 'checkbox') {
+                resetData[item.id] = item.selectOptions.length ? [] : false;
+            } else {
+                resetData[item.id] = '';
+            }
+        });
+
+        setData(resetData);
+        setShowSuccessIcon(true);
+        setTimeout(() => {
+            setShowSuccessIcon(false);
+        }, 2000);
+    };
+
+    const onSubmitFailure = (error) => {
+        setSubmitMessage(error);
+        setShowSuccessIcon(false);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -885,7 +916,8 @@ export default function Form(props) {
         const payload = {};
         const fileArray = [];
 
-        Object.entries(data).forEach(([key, value]) => {
+        Object.entries(data).forEach(([id, value]) => {
+            const key = formSchema.find((item) => item.id === id)?.label || id;
             if (typeof File !== 'undefined' && value instanceof File) {
                 payload[key] = value.name;
                 fileArray.push(value);
@@ -901,30 +933,23 @@ export default function Form(props) {
             tag: metadataTag || block?.getId?.() || 'form',
         };
 
-        secureSubmit(payload, metadata, fileArray)
-            .then(() => {
-                setErrors({});
-                const resetData = {};
-                formSchema.forEach((item) => {
-                    if (item.defaultValue !== undefined) {
-                        resetData[item.id] = item.defaultValue;
-                    } else if (item.widget === 'checkbox') {
-                        resetData[item.id] = item.selectOptions.length ? [] : false;
-                    } else {
-                        resetData[item.id] = '';
-                    }
-                });
-
-                setData(resetData);
-                setShowSuccessIcon(true);
-                setTimeout(() => {
-                    setShowSuccessIcon(false);
-                }, 2000);
-            })
-            .catch(() => {
-                setSubmitMessage('');
-                setShowSuccessIcon(false);
+        if (submission_delivery_method === 'email' && email_recipient) {
+            const emailLink = formatEmailSubmissionPlain({
+                emailRecipient: email_recipient,
+                payload,
+                schema: formSchema,
+                formTitle: metadataTag,
             });
+
+            if (submitRef.current) {
+                submitRef.current.href = emailLink;
+                submitRef.current.click();
+            }
+        }
+
+        if (submission_delivery_method === 'message') {
+            secureSubmit(payload, metadata, fileArray).then(onSubmitSuccess).catch(onSubmitFailure);
+        }
     };
 
     return (
@@ -1003,61 +1028,43 @@ export default function Form(props) {
                             </section>
                         )}
 
-                        <div className="space-y-4">
-                            {buttons[0] && (
-                                <button
-                                    type="button"
-                                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--border-radius)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
-                                    onClick={handleSubmit}
-                                    disabled={isSubmitting || showSuccessIcon}
-                                >
-                                    {showSuccessIcon ? (
+                        <div className="relative space-y-4">
+                            <button
+                                type="button"
+                                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--border-radius)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
+                                onClick={handleSubmit}
+                                disabled={isSubmitting || showSuccessIcon}
+                            >
+                                {showSuccessIcon ? (
+                                    <>
                                         <LuCheck className="h-5 w-5 text-green-500" />
-                                    ) : isSubmitting ? (
-                                        <ClipLoader size={16} color="currentColor" />
-                                    ) : (
-                                        buttons[0].content
-                                    )}
-                                </button>
-                            )}
+                                        {website.localize({
+                                            en: 'Submitted successfully',
+                                            fr: 'Soumis avec succès',
+                                            es: 'Enviado con éxito',
+                                            zh: '提交成功',
+                                        })}
+                                    </>
+                                ) : isSubmitting ? (
+                                    <ClipLoader size={16} color="currentColor" />
+                                ) : (
+                                    buttons[0]?.content ||
+                                    website.localize({
+                                        en: 'Submit',
+                                        fr: 'Soumettre',
+                                        es: 'Enviar',
+                                        zh: '提交',
+                                    })
+                                )}
+                            </button>
+                            <a ref={submitRef} className="absolute -z-10 invisible"></a>
                             {submitError ? (
                                 <p className="text-sm text-red-500">{submitError}</p>
                             ) : null}
                         </div>
                     </div>
                 </form>
-            ) : // <form className="mt-8 space-y-6 border rounded-[var(--border-radius)] shadow border-text-color/10 p-6">
-            //     {formSchema.map((field, index) => (
-            //         <Field
-            //             key={index}
-            //             {...field}
-            //             data={data}
-            //             setData={setData}
-            //             error={errors[field.id]}
-            //             website={website}
-            //         />
-            //     ))}
-            //     <div className="space-y-4">
-            //         {buttons[0] && (
-            //             <button
-            //                 type="button"
-            //                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--border-radius)] text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 h-10 px-4 py-2 w-full disabled:cursor-not-allowed disabled:opacity-60"
-            //                 onClick={handleSubmit}
-            //                 disabled={isSubmitting || showSuccessIcon}
-            //             >
-            //                 {showSuccessIcon ? (
-            //                     <LuCheck className="h-5 w-5 text-green-500" />
-            //                 ) : isSubmitting ? (
-            //                     <ClipLoader size={16} color="currentColor" />
-            //                 ) : (
-            //                     buttons[0].content
-            //                 )}
-            //             </button>
-            //         )}
-            //         {submitError ? <p className="text-sm text-red-500">{submitError}</p> : null}
-            //     </div>
-            // </form>
-            null}
+            ) : null}
         </section>
     );
 }

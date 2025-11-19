@@ -59,15 +59,23 @@ elements:
                             fr: Définit les éléments de la catégorie.
                         childSchema:
                             name:
-                                en: Category Item
-                                fr: Élément de catégorie
+                                en: Category Options
+                                fr: Options de catégorie
                             fields:
-                                - id: option
+                                - id: label
                                   type: text
                                   label:
-                                      en: Category Option
-                                      fr: Option de catégorie
+                                      en: Option Label
+                                      fr: Étiquette de l'option
                                   description:
-                                      en: The option for the category.
-                                      fr: L'option pour la catégorie.
+                                      en: The label for the option.
+                                      fr: L'étiquette de l'option.
+                                - id: value
+                                  type: text
+                                  label:
+                                      en: Option Value
+                                      fr: Valeur de l'option
+                                  description:
+                                      en: The value for the option.
+                                      fr: La valeur de l'option.
                                   required: true

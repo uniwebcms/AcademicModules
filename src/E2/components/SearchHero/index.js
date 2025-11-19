@@ -65,77 +65,95 @@ export default function SearchHero(props) {
     }
 
     const languages =
-        form.find((f) => f.category === 'language')?.items?.map((i) => i.option) || null;
-    const topics = form.find((f) => f.category === 'topic')?.items?.map((i) => i.option) || null;
+        form
+            .find((f) => f.category === 'language')
+            ?.items?.map((i) => ({ label: i.label || i.value, value: i.value })) || null;
+    const topics =
+        form
+            .find((f) => f.category === 'topic')
+            ?.items?.map((i) => ({
+                label: i.label || i.value,
+                value: i.value,
+            })) || null;
     const faculties =
-        form.find((f) => f.category === 'faculty')?.items?.map((i) => i.option) || null;
+        form
+            .find((f) => f.category === 'faculty')
+            ?.items?.map((i) => ({
+                label: i.label || i.value,
+                value: i.value,
+            })) || null;
 
     if (languages) {
-        languages.unshift(
-            website.localize({
+        languages.unshift({
+            label: website.localize({
                 en: 'All Languages',
                 fr: 'Toutes les langues',
-            })
-        );
+            }),
+            value: 'all',
+        });
     }
 
     if (topics) {
-        topics.unshift(
-            website.localize({
+        topics.unshift({
+            label: website.localize({
                 en: 'All Topics',
                 fr: 'Tous les sujets',
-            })
-        );
+            }),
+            value: 'all',
+        });
     }
 
     if (faculties) {
-        faculties.unshift(
-            website.localize({
+        faculties.unshift({
+            label: website.localize({
                 en: 'All Faculties',
                 fr: 'Toutes les facultés',
-            })
-        );
+            }),
+            value: 'all',
+        });
     }
 
     const sorts = [
-        website.localize({ en: 'Name (A-Z)', fr: 'Nom (A-Z)' }),
-        website.localize({ en: 'Name (Z-A)', fr: 'Nom (Z-A)' }),
+        { label: website.localize({ en: 'Relevance', fr: 'Pertinence' }), value: 'relevance' },
+        { label: website.localize({ en: 'Name (A-Z)', fr: 'Nom (A-Z)' }), value: 'name-asc' },
+        { label: website.localize({ en: 'Name (Z-A)', fr: 'Nom (Z-A)' }), value: 'name-desc' },
     ];
 
-    const sortValue = sort === 'name-desc' ? sorts[1] : sorts[0];
-    const languageValue = searchLanguage || languages[0];
-    const topicValue = searchTopic || topics[0];
-    const facultyValue = searchFaculty || faculties[0];
+    const sortValue = sort || sorts[0].value;
+    const languageValue = searchLanguage || languages[0].value;
+    const topicValue = searchTopic || topics[0].value;
+    const facultyValue = searchFaculty || faculties[0].value;
 
     const handleSearchValueChange = (category, value) => {
-        if (category === 'language') {
-            if (value === languages[0]) {
-                handleNavigateWithParam('language', '');
-            } else {
-                handleNavigateWithParam('language', value);
-            }
-        }
-        if (category === 'topic') {
-            if (value === topics[0]) {
-                handleNavigateWithParam('topic', '');
-            } else {
-                handleNavigateWithParam('topic', value);
-            }
-        }
-        if (category === 'faculty') {
-            if (value === faculties[0]) {
-                handleNavigateWithParam('faculty', '');
-            } else {
-                handleNavigateWithParam('faculty', value);
-            }
-        }
-        if (category === 'sort') {
-            if (value === sorts[0]) {
-                handleNavigateWithParam('sort', 'name-asc');
-            } else if (value === sorts[1]) {
-                handleNavigateWithParam('sort', 'name-desc');
-            }
-        }
+        handleNavigateWithParam(category, value);
+        // if (category === 'language') {
+        //     if (value === languages[0]) {
+        //         handleNavigateWithParam('language', '');
+        //     } else {
+        //         handleNavigateWithParam('language', value);
+        //     }
+        // }
+        // if (category === 'topic') {
+        //     if (value === topics[0]) {
+        //         handleNavigateWithParam('topic', '');
+        //     } else {
+        //         handleNavigateWithParam('topic', value);
+        //     }
+        // }
+        // if (category === 'faculty') {
+        //     if (value === faculties[0]) {
+        //         handleNavigateWithParam('faculty', '');
+        //     } else {
+        //         handleNavigateWithParam('faculty', value);
+        //     }
+        // }
+        // if (category === 'sort') {
+        //     if (value === sorts[0]) {
+        //         handleNavigateWithParam('sort', 'name-asc');
+        //     } else if (value === sorts[1]) {
+        //         handleNavigateWithParam('sort', 'name-desc');
+        //     }
+        // }
     };
 
     return (
@@ -164,7 +182,6 @@ export default function SearchHero(props) {
                         <div className="md:col-span-1">
                             <FilterDropdown
                                 label="Filter by language"
-                                placeholder={languages[0]}
                                 options={languages}
                                 value={languageValue}
                                 onChange={(value) => {
@@ -178,7 +195,6 @@ export default function SearchHero(props) {
                         <div className="md:col-span-1">
                             <FilterDropdown
                                 label="Filter by faculty"
-                                placeholder={faculties[0]}
                                 options={faculties}
                                 value={facultyValue}
                                 onChange={(value) => {
@@ -192,7 +208,6 @@ export default function SearchHero(props) {
                         <div className="md:col-span-1">
                             <FilterDropdown
                                 label="Filter by topic"
-                                placeholder={topics[0]}
                                 options={topics}
                                 value={topicValue}
                                 onChange={(value) => {
@@ -205,7 +220,6 @@ export default function SearchHero(props) {
                     <div className="md:col-span-1">
                         <FilterDropdown
                             label="Sort by"
-                            placeholder={sorts[0]}
                             options={sorts}
                             value={sortValue}
                             onChange={(value) => {
@@ -232,15 +246,15 @@ export default function SearchHero(props) {
     );
 }
 
-const FilterDropdown = ({ label, options, value, onChange, placeholder }) => {
+const FilterDropdown = ({ options, value, onChange }) => {
+    const selected = options.find((option) => option.value === value);
+
     return (
         <Listbox value={value} onChange={onChange}>
             {/* <Label className="block text-sm font-medium text-heading-color mb-2">{label}</Label> */}
             <div className="relative">
                 <ListboxButton className="grid w-full cursor-default grid-cols-1 rounded-md bg-text-color-0 py-2 pl-3 pr-2 text-left outline outline-1 -outline-offset-1 outline-text-color/20 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-primary-700 sm:text-sm">
-                    <span className="col-start-1 row-start-1 truncate pr-6">
-                        {value || placeholder}
-                    </span>
+                    <span className="col-start-1 row-start-1 truncate pr-6">{selected.label}</span>
                     <HiChevronUpDown
                         aria-hidden="true"
                         className="col-start-1 row-start-1 h-5 w-5 self-center justify-self-end text-text-color/60 sm:h-4 sm:w-4"
@@ -254,11 +268,11 @@ const FilterDropdown = ({ label, options, value, onChange, placeholder }) => {
                     {options.map((option, i) => (
                         <ListboxOption
                             key={i}
-                            value={option}
+                            value={option.value}
                             className="group relative cursor-default select-none py-2 pl-3 pr-9 data-[focus]:bg-primary-700 data-[focus]:text-text-color-0 data-[focus]:outline-none"
                         >
                             <span className="block truncate font-normal group-data-[selected]:font-semibold">
-                                {option}
+                                {option.label}
                             </span>
 
                             <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-primary-700 group-[:not([data-selected])]:hidden group-data-[focus]:text-text-color-0">
