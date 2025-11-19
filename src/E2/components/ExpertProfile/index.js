@@ -204,11 +204,20 @@ const MediaInquiriesBox = ({ profile, website }) => {
     const { language, others: otherLanguages } = profile.at('language_proficiency');
     // office is to show the contact form
 
+    const languageMapping = {
+        english: 'English',
+        french: 'Français',
+        bilingual: website.localize({
+            en: 'Bilingual',
+            fr: 'Bilingue',
+        }),
+    };
+
     let contactEmail, contactTelephone, interviewLanguages, contactMethod;
 
     contactEmail = email;
     contactTelephone = getPreferredPhone(telephone, office);
-    interviewLanguages = joinWithComma(language, otherLanguages);
+    interviewLanguages = joinWithComma(languageMapping[language] || language, otherLanguages);
 
     const hasDirectContact =
         (contactPreferences?.email === '1' && contactEmail) ||
@@ -322,9 +331,8 @@ const MediaInquiriesBox = ({ profile, website }) => {
 };
 
 const MediaQuest = ({ website }) => {
-    const { useNavigate, useLocation } = website.getRoutingComponents();
+    const { useNavigate } = website.getRoutingComponents();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const handleClick = () => {
         // add a extra path to end of the URL
