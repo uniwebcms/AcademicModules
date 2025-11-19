@@ -56,20 +56,23 @@ export default function SearchResult(props) {
     const searchLanguage = params.get('language') || '';
     const sort = params.get('sort') || '';
 
-    const { data: experts, error } = uniweb.useCompleteQuery('getExperts', async () => {
-        const response = await client.get('experts.php', {
-            params: {
-                action: 'searchExperts',
-                siteId: website.getSiteId(),
-                query: searchText,
-                lang: website.getLanguage(),
-            },
-        });
-        return response.data.map((expert) => ({
-            ...expert,
-            title: expert.title.trim(),
-        }));
-    });
+    const { data: experts, error } = uniweb.useCompleteQuery(
+        `getExperts_${searchText}`,
+        async () => {
+            const response = await client.get('experts.php', {
+                params: {
+                    action: 'searchExperts',
+                    siteId: website.getSiteId(),
+                    query: searchText,
+                    lang: website.getLanguage(),
+                },
+            });
+            return response.data.map((expert) => ({
+                ...expert,
+                title: expert.title.trim(),
+            }));
+        }
+    );
 
     if (!experts) {
         return <Loading website={website} />;
