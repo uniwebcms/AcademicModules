@@ -695,7 +695,7 @@ const ExpertData = ({ expert, website }) => {
                         {researchPlaces.map((item, i) => (
                             <li key={i} className="leading-relaxed text-lg">
                                 <p className="text-heading-color">
-                                    {item.address.formatted_address}
+                                    {item.address?.formatted_address}
                                 </p>
                                 <p className="text-base">
                                     <LocalizedDateRange
