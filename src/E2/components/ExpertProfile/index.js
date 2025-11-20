@@ -12,9 +12,12 @@ import {
     LuGraduationCap,
     LuMapPin,
     LuContact,
+    LuBookOpen,
+    LuChevronDown,
 } from 'react-icons/lu';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import client from '../_utils/ajax';
+import { parseReference } from '../_utils/reference';
 
 export default function ExpertProfile(props) {
     const { block, website } = props;
@@ -481,9 +484,32 @@ function LocalizedDateRange({ startDate, endDate, website }) {
     );
 }
 
+const Publication = ({ publication, website }) => {
+    const [id, head] = publication;
+
+    const profile = new Profile('reference', id, {
+        head: typeof head === 'string' ? JSON.parse(head) : head,
+    });
+
+    const {
+        title,
+        originalAuthors,
+        issued,
+        'container-title': containerTitle,
+    } = parseReference(profile);
+
+    return (
+        <>
+            <p className="text-heading-color text-lg">{title}</p>
+            <p className="text-base">
+                {joinWithComma(containerTitle, issued?.['date-parts']?.[0]?.[0])}
+            </p>
+        </>
+    );
+};
+
 const ExpertData = ({ expert, website }) => {
     const { useNavigate } = website.getRoutingComponents();
-    const navigate = useNavigate();
 
     const biography = expert.at('biography/academic_biography');
     const researchDescription = expert.at('research_description/research_description');
@@ -491,6 +517,12 @@ const ExpertData = ({ expert, website }) => {
     const selectedDegrees = expert.at('selected_degrees');
     const researchPlaces = expert.at('research_places');
     const alternativeContactInformation = expert.at('alternative_contact_information');
+    const publications = expert.at('references');
+
+    const [showAllPublications, setShowAllPublications] = useState(false);
+    const navigate = useNavigate();
+
+    const limitedPublications = !showAllPublications ? publications.slice(0, 5) : publications;
 
     return (
         <div className="space-y-10">
@@ -576,7 +608,53 @@ const ExpertData = ({ expert, website }) => {
                     </ul>
                 </div>
             )}
-            {/* publications */}
+            {publications.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuBookOpen className="h-6 w-6" />
+                        {publications.length > 1
+                            ? website.localize({
+                                  en: 'Publications',
+                                  fr: 'Publications',
+                              })
+                            : website.localize({
+                                  en: 'Publication',
+                                  fr: 'Publication',
+                              })}
+                    </h2>
+                    <ul className="space-y-4">
+                        {limitedPublications.map((item, i) => (
+                            <li key={i}>
+                                <Publication publication={item.reference} website={website} />
+                            </li>
+                        ))}
+                        {publications.length > 5 && (
+                            <li>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowAllPublications(!showAllPublications)}
+                                    className="mt-4 bg-transparent text-primary-700 font-medium text-sm flex items-center hover:underline focus:outline-none"
+                                >
+                                    {showAllPublications
+                                        ? website.localize({
+                                              en: 'Show Less',
+                                              fr: 'Montrer moins',
+                                          })
+                                        : website.localize({
+                                              en: `Show All (${publications.length})`,
+                                              fr: `Montrer tout (${publications.length})`,
+                                          })}
+                                    <LuChevronDown
+                                        className={`ml-1 h-4 w-4 transition-transform ${
+                                            showAllPublications ? 'rotate-180' : ''
+                                        }`}
+                                    />
+                                </button>
+                            </li>
+                        )}
+                    </ul>
+                </div>
+            )}
             {researchPlaces.length > 0 && (
                 <div>
                     <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">

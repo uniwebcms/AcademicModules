@@ -401,7 +401,7 @@ const Field = (props) => {
                                 </div>
                             ) : null}
                             {combinedError && !displayFileName ? (
-                                <p className="text-sm text-red-500">{combinedError}</p>
+                                <p className="text-sm text-red-700">{combinedError}</p>
                             ) : null}
                         </div>
                     ) : null}
