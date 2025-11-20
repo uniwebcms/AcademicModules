@@ -166,7 +166,7 @@ const SidebarLeft = ({ data, id, website, showForm }) => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             <div className="lg:col-span-1 lg:sticky lg:top-8 self-start">
-                <Banner profile={expert} className="aspect-square" />
+                <Avatar profile={expert} className="aspect-square" />
                 <div className="mt-6">
                     <MediaInquiriesBox profile={expert} website={website} showForm={showForm} />
                 </div>
@@ -230,7 +230,7 @@ const SidebarRight = ({ data, id, website, showForm }) => {
                 <ExpertData expert={expert} website={website} />
             </div>
             <div className="lg:col-span-1 lg:order-2 lg:sticky lg:top-8 self-start">
-                <Banner profile={expert} className="aspect-square" />
+                <Avatar profile={expert} className="aspect-square" />
                 <div className="mt-6">
                     <MediaInquiriesBox profile={expert} website={website} showForm={showForm} />
                 </div>
@@ -244,6 +244,19 @@ const Banner = ({ profile, className = '' }) => {
         <Image
             profile={profile}
             type="banner"
+            className={twJoin(
+                'w-full object-cover shadow rounded-[var(--border-radius)] border border-text-color/20',
+                className
+            )}
+        />
+    );
+};
+
+const Avatar = ({ profile, className = '' }) => {
+    return (
+        <Image
+            profile={profile}
+            type="avatar"
             className={twJoin(
                 'w-full object-cover shadow rounded-[var(--border-radius)] border border-text-color/20',
                 className
