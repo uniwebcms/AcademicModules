@@ -554,7 +554,7 @@ const ExpertData = ({ expert, website }) => {
                             fr: 'Biographie',
                         })}
                     </h2>
-                    <SafeHtml value={biography} className="leading-relaxed text-lg" />
+                    <SafeHtml value={biography} className="leading-relaxed text-lg [&>p+p]:mt-2" />
                 </div>
             )}
             {researchDescription && (
@@ -566,7 +566,10 @@ const ExpertData = ({ expert, website }) => {
                             fr: 'Recherche Information',
                         })}
                     </h2>
-                    <SafeHtml value={researchDescription} className="leading-relaxed text-lg" />
+                    <SafeHtml
+                        value={researchDescription}
+                        className="leading-relaxed text-lg [&>p+p]:mt-2"
+                    />
                 </div>
             )}
             {areasOfExpertise.length > 0 && (
