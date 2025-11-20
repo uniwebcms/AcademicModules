@@ -181,7 +181,7 @@ const SidebarLeft = ({ data, id, website, showForm }) => {
                 <p className="mt-1 text-lg">{department}</p>
                 <p className="mt-1 text-lg text-text-color/70">{university}</p>
                 <hr className="my-8 border-text-color/20" />
-                {/* Render profile content */}
+                <ExpertData expert={expert} website={website} />
             </div>
         </div>
     );
@@ -227,7 +227,7 @@ const SidebarRight = ({ data, id, website, showForm }) => {
                 <p className="mt-1 text-lg">{department}</p>
                 <p className="mt-1 text-lg text-text-color/70">{university}</p>
                 <hr className="my-8 border-text-color/20" />
-                {/* Render profile content */}
+                <ExpertData expert={expert} website={website} />
             </div>
             <div className="lg:col-span-1 lg:order-2 lg:sticky lg:top-8 self-start">
                 <Banner profile={expert} className="aspect-square" />

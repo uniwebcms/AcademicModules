@@ -124,36 +124,10 @@ export default function SearchHero(props) {
     const topicValue = searchTopic || topics[0].value;
     const facultyValue = searchFaculty || faculties[0].value;
 
+    const hasFilter = searchFaculty || searchLanguage || searchTopic || sort;
+
     const handleSearchValueChange = (category, value) => {
         handleNavigateWithParam(category, value);
-        // if (category === 'language') {
-        //     if (value === languages[0]) {
-        //         handleNavigateWithParam('language', '');
-        //     } else {
-        //         handleNavigateWithParam('language', value);
-        //     }
-        // }
-        // if (category === 'topic') {
-        //     if (value === topics[0]) {
-        //         handleNavigateWithParam('topic', '');
-        //     } else {
-        //         handleNavigateWithParam('topic', value);
-        //     }
-        // }
-        // if (category === 'faculty') {
-        //     if (value === faculties[0]) {
-        //         handleNavigateWithParam('faculty', '');
-        //     } else {
-        //         handleNavigateWithParam('faculty', value);
-        //     }
-        // }
-        // if (category === 'sort') {
-        //     if (value === sorts[0]) {
-        //         handleNavigateWithParam('sort', 'name-asc');
-        //     } else if (value === sorts[1]) {
-        //         handleNavigateWithParam('sort', 'name-desc');
-        //     }
-        // }
     };
 
     return (
@@ -232,7 +206,8 @@ export default function SearchHero(props) {
                         <button
                             type="button"
                             onClick={handleResetFilters}
-                            className="w-full inline-flex items-center justify-center px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-btn-text-color rounded-[var(--border-radius)] transition-colors duration-200"
+                            disabled={!hasFilter}
+                            className="w-full inline-flex items-center justify-center px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-btn-text-color rounded-[var(--border-radius)] transition-colors duration-200 disabled:opacity-50 disabled::hover:bg-btn-color disabled:cursor-not-allowed"
                         >
                             {website.localize({
                                 en: 'Clear All',
