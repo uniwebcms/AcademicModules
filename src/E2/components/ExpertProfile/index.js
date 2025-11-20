@@ -391,7 +391,7 @@ const MediaInquiriesBox = ({ profile, website, showForm }) => {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center mr-2 mb-2"
+                            className="inline-flex items-center mr-4 mb-3"
                             title={link.label}
                         >
                             <MediaIcon type={link.type} size={7} className="text-inherit" />
@@ -689,7 +689,7 @@ const ExpertData = ({ expert, website }) => {
                                     />
                                 </p>
                                 <ul className="flex flex-wrap gap-2 mt-1">
-                                    {item.activity_types.map((activity, j) => (
+                                    {item.activity_types?.map((activity, j) => (
                                         <li key={j}>
                                             <span className="px-2 py-1 rounded-[var(--border-radius)] text-sm font-medium bg-btn-alt-color text-btn-alt-text-color">
                                                 {activity.activity_type}
