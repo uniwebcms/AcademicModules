@@ -76,25 +76,31 @@ const Layout = ({ id, website, layout, showForm }) => {
 };
 
 const WideBanner = ({ data, id, website, showForm }) => {
-    if (!data) {
-        return (
-            <div>
-                <div className="h-48 md:h-64 lg:h-80">
-                    <div className="w-full h-full bg-gray-300 rounded-[var(--border-radius)] animate-pulse"></div>
-                </div>
-                <div className="mt-8">
-                    <div className="animate-pulse">
-                        <div className="h-9 bg-gray-300 rounded-[var(--border-radius)] w-60"></div>
-                        <div className="h-7 bg-gray-300 rounded-[var(--border-radius)] w-72 mt-2"></div>
-                        <div className="h-7 bg-gray-300 rounded-[var(--border-radius)] w-60 mt-2"></div>
-                    </div>
-                </div>
-                <hr className="my-8 border-text-color/20" />
+    const loadingPlaceholder = (
+        <div>
+            <div className="h-48 md:h-64 lg:h-80">
+                <div className="w-full h-full bg-gray-300 rounded-[var(--border-radius)] animate-pulse"></div>
             </div>
-        );
+            <div className="mt-8">
+                <div className="animate-pulse">
+                    <div className="h-9 bg-gray-300 rounded-[var(--border-radius)] w-60"></div>
+                    <div className="h-7 bg-gray-300 rounded-[var(--border-radius)] w-72 mt-2"></div>
+                    <div className="h-7 bg-gray-300 rounded-[var(--border-radius)] w-60 mt-2"></div>
+                </div>
+            </div>
+            <hr className="my-8 border-text-color/20" />
+        </div>
+    );
+
+    if (!data) {
+        return loadingPlaceholder;
     }
 
     const expert = new Profile('members', id, { data });
+
+    if (!expert || !expert.isReady()) {
+        return loadingPlaceholder;
+    }
 
     const { head, title } = expert.getBasicInfo();
 
