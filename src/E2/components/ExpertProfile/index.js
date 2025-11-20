@@ -258,7 +258,7 @@ const Avatar = ({ profile, className = '' }) => {
             profile={profile}
             type="avatar"
             className={twJoin(
-                'w-full object-cover shadow rounded-[var(--border-radius)] border border-text-color/20',
+                'w-full object-cover shadow rounded-[var(--border-radius)] border border-text-color/20 bg-white',
                 className
             )}
         />

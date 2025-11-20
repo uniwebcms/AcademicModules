@@ -159,18 +159,18 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
 
     return (
         <div
-            className="bg-text-color-0 border border-text-color/10 overflow-hidden transition-all duration-300 shadow hover:shadow-md flex flex-col md:flex-row cursor-pointer rounded-[var(--border-radius)] group"
+            className="bg-text-color-0 border border-text-color/10 overflow-hidden transition-all duration-300 shadow hover:shadow-md flex flex-col md:flex-row cursor-pointer rounded-[var(--border-radius)] group h-auto md:h-52"
             onClick={handleClick}
         >
             <div className="flex-shrink-0">
                 <Image
                     profile={expertProfile}
                     type="avatar"
-                    className="h-48 w-full object-cover md:w-48 md:h-full"
+                    className="h-48 w-full object-cover md:w-52 md:h-52"
                 />
             </div>
             <div className="p-6 flex flex-col justify-between">
-                <div>
+                <div className="flex-grow">
                     <h3 className="text-xl font-bold text-primary-800">{title}</h3>
                     <p className="mt-1 text-base font-medium">
                         {position && <span>{position}</span>}
@@ -178,9 +178,11 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
                         {unit && <span>{unit}</span>}
                     </p>
                     {department && <p className="mt-1 text-sm text-text-color/70">{department}</p>}
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="my-3 flex flex-wrap gap-2">
                         {expertise.slice(0, 3).map((tag) => (
-                            <ExpertiseTag key={tag}>{tag}</ExpertiseTag>
+                            <ExpertiseTag key={tag} className="max-w-44 truncate">
+                                {tag}
+                            </ExpertiseTag>
                         ))}
                         {expertise.length > 3 && (
                             <ExpertiseTag>
@@ -193,7 +195,7 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
                         )}
                     </div>
                 </div>
-                <div className="mt-4">
+                <div>
                     <span className="text-sm font-semibold text-link-color group-hover:text-link-hover-color group-hover:underline">
                         {website.localize({
                             en: 'View Profile',
@@ -207,8 +209,10 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
     );
 };
 
-const ExpertiseTag = ({ children }) => (
-    <span className="inline-block bg-text-color/5 text-text-color/90 rounded-full px-3 py-1 text-sm font-medium">
+const ExpertiseTag = ({ children, className = '' }) => (
+    <span
+        className={`inline-block bg-text-color/5 text-text-color/90 rounded-full px-3 py-1 text-sm font-medium ${className}`}
+    >
         {children}
     </span>
 );
