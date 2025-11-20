@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { twJoin, useGetProfile, Profile } from '@uniwebcms/module-sdk';
-import { Image, MediaIcon } from '@uniwebcms/core-components';
+import { Image, MediaIcon, SafeHtml } from '@uniwebcms/core-components';
 import { getPreferredPhone, formatPhone, normalizePhone } from '../_utils/phone';
-import { LuMail, LuPhone, LuMic } from 'react-icons/lu';
+import {
+    LuMail,
+    LuPhone,
+    LuMic,
+    LuUserRound,
+    LuFlaskRound,
+    LuStar,
+    LuGraduationCap,
+    LuMapPin,
+    LuContact,
+} from 'react-icons/lu';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import client from '../_utils/ajax';
 
@@ -105,7 +115,9 @@ const WideBanner = ({ data, id, website, showForm }) => {
             </div>
             <hr className="my-8 border-text-color/20" />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
-                <div className="lg:col-span-2">{/* Render profile content */}</div>
+                <div className="lg:col-span-2">
+                    <ExpertData expert={expert} website={website} />
+                </div>
                 <div className="lg:col-span-1 lg:sticky lg:top-8 self-start">
                     <MediaInquiriesBox profile={expert} website={website} showForm={showForm} />
                 </div>
@@ -373,11 +385,7 @@ const MediaInquiriesBox = ({ profile, website, showForm }) => {
                             className="inline-flex items-center mr-2 mb-2"
                             title={link.label}
                         >
-                            <MediaIcon
-                                type={link.type}
-                                size={7}
-                                className="text-icon-color/70 hover:text-icon-color"
-                            />
+                            <MediaIcon type={link.type} size={7} className="text-inherit" />
                         </a>
                     ))}
                 </div>
@@ -439,5 +447,221 @@ const DirectContact = ({ contactEmail, isPrimary = false, website }) => {
                 })}
             </a>
         </p>
+    );
+};
+
+function LocalizedDateRange({ startDate, endDate, website }) {
+    if (!startDate && !endDate) return null;
+
+    const formatter = new Intl.DateTimeFormat(website.getLanguage(), {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
+    // handle missing start date
+    if (!startDate) {
+        const end = formatter.format(new Date(endDate));
+        return <span>{end}</span>;
+    }
+
+    // handle missing end date → use "present"
+    const start = formatter.format(new Date(startDate));
+    const end = endDate
+        ? formatter.format(new Date(endDate))
+        : website.localize({
+              en: 'present',
+              fr: 'présent',
+          });
+
+    return (
+        <span>
+            {start} — {end}
+        </span>
+    );
+}
+
+const ExpertData = ({ expert, website }) => {
+    const { useNavigate } = website.getRoutingComponents();
+    const navigate = useNavigate();
+
+    const biography = expert.at('biography/academic_biography');
+    const researchDescription = expert.at('research_description/research_description');
+    const areasOfExpertise = expert.at('key_words').map((item) => item.keyword);
+    const selectedDegrees = expert.at('selected_degrees');
+    const researchPlaces = expert.at('research_places');
+    const alternativeContactInformation = expert.at('alternative_contact_information');
+
+    return (
+        <div className="space-y-10">
+            {biography && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuUserRound className="h-6 w-6" />
+                        {website.localize({
+                            en: 'Biography',
+                            fr: 'Biographie',
+                        })}
+                    </h2>
+                    <SafeHtml value={biography} className="leading-relaxed text-lg" />
+                </div>
+            )}
+            {researchDescription && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuFlaskRound className="h-6 w-6" />
+                        {website.localize({
+                            en: 'Research Information',
+                            fr: 'Recherche Information',
+                        })}
+                    </h2>
+                    <SafeHtml value={researchDescription} className="leading-relaxed text-lg" />
+                </div>
+            )}
+            {areasOfExpertise.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuStar className="h-6 w-6" />
+                        {areasOfExpertise.length > 1
+                            ? website.localize({
+                                  en: 'Areas of Expertise',
+                                  fr: 'Domaines d’expertise',
+                              })
+                            : website.localize({
+                                  en: 'Area of Expertise',
+                                  fr: 'Domaine d’expertise',
+                              })}
+                    </h2>
+                    <ul className="flex flex-wrap gap-2">
+                        {areasOfExpertise.map((item, i) => (
+                            <li key={i}>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const params = new URLSearchParams();
+                                        params.set('topic', item);
+                                        navigate(`search?${params.toString()}`);
+                                    }}
+                                    className="px-4 py-2 rounded-[var(--border-radius)] text-base font-medium bg-btn-alt-color text-btn-alt-text-color hover:bg-btn-alt-hover-color hover:text-btn-alt-hover-text-color"
+                                >
+                                    {item}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            {selectedDegrees.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuGraduationCap className="h-6 w-6" />
+                        {website.localize({
+                            en: 'Education',
+                            fr: 'Éducation',
+                        })}
+                    </h2>
+                    <ul className="space-y-4">
+                        {selectedDegrees.map((item, i) => (
+                            <li key={i} className="leading-relaxed text-lg">
+                                <p className="text-heading-color">
+                                    {item.degree_name}
+                                    {item.specialty ? ` (${item.specialty})` : ''}
+                                </p>
+                                <p className="text-base">
+                                    {item.institution}
+                                    {item.year ? ` • ${item.year}` : ''}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            {/* publications */}
+            {researchPlaces.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuMapPin className="h-6 w-6" />
+                        {researchPlaces.length > 1
+                            ? website.localize({
+                                  en: 'Research Places',
+                                  fr: 'Lieux de recherche',
+                              })
+                            : website.localize({
+                                  en: 'Research Place',
+                                  fr: 'Lieu de recherche',
+                              })}
+                    </h2>
+                    <ul className="space-y-4">
+                        {researchPlaces.map((item, i) => (
+                            <li key={i} className="leading-relaxed text-lg">
+                                <p className="text-heading-color">
+                                    {item.address.formatted_address}
+                                </p>
+                                <p className="text-base">
+                                    <LocalizedDateRange
+                                        startDate={item.start_date}
+                                        endDate={item.end_date}
+                                        website={website}
+                                    />
+                                </p>
+                                <ul className="flex flex-wrap gap-2 mt-1">
+                                    {item.activity_types.map((activity, j) => (
+                                        <li key={j}>
+                                            <span className="px-2 py-1 rounded-[var(--border-radius)] text-sm font-medium bg-btn-alt-color text-btn-alt-text-color">
+                                                {activity.activity_type}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            {alternativeContactInformation.length > 0 && (
+                <div>
+                    <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <LuContact className="h-6 w-6" />
+                        {website.localize({
+                            en: 'Alternative Contact Information',
+                            fr: 'Informations de contact alternatives',
+                        })}
+                    </h2>
+                    <ul className="space-y-4">
+                        {alternativeContactInformation.map((item, i) => (
+                            <li key={i} className="leading-relaxed text-lg">
+                                <p className="text-heading-color">{item.contact_description}</p>
+                                <div className="flex items-center gap-2">
+                                    {item.contact_type ===
+                                        website.localize({
+                                            en: 'Email',
+                                            fr: 'E-mail',
+                                        }) && <LuMail className="h-5 w-5 text-text-color" />}
+                                    {item.contact_type ===
+                                        website.localize({
+                                            en: 'Telephone',
+                                            fr: 'Téléphone',
+                                        }) && <LuPhone className="h-5 w-5 text-text-color" />}
+
+                                    <span className="text-base">
+                                        {item.contact_information && (
+                                            <a
+                                                href={
+                                                    item.contact_type === 'Email'
+                                                        ? `mailto:${item.contact_information}`
+                                                        : `tel:${item.contact_information}`
+                                                }
+                                            >
+                                                {item.contact_information}
+                                            </a>
+                                        )}
+                                    </span>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
     );
 };

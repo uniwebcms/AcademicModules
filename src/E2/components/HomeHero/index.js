@@ -27,12 +27,10 @@ export default function HomeHero(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle search logic here, e.g., redirect to search results page
-        console.log('Search query:', query);
 
-        if (!query.trim()) {
-            return;
-        }
+        // if (!query.trim()) {
+        //     return;
+        // }
 
         handleNavigateWithParam('search', query.trim());
     };
