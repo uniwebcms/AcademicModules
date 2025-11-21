@@ -859,7 +859,8 @@ export default function Feedback(props) {
         const payload = {};
         const fileArray = [];
 
-        Object.entries(data).forEach(([key, value]) => {
+        Object.entries(data).forEach(([id, value]) => {
+            const key = formSchema.find((item) => item.id === id)?.label || id;
             if (typeof File !== 'undefined' && value instanceof File) {
                 payload[key] = value.name;
                 fileArray.push(value);
