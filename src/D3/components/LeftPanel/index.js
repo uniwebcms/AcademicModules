@@ -34,11 +34,16 @@ export default function LeftPanel(props) {
         initial_state = 'close_all',
     } = block.getBlockProperties();
 
-    const navigation = headerSiteNavigation
-        ? pages.find((p) => p.route === firstSegment)
-            ? [pages.find((p) => p.route === firstSegment)]
-            : pages
-        : pages;
+    let navigation = pages;
+
+    // conditionally filter navigation based on the first segment and root level navigation state
+    if (headerSiteNavigation) {
+        const match = pages.find((p) => p.route === firstSegment);
+
+        if (match) {
+            navigation = !match.hasData && match.child_items?.length ? match.child_items : [match];
+        }
+    }
 
     const [openState, setOpenState] = useState(() => {
         const state = {};

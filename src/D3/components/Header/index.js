@@ -55,13 +55,6 @@ const findNavigationRoute = (navigationItem) => {
     return null;
 };
 
-// return true if node route is a parent of current route
-const isParent = (current, node) => {
-    const firstSegment = current.split('/')[1];
-
-    return firstSegment === node.route;
-};
-
 // Mobile Nav Menu Component
 const MobileNavMenu = ({ links, isOpen, closeNav, siteNavigation }) => {
     // Define common styles
