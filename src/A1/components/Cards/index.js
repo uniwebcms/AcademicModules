@@ -110,22 +110,27 @@ export default function Cards({ website, block }) {
                                         {stripTags(title)}
                                     </h4>
                                     <h5 className="text-text-color-80">{stripTags(subtitle)}</h5>
-                                    <SafeHtml value={paragraphs} className="mt-2 text-base" />
-                                    <div className="mt-3 space-y-1">
-                                        {links.map((link, index) => {
-                                            const { href, label } = link;
+                                    <SafeHtml
+                                        value={paragraphs}
+                                        className="mt-2 text-base [&>p:last-child:has(>a:only-child)]:mt-3"
+                                    />
+                                    {links.length > 0 && (
+                                        <div className="mt-3 space-y-1">
+                                            {links.map((link, index) => {
+                                                const { href, label } = link;
 
-                                            return (
-                                                <Link
-                                                    key={index}
-                                                    to={website.makeHref(href)}
-                                                    className="block break-words hover:underline leading-tight"
-                                                >
-                                                    {label}
-                                                </Link>
-                                            );
-                                        })}
-                                    </div>
+                                                return (
+                                                    <Link
+                                                        key={index}
+                                                        to={website.makeHref(href)}
+                                                        className="block break-words hover:underline leading-tight"
+                                                    >
+                                                        {label}
+                                                    </Link>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         );
