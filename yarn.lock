@@ -2898,24 +2898,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/core-components@npm:^1.6.26":
-  version: 1.6.26
-  resolution: "@uniwebcms/core-components@npm:1.6.26"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/22dd4c65f141bb70ed30b229cb5bcf337237fe009eea07b78a5f18949c5346b1eee6fdab2e31c112c6159118a1e9beb875cf6b2160c051f6dacbfaf9ec5b6152
-  languageName: node
-  linkType: hard
-
 "@uniwebcms/core-components@npm:^1.6.27":
   version: 1.6.27
   resolution: "@uniwebcms/core-components@npm:1.6.27"
@@ -2985,6 +2967,24 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
   checksum: 10/134e5ae754b831502215d02b111828661abbcf941b8ecb461aab4e20986c01001566e35b90ca55a32dab24aeebaf1617f05009ac6fc662cecd48d2b24a8d8754
+  languageName: node
+  linkType: hard
+
+"@uniwebcms/core-components@npm:^1.6.35":
+  version: 1.6.35
+  resolution: "@uniwebcms/core-components@npm:1.6.35"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.3"
+    "@popperjs/core": "npm:^2.10.1"
+    "@react-google-maps/api": "npm:^2.19.1"
+    katex: "npm:^0.16.11"
+    prismjs: "npm:^1.29.0"
+    react-icons: "npm:^4.11.0"
+    react-katex: "npm:^3.0.1"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10/d56079497a529da85f28c30ba9d77ab308f6b2fa8bd1f95ec0a4c8edf355d04068caa0d1429b396ab508e8aa7e500e14b609e2f081bbf391c09accd8f5e64fe0
   languageName: node
   linkType: hard
 
@@ -3312,7 +3312,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.26"
+    "@uniwebcms/core-components": "npm:^1.6.35"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     "@vis.gl/react-google-maps": "npm:^1.5.4"
