@@ -26,7 +26,8 @@ export default function BackLink(props) {
 
     if (location.pathname.endsWith('/expert')) {
         if (noSearchParam) {
-            to = '/';
+            to = 'search';
+            // to = '/';
             label = website.localize({ en: 'Back to Search', fr: 'Retour à la recherche' });
         } else {
             to = `search${location.search}`;
