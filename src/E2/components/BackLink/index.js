@@ -30,7 +30,9 @@ export default function BackLink(props) {
             // to = '/';
             label = website.localize({ en: 'Back to Search', fr: 'Retour à la recherche' });
         } else {
-            to = `search${location.search}`;
+            // remove the id from the search params
+            params.delete('id');
+            to = `search?${params.toString()}`;
             label = website.localize({ en: 'Back to Results', fr: 'Retour aux résultats' });
         }
     }
