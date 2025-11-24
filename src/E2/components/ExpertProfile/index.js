@@ -554,7 +554,7 @@ const ExpertData = ({ expert, website }) => {
                             fr: 'Biographie',
                         })}
                     </h2>
-                    <SafeHtml value={biography} className="leading-relaxed text-lg [&>p+p]:mt-2" />
+                    <SafeHtml value={biography} className="rich-text leading-relaxed text-lg" />
                 </div>
             )}
             {researchDescription && (
@@ -568,7 +568,7 @@ const ExpertData = ({ expert, website }) => {
                     </h2>
                     <SafeHtml
                         value={researchDescription}
-                        className="leading-relaxed text-lg [&>p+p]:mt-2"
+                        className="rich-text leading-relaxed text-lg"
                     />
                 </div>
             )}
