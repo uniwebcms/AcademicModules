@@ -125,6 +125,7 @@ export default function SearchHero(props) {
     const facultyValue = searchFaculty || faculties[0].value;
 
     const hasFilter = searchFaculty || searchLanguage || searchTopic || sort;
+    const filterCount = [searchFaculty, searchLanguage, searchTopic, sort].filter(Boolean).length;
 
     const handleSearchValueChange = (category, value) => {
         handleNavigateWithParam(category, value);
@@ -209,10 +210,17 @@ export default function SearchHero(props) {
                             disabled={!hasFilter}
                             className="w-full inline-flex items-center justify-center px-4 py-2 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-btn-text-color rounded-[var(--border-radius)] transition-colors duration-200 disabled:opacity-50 disabled::hover:bg-btn-color disabled:cursor-not-allowed"
                         >
-                            {website.localize({
-                                en: 'Clear All',
-                                fr: 'Tout effacer',
-                            })}
+                            <span>
+                                {website.localize({
+                                    en: 'Clear All',
+                                    fr: 'Tout effacer',
+                                })}
+                            </span>
+                            {filterCount > 0 && (
+                                <span className="ml-2 text-sm text-primary-700">
+                                    ({filterCount})
+                                </span>
+                            )}
                         </button>
                     </div>
                 </div>

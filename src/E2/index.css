@@ -26,6 +26,6 @@ input[type='search']::-webkit-search-cancel-button {
     margin-left: 1em;
 }
 
-.rich-text * > * + * {
+.rich-text * + * {
     margin-top: 0.5em;
 }
