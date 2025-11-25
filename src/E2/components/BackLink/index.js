@@ -14,8 +14,10 @@ export default function BackLink(props) {
     const search = params.get('search');
     const topic = params.get('topic');
     const faculty = params.get('faculty');
+    const language = params.get('language');
+    const sort = params.get('sort');
 
-    const noSearchParam = !search && !topic && !faculty;
+    const noSearchParam = !search && !topic && !faculty && !language && !sort;
 
     let to, label;
 
@@ -27,14 +29,14 @@ export default function BackLink(props) {
     if (location.pathname.endsWith('/expert')) {
         if (noSearchParam) {
             to = 'search';
-            // to = '/';
-            label = website.localize({ en: 'Back to Search', fr: 'Retour à la recherche' });
+            // label = website.localize({ en: 'Back to Results', fr: 'Retour aux résultats' });
         } else {
             // remove the id from the search params
             params.delete('id');
             to = `search?${params.toString()}`;
-            label = website.localize({ en: 'Back to Results', fr: 'Retour aux résultats' });
+            // label = website.localize({ en: 'Back to Results', fr: 'Retour aux résultats' });
         }
+        label = website.localize({ en: 'Back to Results', fr: 'Retour aux résultats' });
     }
 
     if (location.pathname.endsWith('/expert/request') && id) {
