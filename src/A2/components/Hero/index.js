@@ -1,46 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { Link, Icon, Image } from '@uniwebcms/core-components';
-// import { twJoin } from '@uniwebcms/module-sdk';
-
-// export default function Hero(props) {
-//     const { block, website, page } = props;
-
-//     const {
-//         layout = 'full-width', // 'side-by-side', 'full-width', 'centered-card'
-//         height = 'auto', // 'auto', 'full'
-//     } = block.getBlockProperties();
-
-//     const {
-//         banner: backgroundImage, // background image object that can pass into the Image component
-//         pretitle: eyebrow,
-//         title,
-//         subtitle,
-//         links, // array of objects with { label, href } that can pass into the Link component (to: href, children: label)
-//         icons, // array of objects that can pass into the Icon component directly, placed beside each link，
-//         form: statsData = [], // array of object each with stats data (key: [number, text])
-//     } = block.getBlockContent();
-
-//     const {
-//         banner: picture, // picture object that can pass into the Image component, used when in 'side-by-side' or 'centered-card' layout
-//         form: sideExtraInfo = {}, // object with extra information about the side content (key: [for,department,university,link:{label,href},new-items:[{title,date}]])
-//     } = block.getBlockItems()?.[0] || {}; // side content
-
-//     const [extraTopPadding, setExtraTopPadding] = useState(0);
-
-//     // check if the header is overlaying the hero section and get the height of the header, this is the extra padding we need to add to the hero section to better center the content
-//     useEffect(() => {
-//         const isHeaderOverlay =
-//             page.blockGroups?.header?.[0]?.getBlockProperties()?.header_placement ===
-//             'overlay_hero';
-//         const mainNavbar = document.querySelector('#main-navbar');
-//         if (isHeaderOverlay && mainNavbar) {
-//             setExtraTopPadding(mainNavbar.offsetHeight);
-//         }
-//     }, [page]);
-
-//     return <section></section>;
-// }
-
 import React, { useState, useEffect } from 'react';
 import { Link, Icon, Image } from '@uniwebcms/core-components';
 import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
@@ -54,7 +11,15 @@ export default function Hero(props) {
     const { useNavigate } = website.getRoutingComponents();
     const navigate = useNavigate();
 
-    const { layout = 'full-width', height = 'auto' } = block.getBlockProperties();
+    const {
+        variant = 'content-only', // choices: 'content-avatar', 'big-card', 'content-only'
+        avatar_placement = 'right', // choices: 'left', 'right',
+        avatar_style = 'square', // choices:: 'circle', 'square', 'portrait', 'landscape', 'square_spinning'
+        avatar_size = 'medium', // choices: 'small', 'medium',
+        content_alignment = 'center', // choices: 'left', 'center', 'right',
+        content_feature = 'none', // choices: 'none', 'big-title-decorative-line'
+        height = 'auto',
+    } = block.getBlockProperties();
 
     const {
         banner: backgroundImage,
@@ -69,14 +34,12 @@ export default function Hero(props) {
     const { banner: sidePicture, form: sideExtraInfo } = block.getBlockItems()?.[0] || {};
 
     const [headerHeight, setHeaderHeight] = useState(0);
-    // const [extraTopPadding, setExtraTopPadding] = useState(0);
 
     // Dynamic padding for overlay header
     useEffect(() => {
         const mainNavbar = document.querySelector('#main-navbar');
         if (mainNavbar) {
             setHeaderHeight(mainNavbar.offsetHeight);
-            // setExtraTopPadding(mainNavbar.offsetHeight);
         }
     }, [page]);
 
@@ -89,7 +52,6 @@ export default function Hero(props) {
         align = 'left', // 'left', 'center'
         statsData,
         size = 'lg', // 'lg', 'md', or 'sm'
-        layout,
     }) => (
         <div
             className={twJoin('max-w-4xl space-y-6')}
@@ -240,29 +202,28 @@ export default function Hero(props) {
         return null;
     };
 
-    // Base classes for the section
     const sectionClasses = twJoin(
         'relative overflow-hidden bg-bg-color',
-        height === 'full'
-            ? isHeaderOverlay
-                ? 'min-h-screen'
-                : `min-h-[calc(100vh-${headerHeight})]`
-            : '',
         height === 'full' && 'flex flex-col justify-center'
     );
 
     const extraTopPadding = height !== 'full' && isHeaderOverlay ? headerHeight : 0;
 
-    // Unified padding for the section
-    const sectionPaddingStyle = {
+    const sectionStyle = {
         paddingTop: `${extraTopPadding + 96}px`, // 96px for py-24 (6rem) + extraTopPadding
-        paddingBottom: '96px', // 96px for py-24 (6rem)
+        paddingBottom: '96px', // 96px for py-24 (6rem),
+        minHeight:
+            height === 'full'
+                ? isHeaderOverlay
+                    ? '100vh'
+                    : `calc(100vh - ${headerHeight}px)`
+                : 'auto',
     };
 
     let content;
 
-    switch (layout) {
-        case 'side-by-side':
+    switch (variant) {
+        case 'content-avatar':
             content = (
                 <div
                     className={twJoin(
@@ -270,7 +231,6 @@ export default function Hero(props) {
                         height === 'full' ? 'h-full flex items-center' : ''
                     )}
                 >
-                    {/* Background image overlay (Chronos Initiative) */}
                     {backgroundImage && (
                         <div className="absolute inset-0">
                             <Image
@@ -337,7 +297,7 @@ export default function Hero(props) {
             );
             break;
 
-        case 'centered-card':
+        case 'big-card':
             content = (
                 <div
                     className={twJoin(
@@ -380,7 +340,7 @@ export default function Hero(props) {
             );
             break;
 
-        case 'full-width':
+        case 'content-only':
             content = (
                 <div
                     className={twJoin(
@@ -388,7 +348,6 @@ export default function Hero(props) {
                         height === 'full' ? 'h-full flex items-center justify-center' : ''
                     )}
                 >
-                    {/* Background image (Institute of Future Sciences) */}
                     {backgroundImage && (
                         <div className="absolute inset-0">
                             <Image
@@ -419,7 +378,7 @@ export default function Hero(props) {
     }
 
     return (
-        <section className={sectionClasses} style={sectionPaddingStyle}>
+        <section className={sectionClasses} style={sectionStyle}>
             {content}
         </section>
     );

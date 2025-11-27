@@ -296,25 +296,126 @@ items:
         #                               fr: La date du nouvel article.
 
 properties:
-    layout:
+    variant:
         label:
-            en: Layout
-            fr: Mise en page
+            en: Variant
+            fr: Variante
         type: select
         enum:
             - label:
-                  en: Side by Side Content
-                  fr: Contenu côte à côte
-              value: side-by-side
+                  en: Content + Avatar
+                  fr: Contenu + Avatar
+              value: content-avatar
             - label:
-                  en: Full Width Text
-                  fr: Texte en pleine largeur
-              value: full-width
+                  en: Content Only
+                  fr: Contenu uniquement
+              value: content-only
             - label:
-                  en: Centered Card
-                  fr: Carte centrée
-              value: centered-card
-        default: full-width
+                  en: Big Card
+                  fr: Grande Carte
+              value: big-card
+        default: content-only
+    avatar_placement:
+        label:
+            en: Avatar Placement
+            fr: Placement de l'avatar
+        type: select
+        enum:
+            - label:
+                  en: Left
+                  fr: Gauche
+              value: left
+            - label:
+                  en: Right
+                  fr: Droite
+              value: right
+        default: right
+        condition:
+            variant: content-avatar
+    avatar_style:
+        label:
+            en: Avatar Style
+            fr: Style de l'avatar
+        type: select
+        enum:
+            - label:
+                  en: Circle
+                  fr: Cercle
+              value: circle
+            - label:
+                  en: Square
+                  fr: Carré
+              value: square
+            - label:
+                  en: Portrait
+                  fr: Portrait
+              value: portrait
+            - label:
+                  en: Landscape
+                  fr: Paysage
+              value: landscape
+            - label:
+                  en: Square with Spinning Effect
+                  fr: Carré avec effet de rotation
+              value: square_spinning
+        default: square
+        condition:
+            variant: content-avatar
+    avatar_size:
+        label:
+            en: Avatar Size
+            fr: Taille de l'avatar
+        type: select
+        enum:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: small
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: medium
+        default: medium
+        condition:
+            variant: content-avatar
+    content_alignment:
+        label:
+            en: Content Alignment
+            fr: Alignement du contenu
+        type: select
+        enum:
+            - label:
+                  en: Left
+                  fr: Gauche
+              value: left
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+            - label:
+                  en: Right
+                  fr: Droite
+              value: right
+        default: center
+        condition:
+            variant: content-only
+    content_feature:
+        label:
+            en: Content Feature
+            fr: Fonctionnalité du contenu
+        type: select
+        enum:
+            - label:
+                  en: None
+                  fr: Aucune
+              value: none
+            - label:
+                  en: Big Title and Decorative Line
+                  fr: Grand titre et ligne décorative
+              value: big-title-decorative-line
+        default: none
+        condition:
+            variant: content-only
     height:
         label:
             en: Height

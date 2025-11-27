@@ -132,22 +132,19 @@ const parseLinks = (form) => {
 };
 
 // Component for a single plain/grouped link in the desktop navigation
-const NavLink = ({ link, website }) => {
-    const { useNavigate } = website.getRoutingComponents();
-    const navigate = useNavigate();
-
+const NavLink = ({ link, opensToRight = 'right' }) => {
     const isGroup = link.style === 'group';
 
     // Base className for all plain/grouped links
     const baseClassName =
-        'bg-transparent text-text-color/90 hover:text-text-color transition-colors duration-200 text-sm 2xl:text-base font-medium focus:outline-none group';
+        'bg-transparent text-link-color hover:text-link-hover-color transition-colors duration-200 text-sm 2xl:text-base font-medium focus:outline-none group';
 
     if (isGroup) {
         return (
             <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button className={twJoin(baseClassName, 'flex items-center space-x-1')}>
                     <span>{link.label}</span>
-                    <HiChevronDown className="h-4 w-4 text-text-color/70 group-hover:text-text-color/90" />
+                    <HiChevronDown className="h-4 w-4 !text-inherit" />
                 </Menu.Button>
                 <Transition
                     as={React.Fragment}
@@ -158,31 +155,40 @@ const NavLink = ({ link, website }) => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-[var(--border-radius)] bg-bg-color shadow-lg ring-1 ring-text-color/20 focus:outline-none">
-                        <div className="p-1">
-                            {link.links.map((subLink, index) => (
-                                <Menu.Item key={index}>
-                                    {({ active }) => {
-                                        return (
-                                            <a
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    navigate(subLink.href);
-                                                }}
-                                                className={twJoin(
-                                                    active
-                                                        ? 'bg-text-color-10 text-text-color'
-                                                        : 'text-text-color/90',
-                                                    'block rounded-[var(--border-radius)] px-4 py-2 text-sm 2xl:text-base transition-colors duration-200 cursor-pointer'
-                                                )}
-                                            >
-                                                {subLink.label}
-                                            </a>
-                                        );
-                                    }}
-                                </Menu.Item>
-                            ))}
-                        </div>
+                    <Menu.Items
+                        className={twJoin(
+                            opensToRight ? 'left-0' : 'right-0',
+                            'absolute top-full mt-1 w-56 p-2 bg-bg-color border border-text-color/20 rounded-[var(--border-radius)] shadow-xl animate-in fade-in zoom-in-95 duration-200'
+                        )}
+                    >
+                        {link.links.map((subLink, index) => (
+                            <Menu.Item key={index}>
+                                {({ active }) => {
+                                    return (
+                                        <Link
+                                            to={subLink.href}
+                                            className="block w-full text-left px-4 py-2.5 rounded-[var(--border-radius)] text-sm hover:bg-text-color/5"
+                                        >
+                                            {subLink.label}
+                                        </Link>
+                                        // <a
+                                        //     onClick={(e) => {
+                                        //         e.preventDefault();
+                                        //         navigate(subLink.href);
+                                        //     }}
+                                        //     className={twJoin(
+                                        //         active
+                                        //             ? 'bg-text-color-10 text-text-color'
+                                        //             : 'text-text-color/90',
+                                        //         'block rounded-[var(--border-radius)] px-4 py-2 text-sm 2xl:text-base transition-colors duration-200 cursor-pointer'
+                                        //     )}
+                                        // >
+                                        //     {subLink.label}
+                                        // </a>
+                                    );
+                                }}
+                            </Menu.Item>
+                        ))}
                     </Menu.Items>
                 </Transition>
             </Menu>
@@ -388,8 +394,6 @@ export default function Header(props) {
     const navPositionClass =
         navigation_position === 'center' ? 'flex-1 justify-center' : 'justify-end';
 
-    console.log(sticky, isOverlay);
-
     return (
         <React.Fragment>
             {sticky && !isOverlay && (
@@ -431,7 +435,11 @@ export default function Header(props) {
                             <div className="flex items-center space-x-6 lg:space-x-8">
                                 {/* Plain and Grouped Links */}
                                 {plainAndGroupedLinks.map((link, index) => (
-                                    <NavLink key={index} link={link} website={website} />
+                                    <NavLink
+                                        key={index}
+                                        link={link}
+                                        opensToRight={navPositionClass === 'center'}
+                                    />
                                 ))}
                             </div>
                         </div>
