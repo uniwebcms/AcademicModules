@@ -3335,6 +3335,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"academic-series-2@workspace:src/A2":
+  version: 0.0.0-use.local
+  resolution: "academic-series-2@workspace:src/A2"
+  dependencies:
+    "@headlessui/react": "npm:^1.7.13"
+    "@popperjs/core": "npm:^2.11.6"
+    "@tailwindcss/typography": "npm:^0.5.15"
+    "@uniwebcms/core-components": "npm:^1.6.35"
+    "@uniwebcms/module-sdk": "npm:^2.0.6"
+    "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-icons: "npm:^5.3.0"
+    tailwindcss: "npm:^3.4.13"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  languageName: unknown
+  linkType: soft
+
 "acorn-jsx@npm:^5.0.0":
   version: 5.3.2
   resolution: "acorn-jsx@npm:5.3.2"
