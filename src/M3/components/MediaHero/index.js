@@ -36,6 +36,8 @@ function getCoverImgUrl(video) {
         coverUrl =
             new uniweb.Profile(`docufolio/profile`, '_template').getAssetInfo(coverImg.identifier)
                 ?.src || '';
+    } else if (typeof coverImg === 'string') {
+        coverUrl = coverImg;
     }
 
     return coverUrl;
