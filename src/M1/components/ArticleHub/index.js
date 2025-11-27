@@ -344,3 +344,7 @@ export default function ArticleHub(props) {
         </Container>
     );
 }
+
+ArticleHub.querySchema = {
+    mode: 'simple',
+};
