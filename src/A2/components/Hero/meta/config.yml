@@ -1,0 +1,332 @@
+title:
+    en: Hero Section
+    fr: Section Hero
+description:
+    en: A hero section is a large, prominent area at the top of a webpage, typically used to showcase key content or calls to action.
+    fr: Une section hero est une grande zone proéminente en haut d'une page web, généralement utilisée pour mettre en avant un contenu clé ou des appels à l'action.
+label:
+    en: Hero Section
+    fr: Section Hero
+
+category: hero
+export: true
+
+elements:
+    background:
+    pretitle:
+    title:
+    subtitle:
+    link:
+    form:
+        description:
+            en: A form to collect stats data for the hero section.
+            fr: Un formulaire pour collecter des données statistiques pour la section hero.
+        schemas:
+            - id: stat_form
+              name:
+                  en: Stats Form
+                  fr: Formulaire de statistiques
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Stat
+                      fr: Statistique
+                  description:
+                      en: Defines the stats to be displayed in the hero section.
+                      fr: Définit les statistiques à afficher dans la section hero.
+                  fields:
+                      - id: number
+                        type: text
+                        label:
+                            en: Label
+                            fr: Étiquette
+                        description:
+                            en: The larger text displayed in the stats section.
+                            fr: Le texte plus grand affiché dans la section des statistiques.
+                        required: true
+                      - id: text
+                        type: text
+                        label:
+                            en: Text
+                            fr: Texte
+                        description:
+                            en: The smaller text displayed below the larger text in the stats section.
+                            fr: Le texte plus petit affiché en dessous du texte plus grand dans la section des
+            - id: side_content_form
+              name:
+                  en: Side Content Information Form
+                  fr: Formulaire d'informations de contenu latéral
+              isComposite: false
+              fields:
+                  - id: for
+                    type: select
+                    label:
+                        en: For
+                        fr: Pour
+                    description:
+                        en: What is the information collected for?
+                        fr: Pour quoi sont collectées les informations ?
+                    required: true
+                    options:
+                        - label:
+                              en: Scholar Information
+                              fr: Informations sur le chercheur
+                          value: scholar
+                        - label:
+                              en: Department News
+                              fr: Nouvelles du département
+                          value: news
+                  - id: department
+                    type: text
+                    label:
+                        en: Department Name
+                        fr: Nom du département
+                    description:
+                        en: The name of the department for which the information is collected.
+                        fr: Le nom du département pour lequel les informations sont collectées.
+                    condition:
+                        for: scholar
+                  - id: university
+                    type: text
+                    label:
+                        en: University Name
+                        fr: Nom de l'université
+                    description:
+                        en: The name of the university for which the information is collected.
+                        fr: Le nom de l'université pour laquelle les informations sont collectées.
+                    condition:
+                        for: scholar
+                  - id: title
+                    type: text
+                    label:
+                        en: Title of News
+                        fr: Titre de la nouvelle
+                    description:
+                        en: The title of the news item for which the information is collected.
+                        fr: Le titre de l'article de nouvelles pour lequel les informations sont collectées.
+                    condition:
+                        for: news
+                  - id: link
+                    type: nestedObject
+                    label:
+                        en: Link to News
+                        fr: Lien vers les nouvelles
+                    description:
+                        en: A link to the news item for which the information is collected.
+                        fr: Un lien vers l'article de nouvelles pour lequel les informations sont collectées.
+                    fields:
+                        - id: label
+                          type: text
+                          label:
+                              en: Link Label
+                              fr: Étiquette du lien
+                          description:
+                              en: The label for the link.
+                              fr: L'étiquette du lien.
+                        - id: href
+                          type: text
+                          label:
+                              en: Link URL
+                              fr: URL du lien
+                          description:
+                              en: The URL for the link.
+                              fr: L'URL du lien.
+                    condition:
+                        for: news
+                  - id: new-items
+                    type: form
+                    label:
+                        en: News Items
+                        fr: Articles de nouvelles
+                    description:
+                        en: Defines the items in the news section.
+                        fr: Définit les éléments de la section des nouvelles.
+                    childSchema:
+                        name:
+                            en: New Item
+                            fr: Nouvel article
+                        fields:
+                            - id: title
+                              type: text
+                              label:
+                                  en: Item Title
+                                  fr: Titre de l'article
+                              description:
+                                  en: The title of the new item.
+                                  fr: Le titre du nouvel article.
+                            - id: date
+                              type: string
+                              label:
+                                  en: Date
+                                  fr: Date
+                              description:
+                                  en: The date of the new item.
+                                  fr: La date du nouvel article.
+                    condition:
+                        for: news
+
+items:
+    separator: divider
+    limit: 1
+    elements:
+        background:
+            description:
+                en: Image placed on the side of the hero section, typically used to enhance visual appeal.
+                fr: Image placée sur le côté de la section hero, généralement utilisée pour améliorer l
+        # form:
+        #     description:
+        #         en: A form to collect additional information for the side content of the hero section.
+        #         fr: Un formulaire pour collecter des informations supplémentaires pour le contenu latéral de la section hero.
+        #     schemas:
+        #         - id: side_content_form
+        #           name:
+        #               en: Extra Information Form
+        #               fr: Formulaire d'informations supplémentaires
+        #           isComposite: false
+        #           fields:
+        #               - id: for
+        #                 type: select
+        #                 label:
+        #                     en: For
+        #                     fr: Pour
+        #                 description:
+        #                     en: What is the information collected for?
+        #                     fr: Pour quoi sont collectées les informations ?
+        #                 required: true
+        #                 options:
+        #                     - label:
+        #                           en: Scholar Information
+        #                           fr: Informations sur le chercheur
+        #                       value: scholar
+        #                     - label:
+        #                           en: Department News
+        #                           fr: Nouvelles du département
+        #                       value: news
+        #               - id: department
+        #                 type: text
+        #                 label:
+        #                     en: Department Name
+        #                     fr: Nom du département
+        #                 description:
+        #                     en: The name of the department for which the information is collected.
+        #                     fr: Le nom du département pour lequel les informations sont collectées.
+        #                 condition:
+        #                     for: scholar
+        #               - id: university
+        #                 type: text
+        #                 label:
+        #                     en: University Name
+        #                     fr: Nom de l'université
+        #                 description:
+        #                     en: The name of the university for which the information is collected.
+        #                     fr: Le nom de l'université pour laquelle les informations sont collectées.
+        #                 condition:
+        #                     for: scholar
+        #               - id: title
+        #                 type: text
+        #                 label:
+        #                     en: Title of News
+        #                     fr: Titre de la nouvelle
+        #                 description:
+        #                     en: The title of the news item for which the information is collected.
+        #                     fr: Le titre de l'article de nouvelles pour lequel les informations sont collectées.
+        #                 condition:
+        #                     for: news
+        #               - id: link
+        #                 type: form
+        #                 label:
+        #                     en: Link to News
+        #                     fr: Lien vers les nouvelles
+        #                 description:
+        #                     en: A link to the news item for which the information is collected.
+        #                     fr: Un lien vers l'article de nouvelles pour lequel les informations sont collectées.
+        #                 isComposite: false
+        #                 childSchema:
+        #                     name:
+        #                         en: Link
+        #                         fr: Lien
+        #                     fields:
+        #                         - id: label
+        #                           type: text
+        #                           label:
+        #                               en: Link Label
+        #                               fr: Étiquette du lien
+        #                           description:
+        #                               en: The label for the link.
+        #                               fr: L'étiquette du lien.
+        #                         - id: href
+        #                           type: text
+        #                           label:
+        #                               en: Link URL
+        #                               fr: URL du lien
+        #                           description:
+        #                               en: The URL for the link.
+        #                               fr: L'URL du lien.
+        #                 condition:
+        #                     for: news
+        #               - id: new-items
+        #                 type: form
+        #                 label:
+        #                     en: News Items
+        #                     fr: Articles de nouvelles
+        #                 description:
+        #                     en: Defines the items in the news section.
+        #                     fr: Définit les éléments de la section des nouvelles.
+        #                 isComposite: true
+        #                 childSchema:
+        #                     name:
+        #                         en: New Item
+        #                         fr: Nouvel article
+        #                     fields:
+        #                         - id: title
+        #                           type: text
+        #                           label:
+        #                               en: Item Title
+        #                               fr: Titre de l'article
+        #                           description:
+        #                               en: The title of the new item.
+        #                               fr: Le titre du nouvel article.
+        #                         - id: date
+        #                           type: string
+        #                           label:
+        #                               en: Date
+        #                               fr: Date
+        #                           description:
+        #                               en: The date of the new item.
+        #                               fr: La date du nouvel article.
+
+properties:
+    layout:
+        label:
+            en: Layout
+            fr: Mise en page
+        type: select
+        enum:
+            - label:
+                  en: Side by Side Content
+                  fr: Contenu côte à côte
+              value: side-by-side
+            - label:
+                  en: Full Width Text
+                  fr: Texte en pleine largeur
+              value: full-width
+            - label:
+                  en: Centered Card
+                  fr: Carte centrée
+              value: centered-card
+        default: full-width
+    height:
+        label:
+            en: Height
+            fr: Hauteur
+        type: select
+        enum:
+            - label:
+                  en: Auto Height
+                  fr: Hauteur automatique
+              value: auto
+            - label:
+                  en: Full Height
+                  fr: Pleine hauteur
+              value: full
+        default: auto

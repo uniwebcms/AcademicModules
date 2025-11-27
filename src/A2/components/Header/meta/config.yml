@@ -1,0 +1,182 @@
+title:
+    en: Header
+    fr: En-tête
+label:
+    en: Header
+    fr: En-tête
+description:
+    en: The header component is used to display the website's logo and navigation links at the top of the page.
+    fr: Le composant d'en-tête est utilisé pour afficher le logo du site web et les liens de navigation en haut de la page.
+
+category: header
+export: true
+
+elements:
+    media:
+        type: image
+        label:
+            en: Logo Image
+            fr: Image du logo
+    title:
+        label:
+            en: Logo Text
+            fr: Texte du logo
+    form:
+        description:
+            en: A form to collect navigation links.
+            fr: Un formulaire pour collecter des liens de navigation.
+        schemas:
+            - id: form
+              name:
+                  en: Form
+                  fr: Formulaire
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Link
+                      fr: Link
+                  fields:
+                      - id: type
+                        type: select
+                        label:
+                            en: Link Type
+                            fr: Type de lien
+                        description:
+                            en: Defines the type of link.
+                            fr: Définit le type de lien.
+                        required: true
+                        options:
+                            - label:
+                                  en: Plain
+                                  fr: Simple
+                              value: plain
+                            - label:
+                                  en: Group
+                                  fr: Groupe
+                              value: group
+                            - label:
+                                  en: Primary
+                                  fr: Primaire
+                              value: primary
+                            - label:
+                                  en: Secondary
+                                  fr: Secondaire
+                              value: secondary
+                      - id: label
+                        type: text
+                        label:
+                            en: Link Label
+                            fr: Label du lien
+                        description:
+                            en: The label for the link.
+                            fr: L'étiquette du lien.
+                      - id: href
+                        type: text
+                        label:
+                            en: Link URL
+                            fr: URL du lien
+                        description:
+                            en: The URL for the link.
+                            fr: L'URL du lien.
+                      - id: group_links
+                        type: form
+                        label:
+                            en: Group Links
+                            fr: Liens de groupe
+                        description:
+                            en: Links in the group.
+                            fr: Liens dans le groupe.
+                        childSchema:
+                            name:
+                                en: Group Links
+                                fr: Liens de groupe
+                            fields:
+                                - id: label
+                                  type: text
+                                  label:
+                                      en: Link Label
+                                      fr: Label du lien
+                                  description:
+                                      en: The label for the link.
+                                      fr: L'étiquette du lien.
+                                - id: href
+                                  type: text
+                                  label:
+                                      en: Link URL
+                                      fr: URL du lien
+                                  description:
+                                      en: The URL for the link.
+                                      fr: L'URL du lien.
+                        condition:
+                            type: group
+
+properties:
+    navigation_position:
+        label:
+            en: Navigation Position
+            fr: Position de la navigation
+        description:
+            en: The position of the navigation links in the header.
+            fr: La position des liens de navigation dans l'en-tête.
+        type: select
+        enum:
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+            - label:
+                  en: Right
+                  fr: Droite
+              value: right
+        default: right
+    sticky:
+        label:
+            en: Sticky Header
+            fr: En-tête collant
+        description:
+            en: Whether the header should remain fixed at the top of the page when scrolling.
+            fr: Si l'en-tête doit rester fixe en haut de la page lors du défilement.
+        type: boolean
+        default: false
+    header_placement:
+        label:
+            en: Header Placement
+            fr: Placement de l'en-tête
+        description:
+            en: The placement of the header on the page.
+            fr: Le placement de l'en-tête sur la page.
+        type: select
+        enum:
+            - label:
+                  en: Overlay Hero
+                  fr: Superposition de la section Hero
+              value: overlay_hero
+            - label:
+                  en: Above Hero
+                  fr: Au-dessus de la section Hero
+              value: above_hero
+        default: above_hero
+
+presets:
+    solid:
+        label:
+            en: Solid
+            fr: Solide
+        description:
+            en: Non sticky classic header with right placed navigation and placed above hero
+            fr: En-tête classique non collant avec navigation placée à droite et placée au-dessus de la section Hero
+        properties:
+            navigation_position: right
+            sticky: false
+            header_placement: above_hero
+    float:
+        label:
+            en: Float
+            fr: Flottant
+        description:
+            en: Sticky header with center placed navigation and placed over the hero section
+            fr: En-tête collant avec navigation placée au centre et placée sur la section Hero
+        properties:
+            navigation_position: center
+            sticky: true
+            header_placement: overlay_hero
