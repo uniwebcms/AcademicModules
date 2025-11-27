@@ -1,0 +1,30 @@
+/*
+* React Tooltip
+* {@link https://github.com/ReactTooltip/react-tooltip}
+* @copyright ReactTooltip Team
+* @license MIT
+*/
+
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+
+/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**!
+ * FlexSearch.js v0.7.41 (Bundle.module)
+ * Author and Copyright: Thomas Wilkerling
+ * Licence: Apache-2.0
+ * Hosted by Nextapps GmbH
+ * https://github.com/nextapps-de/flexsearch
+ */
