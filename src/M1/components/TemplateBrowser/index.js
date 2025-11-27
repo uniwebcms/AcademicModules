@@ -587,3 +587,7 @@ TemplateBrowser.Loader = () => {
         </motion.div>
     );
 };
+
+TemplateBrowser.querySchema = {
+    mode: 'simple',
+};

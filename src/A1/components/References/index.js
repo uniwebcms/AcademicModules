@@ -180,7 +180,7 @@ export default function ProfileReferences({ block, input }) {
 
     const containerRef = useRef(null);
 
-    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', () => {
+    const { data: info, error } = uniweb.useCompleteQuery('getPubTypeOptions', async () => {
         const params = new URLSearchParams();
         params.append('action', 'getPubTypeOptions');
         params.append('contentType', 'reference');
