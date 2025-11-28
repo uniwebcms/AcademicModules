@@ -10,7 +10,11 @@ module.exports = {
         makeEntryPath('@uniwebcms/core-components'),
         makeEntryPath('flowbite-react'),
     ],
-    plugins: [require('@uniwebcms/uniweb-tailwind-plugin'), require('@tailwindcss/typography')],
+    plugins: [
+        require('@uniwebcms/uniweb-tailwind-plugin'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/container-queries'),
+    ],
     theme: {
         extend: {
             // You can add theme extensions here
