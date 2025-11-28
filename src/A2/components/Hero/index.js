@@ -98,13 +98,14 @@ export default function Hero(props) {
                 <div
                     className={twJoin(
                         'flex gap-4 items-center',
-                        align === 'center' && 'justify-center'
+                        align === 'center' && 'justify-center',
+                        align === 'right' && 'flex-row-reverse'
                     )}
                 >
                     <div className="w-1 h-full bg-primary-700 min-h-[3rem]"></div>
                     <p
                         className={twJoin(
-                            align === 'center' ? 'max-w-2xl' : '',
+                            'max-w-5xl',
                             size === 'sm' ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
                         )}
                     >
@@ -114,7 +115,9 @@ export default function Hero(props) {
             ) : subtitle ? (
                 <p
                     className={twJoin(
-                        align === 'center' ? 'max-w-2xl mx-auto' : '',
+                        align === 'left' ? 'max-w-3xl mr-auto' : '',
+                        align === 'center' ? 'max-w-3xl mx-auto' : '',
+                        align === 'right' ? 'max-w-3xl ml-auto' : '',
                         size === 'sm' ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
                     )}
                 >
@@ -438,20 +441,6 @@ export default function Hero(props) {
                                     }
                                 />
                             </div>
-                            {/* Right Side: Gradient Overlay */}
-                            {/* {big_card_bg_gradient && (
-                                <div
-                                    className={twJoin(
-                                        'absolute inset-0 z-20',
-                                        content_alignment === 'left' &&
-                                            'bg-gradient-to-r from-primary-700 to-primary-950',
-                                        content_alignment === 'right' &&
-                                            'bg-gradient-to-l from-primary-700 to-primary-950',
-                                        content_alignment === 'center' &&
-                                            'bg-gradient-to-b from-primary-950 via-primary-700 to-primary-950'
-                                    )}
-                                />
-                            )} */}
                             {/* Right Side: Image */}
                             {sidePicture && (
                                 <div className="relative w-full h-full min-h-[300px] hidden lg:block">
@@ -473,7 +462,7 @@ export default function Hero(props) {
             content = (
                 <div
                     className={twJoin(
-                        'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+                        'max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8',
                         height === 'full' ? 'h-full flex items-center justify-center' : ''
                     )}
                 >
@@ -487,14 +476,7 @@ export default function Hero(props) {
                             <div className="absolute inset-0 bg-bg-color/90"></div>
                         </div>
                     )}
-                    <div
-                        className={twJoin(
-                            'relative z-20 space-y-8'
-                            // content_alignment === 'left' && 'text-left',
-                            // content_alignment === 'center' && 'max-w-4xl mx-auto'
-                            // content_alignment === 'right' && 'text-right'
-                        )}
-                    >
+                    <div className={twJoin('relative z-20 space-y-8 w-full')}>
                         {/* Main Content */}
                         <ContentBlock
                             eyebrow={eyebrow}
@@ -505,7 +487,23 @@ export default function Hero(props) {
                             align={content_alignment}
                             size={'md'}
                             feature={content_feature}
-                            className={content_alignment === 'center' ? 'max-w-4xl mx-auto' : ''}
+                            className={twJoin(
+                                content_alignment === 'center'
+                                    ? content_feature === 'big-title-decorative-line'
+                                        ? 'max-w-5xl mx-auto'
+                                        : 'max-w-4xl mx-auto'
+                                    : ''
+                                // content_alignment === 'right'
+                                //     ? content_feature === 'big-title-decorative-line'
+                                //         ? 'max-w-5xl ml-auto'
+                                //         : 'max-w-4xl ml-auto'
+                                //     : '',
+                                // content_alignment === 'left'
+                                //     ? content_feature === 'big-title-decorative-line'
+                                //         ? 'max-w-5xl mr-auto'
+                                //         : 'max-w-4xl mr-auto'
+                                //     : ''
+                            )}
                         />
                     </div>
                 </div>
