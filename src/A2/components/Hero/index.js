@@ -16,10 +16,12 @@ export default function Hero(props) {
         avatar_placement = 'right', // choices: 'left', 'right',
         avatar_style = 'square', // choices:: 'circle', 'square', 'portrait', 'landscape', 'square_spinning'
         avatar_size = 'medium', // choices: 'small', 'medium',
+        avatar_gradient = false, // boolean to control gradient overlay on avatar image
         content_alignment = 'center', // choices: 'left', 'center', 'right',
-        content_feature = 'none', // choices: 'none', 'big-title-decorative-line'
+        content_feature = 'none', // choices: 'none', 'big-title-decorative-line',
+        big_card_bg_gradient = false, // boolean to control gradient overlay on big-card variant
         height = 'auto',
-    } = block.getBlockProperties();
+    } = block.getBlockProperties(); // settings for the hero section
 
     const {
         banner: backgroundImage,
@@ -52,9 +54,11 @@ export default function Hero(props) {
         align = 'left', // 'left', 'center'
         statsData,
         size = 'lg', // 'lg', 'md', or 'sm'
+        feature = 'none', // 'none', 'big-title-decorative-line'
+        className = '',
     }) => (
         <div
-            className={twJoin('max-w-4xl space-y-6')}
+            className={twJoin('space-y-6', className)}
             style={{
                 textAlign: align,
             }}
@@ -63,7 +67,8 @@ export default function Hero(props) {
                 <p
                     className={twJoin(
                         'border rounded-[var(--border-radius)] px-3 py-1 border-text-color/20 text-sm md:text-base font-bold uppercase tracking-wider text-[var(--callout)] bg-[color:color-mix(in_srgb,var(--callout,var(--text-color))_10%,transparent)] w-fit',
-                        align === 'center' ? 'mx-auto' : ''
+                        align === 'center' ? 'mx-auto' : '',
+                        align === 'right' ? 'ml-auto' : ''
                     )}
                 >
                     {eyebrow}
@@ -73,15 +78,40 @@ export default function Hero(props) {
                 <h1
                     className={twJoin(
                         'font-extrabold',
-                        size === 'lg' && 'text-6xl md:text-7xl lg:text-8xl',
-                        size === 'md' && 'text-5xl md:text-6xl lg:text-7xl',
-                        size === 'sm' && 'text-4xl md:text-5xl lg:text-6xl'
+                        feature === 'big-title-decorative-line' &&
+                            'text-7xl md:text-8xl lg:text-9xl',
+                        feature !== 'big-title-decorative-line' &&
+                            size === 'lg' &&
+                            'text-6xl md:text-7xl lg:text-8xl',
+                        feature !== 'big-title-decorative-line' &&
+                            size === 'md' &&
+                            'text-5xl md:text-6xl lg:text-7xl',
+                        feature !== 'big-title-decorative-line' &&
+                            size === 'sm' &&
+                            'text-4xl md:text-5xl lg:text-6xl'
                     )}
                 >
                     {title}
                 </h1>
             )}
-            {subtitle && (
+            {subtitle && feature === 'big-title-decorative-line' ? (
+                <div
+                    className={twJoin(
+                        'flex gap-4 items-center',
+                        align === 'center' && 'justify-center'
+                    )}
+                >
+                    <div className="w-1 h-full bg-primary-700 min-h-[3rem]"></div>
+                    <p
+                        className={twJoin(
+                            align === 'center' ? 'max-w-2xl' : '',
+                            size === 'sm' ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
+                        )}
+                    >
+                        {subtitle}
+                    </p>
+                </div>
+            ) : subtitle ? (
                 <p
                     className={twJoin(
                         align === 'center' ? 'max-w-2xl mx-auto' : '',
@@ -90,12 +120,13 @@ export default function Hero(props) {
                 >
                     {subtitle}
                 </p>
-            )}
+            ) : null}
             {statsData?.length > 0 && <StatsBlock statsData={statsData} />}
             <div
                 className={twJoin(
                     'flex flex-wrap items-center gap-4 pt-6',
-                    align === 'center' ? 'justify-center' : ''
+                    align === 'center' ? 'justify-center' : '',
+                    align === 'right' ? 'justify-end' : ''
                 )}
             >
                 {links.map((link, index) => (
@@ -202,6 +233,48 @@ export default function Hero(props) {
         return null;
     };
 
+    // Helper function to get avatar style classes
+    const getAvatarStyleClasses = () => {
+        const baseClasses = 'overflow-hidden w-full';
+
+        switch (avatar_style) {
+            case 'circle':
+                return twJoin(baseClasses, 'rounded-full aspect-square');
+            case 'square':
+                return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-square');
+            case 'portrait':
+                return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-[3/4]');
+            case 'landscape':
+                return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-[4/3]');
+            case 'square_spinning':
+                return twJoin(baseClasses, 'rounded-2xl aspect-square');
+            default:
+                return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-square');
+        }
+    };
+
+    // Helper function to get grid column classes based on avatar_size
+    const getGridColClasses = () => {
+        if (avatar_size === 'small') {
+            return 'grid grid-cols-1 md:grid-cols-10';
+        }
+        return 'grid grid-cols-1 md:grid-cols-2';
+    };
+
+    // Helper function to get content and avatar column spans
+    const getColSpanClasses = () => {
+        if (avatar_size === 'small') {
+            return {
+                content: 'md:col-span-7',
+                avatar: 'md:col-span-3',
+            };
+        }
+        return {
+            content: 'md:col-span-1',
+            avatar: 'md:col-span-1',
+        };
+    };
+
     const sectionClasses = twJoin(
         'relative overflow-hidden bg-bg-color',
         height === 'full' && 'flex flex-col justify-center'
@@ -224,6 +297,16 @@ export default function Hero(props) {
 
     switch (variant) {
         case 'content-avatar':
+            const colSpans = getColSpanClasses();
+            const contentOrder =
+                avatar_placement === 'left' ? 'order-2 md:order-2' : 'order-2 md:order-1';
+            const avatarOrder =
+                avatar_placement === 'left' ? 'order-1 md:order-1' : 'order-1 md:order-2';
+            const avatarJustify =
+                avatar_placement === 'left'
+                    ? 'justify-center md:justify-start'
+                    : 'justify-center md:justify-end';
+
             content = (
                 <div
                     className={twJoin(
@@ -241,9 +324,15 @@ export default function Hero(props) {
                         </div>
                     )}
 
-                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        {/* Left Side: Content Block */}
-                        <div className="space-y-8 order-2 md:order-1">
+                    <div
+                        className={twJoin(
+                            'relative z-10',
+                            getGridColClasses(),
+                            'gap-12 items-center'
+                        )}
+                    >
+                        {/* Content Block */}
+                        <div className={twJoin('space-y-8', contentOrder, colSpans.content)}>
                             <ContentBlock
                                 eyebrow={eyebrow}
                                 title={title}
@@ -255,32 +344,39 @@ export default function Hero(props) {
                             />
                         </div>
 
-                        {/* Right Side: Image and/or Extra Info Card */}
-                        <div className="flex justify-center md:justify-end order-1 md:order-2 relative">
+                        {/* Avatar/Side Content */}
+                        <div
+                            className={twJoin(
+                                'flex relative',
+                                avatarJustify,
+                                avatarOrder,
+                                colSpans.avatar
+                            )}
+                        >
                             {sidePicture && (
                                 <div
                                     className={twJoin(
                                         'relative',
-                                        sideExtraInfo?.for === 'scholar'
-                                            ? 'max-w-md py-6'
-                                            : 'max-w-md rounded-[var(--border-radius)] overflow-hidden'
+                                        sideExtraInfo?.for === 'scholar' ? 'py-6' : '',
+                                        avatar_style === 'square_spinning' ? 'group' : '',
+                                        avatar_size === 'small' ? 'max-w-xs' : 'max-w-md'
                                     )}
                                 >
-                                    <div
-                                        className={twJoin(
-                                            'overflow-hidden w-full',
-                                            sideExtraInfo?.for === 'scholar'
-                                                ? 'aspect-[3/4] rounded-[var(--border-radius)]'
-                                                : 'aspect-[0.9]'
-                                        )}
-                                    >
+                                    {avatar_style === 'square_spinning' && (
+                                        <div className="absolute inset-0 bg-blue-900 rounded-2xl rotate-3 opacity-10 group-hover:rotate-6 transition-transform duration-500"></div>
+                                    )}
+                                    <div className={getAvatarStyleClasses()}>
                                         <Image
                                             profile={getPageProfile()}
                                             {...sidePicture}
-                                            className="w-full h-full object-cover"
+                                            className={twJoin(
+                                                'w-full h-full object-cover',
+                                                avatar_style === 'square_spinning' &&
+                                                    'group-hover:scale-105 transition-transform duration-500'
+                                            )}
                                         />
                                     </div>
-                                    {!sideExtraInfo && (
+                                    {avatar_gradient && !sideExtraInfo && (
                                         <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg-color to-transparent" />
                                     )}
                                     {sideExtraInfo?.for === 'scholar' && (
@@ -313,16 +409,49 @@ export default function Hero(props) {
                     >
                         <div className="grid grid-cols-1 lg:grid-cols-3 items-center">
                             {/* Left Side: Content */}
-                            <div className="p-8 md:p-12 cols-span-1 lg:col-span-2 bg-primary-700">
+                            <div
+                                className={twJoin(
+                                    'p-8 md:p-12 bg-primary-700',
+                                    sidePicture
+                                        ? 'cols-span-1 lg:col-span-2'
+                                        : 'cols-span-1 lg:col-span-3',
+                                    big_card_bg_gradient
+                                        ? content_alignment === 'left'
+                                            ? 'bg-gradient-to-r from-primary-700 to-primary-950'
+                                            : content_alignment === 'right'
+                                            ? 'bg-gradient-to-l from-primary-700 to-primary-950'
+                                            : content_alignment === 'center' &&
+                                              'bg-gradient-to-r from-primary-950 via-primary-700 to-primary-950'
+                                        : ''
+                                )}
+                            >
                                 <ContentBlock
                                     eyebrow={eyebrow}
                                     title={title}
                                     subtitle={subtitle}
                                     links={links}
                                     icons={icons}
+                                    align={content_alignment}
                                     size={'sm'}
+                                    className={
+                                        content_alignment === 'center' ? 'max-w-4xl mx-auto' : ''
+                                    }
                                 />
                             </div>
+                            {/* Right Side: Gradient Overlay */}
+                            {/* {big_card_bg_gradient && (
+                                <div
+                                    className={twJoin(
+                                        'absolute inset-0 z-20',
+                                        content_alignment === 'left' &&
+                                            'bg-gradient-to-r from-primary-700 to-primary-950',
+                                        content_alignment === 'right' &&
+                                            'bg-gradient-to-l from-primary-700 to-primary-950',
+                                        content_alignment === 'center' &&
+                                            'bg-gradient-to-b from-primary-950 via-primary-700 to-primary-950'
+                                    )}
+                                />
+                            )} */}
                             {/* Right Side: Image */}
                             {sidePicture && (
                                 <div className="relative w-full h-full min-h-[300px] hidden lg:block">
@@ -359,7 +488,12 @@ export default function Hero(props) {
                         </div>
                     )}
                     <div
-                        className={twJoin('relative z-20 space-y-8 text-center mx-auto max-w-4xl')}
+                        className={twJoin(
+                            'relative z-20 space-y-8'
+                            // content_alignment === 'left' && 'text-left',
+                            // content_alignment === 'center' && 'max-w-4xl mx-auto'
+                            // content_alignment === 'right' && 'text-right'
+                        )}
                     >
                         {/* Main Content */}
                         <ContentBlock
@@ -368,8 +502,10 @@ export default function Hero(props) {
                             subtitle={subtitle}
                             links={links}
                             icons={icons}
-                            align={'center'}
+                            align={content_alignment}
                             size={'md'}
+                            feature={content_feature}
+                            className={content_alignment === 'center' ? 'max-w-4xl mx-auto' : ''}
                         />
                     </div>
                 </div>

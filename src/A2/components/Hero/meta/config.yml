@@ -378,6 +378,14 @@ properties:
         default: medium
         condition:
             variant: content-avatar
+    avatar_gradient:
+        label:
+            en: Avatar Gradient
+            fr: Dégradé de l'avatar
+        type: boolean
+        default: false
+        condition:
+            variant: content-avatar
     content_alignment:
         label:
             en: Content Alignment
@@ -398,7 +406,10 @@ properties:
               value: right
         default: center
         condition:
-            variant: content-only
+            variant:
+                $in:
+                    - content-only
+                    - big-card
     content_feature:
         label:
             en: Content Feature
@@ -416,6 +427,14 @@ properties:
         default: none
         condition:
             variant: content-only
+    big_card_bg_gradient:
+        label:
+            en: Big Card Background Gradient
+            fr: Dégradé d'arrière-plan de la grande carte
+        type: boolean
+        default: false
+        condition:
+            variant: big-card
     height:
         label:
             en: Height
