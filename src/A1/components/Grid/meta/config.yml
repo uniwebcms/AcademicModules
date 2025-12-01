@@ -227,3 +227,90 @@ presets:
             headerRow: true
             max_width: wide
             vertical_alignment: top
+
+content_ui:
+    # Toolbar Items
+    columns:
+        placement: toolbar
+        widget: segmented
+
+    two_col_layout_configuration:
+        placement: toolbar
+        widget: visual_select
+        visuals:
+            '50/50': '1fr 1fr'
+            '40/60': '2fr 3fr'
+            '60/40': '3fr 2fr'
+            '30/70': '1fr 2fr'
+            '70/30': '2fr 1fr'
+            '25/75': '1fr 3fr'
+            '75/25': '3fr 1fr'
+
+    three_col_layout_configuration:
+        placement: toolbar
+        widget: visual_select
+        visuals:
+            '33/33/33': '1fr 1fr 1fr'
+            '25/50/25': '1fr 2fr 1fr'
+            '20/60/20': '1fr 3fr 1fr'
+
+    four_col_layout_configuration:
+        placement: toolbar
+        widget: visual_select
+        visuals:
+            '25/25/25/25': '1fr 1fr 1fr 1fr'
+            '15/35/35/15': '1fr 2fr 2fr 1fr'
+            '40/20/20/20': '2fr 1fr 1fr 1fr'
+            '20/20/20/40': '1fr 1fr 1fr 2fr'
+
+    headerRow:
+        placement: toolbar
+        widget: toggle_button
+        icon: HeaderRow
+
+    # Settings Panel Items
+    vertical_alignment:
+        placement: settings
+        widget: select
+        section:
+            en: Layout
+            fr: Mise en page
+
+    max_width:
+        placement: settings
+        widget: select
+        section:
+            en: Layout
+            fr: Mise en page
+
+    column_padding: # Gap X
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
+
+    row_padding: # Gap Y
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
+
+    vertical_padding: # Pad Y
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
+
+    horizontal_padding: # Pad X
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
