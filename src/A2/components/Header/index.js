@@ -285,7 +285,13 @@ export default function Header(props) {
         header_placement = 'above_hero', // 'above_hero' or 'overlay_hero'
     } = block.getBlockProperties();
 
-    const { banner, images, title: logoText, form } = block.getBlockContent();
+    const {
+        banner,
+        images,
+        title: logoText,
+        subtitle: logoSubText,
+        form,
+    } = block.getBlockContent();
 
     const allImages = [banner, ...images].filter(Boolean);
 
@@ -367,6 +373,8 @@ export default function Header(props) {
     // Determine if we should show a solid/opaque background
     const shouldBeOpaque = !isOverlay || isScrolled;
 
+    const tallHeader = logoText && logoSubText;
+
     // Determine the base background class for the nav element
     let bgClass = '';
 
@@ -408,20 +416,35 @@ export default function Header(props) {
                 className={twJoin('w-full', stickyClass, bgClass, positionClass)}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
+                    <div
+                        className={twJoin(
+                            'flex items-center justify-between',
+                            tallHeader ? 'h-[72px]' : 'h-16'
+                        )}
+                    >
                         {/* Logo Section */}
                         <div className="flex-shrink-0">
                             <Link to="/" className="flex items-center space-x-3">
                                 {logoImg && (
                                     <Image
-                                        className="h-9 w-auto rounded-[var(--border-radius)]"
+                                        className={twJoin(
+                                            'w-auto rounded-[var(--border-radius)]',
+                                            tallHeader ? 'h-12' : 'h-9'
+                                        )}
                                         profile={getPageProfile()}
                                         {...logoImg}
                                     />
                                 )}
-                                <span className="text-xl font-bold text-text-color">
-                                    {logoText}
-                                </span>
+                                <div>
+                                    {logoText && (
+                                        <p className="text-lg font-bold text-heading-color">
+                                            {logoText}
+                                        </p>
+                                    )}
+                                    {logoSubText && (
+                                        <p className="text-base text-text-color">{logoSubText}</p>
+                                    )}
+                                </div>
                             </Link>
                         </div>
 

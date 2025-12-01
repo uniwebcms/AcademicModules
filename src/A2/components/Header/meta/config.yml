@@ -21,6 +21,10 @@ elements:
         label:
             en: Logo Text
             fr: Texte du logo
+    subtitle:
+        label:
+            en: Logo Sub Text
+            fr: Sous-texte du logo
     form:
         description:
             en: A form to collect navigation links.

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Icon, Image } from '@uniwebcms/core-components';
+import { Link, Icon, Image, SafeHtml } from '@uniwebcms/core-components';
 import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
 
 export default function Hero(props) {
@@ -75,7 +75,8 @@ export default function Hero(props) {
                 </p>
             )}
             {title && (
-                <h1
+                <SafeHtml
+                    as="h1"
                     className={twJoin(
                         'font-extrabold',
                         feature === 'big-title-decorative-line' &&
@@ -90,9 +91,8 @@ export default function Hero(props) {
                             size === 'sm' &&
                             'text-4xl md:text-5xl lg:text-6xl'
                     )}
-                >
-                    {title}
-                </h1>
+                    value={title}
+                />
             )}
             {subtitle && feature === 'big-title-decorative-line' ? (
                 <div
@@ -105,7 +105,7 @@ export default function Hero(props) {
                     <div className="w-1 h-full bg-primary-700 min-h-[3rem]"></div>
                     <p
                         className={twJoin(
-                            'max-w-5xl',
+                            'max-w-4xl',
                             size === 'sm' ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
                         )}
                     >
@@ -127,7 +127,7 @@ export default function Hero(props) {
             {statsData?.length > 0 && <StatsBlock statsData={statsData} />}
             <div
                 className={twJoin(
-                    'flex flex-wrap items-center gap-4 pt-6',
+                    links.length > 0 && 'flex flex-wrap items-center gap-4 pt-6',
                     align === 'center' ? 'justify-center' : '',
                     align === 'right' ? 'justify-end' : ''
                 )}
@@ -242,6 +242,7 @@ export default function Hero(props) {
 
         switch (avatar_style) {
             case 'circle':
+            case 'circle_ring':
                 return twJoin(baseClasses, 'rounded-full aspect-square');
             case 'square':
                 return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-square');
@@ -250,7 +251,10 @@ export default function Hero(props) {
             case 'landscape':
                 return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-[4/3]');
             case 'square_spinning':
-                return twJoin(baseClasses, 'rounded-2xl aspect-square');
+                return twJoin(
+                    baseClasses,
+                    'rounded-2xl aspect-square shadow-2xl border-4 border-text-color-0'
+                );
             default:
                 return twJoin(baseClasses, 'rounded-[var(--border-radius)] aspect-square');
         }
@@ -280,7 +284,8 @@ export default function Hero(props) {
 
     const sectionClasses = twJoin(
         'relative overflow-hidden bg-bg-color',
-        height === 'full' && 'flex flex-col justify-center'
+        // height === 'full' && 'flex flex-col justify-center',
+        'flex flex-col justify-center'
     );
 
     const extraTopPadding = height !== 'full' && isHeaderOverlay ? headerHeight : 0;
@@ -293,7 +298,7 @@ export default function Hero(props) {
                 ? isHeaderOverlay
                     ? '100vh'
                     : `calc(100vh - ${headerHeight}px)`
-                : 'auto',
+                : '450px',
     };
 
     let content;
@@ -343,7 +348,7 @@ export default function Hero(props) {
                                 links={links}
                                 icons={icons}
                                 statsData={statsData}
-                                size={'lg'}
+                                size={'md'}
                             />
                         </div>
 
@@ -360,13 +365,16 @@ export default function Hero(props) {
                                 <div
                                     className={twJoin(
                                         'relative',
-                                        sideExtraInfo?.for === 'scholar' ? 'py-6' : '',
+                                        // sideExtraInfo?.for === 'scholar' ? 'py-6' : '',
                                         avatar_style === 'square_spinning' ? 'group' : '',
                                         avatar_size === 'small' ? 'max-w-xs' : 'max-w-md'
                                     )}
                                 >
                                     {avatar_style === 'square_spinning' && (
-                                        <div className="absolute inset-0 bg-blue-900 rounded-2xl rotate-3 opacity-10 group-hover:rotate-6 transition-transform duration-500"></div>
+                                        <div className="absolute inset-0 bg-primary-900 rounded-2xl rotate-3 opacity-10 group-hover:rotate-6 transition-transform duration-500"></div>
+                                    )}
+                                    {avatar_style === 'circle_ring' && (
+                                        <div className="absolute -inset-2.5 bg-text-color/10 rounded-full shadow-xl"></div>
                                     )}
                                     <div className={getAvatarStyleClasses()}>
                                         <Image
@@ -380,7 +388,7 @@ export default function Hero(props) {
                                         />
                                     </div>
                                     {avatar_gradient && !sideExtraInfo && (
-                                        <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg-color to-transparent" />
+                                        <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg-color to-transparent rounded-[var(--border-radius)]" />
                                     )}
                                     {sideExtraInfo?.for === 'scholar' && (
                                         <SideExtraInfo sideExtraInfo={sideExtraInfo} />
@@ -400,7 +408,7 @@ export default function Hero(props) {
             content = (
                 <div
                     className={twJoin(
-                        'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+                        'max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8',
                         height === 'full' ? 'h-full' : ''
                     )}
                 >
@@ -473,7 +481,7 @@ export default function Hero(props) {
                                 {...backgroundImage}
                                 className="w-full h-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-bg-color/90"></div>
+                            <div className="absolute inset-0 bg-bg-color/80"></div>
                         </div>
                     )}
                     <div className={twJoin('relative z-20 space-y-8 w-full')}>
@@ -492,17 +500,17 @@ export default function Hero(props) {
                                     ? content_feature === 'big-title-decorative-line'
                                         ? 'max-w-5xl mx-auto'
                                         : 'max-w-4xl mx-auto'
+                                    : '',
+                                content_alignment === 'right'
+                                    ? content_feature === 'big-title-decorative-line'
+                                        ? 'max-w-5xl ml-auto'
+                                        : 'max-w-4xl ml-auto'
+                                    : '',
+                                content_alignment === 'left'
+                                    ? content_feature === 'big-title-decorative-line'
+                                        ? 'max-w-5xl mr-auto'
+                                        : 'max-w-4xl mr-auto'
                                     : ''
-                                // content_alignment === 'right'
-                                //     ? content_feature === 'big-title-decorative-line'
-                                //         ? 'max-w-5xl ml-auto'
-                                //         : 'max-w-4xl ml-auto'
-                                //     : '',
-                                // content_alignment === 'left'
-                                //     ? content_feature === 'big-title-decorative-line'
-                                //         ? 'max-w-5xl mr-auto'
-                                //         : 'max-w-4xl mr-auto'
-                                //     : ''
                             )}
                         />
                     </div>

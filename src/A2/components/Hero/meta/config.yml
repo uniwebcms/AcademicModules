@@ -358,6 +358,10 @@ properties:
                   en: Square with Spinning Effect
                   fr: Carré avec effet de rotation
               value: square_spinning
+            - label:
+                  en: Circle with ring around
+                  fr: Cercle avec anneau autour
+              value: circle_ring
         default: square
         condition:
             variant: content-avatar
