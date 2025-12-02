@@ -11,3 +11,11 @@
 .rich-text p + p {
     margin-top: 1.3em;
 }
+
+@layer base {
+    @media (max-width: 640px) {
+        * {
+            text-align: var(--mobile-screen-text-align, inherit);
+        }
+    }
+}
