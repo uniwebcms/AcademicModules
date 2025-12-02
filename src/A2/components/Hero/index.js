@@ -139,7 +139,7 @@ export default function Hero(props) {
                         type="button"
                         className={twJoin(
                             'inline-flex items-center justify-center gap-2 rounded-[var(--border-radius)] px-8 py-3 text-lg font-semibold transition-colors group',
-                            index === 0 ? '' : 'btn-secondary border border-text-color/40' // App handles primary/secondary button styles
+                            index === 0 ? '' : 'btn-secondary border border-btn-alt-text-color/40' // App handles primary/secondary button styles
                         )}
                     >
                         {link.label}
@@ -208,7 +208,7 @@ export default function Hero(props) {
             const { title, link, 'new-items': newItems } = sideExtraInfo;
 
             return (
-                <div className="bg-bg-color rounded-[var(--border-radius)] shadow-2xl p-6 space-y-4 max-w-sm w-full border border-text-color/20">
+                <div className="bg-bg-color rounded-[var(--border-radius)] shadow-2xl p-6 space-y-4 max-w-full md:max-w-sm w-full border border-text-color/20">
                     <div className="flex justify-between items-center">
                         <p className="text-base md:text-lg font-semibold">{title}</p>
                         {link && (
@@ -298,7 +298,7 @@ export default function Hero(props) {
                 ? isHeaderOverlay
                     ? '100vh'
                     : `calc(100vh - ${headerHeight}px)`
-                : '450px',
+                : '480px',
     };
 
     let content;
@@ -367,7 +367,7 @@ export default function Hero(props) {
                                         'relative',
                                         // sideExtraInfo?.for === 'scholar' ? 'py-6' : '',
                                         avatar_style === 'square_spinning' ? 'group' : '',
-                                        avatar_size === 'small' ? 'max-w-xs' : 'max-w-md'
+                                        avatar_size === 'small' ? 'md:max-w-xs' : 'md:max-w-md'
                                     )}
                                 >
                                     {avatar_style === 'square_spinning' && (

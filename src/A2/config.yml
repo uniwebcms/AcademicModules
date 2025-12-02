@@ -74,6 +74,7 @@ styleFields:
       label:
           en: Header background
           fr: Couleur de fond de l'en-tête
+      globalOnly: true
     - id: 'card-background-color'
       type: color
       label:
@@ -82,6 +83,7 @@ styleFields:
       description:
           en: The background color for card elements.
           fr: La couleur de fond pour les éléments de carte.
+      globalOnly: true
     # - id: 'card-ring-color'
     #   type: color
     #   label:

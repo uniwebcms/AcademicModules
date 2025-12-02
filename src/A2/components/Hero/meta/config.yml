@@ -454,3 +454,120 @@ properties:
                   fr: Pleine hauteur
               value: full
         default: auto
+
+presets:
+    scholar1:
+        label:
+            en: Scholar 1
+            fr: Chercheur 1
+        description:
+            en: Scholar setup 1
+            fr: Configuration universitaire 1
+        properties:
+            variant: content-avatar
+            avatar_placement: right
+            avatar_style: square_spinning
+            avatar_size: small
+    scholar2:
+        label:
+            en: Scholar 2
+            fr: Chercheur 2
+        description:
+            en: Scholar setup 2
+            fr: Configuration universitaire 2
+        properties:
+            variant: content-avatar
+            avatar_placement: left
+            avatar_style: circle_ring
+            avatar_size: small
+    scholar3:
+        label:
+            en: Scholar 3
+            fr: Chercheur 3
+        description:
+            en: Scholar setup 3
+            fr: Configuration universitaire 3
+        properties:
+            variant: content-only
+            avatar_placement: center
+            content_feature: none
+    institute:
+        label:
+            en: Institute
+            fr: Institut
+        description:
+            en: Institute setup
+            fr: Configuration de l'institut
+        properties:
+            variant: content-only
+            content_alignment: left
+            content_feature: none
+    initiative1:
+        label:
+            en: Initiative 1
+            fr: Initiative 1
+        description:
+            en: Initiative setup 1
+            fr: Configuration de l'initiative 1
+        properties:
+            variant: content-avatar
+            avatar_placement: right
+            avatar_style: square
+            avatar_size: medium
+            avatar_gradient: true
+    initiative2:
+        label:
+            en: Initiative 2
+            fr: Initiative 2
+        description:
+            en: Initiative setup 2
+            fr: Configuration de l'initiative 2
+        properties:
+            variant: content-only
+            content_alignment: left
+            content_feature: big-title-decorative-line
+    nexus1:
+        label:
+            en: Nexus 1
+            fr: Nexus 1
+        description:
+            en: Nexus setup 1
+            fr: Configuration du Nexus 1
+        properties:
+            variant: big-card
+            content_alignment: left
+            big_card_bg_gradient: true
+    nexus2:
+        label:
+            en: Nexus 2
+            fr: Nexus 2
+        description:
+            en: Nexus setup 2
+            fr: Configuration du Nexus 2
+        properties:
+            variant: big-card
+            content_alignment: center
+            big_card_bg_gradient: true
+    department1:
+        label:
+            en: Department 1
+            fr: Département 1
+        description:
+            en: Department setup 1
+            fr: Configuration du département 1
+        properties:
+            variant: content-avatar
+            avatar_placement: right
+            avatar_size: medium
+    department2:
+        label:
+            en: Department 2
+            fr: Département 2
+        description:
+            en: Department setup 2
+            fr: Configuration du département 2
+        properties:
+            variant: content-avatar
+            avatar_placement: left
+            avatar_size: small
+            avatar_style: circle

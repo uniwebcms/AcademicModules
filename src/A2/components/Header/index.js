@@ -277,7 +277,7 @@ const MobileNavLink = ({ link, website }) => {
 };
 
 export default function Header(props) {
-    const { block, website } = props;
+    const { block, website, page } = props;
 
     const {
         sticky = false,
@@ -300,7 +300,7 @@ export default function Header(props) {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [navHeight, setNavHeight] = useState(0);
 
-    const { theme: finalTheme, setTheme, mode: themeMode } = useSiteTheme(true);
+    // const { theme: finalTheme, setTheme, mode: themeMode } = useSiteTheme(true);
     const { useLocation } = website.getRoutingComponents();
     const location = useLocation();
 
@@ -335,28 +335,15 @@ export default function Header(props) {
         };
     }, []);
 
+    // Conditional styling based on properties
+    const isOverlay = header_placement === 'overlay_hero';
+
     // Measure the navigation bar's height on mount and when sticky/open state changes
     useEffect(() => {
         if (navRef.current) {
             setNavHeight(navRef.current.offsetHeight);
         }
     }, [isNavOpen, sticky, header_placement]); // Remeasure when these props/states change
-
-    let logoImg =
-        allImages.find((img) => {
-            return img.theme === finalTheme;
-        }) ??
-        allImages[0] ??
-        null;
-
-    const links = parseLinks(form);
-
-    // Sort links into groups
-    const primaryLinks = links.filter((l) => l.style === 'primary' || l.style === 'secondary');
-    const plainAndGroupedLinks = links.filter((l) => !primaryLinks.includes(l));
-
-    // Conditional styling based on properties
-    const isOverlay = header_placement === 'overlay_hero';
 
     // Sticky ClassNames
     const stickyClass = sticky
@@ -402,6 +389,33 @@ export default function Header(props) {
     const navPositionClass =
         navigation_position === 'center' ? 'flex-1 justify-center' : 'justify-end';
 
+    // process theme
+    let finalTheme = block.themeName?.split('__')?.[1] || 'light';
+
+    if (header_placement === 'overlay_hero') {
+        const firstBlock = page.blockGroups?.body?.[0];
+        const isHeroBlock = firstBlock?.widget?.category === 'Hero';
+
+        finalTheme = isHeroBlock
+            ? firstBlock.themeName?.split('__')?.[1] || finalTheme
+            : finalTheme;
+    }
+
+    // process logo image
+    let logoImg =
+        allImages.find((img) => {
+            return img.theme === finalTheme;
+        }) ??
+        allImages[0] ??
+        null;
+
+    // process links
+    const links = parseLinks(form);
+
+    // Sort links into groups
+    const primaryLinks = links.filter((l) => l.style === 'primary' || l.style === 'secondary');
+    const plainAndGroupedLinks = links.filter((l) => !primaryLinks.includes(l));
+
     return (
         <React.Fragment>
             {sticky && !isOverlay && (
@@ -413,7 +427,13 @@ export default function Header(props) {
             <nav
                 id="main-navbar"
                 ref={navRef}
-                className={twJoin('w-full', stickyClass, bgClass, positionClass)}
+                className={twJoin(
+                    'w-full',
+                    stickyClass,
+                    bgClass,
+                    positionClass,
+                    `context__${finalTheme}`
+                )}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div
