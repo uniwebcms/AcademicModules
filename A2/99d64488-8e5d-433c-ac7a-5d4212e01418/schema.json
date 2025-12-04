@@ -1,0 +1,2401 @@
+{
+  "_self": {
+    "name": "Academic Series 2",
+    "description": "A collection of components for building academic websites.",
+    "properties": {
+      "markdownCopyEnabled": true
+    },
+    "styleFields": [
+      {
+        "id": "border-radius",
+        "type": "select",
+        "label": {
+          "en": "Corner Style",
+          "fr": "Style de coin"
+        },
+        "description": {
+          "en": "The style of the corners for the table or button like elements across the site.",
+          "fr": "Le style des coins pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0px",
+        "options": [
+          {
+            "label": {
+              "en": "Straight",
+              "fr": "Droit"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Rounded",
+              "fr": "Arrondi"
+            },
+            "value": "0.5rem"
+          },
+          {
+            "value": "0.75rem",
+            "label": {
+              "en": "Circular",
+              "fr": "Circulaire"
+            }
+          }
+        ]
+      },
+      {
+        "id": "depth-style-outline",
+        "type": "select",
+        "label": {
+          "en": "Depth Style (Outline)",
+          "fr": "Style de profondeur (Contour)"
+        },
+        "description": {
+          "en": "The style of the outline for the table or button like elements across the site.",
+          "fr": "Le style du contour pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "1px",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Thin",
+              "fr": "Fin"
+            },
+            "value": "1px"
+          },
+          {
+            "label": {
+              "en": "Thick",
+              "fr": "Épais"
+            },
+            "value": "2px"
+          }
+        ]
+      },
+      {
+        "id": "depth-style-shadow",
+        "type": "select",
+        "label": {
+          "en": "Depth Style (Shadow)",
+          "fr": "Style de profondeur (Ombre)"
+        },
+        "description": {
+          "en": "The style of the shadow for the table or button like elements across the site.",
+          "fr": "Le style de l'ombre pour les éléments de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0 0 #0000",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "0 0 #0000"
+          },
+          {
+            "label": {
+              "en": "Light",
+              "fr": "Léger"
+            },
+            "value": "0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1)"
+          },
+          {
+            "label": {
+              "en": "Dark",
+              "fr": "Sombre"
+            },
+            "value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)"
+          }
+        ]
+      },
+      {
+        "id": "header-bg",
+        "type": "color",
+        "label": {
+          "en": "Header background",
+          "fr": "Couleur de fond de l'en-tête"
+        },
+        "globalOnly": true
+      },
+      {
+        "id": "card-background-color",
+        "type": "color",
+        "label": {
+          "en": "Card background",
+          "fr": "Couleur de fond de la carte"
+        },
+        "description": {
+          "en": "The background color for card elements.",
+          "fr": "La couleur de fond pour les éléments de carte."
+        },
+        "globalOnly": true
+      }
+    ],
+    "stylePresets": [
+      {
+        "id": "clean",
+        "label": {
+          "en": "Clean",
+          "fr": "Propre"
+        },
+        "description": {
+          "en": "Minimalistic and elegant",
+          "fr": "Minimaliste et élégant"
+        },
+        "properties": {
+          "foundationStyles": {
+            "border-radius": "0.5rem",
+            "depth-style-shadow": "0 0 #0000",
+            "depth-style-outline": "0px"
+          },
+          "elements": {
+            "light": {
+              "bg-color": "rgba(var(--neutral-50) / 1.00)",
+              "btn-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-500) / 1.00)",
+              "text-color": "rgba(var(--neutral-700) / 1.00)",
+              "heading-color": "rgba(var(--neutral-950) / 1.00)",
+              "link-color": "rgba(var(--primary-500) / 1.00)",
+              "link-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "link-active-color": "rgba(var(--primary-700) / 1.00)",
+              "icon-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "",
+              "btn-alt-text-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-200) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-900) / 1)",
+              "callout": "rgba(var(--primary-600) / 1)",
+              "muted": "rgba(var(--neutral-400) / 1.00)",
+              "highlight": "rgba(var(--primary-200) / 1.00)",
+              "header-bg": "",
+              "card-background-color": "",
+              "text-info": "",
+              "bg-info": "rgba(var(--neutral-50) / 1.00)",
+              "bg-success": "rgba(var(--neutral-50) / 1.00)",
+              "bg-warning": "rgba(var(--neutral-50) / 1.00)",
+              "bg-danger": "rgba(var(--neutral-50) / 1.00)"
+            },
+            "dark": {
+              "bg-color": "rgba(var(--neutral-950) / 1.00)",
+              "btn-color": "rgba(var(--primary-950) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "text-color": "rgba(var(--neutral-200) / 1)",
+              "heading-color": "rgba(var(--neutral-50) / 1)",
+              "link-color": "rgba(var(--primary-700) / 1.00)",
+              "link-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "link-active-color": "rgba(var(--primary-500) / 1.00)",
+              "icon-color": "rgba(var(--primary-600) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-800) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-100) / 1)",
+              "callout": "rgba(var(--primary-500) / 1.00)",
+              "muted": "rgba(var(--neutral-500) / 1.00)",
+              "highlight": "rgba(var(--primary-800) / 1.00)",
+              "header-bg": "",
+              "card-background-color": "",
+              "bg-info": "rgba(var(--neutral-950) / 1.00)",
+              "text-info": "#60a5fa",
+              "border-info": "#60a5fa",
+              "bg-success": "rgba(var(--neutral-950) / 1.00)",
+              "text-success": "#4ade80",
+              "border-success": "#4ade80",
+              "bg-warning": "rgba(var(--neutral-950) / 1.00)",
+              "text-warning": "#facc15",
+              "border-warning": "#facc15",
+              "bg-danger": "rgba(var(--neutral-950) / 1.00)",
+              "text-danger": "#f87171",
+              "border-danger": "#f87171"
+            }
+          }
+        }
+      },
+      {
+        "id": "bold",
+        "label": {
+          "en": "Bold",
+          "fr": "Audacieux"
+        },
+        "description": {
+          "en": "Strong and impactful",
+          "fr": "Fort et percutant"
+        },
+        "properties": {
+          "foundationStyles": {
+            "border-radius": "0.5rem",
+            "depth-style-shadow": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+            "depth-style-outline": "2px"
+          },
+          "elements": {
+            "light": {
+              "bg-color": "rgba(var(--neutral-50) / 1.00)",
+              "btn-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-500) / 1.00)",
+              "text-color": "rgba(var(--neutral-700) / 1.00)",
+              "heading-color": "rgba(var(--neutral-950) / 1.00)",
+              "link-color": "rgba(var(--accent-500) / 1)",
+              "link-hover-color": "rgba(var(--accent-600) / 1)",
+              "link-active-color": "rgba(var(--accent-700) / 1)",
+              "icon-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-500) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-50) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-200) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-900) / 1)",
+              "callout": "rgba(var(--primary-600) / 1)",
+              "muted": "rgba(var(--secondary-400) / 1)",
+              "highlight": "rgba(var(--accent-300) / 1)",
+              "header-bg": "rgba(var(--secondary-500) / 1.00)",
+              "card-background-color": "rgba(var(--neutral-50) / 0.50)"
+            },
+            "dark": {
+              "bg-color": "rgba(var(--neutral-950) / 1.00)",
+              "btn-color": "rgba(var(--primary-950) / 1.00)",
+              "btn-hover-color": "rgba(var(--primary-600) / 1.00)",
+              "text-color": "rgba(var(--neutral-200) / 1)",
+              "heading-color": "rgba(var(--neutral-50) / 1)",
+              "link-color": "rgba(var(--accent-700) / 1)",
+              "link-hover-color": "rgba(var(--accent-600) / 1)",
+              "link-active-color": "rgba(var(--accent-500) / 1)",
+              "icon-color": "rgba(var(--primary-600) / 1.00)",
+              "btn-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-hover-text-color": "rgba(var(--primary-100) / 1.00)",
+              "btn-alt-color": "rgba(var(--neutral-900) / 1)",
+              "btn-alt-text-color": "rgba(var(--neutral-100) / 1)",
+              "btn-alt-hover-color": "rgba(var(--neutral-800) / 1)",
+              "btn-alt-hover-text-color": "rgba(var(--neutral-100) / 1)",
+              "callout": "rgba(var(--primary-400) / 1)",
+              "muted": "rgba(var(--secondary-600) / 1)",
+              "highlight": "rgba(var(--accent-900) / 1)",
+              "header-bg": "rgba(var(--primary-950) / 1.00)",
+              "card-background-color": "rgba(var(--neutral-50) / 0.05)",
+              "bg-info": "#172554",
+              "text-info": "#60a5fa",
+              "border-info": "#60a5fa",
+              "bg-success": "#052e16",
+              "text-success": "#4ade80",
+              "border-success": "#4ade80",
+              "bg-warning": "#422006",
+              "text-warning": "#facc15",
+              "border-warning": "#facc15",
+              "bg-danger": "#450a0a",
+              "text-danger": "#f87171",
+              "border-danger": "#f87171"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "Grid": {
+    "title": {
+      "en": "Smart Grid Layout",
+      "fr": "Mise en page Smart Grid"
+    },
+    "label": {
+      "en": "Layout - Smart Grid",
+      "fr": "Mise en page - Smart Grid"
+    },
+    "description": {
+      "en": "A flexible grid container with smart breakpoints and directional spacing control.",
+      "fr": "Un conteneur de grille flexible avec des points de rupture intelligents et un contrôle d'espacement directionnel."
+    },
+    "category": "layout",
+    "export": true,
+    "items": {
+      "separator": "section",
+      "category": "Any category"
+    },
+    "properties": {
+      "columns": {
+        "label": {
+          "en": "Number of Columns",
+          "fr": "Nombre de colonnes"
+        },
+        "type": "select",
+        "default": 2,
+        "options": [
+          {
+            "label": {
+              "en": "1 Column",
+              "fr": "1 Colonne"
+            },
+            "value": 1
+          },
+          {
+            "label": {
+              "en": "2 Columns",
+              "fr": "2 Colonnes"
+            },
+            "value": 2
+          },
+          {
+            "label": {
+              "en": "3 Columns",
+              "fr": "3 Colonnes"
+            },
+            "value": 3
+          },
+          {
+            "label": {
+              "en": "4 Columns",
+              "fr": "4 Colonnes"
+            },
+            "value": 4
+          }
+        ],
+        "description": {
+          "en": "Determines the number of tracks in the grid.",
+          "fr": "Détermine le nombre de pistes dans la grille."
+        }
+      },
+      "two_col_layout_configuration": {
+        "label": {
+          "en": "2-Column Arrangement",
+          "fr": "Disposition 2-Colonnes"
+        },
+        "type": "select",
+        "default": "50/50",
+        "condition": {
+          "columns": 2
+        },
+        "options": [
+          {
+            "label": {
+              "en": "Even (50/50)",
+              "fr": "Égal (50/50)"
+            },
+            "value": "50/50"
+          },
+          {
+            "label": {
+              "en": "Narrow Left (40/60)",
+              "fr": "Étroit à gauche (40/60)"
+            },
+            "value": "40/60"
+          },
+          {
+            "label": {
+              "en": "Narrow Right (60/40)",
+              "fr": "Étroit à droite (60/40)"
+            },
+            "value": "60/40"
+          },
+          {
+            "label": {
+              "en": "Sidebar Left (30/70)",
+              "fr": "Barre latérale gauche (30/70)"
+            },
+            "value": "30/70"
+          },
+          {
+            "label": {
+              "en": "Sidebar Right (70/30)",
+              "fr": "Barre latérale droite (70/30)"
+            },
+            "value": "70/30"
+          },
+          {
+            "label": {
+              "en": "Small Sidebar Left (25/75)",
+              "fr": "Petite barre latérale gauche (25/75)"
+            },
+            "value": "25/75"
+          },
+          {
+            "label": {
+              "en": "Small Sidebar Right (75/25)",
+              "fr": "Petite barre latérale droite (75/25)"
+            },
+            "value": "75/25"
+          }
+        ]
+      },
+      "three_col_layout_configuration": {
+        "label": {
+          "en": "3-Column Arrangement",
+          "fr": "Disposition 3-Colonnes"
+        },
+        "type": "select",
+        "default": "33/33/33",
+        "condition": {
+          "columns": 3
+        },
+        "options": [
+          {
+            "label": {
+              "en": "Even (33/33/33)",
+              "fr": "Égal (33/33/33)"
+            },
+            "value": "33/33/33"
+          },
+          {
+            "label": {
+              "en": "Wide Center (25/50/25)",
+              "fr": "Centre large (25/50/25)"
+            },
+            "value": "25/50/25"
+          },
+          {
+            "label": {
+              "en": "Ultra Wide Center (20/60/20)",
+              "fr": "Centre ultra large (20/60/20)"
+            },
+            "value": "20/60/20"
+          }
+        ]
+      },
+      "four_col_layout_configuration": {
+        "label": {
+          "en": "4-Column Arrangement",
+          "fr": "Disposition 4-Colonnes"
+        },
+        "type": "select",
+        "default": "25/25/25/25",
+        "condition": {
+          "columns": 4
+        },
+        "options": [
+          {
+            "label": {
+              "en": "Even (25/25/25/25)",
+              "fr": "Égal (25/25/25/25)"
+            },
+            "value": "25/25/25/25"
+          },
+          {
+            "label": {
+              "en": "Narrow Outer (15/35/35/15)",
+              "fr": "Extérieur étroit (15/35/35/15)"
+            },
+            "value": "15/35/35/15"
+          },
+          {
+            "label": {
+              "en": "Focus Left (40/20/20/20)",
+              "fr": "Focus gauche (40/20/20/20)"
+            },
+            "value": "40/20/20/20"
+          },
+          {
+            "label": {
+              "en": "Focus Right (20/20/20/40)",
+              "fr": "Focus droite (20/20/20/40)"
+            },
+            "value": "20/20/20/40"
+          }
+        ]
+      },
+      "headerRow": {
+        "label": {
+          "en": "Header Row",
+          "fr": "Ligne d'en-tête"
+        },
+        "type": "boolean",
+        "default": false,
+        "description": {
+          "en": "The first item will span across the full width of the grid.",
+          "fr": "Le premier élément s'étendra sur toute la largeur de la grille."
+        }
+      },
+      "max_width": {
+        "label": {
+          "en": "Container Width",
+          "fr": "Largeur du conteneur"
+        },
+        "type": "select",
+        "default": "regular",
+        "options": [
+          {
+            "label": {
+              "en": "Full Width",
+              "fr": "Pleine largeur"
+            },
+            "value": "full"
+          },
+          {
+            "label": {
+              "en": "Wide (1400px)",
+              "fr": "Large (1400px)"
+            },
+            "value": "wide"
+          },
+          {
+            "label": {
+              "en": "Regular (Standard)",
+              "fr": "Régulier (Standard)"
+            },
+            "value": "regular"
+          },
+          {
+            "label": {
+              "en": "Narrow (Content)",
+              "fr": "Étroit (Contenu)"
+            },
+            "value": "narrow"
+          },
+          {
+            "label": {
+              "en": "Text (Readable)",
+              "fr": "Texte (Lisible)"
+            },
+            "value": "text"
+          }
+        ]
+      },
+      "vertical_alignment": {
+        "label": {
+          "en": "Vertical Alignment",
+          "fr": "Alignement vertical"
+        },
+        "type": "select",
+        "default": "center",
+        "options": [
+          {
+            "label": {
+              "en": "Top",
+              "fr": "Haut"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Bottom",
+              "fr": "Bas"
+            },
+            "value": "bottom"
+          },
+          {
+            "label": {
+              "en": "Stretch",
+              "fr": "Étirer"
+            },
+            "value": "stretch"
+          }
+        ]
+      },
+      "vertical_padding": {
+        "label": {
+          "en": "Vertical Padding (Top/Bottom)",
+          "fr": "Rembourrage vertical (Haut/Bas)"
+        },
+        "type": "select",
+        "default": "lg",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          },
+          {
+            "label": {
+              "en": "Extra Small (xs)",
+              "fr": "Très petit (xs)"
+            },
+            "value": "xs"
+          },
+          {
+            "label": {
+              "en": "Small (sm)",
+              "fr": "Petit (sm)"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium (md)",
+              "fr": "Moyen (md)"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large (lg)",
+              "fr": "Grand (lg)"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large (xl)",
+              "fr": "Très grand (xl)"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "2x Large (2xl)",
+              "fr": "2x Grand (2xl)"
+            },
+            "value": "2xl"
+          }
+        ]
+      },
+      "horizontal_padding": {
+        "label": {
+          "en": "Horizontal Padding (Left/Right)",
+          "fr": "Rembourrage horizontal (Gauche/Droite)"
+        },
+        "type": "select",
+        "default": "lg",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          },
+          {
+            "label": {
+              "en": "Extra Small (xs)",
+              "fr": "Très petit (xs)"
+            },
+            "value": "xs"
+          },
+          {
+            "label": {
+              "en": "Small (sm)",
+              "fr": "Petit (sm)"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium (md)",
+              "fr": "Moyen (md)"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large (lg)",
+              "fr": "Grand (lg)"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large (xl)",
+              "fr": "Très grand (xl)"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "2x Large (2xl)",
+              "fr": "2x Grand (2xl)"
+            },
+            "value": "2xl"
+          }
+        ]
+      },
+      "column_padding": {
+        "label": {
+          "en": "Column Gap (Horizontal)",
+          "fr": "Écart entre colonnes (Horizontal)"
+        },
+        "type": "select",
+        "default": "lg",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          },
+          {
+            "label": {
+              "en": "Extra Small (xs)",
+              "fr": "Très petit (xs)"
+            },
+            "value": "xs"
+          },
+          {
+            "label": {
+              "en": "Small (sm)",
+              "fr": "Petit (sm)"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium (md)",
+              "fr": "Moyen (md)"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large (lg)",
+              "fr": "Grand (lg)"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large (xl)",
+              "fr": "Très grand (xl)"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "2x Large (2xl)",
+              "fr": "2x Grand (2xl)"
+            },
+            "value": "2xl"
+          }
+        ]
+      },
+      "row_padding": {
+        "label": {
+          "en": "Row Gap (Vertical)",
+          "fr": "Écart entre rangées (Vertical)"
+        },
+        "type": "select",
+        "default": "lg",
+        "options": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          },
+          {
+            "label": {
+              "en": "Extra Small (xs)",
+              "fr": "Très petit (xs)"
+            },
+            "value": "xs"
+          },
+          {
+            "label": {
+              "en": "Small (sm)",
+              "fr": "Petit (sm)"
+            },
+            "value": "sm"
+          },
+          {
+            "label": {
+              "en": "Medium (md)",
+              "fr": "Moyen (md)"
+            },
+            "value": "md"
+          },
+          {
+            "label": {
+              "en": "Large (lg)",
+              "fr": "Grand (lg)"
+            },
+            "value": "lg"
+          },
+          {
+            "label": {
+              "en": "Extra Large (xl)",
+              "fr": "Très grand (xl)"
+            },
+            "value": "xl"
+          },
+          {
+            "label": {
+              "en": "2x Large (2xl)",
+              "fr": "2x Grand (2xl)"
+            },
+            "value": "2xl"
+          }
+        ]
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Standard 2 Columns",
+          "fr": "Standard 2 Colonnes"
+        },
+        "properties": {
+          "columns": 2,
+          "two_col_layout_configuration": "50/50",
+          "max_width": "regular",
+          "vertical_padding": "lg",
+          "column_padding": "lg"
+        },
+        "image": {}
+      },
+      {
+        "label": {
+          "en": "Sidebar Right",
+          "fr": "Barre latérale droite"
+        },
+        "properties": {
+          "columns": 2,
+          "two_col_layout_configuration": "70/30",
+          "max_width": "wide",
+          "vertical_padding": "md"
+        },
+        "image": {}
+      },
+      {
+        "label": {
+          "en": "Feature Header + 3 Columns",
+          "fr": "En-tête + 3 Colonnes"
+        },
+        "properties": {
+          "columns": 3,
+          "three_col_layout_configuration": "33/33/33",
+          "headerRow": true,
+          "max_width": "wide",
+          "vertical_alignment": "top"
+        },
+        "image": {}
+      }
+    ],
+    "content_ui": {
+      "columns": {
+        "placement": "toolbar",
+        "widget": "segmented"
+      },
+      "two_col_layout_configuration": {
+        "placement": "toolbar",
+        "widget": "visual_select",
+        "visuals": {
+          "50/50": "1fr 1fr",
+          "40/60": "2fr 3fr",
+          "60/40": "3fr 2fr",
+          "30/70": "1fr 2fr",
+          "70/30": "2fr 1fr",
+          "25/75": "1fr 3fr",
+          "75/25": "3fr 1fr"
+        }
+      },
+      "three_col_layout_configuration": {
+        "placement": "toolbar",
+        "widget": "visual_select",
+        "visuals": {
+          "33/33/33": "1fr 1fr 1fr",
+          "25/50/25": "1fr 2fr 1fr",
+          "20/60/20": "1fr 3fr 1fr"
+        }
+      },
+      "four_col_layout_configuration": {
+        "placement": "toolbar",
+        "widget": "visual_select",
+        "visuals": {
+          "25/25/25/25": "1fr 1fr 1fr 1fr",
+          "15/35/35/15": "1fr 2fr 2fr 1fr",
+          "40/20/20/20": "2fr 1fr 1fr 1fr",
+          "20/20/20/40": "1fr 1fr 1fr 2fr"
+        }
+      },
+      "headerRow": {
+        "placement": "toolbar",
+        "widget": "toggle_button",
+        "icon": "HeaderRow"
+      },
+      "vertical_alignment": {
+        "placement": "settings",
+        "widget": "select",
+        "section": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        }
+      },
+      "max_width": {
+        "placement": "settings",
+        "widget": "select",
+        "section": {
+          "en": "Layout",
+          "fr": "Mise en page"
+        }
+      },
+      "column_padding": {
+        "placement": "settings",
+        "widget": "select",
+        "gridCols": 2,
+        "section": {
+          "en": "Spacing",
+          "fr": "Espacement"
+        }
+      },
+      "row_padding": {
+        "placement": "settings",
+        "widget": "select",
+        "gridCols": 2,
+        "section": {
+          "en": "Spacing",
+          "fr": "Espacement"
+        }
+      },
+      "vertical_padding": {
+        "placement": "settings",
+        "widget": "select",
+        "gridCols": 2,
+        "section": {
+          "en": "Spacing",
+          "fr": "Espacement"
+        }
+      },
+      "horizontal_padding": {
+        "placement": "settings",
+        "widget": "select",
+        "gridCols": 2,
+        "section": {
+          "en": "Spacing",
+          "fr": "Espacement"
+        }
+      }
+    },
+    "name": "Grid"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "The header component is used to display the website's logo and navigation links at the top of the page.",
+      "fr": "Le composant d'en-tête est utilisé pour afficher le logo du site web et les liens de navigation en haut de la page."
+    },
+    "category": "header",
+    "export": true,
+    "elements": {
+      "media": {
+        "type": "image",
+        "label": {
+          "en": "Logo Image",
+          "fr": "Image du logo"
+        },
+        "description": {
+          "en": "The primary visual content.",
+          "fr": "Le contenu visuel principal."
+        }
+      },
+      "title": {
+        "label": {
+          "en": "Logo Text",
+          "fr": "Texte du logo"
+        },
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "label": {
+          "en": "Logo Sub Text",
+          "fr": "Sous-texte du logo"
+        },
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "form": {
+        "description": {
+          "en": "A form to collect navigation links.",
+          "fr": "Un formulaire pour collecter des liens de navigation."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Form",
+              "fr": "Formulaire"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Link",
+                "fr": "Link"
+              },
+              "fields": [
+                {
+                  "id": "type",
+                  "type": "select",
+                  "label": {
+                    "en": "Link Type",
+                    "fr": "Type de lien"
+                  },
+                  "description": {
+                    "en": "Defines the type of link.",
+                    "fr": "Définit le type de lien."
+                  },
+                  "required": true,
+                  "options": [
+                    {
+                      "label": {
+                        "en": "Plain",
+                        "fr": "Simple"
+                      },
+                      "value": "plain"
+                    },
+                    {
+                      "label": {
+                        "en": "Group",
+                        "fr": "Groupe"
+                      },
+                      "value": "group"
+                    },
+                    {
+                      "label": {
+                        "en": "Primary",
+                        "fr": "Primaire"
+                      },
+                      "value": "primary"
+                    },
+                    {
+                      "label": {
+                        "en": "Secondary",
+                        "fr": "Secondaire"
+                      },
+                      "value": "secondary"
+                    }
+                  ]
+                },
+                {
+                  "id": "label",
+                  "type": "text",
+                  "label": {
+                    "en": "Link Label",
+                    "fr": "Label du lien"
+                  },
+                  "description": {
+                    "en": "The label for the link.",
+                    "fr": "L'étiquette du lien."
+                  }
+                },
+                {
+                  "id": "href",
+                  "type": "text",
+                  "label": {
+                    "en": "Link URL",
+                    "fr": "URL du lien"
+                  },
+                  "description": {
+                    "en": "The URL for the link.",
+                    "fr": "L'URL du lien."
+                  }
+                },
+                {
+                  "id": "group_links",
+                  "type": "form",
+                  "label": {
+                    "en": "Group Links",
+                    "fr": "Liens de groupe"
+                  },
+                  "description": {
+                    "en": "Links in the group.",
+                    "fr": "Liens dans le groupe."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Group Links",
+                      "fr": "Liens de groupe"
+                    },
+                    "fields": [
+                      {
+                        "id": "label",
+                        "type": "text",
+                        "label": {
+                          "en": "Link Label",
+                          "fr": "Label du lien"
+                        },
+                        "description": {
+                          "en": "The label for the link.",
+                          "fr": "L'étiquette du lien."
+                        }
+                      },
+                      {
+                        "id": "href",
+                        "type": "text",
+                        "label": {
+                          "en": "Link URL",
+                          "fr": "URL du lien"
+                        },
+                        "description": {
+                          "en": "The URL for the link.",
+                          "fr": "L'URL du lien."
+                        }
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "type": "group"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "properties": {
+      "navigation_position": {
+        "label": {
+          "en": "Navigation Position",
+          "fr": "Position de la navigation"
+        },
+        "description": {
+          "en": "The position of the navigation links in the header.",
+          "fr": "La position des liens de navigation dans l'en-tête."
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "right"
+      },
+      "sticky": {
+        "label": {
+          "en": "Sticky Header",
+          "fr": "En-tête collant"
+        },
+        "description": {
+          "en": "Whether the header should remain fixed at the top of the page when scrolling.",
+          "fr": "Si l'en-tête doit rester fixe en haut de la page lors du défilement."
+        },
+        "type": "boolean",
+        "default": false
+      },
+      "header_placement": {
+        "label": {
+          "en": "Header Placement",
+          "fr": "Placement de l'en-tête"
+        },
+        "description": {
+          "en": "The placement of the header on the page.",
+          "fr": "Le placement de l'en-tête sur la page."
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Overlay Hero",
+              "fr": "Superposition de la section Hero"
+            },
+            "value": "overlay_hero"
+          },
+          {
+            "label": {
+              "en": "Above Hero",
+              "fr": "Au-dessus de la section Hero"
+            },
+            "value": "above_hero"
+          }
+        ],
+        "default": "above_hero"
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Solid",
+          "fr": "Solide"
+        },
+        "description": {
+          "en": "Non sticky classic header with right placed navigation and placed above hero",
+          "fr": "En-tête classique non collant avec navigation placée à droite et placée au-dessus de la section Hero"
+        },
+        "properties": {
+          "navigation_position": "right",
+          "sticky": false,
+          "header_placement": "above_hero"
+        },
+        "image": {
+          "height": 64,
+          "width": 1233,
+          "type": "webp",
+          "path": "assets/Header/solid.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Float",
+          "fr": "Flottant"
+        },
+        "description": {
+          "en": "Sticky header with center placed navigation and placed over the hero section",
+          "fr": "En-tête collant avec navigation placée au centre et placée sur la section Hero"
+        },
+        "properties": {
+          "navigation_position": "center",
+          "sticky": true,
+          "header_placement": "overlay_hero"
+        },
+        "image": {
+          "height": 61,
+          "width": 1232,
+          "type": "webp",
+          "path": "assets/Header/float.webp"
+        }
+      }
+    ],
+    "name": "Header"
+  },
+  "Hero": {
+    "title": {
+      "en": "Hero Section",
+      "fr": "Section Hero"
+    },
+    "description": {
+      "en": "A hero section is a large, prominent area at the top of a webpage, typically used to showcase key content or calls to action.",
+      "fr": "Une section hero est une grande zone proéminente en haut d'une page web, généralement utilisée pour mettre en avant un contenu clé ou des appels à l'action."
+    },
+    "label": {
+      "en": "Hero Section",
+      "fr": "Section Hero"
+    },
+    "category": "hero",
+    "export": true,
+    "elements": {
+      "background": {
+        "type": "image",
+        "layout": "",
+        "description": {
+          "en": "The background image.",
+          "fr": "L'image d'arrière-plan."
+        }
+      },
+      "pretitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "link": {
+        "type": "link",
+        "description": {
+          "en": "A link",
+          "fr": "Un lien"
+        }
+      },
+      "form": {
+        "description": {
+          "en": "A form to collect stats data for the hero section.",
+          "fr": "Un formulaire pour collecter des données statistiques pour la section hero."
+        },
+        "schemas": [
+          {
+            "id": "stat_form",
+            "name": {
+              "en": "Stats Form",
+              "fr": "Formulaire de statistiques"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Stat",
+                "fr": "Statistique"
+              },
+              "description": {
+                "en": "Defines the stats to be displayed in the hero section.",
+                "fr": "Définit les statistiques à afficher dans la section hero."
+              },
+              "fields": [
+                {
+                  "id": "number",
+                  "type": "text",
+                  "label": {
+                    "en": "Label",
+                    "fr": "Étiquette"
+                  },
+                  "description": {
+                    "en": "The larger text displayed in the stats section.",
+                    "fr": "Le texte plus grand affiché dans la section des statistiques."
+                  },
+                  "required": true
+                },
+                {
+                  "id": "text",
+                  "type": "text",
+                  "label": {
+                    "en": "Text",
+                    "fr": "Texte"
+                  },
+                  "description": {
+                    "en": "The smaller text displayed below the larger text in the stats section.",
+                    "fr": "Le texte plus petit affiché en dessous du texte plus grand dans la section des"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "side_content_form",
+            "name": {
+              "en": "Side Content Information Form",
+              "fr": "Formulaire d'informations de contenu latéral"
+            },
+            "isComposite": false,
+            "fields": [
+              {
+                "id": "for",
+                "type": "select",
+                "label": {
+                  "en": "For",
+                  "fr": "Pour"
+                },
+                "description": {
+                  "en": "What is the information collected for?",
+                  "fr": "Pour quoi sont collectées les informations ?"
+                },
+                "required": true,
+                "options": [
+                  {
+                    "label": {
+                      "en": "Scholar Information",
+                      "fr": "Informations sur le chercheur"
+                    },
+                    "value": "scholar"
+                  },
+                  {
+                    "label": {
+                      "en": "Department News",
+                      "fr": "Nouvelles du département"
+                    },
+                    "value": "news"
+                  }
+                ]
+              },
+              {
+                "id": "department",
+                "type": "text",
+                "label": {
+                  "en": "Department Name",
+                  "fr": "Nom du département"
+                },
+                "description": {
+                  "en": "The name of the department for which the information is collected.",
+                  "fr": "Le nom du département pour lequel les informations sont collectées."
+                },
+                "condition": {
+                  "for": "scholar"
+                }
+              },
+              {
+                "id": "university",
+                "type": "text",
+                "label": {
+                  "en": "University Name",
+                  "fr": "Nom de l'université"
+                },
+                "description": {
+                  "en": "The name of the university for which the information is collected.",
+                  "fr": "Le nom de l'université pour laquelle les informations sont collectées."
+                },
+                "condition": {
+                  "for": "scholar"
+                }
+              },
+              {
+                "id": "title",
+                "type": "text",
+                "label": {
+                  "en": "Title of News",
+                  "fr": "Titre de la nouvelle"
+                },
+                "description": {
+                  "en": "The title of the news item for which the information is collected.",
+                  "fr": "Le titre de l'article de nouvelles pour lequel les informations sont collectées."
+                },
+                "condition": {
+                  "for": "news"
+                }
+              },
+              {
+                "id": "link",
+                "type": "nestedObject",
+                "label": {
+                  "en": "Link to News",
+                  "fr": "Lien vers les nouvelles"
+                },
+                "description": {
+                  "en": "A link to the news item for which the information is collected.",
+                  "fr": "Un lien vers l'article de nouvelles pour lequel les informations sont collectées."
+                },
+                "fields": [
+                  {
+                    "id": "label",
+                    "type": "text",
+                    "label": {
+                      "en": "Link Label",
+                      "fr": "Étiquette du lien"
+                    },
+                    "description": {
+                      "en": "The label for the link.",
+                      "fr": "L'étiquette du lien."
+                    }
+                  },
+                  {
+                    "id": "href",
+                    "type": "text",
+                    "label": {
+                      "en": "Link URL",
+                      "fr": "URL du lien"
+                    },
+                    "description": {
+                      "en": "The URL for the link.",
+                      "fr": "L'URL du lien."
+                    }
+                  }
+                ],
+                "condition": {
+                  "for": "news"
+                }
+              },
+              {
+                "id": "new-items",
+                "type": "form",
+                "label": {
+                  "en": "News Items",
+                  "fr": "Articles de nouvelles"
+                },
+                "description": {
+                  "en": "Defines the items in the news section.",
+                  "fr": "Définit les éléments de la section des nouvelles."
+                },
+                "childSchema": {
+                  "name": {
+                    "en": "New Item",
+                    "fr": "Nouvel article"
+                  },
+                  "fields": [
+                    {
+                      "id": "title",
+                      "type": "text",
+                      "label": {
+                        "en": "Item Title",
+                        "fr": "Titre de l'article"
+                      },
+                      "description": {
+                        "en": "The title of the new item.",
+                        "fr": "Le titre du nouvel article."
+                      }
+                    },
+                    {
+                      "id": "date",
+                      "type": "string",
+                      "label": {
+                        "en": "Date",
+                        "fr": "Date"
+                      },
+                      "description": {
+                        "en": "The date of the new item.",
+                        "fr": "La date du nouvel article."
+                      }
+                    }
+                  ]
+                },
+                "condition": {
+                  "for": "news"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "items": {
+      "separator": "divider",
+      "limit": 1,
+      "elements": {
+        "background": {
+          "description": {
+            "en": "Image placed on the side of the hero section, typically used to enhance visual appeal.",
+            "fr": "Image placée sur le côté de la section hero, généralement utilisée pour améliorer l"
+          },
+          "type": "image",
+          "layout": ""
+        }
+      }
+    },
+    "properties": {
+      "variant": {
+        "label": {
+          "en": "Variant",
+          "fr": "Variante"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Content + Avatar",
+              "fr": "Contenu + Avatar"
+            },
+            "value": "content-avatar"
+          },
+          {
+            "label": {
+              "en": "Content Only",
+              "fr": "Contenu uniquement"
+            },
+            "value": "content-only"
+          },
+          {
+            "label": {
+              "en": "Big Card",
+              "fr": "Grande Carte"
+            },
+            "value": "big-card"
+          }
+        ],
+        "default": "content-only"
+      },
+      "avatar_placement": {
+        "label": {
+          "en": "Avatar Placement",
+          "fr": "Placement de l'avatar"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "right",
+        "condition": {
+          "variant": "content-avatar"
+        }
+      },
+      "avatar_style": {
+        "label": {
+          "en": "Avatar Style",
+          "fr": "Style de l'avatar"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Circle",
+              "fr": "Cercle"
+            },
+            "value": "circle"
+          },
+          {
+            "label": {
+              "en": "Square",
+              "fr": "Carré"
+            },
+            "value": "square"
+          },
+          {
+            "label": {
+              "en": "Portrait",
+              "fr": "Portrait"
+            },
+            "value": "portrait"
+          },
+          {
+            "label": {
+              "en": "Landscape",
+              "fr": "Paysage"
+            },
+            "value": "landscape"
+          },
+          {
+            "label": {
+              "en": "Square with Spinning Effect",
+              "fr": "Carré avec effet de rotation"
+            },
+            "value": "square_spinning"
+          },
+          {
+            "label": {
+              "en": "Circle with ring around",
+              "fr": "Cercle avec anneau autour"
+            },
+            "value": "circle_ring"
+          }
+        ],
+        "default": "square",
+        "condition": {
+          "variant": "content-avatar"
+        }
+      },
+      "avatar_size": {
+        "label": {
+          "en": "Avatar Size",
+          "fr": "Taille de l'avatar"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium",
+              "fr": "Moyen"
+            },
+            "value": "medium"
+          }
+        ],
+        "default": "medium",
+        "condition": {
+          "variant": "content-avatar"
+        }
+      },
+      "avatar_gradient": {
+        "label": {
+          "en": "Avatar Gradient",
+          "fr": "Dégradé de l'avatar"
+        },
+        "type": "boolean",
+        "default": false,
+        "condition": {
+          "variant": "content-avatar"
+        }
+      },
+      "content_alignment": {
+        "label": {
+          "en": "Content Alignment",
+          "fr": "Alignement du contenu"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ],
+        "default": "center",
+        "condition": {
+          "variant": {
+            "$in": [
+              "content-only",
+              "big-card"
+            ]
+          }
+        }
+      },
+      "content_feature": {
+        "label": {
+          "en": "Content Feature",
+          "fr": "Fonctionnalité du contenu"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucune"
+            },
+            "value": "none"
+          },
+          {
+            "label": {
+              "en": "Big Title and Decorative Line",
+              "fr": "Grand titre et ligne décorative"
+            },
+            "value": "big-title-decorative-line"
+          }
+        ],
+        "default": "none",
+        "condition": {
+          "variant": "content-only"
+        }
+      },
+      "big_card_bg_gradient": {
+        "label": {
+          "en": "Big Card Background Gradient",
+          "fr": "Dégradé d'arrière-plan de la grande carte"
+        },
+        "type": "boolean",
+        "default": false,
+        "condition": {
+          "variant": "big-card"
+        }
+      },
+      "height": {
+        "label": {
+          "en": "Height",
+          "fr": "Hauteur"
+        },
+        "type": "select",
+        "enum": [
+          {
+            "label": {
+              "en": "Auto Height",
+              "fr": "Hauteur automatique"
+            },
+            "value": "auto"
+          },
+          {
+            "label": {
+              "en": "Full Height",
+              "fr": "Pleine hauteur"
+            },
+            "value": "full"
+          }
+        ],
+        "default": "auto"
+      }
+    },
+    "presets": [
+      {
+        "label": {
+          "en": "Scholar 1",
+          "fr": "Chercheur 1"
+        },
+        "description": {
+          "en": "Scholar setup 1",
+          "fr": "Configuration universitaire 1"
+        },
+        "properties": {
+          "variant": "content-avatar",
+          "avatar_placement": "right",
+          "avatar_style": "square_spinning",
+          "avatar_size": "small"
+        },
+        "image": {
+          "height": 617,
+          "width": 1576,
+          "type": "webp",
+          "path": "assets/Hero/scholar1.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Scholar 2",
+          "fr": "Chercheur 2"
+        },
+        "description": {
+          "en": "Scholar setup 2",
+          "fr": "Configuration universitaire 2"
+        },
+        "properties": {
+          "variant": "content-avatar",
+          "avatar_placement": "left",
+          "avatar_style": "circle_ring",
+          "avatar_size": "small"
+        },
+        "image": {
+          "height": 473,
+          "width": 1235,
+          "type": "webp",
+          "path": "assets/Hero/scholar2.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Scholar 3",
+          "fr": "Chercheur 3"
+        },
+        "description": {
+          "en": "Scholar setup 3",
+          "fr": "Configuration universitaire 3"
+        },
+        "properties": {
+          "variant": "content-only",
+          "avatar_placement": "center",
+          "content_feature": "none"
+        },
+        "image": {
+          "height": 390,
+          "width": 1238,
+          "type": "webp",
+          "path": "assets/Hero/scholar3.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Institute",
+          "fr": "Institut"
+        },
+        "description": {
+          "en": "Institute setup",
+          "fr": "Configuration de l'institut"
+        },
+        "properties": {
+          "variant": "content-only",
+          "content_alignment": "left",
+          "content_feature": "none"
+        },
+        "image": {
+          "height": 414,
+          "width": 1238,
+          "type": "webp",
+          "path": "assets/Hero/institute.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Initiative 1",
+          "fr": "Initiative 1"
+        },
+        "description": {
+          "en": "Initiative setup 1",
+          "fr": "Configuration de l'initiative 1"
+        },
+        "properties": {
+          "variant": "content-avatar",
+          "avatar_placement": "right",
+          "avatar_style": "square",
+          "avatar_size": "medium",
+          "avatar_gradient": true
+        },
+        "image": {
+          "height": 631,
+          "width": 1238,
+          "type": "webp",
+          "path": "assets/Hero/initiative1.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Initiative 2",
+          "fr": "Initiative 2"
+        },
+        "description": {
+          "en": "Initiative setup 2",
+          "fr": "Configuration de l'initiative 2"
+        },
+        "properties": {
+          "variant": "content-only",
+          "content_alignment": "left",
+          "content_feature": "big-title-decorative-line"
+        },
+        "image": {
+          "height": 601,
+          "width": 1236,
+          "type": "webp",
+          "path": "assets/Hero/initiative2.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Nexus 1",
+          "fr": "Nexus 1"
+        },
+        "description": {
+          "en": "Nexus setup 1",
+          "fr": "Configuration du Nexus 1"
+        },
+        "properties": {
+          "variant": "big-card",
+          "content_alignment": "left",
+          "big_card_bg_gradient": true
+        },
+        "image": {
+          "height": 531,
+          "width": 1228,
+          "type": "webp",
+          "path": "assets/Hero/nexus1.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Nexus 2",
+          "fr": "Nexus 2"
+        },
+        "description": {
+          "en": "Nexus setup 2",
+          "fr": "Configuration du Nexus 2"
+        },
+        "properties": {
+          "variant": "big-card",
+          "content_alignment": "center",
+          "big_card_bg_gradient": true
+        },
+        "image": {
+          "height": 483,
+          "width": 1228,
+          "type": "webp",
+          "path": "assets/Hero/nexus2.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Department 1",
+          "fr": "Département 1"
+        },
+        "description": {
+          "en": "Department setup 1",
+          "fr": "Configuration du département 1"
+        },
+        "properties": {
+          "variant": "content-avatar",
+          "avatar_placement": "right",
+          "avatar_size": "medium"
+        },
+        "image": {
+          "height": 504,
+          "width": 1235,
+          "type": "webp",
+          "path": "assets/Hero/department1.webp"
+        }
+      },
+      {
+        "label": {
+          "en": "Department 2",
+          "fr": "Département 2"
+        },
+        "description": {
+          "en": "Department setup 2",
+          "fr": "Configuration du département 2"
+        },
+        "properties": {
+          "variant": "content-avatar",
+          "avatar_placement": "left",
+          "avatar_size": "small",
+          "avatar_style": "circle"
+        },
+        "image": {
+          "height": 561,
+          "width": 1555,
+          "type": "webp",
+          "path": "assets/Hero/department2.webp"
+        }
+      }
+    ],
+    "name": "Hero"
+  },
+  "TextBox": {
+    "title": {
+      "en": "Text Box",
+      "fr": "Boîte de texte"
+    },
+    "description": {
+      "en": "A versatile text component with adjustable scale, density, and personality.",
+      "fr": "Un composant textuel polyvalent avec échelle, densité et personnalité ajustables."
+    },
+    "label": {
+      "en": "Text Box",
+      "fr": "Boîte de texte"
+    },
+    "category": "content",
+    "export": true,
+    "elements": {
+      "pretitle": {
+        "label": {
+          "en": "Eyebrow Text",
+          "fr": "Surtitre"
+        },
+        "type": "H2",
+        "description": {
+          "en": "A phrase that precedes the main headline.",
+          "fr": "Une phrase qui précède le titre principal."
+        }
+      },
+      "title": {
+        "label": {
+          "en": "Title",
+          "fr": "Titre"
+        },
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "label": {
+          "en": "Subtitle",
+          "fr": "Sous-titre"
+        },
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "paragraphs": {
+        "label": {
+          "en": "Paragraphs",
+          "fr": "Paragraphes"
+        }
+      },
+      "links": {
+        "label": {
+          "en": "Links",
+          "fr": "Liens"
+        }
+      },
+      "icons": {
+        "label": {
+          "en": "Icons",
+          "fr": "Icônes"
+        }
+      }
+    },
+    "properties": {
+      "textInset": {
+        "label": {
+          "en": "Text Inset",
+          "fr": "Retrait du texte"
+        },
+        "type": "select",
+        "default": "standard",
+        "options": [
+          {
+            "label": {
+              "en": "Standard",
+              "fr": "Standard"
+            },
+            "value": "standard"
+          },
+          {
+            "label": {
+              "en": "None",
+              "fr": "Aucun"
+            },
+            "value": "none"
+          }
+        ],
+        "description": {
+          "en": "Controls the space around the text.",
+          "fr": "Contrôle l'espace autour du texte."
+        }
+      },
+      "textWidth": {
+        "label": {
+          "en": "Content Width",
+          "fr": "Largeur du contenu"
+        },
+        "type": "select",
+        "default": "regular",
+        "options": [
+          {
+            "label": {
+              "en": "Narrow",
+              "fr": "Étroit"
+            },
+            "value": "narrow"
+          },
+          {
+            "label": {
+              "en": "Regular",
+              "fr": "Régulier"
+            },
+            "value": "regular"
+          },
+          {
+            "label": {
+              "en": "Wide",
+              "fr": "Large"
+            },
+            "value": "wide"
+          }
+        ],
+        "description": {
+          "en": "Constrains the maximum width of the text block.",
+          "fr": "Contraint la largeur maximale du bloc de texte."
+        }
+      },
+      "textAlign": {
+        "label": {
+          "en": "Alignment",
+          "fr": "Alignement"
+        },
+        "type": "select",
+        "default": "left",
+        "options": [
+          {
+            "label": {
+              "en": "Left",
+              "fr": "Gauche"
+            },
+            "value": "left"
+          },
+          {
+            "label": {
+              "en": "Center",
+              "fr": "Centre"
+            },
+            "value": "center"
+          },
+          {
+            "label": {
+              "en": "Right",
+              "fr": "Droite"
+            },
+            "value": "right"
+          }
+        ]
+      },
+      "centerHeadings": {
+        "label": {
+          "en": "Center Headings?",
+          "fr": "Centrer les titres ?"
+        },
+        "type": "boolean",
+        "default": false,
+        "condition": {
+          "textAlign": "left"
+        },
+        "description": {
+          "en": "Keeps paragraphs left-aligned but centers the titles.",
+          "fr": "Garde les paragraphes alignés à gauche mais centre les titres."
+        }
+      },
+      "textColumns": {
+        "label": {
+          "en": "Columns",
+          "fr": "Colonnes"
+        },
+        "type": "select",
+        "default": "1",
+        "options": [
+          {
+            "label": {
+              "en": "1 Column",
+              "fr": "1 Colonne"
+            },
+            "value": "1"
+          },
+          {
+            "label": {
+              "en": "2 Columns",
+              "fr": "2 Colonnes"
+            },
+            "value": "2"
+          },
+          {
+            "label": {
+              "en": "3 Columns",
+              "fr": "3 Colonnes"
+            },
+            "value": "3"
+          }
+        ]
+      },
+      "textScale": {
+        "label": {
+          "en": "Size Scale",
+          "fr": "Échelle de taille"
+        },
+        "type": "select",
+        "default": "normal",
+        "options": [
+          {
+            "label": {
+              "en": "Small",
+              "fr": "Petit"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Normal",
+              "fr": "Normal"
+            },
+            "value": "normal"
+          },
+          {
+            "label": {
+              "en": "Large",
+              "fr": "Grand"
+            },
+            "value": "large"
+          },
+          {
+            "label": {
+              "en": "Extra Large",
+              "fr": "Très grand"
+            },
+            "value": "xlarge"
+          }
+        ],
+        "description": {
+          "en": "Adjusts the overall size of all text elements proportionally.",
+          "fr": "Ajuste la taille globale de tous les éléments de texte proportionnellement."
+        }
+      },
+      "textDensity": {
+        "label": {
+          "en": "Spacing & Density",
+          "fr": "Espacement et densité"
+        },
+        "type": "select",
+        "default": "normal",
+        "options": [
+          {
+            "label": {
+              "en": "Compact",
+              "fr": "Compact"
+            },
+            "value": "compact"
+          },
+          {
+            "label": {
+              "en": "Normal",
+              "fr": "Normal"
+            },
+            "value": "normal"
+          },
+          {
+            "label": {
+              "en": "Spacious",
+              "fr": "Spacieux"
+            },
+            "value": "spacious"
+          }
+        ],
+        "description": {
+          "en": "Controls vertical rhythm, padding, and line height.",
+          "fr": "Contrôle le rythme vertical, le remplissage et la hauteur de ligne."
+        }
+      },
+      "headingStyle": {
+        "label": {
+          "en": "Heading Style",
+          "fr": "Style de titre"
+        },
+        "type": "select",
+        "default": "bold",
+        "options": [
+          {
+            "label": {
+              "en": "Modern Bold",
+              "fr": "Moderne Gras"
+            },
+            "value": "bold"
+          },
+          {
+            "label": {
+              "en": "Clean Light",
+              "fr": "Épuré Léger"
+            },
+            "value": "light"
+          },
+          {
+            "label": {
+              "en": "Elegant Serif",
+              "fr": "Sérif Élégant"
+            },
+            "value": "serif"
+          },
+          {
+            "label": {
+              "en": "Impact Slab",
+              "fr": "Slab Impact"
+            },
+            "value": "slab"
+          }
+        ]
+      },
+      "eyebrowStyle": {
+        "label": {
+          "en": "Eyebrow Style",
+          "fr": "Style de surtitre"
+        },
+        "type": "select",
+        "default": "default",
+        "options": [
+          {
+            "label": {
+              "en": "Simple",
+              "fr": "Simple"
+            },
+            "value": "default"
+          },
+          {
+            "label": {
+              "en": "Uppercase",
+              "fr": "Majuscule"
+            },
+            "value": "uppercase"
+          },
+          {
+            "label": {
+              "en": "Accent Badge",
+              "fr": "Badge accentué"
+            },
+            "value": "accent"
+          }
+        ]
+      }
+    },
+    "name": "TextBox"
+  }
+}
