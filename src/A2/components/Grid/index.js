@@ -21,7 +21,7 @@ const PADDING_X_CLASSES = {
     none: 'px-0',
     xs: 'px-1 md:px-2 lg:px-2',
     sm: 'px-2 md:px-4 lg:px-6',
-    md: 'px-4 md:px-8 lg:px-10',
+    md: 'px-4 md:px-6 lg:px-8',
     lg: 'px-6 md:px-10 lg:px-16',
     xl: 'px-10 md:px-16 lg:px-24',
     '2xl': 'px-16 md:px-24 lg:px-32',
