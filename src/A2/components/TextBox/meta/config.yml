@@ -1,0 +1,154 @@
+title:
+    en: Text Box
+    fr: Boîte de texte
+description:
+    en: A simple text box component for displaying content.
+    fr: Un composant de boîte de texte simple pour afficher du contenu.
+label:
+    en: Text Box
+    fr: Boîte de texte
+
+category: content
+export: true
+
+elements:
+    pretitle:
+        label:
+            en: Eyebrow Text
+            fr: Texte de sourcil
+    title:
+        label:
+            en: Title Text
+            fr: Texte du titre
+    subtitle:
+        label:
+            en: Subtitle Text
+            fr: Texte du sous-titre
+    paragraphs:
+        label:
+            en: Paragraphs
+            fr: Paragraphes
+    links:
+        label:
+            en: Links
+            fr: Liens
+    icons:
+        label:
+            en: Icons for Links
+            fr: Icônes pour les liens
+
+properties:
+    textWidth:
+        label:
+            en: Text Width
+            fr: Largeur du texte
+        type: select
+        default: regular
+        options:
+            - label: { en: 'Narrow', fr: 'Étroit' }
+              value: narrow
+            - label: { en: 'Regular', fr: 'Régulier' }
+              value: regular
+            - label: { en: 'Wide', fr: 'Large' }
+              value: wide
+        description:
+            en: Adjusts the width of the text content.
+            fr: Ajuste la largeur du contenu textuel.
+    textDensity:
+        label:
+            en: Text Breathability (Density)
+            fr: Respirabilité du texte (Densité)
+        type: select
+        default: normal
+        options:
+            - label:
+                  en: Compact
+                  fr: Compact
+              value: compact
+            - label:
+                  en: Normal
+                  fr: Normal
+              value: normal
+            - label:
+                  en: Spacious
+                  fr: Spacieux
+              value: spacious
+        description:
+            en: Adjusts the spacing between lines and paragraphs for readability.
+            fr: Ajuste l'espacement entre les lignes et les paragraphes pour la lisibilité.
+    textScale:
+        label:
+            en: Text Scale (Size)
+            fr: Échelle du texte (Taille)
+        type: select
+        default: normal
+        options:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: small
+            - label:
+                  en: Normal
+                  fr: Normal
+              value: normal
+            - label:
+                  en: Large
+                  fr: Grand
+              value: large
+            - label:
+                  en: Extra Large
+                  fr: Très grand
+              value: xlarge
+        description:
+            en: Adjusts the size of the text for emphasis.
+            fr: Ajuste la taille du texte pour l'accentuation.
+    textAlignment:
+        label:
+            en: Text Alignment
+            fr: Alignement du texte
+        type: select
+        default: left
+        options:
+            - label: { en: 'Left', fr: 'Gauche' }
+              value: left
+            - label: { en: 'Center', fr: 'Centre' }
+              value: center
+            - label: { en: 'Right', fr: 'Droite' }
+              value: right
+        description:
+            en: Adjusts the alignment of the text content.
+            fr: Ajuste l'alignement du contenu textuel.
+    textColumns:
+        label:
+            en: Text Columns
+            fr: Colonnes de texte
+        type: select
+        default: '1'
+        options:
+            - label: { en: '1 Column', fr: '1 Colonne' }
+              value: '1'
+            - label: { en: '2 Columns', fr: '2 Colonnes' }
+              value: '2'
+            - label: { en: '3 Columns', fr: '3 Colonnes' }
+              value: '3'
+        description:
+            en: Adjusts the number of columns for the text content.
+            fr: Ajuste le nombre de colonnes pour le contenu textuel.
+    textProfile:
+        label:
+            en: Text Profile
+            fr: Profil du texte
+        type: select
+        default: default
+        options:
+            - label:
+                  en: Default
+                  fr: Par défaut
+              value: default
+            - label:
+                  en: Scholar
+                  fr: Universitaire
+              value: scholar
+        description:
+            en: Adjusts the visual style of the text content.
+            fr: Ajuste le style visuel du contenu textuel.

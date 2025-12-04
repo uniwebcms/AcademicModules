@@ -6,7 +6,11 @@ function makeEntryPath(libraryName, subpath = '**/*.{js,jsx,ts,tsx}') {
 
 module.exports = {
     content: ['../src/**/*.{js,jsx}', makeEntryPath('@uniwebcms/core-components')],
-    plugins: [require('@uniwebcms/uniweb-tailwind-plugin'), require('@tailwindcss/typography')],
+    plugins: [
+        require('@uniwebcms/uniweb-tailwind-plugin'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/container-queries'),
+    ],
     theme: {
         extend: {
             typography: (theme) => ({

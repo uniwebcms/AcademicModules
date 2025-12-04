@@ -3333,6 +3333,7 @@ __metadata:
   dependencies:
     "@headlessui/react": "npm:^1.7.13"
     "@popperjs/core": "npm:^2.11.6"
+    "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@uniwebcms/core-components": "npm:^1.6.35"
     "@uniwebcms/module-sdk": "npm:^2.0.6"

@@ -1,0 +1,316 @@
+title:
+    en: Smart Grid Layout
+    fr: Mise en page Smart Grid
+label:
+    en: Layout - Smart Grid
+    fr: Mise en page - Smart Grid
+description:
+    en: A flexible grid container with smart breakpoints and directional spacing control.
+    fr: Un conteneur de grille flexible avec des points de rupture intelligents et un contrôle d'espacement directionnel.
+
+category: layout
+export: true
+
+items:
+    separator: section
+    category: Any category
+
+properties:
+    # --- 1. Column Structure ---
+    columns:
+        label:
+            en: Number of Columns
+            fr: Nombre de colonnes
+        type: select
+        default: 2
+        options:
+            - label: { en: '1 Column', fr: '1 Colonne' }
+              value: 1
+            - label: { en: '2 Columns', fr: '2 Colonnes' }
+              value: 2
+            - label: { en: '3 Columns', fr: '3 Colonnes' }
+              value: 3
+            - label: { en: '4 Columns', fr: '4 Colonnes' }
+              value: 4
+        description:
+            en: Determines the number of tracks in the grid.
+            fr: Détermine le nombre de pistes dans la grille.
+
+    # --- 2. Conditional Layout Ratios ---
+
+    # Condition: Shows only if columns == 2
+    two_col_layout_configuration:
+        label:
+            en: 2-Column Arrangement
+            fr: Disposition 2-Colonnes
+        type: select
+        default: 50/50
+        condition:
+            columns: 2
+        options:
+            - label: { en: 'Even (50/50)', fr: 'Égal (50/50)' }
+              value: 50/50
+            - label: { en: 'Narrow Left (40/60)', fr: 'Étroit à gauche (40/60)' }
+              value: 40/60
+            - label: { en: 'Narrow Right (60/40)', fr: 'Étroit à droite (60/40)' }
+              value: 60/40
+            - label: { en: 'Sidebar Left (30/70)', fr: 'Barre latérale gauche (30/70)' }
+              value: 30/70
+            - label: { en: 'Sidebar Right (70/30)', fr: 'Barre latérale droite (70/30)' }
+              value: 70/30
+            - label:
+                  { en: 'Small Sidebar Left (25/75)', fr: 'Petite barre latérale gauche (25/75)' }
+              value: 25/75
+            - label:
+                  { en: 'Small Sidebar Right (75/25)', fr: 'Petite barre latérale droite (75/25)' }
+              value: 75/25
+
+    # Condition: Shows only if columns == 3
+    three_col_layout_configuration:
+        label:
+            en: 3-Column Arrangement
+            fr: Disposition 3-Colonnes
+        type: select
+        default: 33/33/33
+        condition:
+            columns: 3
+        options:
+            - label: { en: 'Even (33/33/33)', fr: 'Égal (33/33/33)' }
+              value: 33/33/33
+            - label: { en: 'Wide Center (25/50/25)', fr: 'Centre large (25/50/25)' }
+              value: 25/50/25
+            - label: { en: 'Ultra Wide Center (20/60/20)', fr: 'Centre ultra large (20/60/20)' }
+              value: 20/60/20
+
+    # Condition: Shows only if columns == 4
+    four_col_layout_configuration:
+        label:
+            en: 4-Column Arrangement
+            fr: Disposition 4-Colonnes
+        type: select
+        default: 25/25/25/25
+        condition:
+            columns: 4
+        options:
+            - label: { en: 'Even (25/25/25/25)', fr: 'Égal (25/25/25/25)' }
+              value: 25/25/25/25
+            - label: { en: 'Narrow Outer (15/35/35/15)', fr: 'Extérieur étroit (15/35/35/15)' }
+              value: 15/35/35/15
+            - label: { en: 'Focus Left (40/20/20/20)', fr: 'Focus gauche (40/20/20/20)' }
+              value: 40/20/20/20
+            - label: { en: 'Focus Right (20/20/20/40)', fr: 'Focus droite (20/20/20/40)' }
+              value: 20/20/20/40
+
+    headerRow:
+        label:
+            en: Header Row
+            fr: Ligne d'en-tête
+        type: boolean
+        default: false
+        description:
+            en: The first item will span across the full width of the grid.
+            fr: Le premier élément s'étendra sur toute la largeur de la grille.
+
+    # --- 3. Container Dimensions ---
+    max_width:
+        label:
+            en: Container Width
+            fr: Largeur du conteneur
+        type: select
+        default: regular
+        options:
+            - label: { en: 'Full Width', fr: 'Pleine largeur' }
+              value: full
+            - label: { en: 'Wide (1400px)', fr: 'Large (1400px)' }
+              value: wide
+            - label: { en: 'Regular (Standard)', fr: 'Régulier (Standard)' }
+              value: regular
+            - label: { en: 'Narrow (Content)', fr: 'Étroit (Contenu)' }
+              value: narrow
+            - label: { en: 'Text (Readable)', fr: 'Texte (Lisible)' }
+              value: text
+
+    vertical_alignment:
+        label:
+            en: Vertical Alignment
+            fr: Alignement vertical
+        type: select
+        default: center
+        options:
+            - label: { en: 'Top', fr: 'Haut' }
+              value: top
+            - label: { en: 'Center', fr: 'Centre' }
+              value: center
+            - label: { en: 'Bottom', fr: 'Bas' }
+              value: bottom
+            - label: { en: 'Stretch', fr: 'Étirer' }
+              value: stretch
+
+    # --- 4. Spacing (Outer Padding) ---
+    vertical_padding:
+        label:
+            en: Vertical Padding (Top/Bottom)
+            fr: Rembourrage vertical (Haut/Bas)
+        type: select
+        default: lg
+        options: &spacing_options
+            - label: { en: 'None', fr: 'Aucun' }
+              value: none
+            - label: { en: 'Extra Small (xs)', fr: 'Très petit (xs)' }
+              value: xs
+            - label: { en: 'Small (sm)', fr: 'Petit (sm)' }
+              value: sm
+            - label: { en: 'Medium (md)', fr: 'Moyen (md)' }
+              value: md
+            - label: { en: 'Large (lg)', fr: 'Grand (lg)' }
+              value: lg
+            - label: { en: 'Extra Large (xl)', fr: 'Très grand (xl)' }
+              value: xl
+            - label: { en: '2x Large (2xl)', fr: '2x Grand (2xl)' }
+              value: 2xl
+
+    horizontal_padding:
+        label:
+            en: Horizontal Padding (Left/Right)
+            fr: Rembourrage horizontal (Gauche/Droite)
+        type: select
+        default: lg
+        options: *spacing_options
+
+    # --- 5. Spacing (Inner Gaps) ---
+    column_padding:
+        label:
+            en: Column Gap (Horizontal)
+            fr: Écart entre colonnes (Horizontal)
+        type: select
+        default: lg
+        options: *spacing_options
+
+    row_padding:
+        label:
+            en: Row Gap (Vertical)
+            fr: Écart entre rangées (Vertical)
+        type: select
+        default: lg
+        options: *spacing_options
+
+# --- 6. Presets ---
+presets:
+    standard_2col:
+        label:
+            en: Standard 2 Columns
+            fr: Standard 2 Colonnes
+        properties:
+            columns: 2
+            two_col_layout_configuration: 50/50
+            max_width: regular
+            vertical_padding: lg
+            column_padding: lg
+
+    sidebar_right:
+        label:
+            en: Sidebar Right
+            fr: Barre latérale droite
+        properties:
+            columns: 2
+            two_col_layout_configuration: 70/30
+            max_width: wide
+            vertical_padding: md
+
+    feature_header:
+        label:
+            en: Feature Header + 3 Columns
+            fr: En-tête + 3 Colonnes
+        properties:
+            columns: 3
+            three_col_layout_configuration: 33/33/33
+            headerRow: true
+            max_width: wide
+            vertical_alignment: top
+
+content_ui:
+    # Toolbar Items
+    columns:
+        placement: toolbar
+        widget: segmented
+
+    two_col_layout_configuration:
+        placement: toolbar
+        widget: visual_select
+        visuals:
+            '50/50': '1fr 1fr'
+            '40/60': '2fr 3fr'
+            '60/40': '3fr 2fr'
+            '30/70': '1fr 2fr'
+            '70/30': '2fr 1fr'
+            '25/75': '1fr 3fr'
+            '75/25': '3fr 1fr'
+
+    three_col_layout_configuration:
+        placement: toolbar
+        widget: visual_select
+        visuals:
+            '33/33/33': '1fr 1fr 1fr'
+            '25/50/25': '1fr 2fr 1fr'
+            '20/60/20': '1fr 3fr 1fr'
+
+    four_col_layout_configuration:
+        placement: toolbar
+        widget: visual_select
+        visuals:
+            '25/25/25/25': '1fr 1fr 1fr 1fr'
+            '15/35/35/15': '1fr 2fr 2fr 1fr'
+            '40/20/20/20': '2fr 1fr 1fr 1fr'
+            '20/20/20/40': '1fr 1fr 1fr 2fr'
+
+    headerRow:
+        placement: toolbar
+        widget: toggle_button
+        icon: HeaderRow
+
+    # Settings Panel Items
+    vertical_alignment:
+        placement: settings
+        widget: select
+        section:
+            en: Layout
+            fr: Mise en page
+
+    max_width:
+        placement: settings
+        widget: select
+        section:
+            en: Layout
+            fr: Mise en page
+
+    column_padding: # Gap X
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
+
+    row_padding: # Gap Y
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
+
+    vertical_padding: # Pad Y
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
+
+    horizontal_padding: # Pad X
+        placement: settings
+        widget: select
+        gridCols: 2
+        section:
+            en: Spacing
+            fr: Espacement
