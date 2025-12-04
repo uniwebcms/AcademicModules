@@ -105,6 +105,7 @@ export default function TextBox(props) {
             tracking: 'tracking-tight',
             // Base: px-3 py-1.5 (Smaller button)
             btnPad: 'px-3 py-1.5 @xs:px-4 @xs:py-2',
+            btnGap: 'gap-1 @xs:gap-1.5',
             lineHeight: '!leading-snug',
             eyebrowPad: 'px-1.5 py-0.5 @xs:px-2 @xs:py-1',
         },
@@ -118,6 +119,7 @@ export default function TextBox(props) {
             tracking: 'tracking-normal',
             // Base: px-4 py-2
             btnPad: 'px-4 py-2 @xs:px-6 @xs:py-3',
+            btnGap: 'gap-2 @xs:gap-2.5',
             lineHeight: '!leading-normal',
             eyebrowPad: 'px-2 py-0.5 @xs:px-2.5 @xs:py-1',
         },
@@ -131,6 +133,7 @@ export default function TextBox(props) {
             tracking: 'tracking-wide',
             // Base: px-5 py-2.5
             btnPad: 'px-5 py-2.5 @xs:px-8 @xs:py-4',
+            btnGap: 'gap-3 @xs:gap-3.5',
             lineHeight: '!leading-loose',
             eyebrowPad: 'px-2.5 py-1 @xs:px-3 @xs:py-1.5',
         },
@@ -388,6 +391,7 @@ export default function TextBox(props) {
                                         ? '' // Primary
                                         : 'btn-secondary border border-btn-alt-text-color/30', // Secondary
                                     densityConfig[textDensity].btnPad,
+                                    densityConfig[textDensity].btnGap,
                                     scaleConfig[textScale].btn,
                                     // Personality tweak: if heading is Serif, maybe buttons are serif too?
                                     headingStyle === 'serif' ? 'font-serif' : 'font-semibold'
@@ -397,7 +401,13 @@ export default function TextBox(props) {
                                 {icons[index] && (
                                     <Icon
                                         {...icons[index]}
-                                        className="ml-2 w-[1.2em] h-[1.2em]" // Relative sizing to text
+                                        // className="ml-2 w-[1.2em] h-[1.2em]" // Relative sizing to text
+                                        className={twJoin(
+                                            'w-[1.2em] h-[1.2em] transition-colors',
+                                            index === 0
+                                                ? '[&_svg]:text-btn-text-color group-hover:bg-btn-hover-color'
+                                                : '[&_svg]:text-btn-alt-text-color group-hover:bg-btn-alt-hover-color'
+                                        )}
                                     />
                                 )}
                             </button>
