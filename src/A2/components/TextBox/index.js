@@ -19,6 +19,8 @@ export default function TextBox(props) {
     const navigate = useNavigate();
 
     const {
+        // --- LAYOUT SETTINGS ---
+        textInset = 'standard', // 'standard', 'none'
         // --- MACRO SETTINGS (Bundled) ---
         textDensity = 'normal', // 'compact', 'normal', 'spacious'
         textWidth = 'regular', // 'narrow', 'regular', 'wide'
@@ -248,55 +250,60 @@ export default function TextBox(props) {
 
     return (
         <Container
-            className={twJoin(
-                'flex flex-col h-full', // Ensure height fills if used in grid
-                // Add the position config here:
-                positionConfig[textAlign],
-
-                // Existing alignment logic for children
-                textAlign === 'center'
-                    ? 'items-center'
-                    : textAlign === 'right'
-                    ? 'items-end'
-                    : 'items-start',
-                // wrapperAlign,
-                densityConfig[textDensity].padding,
-                densityConfig[textDensity].space,
-                densityConfig[textDensity].tracking
-            )}
-            maxWidth={widthConfig[textWidth]}
+            className={'h-full'} // Ensure height fills if used in grid
+            maxWidth={'7xl'}
             {...extra}
         >
-            {/* Header Group: Wrapped to handle "Center Heading + Left Body" scenarios better if needed, 
+            <div
+                className={twJoin(
+                    'flex flex-col', // Ensure height fills if used in grid
+                    // Add the position config here:
+                    positionConfig[textAlign],
+
+                    // Existing alignment logic for children
+                    textAlign === 'center'
+                        ? 'items-center'
+                        : textAlign === 'right'
+                        ? 'items-end'
+                        : 'items-start',
+                    // wrapperAlign,
+                    textInset === 'standard' ? densityConfig[textDensity].padding : '',
+                    densityConfig[textDensity].space,
+                    densityConfig[textDensity].tracking,
+                    widthConfig[textWidth]
+                )}
+                // maxWidth={widthConfig[textWidth]}
+            >
+                {/* Header Group: Wrapped to handle "Center Heading + Left Body" scenarios better if needed, 
                 but here strictly following the vertical stack logic */}
 
-            {eyebrow && (
-                <div
-                    className={twJoin(
-                        headerAlign,
-                        scaleConfig[textScale].eyebrow,
-                        eyebrowStyles[eyebrowStyle],
-                        'mb-1',
-                        eyebrowStyle === 'accent' && densityConfig[textDensity].eyebrowPad
-                    )}
-                >
-                    {eyebrow}
-                </div>
-            )}
+                {eyebrow && (
+                    <div
+                        className={twJoin(
+                            headerAlign,
+                            scaleConfig[textScale].eyebrow,
+                            eyebrowStyles[eyebrowStyle],
+                            'mb-1',
+                            eyebrowStyle === 'accent' && densityConfig[textDensity].eyebrowPad
+                        )}
+                    >
+                        {eyebrow}
+                    </div>
+                )}
 
-            {title && (
-                <h2
-                    className={twJoin(
-                        headerAlign,
-                        scaleConfig[textScale].title,
-                        headingStyles[headingStyle]
-                    )}
-                >
-                    {title}
-                </h2>
-            )}
+                {title && (
+                    <h2
+                        className={twJoin(
+                            headerAlign,
+                            scaleConfig[textScale].title,
+                            headingStyles[headingStyle]
+                        )}
+                    >
+                        {title}
+                    </h2>
+                )}
 
-            {/* {subtitle && (
+                {/* {subtitle && (
                 <p
                     className={twJoin(
                         headerAlign,
@@ -308,22 +315,22 @@ export default function TextBox(props) {
                 </p>
             )} */}
 
-            {subtitle && (
-                <p
-                    className={twJoin(
-                        headerAlign,
-                        scaleConfig[textScale].subtitle,
-                        // CHANGE: Lighter color (text-gray-500 or opacity-80), Medium weight, Bottom margin
-                        'text-[var(--text-color)] opacity-75 font-medium'
-                        // 'mb-4'
-                    )}
-                >
-                    {subtitle}
-                </p>
-            )}
+                {subtitle && (
+                    <p
+                        className={twJoin(
+                            headerAlign,
+                            scaleConfig[textScale].subtitle,
+                            // CHANGE: Lighter color (text-gray-500 or opacity-80), Medium weight, Bottom margin
+                            'text-[var(--text-color)] opacity-75 font-medium'
+                            // 'mb-4'
+                        )}
+                    >
+                        {subtitle}
+                    </p>
+                )}
 
-            {/* Content Body */}
-            {/* {paragraphs.length > 0 && (
+                {/* Content Body */}
+                {/* {paragraphs.length > 0 && (
                 <div className={twJoin('w-full', bodyAlign)}>
                     <SafeHtml
                         value={paragraphs}
@@ -338,65 +345,66 @@ export default function TextBox(props) {
                 </div>
             )} */}
 
-            {paragraphs.length > 0 && (
-                <div className={twJoin('w-full', bodyAlign)}>
-                    <SafeHtml
-                        value={paragraphs}
-                        className={twJoin(
-                            scaleConfig[textScale].body,
-                            columnConfig[textColumns],
-                            textColumns !== '1' && densityConfig[textDensity].gap,
-                            // CHANGE: Add the line height here
-                            densityConfig[textDensity].lineHeight,
-                            'prose max-w-none'
-                        )}
-                    />
-                </div>
-            )}
-
-            {/* Actions */}
-            {links.length > 0 && (
-                <div
-                    className={twJoin(
-                        'flex flex-wrap pt-2', // Add a little visual separation from text
-                        // Alignment for buttons usually follows body alignment
-                        textAlign === 'center'
-                            ? 'justify-center'
-                            : textAlign === 'right'
-                            ? 'justify-end'
-                            : 'justify-start',
-                        densityConfig[textDensity].gap
-                    )}
-                >
-                    {links.map((link, index) => (
-                        <button
-                            key={index}
-                            onClick={() => {
-                                navigate(link.href);
-                            }}
-                            type="button"
+                {paragraphs.length > 0 && (
+                    <div className={twJoin('w-full', bodyAlign)}>
+                        <SafeHtml
+                            value={paragraphs}
                             className={twJoin(
-                                'inline-flex items-center justify-center rounded-[var(--border-radius)] transition-all duration-200',
-                                index === 0
-                                    ? '' // Primary
-                                    : 'btn-secondary border border-btn-alt-text-color/30', // Secondary
-                                densityConfig[textDensity].btnPad,
-                                scaleConfig[textScale].btn,
-                                // Personality tweak: if heading is Serif, maybe buttons are serif too?
-                                headingStyle === 'serif' ? 'font-serif' : 'font-semibold'
+                                scaleConfig[textScale].body,
+                                columnConfig[textColumns],
+                                textColumns !== '1' && densityConfig[textDensity].gap,
+                                // CHANGE: Add the line height here
+                                densityConfig[textDensity].lineHeight,
+                                'prose max-w-none'
                             )}
-                        >
-                            {link.label}
-                            {icons[index] && (
-                                <Icon
-                                    {...icons[index]}
-                                    className="ml-2 w-[1.2em] h-[1.2em]" // Relative sizing to text
-                                />
-                            )}
-                        </button>
-                    ))}
-                </div>
-            )}
+                        />
+                    </div>
+                )}
+
+                {/* Actions */}
+                {links.length > 0 && (
+                    <div
+                        className={twJoin(
+                            'flex flex-wrap pt-2', // Add a little visual separation from text
+                            // Alignment for buttons usually follows body alignment
+                            textAlign === 'center'
+                                ? 'justify-center'
+                                : textAlign === 'right'
+                                ? 'justify-end'
+                                : 'justify-start',
+                            densityConfig[textDensity].gap
+                        )}
+                    >
+                        {links.map((link, index) => (
+                            <button
+                                key={index}
+                                onClick={() => {
+                                    navigate(link.href);
+                                }}
+                                type="button"
+                                className={twJoin(
+                                    'inline-flex items-center justify-center rounded-[var(--border-radius)] transition-all duration-200',
+                                    index === 0
+                                        ? '' // Primary
+                                        : 'btn-secondary border border-btn-alt-text-color/30', // Secondary
+                                    densityConfig[textDensity].btnPad,
+                                    scaleConfig[textScale].btn,
+                                    // Personality tweak: if heading is Serif, maybe buttons are serif too?
+                                    headingStyle === 'serif' ? 'font-serif' : 'font-semibold'
+                                )}
+                            >
+                                {link.label}
+                                {icons[index] && (
+                                    <Icon
+                                        {...icons[index]}
+                                        className="ml-2 w-[1.2em] h-[1.2em]" // Relative sizing to text
+                                    />
+                                )}
+                            </button>
+                        ))}
+                    </div>
+                )}
+            </div>
         </Container>
     );
 }

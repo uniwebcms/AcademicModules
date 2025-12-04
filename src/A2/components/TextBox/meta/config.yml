@@ -38,6 +38,21 @@ elements:
             fr: Icônes
 
 properties:
+    # --- SECTION 0: GENERAL ---
+    textInset:
+        label:
+            en: Text Inset
+            fr: Retrait du texte
+        type: select
+        default: standard
+        options:
+            - label: { en: 'Standard', fr: 'Standard' }
+              value: standard
+            - label: { en: 'None', fr: 'Aucun' }
+              value: none
+        description:
+            en: Controls the space around the text.
+            fr: Contrôle l'espace autour du texte.
     # --- SECTION 1: LAYOUT ---
     textWidth:
         label:
