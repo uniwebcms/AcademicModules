@@ -2,8 +2,8 @@ title:
     en: Text Box
     fr: Boîte de texte
 description:
-    en: A simple text box component for displaying content.
-    fr: Un composant de boîte de texte simple pour afficher du contenu.
+    en: A versatile text component with adjustable scale, density, and personality.
+    fr: Un composant textuel polyvalent avec échelle, densité et personnalité ajustables.
 label:
     en: Text Box
     fr: Boîte de texte
@@ -15,15 +15,15 @@ elements:
     pretitle:
         label:
             en: Eyebrow Text
-            fr: Texte de sourcil
+            fr: Surtitre
     title:
         label:
-            en: Title Text
-            fr: Texte du titre
+            en: Title
+            fr: Titre
     subtitle:
         label:
-            en: Subtitle Text
-            fr: Texte du sous-titre
+            en: Subtitle
+            fr: Sous-titre
     paragraphs:
         label:
             en: Paragraphs
@@ -34,14 +34,15 @@ elements:
             fr: Liens
     icons:
         label:
-            en: Icons for Links
-            fr: Icônes pour les liens
+            en: Icons
+            fr: Icônes
 
 properties:
+    # --- SECTION 1: LAYOUT ---
     textWidth:
         label:
-            en: Text Width
-            fr: Largeur du texte
+            en: Content Width
+            fr: Largeur du contenu
         type: select
         default: regular
         options:
@@ -52,60 +53,13 @@ properties:
             - label: { en: 'Wide', fr: 'Large' }
               value: wide
         description:
-            en: Adjusts the width of the text content.
-            fr: Ajuste la largeur du contenu textuel.
-    textDensity:
+            en: Constrains the maximum width of the text block.
+            fr: Contraint la largeur maximale du bloc de texte.
+
+    textAlign:
         label:
-            en: Text Breathability (Density)
-            fr: Respirabilité du texte (Densité)
-        type: select
-        default: normal
-        options:
-            - label:
-                  en: Compact
-                  fr: Compact
-              value: compact
-            - label:
-                  en: Normal
-                  fr: Normal
-              value: normal
-            - label:
-                  en: Spacious
-                  fr: Spacieux
-              value: spacious
-        description:
-            en: Adjusts the spacing between lines and paragraphs for readability.
-            fr: Ajuste l'espacement entre les lignes et les paragraphes pour la lisibilité.
-    textScale:
-        label:
-            en: Text Scale (Size)
-            fr: Échelle du texte (Taille)
-        type: select
-        default: normal
-        options:
-            - label:
-                  en: Small
-                  fr: Petit
-              value: small
-            - label:
-                  en: Normal
-                  fr: Normal
-              value: normal
-            - label:
-                  en: Large
-                  fr: Grand
-              value: large
-            - label:
-                  en: Extra Large
-                  fr: Très grand
-              value: xlarge
-        description:
-            en: Adjusts the size of the text for emphasis.
-            fr: Ajuste la taille du texte pour l'accentuation.
-    textAlignment:
-        label:
-            en: Text Alignment
-            fr: Alignement du texte
+            en: Alignment
+            fr: Alignement
         type: select
         default: left
         options:
@@ -115,13 +69,23 @@ properties:
               value: center
             - label: { en: 'Right', fr: 'Droite' }
               value: right
+
+    centerHeadings:
+        label:
+            en: Center Headings?
+            fr: Centrer les titres ?
+        type: boolean
+        default: false
+        condition:
+            textAlign: left
         description:
-            en: Adjusts the alignment of the text content.
-            fr: Ajuste l'alignement du contenu textuel.
+            en: Keeps paragraphs left-aligned but centers the titles.
+            fr: Garde les paragraphes alignés à gauche mais centre les titres.
+
     textColumns:
         label:
-            en: Text Columns
-            fr: Colonnes de texte
+            en: Columns
+            fr: Colonnes
         type: select
         default: '1'
         options:
@@ -131,24 +95,71 @@ properties:
               value: '2'
             - label: { en: '3 Columns', fr: '3 Colonnes' }
               value: '3'
-        description:
-            en: Adjusts the number of columns for the text content.
-            fr: Ajuste le nombre de colonnes pour le contenu textuel.
-    textProfile:
+
+    # --- SECTION 2: DIMENSIONS ---
+    textScale:
         label:
-            en: Text Profile
-            fr: Profil du texte
+            en: Size Scale
+            fr: Échelle de taille
+        type: select
+        default: normal
+        options:
+            - label: { en: 'Small', fr: 'Petit' }
+              value: small
+            - label: { en: 'Normal', fr: 'Normal' }
+              value: normal
+            - label: { en: 'Large', fr: 'Grand' }
+              value: large
+            - label: { en: 'Extra Large', fr: 'Très grand' }
+              value: xlarge
+        description:
+            en: Adjusts the overall size of all text elements proportionally.
+            fr: Ajuste la taille globale de tous les éléments de texte proportionnellement.
+
+    textDensity:
+        label:
+            en: Spacing & Density
+            fr: Espacement et densité
+        type: select
+        default: normal
+        options:
+            - label: { en: 'Compact', fr: 'Compact' }
+              value: compact
+            - label: { en: 'Normal', fr: 'Normal' }
+              value: normal
+            - label: { en: 'Spacious', fr: 'Spacieux' }
+              value: spacious
+        description:
+            en: Controls vertical rhythm, padding, and line height.
+            fr: Contrôle le rythme vertical, le remplissage et la hauteur de ligne.
+
+    # --- SECTION 3: STYLING ---
+    headingStyle:
+        label:
+            en: Heading Style
+            fr: Style de titre
+        type: select
+        default: bold
+        options:
+            - label: { en: 'Modern Bold', fr: 'Moderne Gras' }
+              value: bold
+            - label: { en: 'Clean Light', fr: 'Épuré Léger' }
+              value: light
+            - label: { en: 'Elegant Serif', fr: 'Sérif Élégant' }
+              value: serif
+            - label: { en: 'Impact Slab', fr: 'Slab Impact' }
+              value: slab
+
+    eyebrowStyle:
+        label:
+            en: Eyebrow Style
+            fr: Style de surtitre
         type: select
         default: default
         options:
-            - label:
-                  en: Default
-                  fr: Par défaut
+            - label: { en: 'Simple', fr: 'Simple' }
               value: default
-            - label:
-                  en: Scholar
-                  fr: Universitaire
-              value: scholar
-        description:
-            en: Adjusts the visual style of the text content.
-            fr: Ajuste le style visuel du contenu textuel.
+            - label: { en: 'Uppercase', fr: 'Majuscule' }
+              value: uppercase
+            - label: { en: 'Accent Badge', fr: 'Badge accentué' }
+              value: accent
