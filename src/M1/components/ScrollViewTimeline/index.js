@@ -334,18 +334,18 @@ export default function ScrollViewTimeline(props) {
                                 tabIndex={0}
                             >
                                 <div className="max-w-full animate-fadeIn text-left">
-                                    <h2 className="text-5xl font-extrabold tracking-tight">
+                                    <h2 className="text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold tracking-tight">
                                         {section.title}
                                     </h2>
                                     {section.subtitle && (
-                                        <p className="mt-6 text-xl leading-relaxed">
+                                        <p className="mt-6 text-lg md:text-xl leading-relaxed">
                                             {section.subtitle}
                                         </p>
                                     )}
                                     {section.paragraphs.length > 0 && (
                                         <SafeHtml
                                             value={section.paragraphs}
-                                            className="mt-8 text-lg leading-relaxed"
+                                            className="mt-8 text-base md:text-lg leading-relaxed"
                                         />
                                     )}
                                     <div className="w-full md:hidden aspect-video mt-6 video-frame p-1">
