@@ -225,3 +225,7 @@ export default function ArticleList(props) {
         </Container>
     );
 }
+
+ArticleList.querySchema = {
+    mode: 'simple',
+};

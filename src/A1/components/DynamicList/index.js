@@ -3,7 +3,7 @@ import Container from '../_utils/Container';
 import { twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { Image, Link } from '@uniwebcms/core-components';
 
-export default function (props) {
+export default function DynamicList(props) {
     const { block, website, input } = props;
 
     const { title = '' } = block.main?.header || {};
@@ -180,4 +180,9 @@ const Items = ({ items, layout }) => {
             );
         }
     });
+};
+
+DynamicList.inputSchema = {
+    type: 'any',
+    limit: false,
 };
