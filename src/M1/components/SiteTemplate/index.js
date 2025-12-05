@@ -252,6 +252,6 @@ export default function SiteTemplate(props) {
     );
 }
 
-SiteTemplate.querySchema = {
-    mode: 'simple',
+SiteTemplate.inputSchema = {
+    queryMode: 'simple',
 };

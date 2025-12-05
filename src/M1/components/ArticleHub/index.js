@@ -346,6 +346,7 @@ export default function ArticleHub(props) {
     );
 }
 
-ArticleHub.querySchema = {
-    mode: 'simple',
+ArticleHub.inputSchema = {
+    type: 'articles',
+    queryMode: 'simple',
 };
