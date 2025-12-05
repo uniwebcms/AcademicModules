@@ -151,7 +151,7 @@ export default function ArticleList(props) {
                         const { title, subtitle } = article.getBasicInfo();
 
                         const articleInformation = article.at('article_information');
-
+                        const headInfo = articleInformation?.head || {};
                         return (
                             <Link
                                 key={index}
@@ -212,7 +212,7 @@ export default function ArticleList(props) {
                                     )}
                                     <div className={twJoin(is_side_panel ? 'mt-2' : 'mt-3')}>
                                         <ArticleAuthor
-                                            info={articleInformation}
+                                            info={headInfo}
                                             in_side_panel={is_side_panel}
                                         />
                                     </div>
@@ -225,3 +225,8 @@ export default function ArticleList(props) {
         </Container>
     );
 }
+
+ArticleList.inputSchema = {
+    queryMode: 'simple',
+    type: 'articles',
+};

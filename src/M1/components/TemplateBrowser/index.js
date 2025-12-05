@@ -588,6 +588,6 @@ TemplateBrowser.Loader = () => {
     );
 };
 
-TemplateBrowser.querySchema = {
-    mode: 'simple',
+TemplateBrowser.inputSchema = {
+    queryMode: 'simple',
 };

@@ -82,3 +82,8 @@ export default function Article(props) {
         </Container>
     );
 }
+
+Article.inputSchema = {
+    type: 'article',
+    limit: 1,
+};

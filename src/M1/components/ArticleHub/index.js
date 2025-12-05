@@ -105,15 +105,16 @@ const ArticleAuthor = ({ info }) => {
 const ArticleCard = ({ article, input, size = 'md' }) => {
     const { title, subtitle } = article.getBasicInfo();
 
-    const info = article.at('article_information');
+    let info = article.at('article_information');
 
+    const headInfo = info?.head || {};
     return (
         <Link to={input.makeHref(article)} className="flex flex-col overflow-hidden group">
             <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                 <Image profile={article} type="banner" className="object-cover w-full h-full" />
-                {info.author || info.date ? (
+                {headInfo.author || headInfo.date ? (
                     <div className="absolute inset-0 z-10 opacity-0 hover:opacity-100 text-sm text-white transition-all duration-300 px-4 py-3 flex items-end bg-gradient-to-t from-gray-950/90 to-transparent">
-                        <ArticleAuthor info={info} />
+                        <ArticleAuthor info={headInfo} />
                     </div>
                 ) : null}
             </div>
@@ -345,6 +346,7 @@ export default function ArticleHub(props) {
     );
 }
 
-ArticleHub.querySchema = {
-    mode: 'simple',
+ArticleHub.inputSchema = {
+    type: 'articles',
+    queryMode: 'simple',
 };
