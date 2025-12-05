@@ -1,12 +1,12 @@
 title:
-    en: Text Box
-    fr: Boîte de texte
+    en: Text
+    fr: Texte
 description:
-    en: A versatile text component with adjustable scale, density, and personality.
-    fr: Un composant textuel polyvalent avec échelle, densité et personnalité ajustables.
+    en: A fundamental component for displaying text content including eyebrows, titles, subtitles, paragraphs, links, and icons with customizable styles and layouts.
+    fr: Un composant fondamental pour afficher du contenu textuel, y compris des surtitres, titres, sous-titres, paragraphes, liens et icônes avec des styles et mises en page personnalisables.
 label:
-    en: Text Box
-    fr: Boîte de texte
+    en: Text
+    fr: Texte
 
 category: content
 export: true
