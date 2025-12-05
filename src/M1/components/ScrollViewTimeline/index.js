@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getPageProfile } from '@uniwebcms/module-sdk';
+import { getPageProfile, twJoin } from '@uniwebcms/module-sdk';
 import { SafeHtml } from '@uniwebcms/core-components';
 
 // Extract YouTube video ID from URL
@@ -295,57 +295,89 @@ export default function ScrollViewTimeline(props) {
                 </div>
 
                 {/* Sections - Text content on the left side */}
-                <main className="relative z-10">
-                    {sections.map((section, i) => (
-                        <section
-                            ref={
-                                i === 0
-                                    ? firstSectionRef
-                                    : i === sections.length - 1
-                                    ? lastSectionRef
-                                    : null
-                            }
-                            // ref={i === sections.length - 1 ? lastSectionRef : null}
-                            key={section.src}
-                            className={`experience-section flex flex-col justify-center p-8 lg:p-16 pr-8 md:pr-[35%] lg:pr-[45%] xl:pr-[55%] bg-gradient-to-b ${
-                                section.bgGradient
-                            } ${
-                                i === 0
-                                    ? 'min-h-[calc(100vh-80px)] md:pb-28 lg:pb-36'
-                                    : 'min-h-screen'
-                            } ${
-                                text_shadow
-                                    ? '[&_h2]:[text-shadow:0_1px_2px_rgba(0,0,0,0.2)] [&_p]:[text-shadow:0_1px_2px_rgba(0,0,0,0.2)]'
-                                    : ''
-                            }`}
-                            style={{
-                                viewTimelineName: `--section-${i}`,
-                                viewTimelineAxis: 'block',
-                                viewTimelineInset: timelineInset,
-                            }}
-                            role="region"
-                            aria-label={`Section ${i + 1}: ${section.title}`}
-                            tabIndex={0}
-                        >
-                            <div className="max-w-full animate-fadeIn text-left">
-                                <h2 className="text-5xl font-extrabold tracking-tight">
-                                    {section.title}
-                                </h2>
-                                {section.subtitle && (
-                                    <p className="mt-6 text-xl leading-relaxed">
-                                        {section.subtitle}
-                                    </p>
+                <div className="relative z-10">
+                    {sections.map((section, i) => {
+                        const videoId =
+                            section.type === 'youtube' ? getYouTubeVideoId(section.src) : null;
+                        const youtubeEmbedUrl = videoId
+                            ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1`
+                            : section.src;
+
+                        return (
+                            <section
+                                ref={
+                                    i === 0
+                                        ? firstSectionRef
+                                        : i === sections.length - 1
+                                        ? lastSectionRef
+                                        : null
+                                }
+                                // ref={i === sections.length - 1 ? lastSectionRef : null}
+                                key={section.src}
+                                className={twJoin(
+                                    'experience-section flex flex-col justify-center p-8 lg:p-16 pr-8 md:pr-[35%] lg:pr-[45%] xl:pr-[55%] bg-gradient-to-b md:min-h-screen',
+                                    section.bgGradient,
+                                    // i === 0
+                                    //     ? 'min-h-[calc(100vh-80px)] md:pb-28 lg:pb-36'
+                                    //     : 'min-h-screen',
+                                    text_shadow
+                                        ? '[&_h2]:[text-shadow:0_1px_2px_rgba(0,0,0,0.2)] [&_p]:[text-shadow:0_1px_2px_rgba(0,0,0,0.2)]'
+                                        : ''
                                 )}
-                                {section.paragraphs.length > 0 && (
-                                    <SafeHtml
-                                        value={section.paragraphs}
-                                        className="mt-8 text-lg leading-relaxed"
-                                    />
-                                )}
-                            </div>
-                        </section>
-                    ))}
-                </main>
+                                style={{
+                                    viewTimelineName: `--section-${i}`,
+                                    viewTimelineAxis: 'block',
+                                    viewTimelineInset: timelineInset,
+                                }}
+                                role="region"
+                                aria-label={`Section ${i + 1}: ${section.title}`}
+                                tabIndex={0}
+                            >
+                                <div className="max-w-full animate-fadeIn text-left">
+                                    <h2 className="text-5xl font-extrabold tracking-tight">
+                                        {section.title}
+                                    </h2>
+                                    {section.subtitle && (
+                                        <p className="mt-6 text-xl leading-relaxed">
+                                            {section.subtitle}
+                                        </p>
+                                    )}
+                                    {section.paragraphs.length > 0 && (
+                                        <SafeHtml
+                                            value={section.paragraphs}
+                                            className="mt-8 text-lg leading-relaxed"
+                                        />
+                                    )}
+                                    <div className="w-full md:hidden aspect-video mt-6 video-frame p-1">
+                                        {section.type === 'video' ? (
+                                            <video
+                                                src={section.src}
+                                                poster={section.poster || undefined}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                preload="auto"
+                                                onCanPlay={() => handleLoaded(i)}
+                                                className="h-full w-full object-cover"
+                                                aria-hidden="true"
+                                            />
+                                        ) : (
+                                            <iframe
+                                                src={youtubeEmbedUrl}
+                                                loading="lazy"
+                                                allow="autoplay; fullscreen"
+                                                className="h-full w-full"
+                                                title={section.title}
+                                                onLoad={() => handleLoaded(i)}
+                                            />
+                                        )}
+                                    </div>
+                                </div>
+                            </section>
+                        );
+                    })}
+                </div>
             </div>
         </>
     );
