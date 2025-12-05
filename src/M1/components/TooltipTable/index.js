@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react'; // Added useRef, useEffect
 import { twJoin } from '@uniwebcms/module-sdk';
 import { Tooltip } from 'react-tooltip';
 import Container from '../_utils/Container';
 
+// ... (keep getFormContent and parseTableData helper functions exactly as they were) ...
 const getFormContent = (content) => {
     const docContent = content.content;
-
     return docContent.find((item) => item.type === 'table')?.content;
 };
 
@@ -18,7 +18,6 @@ const parseTableData = (content) => {
 
         cells.forEach((cell, j) => {
             const { type, content, attrs } = cell;
-
             const [data, tooltip] = content;
 
             let cellContent, tooltipContent, isBold, isItalic;
@@ -74,6 +73,38 @@ export default function TooltipTable(props) {
 
     const [hoveredCell, setHoveredCell] = useState(null);
 
+    // NEW: State for showing shadow
+    const [showShadow, setShowShadow] = useState(false);
+    // NEW: Ref for the scrollable container
+    const tableContainerRef = useRef(null);
+
+    // NEW: Effect to measure scroll capability
+    useEffect(() => {
+        const checkScrollable = () => {
+            const el = tableContainerRef.current;
+            if (el) {
+                // If scrollWidth is larger than clientWidth, content is overflowing
+                const isOverflowing = el.scrollWidth > el.clientWidth;
+                setShowShadow(isOverflowing);
+            }
+        };
+
+        // Check initially
+        checkScrollable();
+
+        // Watch for size changes (window resize or content change)
+        const observer = new ResizeObserver(checkScrollable);
+        if (tableContainerRef.current) {
+            observer.observe(tableContainerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [head, body]); // Re-run if data changes
+
+    // Reusable Shadow Class string
+    const shadowClasses =
+        "after:absolute after:top-0 after:right-0 after:bottom-0 after:w-4 after:translate-x-full after:bg-gradient-to-r after:from-neutral-400/10 after:to-transparent after:content-['']";
+
     return (
         <Container className="max-w-7xl mx-auto">
             {title || subtitle ? (
@@ -82,78 +113,122 @@ export default function TooltipTable(props) {
                     <p className="max-w-3xl mx-auto text-xl">{subtitle}</p>
                 </div>
             ) : null}
-            <table className="w-full ring-1 ring-neutral-300 rounded-xl overflow-hidden divide-y table-auto">
-                <thead className="bg-neutral-100">
-                    <tr>
-                        {head.map((cell, i) => (
-                            <th
-                                key={i}
-                                className={twJoin(
-                                    'px-6 py-5',
-                                    Number(featured_column) === i + 1 ? 'bg-primary-100/80' : ''
-                                )}
-                            >
-                                <span
-                                    className={twJoin(
-                                        'flex items-center gap-2',
-                                        i === 0 ? 'justify-start' : 'justify-center'
-                                    )}
-                                >
-                                    {cell && (
-                                        <span className="text-heading-color" style={cell.style}>
-                                            {cell.content}
-                                        </span>
-                                    )}
-                                </span>
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody className="divide-y">
-                    {body.map((row, i) => (
-                        <tr
-                            key={i}
-                            className={
-                                hoveredCell?.split('-')[0] === String(i) ? 'bg-neutral-50' : ''
-                            }
-                        >
-                            {row.map((cell, j) => (
-                                <td
-                                    key={j}
-                                    data-tooltip-id="table-tooltip"
-                                    data-tooltip-content={cell.tooltip}
-                                    className={twJoin(
-                                        'px-6 py-5',
-                                        Number(featured_column) === j + 1
-                                            ? 'bg-primary-100/60'
-                                            : '',
-                                        cell.tooltip && 'cursor-help'
-                                    )}
-                                    onMouseEnter={() => setHoveredCell(`${i}-${j}`)}
-                                    onMouseLeave={() => setHoveredCell(null)}
-                                >
-                                    <span
+
+            {/* Added ref={tableContainerRef} here */}
+            <div
+                ref={tableContainerRef}
+                className="w-full overflow-x-auto ring-1 ring-neutral-300 rounded-xl relative"
+            >
+                <table className="w-full text-sm md:text-base divide-y table-auto min-w-max">
+                    <thead>
+                        <tr>
+                            {head.map((cell, i) => {
+                                const isStickyCol = i === 0;
+                                const isFeatured = Number(featured_column) === i + 1;
+
+                                return (
+                                    <th
+                                        key={i}
                                         className={twJoin(
-                                            'flex items-center gap-2',
-                                            j === 0 ? 'justify-start' : 'justify-center'
+                                            'px-6 py-5',
+                                            isFeatured ? 'bg-primary-100/80' : 'bg-neutral-100',
+                                            // STICKY LOGIC
+                                            isStickyCol
+                                                ? twJoin(
+                                                      'sticky left-0 z-20',
+                                                      // Only add shadow classes if showShadow is true
+                                                      showShadow ? shadowClasses : ''
+                                                  )
+                                                : ''
                                         )}
                                     >
-                                        {cell && (
-                                            <span className="font-medium" style={cell.style}>
-                                                {cell.content}
-                                            </span>
-                                        )}
-                                    </span>
-                                </td>
-                            ))}
+                                        <span
+                                            className={twJoin(
+                                                'flex items-center gap-2',
+                                                i === 0 ? 'justify-start' : 'justify-center'
+                                            )}
+                                        >
+                                            {cell && (
+                                                <span
+                                                    className="text-heading-color"
+                                                    style={cell.style}
+                                                >
+                                                    {cell.content}
+                                                </span>
+                                            )}
+                                        </span>
+                                    </th>
+                                );
+                            })}
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className="divide-y">
+                        {body.map((row, i) => {
+                            const isRowHovered = hoveredCell?.split('-')[0] === String(i);
+
+                            return (
+                                <tr key={i}>
+                                    {row.map((cell, j) => {
+                                        const isStickyCol = j === 0;
+                                        const isFeatured = Number(featured_column) === j + 1;
+
+                                        return (
+                                            <td
+                                                key={j}
+                                                data-tooltip-id="table-tooltip"
+                                                data-tooltip-content={cell.tooltip}
+                                                className={twJoin(
+                                                    'px-6 py-5',
+                                                    // isFeatured && 'bg-primary-100/60',
+                                                    isRowHovered
+                                                        ? isFeatured
+                                                            ? 'bg-primary-100/90'
+                                                            : 'bg-neutral-50'
+                                                        : isFeatured
+                                                        ? 'bg-primary-100/60'
+                                                        : 'bg-text-color-0',
+                                                    cell.tooltip && 'cursor-help',
+                                                    // STICKY LOGIC
+                                                    isStickyCol
+                                                        ? twJoin(
+                                                              `sticky left-0 z-10`,
+                                                              // Only add shadow classes if showShadow is true
+                                                              showShadow ? shadowClasses : ''
+                                                          )
+                                                        : ''
+                                                )}
+                                                onMouseEnter={() => setHoveredCell(`${i}-${j}`)}
+                                                onMouseLeave={() => setHoveredCell(null)}
+                                            >
+                                                <span
+                                                    className={twJoin(
+                                                        'flex items-center gap-2',
+                                                        j === 0 ? 'justify-start' : 'justify-center'
+                                                    )}
+                                                >
+                                                    {cell && (
+                                                        <span
+                                                            className="font-medium"
+                                                            style={cell.style}
+                                                        >
+                                                            {cell.content}
+                                                        </span>
+                                                    )}
+                                                </span>
+                                            </td>
+                                        );
+                                    })}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
             <Tooltip
                 id="table-tooltip"
                 style={{
                     maxWidth: '240px',
+                    zIndex: 1000,
                 }}
             />
         </Container>
