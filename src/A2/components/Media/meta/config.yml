@@ -1,0 +1,108 @@
+title:
+    en: Media
+    fr: Médias
+label:
+    en: Media
+    fr: Médias
+description:
+    en: A fundamental component for displaying media content. It support single or multiple media items, including images and videos. It provide customizable styles and layouts.
+    fr: Un composant fondamental pour afficher du contenu multimédia. Il prend en charge un ou plusieurs éléments multimédias, y compris des images et des vidéos. Il offre des styles et des mises en page personnalisables.
+
+category: media
+export: true
+
+properties:
+    # --- GROUP 1: LAYOUT ---
+    mediaInset:
+        label:
+            en: Inner Spacing
+            fr: Espacement interne
+        type: select
+        default: standard
+        options:
+            - label: { en: 'Standard (Padded)', fr: 'Standard (Rembourré)' }
+              value: standard
+            - label: { en: 'Edge to Edge', fr: 'Bord à bord' }
+              value: edge_to_edge
+        description:
+            en: Controls if the media has padding or touches the edges of the container.
+            fr: Contrôle si le média a un remplissage ou touche les bords du conteneur.
+
+    aspectRatio:
+        label:
+            en: Aspect Ratio
+            fr: Ratio d'aspect
+        type: select
+        default: video
+        options:
+            - label: { en: '16:9 (Landscape)', fr: '16:9 (Paysage)' }
+              value: video
+            - label: { en: '4:3 (Standard)', fr: '4:3 (Standard)' }
+              value: standard
+            - label: { en: '1:1 (Square)', fr: '1:1 (Carré)' }
+              value: square
+            - label: { en: '3:4 (Portrait)', fr: '3:4 (Portrait)' }
+              value: portrait
+            - label: { en: 'Auto (Original)', fr: 'Auto (Original)' }
+              value: auto
+
+    # --- GROUP 2: VIDEO BEHAVIOR ---
+    videoAutoplay:
+        label:
+            en: Autoplay Videos
+            fr: Lecture automatique
+        type: boolean
+        default: false
+        description:
+            en: Muted autoplay is required by most browsers.
+            fr: La lecture automatique muette est requise par la plupart des navigateurs.
+
+    videoControls:
+        label:
+            en: Show Controls
+            fr: Afficher les contrôles
+        type: boolean
+        default: true
+
+    videoMute:
+        label:
+            en: Start Muted
+            fr: Démarrer en silencieux
+        type: boolean
+        default: false
+
+    videoLoop:
+        label:
+            en: Loop Video
+            fr: Boucler la vidéo
+        type: boolean
+        default: false
+        description:
+            en: If checked, video will loop instead of advancing to next slide (unless Slider Auto-Switch is off).
+            fr: Si coché, la vidéo tournera en boucle au lieu de passer à la suivante.
+
+    # --- GROUP 3: SLIDESHOW SETTINGS ---
+    sliderAutoSwitch:
+        label:
+            en: Auto-Switch Slides
+            fr: Changement auto des diapositives
+        type: boolean
+        default: true
+
+    sliderDuration:
+        label:
+            en: Slide Duration (Seconds)
+            fr: Durée de la diapositive (Secondes)
+        type: string
+        default: '5'
+        options:
+            - label: { en: '5 seconds', fr: '5 secondes' }
+              value: '5'
+            - label: { en: '10 seconds', fr: '10 secondes' }
+              value: '10'
+            - label: { en: '15 seconds', fr: '15 secondes' }
+              value: '15'
+            - label: { en: '20 seconds', fr: '20 secondes' }
+              value: '20'
+        condition:
+            sliderAutoSwitch: true

@@ -36,8 +36,6 @@ export default function TextBox(props) {
         eyebrowStyle = 'default', // 'default', 'uppercase', 'accent'
     } = block.getBlockProperties();
 
-    // 1. Alignment Logic: Hybrid approach
-    // If centerHeadings is true, force center on headers, otherwise inherit textAlign
     const headerAlign =
         textAlign === 'left' && centerHeadings
             ? 'text-center self-center justify-center'
@@ -54,46 +52,6 @@ export default function TextBox(props) {
         right: 'ml-auto', // Pushes box to the right (Caption/Note)
     };
 
-    // Container alignment (flex-col items-...)
-    // const containerAlignItems = {
-    //     left: 'items-start',
-    //     center: 'items-center',
-    //     right: 'items-end',
-    // };
-
-    // If we have mixed alignment (Left body, Center head), the container must generally stretch
-    // or center depending on the dominant content. Usually 'items-center' is safest for mixed,
-    // or 'items-start' if only the text is left.
-    // Simpler approach: Just align the container based on the Body Text, as headers handle their own text-align.
-    // const wrapperAlign = containerAlignItems[textAlign];
-
-    // 2. Density: Controls Padding, Gaps, and Button sizes
-    // const densityConfig = {
-    //     compact: {
-    //         padding: '@xs:p-4 @md:py-6 @lg:py-8',
-    //         space: '@xs:space-y-3 @md:space-y-4', // Tighter vertical rhythm
-    //         gap: '@xs:gap-2 @md:gap-3', // Button/Grid gaps
-    //         tracking: 'tracking-tight',
-    //         btnPad: '@xs:px-4 @xs:py-2',
-    //         lineHeight: '!leading-snug',
-    //     },
-    //     normal: {
-    //         padding: '@xs:p-6 @md:py-8 @lg:py-10',
-    //         space: '@xs:space-y-4 @md:space-y-6',
-    //         gap: '@xs:gap-3 @md:gap-4',
-    //         tracking: 'tracking-normal',
-    //         btnPad: '@xs:px-6 @xs:py-3',
-    //         lineHeight: '!leading-normal',
-    //     },
-    //     spacious: {
-    //         padding: '@xs:p-8 @md:py-12 @lg:py-16',
-    //         space: '@xs:space-y-6 @md:space-y-8', // Luxurious whitespace
-    //         gap: '@xs:gap-4 @md:gap-6',
-    //         tracking: 'tracking-wide',
-    //         btnPad: '@xs:px-8 @xs:py-4',
-    //         lineHeight: '!leading-loose',
-    //     },
-    // };
     const densityConfig = {
         compact: {
             // Base: p-3 -> @xs: p-4
@@ -139,38 +97,6 @@ export default function TextBox(props) {
         },
     };
 
-    // 3. Scale: Uses Container Queries (@xs, @md) to resize uniformly
-    // const scaleConfig = {
-    //     small: {
-    //         eyebrow: '@xs:text-xs @md:text-sm',
-    //         title: '@xs:text-xl @md:text-2xl',
-    //         subtitle: '@xs:text-lg @md:text-xl',
-    //         body: '@xs:text-sm @md:text-base',
-    //         btn: 'text-sm',
-    //     },
-    //     normal: {
-    //         eyebrow: '@xs:text-sm @md:text-base',
-    //         title: '@xs:text-3xl @md:text-4xl',
-    //         // Update Subtitle: Distinct size + Fixed "Snug" leading
-    //         subtitle: '@xs:text-xl @md:text-2xl !leading-snug',
-    //         body: '@xs:text-base @md:text-lg',
-    //         btn: 'text-base',
-    //     },
-    //     large: {
-    //         eyebrow: '@xs:text-base @md:text-lg',
-    //         title: '@xs:text-4xl @md:text-5xl',
-    //         subtitle: '@xs:text-xl @md:text-2xl',
-    //         body: '@xs:text-lg @md:text-xl',
-    //         btn: 'text-lg',
-    //     },
-    //     xlarge: {
-    //         eyebrow: '@xs:text-lg @md:text-xl',
-    //         title: '@xs:text-5xl @md:text-6xl',
-    //         subtitle: '@xs:text-2xl @md:text-3xl',
-    //         body: '@xs:text-xl @md:text-2xl',
-    //         btn: 'text-xl',
-    //     },
-    // };
     const scaleConfig = {
         small: {
             // Base: 10px -> @xs: text-xs
@@ -218,14 +144,6 @@ export default function TextBox(props) {
         },
     };
 
-    // 4. Personality / Styles
-    // This replaces "Profile" with specific typographic intents
-    // const headingStyles = {
-    //     bold: 'font-extrabold tracking-tight', // Modern Business
-    //     light: 'font-light tracking-wide', // Minimalist / Art
-    //     serif: 'font-serif font-bold', // Academic / Scholar
-    //     slab: 'font-slab font-black uppercase', // Brutalist / Impact
-    // };
     const headingStyles = {
         bold: 'font-extrabold !leading-tight tracking-tight',
         light: 'font-light !leading-tight tracking-wide',
@@ -275,11 +193,7 @@ export default function TextBox(props) {
                     densityConfig[textDensity].tracking,
                     widthConfig[textWidth]
                 )}
-                // maxWidth={widthConfig[textWidth]}
             >
-                {/* Header Group: Wrapped to handle "Center Heading + Left Body" scenarios better if needed, 
-                but here strictly following the vertical stack logic */}
-
                 {eyebrow && (
                     <div
                         className={twJoin(
@@ -306,18 +220,6 @@ export default function TextBox(props) {
                     </h2>
                 )}
 
-                {/* {subtitle && (
-                <p
-                    className={twJoin(
-                        headerAlign,
-                        scaleConfig[textScale].subtitle,
-                        'text-gray-600 font-medium opacity-90'
-                    )}
-                >
-                    {subtitle}
-                </p>
-            )} */}
-
                 {subtitle && (
                     <p
                         className={twJoin(
@@ -333,21 +235,6 @@ export default function TextBox(props) {
                 )}
 
                 {/* Content Body */}
-                {/* {paragraphs.length > 0 && (
-                <div className={twJoin('w-full', bodyAlign)}>
-                    <SafeHtml
-                        value={paragraphs}
-                        className={twJoin(
-                            scaleConfig[textScale].body,
-                            columnConfig[textColumns],
-                            // Pass gap to columns if multi-column
-                            textColumns !== '1' && densityConfig[textDensity].gap,
-                            'prose prose-neutral max-w-none' // Tailwind Typography plugin is recommended here for rich text
-                        )}
-                    />
-                </div>
-            )} */}
-
                 {paragraphs.length > 0 && (
                     <div className={twJoin('w-full', bodyAlign)}>
                         <SafeHtml
