@@ -1,0 +1,169 @@
+title:
+    en: Publication List
+    fr: Liste des publications
+description:
+    en: Display a list of publications with title, subtitle and category filters, each publication including title, authors, journal, date, action buttons and a link to detailed page.
+    fr: Affiche une liste de publications avec des filtres par titre, sous-titre et catégorie, chaque publication comprenant un titre, des auteurs, un journal, une date, des boutons d'action et un lien vers une page détaillée.
+label:
+    en: Publication List
+    fr: Publication Liste
+
+category: publication
+export: true
+
+input:
+    type: reference
+
+elements:
+    title:
+    subtitle:
+    links:
+        label:
+            en: Action Links
+            fr: Liens d'action
+        description:
+            en: A link put below the list of the publications, such as "View All" or "See More".
+            fr: Un lien placé sous la liste des publications, tel que "Voir tout" ou "Voir plus".
+    # form:
+    #     description:
+    #         en: A form to collect publication items.
+    #         fr: Un formulaire pour collecter des éléments de publication.
+    #     schemas:
+    #         - id: form
+    #           name:
+    #               en: Form
+    #               fr: Formulaire
+    #           isComposite: true
+    #           childSchema:
+    #               name:
+    #                   en: Publication
+    #                   fr: Publication
+    #               fields:
+    #                   - id: title
+    #                     type: text
+    #                     label:
+    #                         en: Publication Title
+    #                         fr: Titre de la publication
+    #                     description:
+    #                         en: The title of the publication.
+    #                         fr: Le titre de la publication.
+    #                     required: true
+    #                   - id: authors
+    #                     type: form
+    #                     label:
+    #                         en: Authors
+    #                         fr: Auteurs
+    #                     childSchema:
+    #                         name:
+    #                             en: Author
+    #                             fr: Auteur
+    #                         fields:
+    #                             - id: name
+    #                               type: string
+    #                               label:
+    #                                   en: Name
+    #                                   fr: Nom
+    #                               required: true
+    #                   - id: venue
+    #                     type: text
+    #                     label:
+    #                         en: Venue
+    #                         fr: Lieu
+    #                     description:
+    #                         en: The venue where the publication was presented or published.
+    #                         fr: Le lieu où la publication a été présentée ou publiée.
+    #                   - id: date
+    #                     type: string
+    #                     label:
+    #                         en: Publication Date
+    #                         fr: Date de publication
+    #                     description:
+    #                         en: The date when the publication was published.
+    #                         fr: La date de publication de la publication.
+    #                   - id: categories
+    #                     type: form
+    #                     label:
+    #                         en: Categories
+    #                         fr: Catégories
+    #                     childSchema:
+    #                         name:
+    #                             en: Category
+    #                             fr: Catégorie
+    #                         fields:
+    #                             - id: name
+    #                               type: string
+    #                               label:
+    #                                   en: Name
+    #                                   fr: Nom
+    #                               required: true
+    # - id: type
+    #   type: select
+    #   label:
+    #       en: Publication Type
+    #       fr: Type de publication
+    #   description:
+    #       en: The type of publication, such as "Journal Article", "Conference Paper", etc.
+    #       fr: Le type de publication, tel que "Article de journal", "Article de conférence", etc.
+    #   options:
+    #       - label: { en: 'Journal Article', fr: 'Article de journal' }
+    #         value: journal_article
+    #       - label: { en: 'Conference Paper', fr: 'Article de conférence' }
+    #         value: conference_paper
+    #       - label: { en: 'Book Chapter', fr: 'Chapitre de livre' }
+    #         value: book_chapter
+    #       - label: { en: 'Thesis', fr: 'Thèse' }
+    #   - id: link
+    #     type: text
+    #     label:
+    #         en: Publication Link
+    #         fr: Lien de publication
+    #     description:
+    #         en: The URL link to the publication, such as a PDF or webpage.
+    #         fr: Le lien URL vers la publication, tel qu'un PDF ou une page web.
+
+properties:
+    # source:
+    #     label:
+    #         en: Content Source
+    #         fr: Source du contenu
+    #     description:
+    #         en: The source of the publications, dynamic publications are configured in the Configure Content Source Panel, Docufolio Form publications are those entered through the Docufolio Form manually, Merged publications are those merged from multiple sources, Auto publications are automatically generated based on the Form and Dynamic sources.
+    #         fr: La source des publications, les publications dynamiques sont configurées dans le panneau Configurer la source de contenu, les publications du formulaire Docufolio sont celles saisies manuellement via le formulaire Docufolio, les publications fusionnées sont celles fusionnées à partir de plusieurs sources, les publications automatiques sont générées automatiquement en fonction des sources de formulaire et dynamiques.
+    #     type: string
+    #     options:
+    #         - label: { en: 'Dynamic', fr: 'Dynamique' }
+    #           value: dynamic
+    #         - label: { en: 'Docufolio Form', fr: 'Formulaire Docufolio' }
+    #           value: form
+    #         - label: { en: 'Merged', fr: 'Fusionné' }
+    #           value: merged
+    #         - label: { en: 'Auto', fr: 'Auto' }
+    #           value: auto
+    #     default: auto
+    sort:
+        label:
+            en: Sort Order
+            fr: Ordre de tri
+        description:
+            en: The order in which the publications are sorted.
+            fr: L'ordre dans lequel les publications sont triées.
+        type: select
+        options:
+            - label: { en: 'Newest First', fr: 'Les plus récents en premier' }
+              value: date_desc
+            - label: { en: 'Oldest First', fr: 'Les plus anciens en premier' }
+              value: date
+            - label: { en: 'Alphabetical', fr: 'Alphabétique' }
+              value: title
+            - label: { en: 'Reverse Alphabetical', fr: 'Alphabétique inversé' }
+              value: title_desc
+        default: date_desc
+    title_decoration:
+        label:
+            en: Title Decoration
+            fr: Décoration du titre
+        description:
+            en: Whether to show the title decoration line beside the title.
+            fr: Afficher ou non la ligne de décoration du titre à côté du titre.
+        type: boolean
+        default: true
