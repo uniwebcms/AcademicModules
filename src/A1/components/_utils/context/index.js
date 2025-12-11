@@ -13,9 +13,5 @@ export const getNextBlockContext = (block) => {
         };
     }
 
-    if (context[category]) {
-        return context[category];
-    }
-
     return {};
 };
