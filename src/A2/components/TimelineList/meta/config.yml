@@ -1,0 +1,51 @@
+title:
+    en: Timeline List
+    fr: Liste de chronologie
+description:
+    en: A list of timeline events with titles, text, and optional links.
+    fr: Une liste d'événements de chronologie avec des titres, du texte et des liens optionnels.
+label:
+    en: Timeline List
+    fr: Liste de chronologie
+
+category: content
+export: true
+
+elements:
+    title:
+        label:
+            en: Title
+            fr: Titre
+    icons:
+        label:
+            en: Title Icon
+            fr: Icône du titre
+        description:
+            en: The icon to be placed before the title.
+            fr: L'icône à placer avant le titre.
+
+items:
+    separator: divider
+    elements:
+        title:
+            en: The timeline text of the event.
+            fr: Le texte de la chronologie de l'événement.
+        text:
+            en: The content of the event, support rich text.
+            fr: Le contenu de l'événement, prend en charge le texte enrichi.
+
+properties:
+    layout:
+        label:
+            en: Layout
+            fr: Mise en page
+        type: select
+        default: edge-to-edge
+        options:
+            - label: { en: 'Edge to Edge', fr: 'Bord à bord' }
+              value: edge-to-edge
+            - label: { en: 'Contained', fr: 'Contenu' }
+              value: contained
+        description:
+            en: Controls the layout of the component. Contained layout will take the full width of the container with padding around the content and has a rounded border.
+            fr: Contrôle la mise en page du composant. La mise en page contenue prendra toute la largeur du conteneur avec un rembourrage autour du contenu et aura une bordure arrondie.
