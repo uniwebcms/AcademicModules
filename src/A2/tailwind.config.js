@@ -13,6 +13,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontSize: {
+                md: ['15px', '22px'],
+            },
             typography: (theme) => ({
                 DEFAULT: {
                     css: {

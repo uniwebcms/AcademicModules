@@ -19,3 +19,7 @@ export default dynamicExports;
 // export const site = {
 //     props: { rootClassName: 'min-h-screen flex flex-col justify-center context__light' },
 // };
+
+export const site = {
+    props: { parserVersion: 2 },
+};

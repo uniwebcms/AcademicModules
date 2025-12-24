@@ -33,14 +33,12 @@ const parseProfiles = (profiles) => {
     });
 };
 
-export default function PublicationList(props) {
+export default function PublicationTeaser(props) {
     const { block, input } = props;
 
     const { title, subtitle, links } = block.getBlockContent();
 
     let publications = parseProfiles(input.profiles || []);
-
-    console.log('publications', publications);
 
     const { sort = 'date_desc', title_decoration = true } = block.getBlockProperties();
 
@@ -258,6 +256,7 @@ const BibTexModal = ({ isOpen, onClose, content, website }) => {
     );
 };
 
-PublicationList.inputSchema = {
+PublicationTeaser.inputSchema = {
     type: 'reference',
+    limit: 3,
 };

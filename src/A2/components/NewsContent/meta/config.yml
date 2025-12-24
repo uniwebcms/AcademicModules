@@ -1,0 +1,35 @@
+title:
+    en: News Content
+    fr: Contenu des actualités
+description:
+    en: Display a news content in detail, including category, title, subtitle, date, and content with a link to the news list.
+    fr: Affiche le contenu d'une actualité en détail, y compris la catégorie, le titre, le sous-titre, la date et le contenu avec un lien vers la liste des actualités.
+label:
+    en: News Content
+    fr: Contenu des actualités
+
+category: news
+export: true
+
+input:
+    type: articles
+
+properties:
+    contentAlignment:
+        label:
+            en: Content Alignment
+            fr: Alignement du contenu
+        description:
+            en: The alignment of the content in the news article.
+            fr: L'alignement du contenu dans l'article de nouvelles.
+        type: select
+        options:
+            - label: { en: 'Automatic', fr: 'Automatique' }
+              value: auto
+            - label: { en: 'Left', fr: 'Gauche' }
+              value: left
+            - label: { en: 'Center', fr: 'Centre' }
+              value: center
+            - label: { en: 'Right', fr: 'Droite' }
+              value: right
+        default: auto

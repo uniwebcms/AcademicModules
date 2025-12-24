@@ -1,0 +1,29 @@
+title:
+    en: News
+    fr: Actualités
+description:
+    en: Display a list of news in a grid or list format, each news item including title, subtitle and date and a link to a detailed page. The component also offers filtering, sorting and searching capabilities as well as a view mode switcher.
+    fr: Affiche une liste d'actualités dans un format de grille ou de liste, chaque actualité comprenant un titre, un sous-titre et une date, ainsi qu'un lien vers une page détaillée. Le composant propose également des capacités de filtrage, de tri et de recherche ainsi qu'un sélecteur de mode d'affichage.
+label:
+    en: News
+    fr: Actualités
+
+category: news
+export: true
+
+input:
+    type: articles
+
+elements:
+    title:
+
+properties:
+    allowLayoutSwitch:
+        label:
+            en: Allow Layout Switch
+            fr: Permettre le changement de mise en page
+        description:
+            en: Whether to allow the user to switch between grid and list view.
+            fr: Permettre à l'utilisateur de basculer entre la vue en grille et la vue en liste.
+        type: boolean
+        default: true

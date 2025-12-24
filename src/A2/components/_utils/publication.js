@@ -166,3 +166,25 @@ function buildBibtexEntry(pub) {
 export function generateBibtex(publication) {
     return buildBibtexEntry(publication);
 }
+
+export function prettyPrintNames(input) {
+    const seen = new Set();
+
+    return (
+        input
+            // split ONLY on semicolons or on " Last, First" boundaries
+            .split(/;\s*|\s+(?=[A-Z][a-z]+,)/)
+            .map((p) => p.trim())
+            .filter((p) => p.includes(','))
+            .map((p) => {
+                const [last, first] = p.split(',').map((s) => s.trim());
+                return `${first} ${last}`;
+            })
+            .filter((name) => {
+                if (seen.has(name)) return false;
+                seen.add(name);
+                return true;
+            })
+            .join(', ')
+    );
+}

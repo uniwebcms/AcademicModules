@@ -4,6 +4,7 @@ import { website } from '@uniwebcms/module-sdk';
  * Format a flexible date string into a localized string.
  *
  * Supports inputs:
+ *  - "yyyy-mm-dd hh:mm:ss"
  *  - "yyyy/mm/dd"
  *  - "yyyy-mm-dd"
  *  - "yyyy/mm"
@@ -25,6 +26,13 @@ export function formatFlexibleDate(value) {
 
     const str = String(value).trim();
     if (str === '') return str;
+
+    // NEW: yyyy-mm-dd hh:mm:ss (time part optional/ignored)
+    // Supports: "2025-03-07 12:34:56", "2025-03-07T12:34:56", "2025-03-07 12:34"
+    // Also tolerates single-digit time pieces like "1:2:3"
+    const dateTimeMatch = str.match(
+        /^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})(?:[ T](\d{1,2})(?::(\d{1,2}))?(?::(\d{1,2}))?)?$/
+    );
 
     const fullDateMatch = str.match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})$/);
     const yearMonthMatch = str.match(/^(\d{4})[\/-](\d{1,2})$/);
@@ -48,6 +56,21 @@ export function formatFlexibleDate(value) {
             return null;
 
         return date;
+    }
+
+    // NEW: yyyy-mm-dd hh:mm:ss (ignore time, format date)
+    // Note: because the regex also matches plain yyyy-mm-dd, put this BEFORE fullDateMatch.
+    if (dateTimeMatch) {
+        const [, y, m, d] = dateTimeMatch;
+        const date = makeDate(y, m, d);
+        if (!date) return str;
+
+        return new Intl.DateTimeFormat(locale, {
+            year: 'numeric',
+            month: 'short',
+            day: '2-digit',
+            timeZone: 'UTC',
+        }).format(date);
     }
 
     // yyyy/mm/dd or yyyy-mm-dd

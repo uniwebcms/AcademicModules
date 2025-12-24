@@ -1,0 +1,29 @@
+title:
+    en: Publications
+    fr: Publications
+description:
+    en: Display a list of publications in a grid or list format, each publication including title, authors, journal, date, keywords and a link to detailed page, the component also offers filtering, sorting and searching capabilities as well as a view mode switcher.
+    fr: Affiche une liste de publications dans un format de grille ou de liste, chaque publication comprenant un titre, des auteurs, un journal, une date, des mots-clés et un lien vers une page détaillée. Le composant propose également des capacités de filtrage, de tri et de recherche ainsi qu'un sélecteur de mode d'affichage.
+label:
+    en: Publications
+    fr: Publications
+
+category: publication
+export: true
+
+input:
+    type: reference
+
+elements:
+    title:
+
+properties:
+    allowLayoutSwitch:
+        label:
+            en: Allow Layout Switch
+            fr: Permettre le changement de mise en page
+        description:
+            en: Whether to allow the user to switch between grid and list view.
+            fr: Permettre à l'utilisateur de basculer entre la vue en grille et la vue en liste.
+        type: boolean
+        default: true

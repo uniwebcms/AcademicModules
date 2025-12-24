@@ -1,0 +1,56 @@
+title:
+    en: Publication Teaser
+    fr: Publication Teaser
+description:
+    en: Display a list of publications with title, subtitle and category filters, each publication including title, authors, journal, date, action buttons and a link to detailed page.
+    fr: Affiche une liste de publications avec des filtres par titre, sous-titre et catégorie, chaque publication comprenant un titre, des auteurs, un journal, une date, des boutons d'action et un lien vers une page détaillée.
+label:
+    en: Publication Teaser
+    fr: Publication Teaser
+
+category: publication
+export: true
+
+input:
+    type: reference
+    limit: 3
+
+elements:
+    title:
+    subtitle:
+    links:
+        label:
+            en: Action Link
+            fr: Lien d'action
+        description:
+            en: A link put below the list of the publications, such as "View All" or "See More".
+            fr: Un lien placé sous la liste des publications, tel que "Voir tout" ou "Voir plus".
+
+properties:
+    sort:
+        label:
+            en: Sort Order
+            fr: Ordre de tri
+        description:
+            en: The order in which the publications are sorted.
+            fr: L'ordre dans lequel les publications sont triées.
+        type: select
+        options:
+            - label: { en: 'Newest First', fr: 'Les plus récents en premier' }
+              value: date_desc
+            - label: { en: 'Oldest First', fr: 'Les plus anciens en premier' }
+              value: date
+            - label: { en: 'Alphabetical', fr: 'Alphabétique' }
+              value: title
+            - label: { en: 'Reverse Alphabetical', fr: 'Alphabétique inversé' }
+              value: title_desc
+        default: date_desc
+    title_decoration:
+        label:
+            en: Title Decoration
+            fr: Décoration du titre
+        description:
+            en: Whether to show the title decoration line beside the title.
+            fr: Afficher ou non la ligne de décoration du titre à côté du titre.
+        type: boolean
+        default: true
