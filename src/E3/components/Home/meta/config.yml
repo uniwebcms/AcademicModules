@@ -1,0 +1,12 @@
+title:
+    en: Home
+    fr: Accueil
+description:
+    en: Display the home page with a title and a search box.
+    fr: Affiche la page d'accueil avec un titre et une boîte de recherche.
+label:
+    en: Home
+    fr: Accueil
+
+category: content
+export: true

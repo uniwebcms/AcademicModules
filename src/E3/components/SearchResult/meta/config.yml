@@ -1,0 +1,12 @@
+title:
+    en: Search Result
+    fr: Résultat de recherche
+label:
+    en: Search Result
+    fr: Résultat de recherche
+description:
+    en: A component to display search results of experts in a list format, each with a card containing an image, title, details and a link to the expert's page.
+    fr: Un composant pour afficher les résultats de recherche d'experts dans un format de liste, chacun avec une carte contenant une image, un titre, des détails et un lien vers la page de l'expert.
+
+category: content
+export: true

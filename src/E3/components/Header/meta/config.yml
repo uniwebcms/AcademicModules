@@ -1,0 +1,9 @@
+title:
+    en: Header
+    fr: En-tête
+description:
+    en: Renders a header for the experts browser, including searching, filtering and sorting.
+    fr: Rend un en-tête pour le navigateur d'experts, y compris la recherche, le filtrage et le tri.
+label:
+    en: Header
+    fr: En-tête
