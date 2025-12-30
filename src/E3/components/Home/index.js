@@ -36,7 +36,10 @@ export default function Home(props) {
 
                         <input
                             type="text"
-                            placeholder="Search by name, faculty, or research interest..."
+                            placeholder={website.localize({
+                                en: 'Search by name, faculty, or keywords...',
+                                fr: 'Rechercher par nom, faculté ou mots-clés...',
+                            })}
                             className="flex-1 bg-transparent outline-none text-lg placeholder:text-text-color/70"
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
