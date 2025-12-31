@@ -4,40 +4,9 @@ import { Image } from '@uniwebcms/core-components';
 import { FiAlertCircle } from 'react-icons/fi';
 import { PiEmpty } from 'react-icons/pi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { twMerge, twJoin } from '@uniwebcms/module-sdk';
+import { filterExperts, parseAcademicUnit } from '../_utils/helper';
 import client from '../_utils/ajax';
-
-const filterExperts = (experts, searchFaculty, searchLanguage, sort) => {
-    const filtered = experts.filter((expert) => {
-        const { caption, language, other_languages } = expert;
-
-        let pass = true;
-
-        if (searchFaculty && searchFaculty !== 'all') {
-            pass = pass && caption.toLowerCase().includes(searchFaculty.toLowerCase());
-        }
-
-        if (searchLanguage && searchLanguage !== 'all') {
-            if (searchLanguage === 'other_languages') {
-                pass = pass && other_languages !== null && other_languages !== '';
-            } else {
-                pass = pass && language === searchLanguage;
-            }
-        }
-
-        return pass;
-    });
-
-    if (!sort) {
-        return filtered;
-    }
-
-    if (sort === 'asce') {
-        return filtered.sort((a, b) => a.title.localeCompare(b.title));
-    }
-    if (sort === 'desc') {
-        return filtered.sort((a, b) => b.title.localeCompare(a.title));
-    }
-};
 
 const NoScrollbarScroller = React.forwardRef((props, ref) => (
     <div {...props} ref={ref} className={`${props.className || ''} no-scrollbar`} />
@@ -53,9 +22,9 @@ export default function SearchResult(props) {
 
     const params = new URLSearchParams(location.search);
     const searchText = params.get('q') || '';
-    const searchFaculty = params.get('faculty') || '';
-    const searchLanguage = params.get('lang') || '';
-    const sort = params.get('sort') || '';
+    const searchFaculty = params.get('faculty') || 'all';
+    const searchLanguage = params.get('lang') || 'all';
+    const sort = params.get('sort') || 'relevance';
 
     const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -79,7 +48,7 @@ export default function SearchResult(props) {
     });
 
     useEffect(() => {
-        const header = document.querySelector('header#expert_searching_header');
+        const header = document.querySelector('header#experts_searching_header');
         if (header) {
             setHeaderHeight(header.offsetHeight);
         }
@@ -101,10 +70,10 @@ export default function SearchResult(props) {
 
     return (
         <div
-            className="@container flex flex-col items-center justify-center w-full "
+            className="@container flex flex-col items-center justify-center w-full"
             style={{ height: `${800 - headerHeight}px` }}
         >
-            <div className="w-full max-w-6xl mx-auto pt-6 px-6 @xs:px-8 @md:px-12">
+            <div className="w-full max-w-6xl mx-auto pt-6 px-3 @md:px-6 @lg:px-9 @2xl:px-12">
                 <p className="text-base @2xl:text-xl text-text-color/60 uppercase">
                     <span>{filtered.length}</span>{' '}
                     {filtered.length === 1
@@ -113,7 +82,7 @@ export default function SearchResult(props) {
                 </p>
             </div>
             {filtered.length > 0 ? (
-                <div className="w-full max-w-6xl mx-auto p-6 @xs:p-8 @md:p-12 h-full pt-2 @xs:pt-4 @md:pt-6">
+                <div className="w-full max-w-6xl mx-auto p-3 @md:p-6 @lg:p-9 @2xl:p-12 h-full !pt-2 @xs:!pt-4 @md:!pt-6">
                     <Virtuoso
                         height="100%"
                         components={{ Scroller: NoScrollbarScroller }}
@@ -152,18 +121,7 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
         head: { _avatar: avatar },
     });
 
-    const splittedCaption = caption ? caption.split(',') : [];
-
-    let unit, department;
-
-    if (splittedCaption.length > 0) {
-        if (splittedCaption.length === 1) {
-            department = splittedCaption[0].trim();
-        } else {
-            department = splittedCaption.pop().trim();
-            unit = splittedCaption.join(', ').trim();
-        }
-    }
+    const { unit, faculty, institution } = parseAcademicUnit(caption);
 
     const handleClick = () => {
         const params = new URLSearchParams(location.search);
@@ -174,50 +132,50 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
 
     return (
         <div
-            className="bg-text-color-0 border border-text-color/10 overflow-hidden transition-all duration-300 shadow hover:shadow-md flex flex-col md:flex-row cursor-pointer rounded-[var(--border-radius)] group h-auto md:h-52"
+            className={twMerge(
+                // Base: Vertical layout for small containers
+                'bg-text-color-0 border border-text-color/10 overflow-hidden transition-all duration-300 shadow hover:shadow-md',
+                'flex flex-col cursor-pointer rounded-[var(--border-radius)] group h-auto',
+                // Large Containers: Switch to horizontal layout when width is > 672px (@2xl)
+                '@2xl:flex-row @2xl:h-48'
+            )}
             onClick={handleClick}
         >
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 overflow-hidden">
                 <Image
                     profile={expertProfile}
                     type="avatar"
-                    className="h-48 w-full object-cover md:w-52 md:h-52"
+                    className={twJoin(
+                        'h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105',
+                        '@2xl:w-40 @2xl:h-40 @2xl:m-4 @2xl:rounded-full'
+                    )}
                 />
             </div>
-            <div className="p-6 flex flex-col justify-between">
+            <div className="p-6 flex flex-col justify-between flex-grow min-w-0">
                 <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-primary-800">{title}</h3>
-                    <p className="mt-1 text-base font-medium">
-                        {position && <span>{position}</span>}
-                        {position && unit ? ', ' : ''}
-                        {unit && <span>{unit}</span>}
-                    </p>
-                    {department && <p className="mt-1 text-sm text-text-color/70">{department}</p>}
-                    <div className="my-3 flex flex-wrap gap-2">
+                    <h3 className="text-xl @md:text-2xl @2xl:text-3xl font-bold group-hover:underline">
+                        {title}
+                    </h3>
+                    <div className="mt-1 text-base font-medium text-text-color/90">
+                        <p>{[position, unit].filter(Boolean).join(', ')}</p>
+                    </div>
+                    {faculty && <p className="mt-1 text-base text-text-color/70">{faculty}</p>}
+
+                    <div className="my-4 flex flex-wrap gap-1.5">
                         {expertise.slice(0, 3).map((tag) => (
-                            <ExpertiseTag key={tag} className="max-w-44 truncate">
+                            <ExpertiseTag
+                                key={tag}
+                                className="max-w-[120px] @lg:max-w-[180px] truncate"
+                            >
                                 {tag}
                             </ExpertiseTag>
                         ))}
                         {expertise.length > 3 && (
-                            <ExpertiseTag>
-                                + {expertise.length - 3}{' '}
-                                {website.localize({
-                                    en: 'more',
-                                    fr: 'de plus',
-                                })}
+                            <ExpertiseTag className="bg-primary-50 text-primary-700">
+                                +{expertise.length - 3}
                             </ExpertiseTag>
                         )}
                     </div>
-                </div>
-                <div>
-                    <span className="text-sm font-semibold text-link-color group-hover:text-link-hover-color group-hover:underline">
-                        {website.localize({
-                            en: 'View Profile',
-                            fr: 'Voir le profil',
-                        })}{' '}
-                        &rarr;
-                    </span>
                 </div>
             </div>
         </div>
@@ -226,7 +184,7 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
 
 const ExpertiseTag = ({ children, className = '' }) => (
     <span
-        className={`inline-block bg-text-color/5 text-text-color/90 rounded-full px-3 py-1 text-sm font-medium ${className}`}
+        className={`inline-block bg-text-color/5 text-text-color/90 rounded-[var(--border-radius)] px-3 py-1 text-sm font-medium ${className}`}
     >
         {children}
     </span>
@@ -244,7 +202,7 @@ const StatusMessage = ({
         className="@container bg-text-color/5 flex items-center justify-center"
         style={{ height: `${800 - headerHeight}px` }}
     >
-        <div className="max-w-4xl mx-auto p-6 @xs:p-8 @md:p-12 text-center">
+        <div className="max-w-4xl mx-auto p-3 @md:p-6 @lg:p-9 @2xl:p-12 text-center">
             <Icon className={`h-12 w-12 @lg:w-16 @lg:h-16 mx-auto ${iconClassName}`} />
             <p className="mt-4 @lg:mt-6 text-xl @xs:text-2xl @2xl:text-3xl @4xl:text-4xl font-semibold text-heading-color">
                 {website.localize(title)}

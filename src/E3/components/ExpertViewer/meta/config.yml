@@ -1,0 +1,12 @@
+title:
+    en: Expert Viewer
+    fr: Visionneuse d'expert
+label:
+    en: Expert Viewer
+    fr: Visionneuse d'expert
+description:
+    en: A component to display an expert's profile with their hero banner, details with a Media Inquiries side panel.
+    fr: Un composant pour afficher le profil d'un expert avec sa bannière héro, ses détails et un panneau latéral de demandes médiatiques.
+
+category: content
+export: true

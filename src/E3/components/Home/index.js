@@ -31,7 +31,7 @@ export default function Home(props) {
 
                 {/* Search Box Container */}
                 <form onSubmit={handleSearch} className="w-full">
-                    <div className="group flex items-center w-full gap-3 px-5 py-4 border-2 border-text-color/20 rounded-[var(--border-radius)] bg-text-color-0 shadow-sm focus-within:border-[#8F001A] focus-within:ring-1 focus-within:ring-current transition-all duration-200">
+                    <div className="group flex items-center w-full gap-3 px-5 py-4 border-2 border-text-color/20 rounded-[var(--border-radius)] bg-text-color-0 shadow-sm focus-within:border-[var(--highlight)] focus-within:ring-1 focus-within:ring-current transition-all duration-200">
                         <HiSearch className="text-2xl text-text-color/70 group-focus-within:text-current" />
 
                         <input
@@ -49,7 +49,7 @@ export default function Home(props) {
                             type="submit"
                             className="p-1 hover:bg-text-color/10 rounded-full transition-colors group/icon focus:outline-none"
                         >
-                            <HiArrowRight className="w-5 h-5 text-text-color/70 group-hover/icon:text-[#8F001A] group-focus-within:text-text-color/90" />
+                            <HiArrowRight className="w-5 h-5 text-text-color/70 group-hover/icon:text-[var(--highlight)] group-focus-within:text-text-color/90" />
                         </button>
                     </div>
                 </form>
