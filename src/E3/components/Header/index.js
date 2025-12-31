@@ -162,8 +162,13 @@ const SearchHeader = (props) => {
         setOpenMenu(null);
     };
 
-    const handleSearchSubmit = () => {
-        updateUrl({ q: localSearch });
+    const handleSearchSubmit = (event) => {
+        event?.preventDefault();
+
+        const trimmed = localSearch.trim();
+        if (trimmed) {
+            updateUrl({ q: trimmed });
+        }
     };
 
     const clearFiltersOnly = () => {
@@ -255,40 +260,40 @@ const SearchHeader = (props) => {
                     </button>
 
                     {/* Search Input Box */}
-                    <div
-                        className={twMerge(
-                            'flex items-center flex-1 gap-2 px-3 py-2 border border-text-color/20 rounded-[var(--border-radius)] bg-[color-mix(in_lch,var(--text-color)_4%,transparent)] transition-all',
-                            loading
-                                ? 'bg-text-color/20 opacity-70 cursor-not-allowed'
-                                : 'focus-within:border-[var(--highlight)] focus-within:bg-text-color-0 focus-within:ring-1 focus-within:ring-[var(--highlight)]'
-                        )}
-                    >
-                        <input
-                            type="text"
-                            placeholder={website.localize({
-                                en: 'Search experts...',
-                                fr: 'Rechercher des experts...',
-                            })}
-                            className="flex-1 bg-transparent outline-none text-sm min-w-0 cursor-[inherit]"
-                            value={localSearch}
-                            disabled={loading}
-                            onChange={(e) => setLocalSearch(e.target.value)}
-                            onKeyDown={(e) =>
-                                e.key === 'Enter' && localSearch.trim() && handleSearchSubmit()
-                            }
-                        />
-                        {localSearch ? (
-                            <HiSearch
-                                className={twJoin(
-                                    'cursor-pointer opacity-60 hover:opacity-100 text-lg',
-                                    loading && 'pointer-events-none'
-                                )}
-                                onClick={handleSearchSubmit}
+                    <form onSubmit={handleSearchSubmit} className="flex-1">
+                        <div
+                            className={twMerge(
+                                'flex items-center gap-2 px-3 py-2 border border-text-color/20 rounded-[var(--border-radius)] bg-[color-mix(in_lch,var(--text-color)_4%,transparent)] transition-all',
+                                loading
+                                    ? 'bg-text-color/20 opacity-70 cursor-not-allowed'
+                                    : 'focus-within:border-[var(--highlight)] focus-within:bg-text-color-0 focus-within:ring-1 focus-within:ring-[var(--highlight)]'
+                            )}
+                        >
+                            <input
+                                type="text"
+                                placeholder={website.localize({
+                                    en: 'Search experts...',
+                                    fr: 'Rechercher des experts...',
+                                })}
+                                className="flex-1 bg-transparent outline-none text-sm min-w-0 cursor-[inherit]"
+                                value={localSearch}
+                                disabled={loading}
+                                onChange={(e) => {
+                                    setLocalSearch(e.target.value);
+                                }}
+                                required
                             />
-                        ) : (
-                            <HiSearch className="shrink-0 opacity-40" />
-                        )}
-                    </div>
+                            <button
+                                type="submit"
+                                disabled={loading || !localSearch.trim()}
+                                className={twJoin(
+                                    'shrink-0 text-lg focus:outline-none disabled:opacity-50 enabled:cursor-pointer enabled:opacity-70 enabled:hover:opacity-100'
+                                )}
+                            >
+                                <HiSearch />
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
                 <div
