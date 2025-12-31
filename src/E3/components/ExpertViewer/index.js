@@ -109,13 +109,13 @@ export default function ExpertViewer(props) {
     };
 
     return (
-        <div
-            className={'@container w-full overflow-y-auto no-scrollbar'}
-            style={{ height: `${800 - headerHeight}px` }}
-        >
-            <div className="h-full w-full max-w-6xl mx-auto flex flex-col @4xl:flex-row gap-10 @4xl:gap-12 px-3 py-6 @lg:py-9 @2xl:py-12">
+        <div className={'@container w-full'}>
+            <div
+                className="w-full max-w-6xl mx-auto flex flex-col @4xl:flex-row gap-10 @4xl:gap-12 px-3 py-6 @lg:py-9 @2xl:py-12 overflow-y-auto no-scrollbar"
+                style={{ height: `${800 - headerHeight}px` }}
+            >
                 {/* Left Sidebar - Quick Info */}
-                <div className="w-full @4xl:w-1/3 space-y-8 sticky top-0 max-h-full">
+                <div className="w-full @4xl:w-1/3 space-y-8 @4xl:sticky top-0 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
                     {/* Avatar & Key Info */}
                     <div className="text-center @4xl:text-left">
                         <Image
