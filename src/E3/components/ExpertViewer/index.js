@@ -100,8 +100,8 @@ export default function ExpertViewer(props) {
 
         return (
             <li className="group">
-                <p className="font-semibold text-heading-color">{title}</p>
-                <p className="text-sm text-text-color/70">
+                <p className="text-sm @2xl:text-base font-semibold text-heading-color">{title}</p>
+                <p className="text-xs @2xl:text-sm text-text-color/70">
                     {joinWithComma(containerTitle, issued?.['date-parts']?.[0]?.[0])}
                 </p>
             </li>
@@ -111,11 +111,11 @@ export default function ExpertViewer(props) {
     return (
         <div className={'@container w-full'}>
             <div
-                className="w-full max-w-6xl mx-auto flex flex-col @4xl:flex-row gap-10 @4xl:gap-12 px-3 py-6 @lg:py-9 @2xl:py-12 overflow-y-auto no-scrollbar"
-                style={{ height: `${800 - headerHeight}px` }}
+                className="w-full max-w-6xl mx-auto flex flex-col @4xl:flex-row gap-10 @4xl:gap-12 p-3 @xl:p-4 @2xl:p-5 @4xl:p-0 overflow-y-auto no-scrollbar"
+                style={{ height: `calc(var(--container-height) - ${headerHeight}px)` }}
             >
                 {/* Left Sidebar - Quick Info */}
-                <div className="w-full @4xl:w-1/3 space-y-8 @4xl:sticky top-0 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
+                <div className="w-full @4xl:w-1/3 @4xl:pl-5 @4xl:py-5 space-y-8 @4xl:sticky top-0 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
                     {/* Avatar & Key Info */}
                     <div className="text-center @4xl:text-left">
                         <Image
@@ -171,7 +171,7 @@ export default function ExpertViewer(props) {
                 </div>
 
                 {/* Right Content - Main Info */}
-                <div className="w-full @4xl:w-2/3 space-y-10">
+                <div className="w-full @4xl:w-2/3 @4xl:pr-5 @4xl:py-5 space-y-10 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
                     {/* Bio */}
                     <section>
                         <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
@@ -207,31 +207,6 @@ export default function ExpertViewer(props) {
                             website={website}
                         />
                     </section>
-
-                    {/* Media */}
-                    {/* <section>
-                        <h2 className="text-2xl font-bold mb-4 border-b pb-2 flex items-center gap-2">
-                            <Video className="h-6 w-6 text-primary" />
-                            {website.localize({
-                                en: 'Media Appearances',
-                                fr: 'Apparitions dans les Médias',
-                            })}
-                        </h2>
-                        <ExpandableList
-                            items={expert.media}
-                            initialCount={3}
-                            renderItem={(item) => (
-                                <li className="group py-1">
-                                    <p className="font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
-                                        {item.title}
-                                    </p>
-                                    <p className="text-sm text-muted-foreground">
-                                        {item.outlet} • {item.date}
-                                    </p>
-                                </li>
-                            )}
-                        />
-                    </section> */}
                 </div>
             </div>
         </div>
@@ -332,7 +307,7 @@ const StatusMessage = ({
 }) => (
     <div
         className="@container bg-text-color/5 flex items-center justify-center"
-        style={{ height: `${800 - headerHeight}px` }}
+        style={{ height: `calc(var(--container-height) - ${headerHeight}px)` }}
     >
         <div className="max-w-4xl mx-auto p-3 @md:p-6 @lg:p-9 @2xl:p-12 text-center">
             <Icon className={`h-12 w-12 @lg:w-16 @lg:h-16 mx-auto ${iconClassName}`} />
@@ -438,7 +413,7 @@ const ExpandableTile = ({ items, max = 10, website }) => {
             {visibleItems.map((item) => (
                 <span
                     key={item}
-                    className="px-4 py-2 bg-text-color/5 rounded-[var(--border-radius)] text-sm font-medium"
+                    className="px-4 py-2 bg-text-color/5 rounded-[var(--border-radius)] text-xs @2xl:text-sm font-medium"
                 >
                     {item}
                 </span>

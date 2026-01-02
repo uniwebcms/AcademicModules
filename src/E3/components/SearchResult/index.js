@@ -70,39 +70,44 @@ export default function SearchResult(props) {
 
     return (
         <div
-            className="@container flex flex-col items-center justify-center w-full"
-            style={{ height: `${800 - headerHeight}px` }}
+            className="@container w-full"
+            style={{ height: `calc(var(--container-height) - ${headerHeight}px)` }}
         >
-            <div className="w-full max-w-6xl mx-auto pt-6 px-3 @md:px-6 @lg:px-9 @2xl:px-12">
-                <p className="text-base @2xl:text-xl text-text-color/60 uppercase">
-                    <span>{filtered.length}</span>{' '}
-                    {filtered.length === 1
-                        ? website.localize({ en: 'expert found', fr: 'expert trouvé' })
-                        : website.localize({ en: 'experts found', fr: 'experts trouvés' })}
-                </p>
-            </div>
-            {filtered.length > 0 ? (
-                <div className="w-full max-w-6xl mx-auto p-3 @md:p-6 @lg:p-9 @2xl:p-12 h-full !pt-2 @xs:!pt-4 @md:!pt-6">
-                    <Virtuoso
-                        height="100%"
-                        components={{ Scroller: NoScrollbarScroller }}
-                        data={filtered}
-                        totalCount={filtered.length}
-                        itemContent={(index, expert) => {
-                            return (
-                                <div key={index} className="pb-6">
-                                    <ExpertCard
-                                        expert={expert}
-                                        navigate={navigate}
-                                        website={website}
-                                        location={location}
-                                    />
-                                </div>
-                            );
-                        }}
-                    />
+            <div className="max-w-6xl mx-auto flex flex-col items-center justify-center h-full w-full p-3 @xl:p-4 @2xl:p-5">
+                <div className="w-full mb-3 @lg:mb-4 @xl:mb-5">
+                    <p className="text-base @2xl:text-xl text-text-color/60 uppercase">
+                        <span>{filtered.length}</span>{' '}
+                        {filtered.length === 1
+                            ? website.localize({ en: 'expert found', fr: 'expert trouvé' })
+                            : website.localize({ en: 'experts found', fr: 'experts trouvés' })}
+                    </p>
                 </div>
-            ) : null}
+                {filtered.length > 0 ? (
+                    <div className="w-full h-full">
+                        <Virtuoso
+                            height="100%"
+                            components={{ Scroller: NoScrollbarScroller }}
+                            data={filtered}
+                            totalCount={filtered.length}
+                            itemContent={(index, expert) => {
+                                return (
+                                    <div
+                                        key={index}
+                                        className={index < filtered.length - 1 ? 'pb-6' : ''}
+                                    >
+                                        <ExpertCard
+                                            expert={expert}
+                                            navigate={navigate}
+                                            website={website}
+                                            location={location}
+                                        />
+                                    </div>
+                                );
+                            }}
+                        />
+                    </div>
+                ) : null}
+            </div>
         </div>
     );
 }
@@ -151,17 +156,21 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
                     )}
                 />
             </div>
-            <div className="p-6 flex flex-col justify-between flex-grow min-w-0">
+            <div className="p-3 @xl:p-4 @2xl:p-5 flex flex-col justify-between flex-grow min-w-0">
                 <div className="flex-grow">
-                    <h3 className="text-xl @md:text-2xl @2xl:text-3xl font-bold group-hover:underline">
+                    <h3 className="text-xl @lg:text-2xl @2xl:text-3xl font-bold group-hover:underline">
                         {title}
                     </h3>
-                    <div className="mt-1 text-base font-medium text-text-color/90">
+                    <div className="mt-1 text-sm @lg:text-base @2xl:text-lg font-medium text-text-color/90">
                         <p>{[position, unit].filter(Boolean).join(', ')}</p>
                     </div>
-                    {faculty && <p className="mt-1 text-base text-text-color/70">{faculty}</p>}
+                    {faculty && (
+                        <p className="mt-1 text-xs @lg:text-sm @2xl:text-base text-text-color/70">
+                            {faculty}
+                        </p>
+                    )}
 
-                    <div className="my-4 flex flex-wrap gap-1.5">
+                    <div className="mt-4 flex flex-wrap gap-1.5">
                         {expertise.slice(0, 3).map((tag) => (
                             <ExpertiseTag
                                 key={tag}
@@ -184,7 +193,7 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
 
 const ExpertiseTag = ({ children, className = '' }) => (
     <span
-        className={`inline-block bg-text-color/5 text-text-color/90 rounded-[var(--border-radius)] px-3 py-1 text-sm font-medium ${className}`}
+        className={`inline-block bg-text-color/5 text-text-color/90 rounded-[var(--border-radius)] px-3 py-1 text-xs @2xl:text-sm font-medium ${className}`}
     >
         {children}
     </span>
@@ -200,7 +209,7 @@ const StatusMessage = ({
 }) => (
     <div
         className="@container bg-text-color/5 flex items-center justify-center"
-        style={{ height: `${800 - headerHeight}px` }}
+        style={{ height: `calc(var(--container-height) - ${headerHeight}px)` }}
     >
         <div className="max-w-4xl mx-auto p-3 @md:p-6 @lg:p-9 @2xl:p-12 text-center">
             <Icon className={`h-12 w-12 @lg:w-16 @lg:h-16 mx-auto ${iconClassName}`} />

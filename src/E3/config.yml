@@ -31,3 +31,12 @@ styleFields:
                 en: Oval / Pill Shape
                 fr: Forme ovale / en forme de pilule
             value: 40px
+    - id: 'container-height'
+      type: string
+      label:
+          en: Embedded Iframe Height (match parent)
+          fr: Hauteur de l'iframe intégrée (correspond au parent)
+      description:
+          en: Sets the height of the container used to display the embedded Experts Explorer iframe. This value should match the iframe height on the parent site.
+          fr: Définit la hauteur du conteneur utilisé pour afficher l'iframe Experts Explorer intégré. Cette valeur doit correspondre à la hauteur de l'iframe sur le site parent.
+      default: 800px

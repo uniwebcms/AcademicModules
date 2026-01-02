@@ -249,11 +249,11 @@ const SearchHeader = (props) => {
             id="experts_searching_header"
             className="@container sticky top-0 z-20 bg-text-color-0 shadow-sm border-b min-h-[63px]"
         >
-            <div className="max-w-7xl mx-auto p-3 flex flex-col @4xl:flex-row @4xl:items-center gap-4 @4xl:gap-6">
+            <div className="max-w-7xl mx-auto p-3 @xl:p-4 @2xl:p-5 flex flex-col @4xl:flex-row @4xl:items-center gap-4 @4xl:gap-6">
                 <div className="flex flex-col @4xl:flex-row @4xl:items-center flex-1 gap-3 @4xl:gap-6">
                     <button
                         onClick={() => navigate('')}
-                        className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-tight text-text-color/70 hover:text-current transition-colors shrink-0 py-1 @4xl:py-0"
+                        className="w-fit flex items-center gap-1.5 text-xs font-bold uppercase tracking-tight text-text-color/70 hover:text-current transition-colors shrink-0 py-1 @4xl:py-0 hover:outline-none"
                     >
                         <HiArrowLeft className="text-sm" />
                         <span>{website.localize({ en: 'Start Over', fr: 'Recommencer' })}</span>
@@ -272,7 +272,7 @@ const SearchHeader = (props) => {
                             <input
                                 type="text"
                                 placeholder={website.localize({
-                                    en: 'Search experts...',
+                                    en: 'Search expersssts...',
                                     fr: 'Rechercher des experts...',
                                 })}
                                 className="flex-1 bg-transparent outline-none text-sm min-w-0 cursor-[inherit]"
@@ -285,9 +285,9 @@ const SearchHeader = (props) => {
                             />
                             <button
                                 type="submit"
-                                disabled={loading || !localSearch.trim()}
+                                disabled={loading}
                                 className={twJoin(
-                                    'shrink-0 text-lg focus:outline-none disabled:opacity-50 enabled:cursor-pointer enabled:opacity-70 enabled:hover:opacity-100'
+                                    'shrink-0 text-lg focus:outline-none disabled:opacity-50 enabled:cursor-pointer enabled:opacity-70 enabled:hover:opacity-100 enabled:hover:text-[var(--highlight)] transition-colors'
                                 )}
                             >
                                 <HiSearch />
@@ -306,7 +306,7 @@ const SearchHeader = (props) => {
                             {website.localize({ en: 'Filter:', fr: 'Filtrer:' })}
                         </p>
                         <button
-                            onClick={clearAll}
+                            onClick={clearFiltersOnly}
                             className="flex items-center gap-1 text-[11px] uppercase font-bold text-text-color/60 hover:text-[var(--highlight)]"
                         >
                             <HiX /> {website.localize({ en: 'Clear All', fr: 'Tout Effacer' })}
@@ -443,7 +443,7 @@ const ExpertHeader = (props) => {
             id="expert_viewer_header"
             className="@container sticky top-0 z-20 bg-text-color-0 shadow-sm border-b min-h-[63px]"
         >
-            <div className="min-h-[63px] h-full max-w-6xl mx-auto p-3 flex justify-between gap-4 @4xl:gap-6">
+            <div className="min-h-[63px] h-full max-w-6xl mx-auto p-3 @xl:p-4 @2xl:p-5 flex justify-between gap-4 @4xl:gap-6">
                 <button
                     onClick={handleClick}
                     className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-tight text-text-color/70 hover:text-current transition-colors shrink-0 py-1 @4xl:py-0"
