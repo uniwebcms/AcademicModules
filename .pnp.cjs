@@ -47,6 +47,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:src/E2"\
     },\
     {\
+      "name": "expert-series-3",\
+      "reference": "workspace:src/E3"\
+    },\
+    {\
       "name": "marketing-series-1",\
       "reference": "workspace:src/M1"\
     },\
@@ -70,6 +74,7 @@ const RAW_RUNTIME_STATE =
     ["documentation-series-3", ["workspace:src/D3"]],\
     ["expert-series-1", ["workspace:src/E1"]],\
     ["expert-series-2", ["workspace:src/E2"]],\
+    ["expert-series-3", ["workspace:src/E3"]],\
     ["marketing-series-1", ["workspace:src/M1"]],\
     ["marketing-series-2", ["workspace:src/M2"]],\
     ["marketing-series-3", ["workspace:src/M3"]],\
@@ -7641,6 +7646,30 @@ const RAW_RUNTIME_STATE =
           ["expert-series-2", "workspace:src/E2"],\
           ["@headlessui/react", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:2.2.9"],\
           ["@headlessui/tailwindcss", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:0.2.2"],\
+          ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
+          ["@uniwebcms/core-components", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:1.6.27"],\
+          ["@uniwebcms/module-sdk", "virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:2.0.3"],\
+          ["@uniwebcms/uniweb-tailwind-plugin", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:1.1.2"],\
+          ["axios", "npm:1.9.0"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:824c58c4ca55fef1a076a1e64b7aec198a1ece2c5def509c3d1d297365e28d0ced92769a9e6ef28770f6904227157ce4b4bf37f4004599fd784716c78f724d03#npm:18.3.1"],\
+          ["react-icons", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:5.5.0"],\
+          ["react-spinners", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.17.0"],\
+          ["react-virtuoso", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:4.14.1"],\
+          ["tailwindcss", "npm:3.4.17"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["expert-series-3", [\
+      ["workspace:src/E3", {\
+        "packageLocation": "./src/E3/",\
+        "packageDependencies": [\
+          ["expert-series-3", "workspace:src/E3"],\
+          ["@headlessui/react", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:2.2.9"],\
+          ["@headlessui/tailwindcss", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:0.2.2"],\
+          ["@tailwindcss/container-queries", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.1.1"],\
           ["@tailwindcss/typography", "virtual:03971cf67f555415b1730863140762794b1ec627999d9cc0e26f5640c319b0bcabdbaf592fe140e5b5517e5d0bb094e5dd1a0f4a913eeb9299a0946593c64ee9#npm:0.5.16"],\
           ["@uniwebcms/core-components", "virtual:83f16fc5da719f9d7dd93fc149c517b4ebdaefb4cd6a33399dff6f2aaff7fe4f0edeeeadac8123497d4310ff102d5fa7745a7a2290d6328662773ce929b1712a#npm:1.6.27"],\
           ["@uniwebcms/module-sdk", "virtual:e91f90bcb3b5dca7b9503f94f6c026744a251628de5ddab20a6535fcdfb458f7ad8b0d1b0b6ef869aa65824ea2b4310d8397719d91831f154d031a062b9a083c#npm:2.0.3"],\

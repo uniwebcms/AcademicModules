@@ -4,7 +4,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Image } from '@uniwebcms/core-components';
 import { Profile, twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { parseAcademicUnit } from '../_utils/helper';
-import { formatPhone, normalizePhone } from '../_utils/phone';
+import { formatPhone, parsePhoneParts, toTelHref } from '../_utils/phone';
 import {
     LuMail,
     LuPhone,
@@ -229,18 +229,27 @@ const Email = ({ email }) => {
 const Phone = ({ phone }) => {
     if (!phone) return null;
 
-    // Normalize and format the phone number
-    const normalizedPhone = normalizePhone(phone);
-    let phoneElement;
-    if (normalizedPhone) {
-        phoneElement = (
-            <a href={`tel:${normalizedPhone}`} className="hover:underline">
-                {formatPhone(phone)}
-            </a>
+    const parsed = parsePhoneParts(phone);
+
+    if (!parsed || parsed.raw) {
+        return (
+            <div className="flex items-center gap-3">
+                <LuPhone className="h-4 w-4 shrink-0" />
+                <span>{parsed?.raw ?? phone}</span>
+            </div>
         );
-    } else {
-        phoneElement = <span>{phone}</span>;
     }
+
+    const display = formatPhone(parsed);
+    const href = toTelHref(parsed);
+
+    const phoneElement = href ? (
+        <a href={href} className="hover:underline">
+            {display}
+        </a>
+    ) : (
+        <span>{display}</span>
+    );
 
     return (
         <div className="flex items-center gap-3">
