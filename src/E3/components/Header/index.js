@@ -96,9 +96,24 @@ const SearchHeader = (props) => {
             new Set(experts.map((e) => e.language).filter(Boolean))
         ).map((lang) => ({
             value: lang,
-            label: { english: 'English only', french: 'Français seulement' }[lang] || lang,
+            label:
+                {
+                    english: website.localize({ en: 'English Only', fr: 'Anglais Seulement' }),
+                    french: website.localize({ en: 'French Only', fr: 'Français Seulement' }),
+                    bilingual: website.localize({
+                        en: 'Bilingual',
+                        fr: 'Bilingue',
+                    }),
+                }[lang] || lang,
         }));
         languages.push(...uniqueLanguages);
+
+        if (experts.find((e) => e.other_languages)) {
+            languages.push({
+                value: 'other_languages',
+                label: website.localize({ en: 'Other Languages', fr: 'Autres langues' }),
+            });
+        }
 
         const uniqueFaculties = Array.from(
             new Set(experts.map((e) => e.caption?.split(',')?.[0]?.trim()).filter(Boolean))
@@ -346,12 +361,7 @@ const SearchHeader = (props) => {
                         <button
                             onClick={clearFiltersOnly}
                             disabled={!hasAnyFilters || loading}
-                            className={twMerge(
-                                'hidden @4xl:block pl-1.5 transition-all shrink-0 text-xs',
-                                hasAnyFilters && !loading
-                                    ? 'text-current opacity-100 hover:underline'
-                                    : 'opacity-50'
-                            )}
+                            className="hidden @4xl:block ml-1.5 transition-opacity shrink-0 text-xs enabled:text-current enabled:opacity-70 enabled:hover:opacity-100 enabled:hover:underline disabled:opacity-50 focus:outline-none"
                         >
                             {website.localize({ en: 'Clear All', fr: 'Tout Effacer' })}
                         </button>
