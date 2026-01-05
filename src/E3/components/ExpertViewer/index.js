@@ -8,7 +8,6 @@ import { formatPhone, parsePhoneParts, toTelHref } from '../_utils/phone';
 import {
     LuMail,
     LuPhone,
-    LuMapPin,
     LuGlobe,
     LuExternalLink,
     LuAward,
@@ -20,9 +19,10 @@ import client from '../_utils/ajax';
 import { parseReference } from '../_utils/reference';
 
 export default function ExpertViewer(props) {
-    const { website } = props;
-    const { useNavigate, useLocation } = website.getRoutingComponents();
-    const navigate = useNavigate();
+    const { website, block } = props;
+    const { hide_empty = false } = block.getBlockProperties();
+
+    const { useLocation } = website.getRoutingComponents();
     const location = useLocation();
 
     const [headerHeight, setHeaderHeight] = useState(0);
@@ -153,65 +153,73 @@ export default function ExpertViewer(props) {
                     </div>
 
                     {/* Education */}
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-bold uppercase tracking-wider">
-                            {website.localize({ en: 'Education', fr: 'Éducation' })}
-                        </h3>
-                        <ul className="space-y-2 text-sm">
-                            {selectedDegrees.map(
-                                ({ degree_name, specialty, institution, year }, i) => (
-                                    <li key={i} className="flex gap-2">
-                                        <LuAward className="h-4 w-4 flex-shrink-0 mt-0.5" />
-                                        <p>
-                                            {[degree_name, specialty, institution]
-                                                .filter(Boolean)
-                                                .join(', ')}
-                                            {year ? ` (${year})` : ''}
-                                        </p>
-                                    </li>
-                                )
-                            )}
-                        </ul>
-                    </div>
+                    {(!hide_empty || (hide_empty && selectedDegrees.length > 0)) && (
+                        <div className="space-y-4">
+                            <h3 className="text-sm font-bold uppercase tracking-wider">
+                                {website.localize({ en: 'Education', fr: 'Éducation' })}
+                            </h3>
+                            <ul className="space-y-2 text-sm">
+                                {selectedDegrees.map(
+                                    ({ degree_name, specialty, institution, year }, i) => (
+                                        <li key={i} className="flex gap-2">
+                                            <LuAward className="h-4 w-4 flex-shrink-0 mt-0.5" />
+                                            <p>
+                                                {[degree_name, specialty, institution]
+                                                    .filter(Boolean)
+                                                    .join(', ')}
+                                                {year ? ` (${year})` : ''}
+                                            </p>
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                    )}
                 </div>
 
                 {/* Right Content - Main Info */}
                 <div className="w-full @4xl:w-2/3 @4xl:pr-5 @4xl:py-5 space-y-10 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
                     {/* Bio */}
-                    <section>
-                        <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
-                            {website.localize({ en: 'Biography', fr: 'Biographie' })}
-                        </h2>
-                        <ExpandableText text={stripTags(biography)} website={website} />
-                    </section>
+                    {(!hide_empty || (hide_empty && biography)) && (
+                        <section>
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
+                                {website.localize({ en: 'Biography', fr: 'Biographie' })}
+                            </h2>
+                            <ExpandableText text={stripTags(biography)} website={website} />
+                        </section>
+                    )}
 
                     {/* Expertise */}
-                    <section>
-                        <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
-                            {website.localize({
-                                en: 'Areas of Expertise',
-                                fr: 'Domaines d’expertise',
-                            })}
-                        </h2>
+                    {(!hide_empty || (hide_empty && areasOfExpertise.length > 0)) && (
+                        <section>
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
+                                {website.localize({
+                                    en: 'Areas of Expertise',
+                                    fr: 'Domaines d’expertise',
+                                })}
+                            </h2>
 
-                        <ExpandableTile items={areasOfExpertise} website={website} />
-                    </section>
+                            <ExpandableTile items={areasOfExpertise} website={website} />
+                        </section>
+                    )}
 
                     {/* Publications */}
-                    <section>
-                        <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
-                            {website.localize({
-                                en: 'Selected Publications',
-                                fr: 'Publications Sélectionnées',
-                            })}
-                        </h2>
-                        <ExpandableList
-                            items={publications}
-                            initialCount={5}
-                            renderItem={renderPublication}
-                            website={website}
-                        />
-                    </section>
+                    {(!hide_empty || (hide_empty && publications.length > 0)) && (
+                        <section>
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
+                                {website.localize({
+                                    en: 'Selected Publications',
+                                    fr: 'Publications Sélectionnées',
+                                })}
+                            </h2>
+                            <ExpandableList
+                                items={publications}
+                                initialCount={5}
+                                renderItem={renderPublication}
+                                website={website}
+                            />
+                        </section>
+                    )}
                 </div>
             </div>
         </div>

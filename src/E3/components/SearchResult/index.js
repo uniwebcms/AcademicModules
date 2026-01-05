@@ -174,7 +174,7 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
                         {expertise.slice(0, 3).map((tag) => (
                             <ExpertiseTag
                                 key={tag}
-                                className="max-w-[120px] @lg:max-w-[180px] truncate"
+                                className="max-w-full @2xl:max-w-[120px] @4xl:max-w-[240px] @6xl:max-w-[320px] truncate"
                             >
                                 {tag}
                             </ExpertiseTag>

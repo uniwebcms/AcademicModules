@@ -10,3 +10,14 @@ description:
 
 category: content
 export: true
+
+properties:
+    hide_empty:
+        type: boolean
+        label:
+            en: Hide Empty Sections
+            fr: Masquer les sections vides
+        description:
+            en: If enabled, sections without content will not be displayed.
+            fr: Si activé, les sections sans contenu ne seront pas affichéfinies.
+        default: false
