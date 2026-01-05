@@ -9,7 +9,7 @@ description:
     fr: Un composant de formulaire pour collecter les retours d'information ou les données
 
 category: form
-export: true
+export: false
 
 elements:
     title:

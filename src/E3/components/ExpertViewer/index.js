@@ -14,6 +14,7 @@ import {
     LuAward,
     LuChevronUp,
     LuChevronDown,
+    LuBuilding2,
 } from 'react-icons/lu';
 import client from '../_utils/ajax';
 import { parseReference } from '../_utils/reference';
@@ -65,8 +66,6 @@ export default function ExpertViewer(props) {
     const { head = {}, title, subtitle } = expert.getBasicInfo() || {};
     const { unit, faculty, institution } = parseAcademicUnit(subtitle);
 
-    console.log(expert);
-
     const {
         academic_unit = [],
         position_title = [],
@@ -83,6 +82,12 @@ export default function ExpertViewer(props) {
     const biography = expert.at('biography/academic_biography');
     const areasOfExpertise = expert.at('key_words').map((item) => item.keyword);
     const publications = expert.at('references');
+    const contact_preferences = expert.at('contact_preferences');
+    const {
+        email: emailContact = '0',
+        telephone: telContact = '0',
+        office: officeContact = '0',
+    } = contact_preferences || {};
 
     const joinWithComma = (a, b) => [a, b].filter(Boolean).join(', ');
 
@@ -139,9 +144,9 @@ export default function ExpertViewer(props) {
                             {website.localize({ en: 'Contact', fr: 'Contact' })}
                         </h3>
                         <div className="space-y-3 text-sm">
-                            <Email email={email} />
-                            <Phone phone={telephone} />
-                            <Office office={office} />
+                            {emailContact === '1' && <Email email={email} />}
+                            {telContact === '1' && <Phone phone={telephone} />}
+                            {officeContact === '1' && <Office office={office} />}
                             <WebsiteLink url={homepage} />
                             <UnitLink unitId={unitId} website={website} />
                         </div>
@@ -264,7 +269,7 @@ const Office = ({ office }) => {
 
     return (
         <div className="flex items-center gap-3">
-            <LuMapPin className="h-4 w-4 shrink-0" />
+            <LuBuilding2 className="h-4 w-4 shrink-0" />
             <span>{office}</span>
         </div>
     );

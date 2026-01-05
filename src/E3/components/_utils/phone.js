@@ -115,7 +115,6 @@ export function parsePhoneParts(input) {
  * - or a raw string (it will parse it)
  */
 export function formatPhone(input) {
-    console.log('f', input);
     const parsed = typeof input === 'string' ? parsePhoneParts(input) : input;
 
     if (!parsed) return null;

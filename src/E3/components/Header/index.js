@@ -446,7 +446,7 @@ const ExpertHeader = (props) => {
             <div className="min-h-[63px] h-full max-w-6xl mx-auto p-3 @xl:p-4 @2xl:p-5 flex justify-between gap-4 @4xl:gap-6">
                 <button
                     onClick={handleClick}
-                    className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-tight text-text-color/70 hover:text-current transition-colors shrink-0 py-1 @4xl:py-0"
+                    className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-tight text-text-color/70 hover:text-current transition-colors shrink-0 py-1 @4xl:py-0 focus:outline-none"
                 >
                     <HiArrowLeft className="text-sm" />
                     <span>
