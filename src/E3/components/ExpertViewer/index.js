@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Image } from '@uniwebcms/core-components';
-import { Profile, twJoin, stripTags } from '@uniwebcms/module-sdk';
-import { parseAcademicUnit } from '../_utils/helper';
+import { Profile, stripTags } from '@uniwebcms/module-sdk';
+import { parseAcademicUnit, joinWithComma, formatDateRange } from '../_utils/helper';
 import { formatPhone, parsePhoneParts, toTelHref } from '../_utils/phone';
 import {
+    LuUser,
     LuMail,
+    LuStar,
+    LuMapPin,
+    LuBookOpen,
     LuPhone,
     LuGlobe,
     LuExternalLink,
@@ -78,18 +82,17 @@ export default function ExpertViewer(props) {
     const position = position_title?.[1];
     const unitId = academic_unit?.[0];
 
-    const selectedDegrees = expert.at('selected_degrees');
-    const biography = expert.at('biography/academic_biography');
-    const areasOfExpertise = expert.at('key_words').map((item) => item.keyword);
-    const publications = expert.at('references');
-    const contact_preferences = expert.at('contact_preferences');
+    const selectedDegrees = expert.at('selected_degrees') || [];
+    const biography = expert.at('biography/academic_biography') || '';
+    const areasOfExpertise = expert.at('key_words')?.map((item) => item.keyword) || [];
+    const publications = expert.at('references') || [];
+    const contact_preferences = expert.at('contact_preferences') || {};
     const {
         email: emailContact = '0',
         telephone: telContact = '0',
         office: officeContact = '0',
-    } = contact_preferences || {};
-
-    const joinWithComma = (a, b) => [a, b].filter(Boolean).join(', ');
+    } = contact_preferences;
+    const researchPlaces = expert.at('research_places') || [];
 
     const renderPublication = (publication) => {
         let [id, head] = publication.reference;
@@ -108,6 +111,38 @@ export default function ExpertViewer(props) {
                 <p className="text-sm @2xl:text-base font-semibold text-heading-color">{title}</p>
                 <p className="text-xs @2xl:text-sm text-text-color/70">
                     {joinWithComma(containerTitle, issued?.['date-parts']?.[0]?.[0])}
+                </p>
+            </li>
+        );
+    };
+
+    const renderResearchPlace = (place) => {
+        const { address = {}, start_date = '', end_date = '', activity_types = [] } = place;
+
+        if (!address.formatted_address) return null;
+
+        return (
+            <li className="group">
+                <p className="text-sm @2xl:text-base font-semibold text-heading-color">
+                    {address.formatted_address}
+                    <span className="font-normal text-text-color/70">
+                        {' '}
+                        {formatDateRange(
+                            start_date,
+                            end_date,
+                            website.localize({
+                                en: 'Present',
+                                fr: 'Présent',
+                            }),
+                            true
+                        )}
+                    </span>
+                </p>
+                <p className="text-xs @2xl:text-sm text-text-color/70 gap-1">
+                    {activity_types
+                        .map((type) => type.activity_type)
+                        .filter(Boolean)
+                        .join(', ')}{' '}
                 </p>
             </li>
         );
@@ -178,11 +213,12 @@ export default function ExpertViewer(props) {
                 </div>
 
                 {/* Right Content - Main Info */}
-                <div className="w-full @4xl:w-2/3 @4xl:pr-5 @4xl:py-5 space-y-10 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
+                <div className="w-full @4xl:w-2/3 @4xl:pr-5 @4xl:py-5 space-y-8 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
                     {/* Bio */}
                     {(!hide_empty || (hide_empty && biography)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                                <LuUser className="text-xl @4xl:text-2xl" />
                                 {website.localize({ en: 'Biography', fr: 'Biographie' })}
                             </h2>
                             <ExpandableText text={stripTags(biography)} website={website} />
@@ -192,7 +228,8 @@ export default function ExpertViewer(props) {
                     {/* Expertise */}
                     {(!hide_empty || (hide_empty && areasOfExpertise.length > 0)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                                <LuStar className="text-xl @4xl:text-2xl" />
                                 {website.localize({
                                     en: 'Areas of Expertise',
                                     fr: 'Domaines d’expertise',
@@ -206,7 +243,8 @@ export default function ExpertViewer(props) {
                     {/* Publications */}
                     {(!hide_empty || (hide_empty && publications.length > 0)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2">
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                                <LuBookOpen className="text-xl @4xl:text-2xl" />
                                 {website.localize({
                                     en: 'Selected Publications',
                                     fr: 'Publications Sélectionnées',
@@ -216,6 +254,26 @@ export default function ExpertViewer(props) {
                                 items={publications}
                                 initialCount={5}
                                 renderItem={renderPublication}
+                                website={website}
+                            />
+                        </section>
+                    )}
+
+                    {/* Research Places */}
+                    {(!hide_empty || (hide_empty && researchPlaces.length > 0)) && (
+                        <section>
+                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                                <LuMapPin className="text-xl @4xl:text-2xl" />
+                                {website.localize({
+                                    en: 'Research Places',
+                                    fr: 'Lieux de recherche',
+                                })}
+                            </h2>
+
+                            <ExpandableList
+                                items={researchPlaces}
+                                initialCount={3}
+                                renderItem={renderResearchPlace}
                                 website={website}
                             />
                         </section>
