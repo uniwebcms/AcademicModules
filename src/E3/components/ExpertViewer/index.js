@@ -390,7 +390,7 @@ const ExpandableText = ({ text, className = '', website }) => {
             </p>
             <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="mt-2 text-primary font-medium text-sm flex items-center hover:underline focus:outline-none"
+                className="mt-2 text-[var(--highlight)] font-medium text-sm flex items-center hover:underline focus:outline-none"
             >
                 {isExpanded ? (
                     <>
@@ -403,8 +403,8 @@ const ExpandableText = ({ text, className = '', website }) => {
                 ) : (
                     <>
                         {website.localize({
-                            en: 'Show All',
-                            fr: 'Voir Tout',
+                            en: 'Show More',
+                            fr: 'Voir Plus',
                         })}{' '}
                         <LuChevronDown className="ml-1 h-4 w-4" />
                     </>
