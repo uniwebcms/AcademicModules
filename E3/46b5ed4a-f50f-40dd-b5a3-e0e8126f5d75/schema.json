@@ -1,0 +1,151 @@
+{
+  "_self": {
+    "name": "Expert Series 3 (uo)",
+    "description": "This is a collection of components designed for the Expert Website, and it is ideally suited for the embedded mode.",
+    "styleFields": [
+      {
+        "id": "border-radius",
+        "type": "select",
+        "label": {
+          "en": "Corner Style",
+          "fr": "Style de coin"
+        },
+        "description": {
+          "en": "The style of the corners for the card, table or button like elements across the site.",
+          "fr": "Le style des coins pour les éléments de carte, de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0.25rem",
+        "options": [
+          {
+            "label": {
+              "en": "Straight",
+              "fr": "Droit"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Soft Corners",
+              "fr": "Coins doux"
+            },
+            "value": "0.25rem"
+          },
+          {
+            "label": {
+              "en": "Smooth Corners",
+              "fr": "Coins lisses"
+            },
+            "value": "0.375rem"
+          },
+          {
+            "label": {
+              "en": "Curved Corners",
+              "fr": "Coins arrondis"
+            },
+            "value": "0.5rem"
+          },
+          {
+            "label": {
+              "en": "Oval / Pill Shape",
+              "fr": "Forme ovale / en forme de pilule"
+            },
+            "value": "40px"
+          }
+        ]
+      },
+      {
+        "id": "container-height",
+        "type": "string",
+        "label": {
+          "en": "Embedded Iframe Height (match parent)",
+          "fr": "Hauteur de l'iframe intégrée (correspond au parent)"
+        },
+        "description": {
+          "en": "Sets the height of the container used to display the embedded Experts Explorer iframe. This value should match the iframe height on the parent site.",
+          "fr": "Définit la hauteur du conteneur utilisé pour afficher l'iframe Experts Explorer intégré. Cette valeur doit correspondre à la hauteur de l'iframe sur le site parent."
+        },
+        "default": "800px"
+      }
+    ]
+  },
+  "ExpertViewer": {
+    "title": {
+      "en": "Expert Viewer",
+      "fr": "Visionneuse d'expert"
+    },
+    "label": {
+      "en": "Expert Viewer",
+      "fr": "Visionneuse d'expert"
+    },
+    "description": {
+      "en": "A component to display an expert's profile with their hero banner, details with a Media Inquiries side panel.",
+      "fr": "Un composant pour afficher le profil d'un expert avec sa bannière héro, ses détails et un panneau latéral de demandes médiatiques."
+    },
+    "category": "content",
+    "export": true,
+    "properties": {
+      "hide_empty": {
+        "type": "boolean",
+        "label": {
+          "en": "Hide Empty Sections",
+          "fr": "Masquer les sections vides"
+        },
+        "description": {
+          "en": "If enabled, sections without content will not be displayed.",
+          "fr": "Si activé, les sections sans contenu ne seront pas affichéfinies."
+        },
+        "default": false
+      }
+    },
+    "name": "ExpertViewer"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "Renders a header for the experts browser, including searching, filtering and sorting.",
+      "fr": "Rend un en-tête pour le navigateur d'experts, y compris la recherche, le filtrage et le tri."
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "name": "Header"
+  },
+  "Home": {
+    "title": {
+      "en": "Home",
+      "fr": "Accueil"
+    },
+    "description": {
+      "en": "Display the home page with a title and a search box.",
+      "fr": "Affiche la page d'accueil avec un titre et une boîte de recherche."
+    },
+    "label": {
+      "en": "Home",
+      "fr": "Accueil"
+    },
+    "category": "content",
+    "export": true,
+    "name": "Home"
+  },
+  "SearchResult": {
+    "title": {
+      "en": "Search Result",
+      "fr": "Résultat de recherche"
+    },
+    "label": {
+      "en": "Search Result",
+      "fr": "Résultat de recherche"
+    },
+    "description": {
+      "en": "A component to display search results of experts in a list format, each with a card containing an image, title, details and a link to the expert's page.",
+      "fr": "Un composant pour afficher les résultats de recherche d'experts dans un format de liste, chacun avec une carte contenant une image, un titre, des détails et un lien vers la page de l'expert."
+    },
+    "category": "content",
+    "export": true,
+    "name": "SearchResult"
+  }
+}
