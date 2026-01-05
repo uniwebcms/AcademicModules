@@ -1,0 +1,76 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-01-05T16:31:18.374Z",
+  "files": [
+    {
+      "name": "main.5b3f72e263814c8061dd.js",
+      "size": 1472936,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "remoteEntry.js",
+      "size": 6155,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.5c69daed4f58c15da0a2.js",
+      "size": 6607,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.fc9f4a28346ed323238c.js",
+      "size": 132723,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.9168563ec286f9191efb.js",
+      "size": 620971,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.87785b5d74a901b4e782.js",
+      "size": 1012804,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "assets/Form/example.png",
+      "size": 27328,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "schema.json",
+      "size": 16578,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "assets/Form/example.webp",
+      "size": 27328,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.fc9f4a28346ed323238c.js.LICENSE.txt",
+      "size": 483,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.87785b5d74a901b4e782.js.LICENSE.txt",
+      "size": 249,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.5c69daed4f58c15da0a2.js.LICENSE.txt",
+      "size": 237,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.5b3f72e263814c8061dd.js.LICENSE.txt",
+      "size": 249,
+      "hash": "9dbdbd57e38864469cd7"
+    },
+    {
+      "name": "main.9168563ec286f9191efb.js.LICENSE.txt",
+      "size": 149,
+      "hash": "9dbdbd57e38864469cd7"
+    }
+  ]
+}

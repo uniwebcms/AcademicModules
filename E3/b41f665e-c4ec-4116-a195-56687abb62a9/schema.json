@@ -1,0 +1,525 @@
+{
+  "_self": {
+    "name": "Expert Series 3 (uo)",
+    "description": "This is a collection of components designed for the Expert Website, and it is ideally suited for the embedded mode.",
+    "styleFields": [
+      {
+        "id": "border-radius",
+        "type": "select",
+        "label": {
+          "en": "Corner Style",
+          "fr": "Style de coin"
+        },
+        "description": {
+          "en": "The style of the corners for the card, table or button like elements across the site.",
+          "fr": "Le style des coins pour les éléments de carte, de tableau ou de type bouton sur l'ensemble du site."
+        },
+        "default": "0.25rem",
+        "options": [
+          {
+            "label": {
+              "en": "Straight",
+              "fr": "Droit"
+            },
+            "value": "0px"
+          },
+          {
+            "label": {
+              "en": "Soft Corners",
+              "fr": "Coins doux"
+            },
+            "value": "0.25rem"
+          },
+          {
+            "label": {
+              "en": "Smooth Corners",
+              "fr": "Coins lisses"
+            },
+            "value": "0.375rem"
+          },
+          {
+            "label": {
+              "en": "Curved Corners",
+              "fr": "Coins arrondis"
+            },
+            "value": "0.5rem"
+          },
+          {
+            "label": {
+              "en": "Oval / Pill Shape",
+              "fr": "Forme ovale / en forme de pilule"
+            },
+            "value": "40px"
+          }
+        ]
+      },
+      {
+        "id": "container-height",
+        "type": "string",
+        "label": {
+          "en": "Embedded Iframe Height (match parent)",
+          "fr": "Hauteur de l'iframe intégrée (correspond au parent)"
+        },
+        "description": {
+          "en": "Sets the height of the container used to display the embedded Experts Explorer iframe. This value should match the iframe height on the parent site.",
+          "fr": "Définit la hauteur du conteneur utilisé pour afficher l'iframe Experts Explorer intégré. Cette valeur doit correspondre à la hauteur de l'iframe sur le site parent."
+        },
+        "default": "800px"
+      }
+    ]
+  },
+  "ExpertViewer": {
+    "title": {
+      "en": "Expert Viewer",
+      "fr": "Visionneuse d'expert"
+    },
+    "label": {
+      "en": "Expert Viewer",
+      "fr": "Visionneuse d'expert"
+    },
+    "description": {
+      "en": "A component to display an expert's profile with their hero banner, details with a Media Inquiries side panel.",
+      "fr": "Un composant pour afficher le profil d'un expert avec sa bannière héro, ses détails et un panneau latéral de demandes médiatiques."
+    },
+    "category": "content",
+    "export": true,
+    "name": "ExpertViewer"
+  },
+  "Form": {
+    "title": {
+      "en": "Form",
+      "fr": "Formulaire"
+    },
+    "label": {
+      "en": "Form",
+      "fr": "Formulaire"
+    },
+    "description": {
+      "en": "A form component to collect user feedback or data.",
+      "fr": "Un composant de formulaire pour collecter les retours d'information ou les données"
+    },
+    "category": "form",
+    "export": true,
+    "elements": {
+      "title": {
+        "type": "H1",
+        "alignment": "",
+        "description": {
+          "en": "The main headline.",
+          "fr": "Le titre principal."
+        }
+      },
+      "subtitle": {
+        "type": "H2",
+        "description": {
+          "en": "A phrase that follows the main headline.",
+          "fr": "Une phrase qui suit le titre principal."
+        }
+      },
+      "form": {
+        "description": {
+          "en": "A form to construct the data collection interface.",
+          "fr": "Un formulaire pour construire l'interface de collecte de données."
+        },
+        "schemas": [
+          {
+            "id": "form",
+            "name": {
+              "en": "Form",
+              "fr": "Formulaire"
+            },
+            "isComposite": true,
+            "childSchema": {
+              "name": {
+                "en": "Field",
+                "fr": "Champ"
+              },
+              "fields": [
+                {
+                  "id": "label",
+                  "type": "text",
+                  "label": {
+                    "en": "Field Label",
+                    "fr": "Étiquette du champ"
+                  },
+                  "description": {
+                    "en": "The label for the field.",
+                    "fr": "L'étiquette du champ."
+                  },
+                  "required": true
+                },
+                {
+                  "id": "widget",
+                  "type": "select",
+                  "label": {
+                    "en": "Field Type",
+                    "fr": "Type de champ"
+                  },
+                  "description": {
+                    "en": "Defines the input type.",
+                    "fr": "Définit le type d'entrée."
+                  },
+                  "required": true,
+                  "options": [
+                    {
+                      "label": {
+                        "en": "Input",
+                        "fr": "Input"
+                      },
+                      "value": "input"
+                    },
+                    {
+                      "label": {
+                        "en": "Text Area",
+                        "fr": "Zone de texte"
+                      },
+                      "value": "textarea"
+                    },
+                    {
+                      "label": {
+                        "en": "Select",
+                        "fr": "Sélect"
+                      },
+                      "value": "select"
+                    },
+                    {
+                      "label": {
+                        "en": "Radio Group",
+                        "fr": "Groupe de boutons radio"
+                      },
+                      "value": "radio"
+                    },
+                    {
+                      "label": {
+                        "en": "Checkbox",
+                        "fr": "Case à cocher"
+                      },
+                      "value": "checkbox"
+                    },
+                    {
+                      "label": {
+                        "en": "File Upload",
+                        "fr": "Téléchargement de fichier"
+                      },
+                      "value": "file"
+                    }
+                  ]
+                },
+                {
+                  "id": "required",
+                  "type": "checkbox",
+                  "label": {
+                    "en": "Required",
+                    "fr": "Requis"
+                  },
+                  "description": {
+                    "en": "If true, the field is mandatory.",
+                    "fr": "Si vrai, le champ est obligatoire."
+                  }
+                },
+                {
+                  "id": "placeholder",
+                  "type": "text",
+                  "label": {
+                    "en": "Placeholder Text",
+                    "fr": "Texte de l'espace réservé"
+                  },
+                  "description": {
+                    "en": "Placeholder text for the input field.",
+                    "fr": "Texte de l'espace réservé pour le champ d'entrée."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "textarea"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "options",
+                  "type": "form",
+                  "label": {
+                    "en": "Options to Select",
+                    "fr": "Options à sélectionner"
+                  },
+                  "description": {
+                    "en": "Options for select, radio fields.",
+                    "fr": "Options pour les champs de sélection, radio."
+                  },
+                  "childSchema": {
+                    "name": {
+                      "en": "Option",
+                      "fr": "Option"
+                    },
+                    "fields": [
+                      {
+                        "id": "value",
+                        "type": "text",
+                        "label": {
+                          "en": "Option Value",
+                          "fr": "Valeur de l'option"
+                        },
+                        "required": true
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "select",
+                        "radio"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "file_accept",
+                  "type": "text",
+                  "label": {
+                    "en": "File Accept Types",
+                    "fr": "Types de fichiers acceptés"
+                  },
+                  "placeholder": {
+                    "en": ".pdf,.jpg,.png,.doc,.docx",
+                    "fr": ".pdf,.jpg,.png,.doc,.docx"
+                  },
+                  "condition": {
+                    "widget": "file"
+                  }
+                },
+                {
+                  "id": "file_size_limit",
+                  "type": "number",
+                  "label": {
+                    "en": "File Size Limit (MB)",
+                    "fr": "Limite de taille de fichier (Mo)"
+                  },
+                  "placeholder": {
+                    "en": "5",
+                    "fr": "5"
+                  },
+                  "min": 1,
+                  "max": 5,
+                  "condition": {
+                    "widget": "file"
+                  }
+                },
+                {
+                  "id": "validation_regex",
+                  "type": "text",
+                  "label": {
+                    "en": "Validation (Regex)",
+                    "fr": "Validation (Regex)"
+                  },
+                  "description": {
+                    "en": "A regular expression for validation.",
+                    "fr": "Une expression régulière pour la validation."
+                  },
+                  "condition": {
+                    "widget": "input"
+                  }
+                },
+                {
+                  "id": "validation_type",
+                  "type": "select",
+                  "label": {
+                    "en": "Validation (Type)",
+                    "fr": "Validation (Type)"
+                  },
+                  "description": {
+                    "en": "Validation by type.",
+                    "fr": "Validation par type."
+                  },
+                  "options": [
+                    {
+                      "value": "email",
+                      "label": {
+                        "en": "Email",
+                        "fr": "Email"
+                      }
+                    },
+                    {
+                      "value": "positive_integer",
+                      "label": {
+                        "en": "Positive Integer",
+                        "fr": "Entier positif"
+                      }
+                    }
+                  ],
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "number"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "default_value",
+                  "type": "text",
+                  "label": {
+                    "en": "Default Value",
+                    "fr": "Valeur par défaut"
+                  },
+                  "description": {
+                    "en": "The initial value of the field.",
+                    "fr": "La valeur initiale du champ."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "select",
+                        "radio",
+                        "checkbox"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "group",
+                  "type": "text",
+                  "label": {
+                    "en": "Field Group",
+                    "fr": "Groupe de champs"
+                  },
+                  "description": {
+                    "en": "Group name for the field, useful for organizing fields.",
+                    "fr": "Nom du groupe pour le champ, utile pour organiser les champs."
+                  }
+                },
+                {
+                  "id": "half_width_on_large",
+                  "type": "checkbox",
+                  "label": {
+                    "en": "Half Width on Large Screens",
+                    "fr": "Demi-largeur sur les écrans larges"
+                  },
+                  "description": {
+                    "en": "If true, the field will take half the width on large screens.",
+                    "fr": "Si vrai, le champ prendra la moitié de la largeur sur les écrans larges."
+                  },
+                  "condition": {
+                    "widget": {
+                      "$in": [
+                        "input",
+                        "select"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "button": {
+        "description": {
+          "en": "The button to submit the form.",
+          "fr": "Le bouton pour soumettre le formulaire."
+        }
+      }
+    },
+    "properties": {
+      "submission_delivery_method": {
+        "type": "string",
+        "label": {
+          "en": "Submission Delivery Method",
+          "fr": "Méthode de livraison de la soumission"
+        },
+        "description": {
+          "en": "How the form submission will be delivered.",
+          "fr": "Comment la soumission du formulaire sera livrée."
+        },
+        "enum": [
+          {
+            "value": "email",
+            "label": {
+              "en": "Email",
+              "fr": "Email"
+            }
+          },
+          {
+            "value": "message",
+            "label": {
+              "en": "In-Site Message",
+              "fr": "Message sur le site"
+            }
+          }
+        ],
+        "default": "message"
+      },
+      "email_recipient": {
+        "type": "string",
+        "label": {
+          "en": "Email Recipient",
+          "fr": "Destinataire de l'email"
+        },
+        "description": {
+          "en": "The email address to receive form submissions when delivery method is email.",
+          "fr": "L'adresse e-mail pour recevoir les soumissions du formulaire lorsque la méthode de livraison"
+        }
+      }
+    },
+    "images": [
+      {
+        "height": 1153,
+        "width": 728,
+        "type": "webp",
+        "path": "assets/Form/example.png"
+      }
+    ],
+    "name": "Form"
+  },
+  "Header": {
+    "title": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "description": {
+      "en": "Renders a header for the experts browser, including searching, filtering and sorting.",
+      "fr": "Rend un en-tête pour le navigateur d'experts, y compris la recherche, le filtrage et le tri."
+    },
+    "label": {
+      "en": "Header",
+      "fr": "En-tête"
+    },
+    "name": "Header"
+  },
+  "Home": {
+    "title": {
+      "en": "Home",
+      "fr": "Accueil"
+    },
+    "description": {
+      "en": "Display the home page with a title and a search box.",
+      "fr": "Affiche la page d'accueil avec un titre et une boîte de recherche."
+    },
+    "label": {
+      "en": "Home",
+      "fr": "Accueil"
+    },
+    "category": "content",
+    "export": true,
+    "name": "Home"
+  },
+  "SearchResult": {
+    "title": {
+      "en": "Search Result",
+      "fr": "Résultat de recherche"
+    },
+    "label": {
+      "en": "Search Result",
+      "fr": "Résultat de recherche"
+    },
+    "description": {
+      "en": "A component to display search results of experts in a list format, each with a card containing an image, title, details and a link to the expert's page.",
+      "fr": "Un composant pour afficher les résultats de recherche d'experts dans un format de liste, chacun avec une carte contenant une image, un titre, des détails et un lien vers la page de l'expert."
+    },
+    "category": "content",
+    "export": true,
+    "name": "SearchResult"
+  }
+}
