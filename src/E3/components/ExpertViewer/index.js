@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { Image } from '@uniwebcms/core-components';
+import { Image, SafeHtml } from '@uniwebcms/core-components';
 import { Profile, stripTags } from '@uniwebcms/module-sdk';
 import { parseAcademicUnit, joinWithComma, formatDateRange } from '../_utils/helper';
 import { formatPhone, parsePhoneParts, toTelHref } from '../_utils/phone';
@@ -178,7 +178,7 @@ export default function ExpertViewer(props) {
 
                     {/* Contact Info */}
                     <div className="space-y-4">
-                        <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                        <h3 className="text-sm font-bold uppercase tracking-wider">
                             {website.localize({ en: 'Contact', fr: 'Contact' })}
                         </h3>
                         <div className="space-y-3 text-sm">
@@ -224,7 +224,7 @@ export default function ExpertViewer(props) {
                                 <LuUser className="text-xl @4xl:text-2xl" />
                                 {website.localize({ en: 'Biography', fr: 'Biographie' })}
                             </h3>
-                            <ExpandableText text={stripTags(biography)} website={website} />
+                            <ExpandableText text={biography} website={website} />
                         </section>
                     )}
 
@@ -442,21 +442,25 @@ const ExpandableText = ({ text, className = '', website }) => {
     // Simple heuristic: if text is short enough, don't truncate
     // Ideally we'd measure height, but line clamping is CSS-based
     // We'll assume if it's under 300 chars it probably fits in 3 lines (rough estimate)
-    const shouldTruncate = text.length > 300;
+    const shouldTruncate = stripTags(text).length > 300;
 
     if (!shouldTruncate) {
-        return <p className={`text-foreground/80 leading-relaxed text-lg ${className}`}>{text}</p>;
+        return (
+            <SafeHtml
+                className={`leading-relaxed text-base @4xl:text-lg [&>p+p]:mt-2 @4xl:[&>p+p]:mt-3 ${className}`}
+                value={text}
+            />
+        );
     }
 
     return (
         <div className={className}>
-            <p
-                className={`text-foreground/80 leading-relaxed text-lg transition-all duration-300 ${
+            <SafeHtml
+                className={`leading-relaxed text-base @4xl:text-lg [&>p+p]:mt-2 @4xl:[&>p+p]:mt-3 transition-all duration-300 ${
                     !isExpanded ? 'line-clamp-3' : ''
                 }`}
-            >
-                {text}
-            </p>
+                value={text}
+            />
             <button
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="mt-2 text-[var(--highlight)] font-medium text-sm flex items-center hover:underline focus:outline-none"
