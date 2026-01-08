@@ -157,18 +157,21 @@ export default function ExpertViewer(props) {
                 {/* Left Sidebar - Quick Info */}
                 <div className="w-full @4xl:w-1/3 @4xl:pl-5 @4xl:py-5 space-y-8 @4xl:sticky top-0 @4xl:max-h-full @4xl:overflow-y-auto no-scrollbar">
                     {/* Avatar & Key Info */}
-                    <div className="text-center @4xl:text-left">
+                    <div className="text-center @4xl:text-left pt-4 @4xl:pt-0">
                         <Image
                             profile={expert}
                             type="avatar"
                             rounded
-                            className="w-40 h-40 @4xl:w-48 @4xl:h-48 mb-6 mx-auto @4xl:mx-0"
+                            className="w-40 h-40 mb-6 mx-auto @4xl:mx-0"
                         />
-                        <h1 className="text-2xl @4xl:text-3xl font-bold mb-2">{title}</h1>
-                        <p className="text-base @4xl:text-lg font-medium text-[var(--highlight)]">
-                            {[position, faculty].filter(Boolean).join(', ')}
+                        <h2 className="text-2xl @4xl:text-3xl font-bold mb-2">{title}</h2>
+                        <p className="text-base @4xl:text-lg font-semibold text-[var(--highlight)]">
+                            {position}
                         </p>
-                        <p className="text-sm @4xl:text-base text-text-color/80">{unit}</p>
+                        <p className="text-sm @4xl:text-base text-text-color/90 font-medium">
+                            {faculty}
+                        </p>
+                        <p className="text-xs @4xl:text-sm text-text-color/70">{unit}</p>
                     </div>
 
                     <hr className="border-text-color/10" />
@@ -217,10 +220,10 @@ export default function ExpertViewer(props) {
                     {/* Bio */}
                     {(!hide_empty || (hide_empty && biography)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                            <h3 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
                                 <LuUser className="text-xl @4xl:text-2xl" />
                                 {website.localize({ en: 'Biography', fr: 'Biographie' })}
-                            </h2>
+                            </h3>
                             <ExpandableText text={stripTags(biography)} website={website} />
                         </section>
                     )}
@@ -228,13 +231,13 @@ export default function ExpertViewer(props) {
                     {/* Expertise */}
                     {(!hide_empty || (hide_empty && areasOfExpertise.length > 0)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                            <h3 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
                                 <LuStar className="text-xl @4xl:text-2xl" />
                                 {website.localize({
                                     en: 'Areas of Expertise',
                                     fr: 'Domaines d’expertise',
                                 })}
-                            </h2>
+                            </h3>
 
                             <ExpandableTile items={areasOfExpertise} website={website} />
                         </section>
@@ -243,13 +246,13 @@ export default function ExpertViewer(props) {
                     {/* Publications */}
                     {(!hide_empty || (hide_empty && publications.length > 0)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                            <h3 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
                                 <LuBookOpen className="text-xl @4xl:text-2xl" />
                                 {website.localize({
                                     en: 'Selected Publications',
                                     fr: 'Publications Sélectionnées',
                                 })}
-                            </h2>
+                            </h3>
                             <ExpandableList
                                 items={publications}
                                 initialCount={5}
@@ -262,13 +265,13 @@ export default function ExpertViewer(props) {
                     {/* Research Places */}
                     {(!hide_empty || (hide_empty && researchPlaces.length > 0)) && (
                         <section>
-                            <h2 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
+                            <h3 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
                                 <LuMapPin className="text-xl @4xl:text-2xl" />
                                 {website.localize({
                                     en: 'Research Places',
                                     fr: 'Lieux de recherche',
                                 })}
-                            </h2>
+                            </h3>
 
                             <ExpandableList
                                 items={researchPlaces}

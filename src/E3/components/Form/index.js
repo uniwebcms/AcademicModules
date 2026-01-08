@@ -955,7 +955,7 @@ export default function Form(props) {
     return (
         <section className="not-prose max-w-full relative">
             <div className="text-center lg:text-left">
-                <h2 className="text-4xl font-bold">{title}</h2>
+                <h3 className="text-4xl font-bold">{title}</h3>
                 {subtitle && <p className="mt-4 text-lg">{subtitle}</p>}
             </div>
             {formSchema.length ? (

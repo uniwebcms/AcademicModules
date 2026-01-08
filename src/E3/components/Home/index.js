@@ -24,17 +24,17 @@ export default function Home(props) {
         <main className="@container flex items-center justify-center w-full h-[var(--container-height)]">
             <div className="max-w-3xl w-full p-3 @xl:p-4 @2xl:p-5 flex flex-col items-center text-center">
                 {/* Titles */}
-                <h2 className="text-3xl @md:text-4xl @xl:text-5xl @2xl:text-6xl font-extrabold tracking-tight mb-4">
+                <h2 className="text-3xl @2xl:text-4xl @4xl:text-5xl font-bold tracking-[-1px] mb-4">
                     {title}
                 </h2>
-                <p className="text-base @md:text-lg @2xl:text-xl text-text-color/90 mb-10 max-w-2xl">
+                <p className="text-sm @2xl:text-base @4xl:text-lg text-text-color/90 mb-6 @2xl:mb-8 @4xl:mb-10 max-w-2xl">
                     {subtitle}
                 </p>
 
                 {/* Search Box Container */}
-                <form onSubmit={handleSearch} className="w-full">
-                    <div className="group flex items-center w-full gap-3 px-4 py-3 @2xl:px-5 @2xl:py-4 border-2 border-text-color/20 rounded-[var(--border-radius)] bg-text-color-0 shadow-sm focus-within:border-[var(--highlight)] focus-within:ring-1 focus-within:ring-current transition-all duration-200">
-                        <HiSearch className="text-xl @2xl:text-2xl text-text-color/70 group-focus-within:text-current" />
+                <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
+                    <div className="group flex items-center w-full gap-3 px-3.5 py-2.5 @2xl:px-4 @2xl:py-3 @4xl:px-5 @4xl:py-4 border-2 border-text-color/20 rounded-[var(--border-radius)] bg-text-color-0 shadow-sm focus-within:border-[var(--highlight)] focus-within:ring-1 focus-within:ring-current transition-all duration-200">
+                        <HiSearch className="text-lg @2xl:text-xl @4xl:text-2xl text-text-color/70 group-focus-within:text-current" />
 
                         <input
                             type="text"
@@ -42,7 +42,7 @@ export default function Home(props) {
                                 en: 'Search by name, faculty, or keywords...',
                                 fr: 'Rechercher par nom, faculté ou mots-clés...',
                             })}
-                            className="flex-1 bg-transparent outline-none text-base @2xl:text-lg placeholder:text-text-color/70"
+                            className="flex-1 bg-transparent outline-none text-sm @2xl:text-base @4xl:text-l placeholder:text-text-color/70"
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
                         />
@@ -51,7 +51,7 @@ export default function Home(props) {
                             type="submit"
                             className="p-1 hover:bg-text-color/10 rounded-full transition-colors group/icon focus:outline-none"
                         >
-                            <HiArrowRight className="w-5 h-5 text-text-color/70 group-hover/icon:text-[var(--highlight)] group-focus-within:text-text-color/90" />
+                            <HiArrowRight className="text-lg @2xl:text-xl @4xl:text-2xl text-text-color/70 group-hover/icon:text-[var(--highlight)] group-focus-within:text-text-color/90" />
                         </button>
                     </div>
                 </form>
