@@ -47,13 +47,15 @@ const SearchHeader = (props) => {
     const [openMenu, setOpenMenu] = useState(null);
     const containerRef = useRef(null);
 
+    const activeLang = website.getLanguage();
+
     // Sync local search with URL if URL changes externally (e.g., back button or "Clear All")
     useEffect(() => {
         setLocalSearch(currentSearch);
     }, [currentSearch]);
 
     const { data: experts = [], loading = false } = uniweb.useCompleteQuery(
-        `getExperts_${currentSearch}`,
+        `getExperts_${currentSearch}_${activeLang}`,
         async () => {
             if (!currentSearch) return [];
 
@@ -62,7 +64,7 @@ const SearchHeader = (props) => {
                     action: 'searchExperts',
                     siteId: website.getSiteId(),
                     query: currentSearch,
-                    lang: website.getLanguage(),
+                    activeLang,
                 },
             });
             return response.data.map((expert) => ({
@@ -401,17 +403,19 @@ const ExpertHeader = (props) => {
     const currentSort = queryParams.get('sort') || 'relevance';
     const id = queryParams.get('id');
 
+    const activeLang = website.getLanguage();
+
     const {
         data: experts = [],
         error,
         loading = false,
-    } = uniweb.useCompleteQuery(`getExperts_${searchText}`, async () => {
+    } = uniweb.useCompleteQuery(`getExperts_${searchText}_${activeLang}`, async () => {
         const response = await client.get('experts.php', {
             params: {
                 action: 'searchExperts',
                 siteId: website.getSiteId(),
                 query: searchText,
-                lang: website.getLanguage(),
+                activeLang,
             },
         });
         return response.data.map((expert) => ({

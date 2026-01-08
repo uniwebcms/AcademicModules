@@ -28,17 +28,19 @@ export default function SearchResult(props) {
 
     const [headerHeight, setHeaderHeight] = useState(0);
 
+    const activeLang = website.getLanguage();
+
     const {
         data: experts = [],
         error,
         loading = false,
-    } = uniweb.useCompleteQuery(`getExperts_${searchText}`, async () => {
+    } = uniweb.useCompleteQuery(`getExperts_${searchText}_${activeLang}`, async () => {
         const response = await client.get('experts.php', {
             params: {
                 action: 'searchExperts',
                 siteId: website.getSiteId(),
                 query: searchText,
-                lang: website.getLanguage(),
+                activeLang,
             },
         });
         return response.data.map((expert) => ({

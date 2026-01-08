@@ -34,17 +34,19 @@ export default function ExpertViewer(props) {
     const queryParams = new URLSearchParams(location.search);
     const id = queryParams.get('id');
 
+    const activeLang = website.getLanguage();
+
     const {
         data: response = {},
         error,
         loading = false,
-    } = uniweb.useCompleteQuery(`getExpert_${id}`, async () => {
+    } = uniweb.useCompleteQuery(`getExpert_${id}_${activeLang}`, async () => {
         const response = await client.get('experts.php', {
             params: {
                 action: 'getExpert',
                 siteId: website.getSiteId(),
                 memberId: id,
-                lang: website.getLanguage(),
+                activeLang,
             },
         });
         return response.data;
