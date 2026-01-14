@@ -8,24 +8,32 @@ import { HiX } from 'react-icons/hi';
 
 const parseProfiles = (profiles, input) => {
     return profiles.map((p) => {
-        const { title, subtitle, lastEditTime, head } = p.getBasicInfo() || {};
+        let tags = [];
+        const { title, head } = p.getBasicInfo() || {};
 
-        let authorName = '';
+        const { start_date, end_date, timezone, type } = head || {};
 
-        if (head?.author) {
-            let [authorId, authorInfo] = head.author;
-            authorInfo = typeof authorInfo === 'string' ? JSON.parse(authorInfo) : authorInfo;
+        if (type) {
+            const [typeId, typeHead = {}] = type || [];
+            const category = new Profile('category', typeId, {
+                head: typeHead,
+            });
+            tags.push(category.getBasicInfo()?.title);
+        }
 
-            const authorProfile = Profile.newProfile('members', authorId, { head: authorInfo });
-            authorName = authorProfile.getBasicInfo()?.title || '';
+        const startDate = formatFlexibleDate(start_date);
+        const endDate = formatFlexibleDate(end_date);
+
+        let date = startDate && endDate ? `${startDate} - ${endDate}` : startDate || endDate;
+
+        if (date && timezone) {
+            date += ` (${timezone})`;
         }
 
         return {
             title,
-            subtitle,
-            author: authorName,
-            date: lastEditTime,
-            tags: head?.tag?.split(',').map((t) => t.trim()) || [],
+            date,
+            tags: tags.filter((t) => t).map((t) => t.trim()),
             key: p.key,
             to: input.makeHref(p),
             p: p,
@@ -33,7 +41,7 @@ const parseProfiles = (profiles, input) => {
     });
 };
 
-export default function News(props) {
+export default function Events(props) {
     const { input, block } = props;
 
     const { allowLayoutSwitch = true } = block.getBlockProperties();
@@ -166,12 +174,12 @@ export default function News(props) {
                 {/* Grid/List Render */}
                 <div
                     className={twJoin(
-                        'grid gap-6',
-                        layout === 'grid' ? 'grid md:grid-cols-2 gap-8' : 'grid-cols-1'
+                        'grid',
+                        layout === 'grid' ? 'grid lg:grid-cols-3 gap-6' : 'grid-cols-1 gap-6'
                     )}
                 >
                     {filteredItems.map((item) => (
-                        <NewsCard key={item.key} data={item} />
+                        <EventCard key={item.key} data={item} layout={layout} />
                     ))}
                 </div>
 
@@ -202,13 +210,21 @@ export default function News(props) {
     );
 }
 
-const NewsCard = ({ data }) => {
+const EventCard = ({ data, layout }) => {
     return (
         <Link
             to={data.to}
-            className="group p-5 flex gap-6 items-start bg-text-color-0 rounded-[var(--border-radius)] border border-text-color/20 hover:border-primary-300 hover:shadow-md transition-all cursor-pointer"
+            className={twJoin(
+                'group p-5 flex gap-6 bg-text-color-0 rounded-[var(--border-radius)] border border-text-color/20 hover:border-primary-300 hover:shadow-md transition-all cursor-pointer',
+                layout === 'grid' ? 'flex-col' : 'justify-start'
+            )}
         >
-            <div className="w-32 h-32 flex-shrink-0 rounded-[var(--border-radius)] overflow-hidden hidden md:block">
+            <div
+                className={twJoin(
+                    'h-32 flex-shrink-0 rounded-[var(--border-radius)] overflow-hidden hidden md:block',
+                    layout === 'grid' ? 'w-full' : 'w-32'
+                )}
+            >
                 <Image
                     profile={data.p}
                     type="banner"
@@ -216,21 +232,20 @@ const NewsCard = ({ data }) => {
                 />
             </div>
             <div className="flex-grow">
-                <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider mb-2">
+                <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider mb-2 min-h-4">
                     {data.tags.length > 0 && (
                         <span className="text-primary-600">{data.tags.join(', ')}</span>
                     )}
-                    <span className="text-text-color/60">{formatFlexibleDate(data.date)}</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors">
                     {data.title}
                 </h3>
-                <p className="text-sm line-clamp-2 text-text-color">{data.subtitle}</p>
+                <p className="text-text-color/80 text-sm">{data.date}</p>
             </div>
         </Link>
     );
 };
 
-News.inputSchema = {
-    type: 'articles',
+Events.inputSchema = {
+    type: 'event',
 };

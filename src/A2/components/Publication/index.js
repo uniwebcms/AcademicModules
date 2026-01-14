@@ -102,9 +102,9 @@ export default function Publication(props) {
     const { input, website, page } = props;
     const pub = input.profile;
 
-    if (!pub) return null;
-
     const [copied, setCopied] = useState(false);
+
+    if (!pub) return null;
 
     const banner = pub.getBasicInfo()?.banner;
     const head = pub.getBasicInfo()?.head || {};

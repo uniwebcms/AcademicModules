@@ -1,0 +1,15 @@
+title:
+    en: Event Content
+    fr: Contenu de l'événement
+description:
+    en: Display a event content in detail, including category, title, description, date, and content with a link to the events list.
+    fr: Affiche le contenu d'un événement en détail, y compris la catégorie, le titre, la description, la date et le contenu avec un lien vers la liste des événements.
+label:
+    en: Event Content
+    fr: Contenu de l'événement
+
+category: event
+export: true
+
+input:
+    type: event
