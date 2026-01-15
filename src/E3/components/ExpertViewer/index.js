@@ -22,6 +22,19 @@ import {
 import client from '../_utils/ajax';
 import { parseReference } from '../_utils/reference';
 
+const getValidPublications = (publications) => {
+    return publications.filter(({ reference }) => {
+        if (!reference || !Array.isArray(reference) || reference.length < 1) return false;
+
+        let [id, head] = reference;
+
+        head = typeof head === 'string' ? JSON.parse(head) : head;
+        if (!head?.data) return false;
+
+        return !!head.title;
+    });
+};
+
 export default function ExpertViewer(props) {
     const { website, block } = props;
     const { hide_empty = false } = block.getBlockProperties();
@@ -87,7 +100,7 @@ export default function ExpertViewer(props) {
     const selectedDegrees = expert.at('selected_degrees') || [];
     const biography = expert.at('biography/academic_biography') || '';
     const areasOfExpertise = expert.at('key_words')?.map((item) => item.keyword) || [];
-    const publications = expert.at('references') || [];
+    const publications = getValidPublications(expert.at('references') || []);
     const contact_preferences = expert.at('contact_preferences') || {};
     const {
         email: emailContact = '0',
