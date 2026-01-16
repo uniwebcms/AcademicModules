@@ -1,104 +1,9 @@
-// import React from 'react';
-// import { Link, Image, SafeHtml } from '@uniwebcms/core-components';
-// import { LuArrowLeft } from 'react-icons/lu';
-// import Container from '../_utils/Container';
-// import { formatFlexibleDate } from '../_utils/date';
-// import { twJoin, Profile } from '@uniwebcms/module-sdk';
-
-// export default function EventContent(props) {
-// const { input, website, page } = props;
-// const event = input.profile;
-
-// if (!event) return null;
-
-// let tag;
-
-// const { title, head } = event.getBasicInfo() || {};
-// const { start_date, end_date, timezone, type } = head || {};
-
-// if (type) {
-//     const [typeId, typeHead = {}] = type || [];
-//     const category = new Profile('category', typeId, {
-//         head: typeHead,
-//     });
-//     tag = category.getBasicInfo()?.title;
-// }
-
-// const startDate = formatFlexibleDate(start_date);
-// const endDate = formatFlexibleDate(end_date);
-
-// let date = startDate && endDate ? `${startDate} - ${endDate}` : startDate || endDate;
-
-// if (date && timezone) {
-//     date += ` (${timezone})`;
-// }
-
-// const isDynamicPage = page.activeRoute.includes('[id]');
-
-//     return (
-//         <Container className="animate-in fade-in slide-in-from-bottom-4 min-h-screen">
-//             <div className="w-full px-4 xs:px-6 lg:px-8 py-8 md:py-12 lg:py-16">
-//                 <div className="pt-8 pb-12 px-6 max-w-3xl mx-auto text-center">
-//                     {isDynamicPage && (
-//                         <Link
-//                             to={input.makeHrefToIndex()}
-//                             className="inline-flex items-center justify-center gap-2 font-medium transition-all duration-200 active:scale-95 text-sm md:text-md px-5 py-2.5 mb-6 text-text-color/70 hover:text-text-color"
-//                         >
-//                             <LuArrowLeft className="w-4 h-4" />{' '}
-//                             {website.localize({
-//                                 en: 'Back to Events',
-//                                 fr: 'Revenir aux événements',
-//                             })}
-//                         </Link>
-//                     )}
-//                     <div className="flex justify-center gap-3 items-center mb-6">
-//                         {tag && (
-//                             <span className="inline-flex px-2.5 py-0.5 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide text-primary-600">
-//                                 {tag}
-//                             </span>
-//                         )}
-//                         <span className="font-mono text-sm md:text-md text-text-color/70 uppercase tracking-wide">
-//                             {date}
-//                         </span>
-//                     </div>
-//                     <h1 className="text-4xl md:text-5xl font-bold leading-tight">{title}</h1>
-//                 </div>
-//                 <div className="max-w-4xl mx-auto px-6 pb-12">
-//                     <div className="rounded-[var(--border-radius)] overflow-hidden mb-12 shadow-xl aspect-video">
-//                         <Image
-//                             profile={event}
-//                             type="banner"
-//                             className="w-full h-auto object-cover"
-//                         />
-//                     </div>
-//                     <div className={twJoin('prose prose-base lg:prose-lg max-w-none')}>
-//                         <Description event={event} />
-//                     </div>
-//                 </div>
-//             </div>
-//         </Container>
-//     );
-// }
-
-// const Description = ({ event }) => {
-//     const description = event.at('event_description/description');
-//     if (!description) return null;
-
-//     return <SafeHtml value={description} className="text-base lg:text-xl" />;
-// };
-
-// EventContent.inputSchema = {
-//     type: 'event',
-// };
-
 import React, { useState } from 'react';
 import Container from '../_utils/Container';
-import { prettyPrintNames } from '../_utils/publication';
 import { formatFlexibleDate } from '../_utils/date';
 import { Profile, twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { Link, SafeHtml, Image } from '@uniwebcms/core-components';
-import { LuArrowLeft, LuMapPin, LuCalendar, LuDownload, LuShare2 } from 'react-icons/lu';
-import { BiLinkExternal } from 'react-icons/bi';
+import { LuArrowLeft, LuMapPin, LuCalendar, LuShare2 } from 'react-icons/lu';
 
 export default function EventContent(props) {
     const { input, website, page } = props;
@@ -246,7 +151,7 @@ export default function EventContent(props) {
                                                 key={i}
                                                 className="flex flex-col gap-1 p-4 bg-text-color/5 rounded-[var(--border-radius)] border border-text-color/20"
                                             >
-                                                <span className="text-primary-700 text-sm font-medium">
+                                                <span className="text-primary-700 text-sm font-semibold">
                                                     {org.role}
                                                 </span>
                                                 <span className="text-base">{org.organizer}</span>

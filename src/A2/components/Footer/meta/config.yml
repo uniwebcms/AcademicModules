@@ -1,0 +1,108 @@
+title:
+    en: Footer
+    fr: Pied de page
+description:
+    en: A footer component that displays the website's logo, links, language switcher, social media links and disclaimer.
+    fr: Un composant de pied de page qui affiche le logo du site web, les liens, le sélecteur de langue, les liens vers les réseaux sociaux et la clause de non-responsabilité.
+label:
+    en: Footer
+    fr: Pied de page
+
+category: footer
+export: true
+
+elements:
+    media:
+        type: image
+        label:
+            en: Logo Image
+            fr: Image du logo
+    title:
+        label:
+            en: Logo Text
+            fr: Texte du logo
+    text:
+        label:
+            en: Disclaimer / Copyright Text
+            fr: Texte de désistement / Droit d'auteur
+        description:
+            en: Add paragraphs for the footer disclaimer or copyright info.
+            fr: Ajoutez des paragraphes pour l'avis de non-responsabilité ou les informations de droit d'auteur.
+    form:
+        description:
+            en: A form to collect footer links and social icons.
+            fr: Un formulaire pour collecter les liens de pied de page et les icônes sociales.
+        schemas:
+            - id: form
+              name:
+                  en: Form
+                  fr: Formulaire
+              isComposite: true
+              childSchema:
+                  name:
+                      en: Link
+                      fr: Lien
+                  fields:
+                      - id: type
+                        type: select
+                        label:
+                            en: Link Type
+                            fr: Type de lien
+                        description:
+                            en: Defines the type of link (Group applies to columns).
+                            fr: Définit le type de lien (Groupe s'applique aux colonnes).
+                        required: true
+                        options:
+                            - label:
+                                  en: Plain
+                                  fr: Simple
+                              value: plain
+                            - label:
+                                  en: Group
+                                  fr: Groupe
+                              value: group
+                            - label:
+                                  en: Media
+                                  fr: Média
+                              value: media
+                      - id: label
+                        type: text
+                        label:
+                            en: Link Label
+                            fr: Label du lien
+                        description:
+                            en: The label for the link or column header.
+                            fr: L'étiquette du lien ou de l'en-tête de colonne.
+                      - id: href
+                        type: text
+                        label:
+                            en: Link URL
+                            fr: URL du lien
+                        description:
+                            en: The URL for the link.
+                            fr: L'URL du lien.
+                      - id: group_links
+                        type: form
+                        label:
+                            en: Column Links
+                            fr: Liens de colonne
+                        description:
+                            en: Links inside this column.
+                            fr: Liens à l'intérieur de cette colonne.
+                        childSchema:
+                            name:
+                                en: Child Link
+                                fr: Lien enfant
+                            fields:
+                                - id: label
+                                  type: text
+                                  label:
+                                      en: Link Label
+                                      fr: Label du lien
+                                - id: href
+                                  type: text
+                                  label:
+                                      en: Link URL
+                                      fr: URL du lien
+                        condition:
+                            type: group

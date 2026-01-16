@@ -1,0 +1,15 @@
+title:
+    en: Opportunity Content
+    fr: Contenu de l'opportunité
+description:
+    en: Display a opportunity content in detail, including category, title, description, date, and content with a link to the opportunities list.
+    fr: Affiche le contenu d'une opportunité en détail, y compris la catégorie, le titre, la description, la date et le contenu avec un lien vers la liste des opportunités.
+label:
+    en: Opportunity Content
+    fr: Contenu de l'opportunité
+
+category: opportunity
+export: true
+
+input:
+    type: opportunity
