@@ -250,7 +250,7 @@ const ApplyForm = ({ website, block, closeModal, title }) => {
         const metadata = {
             tag: 'Opportunity Application',
             title: title || website.localize({ en: 'New Application', fr: 'Nouvelle candidature' }),
-            description: website.localize({
+            subtitle: website.localize({
                 en: `Application from ${candidateName}`,
                 fr: `Candidature de ${candidateName}`,
             }),
