@@ -35,17 +35,31 @@ const parseLinks = (form) => {
 };
 
 // Component for a single plain/grouped link in the desktop navigation
-const NavLink = ({ link, opensToRight = 'right' }) => {
+const NavLink = ({ link, opensToRight = 'right', page }) => {
     const isGroup = link.style === 'group';
+    const isDynamicPage = page.activeRoute.includes('[id]') || page.activeRoute.includes('index');
+    const isActiveRoute = isDynamicPage
+        ? page.activeRoute.toLowerCase().startsWith(link.href.toLowerCase())
+        : page.activeRoute === link.href.toLowerCase();
 
     // Base className for all plain/grouped links
     const baseClassName =
-        'bg-transparent text-link-color hover:text-link-hover-color transition-colors duration-200 text-sm 2xl:text-base font-medium focus:outline-none group';
+        'border-b-2 bg-transparent px-0.5 py-1 transition-colors duration-200 text-sm 2xl:text-base font-medium focus:outline-none group';
+
+    const activeClassName = isActiveRoute
+        ? 'text-link-active-color border-link-active-color/60'
+        : 'border-transparent text-link-color hover:text-link-hover-color';
 
     if (isGroup) {
         return (
             <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button className={twJoin(baseClassName, 'flex items-center space-x-1')}>
+                <Menu.Button
+                    className={twJoin(
+                        baseClassName,
+                        activeClassName,
+                        'flex items-center space-x-1'
+                    )}
+                >
                     <span>{link.label}</span>
                     <HiChevronDown className="h-4 w-4 !text-inherit" />
                 </Menu.Button>
@@ -70,7 +84,12 @@ const NavLink = ({ link, opensToRight = 'right' }) => {
                                     return (
                                         <Link
                                             to={subLink.href}
-                                            className="block w-full text-left px-4 py-2.5 rounded-[var(--border-radius)] text-sm hover:bg-text-color/5"
+                                            className={twJoin(
+                                                'block w-full border-2 text-left px-4 py-2.5 rounded-[var(--border-radius)] text-sm',
+                                                subLink.href === page.activeRoute
+                                                    ? 'text-link-active-color bg-link-active-color/5 border-link-active-color/40'
+                                                    : 'border-transparent text-link-color hover:text-link-hover-color hover:bg-link-hover-color/5'
+                                            )}
                                         >
                                             {subLink.label}
                                         </Link>
@@ -85,7 +104,7 @@ const NavLink = ({ link, opensToRight = 'right' }) => {
     }
 
     return (
-        <Link to={link.href} className={baseClassName}>
+        <Link to={link.href} className={twJoin(baseClassName, activeClassName)}>
             {link.label}
         </Link>
     );
@@ -364,13 +383,14 @@ export default function Header(props) {
                                 navPositionClass
                             )}
                         >
-                            <div className="flex items-center space-x-6 lg:space-x-8">
+                            <div className="flex items-center space-x-5 lg:space-x-7">
                                 {/* Plain and Grouped Links */}
                                 {plainAndGroupedLinks.map((link, index) => (
                                     <NavLink
                                         key={index}
                                         link={link}
                                         opensToRight={navPositionClass === 'center'}
+                                        page={page}
                                     />
                                 ))}
                             </div>

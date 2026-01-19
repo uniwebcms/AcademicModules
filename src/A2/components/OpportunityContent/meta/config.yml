@@ -13,3 +13,14 @@ export: true
 
 input:
     type: opportunity
+
+properties:
+    siteApplicationForm:
+        label:
+            en: On-site Application Form
+            fr: Formulaire de candidature sur site
+        description:
+            en: Whether to display the on-site application form.
+            fr: Indique si le formulaire de candidature sur site doit être affiché.
+        type: boolean
+        default: false

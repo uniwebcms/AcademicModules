@@ -1,12 +1,12 @@
 title:
-    en: Publication
-    fr: Publication
+    en: Publication Content
+    fr: Contenu de la publication
 description:
     en: Display a publication in detail, including title, authors, journal, date, overview and some action buttons.
     fr: Affiche une publication en détail, y compris le titre, les auteurs, le journal, la date, l'aperçu et quelques boutons d'action.
 label:
-    en: Publication
-    fr: Publication
+    en: Publication Content
+    fr: Contenu de la publication
 
 category: publication
 export: true

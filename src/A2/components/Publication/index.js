@@ -7,6 +7,7 @@ import { Link, SafeHtml, Image } from '@uniwebcms/core-components';
 import { LuArrowLeft, LuMapPin, LuCalendar, LuDownload, LuShare2 } from 'react-icons/lu';
 import { BiLinkExternal } from 'react-icons/bi';
 import { SiDoi } from 'react-icons/si';
+import { BeatLoader } from 'react-spinners';
 
 const getPubTypeLabel = (type, website) => {
     if (!type) return '';
@@ -98,7 +99,7 @@ function getFileType(fileName, fallback) {
     return fallback;
 }
 
-export default function Publication(props) {
+export default function PublicationContent(props) {
     const { input, website, page } = props;
     const pub = input.profile;
 
@@ -253,7 +254,7 @@ export default function Publication(props) {
                                     <button
                                         download={downloadName}
                                         onClick={handleDownload}
-                                        className="btn-secondary w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-colors ring-1 ring-btn-alt-text-color/20"
+                                        className="bg-text-color-0 text-text-color/80 hover:text-link-color hover:bg-text-color-0 border border-text-color/20 hover:border-link-color/60 hover:shadow w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-all"
                                     >
                                         <LuDownload className="w-4 h-4" />
                                         <span>
@@ -272,7 +273,7 @@ export default function Publication(props) {
                                         to={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-colors bg-btn-alt-color text-btn-alt-text-color hover:bg-btn-alt-hover-color hover:text-btn-alt-hover-text-color ring-1 ring-btn-alt-text-color/20"
+                                        className="bg-text-color-0 text-text-color/80 hover:text-link-color hover:bg-text-color-0 border border-text-color/20 hover:border-link-color/60 hover:shadow w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-all"
                                     >
                                         <BiLinkExternal className="w-4 h-4" />
                                         <span>
@@ -285,7 +286,7 @@ export default function Publication(props) {
                                 )}
                                 <button
                                     onClick={handleShare}
-                                    className="btn-secondary w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-colors ring-1 ring-btn-alt-text-color/20"
+                                    className="bg-text-color-0 text-text-color/80 hover:text-link-color hover:bg-text-color-0 border border-text-color/20 hover:border-link-color/60 hover:shadow w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-all"
                                 >
                                     <LuShare2 className="w-4 h-4" />
                                     <span className={copied ? 'text-accent-500' : ''}>
@@ -339,6 +340,31 @@ const Badge = ({ children, variant = 'neutral', className }) => {
     );
 };
 
-Publication.inputSchema = {
+PublicationContent.Loader = ({ block }) => {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-[600px] text-center p-4">
+            <BeatLoader
+                color="rgba(var(--primary-700) / 1.00)"
+                aria-label="Loading"
+                size={12}
+                margin={4}
+            />
+            <p className="mt-4 text-text-color text-lg lg:text-2xl">
+                {block.website.localize({
+                    en: 'Loading publication content...',
+                    fr: 'Chargement du contenu de la publication...',
+                })}
+            </p>
+            <p className="mt-1 text-text-color/70 text-sm lg:text-lg">
+                {block.website.localize({
+                    en: 'This should only take a few seconds.',
+                    fr: 'Cela ne devrait prendre que quelques secondes.',
+                })}
+            </p>
+        </div>
+    );
+};
+
+PublicationContent.inputSchema = {
     type: 'reference',
 };

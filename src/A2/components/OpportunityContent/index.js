@@ -4,12 +4,17 @@ import { formatFlexibleDate } from '../_utils/date';
 import { Profile, twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { Link, SafeHtml, Image } from '@uniwebcms/core-components';
 import { LuArrowLeft, LuExternalLink, LuCalendar, LuShare2 } from 'react-icons/lu';
+import { BeatLoader } from 'react-spinners';
+import ApplyForm from './ApplyForm';
 
 export default function OpportunityContent(props) {
-    const { input, website, page } = props;
+    const { input, website, page, block } = props;
     const opportunity = input.profile;
 
+    const { siteApplicationForm = false } = block.getBlockProperties();
+
     const [copied, setCopied] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     if (!opportunity) return null;
 
@@ -37,7 +42,6 @@ export default function OpportunityContent(props) {
     const fundingDetails = opportunity.at('funding_details') || [];
     const applicationLink = opportunity.at('application_process/online_application_url');
 
-    console.log(fundingDetails);
     const topics =
         opportunity.at('topics')?.map(
             ({ topic: t }) =>
@@ -117,6 +121,20 @@ export default function OpportunityContent(props) {
                                             })}
                                         </a>
                                     </div>
+                                )}
+                                {/* onsite application form trigger */}
+                                {siteApplicationForm && (
+                                    <button
+                                        onClick={() => setIsModalOpen(true)}
+                                        className="bg-link-color text-link-color-0 hover:bg-link-hover-color hover:text-link-hover-color-0 px-3 py-1.5 rounded-[var(--border-radius)]"
+                                    >
+                                        <span className="text-current">
+                                            {website.localize({
+                                                en: 'Apply Now',
+                                                fr: 'Postuler maintenant',
+                                            })}
+                                        </span>
+                                    </button>
                                 )}
                             </div>
                         </div>
@@ -319,7 +337,7 @@ export default function OpportunityContent(props) {
                             <div className="space-y-3">
                                 <button
                                     onClick={handleShare}
-                                    className="btn-secondary w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-colors ring-1 ring-btn-alt-text-color/20"
+                                    className="bg-text-color-0 text-text-color/80 hover:text-link-color hover:bg-text-color-0 border border-text-color/20 hover:border-link-color/60 hover:shadow w-full flex items-center justify-between px-3 py-1.5 text-sm rounded-[var(--border-radius)] transition-all"
                                 >
                                     <LuShare2 className="w-4 h-4" />
                                     <span className={copied ? 'text-accent-500' : ''}>
@@ -365,6 +383,13 @@ export default function OpportunityContent(props) {
                     </div>
                 </div>
             </div>
+            <ApplyForm
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                website={website}
+                block={block}
+                title={title}
+            />
         </Container>
     );
 }
@@ -384,6 +409,31 @@ const Badge = ({ children, variant = 'neutral', className }) => {
         >
             {children}
         </span>
+    );
+};
+
+OpportunityContent.Loader = ({ block }) => {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-[600px] text-center p-4">
+            <BeatLoader
+                color="rgba(var(--primary-700) / 1.00)"
+                aria-label="Loading"
+                size={12}
+                margin={4}
+            />
+            <p className="mt-4 text-text-color text-lg lg:text-2xl">
+                {block.website.localize({
+                    en: 'Loading opportunity content...',
+                    fr: 'Chargement du contenu de l’opportunité...',
+                })}
+            </p>
+            <p className="mt-1 text-text-color/70 text-sm lg:text-lg">
+                {block.website.localize({
+                    en: 'This should only take a few seconds.',
+                    fr: 'Cela ne devrait prendre que quelques secondes.',
+                })}
+            </p>
+        </div>
     );
 };
 

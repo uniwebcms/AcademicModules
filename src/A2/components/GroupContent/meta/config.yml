@@ -1,0 +1,15 @@
+title:
+    en: Group Content
+    fr: Contenu du groupe
+description:
+    en: Display a group content in detail, including category, title, description, date, and content with a link to the groups list.
+    fr: Affiche le contenu d'un groupe en détail, y compris la catégorie, le titre, la description, la date et le contenu avec un lien vers la liste des groupes.
+label:
+    en: Group Content
+    fr: Contenu du groupe
+
+category: group
+export: true
+
+input:
+    type: groups

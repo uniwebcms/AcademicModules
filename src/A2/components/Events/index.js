@@ -5,6 +5,7 @@ import { LuSearch, LuLayoutGrid, LuList, LuFilter } from 'react-icons/lu';
 import { twJoin, Profile, website } from '@uniwebcms/module-sdk';
 import { formatFlexibleDate } from '../_utils/date';
 import { HiX } from 'react-icons/hi';
+import { BeatLoader } from 'react-spinners';
 
 const parseProfiles = (profiles, input) => {
     return profiles.map((p) => {
@@ -243,6 +244,31 @@ const EventCard = ({ data, layout }) => {
                 <p className="text-text-color/80 text-sm">{data.date}</p>
             </div>
         </Link>
+    );
+};
+
+Events.Loader = ({ block }) => {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-[600px] text-center p-4">
+            <BeatLoader
+                color="rgba(var(--primary-700) / 1.00)"
+                aria-label="Loading"
+                size={12}
+                margin={4}
+            />
+            <p className="mt-4 text-text-color text-lg lg:text-2xl">
+                {block.website.localize({
+                    en: 'Loading events...',
+                    fr: 'Chargement des événements...',
+                })}
+            </p>
+            <p className="mt-1 text-text-color/70 text-sm lg:text-lg">
+                {block.website.localize({
+                    en: 'This should only take a few seconds.',
+                    fr: 'Cela ne devrait prendre que quelques secondes.',
+                })}
+            </p>
+        </div>
     );
 };
 

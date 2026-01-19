@@ -9,6 +9,7 @@ import { LuArrowLeft } from 'react-icons/lu';
 import Container from '../_utils/Container';
 import { formatFlexibleDate } from '../_utils/date';
 import { twJoin } from '@uniwebcms/module-sdk';
+import { BeatLoader } from 'react-spinners';
 
 export default function NewsContent(props) {
     const { input, website, page, block } = props;
@@ -92,6 +93,31 @@ export default function NewsContent(props) {
         </Container>
     );
 }
+
+NewsContent.Loader = ({ block }) => {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-[600px] text-center p-4">
+            <BeatLoader
+                color="rgba(var(--primary-700) / 1.00)"
+                aria-label="Loading"
+                size={12}
+                margin={4}
+            />
+            <p className="mt-4 text-text-color text-lg lg:text-2xl">
+                {block.website.localize({
+                    en: 'Loading news content...',
+                    fr: 'Chargement du contenu de l’actualité...',
+                })}
+            </p>
+            <p className="mt-1 text-text-color/70 text-sm lg:text-lg">
+                {block.website.localize({
+                    en: 'This should only take a few seconds.',
+                    fr: 'Cela ne devrait prendre que quelques secondes.',
+                })}
+            </p>
+        </div>
+    );
+};
 
 NewsContent.inputSchema = {
     type: 'articles',

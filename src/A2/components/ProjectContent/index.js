@@ -3,58 +3,59 @@ import Container from '../_utils/Container';
 import { formatFlexibleDate } from '../_utils/date';
 import { Profile, twJoin, stripTags } from '@uniwebcms/module-sdk';
 import { Link, SafeHtml, Image } from '@uniwebcms/core-components';
-import { LuArrowLeft, LuMapPin, LuCalendar, LuShare2 } from 'react-icons/lu';
+import { LuArrowLeft, LuExternalLink, LuCalendar, LuShare2 } from 'react-icons/lu';
+import { ExpandableText } from '../_utils/text';
+import { getMediaIcon, getMediaHref } from '../_utils/media';
 import { BeatLoader } from 'react-spinners';
 
-export default function EventContent(props) {
+export default function ProjectContent(props) {
     const { input, website, page } = props;
-    const event = input.profile;
+    const project = input.profile;
 
     const [copied, setCopied] = useState(false);
 
-    if (!event) return null;
+    if (!project) return null;
 
     let tag;
 
-    const { title, head, banner } = event.getBasicInfo() || {};
-    const { start_date, end_date, timezone, type } = head || {};
+    const { title, banner, head = {} } = project.getBasicInfo() || {};
+    const projectCategory = head.category;
 
-    if (type) {
-        const [typeId, typeHead = {}] = type || [];
-        const category = new Profile('category', typeId, {
-            head: typeHead,
+    if (projectCategory) {
+        const [categoryId, categoryHead = {}] = projectCategory || [];
+        const category = new Profile('category', categoryId, {
+            head: categoryHead,
         });
         tag = category.getBasicInfo()?.title;
     }
 
-    const startDate = formatFlexibleDate(start_date);
-    const endDate = formatFlexibleDate(end_date);
+    const description = project.at('project_description/description') || '';
+    const socialMediaLinks = project.at('social_media_links') || [];
+    const partnersAndCollaborators = project.at('members_and_collaborators') || [];
+    const researchPlaces = project.at('research_places') || [];
 
-    let date = startDate && endDate ? `${startDate} - ${endDate}` : startDate || endDate;
-
-    if (date && timezone) {
-        date += ` (${timezone})`;
-    }
-
-    const description = event.at('event_description/description');
-    const organizers = event.at('organizers') || [];
-    const speakers = event.at('speakers') || [];
     const topics =
-        event.at('topics')?.map(
-            ({ topic: t }) =>
-                new Profile('topic', t[0], {
-                    head: typeof t[1] === 'string' ? JSON.parse(t[1]) : t[1],
-                }).getBasicInfo()?.title
-        ) || [];
-    const relatedEvents =
-        event.at('related_events')?.map(
-            ({ related_event: e }) =>
-                new Profile('event', e[0], {
-                    head: typeof e[1] === 'string' ? JSON.parse(e[1]) : e[1],
-                }).getBasicInfo()?.title
-        ) || [];
-    const venue = event.at('location/venue_name');
-    const address = event.at('location/address');
+        project
+            .at('topics')
+            ?.map(({ topic: t }) =>
+                t
+                    ? new Profile('topic', t[0], {
+                          head: typeof t[1] === 'string' ? JSON.parse(t[1]) : t[1],
+                      }).getBasicInfo()?.title
+                    : ''
+            )
+            .filter(Boolean) || [];
+    const subProjects =
+        project
+            .at('sub_projects')
+            ?.map(({ project: p }) =>
+                p
+                    ? new Profile('project', p[0], {
+                          head: typeof p[1] === 'string' ? JSON.parse(p[1]) : p[1],
+                      }).getBasicInfo()?.title
+                    : ''
+            )
+            .filter(Boolean) || [];
 
     const isDynamicPage = page.activeRoute.includes('[id]');
 
@@ -97,29 +98,20 @@ export default function EventContent(props) {
                             </h1>
 
                             {/* Meta Row */}
-                            <div className="flex flex-wrap gap-4 text-sm 2xl:text-base text-text-color/80 mt-6 pt-6 border-t border-text-color/20">
-                                {venue && (
-                                    <div className="flex items-center gap-2">
-                                        <LuMapPin className="w-4 h-4 2xl:w-5 2xl:h-5" />{' '}
-                                        {address ? (
-                                            <a
-                                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                                                    address.formatted_address
-                                                )}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-current hover:text-link-hover-color transition-colors"
+                            <div className="flex flex-wrap gap-4 mt-6 pt-6 border-t border-text-color/20">
+                                {socialMediaLinks.length > 0 && (
+                                    <div className="flex items-center gap-4">
+                                        {socialMediaLinks.map((link, index) => (
+                                            <Link
+                                                key={index}
+                                                to={getMediaHref(link)}
+                                                className="text-text-color/80 hover:text-link-hover-color transition-colors duration-200"
+                                                aria-label={link.website_type}
+                                                title={link.website_type}
                                             >
-                                                {venue}
-                                            </a>
-                                        ) : (
-                                            <span>{venue}</span>
-                                        )}
-                                    </div>
-                                )}
-                                {date && (
-                                    <div className="flex items-center gap-2">
-                                        <LuCalendar className="w-4 h-4 2xl:w-5 2xl:h-5" /> {date}
+                                                {getMediaIcon(link)}
+                                            </Link>
+                                        ))}
                                     </div>
                                 )}
                             </div>
@@ -132,55 +124,66 @@ export default function EventContent(props) {
                                     <h3 className="text-lg font-bold border-b border-text-color/20 pb-2 mb-4">
                                         {website.localize({ en: 'Description', fr: 'Description' })}
                                     </h3>
-                                    <SafeHtml
-                                        value={description}
-                                        className="leading-relaxed text-lg"
-                                    />
+                                    <ExpandableText text={description} website={website} />
                                 </div>
                             )}
-                            {organizers.length > 0 && (
+                            {partnersAndCollaborators.length > 0 && (
                                 <div>
                                     <h3 className="text-lg font-bold border-b border-text-color/20 pb-2 mb-4">
                                         {website.localize({
-                                            en: 'Organizers',
-                                            fr: 'Organisateurs',
+                                            en: 'Partners & Collaborators',
+                                            fr: 'Partenaires et Collaborateurs',
                                         })}
                                     </h3>
                                     <ul className="pt-1 grid lg:grid-cols-2 grid-col-1 gap-6">
-                                        {organizers.map((org, i) => (
+                                        {partnersAndCollaborators.map((pc, i) => (
                                             <li
                                                 key={i}
                                                 className="flex flex-col gap-1 p-4 bg-text-color/5 rounded-[var(--border-radius)] border border-text-color/20"
                                             >
                                                 <span className="text-primary-700 text-sm font-semibold">
-                                                    {org.role}
+                                                    {pc.role}
                                                 </span>
-                                                <span className="text-base">{org.organizer}</span>
+                                                <span>
+                                                    {[pc.first_name, pc.last_name].join(' ')}
+                                                </span>
+                                                <span className="text-sm text-text-color/80">
+                                                    {pc.organization}
+                                                </span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
                             )}
-                            {speakers.length > 0 && (
+                            {researchPlaces.length > 0 && (
                                 <div>
                                     <h3 className="text-lg font-bold border-b border-text-color/20 pb-2 mb-4">
                                         {website.localize({
-                                            en: 'Speakers',
-                                            fr: 'Intervenants',
+                                            en: 'Research Places',
+                                            fr: 'Lieux de Recherche',
                                         })}
                                     </h3>
                                     <ul className="pt-1 grid lg:grid-cols-2 grid-col-1 gap-6">
-                                        {speakers.map((spk, i) => (
+                                        {researchPlaces.map((rp, i) => (
                                             <li
                                                 key={i}
                                                 className="flex flex-col gap-1 p-4 bg-text-color/5 rounded-[var(--border-radius)] border border-text-color/20"
                                             >
-                                                <span className="text-base text-heading-color">
-                                                    {spk.speaker}
+                                                <span className="h-5 text-primary-700 text-sm font-semibold">
+                                                    {rp.activity_types
+                                                        ?.map((a) => a.activity_type)
+                                                        ?.filter(Boolean)
+                                                        ?.join(', ')}
                                                 </span>
-                                                <span className="text-sm text-text-color/90">
-                                                    {stripTags(spk.topic)}
-                                                </span>
+                                                <p>{rp.address?.formatted_address}</p>
+                                                <p className="text-sm text-text-color/80">
+                                                    {[
+                                                        formatFlexibleDate(rp.start_date),
+                                                        formatFlexibleDate(rp.end_date),
+                                                    ]
+                                                        .filter(Boolean)
+                                                        .join(' - ')}
+                                                </p>
                                             </li>
                                         ))}
                                     </ul>
@@ -194,7 +197,7 @@ export default function EventContent(props) {
                         {banner && (
                             <div className="rounded-[var(--border-radius)] overflow-hidden border border-text-color/20 shadow-sm">
                                 <Image
-                                    profile={event}
+                                    profile={project}
                                     type="banner"
                                     className="w-full h-auto object-cover"
                                 />
@@ -241,16 +244,16 @@ export default function EventContent(props) {
                                 ))}
                             </div>
                         </div>
-                        {/* Related Events */}
+                        {/* Sub projects */}
                         <div>
                             <h3 className="font-bold mb-3 text-sm uppercase tracking-wide">
                                 {website.localize({
-                                    en: 'Related Events',
-                                    fr: 'Événements Connexes',
+                                    en: 'Sub Projects',
+                                    fr: 'Sous-Projets',
                                 })}
                             </h3>
                             <div className="flex flex-wrap gap-2">
-                                {relatedEvents.map((tag) => (
+                                {subProjects.map((tag) => (
                                     <Badge key={tag}>{tag}</Badge>
                                 ))}
                             </div>
@@ -280,7 +283,7 @@ const Badge = ({ children, variant = 'neutral', className }) => {
     );
 };
 
-EventContent.Loader = ({ block }) => {
+ProjectContent.Loader = ({ block }) => {
     return (
         <div className="flex flex-col items-center justify-center min-h-[600px] text-center p-4">
             <BeatLoader
@@ -291,8 +294,8 @@ EventContent.Loader = ({ block }) => {
             />
             <p className="mt-4 text-text-color text-lg lg:text-2xl">
                 {block.website.localize({
-                    en: 'Loading event content...',
-                    fr: 'Chargement du contenu de l’événement...',
+                    en: 'Loading project content...',
+                    fr: 'Chargement du contenu du projet...',
                 })}
             </p>
             <p className="mt-1 text-text-color/70 text-sm lg:text-lg">
@@ -305,6 +308,6 @@ EventContent.Loader = ({ block }) => {
     );
 };
 
-EventContent.inputSchema = {
-    type: 'event',
+ProjectContent.inputSchema = {
+    type: 'project',
 };

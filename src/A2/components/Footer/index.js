@@ -11,6 +11,7 @@ import {
     FaGlobe,
 } from 'react-icons/fa';
 import { HiGlobeAlt } from 'react-icons/hi2';
+import { getMediaIcon } from '../_utils/media';
 
 /**
  * Helper: Parse form links into Media Links and Regular Columns
@@ -54,21 +55,21 @@ const parseFooterLinks = (form) => {
 /**
  * Helper: Get Social Icon based on HREF
  */
-const getSocialIcon = (url) => {
-    const lowerUrl = url.toLowerCase();
-    const iconClass = 'w-5 h-5';
+// const getSocialIcon = (url) => {
+//     const lowerUrl = url.toLowerCase();
+//     const iconClass = 'w-5 h-5';
 
-    if (lowerUrl.includes('facebook')) return <FaFacebookF className={iconClass} />;
-    if (lowerUrl.includes('twitter') || lowerUrl.includes('x.com'))
-        return <FaTwitter className={iconClass} />;
-    if (lowerUrl.includes('instagram')) return <FaInstagram className={iconClass} />;
-    if (lowerUrl.includes('linkedin')) return <FaLinkedinIn className={iconClass} />;
-    if (lowerUrl.includes('youtube')) return <FaYoutube className={iconClass} />;
-    if (lowerUrl.includes('tiktok')) return <FaTiktok className={iconClass} />;
+//     if (lowerUrl.includes('facebook')) return <FaFacebookF className={iconClass} />;
+//     if (lowerUrl.includes('twitter') || lowerUrl.includes('x.com'))
+//         return <FaTwitter className={iconClass} />;
+//     if (lowerUrl.includes('instagram')) return <FaInstagram className={iconClass} />;
+//     if (lowerUrl.includes('linkedin')) return <FaLinkedinIn className={iconClass} />;
+//     if (lowerUrl.includes('youtube')) return <FaYoutube className={iconClass} />;
+//     if (lowerUrl.includes('tiktok')) return <FaTiktok className={iconClass} />;
 
-    // Generic fallback
-    return <FaGlobe className={iconClass} />;
-};
+//     // Generic fallback
+//     return <FaGlobe className={iconClass} />;
+// };
 
 // Component for the Social Media Icons
 const SocialIcon = ({ link }) => {
@@ -79,7 +80,7 @@ const SocialIcon = ({ link }) => {
             aria-label={link.label}
             title={link.label}
         >
-            {getSocialIcon(link.href)}
+            {getMediaIcon({ website_type: link.label, url: link.href })}
         </Link>
     );
 };
