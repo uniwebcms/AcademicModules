@@ -245,18 +245,18 @@ const ApplyForm = ({ website, block, closeModal, title }) => {
             payload['Resume'] = formData.resume.name;
         }
 
+        const candidateName = `${formData.firstName} ${formData.lastName}`;
+
         const metadata = {
-            tag: `Application: ${title || 'Opportunity'}`,
+            tag: 'Opportunity Application',
+            title: title || website.localize({ en: 'New Application', fr: 'Nouvelle candidature' }),
+            description: website.localize({
+                en: `Application from ${candidateName}`,
+                fr: `Candidature de ${candidateName}`,
+            }),
         };
 
         try {
-            // await secureSubmit(payload, metadata, files);
-            // setSubmitSuccess(true);
-            // setTimeout(() => {
-            //     closeModal();
-            //     setFormData(initialData); // Reset form
-            //     setSubmitSuccess(false);
-            // }, 2000);
             secureSubmit(payload, metadata, files).then((res) => {
                 setSubmitSuccess(true);
 
