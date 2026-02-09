@@ -107,7 +107,6 @@ export default function ExpertViewer(props) {
         telephone: telContact = '0',
         office: officeContact = '0',
     } = contact_preferences;
-    const researchPlaces = expert.at('research_places') || [];
 
     const renderPublication = (publication) => {
         let [id, head] = publication.reference;
@@ -126,38 +125,6 @@ export default function ExpertViewer(props) {
                 <p className="text-sm @2xl:text-base font-semibold text-heading-color">{title}</p>
                 <p className="text-xs @2xl:text-sm text-text-color/70">
                     {joinWithComma(containerTitle, issued?.['date-parts']?.[0]?.[0])}
-                </p>
-            </li>
-        );
-    };
-
-    const renderResearchPlace = (place) => {
-        const { address = {}, start_date = '', end_date = '', activity_types = [] } = place;
-
-        if (!address.formatted_address) return null;
-
-        return (
-            <li className="group">
-                <p className="text-sm @2xl:text-base font-semibold text-heading-color">
-                    {address.formatted_address}
-                    <span className="font-normal text-text-color/70">
-                        {' '}
-                        {formatDateRange(
-                            start_date,
-                            end_date,
-                            website.localize({
-                                en: 'Present',
-                                fr: 'Présent',
-                            }),
-                            true
-                        )}
-                    </span>
-                </p>
-                <p className="text-xs @2xl:text-sm text-text-color/70 gap-1">
-                    {activity_types
-                        .map((type) => type.activity_type)
-                        .filter(Boolean)
-                        .join(', ')}{' '}
                 </p>
             </li>
         );
@@ -272,26 +239,6 @@ export default function ExpertViewer(props) {
                                 items={publications}
                                 initialCount={5}
                                 renderItem={renderPublication}
-                                website={website}
-                            />
-                        </section>
-                    )}
-
-                    {/* Research Places */}
-                    {(!hide_empty || (hide_empty && researchPlaces.length > 0)) && (
-                        <section>
-                            <h3 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
-                                <LuMapPin className="text-xl @4xl:text-2xl" />
-                                {website.localize({
-                                    en: 'Research Places',
-                                    fr: 'Lieux de recherche',
-                                })}
-                            </h3>
-
-                            <ExpandableList
-                                items={researchPlaces}
-                                initialCount={3}
-                                renderItem={renderResearchPlace}
                                 website={website}
                             />
                         </section>

@@ -273,7 +273,9 @@ const SearchHeader = (props) => {
                         className="w-fit flex items-center gap-1.5 text-xs font-bold uppercase tracking-tight text-text-color/70 hover:text-current transition-colors shrink-0 py-1 @4xl:py-0 hover:outline-none"
                     >
                         <HiArrowLeft className="text-sm" />
-                        <span>{website.localize({ en: 'Start Over', fr: 'Recommencer' })}</span>
+                        <span>
+                            {website.localize({ en: 'New search', fr: 'Nouvelle recherche' })}
+                        </span>
                     </button>
 
                     {/* Search Input Box */}
