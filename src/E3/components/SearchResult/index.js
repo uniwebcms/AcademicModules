@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 import { Image } from '@uniwebcms/core-components';
 import { FiAlertCircle } from 'react-icons/fi';
@@ -114,21 +114,14 @@ export default function SearchResult(props) {
     );
 }
 
-const ExpertCard = ({ expert, navigate, website, location }) => {
-    const {
-        avatar,
-        caption,
-        category: position,
-        content_id,
-        keywords: expertise = [],
-        title,
-    } = expert;
+const ExpertCard = ({ expert, navigate, location }) => {
+    const { avatar, caption, category: position, content_id, keywords, title } = expert;
 
     const expertProfile = uniweb.newProfile('members', content_id, {
         head: { _avatar: avatar },
     });
 
-    const { unit, faculty, institution } = parseAcademicUnit(caption);
+    const { unit, faculty } = parseAcademicUnit(caption);
 
     const handleClick = () => {
         const params = new URLSearchParams(location.search);
@@ -172,22 +165,98 @@ const ExpertCard = ({ expert, navigate, website, location }) => {
                         </p>
                     )}
 
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                        {expertise.slice(0, 3).map((tag) => (
-                            <ExpertiseTag
-                                key={tag}
-                                className="max-w-full @2xl:max-w-[120px] @4xl:max-w-[240px] @6xl:max-w-[320px] truncate"
-                            >
-                                {tag}
-                            </ExpertiseTag>
-                        ))}
-                        {expertise.length > 3 && (
-                            <ExpertiseTag className="bg-primary-50 text-primary-700">
-                                +{expertise.length - 3}
-                            </ExpertiseTag>
-                        )}
-                    </div>
+                    <ResponsiveTagList keywords={keywords} />
                 </div>
+            </div>
+        </div>
+    );
+};
+
+const ResponsiveTagList = ({ keywords }) => {
+    const containerRef = useRef(null);
+    const measureRef = useRef(null);
+    const [visibleCount, setVisibleCount] = useState(keywords.length);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        const measure = measureRef.current;
+        if (!container || !measure || keywords.length === 0) return;
+
+        const calculate = () => {
+            const containerWidth = container.offsetWidth;
+            const children = Array.from(measure.children);
+            const gap = 6; // gap-1.5 = 0.375rem = 6px
+
+            // The last child in the measure container is the "+x" badge
+            const badgeWidth = children[children.length - 1].offsetWidth;
+
+            let used = 0;
+            let count = 0;
+
+            for (let i = 0; i < keywords.length; i++) {
+                const tagWidth = children[i].offsetWidth;
+                const nextUsed = used + (i > 0 ? gap : 0) + tagWidth;
+                const isLast = i === keywords.length - 1;
+
+                if (isLast) {
+                    // No badge needed if all tags fit
+                    if (nextUsed <= containerWidth) {
+                        count = keywords.length;
+                    }
+                    break;
+                }
+
+                // Check if this tag + the "+x" badge still fits
+                if (nextUsed + gap + badgeWidth > containerWidth) {
+                    break;
+                }
+
+                used = nextUsed;
+                count++;
+            }
+
+            setVisibleCount(Math.max(1, count));
+        };
+
+        const observer = new ResizeObserver(calculate);
+        observer.observe(container);
+
+        return () => observer.disconnect();
+    }, [keywords]);
+
+    if (!keywords || keywords.length === 0) return null;
+
+    const remaining = keywords.length - visibleCount;
+
+    return (
+        <div className="mt-4 relative">
+            {/* Hidden container for measuring tag widths */}
+            <div
+                ref={measureRef}
+                aria-hidden="true"
+                className="flex flex-nowrap gap-1.5 absolute invisible pointer-events-none top-0 left-0 right-0"
+            >
+                {keywords.map((tag) => (
+                    <ExpertiseTag key={tag} className="whitespace-nowrap flex-shrink-0">
+                        {tag}
+                    </ExpertiseTag>
+                ))}
+                <ExpertiseTag className="whitespace-nowrap flex-shrink-0">
+                    +{keywords.length}
+                </ExpertiseTag>
+            </div>
+            {/* Visible container */}
+            <div ref={containerRef} className="flex flex-nowrap gap-1.5">
+                {keywords.slice(0, visibleCount).map((tag) => (
+                    <ExpertiseTag key={tag} className="whitespace-nowrap flex-shrink-0">
+                        {tag}
+                    </ExpertiseTag>
+                ))}
+                {remaining > 0 && (
+                    <ExpertiseTag className="bg-primary-50 text-primary-700 whitespace-nowrap flex-shrink-0">
+                        +{remaining}
+                    </ExpertiseTag>
+                )}
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { Image, SafeHtml } from '@uniwebcms/core-components';
@@ -83,7 +83,7 @@ export default function ExpertViewer(props) {
     const expert = new Profile('members', id, { data: response.data });
 
     const { head = {}, title, subtitle } = expert.getBasicInfo() || {};
-    const { unit, faculty, institution } = parseAcademicUnit(subtitle);
+    const { unit, faculty } = parseAcademicUnit(subtitle);
 
     const {
         academic_unit = [],
@@ -99,7 +99,8 @@ export default function ExpertViewer(props) {
 
     const selectedDegrees = expert.at('selected_degrees') || [];
     const biography = expert.at('biography/academic_biography') || '';
-    const areasOfExpertise = expert.at('key_words')?.map((item) => item.keyword) || [];
+    // const areasOfExpertise = expert.at('key_words')?.map((item) => item.keyword) || [];
+    const researchInterests = expert.at('topics');
     const publications = getValidPublications(expert.at('references') || []);
     const contact_preferences = expert.at('contact_preferences') || {};
     const {
@@ -107,6 +108,22 @@ export default function ExpertViewer(props) {
         telephone: telContact = '0',
         office: officeContact = '0',
     } = contact_preferences;
+
+    const renderTopic = (topic) => {
+        let [id, head] = topic.topic;
+
+        head = typeof head === 'string' ? JSON.parse(head) : head;
+        if (!head) return null;
+
+        const topicProfile = new Profile('topic', id, { head });
+        const { title } = topicProfile.getBasicInfo() || {};
+
+        return (
+            <span className="px-4 py-2 bg-text-color/5 rounded-[var(--border-radius)] text-xs @2xl:text-sm font-medium">
+                {title}
+            </span>
+        );
+    };
 
     const renderPublication = (publication) => {
         let [id, head] = publication.reference;
@@ -210,18 +227,22 @@ export default function ExpertViewer(props) {
                         </section>
                     )}
 
-                    {/* Expertise */}
-                    {(!hide_empty || (hide_empty && areasOfExpertise.length > 0)) && (
+                    {/* Research Interests */}
+                    {(!hide_empty || (hide_empty && researchInterests.length > 0)) && (
                         <section>
                             <h3 className="text-xl @4xl:text-2xl font-bold mb-4 border-b border-text-color/10 pb-2 flex items-center gap-2">
                                 <LuStar className="text-xl @4xl:text-2xl" />
                                 {website.localize({
-                                    en: 'Areas of Expertise',
-                                    fr: 'Domaines d’expertise',
+                                    en: 'Research Interests',
+                                    fr: 'Int\u00e9r\u00eats de recherche',
                                 })}
                             </h3>
 
-                            <ExpandableTile items={areasOfExpertise} website={website} />
+                            <ExpandableTile
+                                items={researchInterests}
+                                renderItem={renderTopic}
+                                website={website}
+                            />
                         </section>
                     )}
 
@@ -449,47 +470,137 @@ const ExpandableText = ({ text, className = '', website }) => {
     );
 };
 
-const ExpandableTile = ({ items, max = 10, website }) => {
+const ExpandableTile = ({ items, maxRows = 3, website, renderItem }) => {
     const [showAll, setShowAll] = useState(false);
+    const containerRef = useRef(null);
+    const measureRef = useRef(null);
+    const [visibleCount, setVisibleCount] = useState(items.length);
 
-    const visibleItems = showAll ? items : items.slice(0, max);
-    const remainingItems = items.length - visibleItems.length;
+    const defaultRenderItem = (item) => (
+        <span className="px-4 py-2 bg-text-color/5 rounded-[var(--border-radius)] text-xs @2xl:text-sm font-medium">
+            {item}
+        </span>
+    );
 
-    if (items.length === 0) return null;
+    const itemRenderer = renderItem || defaultRenderItem;
+
+    useEffect(() => {
+        if (showAll) return;
+
+        const container = containerRef.current;
+        const measure = measureRef.current;
+        if (!container || !measure || items.length === 0) return;
+
+        const calculate = () => {
+            const containerWidth = container.offsetWidth;
+            const children = Array.from(measure.children);
+            const gap = 8; // gap-2 = 0.5rem = 8px
+
+            // Last child in measurement container is the "+x more" badge
+            const badgeEl = children[children.length - 1];
+            const badgeWidth = badgeEl.offsetWidth;
+
+            // Item elements (excluding badge)
+            const itemEls = children.slice(0, -1);
+
+            // Group items into rows by offsetTop
+            const rows = [];
+            let currentRowTop = -1;
+
+            for (let i = 0; i < itemEls.length; i++) {
+                const el = itemEls[i];
+                if (el.offsetTop !== currentRowTop) {
+                    currentRowTop = el.offsetTop;
+                    rows.push([]);
+                }
+                rows[rows.length - 1].push(i);
+            }
+
+            // All items fit within maxRows — show everything
+            if (rows.length <= maxRows) {
+                setVisibleCount(items.length);
+                return;
+            }
+
+            // Count items in first maxRows rows
+            let count = 0;
+            for (let r = 0; r < maxRows; r++) {
+                count += rows[r].length;
+            }
+
+            // Remove items from the end of the last visible row
+            // until the "+x more" badge fits on that row
+            while (count > 0) {
+                const lastEl = itemEls[count - 1];
+                const rightEdge = lastEl.offsetLeft + lastEl.offsetWidth;
+                const availableSpace = containerWidth - rightEdge - gap;
+
+                if (availableSpace >= badgeWidth) {
+                    break;
+                }
+                count--;
+            }
+
+            setVisibleCount(Math.max(1, count));
+        };
+
+        const observer = new ResizeObserver(calculate);
+        observer.observe(container);
+
+        return () => observer.disconnect();
+    }, [items, maxRows, showAll]);
+
+    if (!items || items.length === 0) return null;
+
+    const displayItems = showAll ? items : items.slice(0, visibleCount);
+    const remainingItems = items.length - displayItems.length;
 
     return (
-        <div className="flex flex-wrap gap-2">
-            {visibleItems.map((item) => (
-                <span
-                    key={item}
-                    className="px-4 py-2 bg-text-color/5 rounded-[var(--border-radius)] text-xs @2xl:text-sm font-medium"
+        <div className="relative">
+            {/* Hidden measurement container — renders all items + badge to measure layout */}
+            {!showAll && (
+                <div
+                    ref={measureRef}
+                    aria-hidden="true"
+                    className="flex flex-wrap gap-2 absolute invisible pointer-events-none top-0 left-0 right-0"
                 >
-                    {item}
-                </span>
-            ))}
-            {remainingItems > 0 && (
-                <button
-                    onClick={() => setShowAll(true)}
-                    className="px-4 py-2 rounded-[var(--border-radius)] bg-text-color/5 text-[var(--highlight)]  text-sm font-medium transition-colors"
-                >
-                    +{remainingItems}{' '}
-                    {website.localize({
-                        en: 'more',
-                        fr: 'de plus',
-                    })}
-                </button>
+                    {items.map((item, index) => (
+                        <React.Fragment key={index}>{itemRenderer(item)}</React.Fragment>
+                    ))}
+                    <span className="px-4 py-2 rounded-[var(--border-radius)] bg-text-color/5 text-sm font-medium whitespace-nowrap">
+                        +{items.length} {website.localize({ en: 'more', fr: 'de plus' })}
+                    </span>
+                </div>
             )}
-            {showAll && items.length > max && (
-                <button
-                    onClick={() => setShowAll(false)}
-                    className="px-2 py-2 text-sm font-medium transition-colors text-text-color/50 hover:text-[var(--highlight)]"
-                >
-                    {website.localize({
-                        en: 'Show Less',
-                        fr: 'Voir Moins',
-                    })}
-                </button>
-            )}
+            {/* Visible container */}
+            <div ref={containerRef} className="flex flex-wrap gap-2">
+                {displayItems.map((item, index) => (
+                    <React.Fragment key={index}>{itemRenderer(item)}</React.Fragment>
+                ))}
+                {!showAll && remainingItems > 0 && (
+                    <button
+                        onClick={() => setShowAll(true)}
+                        className="px-4 py-2 rounded-[var(--border-radius)] bg-text-color/5 text-[var(--highlight)] text-sm font-medium transition-colors focus:outline-none"
+                    >
+                        +{remainingItems}{' '}
+                        {website.localize({
+                            en: 'more',
+                            fr: 'de plus',
+                        })}
+                    </button>
+                )}
+                {showAll && (
+                    <button
+                        onClick={() => setShowAll(false)}
+                        className="px-2 py-2 text-sm font-medium transition-colors text-[var(--highlight)] hover:underline focus:outline-none"
+                    >
+                        {website.localize({
+                            en: 'Show Less',
+                            fr: 'Voir Moins',
+                        })}
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
