@@ -39,8 +39,8 @@ export default function Home(props) {
                         <input
                             type="text"
                             placeholder={website.localize({
-                                en: 'Search by expert name or keywords...',
-                                fr: "Recherche par nom d'expert ou mots-clés...",
+                                en: 'Search by expert name, faculty or keywords...',
+                                fr: "Recherche par nom d'expert, faculté ou mots-clés...",
                             })}
                             className="flex-1 bg-transparent outline-none text-sm @2xl:text-base @4xl:text-l placeholder:text-text-color/70"
                             value={searchValue}
