@@ -41,14 +41,14 @@ export default function HomeHero(props) {
             <div className="text-center">
                 <h1 className="text-5xl font-bold mb-4">
                     {website.localize({
-                        en: 'Find an Expert',
-                        fr: 'Trouvez un Expert',
+                        en: 'Find an expert',
+                        fr: 'Trouver une expertise',
                     })}
                 </h1>
                 <p className="text-lg">
                     {website.localize({
-                        en: 'Connect with researchers, faculty, and experts for media interviews and analysis.',
-                        fr: 'Connectez-vous avec des chercheurs, des enseignants et des experts pour des interviews et des analyses médiatiques.',
+                        en: 'You can search by name, topic, or research interest.',
+                        fr: 'Vous pouvez effectuer une recherche par le nom, sujet ou domaine de recherche.',
                     })}
                 </p>
             </div>
