@@ -6,7 +6,6 @@ import { ArticleRender as Render, buildArticleBlocks, Link } from '@uniwebcms/co
 
 export default function Article(props) {
     const { website, input, block } = props;
-    console.log('');
 
     const { width = 'lg' } = block.getBlockProperties();
 
