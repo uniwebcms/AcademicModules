@@ -60,3 +60,9 @@ export default function Article(props) {
         </Container>
     );
 }
+
+Article.inputSchema = {
+    type: 'articles',
+    limit: 1,
+    queryMode: 'simple',
+};
