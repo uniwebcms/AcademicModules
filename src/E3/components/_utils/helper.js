@@ -5,7 +5,7 @@ export const filterExperts = (experts, searchFaculty, searchLanguage, sort) => {
         let pass = true;
 
         if (searchFaculty && searchFaculty !== 'all') {
-            pass = pass && caption.toLowerCase().includes(searchFaculty.toLowerCase());
+            pass = pass && caption && caption.toLowerCase().includes(searchFaculty.toLowerCase());
         }
 
         if (searchLanguage && searchLanguage !== 'all') {
