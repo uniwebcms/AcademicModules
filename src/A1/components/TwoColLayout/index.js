@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from '../_utils/Container';
-import { twJoin } from '@uniwebcms/module-sdk';
+import { twJoin, getPageProfile } from '@uniwebcms/module-sdk';
+import { Image } from '@uniwebcms/core-components';
 import './style.css';
 
 const layouts = {
@@ -40,10 +41,25 @@ export default function TwoColLayout(props) {
 
     const ChildBlocks = block.getChildBlockRenderer();
 
+    const banner = block.getBlockContent?.()?.banner;
+
     return (
-        <Container
+        <div className="relative">
+            {banner ? (
+                <div className="absolute inset-0 pointer-events-none">
+                    <Image
+                        profile={getPageProfile()}
+                        value={banner.value}
+                        alt={banner.alt}
+                        url={banner.url}
+                        href={banner.href}
+                        className="object-cover w-full h-full"
+                    />
+                </div>
+            ) : null}
+            <Container
             className={twJoin(
-                'mx-auto flex flex-col lg:flex-row',
+                'relative mx-auto flex flex-col lg:flex-row',
                 max_width === 'regular' ? 'max-w-7xl' : '',
                 max_width === 'wide' ? 'max-w-9xl' : '',
                 max_width === 'full' ? 'max-w-full' : '',
@@ -104,6 +120,7 @@ export default function TwoColLayout(props) {
                     </div>
                 ))
             )}
-        </Container>
+            </Container>
+        </div>
     );
 }

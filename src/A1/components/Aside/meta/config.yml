@@ -1,42 +1,83 @@
-title: 
-  en: Aside
-  fr: Aside
-label: 
-  en: Aside
-  fr: Aside
-description: 
-  en: Display content aside from the main content, usually on one side of a two column layout. 
-  fr: Afficher du contenu à côté du contenu principal, généralement sur un côté d'une mise en page à deux colonnes.
+title:
+    en: Aside
+    fr: Aside
+label:
+    en: Aside
+    fr: Aside
+description:
+    en: Display content aside from the main content, usually on one side of a two column layout.
+    fr: Afficher du contenu à côté du contenu principal, généralement sur un côté d'une mise en page à deux colonnes.
 
 category: dynamic_content
 export: true
 
 input:
-  type: any
-  limit: one
-  manualFormatting: true
+    type: any
+    limit: one
+    manualFormatting: true
 
 elements:
-  background:
-    label:
-      en: Profile Banner/Avatar
-      fr: Bannière/Avatar de profil
-    description: 
-      en: The picture of the profile.
-      fr: L'image du profil.
-  title:
-    description: 
-      en: The title of the profile.
-      fr: Le titre du profil.
-  subtitle:
-    description: 
-      en: The subtitle of the profile.
-      fr: Le sous-titre du profil.
-  link:
-    type: link
-    description: 
-      en: One or more links that attach to the profile.
-      fr: Un ou plusieurs liens qui s'attachent au profil.
+    background:
+        label:
+            en: Profile Banner/Avatar
+            fr: Bannière/Avatar de profil
+        description:
+            en: The picture of the profile.
+            fr: L'image du profil.
+    title:
+        description:
+            en: The title of the profile.
+            fr: Le titre du profil.
+    subtitle:
+        description:
+            en: The subtitle of the profile.
+            fr: Le sous-titre du profil.
+    link:
+        type: link
+        description:
+            en: One or more links that attach to the profile.
+            fr: Un ou plusieurs liens qui s'attachent au profil.
+
+properties:
+    image_shape:
+        label:
+            en: Image Shape
+            fr: Forme de l'image
+        type: select
+        default: rounded
+        options:
+            - label: { en: 'Rounded', fr: 'Arrondi' }
+              value: rounded
+            - label: { en: 'Square', fr: 'Carré' }
+              value: square
+            - label: { en: 'Landscape', fr: 'Paysage' }
+              value: landscape
+            - label: { en: 'Portrait', fr: 'Portrait' }
+              value: portrait
+        description:
+            en: Controls the shape of the profile image.
+            fr: Contrôle la forme de l'image de profil.
+
+    image_size:
+        label:
+            en: Image Size
+            fr: Taille de l'image
+        type: select
+        default: md
+        options:
+            - label: { en: 'Small (sm)', fr: 'Petit (sm)' }
+              value: sm
+            - label: { en: 'Medium (md)', fr: 'Moyen (md)' }
+              value: md
+            - label: { en: 'Large (lg)', fr: 'Grand (lg)' }
+              value: lg
+            - label: { en: 'Extra Large (xl)', fr: 'Très grand (xl)' }
+              value: xl
+            - label: { en: 'Full Width', fr: 'Pleine largeur' }
+              value: full
+        description:
+            en: Controls the size of the profile image.
+            fr: Contrôle la taille de l'image de profil.
 
 images:
-  - example.png
+    - example.png
