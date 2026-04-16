@@ -65,6 +65,7 @@ const SearchHeader = (props) => {
                     siteId: website.getSiteId(),
                     query: currentSearch,
                     activeLang,
+                    searchMode: 'strict',
                 },
             });
             return response.data.map((expert) => ({
@@ -418,6 +419,7 @@ const ExpertHeader = (props) => {
                 siteId: website.getSiteId(),
                 query: searchText,
                 activeLang,
+                searchMode: 'strict',
             },
         });
         return response.data.map((expert) => ({
