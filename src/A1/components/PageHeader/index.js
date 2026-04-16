@@ -34,6 +34,7 @@ export default function PageHeader({ block, website, page }) {
         logo_position = 'left',
         nav_menu_style = 'traditional',
         translucent_top = true,
+        language_toggle_style = 'icon',
     } = block.getBlockProperties();
 
     const nextBlockContext = getNextBlockContext(block);
@@ -237,7 +238,7 @@ export default function PageHeader({ block, website, page }) {
                     </nav>
                     <div className="flex-shrink-0 flex items-center gap-x-4 w-32 lg:w-28 justify-end">
                         <SiteSearch />
-                        <LanguageToggle />
+                        <LanguageToggle labelStyle={language_toggle_style} />
                         <button
                             type="button"
                             className="rounded-md py-2 lg:hidden"

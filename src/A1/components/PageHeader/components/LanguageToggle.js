@@ -22,13 +22,19 @@ import { ImRadioChecked } from 'react-icons/im';
  * @component LanguageToggle
  * @returns {function} A language toggle component.
  */
-export default function (props) {
+export default function ({ labelStyle = 'icon' }) {
+    const showLabel = labelStyle !== 'icon';
     const currentLang = website.getLanguage();
     const langOptions = website.getLanguages();
 
     const labels = {
         en: 'English',
         fr: 'Français',
+    };
+
+    const shortLabels = {
+        en: 'EN',
+        fr: 'FR',
     };
 
     if (langOptions && Array.isArray(langOptions) && langOptions.length > 1) {
@@ -56,13 +62,28 @@ export default function (props) {
             <Popover className="relative">
                 {({ open }) => (
                     <div>
-                        <Popover.Button className="w-6 h-6 flex items-center justify-center hover:scale-125 transition-all duration-300 focus:outline-none">
+                        <Popover.Button
+                            className={twMerge(
+                                'flex items-center justify-center hover:scale-105 transition-all duration-300 focus:outline-none',
+                                showLabel ? 'gap-x-1.5 px-2 py-1 rounded-md border border-text-color/20 hover:border-text-color/40' : 'w-6 h-6'
+                            )}
+                        >
                             <MdLanguage
                                 className={twMerge(
-                                    'w-full h-full text-text-color-80 hover:text-text-color',
+                                    'w-5 h-5 text-text-color-80 hover:text-text-color',
                                     open && 'text-text-color'
                                 )}
                             />
+                            {showLabel && (
+                                <span className={twMerge(
+                                    'text-sm font-medium text-text-color-80 hover:text-text-color',
+                                    open && 'text-text-color'
+                                )}>
+                                    {labelStyle === 'icon_with_label'
+                                        ? (labels[currentLang] || currentLang)
+                                        : (shortLabels[currentLang] || currentLang.toUpperCase())}
+                                </span>
+                            )}
                         </Popover.Button>
                         <Transition
                             as={Fragment}

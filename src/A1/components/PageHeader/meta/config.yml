@@ -114,6 +114,28 @@ properties:
     description: 
       en: The style of the navigation menu, traditional will display a hierarchical list of links, modern will display a flat dropdown menu.
       fr: Le style du menu de navigation, traditionnel affichera une liste hiérarchique de liens, moderne affichera un menu déroulant plat.
+  language_toggle_style:
+    type: string
+    label:
+      en: Language Toggle Style
+      fr: Style du sélecteur de langue
+    enum:
+      - label:
+          en: Icon Only
+          fr: Icône seulement
+        value: icon
+      - label:
+          en: Icon with Language Code
+          fr: Icône avec code de langue
+        value: icon_with_code
+      - label:
+          en: Icon with Full Label
+          fr: Icône avec étiquette complète
+        value: icon_with_label
+    default: icon
+    description:
+      en: The style of the language toggle button. "Icon Only" shows just the globe icon, "Icon with Language Code" shows the icon with a short code (e.g. EN, FR), and "Icon with Full Label" shows the icon with the full language name (e.g. English, Français).
+      fr: Le style du bouton de sélection de langue. "Icône seulement" affiche uniquement l'icône du globe, "Icône avec code de langue" affiche l'icône avec un code court (ex. EN, FR), et "Icône avec étiquette complète" affiche l'icône accompagnée du nom complet de la langue (ex. English, Français).
   translucent_top:
     type: boolean
     label: 
