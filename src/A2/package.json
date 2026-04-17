@@ -14,7 +14,7 @@
         "@popperjs/core": "^2.11.6",
         "@tailwindcss/container-queries": "^0.1.1",
         "@tailwindcss/typography": "^0.5.15",
-        "@uniwebcms/core-components": "^1.6.35",
+        "@uniwebcms/core-components": "^1.6.46",
         "@uniwebcms/module-sdk": "^2.0.6",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.1.2",
         "react": "^18.2.0",

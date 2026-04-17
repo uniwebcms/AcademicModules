@@ -14,7 +14,7 @@
         "@headlessui/tailwindcss": "^0.2.2",
         "@tailwindcss/container-queries": "^0.1.1",
         "@tailwindcss/typography": "^0.5.15",
-        "@uniwebcms/core-components": "^1.6.27",
+        "@uniwebcms/core-components": "^1.6.46",
         "@uniwebcms/module-sdk": "^2.0.3",
         "@uniwebcms/uniweb-tailwind-plugin": "^1.1.2",
         "axios": "^1.9.0",

@@ -2871,9 +2871,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniwebcms/core-components@npm:^1.6.15":
-  version: 1.6.15
-  resolution: "@uniwebcms/core-components@npm:1.6.15"
+"@uniwebcms/core-components@npm:^1.6.45":
+  version: 1.6.45
+  resolution: "@uniwebcms/core-components@npm:1.6.45"
   dependencies:
     "@headlessui/react": "npm:^1.7.3"
     "@popperjs/core": "npm:^2.10.1"
@@ -2885,13 +2885,13 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10/71187f60dfa79a3334f0e7e9ed4df089e316d4dfaa87266bd1baa68670aec0b58be9c266f76197e93a0542ee23ffa110c82b6f32b96736a73ce7f93373cc1f7c
+  checksum: 10/e536e2f7494ffeedbd44eaaee505a5cb23d7263b6221f25e57152a7ee53cc45b782b99d285340e501198c167006e551bad24233dc14b06645122bf2576b202b6
   languageName: node
   linkType: hard
 
-"@uniwebcms/core-components@npm:^1.6.20":
-  version: 1.6.20
-  resolution: "@uniwebcms/core-components@npm:1.6.20"
+"@uniwebcms/core-components@npm:^1.6.46":
+  version: 1.6.46
+  resolution: "@uniwebcms/core-components@npm:1.6.46"
   dependencies:
     "@headlessui/react": "npm:^1.7.3"
     "@popperjs/core": "npm:^2.10.1"
@@ -2903,97 +2903,7 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10/272dc695ebfe3b2aeefe25e3b168cffcb7e97a16f81d9bca028dd6aff0c833e4333865f975b0d63661150fd6041f4ee232edfc39fad2a3d4b95d7d47be83128c
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/core-components@npm:^1.6.27":
-  version: 1.6.27
-  resolution: "@uniwebcms/core-components@npm:1.6.27"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/ff3cabca07c1096b872f8f878d7d5b3f1f1ea0e0d151b1b3e5a59c8da5818d2118c55480c066985f2be84901b35ed05b4574f10e7649ed7bf4f72fabeba2c7a4
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/core-components@npm:^1.6.28":
-  version: 1.6.28
-  resolution: "@uniwebcms/core-components@npm:1.6.28"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/f0453ff0fb928856d9fae2ed08c0bdc83eefb55ea1147ac5bba625d325f7ac7bb94ebc67078afe59cf375aa815556c55c63a2971d4b9d2e81e654b22bd18fa45
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/core-components@npm:^1.6.35":
-  version: 1.6.40
-  resolution: "@uniwebcms/core-components@npm:1.6.40"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/6ee1f88ec1f6224fb88efbf1637f559a7596f28bd6617a9b39d1b2ff2310eaa7f4ff1f533bbd0063d2b9184518ad19b999bf83e4463a44efadde502c965a265b
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/core-components@npm:^1.6.42":
-  version: 1.6.42
-  resolution: "@uniwebcms/core-components@npm:1.6.42"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/d3b535a3e250f39cca2847b79af227f4a774facf73598085299b5f3d72ddcbed3880c61073559299e2830bd1a88c227d1d4e7040a66b0e168b0e9010128385b1
-  languageName: node
-  linkType: hard
-
-"@uniwebcms/core-components@npm:^1.6.44":
-  version: 1.6.44
-  resolution: "@uniwebcms/core-components@npm:1.6.44"
-  dependencies:
-    "@headlessui/react": "npm:^1.7.3"
-    "@popperjs/core": "npm:^2.10.1"
-    "@react-google-maps/api": "npm:^2.19.1"
-    katex: "npm:^0.16.11"
-    prismjs: "npm:^1.29.0"
-    react-icons: "npm:^4.11.0"
-    react-katex: "npm:^3.0.1"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 10/1b72fcf30c5724206d5ac5c8907094ff3634a419a5360ca811fe0cfacb3e95b2880eaad7cb9da610486c6cba1385b1a0b803e32ccef15b13c96ceae3f0a0956f
+  checksum: 10/9a9d7338442bde109e0d85d75385ab0f64d38d8e0cdbedc617fff40f63874fde8cc82520b33803414829096299721eebd1c1405dbbd3a18eed3a1976ccb9b14e
   languageName: node
   linkType: hard
 
@@ -3322,7 +3232,7 @@ __metadata:
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.44"
+    "@uniwebcms/core-components": "npm:^1.6.46"
     "@uniwebcms/module-sdk": "npm:^2.0.6"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     "@vis.gl/react-google-maps": "npm:^1.5.4"
@@ -3353,7 +3263,7 @@ __metadata:
     "@popperjs/core": "npm:^2.11.6"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.35"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.6"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     react: "npm:^18.2.0"
@@ -4741,7 +4651,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@react-google-maps/api": "npm:^2.19.3"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.28"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.1"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     flexsearch: "npm:^0.7.31"
@@ -4766,7 +4676,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@react-google-maps/api": "npm:^2.19.1"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.42"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.0.1"
     flexsearch: "npm:^0.7.31"
@@ -4793,7 +4703,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@react-google-maps/api": "npm:^2.19.1"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.42"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.6"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     flexsearch: "npm:^0.7.31"
@@ -5277,7 +5187,7 @@ __metadata:
   resolution: "expert-series-1@workspace:src/E1"
   dependencies:
     "@headlessui/react": "npm:^1.7.13"
-    "@uniwebcms/core-components": "npm:^1.6.15"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-icons: "npm:^5.3.0"
@@ -5295,7 +5205,7 @@ __metadata:
     "@headlessui/react": "npm:^2.2.9"
     "@headlessui/tailwindcss": "npm:^0.2.2"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.27"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     axios: "npm:^1.9.0"
@@ -5320,7 +5230,7 @@ __metadata:
     "@headlessui/tailwindcss": "npm:^0.2.2"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.27"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     axios: "npm:^1.9.0"
@@ -6778,7 +6688,7 @@ __metadata:
   dependencies:
     "@headlessui/react": "npm:^1.7.13"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.42"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.2"
     axios: "npm:^1.9.0"
@@ -6810,7 +6720,7 @@ __metadata:
     "@headlessui/react": "npm:^1.7.13"
     "@headlessui/tailwindcss": "npm:^0.2.2"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.27"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     prop-types: "npm:^15.8.1"
@@ -6833,7 +6743,7 @@ __metadata:
   dependencies:
     "@headlessui/react": "npm:^1.7.13"
     "@tailwindcss/typography": "npm:^0.5.15"
-    "@uniwebcms/core-components": "npm:^1.6.20"
+    "@uniwebcms/core-components": "npm:^1.6.45"
     "@uniwebcms/module-sdk": "npm:^2.0.3"
     "@uniwebcms/uniweb-tailwind-plugin": "npm:^1.1.0"
     axios: "npm:^1.9.0"
