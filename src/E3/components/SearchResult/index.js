@@ -41,7 +41,6 @@ export default function SearchResult(props) {
                 siteId: website.getSiteId(),
                 query: searchText,
                 activeLang,
-                searchMode: 'strict',
             },
         });
         return response.data.map((expert) => ({
