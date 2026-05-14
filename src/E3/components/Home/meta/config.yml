@@ -10,3 +10,101 @@ label:
 
 category: content
 export: true
+
+properties:
+    horizontal_alignment:
+        label:
+            en: Horizontal Alignment
+            fr: Alignement horizontal
+        type: string
+        default: center
+        enum:
+            - label:
+                  en: Left
+                  fr: Gauche
+              value: left
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+            - label:
+                  en: Right
+                  fr: Droite
+              value: right
+        description:
+            en: The horizontal alignment of the content within the page.
+            fr: L'alignement horizontal du contenu sur la page.
+    vertical_alignment:
+        label:
+            en: Vertical Alignment
+            fr: Alignement vertical
+        type: string
+        default: center
+        enum:
+            - label:
+                  en: Top
+                  fr: Haut
+              value: top
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+            - label:
+                  en: Bottom
+                  fr: Bas
+              value: bottom
+        description:
+            en: The vertical alignment of the content within the page.
+            fr: L'alignement vertical du contenu sur la page.
+    text_alignment:
+        label:
+            en: Text Alignment
+            fr: Alignement du texte
+        type: string
+        default: center
+        enum:
+            - label:
+                  en: Left
+                  fr: Gauche
+              value: left
+            - label:
+                  en: Center
+                  fr: Centre
+              value: center
+            - label:
+                  en: Right
+                  fr: Droite
+              value: right
+        description:
+            en: The text alignment of the title and subtitle.
+            fr: L'alignement du texte du titre et du sous-titre.
+    gap:
+        label:
+            en: Gap Between Text and Search
+            fr: Espace entre le texte et la recherche
+        type: string
+        default: sm
+        enum:
+            - label:
+                  en: Extra Small
+                  fr: Très petit
+              value: xs
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Large
+                  fr: Grand
+              value: lg
+            - label:
+                  en: Extra Large
+                  fr: Très grand
+              value: xl
+        description:
+            en: The spacing between the text content and the search input.
+            fr: L'espacement entre le contenu textuel et le champ de recherche.
