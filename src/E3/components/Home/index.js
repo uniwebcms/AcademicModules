@@ -8,12 +8,6 @@ const verticalClasses = {
     bottom: 'items-end',
 };
 
-const horizontalAlignClasses = {
-    left: 'items-start',
-    center: 'items-center',
-    right: 'items-end',
-};
-
 const horizontalJustifyClasses = {
     left: 'justify-start',
     center: 'justify-center',
@@ -34,6 +28,13 @@ const gapClasses = {
     xl: 'mb-24 @2xl:mb-28 @4xl:mb-32',
 };
 
+const paddingClasses = {
+    sm: 'p-2 @xl:p-3 @2xl:p-4',
+    md: 'p-3 @xl:p-4 @2xl:p-5',
+    lg: 'p-5 @xl:p-7 @2xl:p-10',
+    xl: 'p-8 @xl:p-10 @2xl:p-14',
+};
+
 export default function Home(props) {
     const { website, block } = props;
     const { title, subtitle } = block.getBlockContent();
@@ -45,6 +46,7 @@ export default function Home(props) {
         vertical_alignment = 'center',
         text_alignment = 'center',
         gap = 'sm',
+        padding = 'md',
     } = block.getBlockProperties();
 
     const [searchValue, setSearchValue] = useState('');
@@ -59,12 +61,11 @@ export default function Home(props) {
     };
 
     const verticalClass = verticalClasses[vertical_alignment] || verticalClasses.center;
-    const horizontalClass =
-        horizontalAlignClasses[horizontal_alignment] || horizontalAlignClasses.center;
     const horizontalJustifyClass =
         horizontalJustifyClasses[horizontal_alignment] || horizontalJustifyClasses.center;
     const textAlignClass = textAlignClasses[text_alignment] || textAlignClasses.center;
     const gapClass = gapClasses[gap] || gapClasses.sm;
+    const paddingClass = paddingClasses[padding] || paddingClasses.md;
 
     return (
         <main
@@ -74,12 +75,7 @@ export default function Home(props) {
                 horizontalJustifyClass
             )}
         >
-            <div
-                className={twMerge(
-                    'max-w-3xl w-full p-3 @xl:p-4 @2xl:p-5 flex flex-col',
-                    horizontalClass
-                )}
-            >
+            <div className={twMerge('max-w-3xl w-full flex flex-col', paddingClass)}>
                 <h2
                     className={twMerge(
                         'text-3xl @2xl:text-4xl @4xl:text-5xl font-bold tracking-[-1px] mb-4',
@@ -90,7 +86,7 @@ export default function Home(props) {
                 </h2>
                 <p
                     className={twMerge(
-                        'text-sm @2xl:text-base @4xl:text-lg text-text-color/90 max-w-2xl',
+                        'text-sm @2xl:text-base @4xl:text-lg text-text-color/90',
                         textAlignClass,
                         gapClass
                     )}
@@ -98,7 +94,7 @@ export default function Home(props) {
                     {subtitle}
                 </p>
 
-                <form onSubmit={handleSearch} className="w-full max-w-2xl">
+                <form onSubmit={handleSearch} className="w-full">
                     <div className="group flex items-center w-full gap-3 px-3.5 py-2.5 @2xl:px-4 @2xl:py-3 @4xl:px-5 @4xl:py-4 border-2 border-text-color/20 rounded-[var(--border-radius)] bg-text-color-0 shadow-sm focus-within:border-[var(--highlight)] focus-within:ring-1 focus-within:ring-current transition-all duration-200">
                         <HiSearch className="text-lg @2xl:text-xl @4xl:text-2xl text-text-color/70 group-focus-within:text-current" />
 

@@ -78,6 +78,32 @@ properties:
         description:
             en: The text alignment of the title and subtitle.
             fr: L'alignement du texte du titre et du sous-titre.
+    padding:
+        label:
+            en: Block Padding
+            fr: Rembourrage du bloc
+        type: string
+        default: md
+        enum:
+            - label:
+                  en: Small
+                  fr: Petit
+              value: sm
+            - label:
+                  en: Medium
+                  fr: Moyen
+              value: md
+            - label:
+                  en: Large
+                  fr: Grand
+              value: lg
+            - label:
+                  en: Extra Large
+                  fr: Très grand
+              value: xl
+        description:
+            en: The padding around the title and search block.
+            fr: Le rembourrage autour du bloc de titre et de recherche.
     gap:
         label:
             en: Gap Between Text and Search
