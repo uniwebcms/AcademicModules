@@ -8,13 +8,49 @@ import { twMerge, twJoin } from '@uniwebcms/module-sdk';
 import { filterExperts, parseAcademicUnit } from '../_utils/helper';
 import client from '../_utils/ajax';
 
-const NoScrollbarScroller = React.forwardRef((props, ref) => (
-    <div {...props} ref={ref} className={`${props.className || ''} no-scrollbar`} />
+const NoScrollbarScroller = React.forwardRef(({ className, ...props }, ref) => (
+    <div {...props} ref={ref} className={twMerge(className, 'no-scrollbar')} />
 ));
 NoScrollbarScroller.displayName = 'NoScrollbarScroller';
 
+const DefaultScroller = React.forwardRef((props, ref) => <div {...props} ref={ref} />);
+DefaultScroller.displayName = 'DefaultScroller';
+
+// Defining ::-webkit-scrollbar switches WebKit from overlay to classical mode,
+// so the scrollbar is persistent when content overflows but absent when it doesn't.
+// Firefox uses scrollbar-width/scrollbar-color for the same persistent behavior.
+const AlwaysShowScroller = React.forwardRef(({ className, style, ...props }, ref) => (
+    <div
+        {...props}
+        ref={ref}
+        className={twMerge(
+            '[&::-webkit-scrollbar]:w-1.5',
+            '[&::-webkit-scrollbar-track]:bg-transparent',
+            '[&::-webkit-scrollbar-thumb]:rounded-full',
+            '[&::-webkit-scrollbar-thumb]:bg-text-color/30',
+            '[&::-webkit-scrollbar-thumb:hover]:bg-text-color/50',
+            className
+        )}
+        style={{
+            ...style,
+            scrollbarWidth: 'thin',
+            scrollbarColor: 'color-mix(in srgb, currentColor 30%, transparent) transparent',
+        }}
+    />
+));
+AlwaysShowScroller.displayName = 'AlwaysShowScroller';
+
+const scrollerComponents = {
+    none: NoScrollbarScroller,
+    default: DefaultScroller,
+    always: AlwaysShowScroller,
+};
+
 export default function SearchResult(props) {
-    const { website } = props;
+    const { website, block } = props;
+
+    const { scrollbar = 'none' } = block.getBlockProperties();
+    const Scroller = scrollerComponents[scrollbar] || NoScrollbarScroller;
 
     const { useNavigate, useLocation } = website.getRoutingComponents();
     const navigate = useNavigate();
@@ -88,7 +124,7 @@ export default function SearchResult(props) {
                     <div className="w-full h-full">
                         <Virtuoso
                             height="100%"
-                            components={{ Scroller: NoScrollbarScroller }}
+                            components={{ Scroller }}
                             data={filtered}
                             totalCount={filtered.length}
                             itemContent={(index, expert) => {

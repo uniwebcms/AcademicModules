@@ -10,3 +10,27 @@ description:
 
 category: content
 export: true
+
+properties:
+    scrollbar:
+        label:
+            en: Scrollbar Style
+            fr: Style de barre de défilement
+        type: string
+        default: none
+        enum:
+            - label:
+                  en: Hidden
+                  fr: Masquée
+              value: none
+            - label:
+                  en: Default
+                  fr: Par défaut
+              value: default
+            - label:
+                  en: Always Visible
+                  fr: Toujours visible
+              value: always
+        description:
+            en: Controls scrollbar visibility on the results list. Hidden hides the scrollbar while keeping scroll, Default uses the browser overlay scrollbar, Always Visible shows a persistent scrollbar when the list exceeds the viewport.
+            fr: Contrôle la visibilité de la barre de défilement sur la liste des résultats.
