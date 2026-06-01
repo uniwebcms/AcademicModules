@@ -127,21 +127,16 @@ export default function SearchResult(props) {
                             components={{ Scroller }}
                             data={filtered}
                             totalCount={filtered.length}
-                            itemContent={(index, expert) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        className={index < filtered.length - 1 ? 'pb-6' : ''}
-                                    >
-                                        <ExpertCard
-                                            expert={expert}
-                                            navigate={navigate}
-                                            website={website}
-                                            location={location}
-                                        />
-                                    </div>
-                                );
-                            }}
+                            itemContent={(index, expert) => (
+                                <div className={index < filtered.length - 1 ? 'pb-6' : ''}>
+                                    <ExpertCard
+                                        expert={expert}
+                                        navigate={navigate}
+                                        website={website}
+                                        location={location}
+                                    />
+                                </div>
+                            )}
                         />
                     </div>
                 ) : null}
