@@ -88,15 +88,17 @@ const Profiles = ({ profiles, website, input, layout }) => {
                     <div className="w-64 h-44 flex-shrink-0">
                         <Image profile={profile} type="banner" rounded="rounded-xl" />
                     </div>
-                    <div className="flex-grow h-44 flex flex-col">
-                        <h3 className="text-lg font-medium md:text-xl lg:text-2xl mb-2">{title}</h3>
-                        <p className="text-head-color-80 text-base md:text-lg lg:text-xl mb-5">
+                    <div className="flex-grow h-44 flex flex-col overflow-hidden">
+                        <h3 className="text-lg font-medium md:text-xl lg:text-2xl mb-2 line-clamp-2">
+                            {title}
+                        </h3>
+                        <p className="text-head-color-80 text-base md:text-lg lg:text-xl line-clamp-2">
                             {subtitle}
                         </p>
                         <Link
                             to={input.makeHref(profile)}
                             target="_self"
-                            className="inline-block w-fit rounded-md px-3 py-1.5 text-sm sm:text-base font-medium bg-link-color/20 text-link-color hover:bg-link-color/10 hover:underline"
+                            className="mt-auto inline-block w-fit rounded-md px-3 py-1.5 text-sm sm:text-base font-medium bg-link-color/20 text-link-color hover:bg-link-color/10 hover:underline"
                         >
                             {website.localize({
                                 en: 'Explore more',
@@ -146,11 +148,11 @@ const Items = ({ items, layout }) => {
                             <Image {...banner} rounded="rounded-xl" />
                         </div>
                     ) : null}
-                    <div className="flex-grow h-44 flex flex-col">
-                        <h3 className="text-lg font-medium  md:text-xl lg:text-2xl mb-2">
+                    <div className="flex-grow h-44 flex flex-col overflow-hidden">
+                        <h3 className="text-lg font-medium  md:text-xl lg:text-2xl mb-2 line-clamp-2">
                             {title}
                         </h3>
-                        <p className="text-head-color-80 text-base md:text-lg lg:text-xl mb-5">
+                        <p className="text-head-color-80 text-base md:text-lg lg:text-xl line-clamp-4">
                             {subtitle}
                         </p>
                     </div>
