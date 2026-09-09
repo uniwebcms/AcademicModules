@@ -39,8 +39,8 @@ export default function Article(props) {
         <Container
             as="article"
             className={twJoin(
-                width === 'md' && 'max-w-2xl',
-                width === 'lg' && 'max-w-3xl',
+                width === 'md' && 'max-w-3xl',
+                width === 'lg' && 'max-w-4xl',
                 width === 'xl' && 'max-w-5xl',
                 width === '2xl' && 'max-w-7xl',
                 'w-full mx-auto min-h-screen py-12 lg:py-20 space-y-12 px-6 lg:px-8'
@@ -54,8 +54,18 @@ export default function Article(props) {
                     <IoReturnUpBackOutline className="w-full h-full text-link-color" />
                 </Link>
             )}
-            <div className={'prose prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl'}>
-                <Render {...props} content={parsedContent}></Render>
+            {/*
+                Scale the typography with the actual content column, not the viewport,
+                so a narrow width setting never gets the largest prose size.
+                Inner width (after padding): md ~44rem, lg ~52rem, xl ~60rem, 2xl ~76rem.
+                => md: prose-lg, lg/xl: prose-xl, 2xl: prose-2xl; all shrink on small screens.
+                `max-w-none` drops the default 65ch cap of `prose`, which would otherwise
+                hold the text well below every width option and make the setting inert.
+            */}
+            <div className="@container">
+                <div className="prose max-w-none prose-base @2xl:prose-lg @3xl:prose-xl @5xl:prose-2xl">
+                    <Render {...props} content={parsedContent}></Render>
+                </div>
             </div>
         </Container>
     );
