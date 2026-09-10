@@ -1,9 +1,11 @@
 import React from 'react';
 import Container from '../_utils/Container';
 import { stripTags } from '@uniwebcms/module-sdk';
+import parseSandbox from './sandbox';
+import parseHeight from './height';
 
 export default function (props) {
-    const { block } = props;
+    const { block, website } = props;
     const { main } = block;
 
     const { title = '', subtitle = '', pretitle = '' } = main.header || {};
@@ -11,8 +13,21 @@ export default function (props) {
     const links = main.body?.links;
     const link = links?.[0];
 
-    const { vertical_padding = 'lg', iframe_height: rawHeight = '56.25%' } =
-        block.getBlockProperties();
+    const {
+        vertical_padding = 'lg',
+        iframe_height: rawHeight = '56.25%',
+        iframe_title: rawTitle = '',
+        iframe_sandbox: rawSandbox = '',
+    } = block.getBlockProperties();
+
+    // Every iframe needs an accessible name (WCAG 4.1.2). Fall back to the
+    // section heading so that older sections are not left without one.
+    const frameTitle =
+        stripTags(rawTitle) ||
+        stripTags(title) ||
+        website.localize({ en: 'Embedded content', fr: 'Contenu intégré' });
+
+    const sandbox = parseSandbox(rawSandbox);
 
     let py = '';
 
@@ -26,18 +41,7 @@ export default function (props) {
         py = 'py-12 lg:py-24';
     }
 
-    const normalizedHeight =
-        typeof rawHeight === 'string' && /^\d+(\.\d+)?(px|%|vh)$/.test(rawHeight.trim())
-            ? rawHeight.trim()
-            : '56.25%';
-
-    const size = normalizedHeight.endsWith('%')
-        ? {
-              paddingBottom: normalizedHeight,
-          }
-        : {
-              height: normalizedHeight,
-          };
+    const size = parseHeight(rawHeight);
 
     return (
         <Container py={py}>
@@ -62,13 +66,16 @@ export default function (props) {
                                 width: '100%',
                                 position: 'relative',
                                 marginTop: '2rem',
-                                // minHeight: '200px',
                                 ...size,
                             }}
                         >
                             <iframe
                                 src={link.href}
-                                className=""
+                                title={frameTitle}
+                                sandbox={sandbox}
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allow="fullscreen"
+                                allowFullScreen
                                 style={{
                                     position: 'absolute',
                                     top: 0,

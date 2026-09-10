@@ -52,8 +52,25 @@ properties:
         type: string
         default: 56.25%
         description:
-            en: Controls the vertical space of the embedded content. You can set a fixed height using values like 800px, a responsive aspect ratio using a percentage like 56.25% (for 16:9), or use viewport height such as 100vh to make it fill the screen. If left blank, it defaults to 56.25%. Minimum height is 200px.
-            fr: Contrôle l'espace vertical du contenu intégré. Vous pouvez définir une hauteur fixe en utilisant des valeurs comme 800px, un rapport d'aspect réactif en utilisant un pourcentage comme 56,25 % (pour 16:9), ou utiliser la hauteur de la fenêtre d'affichage telle que 100vh pour le faire remplir l'écran. Si laissé vide, il par défaut à 56,25 %. La hauteur minimale est de 200px.
+            en: Controls the vertical space of the embedded content. You can set a fixed height using values like 800px (a plain number such as 800 is read as pixels), a responsive aspect ratio using a percentage like 56.25% (for 16:9, which suits most videos), or a viewport height such as 100vh to fill the screen. If left blank or not understood, it defaults to 56.25%. Heights below the 200px minimum are raised to it.
+            fr: Contrôle l'espace vertical du contenu intégré. Vous pouvez définir une hauteur fixe en utilisant des valeurs comme 800px (un nombre seul tel que 800 est interprété en pixels), un rapport d'aspect réactif en utilisant un pourcentage comme 56.25% (pour 16:9, ce qui convient à la plupart des vidéos), ou une hauteur de fenêtre d'affichage telle que 100vh pour remplir l'écran. Si laissé vide ou non compris, la valeur par défaut est 56.25%. Les hauteurs inférieures au minimum de 200px sont relevées à celui-ci.
+
+    iframe_title:
+        label:
+            en: iFrame Title (accessibility)
+            fr: Titre de l'iFrame (accessibilité)
+        type: string
+        description:
+            en: A short description of the embedded content, announced by screen readers. Needed for accessibility (WCAG 4.1.2). If left blank, the section title is used.
+            fr: Une brève description du contenu intégré, annoncée par les lecteurs d'écran. Nécessaire pour l'accessibilité (WCAG 4.1.2). Si laissé vide, le titre de la section est utilisé.
+    iframe_sandbox:
+        label:
+            en: iFrame Permissions (see description)
+            fr: Autorisations de l'iFrame (voir description)
+        type: string
+        description:
+            en: 'Restricts what the embedded page may do. Enter the permissions to grant, separated by spaces. A form usually needs: allow-scripts allow-same-origin allow-forms allow-popups. Read-only content such as a document or dashboard usually needs only: allow-scripts allow-same-origin. Anything not listed is blocked, including taking over the page and starting downloads. Leave blank to apply no restrictions. Unrecognized permissions are ignored.'
+            fr: "Limite ce que la page intégrée peut faire. Saisissez les autorisations à accorder, séparées par des espaces. Un formulaire nécessite généralement : allow-scripts allow-same-origin allow-forms allow-popups. Un contenu en lecture seule, tel qu'un document ou un tableau de bord, ne nécessite généralement que : allow-scripts allow-same-origin. Tout ce qui n'est pas indiqué est bloqué, y compris la prise de contrôle de la page et le lancement de téléchargements. Laissez vide pour n'appliquer aucune restriction. Les autorisations non reconnues sont ignorées."
 
 images:
     - example.png
