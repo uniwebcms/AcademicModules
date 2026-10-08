@@ -4,14 +4,13 @@ import {
     SiMedium,
     SiMendeley,
     SiOrcid,
-    SiLinkedin,
     SiPinterest,
     SiFacebook,
     SiYoutube,
     SiGithub,
     SiInstagram,
 } from 'react-icons/si';
-import { FaResearchgate, FaTumblrSquare, FaQuora, FaGooglePlus } from 'react-icons/fa';
+import { FaResearchgate, FaTumblrSquare, FaQuora, FaGooglePlus, FaLinkedin } from 'react-icons/fa';
 import { HiMiniPhone } from 'react-icons/hi2';
 import { IoIosLink } from 'react-icons/io';
 import { AiOutlineMail } from 'react-icons/ai';
@@ -24,7 +23,7 @@ const map = {
     medium: SiMedium,
     mendeley: SiMendeley,
     orcid: SiOrcid,
-    linkedin: SiLinkedin,
+    linkedin: FaLinkedin,
     pinterest: SiPinterest,
     facebook: SiFacebook,
     youtube: SiYoutube,

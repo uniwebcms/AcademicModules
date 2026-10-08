@@ -3,7 +3,6 @@ import {
     SiMedium,
     SiMendeley,
     SiOrcid,
-    SiLinkedin,
     SiPinterest,
     SiFacebook,
     SiYoutube,
@@ -15,6 +14,7 @@ import {
     SiResearchgate,
 } from 'react-icons/si';
 import { HiOutlineLink } from 'react-icons/hi2';
+import { FaLinkedin } from 'react-icons/fa';
 
 export const getMediaLinkType = (link) => {
     const pattern = {
@@ -62,7 +62,7 @@ export const getMediaIcon = (type) => {
     const map = {
         academia_edu: SiAcademia,
         facebook: SiFacebook,
-        linkedin: SiLinkedin,
+        linkedin: FaLinkedin,
         medium: SiMedium,
         mendeley: SiMendeley,
         orcid_page: SiOrcid,
