@@ -11,7 +11,9 @@
         "serve": "cd builder && yarn run serve",
         "refresh": "cd builder && yarn run refresh",
         "watch": "cd builder && yarn run watch:tunnel",
-        "build": "cd builder && yarn run build"
+        "build": "cd builder && yarn run build",
+        "build:all": "cd builder && TARGET_MODULE='*' yarn run build",
+        "watch:all": "cd builder && TARGET_MODULE='*' yarn run watch:local"
     },
     "dependencies": {
         "react": "^18.2.0",
